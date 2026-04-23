@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_tryll_error_8h" kind="file" language="C++">
+    <compoundname>TryllError.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes local="yes">TryllError.generated.h</includes>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
+        <link refid="_tryll_error_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="3">
+        <label>TryllError.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <link refid="_tryll_agent_8h_source"/>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <link refid="_tryll_agent_component_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
+        <link refid="_tryll_error_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_error" prot="public">FTryllError</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944d" prot="public" static="no" strong="yes">
+        <type>int32</type>
+        <name>ETryllErrorCode</name>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daa60852f204ed8028c1c58808b746d115" prot="public">
+          <name>Ok</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>No error — success sentinel. Equal to <ref refid="struct_f_tryll_error_1a9c90d72f8a271351196e30b8430f89b7" kindref="member">FTryllError::IsOk()</ref>. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daaf98071f760be899f4fcf1d53a29ba17" prot="public">
+          <name>ConnectionFailed</name>
+          <initializer>= 1001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>TCP connect to the configured ServerHost:ServerPort failed outright. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da42a909b5554948186a4b10a0dea5b7b9" prot="public">
+          <name>ConnectionDropped</name>
+          <initializer>= 1002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Established connection was dropped mid-session (peer close or socket error). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dac85a251cc457840f1e032f1b733e9398" prot="public">
+          <name>Timeout</name>
+          <initializer>= 1003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Client-side timeout waiting for a response frame; the socket itself may still be healthy. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da0e29610e7c8be800f4fbb53ea785afb0" prot="public">
+          <name>ServerShuttingDown</name>
+          <initializer>= 2001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Server is shutting down and no longer accepts requests on this session. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da6106a2fb8efa35b8c3053113c9e20595" prot="public">
+          <name>SessionNotReady</name>
+          <initializer>= 2002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Request requires a configured session; call ConfigureSession first. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da22ab3ef06934a2bdad77f3b96ac9c2b7" prot="public">
+          <name>InvalidAgentId</name>
+          <initializer>= 3001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Request referenced an agent_id the server does not know (wrong id or already destroyed). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3594330042030625e094e1ee40dec1b1" prot="public">
+          <name>AgentAlreadyDestroyed</name>
+          <initializer>= 3002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Agent was previously destroyed; the id is no longer valid for SendMessage. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da7ac0537b2e34f2ac65c231e4f3187521" prot="public">
+          <name>GraphCompilationFailed</name>
+          <initializer>= 3003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Server failed to compile the workflow graph into an executable plan (validation error). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3945ed447cdfbefd74ad77ab2b577871" prot="public">
+          <name>AgentBusy</name>
+          <initializer>= 3004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Agent is still processing the previous turn and cannot accept a new message yet. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae30d06929b59cd217b7e1f476f5aac3f" prot="public">
+          <name>InferenceFailed</name>
+          <initializer>= 4001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A generation or workflow node raised a non-recoverable inference error. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3266f1126da3465261453928f9865716" prot="public">
+          <name>InferenceTimeout</name>
+          <initializer>= 4002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A generation or workflow node exceeded its per-node time budget. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da08e68aafadb44dce2269d49976d66461" prot="public">
+          <name>MaxStepsExceeded</name>
+          <initializer>= 4003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Workflow exceeded the maximum number of node transitions per turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daa48bd31f520f361663db11715bbb3be5" prot="public">
+          <name>MalformedMessage</name>
+          <initializer>= 5001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Received frame could not be decoded against the FlatBuffers schema. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da5de193f3ab3f1a4ab33b428a5efbf20c" prot="public">
+          <name>UnknownMessageType</name>
+          <initializer>= 5002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Received frame carries a message type the server does not recognize. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dab110d75770b088ebd6c83fa7af0e932e" prot="public">
+          <name>FrameTooLarge</name>
+          <initializer>= 5003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Outgoing or incoming frame exceeds the negotiated maximum size. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dad04c7dc5bbdada527ba9f7f7cba6627d" prot="public">
+          <name>ProtocolVersionMismatch</name>
+          <initializer>= 5004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Client and server speak incompatible versions of the wire protocol. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da826d98fe40f8bd9c5624cc973d167631" prot="public">
+          <name>DownloadFailed</name>
+          <initializer>= 6001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Model download transport failed (HTTP error, interrupted transfer, checksum mismatch). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da5fdf344e9a981a1e3f9194b24d97c6d0" prot="public">
+          <name>DownloadNotAvailable</name>
+          <initializer>= 6002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Model is not registered in the catalog for the active inference engine. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae7444b6bcb095712bf3ab427fc44429a" prot="public">
+          <name>InsufficientDiskSpace</name>
+          <initializer>= 6003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Target disk does not have enough free space for the model. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da4a525e7c539a636ddcd827d93e03ec08" prot="public">
+          <name>DownloadAlreadyActive</name>
+          <initializer>= 6004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A download for this model is already in progress on the server. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dacde310d4279a8adc48befb522d356c37" prot="public">
+          <name>InvalidStringStorageName</name>
+          <initializer>= 7001</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Requested StringStorage name is empty, malformed, or otherwise invalid. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dad4a4f74a02fa92479384c11a1eb695e8" prot="public">
+          <name>StringStorageAlreadyExists</name>
+          <initializer>= 7002</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>StringStorage with this name is already registered for the session. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da16119cd5a89d8e82a4b0f73403c67298" prot="public">
+          <name>InvalidStringStorageData</name>
+          <initializer>= 7003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>StringStorage content was rejected (unreadable file, bad format, empty array, etc.). </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Numeric error codes sent by the server in ErrorResponse. Mirrors server/common/include/tryll/ErrorCodes.h — values must stay in sync.</para>
+<para>Ranges: 1xxx connection-level 2xxx session-level 3xxx agent-level 4xxx inference / workflow 5xxx protocol / framing 6xxx model download </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h"/>
+  </compounddef>
+</doxygen>

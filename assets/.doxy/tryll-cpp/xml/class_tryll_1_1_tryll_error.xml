@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_tryll_error" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Tryll::TryllError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <includes refid="_tryll_error_8h" local="no">TryllError.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tryll_1_1_tryll_error_1a9e2f4f56474328614fc25b3ab08d73a0" prot="private" static="no" mutable="no">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t Tryll::TryllError::_code</definition>
+        <argsstring></argsstring>
+        <name>_code</name>
+        <qualifiedname>Tryll::TryllError::_code</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="69" column="15" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_tryll_error_1aa03e5ef2e54321752507080098d51a21" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tryll::TryllError::_message</definition>
+        <argsstring></argsstring>
+        <name>_message</name>
+        <qualifiedname>Tryll::TryllError::_message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="70" column="13" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_tryll_error_1aeb7a64ccef5a49cccc1ba0d12068edd6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::TryllError::TryllError</definition>
+        <argsstring>(std::uint32_t code, std::string message)</argsstring>
+        <name>TryllError</name>
+        <qualifiedname>Tryll::TryllError::TryllError</qualifiedname>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Construct a Tryll client error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Numeric error code from <computeroutput>ErrorCodes.h</computeroutput> ranges, or 0 for client-originated failures. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Human-readable description (copied to both the base-class <computeroutput>what()</computeroutput> string and <computeroutput><ref refid="class_tryll_1_1_tryll_error_1a8fd3da729e3674c7c7de9989cbc5bb2c" kindref="member">GetMessage()</ref></computeroutput>). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="41" column="10" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_tryll_error_1a4efa6d63330fb29ead8355486fcda505" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t Tryll::TryllError::GetCode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetCode</name>
+        <qualifiedname>Tryll::TryllError::GetCode</qualifiedname>
+        <briefdescription>
+<para>Numeric error code from <computeroutput>ErrorResponse</computeroutput>, or 0 for connection-level errors. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Match against the ranges in <computeroutput>server/common/include/tryll/ErrorCodes.h</computeroutput> to classify the failure family.</para>
+<para><simplesect kind="return"><para>Non-negative code; 0 indicates a client-side failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="55" column="16" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_tryll_error_1a8fd3da729e3674c7c7de9989cbc5bb2c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; Tryll::TryllError::GetMessage</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMessage</name>
+        <qualifiedname>Tryll::TryllError::GetMessage</qualifiedname>
+        <briefdescription>
+<para>Human-readable error message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Identical to the string returned by <computeroutput>what()</computeroutput>, but without the overhead of a C-string view. Safe to reference for the lifetime of the exception object.</para>
+<para><simplesect kind="return"><para>Server or client-produced description of the failure. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="66" column="20" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Exception thrown by <ref refid="class_tryll_1_1_tryll_client" kindref="compound">TryllClient</ref> and <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">AgentProxy</ref> on server errors or disconnects. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The numeric code surfaces the server&apos;s <computeroutput>ErrorResponse.code</computeroutput> ranges (1xxx connection, 2xxx session, 3xxx agent, 4xxx model, 5xxx node, 6xxx graph, 7xxx string storage, 8xxx embedded storage). Value 0 is reserved for client-originated failures such as socket errors or timeouts waiting for a response frame. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Tryll::TryllError</label>
+        <link refid="class_tryll_1_1_tryll_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Tryll::TryllError</label>
+        <link refid="class_tryll_1_1_tryll_error"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" line="30" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h" bodystart="31" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_tryll_error_1a9e2f4f56474328614fc25b3ab08d73a0" prot="private" virt="non-virtual"><scope>Tryll::TryllError</scope><name>_code</name></member>
+      <member refid="class_tryll_1_1_tryll_error_1aa03e5ef2e54321752507080098d51a21" prot="private" virt="non-virtual"><scope>Tryll::TryllError</scope><name>_message</name></member>
+      <member refid="class_tryll_1_1_tryll_error_1a4efa6d63330fb29ead8355486fcda505" prot="public" virt="non-virtual"><scope>Tryll::TryllError</scope><name>GetCode</name></member>
+      <member refid="class_tryll_1_1_tryll_error_1a8fd3da729e3674c7c7de9989cbc5bb2c" prot="public" virt="non-virtual"><scope>Tryll::TryllError</scope><name>GetMessage</name></member>
+      <member refid="class_tryll_1_1_tryll_error_1aeb7a64ccef5a49cccc1ba0d12068edd6" prot="public" virt="non-virtual"><scope>Tryll::TryllError</scope><name>TryllError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_graph_builder" kind="struct" language="C++" prot="public">
+    <compoundname>FTryllGraphBuilder</compoundname>
+    <includes refid="_tryll_graph_description_8h" local="no">TryllGraphDescription.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_graph_builder_1a3ff7c49439ea83ac1b30a09caa4a6062" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref></type>
+        <definition>FTryllGraphDescription FTryllGraphBuilder::Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <qualifiedname>FTryllGraphBuilder::Description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="317" column="24" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1ae9444355709a71ee94ae48636c5aeda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::AddNode</definition>
+        <argsstring>(FString Name, ETryllNodeType Type, TMap&lt; FString, FString &gt; Params={})</argsstring>
+        <name>AddNode</name>
+        <qualifiedname>FTryllGraphBuilder::AddNode</qualifiedname>
+        <param>
+          <type>FString</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>ETryllNodeType</type>
+          <declname>Type</declname>
+        </param>
+        <param>
+          <type>TMap&lt; FString, FString &gt;</type>
+          <declname>Params</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="294" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1a2eaf1efb98ba14df2d6a250f79716c58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::AddToolCallNode</definition>
+        <argsstring>(FString Name, TArray&lt; FTryllToolDefinition &gt; Tools, TMap&lt; FString, FString &gt; Params={})</argsstring>
+        <name>AddToolCallNode</name>
+        <qualifiedname>FTryllGraphBuilder::AddToolCallNode</qualifiedname>
+        <param>
+          <type>FString</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>TArray&lt; <ref refid="struct_f_tryll_tool_definition" kindref="compound">FTryllToolDefinition</ref> &gt;</type>
+          <declname>Tools</declname>
+        </param>
+        <param>
+          <type>TMap&lt; FString, FString &gt;</type>
+          <declname>Params</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience method to add a ToolCall node with structured tool definitions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="300" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1a8cf91b68649ab5abfd7040ec7057f241" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::Wire</definition>
+        <argsstring>(FString SourceNode, FString ExitName, FString TargetNode)</argsstring>
+        <name>Wire</name>
+        <qualifiedname>FTryllGraphBuilder::Wire</qualifiedname>
+        <param>
+          <type>FString</type>
+          <declname>SourceNode</declname>
+        </param>
+        <param>
+          <type>FString</type>
+          <declname>ExitName</declname>
+        </param>
+        <param>
+          <type>FString</type>
+          <declname>TargetNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="305" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1afda8c486ab867bc62ae6fa07f8038569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::SetStartNode</definition>
+        <argsstring>(FString Name)</argsstring>
+        <name>SetStartNode</name>
+        <qualifiedname>FTryllGraphBuilder::SetStartNode</qualifiedname>
+        <param>
+          <type>FString</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="307" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1aee67ac915ff6fa083ad9a96c245fd270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::SetDefaultModelName</definition>
+        <argsstring>(FString Name)</argsstring>
+        <name>SetDefaultModelName</name>
+        <qualifiedname>FTryllGraphBuilder::SetDefaultModelName</qualifiedname>
+        <param>
+          <type>FString</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="309" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1a74b508b15c3bb6e65376549e029f1383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> &amp;</type>
+        <definition>FTryllGraphBuilder &amp; FTryllGraphBuilder::SetKnowledgePresentation</definition>
+        <argsstring>(FTryllKnowledgePresentationConfig Config)</argsstring>
+        <name>SetKnowledgePresentation</name>
+        <qualifiedname>FTryllGraphBuilder::SetKnowledgePresentation</qualifiedname>
+        <param>
+          <type><ref refid="struct_f_tryll_knowledge_presentation_config" kindref="compound">FTryllKnowledgePresentationConfig</ref></type>
+          <declname>Config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the knowledge presentation config. Required when the graph has a Retrieve node. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="312" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_graph_builder_1a463c2db2edd40293305c819248822bbe" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref></type>
+        <definition>FTryllGraphDescription FTryllGraphBuilder::Build</definition>
+        <argsstring>() const</argsstring>
+        <name>Build</name>
+        <qualifiedname>FTryllGraphBuilder::Build</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="314" column="25" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="314" bodyend="314"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Fluent C++ builder for <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref>. Mirrors Tryll::Client::GraphDescription from client-cpp. Not a USTRUCT — for programmatic C++ use only.</para>
+<para>Example: <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> Graph = <ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder()</ref> .AddNode(TEXT(&quot;gen&quot;), ETryllNodeType::Generate, {{TEXT(&quot;model_name&quot;), TEXT(&quot;mymodel&quot;)}}) .Wire(TEXT(&quot;gen&quot;), TEXT(&quot;done&quot;), TEXT(&quot;END&quot;)) .SetStartNode(TEXT(&quot;gen&quot;)) .SetDefaultModelName(TEXT(&quot;mymodel&quot;)) .Build(); </para>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="292" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="293" bodyend="318"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_graph_builder_1ae9444355709a71ee94ae48636c5aeda1" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>AddNode</name></member>
+      <member refid="struct_f_tryll_graph_builder_1a2eaf1efb98ba14df2d6a250f79716c58" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>AddToolCallNode</name></member>
+      <member refid="struct_f_tryll_graph_builder_1a463c2db2edd40293305c819248822bbe" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>Build</name></member>
+      <member refid="struct_f_tryll_graph_builder_1a3ff7c49439ea83ac1b30a09caa4a6062" prot="private" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>Description</name></member>
+      <member refid="struct_f_tryll_graph_builder_1aee67ac915ff6fa083ad9a96c245fd270" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>SetDefaultModelName</name></member>
+      <member refid="struct_f_tryll_graph_builder_1a74b508b15c3bb6e65376549e029f1383" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>SetKnowledgePresentation</name></member>
+      <member refid="struct_f_tryll_graph_builder_1afda8c486ab867bc62ae6fa07f8038569" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>SetStartNode</name></member>
+      <member refid="struct_f_tryll_graph_builder_1a8cf91b68649ab5abfd7040ec7057f241" prot="public" virt="non-virtual"><scope>FTryllGraphBuilder</scope><name>Wire</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

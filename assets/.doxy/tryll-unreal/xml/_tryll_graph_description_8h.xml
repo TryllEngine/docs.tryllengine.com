@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_tryll_graph_description_8h" kind="file" language="C++">
+    <compoundname>TryllGraphDescription.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes local="yes">TryllGraphDescription.generated.h</includes>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_workflow_asset_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
+        <link refid="_tryll_graph_description_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="3">
+        <label>TryllGraphDescription.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <link refid="_tryll_agent_8h_source"/>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <link refid="_tryll_agent_component_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
+        <link refid="_tryll_graph_description_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+      <node id="5">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</label>
+        <link refid="_tryll_workflow_asset_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_tool_param_definition" prot="public">FTryllToolParamDefinition</innerclass>
+    <innerclass refid="struct_f_tryll_tool_definition" prot="public">FTryllToolDefinition</innerclass>
+    <innerclass refid="struct_f_tryll_node_param" prot="public">FTryllNodeParam</innerclass>
+    <innerclass refid="struct_f_tryll_node_description" prot="public">FTryllNodeDescription</innerclass>
+    <innerclass refid="struct_f_tryll_exit_route" prot="public">FTryllExitRoute</innerclass>
+    <innerclass refid="struct_f_tryll_retrieve_presentation_config" prot="public">FTryllRetrievePresentationConfig</innerclass>
+    <innerclass refid="struct_f_tryll_knowledge_presentation_config" prot="public">FTryllKnowledgePresentationConfig</innerclass>
+    <innerclass refid="struct_f_tryll_graph_description" prot="public">FTryllGraphDescription</innerclass>
+    <innerclass refid="struct_f_tryll_graph_builder" prot="public">FTryllGraphBuilder</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ff" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllInferenceEngine</name>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa2bb15221819b63cb5ac5653baa0ad3d3" prot="public">
+          <name>Mock</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>In-process mock engine used by tests. Performs no real inference. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa83888cbc1972ac14a87fcbde96092c29" prot="public">
+          <name>LlamaCpp</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>llama.cpp GGUF runtime. The default production engine. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa9a567bf99eb9183e3b009f94f87d76df" prot="public">
+          <name>OnnxGenAI</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>ONNX GenAI — reserved; not yet implemented. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa5ab1186193e5a7e09ca405c03f2b65a2" prot="public">
+          <name>WindowsML</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Windows ML — reserved; not yet implemented. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa92ad101020799831bf8c0323e46c722d" prot="public">
+          <name>OpenVino</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Intel OpenVINO — reserved; not yet implemented. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa941779bc9bfdc5be3de8b9f6b94a6b0a" prot="public">
+          <name>TensorRtLlm</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>NVIDIA TensorRT-LLM — reserved; not yet implemented. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Inference engine the session should use for model loading. Mirrors the FlatBuffers InferenceEngine enum in messages.fbs — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="13" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="14" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8f" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllNodeType</name>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa32b919d18cfaca89383f6000dcc9c031" prot="public">
+          <name>Generate</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>LLM-driven text generation. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8faa317a08d3d4e98d7f609395efda04d05" prot="public">
+          <name>HumanMessageGuardrail</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Pattern-match on the user message and route accordingly. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8faa2ea73032f48643bc779c6b62a4430a9" prot="public">
+          <name>CannedResponse</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Emit a pre-written reply without invoking a model. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa56cf76fe1bae84d5d923b81016d60116" prot="public">
+          <name>ToolCall</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Detect a tool-call emission from the model (optionally notifying the client). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa2d67a16bc732d3b6a4a245d1a866996c" prot="public">
+          <name>Retrieve</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>RAG retrieval from a session-scoped embedded string storage. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Workflow node types supported by the server. Mirrors the FlatBuffers NodeType enum in messages.fbs — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="34" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="35" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllTurnStatus</name>
+        <enumvalue id="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1a505a83f220c02df2f85c3810cd9ceb38" prot="public">
+          <name>Success</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Turn completed successfully. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1a902b0d55fddef6f8d651fe1035b7d4bd" prot="public">
+          <name>Error</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Turn ended with a server-side error; inspect <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> from OnError. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1aa149e85a44aeec9140e92733d9ed694e" prot="public">
+          <name>Cancelled</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Turn was cancelled (client disconnect, agent destroyed, or explicit cancel). </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Outcome of a workflow turn. Mirrors TurnStatus in messages.fbs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="50" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="51" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllKnowledgePlacement</name>
+        <enumvalue id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599a84176a99f554d911653e280c9270426e" prot="public">
+          <name>InPlaceOfUser</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Replace the user turn with the knowledge-formatted message. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599a1cb2898b369c491dd824f0edd16c0b7e" prot="public">
+          <name>BeforeUserAsUser</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insert the knowledge block as an additional user turn before the real user message. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599a8755a398ad3ffc502ccaf1f24ff1057c" prot="public">
+          <name>BeforeUserAsSystem</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Insert the knowledge block as a system turn before the user message. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599a4084bb3e4d3bf39e436c14b1277f02f0" prot="public">
+          <name>AfterUserAsUser</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Append the knowledge block as an additional user turn after the user message. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1acb257e86266a7521e399a6c7de5ed599a3c528652e92965398e5c6c07335ca74b" prot="public">
+          <name>AfterUserAsSystem</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Append the knowledge block as a system turn after the user message. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Where the knowledge message is placed relative to the current user turn. Mirrors the FlatBuffers KnowledgePlacement enum — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="154" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="155" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1aabac2217b30b587d3a7cc4be5343a9b3" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllKnowledgeAllEmptyBehavior</name>
+        <enumvalue id="_tryll_graph_description_8h_1aabac2217b30b587d3a7cc4be5343a9b3a4b98975cc16e3ba96f342ea615ffe8ed" prot="public">
+          <name>UseAlternateTemplate</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Render <ref refid="struct_f_tryll_knowledge_presentation_config_1aa1f534f8c4727c7e56b856a5c7cd2182" kindref="member">FTryllKnowledgePresentationConfig::AllEmptyTemplate</ref> instead of the normal template. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1aabac2217b30b587d3a7cc4be5343a9b3a72ef2b9b6965d078e3c7f95487a82d1c" prot="public">
+          <name>Skip</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Emit the user message unchanged — ignore knowledge entirely for this turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>What to do when every retriever returned zero chunks. Mirrors the FlatBuffers KnowledgeAllEmptyBehavior enum — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="173" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="174" bodyend="179"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h"/>
+  </compounddef>
+</doxygen>

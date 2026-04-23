@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_error" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>FTryllError</compoundname>
+    <includes refid="_tryll_error_8h" local="no">TryllError.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_f_tryll_error_1ad4e34ac7200c9bedd2570f3d29679fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>FTryllError::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll&quot;, meta=(ToolTip=&quot;Numeric code matching ETryllErrorCode or a server ErrorCode range. 0 = Ok.&quot;)) int32 Code=0</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllError::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Numeric code matching ETryllErrorCode or a server ErrorCode range. 0 = Ok.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Numeric code matching ETryllErrorCode / server ErrorCode range. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_error_1aa7da44d58b970b2b4b07e623e181dc78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllError::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll&quot;, meta=(ToolTip=&quot;Human-readable error description from the server, or a client-originated message.&quot;)) FString Message</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllError::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Human-readable error description from the server, or a client-originated message.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Human-readable error description. Safe for display in UI and logs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_error_1a58fd8a676c8991a86eaf36a3b7c586c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllError::FTryllError</definition>
+        <argsstring>()=default</argsstring>
+        <name>FTryllError</name>
+        <qualifiedname>FTryllError::FTryllError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="103" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_error_1a9c90d72f8a271351196e30b8430f89b7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllError::IsOk</definition>
+        <argsstring>() const</argsstring>
+        <name>IsOk</name>
+        <qualifiedname>FTryllError::IsOk</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when Code == 0 (no error). Use before reading Message in success-or-failure flows. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="106" column="7" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="106" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_error_1a74beae87f7b09a23e68a9e1966fd3673" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FTryllError::FTryllError</definition>
+        <argsstring>(ETryllErrorCode InCode, FString InMessage)</argsstring>
+        <name>FTryllError</name>
+        <qualifiedname>FTryllError::FTryllError</qualifiedname>
+        <param>
+          <type>ETryllErrorCode</type>
+          <declname>InCode</declname>
+        </param>
+        <param>
+          <type>FString</type>
+          <declname>InMessage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct from a typed ETryllErrorCode value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="109" column="10" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="109" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_error_1a02d94cb3aa72cf45c1a596004be41b64" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FTryllError::FTryllError</definition>
+        <argsstring>(uint32 InCode, FString InMessage)</argsstring>
+        <name>FTryllError</name>
+        <qualifiedname>FTryllError::FTryllError</qualifiedname>
+        <param>
+          <type>uint32</type>
+          <declname>InCode</declname>
+        </param>
+        <param>
+          <type>FString</type>
+          <declname>InMessage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Construct from a raw server-supplied numeric code (e.g. an unknown future value). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="116" column="10" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="116" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Error value returned by Tryll API calls and delivered to Blueprint delegates. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="89" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="90" bodyend="121"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_error_1a58fd8a676c8991a86eaf36a3b7c586c2" prot="public" virt="non-virtual"><scope>FTryllError</scope><name>FTryllError</name></member>
+      <member refid="struct_f_tryll_error_1a74beae87f7b09a23e68a9e1966fd3673" prot="public" virt="non-virtual"><scope>FTryllError</scope><name>FTryllError</name></member>
+      <member refid="struct_f_tryll_error_1a02d94cb3aa72cf45c1a596004be41b64" prot="public" virt="non-virtual"><scope>FTryllError</scope><name>FTryllError</name></member>
+      <member refid="struct_f_tryll_error_1a9c90d72f8a271351196e30b8430f89b7" prot="public" virt="non-virtual"><scope>FTryllError</scope><name>IsOk</name></member>
+      <member refid="struct_f_tryll_error_1ad4e34ac7200c9bedd2570f3d29679fae" prot="public" virt="pure-virtual"><scope>FTryllError</scope><name>UPROPERTY</name></member>
+      <member refid="struct_f_tryll_error_1aa7da44d58b970b2b4b07e623e181dc78" prot="public" virt="non-virtual"><scope>FTryllError</scope><name>UPROPERTY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

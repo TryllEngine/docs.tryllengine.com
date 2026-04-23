@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_node_description" kind="struct" language="C++" prot="public">
+    <compoundname>FTryllNodeDescription</compoundname>
+    <includes refid="_tryll_graph_description_8h" local="no">TryllGraphDescription.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_node_description_1af25d7e4325f3628c3eaf4f0a08789509" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllNodeDescription::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>FTryllNodeDescription::Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="113" column="9" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_node_description_1a020a18c39fc1719e93d27c2597d92bb3" prot="public" static="no" mutable="no">
+        <type>ETryllNodeType</type>
+        <definition>ETryllNodeType FTryllNodeDescription::Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <qualifiedname>FTryllNodeDescription::Type</qualifiedname>
+        <initializer>= ETryllNodeType::Generate</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="116" column="16" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_node_description_1a814b387a49a18ca3678d74d0e85446ee" prot="public" static="no" mutable="no">
+        <type>TMap&lt; FString, FString &gt;</type>
+        <definition>TMap&lt;FString, FString&gt; FTryllNodeDescription::Params</definition>
+        <argsstring></argsstring>
+        <name>Params</name>
+        <qualifiedname>FTryllNodeDescription::Params</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>String key/value parameters passed to the node (e.g. &quot;model_name&quot;, &quot;system_prompt&quot;). Using TMap for convenience; serialized as a flat vector of NodeParam in the FlatBuffers payload. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="123" column="6" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_node_description_1a61e30a52ff48282bbf0870d3cae9f5f7" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_tool_definition" kindref="compound">FTryllToolDefinition</ref> &gt;</type>
+        <definition>TArray&lt;FTryllToolDefinition&gt; FTryllNodeDescription::Tools</definition>
+        <argsstring></argsstring>
+        <name>Tools</name>
+        <qualifiedname>FTryllNodeDescription::Tools</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tool definitions for ToolCall nodes. Ignored for all other node types. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="127" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Description of one workflow node sent to the server. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="108" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="109" bodyend="128"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_node_description_1af25d7e4325f3628c3eaf4f0a08789509" prot="public" virt="non-virtual"><scope>FTryllNodeDescription</scope><name>Name</name></member>
+      <member refid="struct_f_tryll_node_description_1a814b387a49a18ca3678d74d0e85446ee" prot="public" virt="non-virtual"><scope>FTryllNodeDescription</scope><name>Params</name></member>
+      <member refid="struct_f_tryll_node_description_1a61e30a52ff48282bbf0870d3cae9f5f7" prot="public" virt="non-virtual"><scope>FTryllNodeDescription</scope><name>Tools</name></member>
+      <member refid="struct_f_tryll_node_description_1a020a18c39fc1719e93d27c2597d92bb3" prot="public" virt="non-virtual"><scope>FTryllNodeDescription</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

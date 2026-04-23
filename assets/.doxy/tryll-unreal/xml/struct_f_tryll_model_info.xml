@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_model_info" kind="struct" language="C++" prot="public" abstract="yes">
+    <compoundname>FTryllModelInfo</compoundname>
+    <includes refid="_tryll_model_info_8h" local="no">TryllModelInfo.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_f_tryll_model_info_1ac3e2ca4eec86a9451f327047bb225938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllModelInfo::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;Catalog name of the model as registered in models.json.&quot;)) FString Name</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Models&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Catalog name of the model as registered in models.json.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Catalog name of the model (matches the name in models.json). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_model_info_1aa660df36edb8495c7ef590149d1cd7ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllModelInfo::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;Current status of the model on the server.&quot;)) ETryllModelStatus Status</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Models&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Current status of the model on the server.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Current status on the server (absent / local / downloading / downloaded / loaded). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_model_info_1aa6f2c48bd3dc48830a7c0838b9923fa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllModelInfo::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.&quot;)) FString HuggingFaceRepo</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Models&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>HuggingFace repo id (e.g. &quot;Qwen/Qwen2.5-0.5B-Instruct-GGUF&quot;) or empty for local-only models. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_model_info_1afe521b68f3ada1b3753d8299ccf78f98" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>FTryllModelInfo::UPROPERTY</definition>
+        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;On-disk size in bytes of the downloaded model; zero when the model is not on disk.&quot;)) int64 SizeBytes=0</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Models&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;On-disk size in bytes of the downloaded model; zero when the model is not on disk.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>On-disk size in bytes when the model has been downloaded. Zero if Status == Absent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="49" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Summary information for one model returned by ListModels. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="29" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="30" bodyend="52"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_model_info_1ac3e2ca4eec86a9451f327047bb225938" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
+      <member refid="struct_f_tryll_model_info_1aa660df36edb8495c7ef590149d1cd7ee" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
+      <member refid="struct_f_tryll_model_info_1aa6f2c48bd3dc48830a7c0838b9923fa5" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
+      <member refid="struct_f_tryll_model_info_1afe521b68f3ada1b3753d8299ccf78f98" prot="public" virt="pure-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

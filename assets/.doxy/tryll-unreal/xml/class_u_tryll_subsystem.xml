@@ -1,0 +1,1212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_u_tryll_subsystem" kind="class" language="C++" prot="public">
+    <compoundname>UTryllSubsystem</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UGameInstanceSubsystem</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">FTickableGameObject</basecompoundref>
+    <includes refid="_tryll_subsystem_8h" local="no">TryllSubsystem.h</includes>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_embedded_storage_info" prot="public">UTryllSubsystem::FEmbeddedStorageInfo</innerclass>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_create" prot="private">UTryllSubsystem::FPendingCreate</innerclass>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_list_models" prot="private">UTryllSubsystem::FPendingListModels</innerclass>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_string_storage" prot="private">UTryllSubsystem::FPendingStringStorage</innerclass>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_embedded_storage" prot="private">UTryllSubsystem::FPendingEmbeddedStorage</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_u_tryll_subsystem_1a202b214fdd80692f312f774275cfbe41" prot="public" static="no">
+        <type>void(<ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
+        <definition>using UTryllSubsystem::FTryllOnStringStorage = void(FTryllError)</definition>
+        <argsstring></argsstring>
+        <name>FTryllOnStringStorage</name>
+        <qualifiedname>UTryllSubsystem::FTryllOnStringStorage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="170" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_u_tryll_subsystem_1a2ddaaadcfaecfee999303370c11bacd2" prot="public" static="no">
+        <type>void(<ref refid="struct_u_tryll_subsystem_1_1_f_embedded_storage_info" kindref="compound">FEmbeddedStorageInfo</ref>, <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
+        <definition>using UTryllSubsystem::FTryllOnEmbeddedStorageCreated = void(FEmbeddedStorageInfo, FTryllError)</definition>
+        <argsstring></argsstring>
+        <name>FTryllOnEmbeddedStorageCreated</name>
+        <qualifiedname>UTryllSubsystem::FTryllOnEmbeddedStorageCreated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="217" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_u_tryll_subsystem_1a37d52ce1163a703f0468c8b07b67a3ba" prot="public" static="no">
+        <type>void(<ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
+        <definition>using UTryllSubsystem::FTryllOnEmbeddedStorageDestroyed = void(FTryllError)</definition>
+        <argsstring></argsstring>
+        <name>FTryllOnEmbeddedStorageDestroyed</name>
+        <qualifiedname>UTryllSubsystem::FTryllOnEmbeddedStorageDestroyed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="218" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aa407ccb39cc9f77d1d54866cefde09e2" prot="public" static="no" mutable="no">
+        <type>FOnTryllCreateStringStorage</type>
+        <definition>FOnTryllCreateStringStorage UTryllSubsystem::OnCreateStringStorageComplete</definition>
+        <argsstring></argsstring>
+        <name>OnCreateStringStorageComplete</name>
+        <qualifiedname>UTryllSubsystem::OnCreateStringStorageComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="202" column="29" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a4fe2f357b50c061e0c4bcd699f4de426" prot="public" static="no" mutable="no">
+        <type>FOnTryllDestroyStringStorage</type>
+        <definition>FOnTryllDestroyStringStorage UTryllSubsystem::OnDestroyStringStorageComplete</definition>
+        <argsstring></argsstring>
+        <name>OnDestroyStringStorageComplete</name>
+        <qualifiedname>UTryllSubsystem::OnDestroyStringStorageComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="205" column="30" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aff25d6026b320bfb05ce352fd7ec9b1b" prot="public" static="no" mutable="no">
+        <type>FOnTryllCreateEmbeddedStringStorage</type>
+        <definition>FOnTryllCreateEmbeddedStringStorage UTryllSubsystem::OnCreateEmbeddedStringStorageComplete</definition>
+        <argsstring></argsstring>
+        <name>OnCreateEmbeddedStringStorageComplete</name>
+        <qualifiedname>UTryllSubsystem::OnCreateEmbeddedStringStorageComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="259" column="37" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a59ec4fdd78c8d3663132f0371926dd0a" prot="public" static="no" mutable="no">
+        <type>FOnTryllDestroyEmbeddedStringStorage</type>
+        <definition>FOnTryllDestroyEmbeddedStringStorage UTryllSubsystem::OnDestroyEmbeddedStringStorageComplete</definition>
+        <argsstring></argsstring>
+        <name>OnDestroyEmbeddedStringStorageComplete</name>
+        <qualifiedname>UTryllSubsystem::OnDestroyEmbeddedStringStorageComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="262" column="38" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aedf5ef36252388c9a851b87925056379" prot="public" static="no" mutable="no">
+        <type>FOnTryllConnectionChanged</type>
+        <definition>FOnTryllConnectionChanged UTryllSubsystem::OnConnectionChanged</definition>
+        <argsstring></argsstring>
+        <name>OnConnectionChanged</name>
+        <qualifiedname>UTryllSubsystem::OnConnectionChanged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="272" column="27" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a78e1fc027e00d67193feda5d7d813c45" prot="public" static="no" mutable="no">
+        <type>FOnTryllError</type>
+        <definition>FOnTryllError UTryllSubsystem::OnError</definition>
+        <argsstring></argsstring>
+        <name>OnError</name>
+        <qualifiedname>UTryllSubsystem::OnError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="275" column="15" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a70f54bd128ac415633ac222bb4343389" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentDestroyed</type>
+        <definition>FOnTryllAgentDestroyed UTryllSubsystem::OnAgentDestroyed</definition>
+        <argsstring></argsstring>
+        <name>OnAgentDestroyed</name>
+        <qualifiedname>UTryllSubsystem::OnAgentDestroyed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="278" column="24" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a5e2c2fef45c52ce8a0443e9fc14fe447" prot="public" static="no" mutable="no">
+        <type>FOnTryllConfigureSession</type>
+        <definition>FOnTryllConfigureSession UTryllSubsystem::OnConfigureSessionComplete</definition>
+        <argsstring></argsstring>
+        <name>OnConfigureSessionComplete</name>
+        <qualifiedname>UTryllSubsystem::OnConfigureSessionComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="281" column="26" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a2239073db8f7db2460a1afc001d76916" prot="public" static="no" mutable="no">
+        <type>FOnTryllListModels</type>
+        <definition>FOnTryllListModels UTryllSubsystem::OnListModelsComplete</definition>
+        <argsstring></argsstring>
+        <name>OnListModelsComplete</name>
+        <qualifiedname>UTryllSubsystem::OnListModelsComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="284" column="20" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1ae25913b4f3b891f7b8c7085255174b5a" prot="public" static="no" mutable="no">
+        <type>FOnTryllDownloadProgress</type>
+        <definition>FOnTryllDownloadProgress UTryllSubsystem::OnDownloadProgress</definition>
+        <argsstring></argsstring>
+        <name>OnDownloadProgress</name>
+        <qualifiedname>UTryllSubsystem::OnDownloadProgress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="287" column="26" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a1a2cf5bb9a393fc9aad33ff01069cb32" prot="public" static="no" mutable="no">
+        <type>FOnTryllDownloadComplete</type>
+        <definition>FOnTryllDownloadComplete UTryllSubsystem::OnDownloadComplete</definition>
+        <argsstring></argsstring>
+        <name>OnDownloadComplete</name>
+        <qualifiedname>UTryllSubsystem::OnDownloadComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="290" column="26" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a2d9a3d3f3d6ef6f66de44e4db496c2ae" prot="public" static="no" mutable="no">
+        <type>FOnTryllLoadModel</type>
+        <definition>FOnTryllLoadModel UTryllSubsystem::OnLoadModelComplete</definition>
+        <argsstring></argsstring>
+        <name>OnLoadModelComplete</name>
+        <qualifiedname>UTryllSubsystem::OnLoadModelComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="293" column="19" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a9e321089138368e8b126e88328aa9b80" prot="public" static="no" mutable="no">
+        <type>FOnTryllUnloadModel</type>
+        <definition>FOnTryllUnloadModel UTryllSubsystem::OnUnloadModelComplete</definition>
+        <argsstring></argsstring>
+        <name>OnUnloadModelComplete</name>
+        <qualifiedname>UTryllSubsystem::OnUnloadModelComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="296" column="21" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aa6a209dea61d99c9e35a56a00553a53c" prot="public" static="no" mutable="no">
+        <type>FOnTryllToolCall</type>
+        <definition>FOnTryllToolCall UTryllSubsystem::OnToolCall</definition>
+        <argsstring></argsstring>
+        <name>OnToolCall</name>
+        <qualifiedname>UTryllSubsystem::OnToolCall</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Broadcast when a ToolCallNode detects a tool call with notify_client enabled. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="300" column="18" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a0bdda326374c373aa59e52fd49f55205" prot="private" static="no" mutable="no">
+        <type>TSharedPtr&lt; FTryllConnection &gt;</type>
+        <definition>TSharedPtr&lt;FTryllConnection&gt; UTryllSubsystem::Connection</definition>
+        <argsstring></argsstring>
+        <name>Connection</name>
+        <qualifiedname>UTryllSubsystem::Connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="305" column="12" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a1ecca3ebcfba3d8306c72456157375eb" prot="private" static="no" mutable="no">
+        <type>TArray&lt; TSharedPtr&lt; FPendingCreate &gt; &gt;</type>
+        <definition>TArray&lt;TSharedPtr&lt;FPendingCreate&gt; &gt; UTryllSubsystem::PendingCreates</definition>
+        <argsstring></argsstring>
+        <name>PendingCreates</name>
+        <qualifiedname>UTryllSubsystem::PendingCreates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="313" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a0b51f81a2af2e74464844484822c823e" prot="private" static="no" mutable="no">
+        <type>TArray&lt; TSharedPtr&lt; FPendingListModels &gt; &gt;</type>
+        <definition>TArray&lt;TSharedPtr&lt;FPendingListModels&gt; &gt; UTryllSubsystem::PendingListModels</definition>
+        <argsstring></argsstring>
+        <name>PendingListModels</name>
+        <qualifiedname>UTryllSubsystem::PendingListModels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="321" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a464413ec2962d6dacf8ec027a991731f" prot="private" static="no" mutable="no">
+        <type>TMap&lt; std::uint64_t, std::uint64_t &gt;</type>
+        <definition>TMap&lt;std::uint64_t, std::uint64_t&gt; UTryllSubsystem::PendingDestroyRequestToAgentId</definition>
+        <argsstring></argsstring>
+        <name>PendingDestroyRequestToAgentId</name>
+        <qualifiedname>UTryllSubsystem::PendingDestroyRequestToAgentId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="324" column="6" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aa089d1a302f071e0f79ee48633db05a6" prot="private" static="no" mutable="no">
+        <type>TMap&lt; std::uint64_t, TWeakPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt; &gt;</type>
+        <definition>TMap&lt;std::uint64_t, TWeakPtr&lt;FTryllAgent&gt; &gt; UTryllSubsystem::AgentsById</definition>
+        <argsstring></argsstring>
+        <name>AgentsById</name>
+        <qualifiedname>UTryllSubsystem::AgentsById</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="327" column="6" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1a917ec64c5797e1c6e325e5dd7dba684b" prot="private" static="no" mutable="no">
+        <type>TArray&lt; TSharedPtr&lt; FPendingStringStorage &gt; &gt;</type>
+        <definition>TArray&lt;TSharedPtr&lt;FPendingStringStorage&gt; &gt; UTryllSubsystem::PendingStringStorages</definition>
+        <argsstring></argsstring>
+        <name>PendingStringStorages</name>
+        <qualifiedname>UTryllSubsystem::PendingStringStorages</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="337" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_subsystem_1aa6cceab313b341adc62aa79765b38cd4" prot="private" static="no" mutable="no">
+        <type>TArray&lt; TSharedPtr&lt; FPendingEmbeddedStorage &gt; &gt;</type>
+        <definition>TArray&lt;TSharedPtr&lt;FPendingEmbeddedStorage&gt; &gt; UTryllSubsystem::PendingEmbeddedStorages</definition>
+        <argsstring></argsstring>
+        <name>PendingEmbeddedStorages</name>
+        <qualifiedname>UTryllSubsystem::PendingEmbeddedStorages</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="348" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a666e57137c44ff100ef87b6f38b56681" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllSubsystem::Initialize</definition>
+        <argsstring>(FSubsystemCollectionBase &amp;Collection) override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>UTryllSubsystem::Initialize</qualifiedname>
+        <param>
+          <type>FSubsystemCollectionBase &amp;</type>
+          <declname>Collection</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="71" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a650c5886a41a84ec2419a49f7d252792" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllSubsystem::Deinitialize</definition>
+        <argsstring>() override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>UTryllSubsystem::Deinitialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="72" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ab537cb28d60458cfece248729ff506b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllSubsystem::Tick</definition>
+        <argsstring>(float DeltaTime) override</argsstring>
+        <name>Tick</name>
+        <qualifiedname>UTryllSubsystem::Tick</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>DeltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="76" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a778eac1ee324aedd97aa1745d1936084" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>ETickableTickType</type>
+        <definition>virtual ETickableTickType UTryllSubsystem::GetTickableTickType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetTickableTickType</name>
+        <qualifiedname>UTryllSubsystem::GetTickableTickType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="77" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a71d96c6168334e801cec1027bdaffb0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool UTryllSubsystem::IsTickable</definition>
+        <argsstring>() const override</argsstring>
+        <name>IsTickable</name>
+        <qualifiedname>UTryllSubsystem::IsTickable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="78" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a329a24453d859001aed5c049fa6633c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool UTryllSubsystem::IsTickableWhenPaused</definition>
+        <argsstring>() const override</argsstring>
+        <name>IsTickableWhenPaused</name>
+        <qualifiedname>UTryllSubsystem::IsTickableWhenPaused</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="79" column="23" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1af5955fd37dce018d8fdcfd426c8b2a41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool UTryllSubsystem::IsTickableInEditor</definition>
+        <argsstring>() const override</argsstring>
+        <name>IsTickableInEditor</name>
+        <qualifiedname>UTryllSubsystem::IsTickableInEditor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="80" column="23" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a12b0e1b409f2c2e40f18cfd70ce1b2bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>TStatId</type>
+        <definition>virtual TStatId UTryllSubsystem::GetStatId</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetStatId</name>
+        <qualifiedname>UTryllSubsystem::GetStatId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="81" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a9a4d8d371af3f60324f0e4a397663a48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::UPROPERTY</definition>
+        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|Connection&quot;, meta=(ToolTip=&quot;Host name or IP address of the Tryll server (default: 127.0.0.1).&quot;)) FString ServerHost</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>UTryllSubsystem::UPROPERTY</qualifiedname>
+        <param>
+          <type>EditAnywhere</type>
+        </param>
+        <param>
+          <type>BlueprintReadWrite</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Connection&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Host name or IP address of the Tryll server (default: 127.0.0.1).&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Host name or IP address of the Tryll server. Defaults to localhost. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ace53a3b0d5016864c9dcac81e5d00154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::UPROPERTY</definition>
+        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|Connection&quot;, meta=(ToolTip=&quot;TCP port the Tryll server is listening on (default: 9100).&quot;, ClampMin=&quot;1&quot;, ClampMax=&quot;65535&quot;)) int32 ServerPort</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>UTryllSubsystem::UPROPERTY</qualifiedname>
+        <param>
+          <type>EditAnywhere</type>
+        </param>
+        <param>
+          <type>BlueprintReadWrite</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Connection&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;TCP port the Tryll server is listening on (default: 9100).&quot;, ClampMin=&quot;1&quot;, ClampMax=&quot;65535&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TCP port the Tryll server is listening on (default: 9100). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::Connect</definition>
+        <argsstring>()</argsstring>
+        <name>Connect</name>
+        <qualifiedname>UTryllSubsystem::Connect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open a TCP session to ServerHost:ServerPort. Asynchronous — completion is reported via OnConnectionChanged(bConnected=true). Errors fire OnError. Calling <ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">Connect()</ref> while already connected is a no-op. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="103" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a65f974a51cfe50a9c573c814383bc9e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::Disconnect</definition>
+        <argsstring>()</argsstring>
+        <name>Disconnect</name>
+        <qualifiedname>UTryllSubsystem::Disconnect</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Close the active session. OnConnectionChanged(bConnected=false) fires once the socket is down. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="107" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a29d63ac1bca5dcf879a354679541e41a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllSubsystem::IsConnected</definition>
+        <argsstring>() const</argsstring>
+        <name>IsConnected</name>
+        <qualifiedname>UTryllSubsystem::IsConnected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True while the background connection is in the Connected state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="111" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a300fb98f626592bca830eac468c11cf1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int64</type>
+        <definition>int64 UTryllSubsystem::GetSessionId</definition>
+        <argsstring>() const</argsstring>
+        <name>GetSessionId</name>
+        <qualifiedname>UTryllSubsystem::GetSessionId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Server-assigned session id, or 0 when not connected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="115" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a6b90501063ba3b5525767762ae4b2d09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::ConfigureSession</definition>
+        <argsstring>(ETryllInferenceEngine Engine)</argsstring>
+        <name>ConfigureSession</name>
+        <qualifiedname>UTryllSubsystem::ConfigureSession</qualifiedname>
+        <param>
+          <type>ETryllInferenceEngine</type>
+          <declname>Engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send ConfigureSessionRequest. Must be called after Connected and before CreateAgent. Result is delivered via OnConfigureSessionComplete delegate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="124" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a60bf828b346c44f954d550839e082a57" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestCreateAgent</definition>
+        <argsstring>(const FTryllGraphDescription &amp;Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false)</argsstring>
+        <name>RequestCreateAgent</name>
+        <qualifiedname>UTryllSubsystem::RequestCreateAgent</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> &amp;</type>
+          <declname>Graph</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnAgentCreated &gt;</type>
+          <declname>OnComplete</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>bEnableDiagnostics</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Begin create-agent; completion is delivered via OnComplete on the game thread. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>Graph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Workflow graph description to send to the server. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bEnableDiagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When true the server populates TurnComplete.debug_info. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="133" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ab7bf69c7f5cb840d72e6b5967ccf62ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestDestroyAgent</definition>
+        <argsstring>(TSharedPtr&lt; FTryllAgent &gt; Agent)</argsstring>
+        <name>RequestDestroyAgent</name>
+        <qualifiedname>UTryllSubsystem::RequestDestroyAgent</qualifiedname>
+        <param>
+          <type>TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt;</type>
+          <declname>Agent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Queue destroy for the given agent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="139" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a34c92721d5282e8efd7ccdf75fa0b48d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestListModels</definition>
+        <argsstring>(TFunction&lt; FTryllOnListModels &gt; OnComplete)</argsstring>
+        <name>RequestListModels</name>
+        <qualifiedname>UTryllSubsystem::RequestListModels</qualifiedname>
+        <param>
+          <type>TFunction&lt; FTryllOnListModels &gt;</type>
+          <declname>OnComplete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>List models available for the session&apos;s inference engine. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="145" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a6cbe12d9dac1c58dbc9ba11413b50480" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestDownloadModel</definition>
+        <argsstring>(const FString &amp;ModelName)</argsstring>
+        <name>RequestDownloadModel</name>
+        <qualifiedname>UTryllSubsystem::RequestDownloadModel</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ModelName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Start downloading a model. Progress is broadcast via OnDownloadProgress; completion via OnDownloadComplete. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="152" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a9f3f4d315b7cad5ea964db3772c8887e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestLoadModel</definition>
+        <argsstring>(const FString &amp;ModelName)</argsstring>
+        <name>RequestLoadModel</name>
+        <qualifiedname>UTryllSubsystem::RequestLoadModel</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ModelName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pin a model into memory on the server (LoadAndPin). Completion is broadcast via OnLoadModelComplete. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="159" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1af123ff8e2aa5fadb546d1b444363502e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestUnloadModel</definition>
+        <argsstring>(const FString &amp;ModelName)</argsstring>
+        <name>RequestUnloadModel</name>
+        <qualifiedname>UTryllSubsystem::RequestUnloadModel</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ModelName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Demote a pinned model to on-demand and evict it if no contexts hold it. Completion is broadcast via OnUnloadModelComplete. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="166" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a42070a6d672353e26d33ab666059f0ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllCreateStringStorage, const FString &amp;, Name, bool, bSuccess)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name>
+        <qualifiedname>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</qualifiedname>
+        <param>
+          <type>FOnTryllCreateStringStorage</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>Name</type>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>bSuccess</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="172" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ac449731335a80b63a9868d1d1dfad8d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllDestroyStringStorage, const FString &amp;, Name, bool, bSuccess)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name>
+        <qualifiedname>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</qualifiedname>
+        <param>
+          <type>FOnTryllDestroyStringStorage</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>Name</type>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>bSuccess</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="173" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a368277b6e172e2730e0279dfa944cf1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestCreateStringStorage</definition>
+        <argsstring>(const FString &amp;Name, const TArray&lt; FString &gt; &amp;Strings, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestCreateStringStorage</name>
+        <qualifiedname>UTryllSubsystem::RequestCreateStringStorage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>Strings</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnStringStorage &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a named StringStorage on the server from an inline string array. Completion is broadcast via OnCreateStringStorageComplete. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="179" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ae448e32ab571c395d1a0e24dabad523b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestCreateStringStorageFromFile</definition>
+        <argsstring>(const FString &amp;Name, const FString &amp;FilePath, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestCreateStringStorageFromFile</name>
+        <qualifiedname>UTryllSubsystem::RequestCreateStringStorageFromFile</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>FilePath</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnStringStorage &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a named StringStorage on the server from a server-side file path. Completion is broadcast via OnCreateStringStorageComplete. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="188" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a33dee2c169e5eeb10a33fd7e74e37648" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestDestroyStringStorage</definition>
+        <argsstring>(const FString &amp;Name, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestDestroyStringStorage</name>
+        <qualifiedname>UTryllSubsystem::RequestDestroyStringStorage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnStringStorage &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a named StringStorage on the server. Nodes that already hold the storage are unaffected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="197" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1aa19529b8848b8658aac4387f4db3de70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</definition>
+        <argsstring>(FOnTryllCreateEmbeddedStringStorage, const FString &amp;, Name, int32, RecordCount, bool, bSuccess)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</name>
+        <qualifiedname>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</qualifiedname>
+        <param>
+          <type>FOnTryllCreateEmbeddedStringStorage</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>Name</type>
+        </param>
+        <param>
+          <type>int32</type>
+        </param>
+        <param>
+          <type>RecordCount</type>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>bSuccess</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="220" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a6ae4232af6acd8c6ac2cd87fdba966df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllDestroyEmbeddedStringStorage, const FString &amp;, Name, bool, bSuccess)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name>
+        <qualifiedname>UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</qualifiedname>
+        <param>
+          <type>FOnTryllDestroyEmbeddedStringStorage</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>Name</type>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>bSuccess</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="225" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a522060086b25883943b150c2cbcee1ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestCreateEmbeddedStringStorage</definition>
+        <argsstring>(const FString &amp;Name, const FString &amp;ConfigPath, const FString &amp;EmbeddingModel=FString{}, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestCreateEmbeddedStringStorage</name>
+        <qualifiedname>UTryllSubsystem::RequestCreateEmbeddedStringStorage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ConfigPath</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>EmbeddingModel</declname>
+          <defval>FString{}</defval>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnEmbeddedStorageCreated &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an EmbeddedStringStorage from a server-side *.fig.json. Path A: config file + optional embeddingModel override. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="234" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ac5c8a29a55ca1993f264683dbd375323" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestCreateEmbeddedStringStorageFromStrings</definition>
+        <argsstring>(const FString &amp;Name, const TArray&lt; FString &gt; &amp;Strings, const FString &amp;EmbeddingModel, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestCreateEmbeddedStringStorageFromStrings</name>
+        <qualifiedname>UTryllSubsystem::RequestCreateEmbeddedStringStorageFromStrings</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>Strings</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>EmbeddingModel</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnEmbeddedStorageCreated &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create an EmbeddedStringStorage from inline strings. Path B: requires EmbeddingModel. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="244" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a71602d35950b055a75e617bd80152e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RequestDestroyEmbeddedStringStorage</definition>
+        <argsstring>(const FString &amp;Name, TFunction&lt; FTryllOnEmbeddedStorageDestroyed &gt; OnComplete=nullptr)</argsstring>
+        <name>RequestDestroyEmbeddedStringStorage</name>
+        <qualifiedname>UTryllSubsystem::RequestDestroyEmbeddedStringStorage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>TFunction&lt; FTryllOnEmbeddedStorageDestroyed &gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy a named EmbeddedStringStorage on the server. Nodes that already hold the storage are unaffected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="254" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1aebdef84dfe369eb74864bad3ff0d96af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::RegisterAgent</definition>
+        <argsstring>(std::uint64_t AgentId, TWeakPtr&lt; FTryllAgent &gt; Agent)</argsstring>
+        <name>RegisterAgent</name>
+        <qualifiedname>UTryllSubsystem::RegisterAgent</qualifiedname>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>AgentId</declname>
+        </param>
+        <param>
+          <type>TWeakPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt;</type>
+          <declname>Agent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="266" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_subsystem_1a41f787700b3920b7667a30b9a2b8aacd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::UnregisterAgent</definition>
+        <argsstring>(std::uint64_t AgentId)</argsstring>
+        <name>UnregisterAgent</name>
+        <qualifiedname>UTryllSubsystem::UnregisterAgent</qualifiedname>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>AgentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="267" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_u_tryll_subsystem_1ab50caf3fad33bb1e4eaeaf6949e76c70" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSubsystem::ProcessEvents</definition>
+        <argsstring>()</argsstring>
+        <name>ProcessEvents</name>
+        <qualifiedname>UTryllSubsystem::ProcessEvents</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="303" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Game-instance subsystem: one TCP session to the Tryll server. Manages the socket connection on a background thread (FTryllConnection) and drains the event queue on Tick(), dispatching to registered agents and delegates.</para>
+<para>Lifecycle (game-thread, event-driven):<orderedlist>
+<listitem><para><ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">Connect()</ref> — open TCP session to ServerHost:ServerPort.</para>
+</listitem><listitem><para>OnConnectionChanged(bConnected=true) — bind this to continue; or poll <ref refid="class_u_tryll_subsystem_1a29d63ac1bca5dcf879a354679541e41a" kindref="member">IsConnected()</ref>.</para>
+</listitem><listitem><para>ConfigureSession(Engine) — select the inference engine for this session. Completion arrives on OnConfigureSessionComplete.</para>
+</listitem><listitem><para>CreateAgent — either attach a UTryllAgentComponent (which calls RequestCreateAgent under the hood when bAutoCreateOnConnect is true) or invoke <ref refid="class_u_tryll_subsystem_1a60bf828b346c44f954d550839e082a57" kindref="member">RequestCreateAgent()</ref> directly with a graph. On success the callback gets a TSharedPtr&lt;FTryllAgent&gt;.</para>
+</listitem><listitem><para>SendMessage(Text) — drive one turn through the agent. Streaming chunks arrive on OnAnswerText; the turn ends with OnTurnComplete(Status).</para>
+</listitem><listitem><para>RequestDestroyAgent / Disconnect — tear down when done.</para>
+</listitem></orderedlist>
+</para>
+<para>All delegates fire on the game thread from Tick(); it is safe to touch UObjects and UI directly from callbacks.</para>
+<para>Usage: UTryllSubsystem* Tryll = GetGameInstance()-&gt;GetSubsystem&lt;UTryllSubsystem&gt;(); Tryll-&gt;<ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">Connect()</ref>; // Bind OnConnectionChanged to ConfigureSession, then CreateAgent, then SendMessage. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>FTickableGameObject</label>
+      </node>
+      <node id="2">
+        <label>UGameInstanceSubsystem</label>
+      </node>
+      <node id="1">
+        <label>UTryllSubsystem</label>
+        <link refid="class_u_tryll_subsystem"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>FTickableGameObject</label>
+      </node>
+      <node id="2">
+        <label>UGameInstanceSubsystem</label>
+      </node>
+      <node id="1">
+        <label>UTryllSubsystem</label>
+        <link refid="class_u_tryll_subsystem"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="64" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="65" bodyend="350"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_subsystem_1aa089d1a302f071e0f79ee48633db05a6" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>AgentsById</name></member>
+      <member refid="class_u_tryll_subsystem_1a6b90501063ba3b5525767762ae4b2d09" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>ConfigureSession</name></member>
+      <member refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>Connect</name></member>
+      <member refid="class_u_tryll_subsystem_1a0bdda326374c373aa59e52fd49f55205" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>Connection</name></member>
+      <member refid="class_u_tryll_subsystem_1aa19529b8848b8658aac4387f4db3de70" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</name></member>
+      <member refid="class_u_tryll_subsystem_1a42070a6d672353e26d33ab666059f0ef" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name></member>
+      <member refid="class_u_tryll_subsystem_1ac449731335a80b63a9868d1d1dfad8d7" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name></member>
+      <member refid="class_u_tryll_subsystem_1a6ae4232af6acd8c6ac2cd87fdba966df" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</name></member>
+      <member refid="class_u_tryll_subsystem_1a650c5886a41a84ec2419a49f7d252792" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>Deinitialize</name></member>
+      <member refid="class_u_tryll_subsystem_1a65f974a51cfe50a9c573c814383bc9e6" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>Disconnect</name></member>
+      <member refid="class_u_tryll_subsystem_1a2ddaaadcfaecfee999303370c11bacd2" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>FTryllOnEmbeddedStorageCreated</name></member>
+      <member refid="class_u_tryll_subsystem_1a37d52ce1163a703f0468c8b07b67a3ba" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>FTryllOnEmbeddedStorageDestroyed</name></member>
+      <member refid="class_u_tryll_subsystem_1a202b214fdd80692f312f774275cfbe41" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>FTryllOnStringStorage</name></member>
+      <member refid="class_u_tryll_subsystem_1a300fb98f626592bca830eac468c11cf1" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>GetSessionId</name></member>
+      <member refid="class_u_tryll_subsystem_1a12b0e1b409f2c2e40f18cfd70ce1b2bd" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>GetStatId</name></member>
+      <member refid="class_u_tryll_subsystem_1a778eac1ee324aedd97aa1745d1936084" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>GetTickableTickType</name></member>
+      <member refid="class_u_tryll_subsystem_1a666e57137c44ff100ef87b6f38b56681" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>Initialize</name></member>
+      <member refid="class_u_tryll_subsystem_1a29d63ac1bca5dcf879a354679541e41a" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>IsConnected</name></member>
+      <member refid="class_u_tryll_subsystem_1a71d96c6168334e801cec1027bdaffb0f" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>IsTickable</name></member>
+      <member refid="class_u_tryll_subsystem_1af5955fd37dce018d8fdcfd426c8b2a41" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>IsTickableInEditor</name></member>
+      <member refid="class_u_tryll_subsystem_1a329a24453d859001aed5c049fa6633c0" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>IsTickableWhenPaused</name></member>
+      <member refid="class_u_tryll_subsystem_1a70f54bd128ac415633ac222bb4343389" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnAgentDestroyed</name></member>
+      <member refid="class_u_tryll_subsystem_1a5e2c2fef45c52ce8a0443e9fc14fe447" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnConfigureSessionComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1aedf5ef36252388c9a851b87925056379" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnConnectionChanged</name></member>
+      <member refid="class_u_tryll_subsystem_1aff25d6026b320bfb05ce352fd7ec9b1b" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnCreateEmbeddedStringStorageComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1aa407ccb39cc9f77d1d54866cefde09e2" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnCreateStringStorageComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1a59ec4fdd78c8d3663132f0371926dd0a" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnDestroyEmbeddedStringStorageComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1a4fe2f357b50c061e0c4bcd699f4de426" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnDestroyStringStorageComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1a1a2cf5bb9a393fc9aad33ff01069cb32" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnDownloadComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1ae25913b4f3b891f7b8c7085255174b5a" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnDownloadProgress</name></member>
+      <member refid="class_u_tryll_subsystem_1a78e1fc027e00d67193feda5d7d813c45" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnError</name></member>
+      <member refid="class_u_tryll_subsystem_1a2239073db8f7db2460a1afc001d76916" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnListModelsComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1a2d9a3d3f3d6ef6f66de44e4db496c2ae" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnLoadModelComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1aa6a209dea61d99c9e35a56a00553a53c" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnToolCall</name></member>
+      <member refid="class_u_tryll_subsystem_1a9e321089138368e8b126e88328aa9b80" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>OnUnloadModelComplete</name></member>
+      <member refid="class_u_tryll_subsystem_1a1ecca3ebcfba3d8306c72456157375eb" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>PendingCreates</name></member>
+      <member refid="class_u_tryll_subsystem_1a464413ec2962d6dacf8ec027a991731f" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>PendingDestroyRequestToAgentId</name></member>
+      <member refid="class_u_tryll_subsystem_1aa6cceab313b341adc62aa79765b38cd4" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>PendingEmbeddedStorages</name></member>
+      <member refid="class_u_tryll_subsystem_1a0b51f81a2af2e74464844484822c823e" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>PendingListModels</name></member>
+      <member refid="class_u_tryll_subsystem_1a917ec64c5797e1c6e325e5dd7dba684b" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>PendingStringStorages</name></member>
+      <member refid="class_u_tryll_subsystem_1ab50caf3fad33bb1e4eaeaf6949e76c70" prot="private" virt="non-virtual"><scope>UTryllSubsystem</scope><name>ProcessEvents</name></member>
+      <member refid="class_u_tryll_subsystem_1aebdef84dfe369eb74864bad3ff0d96af" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RegisterAgent</name></member>
+      <member refid="class_u_tryll_subsystem_1a60bf828b346c44f954d550839e082a57" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestCreateAgent</name></member>
+      <member refid="class_u_tryll_subsystem_1a522060086b25883943b150c2cbcee1ca" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestCreateEmbeddedStringStorage</name></member>
+      <member refid="class_u_tryll_subsystem_1ac5c8a29a55ca1993f264683dbd375323" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestCreateEmbeddedStringStorageFromStrings</name></member>
+      <member refid="class_u_tryll_subsystem_1a368277b6e172e2730e0279dfa944cf1c" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestCreateStringStorage</name></member>
+      <member refid="class_u_tryll_subsystem_1ae448e32ab571c395d1a0e24dabad523b" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestCreateStringStorageFromFile</name></member>
+      <member refid="class_u_tryll_subsystem_1ab7bf69c7f5cb840d72e6b5967ccf62ec" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestDestroyAgent</name></member>
+      <member refid="class_u_tryll_subsystem_1a71602d35950b055a75e617bd80152e97" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestDestroyEmbeddedStringStorage</name></member>
+      <member refid="class_u_tryll_subsystem_1a33dee2c169e5eeb10a33fd7e74e37648" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestDestroyStringStorage</name></member>
+      <member refid="class_u_tryll_subsystem_1a6cbe12d9dac1c58dbc9ba11413b50480" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestDownloadModel</name></member>
+      <member refid="class_u_tryll_subsystem_1a34c92721d5282e8efd7ccdf75fa0b48d" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestListModels</name></member>
+      <member refid="class_u_tryll_subsystem_1a9f3f4d315b7cad5ea964db3772c8887e" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestLoadModel</name></member>
+      <member refid="class_u_tryll_subsystem_1af123ff8e2aa5fadb546d1b444363502e" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>RequestUnloadModel</name></member>
+      <member refid="class_u_tryll_subsystem_1ab537cb28d60458cfece248729ff506b7" prot="public" virt="virtual"><scope>UTryllSubsystem</scope><name>Tick</name></member>
+      <member refid="class_u_tryll_subsystem_1a41f787700b3920b7667a30b9a2b8aacd" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>UnregisterAgent</name></member>
+      <member refid="class_u_tryll_subsystem_1a9a4d8d371af3f60324f0e4a397663a48" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>UPROPERTY</name></member>
+      <member refid="class_u_tryll_subsystem_1ace53a3b0d5016864c9dcac81e5d00154" prot="public" virt="non-virtual"><scope>UTryllSubsystem</scope><name>UPROPERTY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="_tryll_model_info_8h" kind="file" language="C++">
+    <compoundname>TryllModelInfo.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes local="yes">TryllModelInfo.generated.h</includes>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h</label>
+        <link refid="_tryll_model_info_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="3">
+        <label>TryllModelInfo.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h</label>
+        <link refid="_tryll_model_info_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_model_info" prot="public">FTryllModelInfo</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllModelStatus</name>
+        <enumvalue id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924ae384f071109188762a0f4349e8a38a88" prot="public">
+          <name>Absent</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Known in catalog but not on disk and not being downloaded. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924a509820290d57f333403f490dde7316f4" prot="public">
+          <name>Local</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>User-provided path; file on disk. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924ac7e71badf20a04f36d11be557ceb7a5b" prot="public">
+          <name>Downloading</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Transfer currently in progress. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924a7381d487d18845b379422325c0a768d6" prot="public">
+          <name>Loaded</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Currently loaded in memory. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924aa6a04307fd90d0c2821b45125e6a0a25" prot="public">
+          <name>Downloaded</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>On disk from HuggingFace download; can be loaded. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Status of a model as reported by the server. Mirrors the FlatBuffers ModelStatus enum in messages.fbs — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="13" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="14" bodyend="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h"/>
+  </compounddef>
+</doxygen>

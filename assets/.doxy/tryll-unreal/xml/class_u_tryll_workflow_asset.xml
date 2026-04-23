@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="class_u_tryll_workflow_asset" kind="class" language="C++" prot="public">
+    <compoundname>UTryllWorkflowAsset</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UPrimaryDataAsset</basecompoundref>
+    <includes refid="_tryll_workflow_asset_8h" local="no">TryllWorkflowAsset.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_workflow_asset_1af812eb7c3d1702ea3cc1245d01a4136b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllWorkflowAsset::UPROPERTY</definition>
+        <argsstring>(EditAnywhere, BlueprintReadOnly, Category=&quot;Tryll|Workflow&quot;, meta=(ToolTip=&quot;Workflow graph stored by this asset. Edit nodes, routes, start node and default model here.&quot;)) FTryllGraphDescription Graph</argsstring>
+        <name>UPROPERTY</name>
+        <qualifiedname>UTryllWorkflowAsset::UPROPERTY</qualifiedname>
+        <param>
+          <type>EditAnywhere</type>
+        </param>
+        <param>
+          <type>BlueprintReadOnly</type>
+        </param>
+        <param>
+          <type>Category</type>
+          <defval>&quot;Tryll|Workflow&quot;</defval>
+        </param>
+        <param>
+          <type>meta</type>
+          <defval>(ToolTip=&quot;Workflow graph stored by this asset. Edit nodes, routes, start node and default model here.&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Workflow graph stored by this asset. Assign this asset to UTryllAgentComponent::WorkflowAsset to use it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="29" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_workflow_asset_1a34b11a89f70038d7faa8e09ed0a8766d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>FPrimaryAssetId</type>
+        <definition>virtual FPrimaryAssetId UTryllWorkflowAsset::GetPrimaryAssetId</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetPrimaryAssetId</name>
+        <qualifiedname>UTryllWorkflowAsset::GetPrimaryAssetId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="33" column="25" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Data asset that stores a Tryll workflow graph description. Equivalent to a Unity ScriptableObject holding node and wire lists.</para>
+<para>Usage:<orderedlist>
+<listitem><para>In the Content Browser: right-click → Miscellaneous → Data Asset → TryllWorkflowAsset.</para>
+</listitem><listitem><para>Edit nodes and routes in the Details panel.</para>
+</listitem><listitem><para>Assign this asset to a UTryllAgentComponent&apos;s WorkflowAsset property.</para>
+</listitem></orderedlist>
+</para>
+<para>Programmatic alternative: populate <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> directly in C++ using <ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref>, or assign it to UTryllAgentComponent::InlineGraphDescription. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UPrimaryDataAsset</label>
+      </node>
+      <node id="1">
+        <label>UTryllWorkflowAsset</label>
+        <link refid="class_u_tryll_workflow_asset"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>UPrimaryDataAsset</label>
+      </node>
+      <node id="1">
+        <label>UTryllWorkflowAsset</label>
+        <link refid="class_u_tryll_workflow_asset"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="23" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="24" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_workflow_asset_1a34b11a89f70038d7faa8e09ed0a8766d" prot="public" virt="virtual"><scope>UTryllWorkflowAsset</scope><name>GetPrimaryAssetId</name></member>
+      <member refid="class_u_tryll_workflow_asset_1af812eb7c3d1702ea3cc1245d01a4136b" prot="public" virt="non-virtual"><scope>UTryllWorkflowAsset</scope><name>UPROPERTY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
