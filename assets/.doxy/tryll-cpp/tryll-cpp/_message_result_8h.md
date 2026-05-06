@@ -94,5 +94,5 @@ Reserved for future result metadata such as token counts, latency, and diagnosti
     
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/MessageResult.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/MessageResult.h`
 

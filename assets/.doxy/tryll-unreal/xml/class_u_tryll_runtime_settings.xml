@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_runtime_settings" kind="class" language="C++" prot="public">
+    <compoundname>UTryllRuntimeSettings</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UDeveloperSettings</basecompoundref>
+    <includes refid="_tryll_runtime_settings_8h" local="no">TryllRuntimeSettings.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1ab893222f143c04383df16552034a5fdb" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllRuntimeSettings::bAutoLaunchServer</definition>
+        <argsstring></argsstring>
+        <name>bAutoLaunchServer</name>
+        <qualifiedname>UTryllRuntimeSettings::bAutoLaunchServer</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, <ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> spawns tryll_server.exe automatically on Initialize. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="25" column="6" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a8001a8f979fc378714981cab3cabb1c1" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllRuntimeSettings::EditorServerExePath</definition>
+        <argsstring></argsstring>
+        <name>EditorServerExePath</name>
+        <qualifiedname>UTryllRuntimeSettings::EditorServerExePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Path to the server exe used in editor builds. Empty disables auto-launch in editor — developers run the server manually. Relative paths resolve against the project dir. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="32" column="9" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a2c1ec90658e21249ccc60d4f70cf06f9" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllRuntimeSettings::BuildServerExePath</definition>
+        <argsstring></argsstring>
+        <name>BuildServerExePath</name>
+        <qualifiedname>UTryllRuntimeSettings::BuildServerExePath</qualifiedname>
+        <initializer>= TEXT(&quot;tryll_server.exe&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Path to the server exe used in packaged builds. Resolves relative to the game .exe&apos;s directory (FPlatformProcess::BaseDir()). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="39" column="9" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1adbc33f6f57e305909e2a45f8cdb68ec9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllRuntimeSettings::bAllowAutoModelDownloading</definition>
+        <argsstring></argsstring>
+        <name>bAllowAutoModelDownloading</name>
+        <qualifiedname>UTryllRuntimeSettings::bAllowAutoModelDownloading</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When enabled, ConfigureSession tells the server to automatically download any missing models referenced by a graph during CreateAgent, instead of failing immediately. The CreateAgent call will block until the download completes (up to 30 minutes).</para>
+<para>DEVELOPMENT AND PROTOTYPING USE ONLY. Disable before shipping to production. In production, use the explicit DownloadModel API with a progress UI. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="50" column="6" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllRuntimeSettings::ConnectMaxAttempts</definition>
+        <argsstring></argsstring>
+        <name>ConnectMaxAttempts</name>
+        <qualifiedname>UTryllRuntimeSettings::ConnectMaxAttempts</qualifiedname>
+        <initializer>= 5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Max number of attempts when establishing a session via <ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">UTryllSubsystem::Connect</ref>. 1 disables retry. The first call counts as attempt 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="57" column="7" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllRuntimeSettings::ConnectRetryDelaySeconds</definition>
+        <argsstring></argsstring>
+        <name>ConnectRetryDelaySeconds</name>
+        <qualifiedname>UTryllRuntimeSettings::ConnectRetryDelaySeconds</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constant delay between connect attempts. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="61" column="7" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1a4e04734f0d1b9c2a2988b1f2ce6f8861" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>FName</type>
+        <definition>virtual FName UTryllRuntimeSettings::GetCategoryName</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetCategoryName</name>
+        <qualifiedname>UTryllRuntimeSettings::GetCategoryName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="21" column="15" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="21" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Project-level settings for the Tryll Client plugin. Edit in Project Settings → Plugins → Tryll Client. Persisted to &lt;YourProject&gt;/Config/DefaultGame.ini under [/Script/TryllClient.TryllRuntimeSettings]. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UDeveloperSettings</label>
+      </node>
+      <node id="1">
+        <label>UTryllRuntimeSettings</label>
+        <link refid="class_u_tryll_runtime_settings"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>UDeveloperSettings</label>
+      </node>
+      <node id="1">
+        <label>UTryllRuntimeSettings</label>
+        <link refid="class_u_tryll_runtime_settings"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="16" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="17" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_runtime_settings_1adbc33f6f57e305909e2a45f8cdb68ec9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAllowAutoModelDownloading</name></member>
+      <member refid="class_u_tryll_runtime_settings_1ab893222f143c04383df16552034a5fdb" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoLaunchServer</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a2c1ec90658e21249ccc60d4f70cf06f9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>BuildServerExePath</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectMaxAttempts</name></member>
+      <member refid="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectRetryDelaySeconds</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a8001a8f979fc378714981cab3cabb1c1" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>EditorServerExePath</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a4e04734f0d1b9c2a2988b1f2ce6f8861" prot="public" virt="virtual"><scope>UTryllRuntimeSettings</scope><name>GetCategoryName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -59,7 +59,7 @@
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE**](#function-declare_dynamic_multicast_delegate) (FOnTryllAgentReady) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllAgentError, const FString &, ErrorMessage) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllAgentAnswerFull, const FString &, FullText) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllAgentTurnComplete, ETryllTurnStatus, Status) <br> |
+|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_dynamic_multicast_delegate_threeparams) (FOnTryllAgentTurnComplete, ETryllTurnStatus, Status, const FString &, DebugInfo, int32, TokensGenerated) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllAgentAnswerText, const FString &, Text, bool, bIsFinal) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllParamChanged, bool, bSuccess, const FString &, ErrorMessage) <br> |
 
@@ -144,13 +144,17 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (
 
 
 
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam 
+### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams 
 
 ```C++
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams (
     FOnTryllAgentTurnComplete,
     ETryllTurnStatus,
-    Status
+    Status,
+    const FString &,
+    DebugInfo,
+    int32,
+    TokensGenerated
 ) 
 ```
 
@@ -198,5 +202,5 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h`
 

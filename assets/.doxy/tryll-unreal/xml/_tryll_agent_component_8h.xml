@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="_tryll_agent_component_8h" kind="file" language="C++">
     <compoundname>TryllAgentComponent.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
@@ -9,7 +9,7 @@
     <includes local="yes">TryllAgentComponent.generated.h</includes>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
         <link refid="_tryll_agent_component_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="17" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="17" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="17" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="17" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_agent_component_8h_1a54ecca1d9266f50f7b2206206c515569" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="18" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="18" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="18" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="18" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_agent_component_8h_1ad01acc77eb1286f143643192928fbebc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="19" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="19" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="19" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="19" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_agent_component_8h_1a8148effb412134ee9cbc816ef3193f21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -141,13 +141,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="20" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="20" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="20" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="20" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="_tryll_agent_component_8h_1a5ca0065918b6a633b4f675df05ed6da3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="_tryll_agent_component_8h_1abbdffc239dd1c2e7dd8707ae25b9e886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</definition>
-        <argsstring>(FOnTryllAgentTurnComplete, ETryllTurnStatus, Status)</argsstring>
-        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</name>
+        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</definition>
+        <argsstring>(FOnTryllAgentTurnComplete, ETryllTurnStatus, Status, const FString &amp;, DebugInfo, int32, TokensGenerated)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams</name>
         <param>
           <type>FOnTryllAgentTurnComplete</type>
         </param>
@@ -157,13 +157,25 @@
         <param>
           <type>Status</type>
         </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>DebugInfo</type>
+        </param>
+        <param>
+          <type>int32</type>
+        </param>
+        <param>
+          <type>TokensGenerated</type>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="21" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="21" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="21" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="21" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_agent_component_8h_1a100d3cef219a1197c6417e5c4d127b21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -191,13 +203,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="22" column="1" declfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="22" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="22" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="22" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h"/>
+    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h"/>
   </compounddef>
 </doxygen>

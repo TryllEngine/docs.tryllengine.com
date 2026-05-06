@@ -56,7 +56,6 @@
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddToolCallNode**](#function-addtoolcallnode) (FString Name, TArray&lt; [**FTryllToolDefinition**](struct_f_tryll_tool_definition.md) &gt; Tools, TMap&lt; FString, FString &gt; Params={}) <br> |
 |  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**Build**](#function-build) () const<br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**SetDefaultModelName**](#function-setdefaultmodelname) (FString Name) <br> |
-|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**SetKnowledgePresentation**](#function-setknowledgepresentation) ([**FTryllKnowledgePresentationConfig**](struct_f_tryll_knowledge_presentation_config.md) Config) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**SetStartNode**](#function-setstartnode) (FString Name) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**Wire**](#function-wire) (FString SourceNode, FString ExitName, FString TargetNode) <br> |
 
@@ -168,25 +167,6 @@ FTryllGraphBuilder & FTryllGraphBuilder::SetDefaultModelName (
 
 
 
-### function SetKnowledgePresentation 
-
-```C++
-FTryllGraphBuilder & FTryllGraphBuilder::SetKnowledgePresentation (
-    FTryllKnowledgePresentationConfig Config
-) 
-```
-
-
-
-Set the knowledge presentation config. Required when the graph has a Retrieve node. 
-
-
-        
-
-<hr>
-
-
-
 ### function SetStartNode 
 
 ```C++
@@ -218,5 +198,5 @@ FTryllGraphBuilder & FTryllGraphBuilder::Wire (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

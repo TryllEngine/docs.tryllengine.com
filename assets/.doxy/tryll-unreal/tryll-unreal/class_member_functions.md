@@ -28,6 +28,7 @@
 * **DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **Deinitialize** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **Disconnect** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **DrainServerOutput** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
 ## f
@@ -39,6 +40,7 @@
 ## g
 
 * **GetAgentId** ([**FTryllAgent**](class_f_tryll_agent.md))
+* **GetCategoryName** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **GetSessionId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **GetStatId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **GetTickableTickType** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -64,6 +66,18 @@
 * **IsTickableWhenPaused** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
+## l
+
+* **LaunchServerProcess** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+
+
+## o
+
+* **OnConnectRetryStateChanged** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **OnRequestModelDownloadCompleted** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **OnRequestModelLoadCompleted** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+
+
 ## p
 
 * **ProcessEvents** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -83,6 +97,7 @@
 * **RequestDownloadModel** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **RequestListModels** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **RequestLoadModel** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **RequestModel** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **RequestUnloadModel** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
@@ -95,18 +110,18 @@
 * **ShutdownModule** ([**FTryllClientModule**](class_f_tryll_client_module.md))
 * **StartupModule** ([**FTryllClientModule**](class_f_tryll_client_module.md))
 * **SetDefaultModelName** ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md))
-* **SetKnowledgePresentation** ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md))
 * **SetStartNode** ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md))
 
 
 ## t
 
+* **TerminateServerProcess** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **Tick** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
 ## u
 
-* **UPROPERTY** ([**FTryllError**](struct_f_tryll_error.md), [**FTryllGraphDescription**](struct_f_tryll_graph_description.md), [**FTryllModelInfo**](struct_f_tryll_model_info.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md), [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
+* **UPROPERTY** ([**FTryllError**](struct_f_tryll_error.md), [**FTryllModelInfo**](struct_f_tryll_model_info.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md), [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
 * **UnregisterAgent** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 

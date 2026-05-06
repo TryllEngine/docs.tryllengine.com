@@ -180,5 +180,5 @@ inline explicit Tryll::TryllError::TryllError (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllError.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllError.h`
 

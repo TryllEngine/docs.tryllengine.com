@@ -66,12 +66,10 @@ _Fluent builder for a workflow graph description sent to the server._ [More...](
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddNode**](#function-addnode) (std::string name, [**NodeType**](namespace_tryll_1_1_client.md#enum-nodetype) type, [**Params**](class_tryll_1_1_client_1_1_graph_description.md#typedef-params) params={}) <br>_Append a node to the graph._  |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddToolCallNode**](#function-addtoolcallnode) (std::string name, std::vector&lt; [**ToolDef**](struct_tryll_1_1_client_1_1_tool_def.md) &gt; tools, [**Params**](class_tryll_1_1_client_1_1_graph_description.md#typedef-params) params={}) <br>_Append a_ `ToolCall` _node with structured tool definitions._ |
 |  const std::string & | [**GetDefaultModelName**](#function-getdefaultmodelname) () noexcept const<br> |
-|  const std::optional&lt; [**KnowledgePresentationConfig**](struct_tryll_1_1_client_1_1_knowledge_presentation_config.md) &gt; & | [**GetKnowledgePresentation**](#function-getknowledgepresentation) () noexcept const<br> |
 |  const std::vector&lt; [**NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) &gt; & | [**GetNodes**](#function-getnodes) () noexcept const<br> |
 |  const std::vector&lt; [**RouteDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc.md) &gt; & | [**GetRoutes**](#function-getroutes) () noexcept const<br> |
 |  const std::string & | [**GetStartNode**](#function-getstartnode) () noexcept const<br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**SetDefaultModelName**](#function-setdefaultmodelname) (std::string name) <br>_Set the fallback model name for nodes that do not specify_ `model_name` _._ |
-|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**SetKnowledgePresentation**](#function-setknowledgepresentation) ([**KnowledgePresentationConfig**](struct_tryll_1_1_client_1_1_knowledge_presentation_config.md) cfg) <br>_Set the knowledge presentation configuration._  |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**SetStartNode**](#function-setstartnode) (std::string name) <br>_Nominate which node receives the turn when the agent runs._  |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**Wire**](#function-wire) (std::string source, std::string exitName, std::string target) <br>_Add a wire (exit route) from one node to another._  |
 
@@ -244,30 +242,6 @@ Default model name, or empty if none has been set.
 
 
 
-### function GetKnowledgePresentation 
-
-```C++
-inline const std::optional< KnowledgePresentationConfig > & Tryll::Client::GraphDescription::GetKnowledgePresentation () noexcept const
-```
-
-
-
-
-
-**Returns:**
-
-Optional knowledge-presentation config; empty until [**SetKnowledgePresentation**](class_tryll_1_1_client_1_1_graph_description.md#function-setknowledgepresentation) is called. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function GetNodes 
 
 ```C++
@@ -377,43 +351,6 @@ Sent as `default_model_name` in `CreateAgentRequest`. Nodes that invoke a langua
 
 
 
-### function SetKnowledgePresentation 
-
-_Set the knowledge presentation configuration._ 
-```C++
-GraphDescription & Tryll::Client::GraphDescription::SetKnowledgePresentation (
-    KnowledgePresentationConfig cfg
-) 
-```
-
-
-
-Required when the graph contains any `Retrieve` node. On [**TryllClient::CreateAgent**](class_tryll_1_1_tryll_client.md#function-createagent) the server validates the template tokens and rejects unknown placeholders with `ErrorResponse`.
-
-
-
-
-**Parameters:**
-
-
-* `cfg` Presentation config to apply to this agent's turns.
-
-
-
-**Returns:**
-
-`*this` for fluent chaining. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function SetStartNode 
 
 _Nominate which node receives the turn when the agent runs._ 
@@ -485,5 +422,5 @@ GraphDescription & Tryll::Client::GraphDescription::Wire (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h`
 

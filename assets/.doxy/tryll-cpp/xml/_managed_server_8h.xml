@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="_managed_server_8h" kind="file" language="C++">
+    <compoundname>ManagedServer.h</compoundname>
+    <includes refid="_tryll_error_8h" local="no">tryll/TryllError.h</includes>
+    <includes local="no">chrono</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">filesystem</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h</label>
+        <link refid="_managed_server_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tryll/TryllError.h</label>
+        <link refid="_tryll_error_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>chrono</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>filesystem</label>
+      </node>
+      <node id="8">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h</label>
+        <link refid="_managed_server_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</label>
+        <link refid="_tryll_client_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_tryll_1_1_client_1_1_managed_server_options" prot="public">Tryll::Client::ManagedServerOptions</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_managed_server" prot="public">Tryll::Client::ManagedServer</innerclass>
+    <innernamespace refid="namespace_tryll">Tryll</innernamespace>
+    <innernamespace refid="namespace_tryll_1_1_client">Tryll::Client</innernamespace>
+    <briefdescription>
+<para>RAII wrapper that spawns a <computeroutput>tryll_server</computeroutput> child process and waits for it to become reachable on its TCP port. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Typical usage:</para>
+<para><programlisting><codeline><highlight class="normal"><ref refid="struct_tryll_1_1_client_1_1_managed_server_options" kindref="compound">Tryll::Client::ManagedServerOptions</ref><sp/>opts;</highlight></codeline>
+<codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0694ac9161904e8c363fb2c284c79689" kindref="member">exe</ref><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;C:/tryll/tryll_server.exe&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref><sp/>=<sp/>9100;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>server<sp/>=<sp/><ref refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" kindref="member">Tryll::Client::ManagedServer::Start</ref>(opts);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>client<sp/>=<sp/><ref refid="class_tryll_1_1_tryll_client_1a6a2ceb8e0a5af81bd91baad797b69d02" kindref="member">Tryll::TryllClient::Connect</ref>(server.Host(),<sp/>server.Port());</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>…<sp/>use<sp/>client<sp/>…</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">client.Shutdown();</highlight></codeline>
+<codeline><highlight class="normal">server.Stop();<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>just<sp/>let<sp/>the<sp/>destructor<sp/>run</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="note"><para>Windows-only. A <computeroutput>#error</computeroutput> guards non-Windows builds. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h"/>
+  </compounddef>
+</doxygen>

@@ -61,6 +61,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  FOnTryllError | [**OnError**](#variable-onerror)  <br> |
 |  FOnTryllListModels | [**OnListModelsComplete**](#variable-onlistmodelscomplete)  <br> |
 |  FOnTryllLoadModel | [**OnLoadModelComplete**](#variable-onloadmodelcomplete)  <br> |
+|  FOnTryllModelReady | [**OnModelReady**](#variable-onmodelready)  <br> |
 |  FOnTryllToolCall | [**OnToolCall**](#variable-ontoolcall)  <br> |
 |  FOnTryllUnloadModel | [**OnUnloadModelComplete**](#variable-onunloadmodelcomplete)  <br> |
 
@@ -83,7 +84,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine) <br> |
+|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false) <br> |
 |  void | [**Connect**](#function-connect) () <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_dynamic_multicast_delegate_threeparams) (FOnTryllCreateEmbeddedStringStorage, const FString &, Name, int32, RecordCount, bool, bSuccess) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-13) (FOnTryllCreateStringStorage, const FString &, Name, bool, bSuccess) <br> |
@@ -111,6 +112,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  void | [**RequestDownloadModel**](#function-requestdownloadmodel) (const FString & ModelName) <br> |
 |  void | [**RequestListModels**](#function-requestlistmodels) (TFunction&lt; FTryllOnListModels &gt; OnComplete) <br> |
 |  void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) <br> |
+|  void | [**RequestModel**](#function-requestmodel) (const FString & ModelName) <br> |
 |  void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) <br> |
 | virtual void | [**Tick**](#function-tick) (float DeltaTime) override<br> |
 |   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Connection", meta=(ToolTip="Host name or IP address of the Tryll server (default: 127.0.0.1).")) <br> |
@@ -370,6 +372,23 @@ FOnTryllLoadModel UTryllSubsystem::OnLoadModelComplete;
 
 
 
+### variable OnModelReady 
+
+```C++
+FOnTryllModelReady UTryllSubsystem::OnModelReady;
+```
+
+
+
+Fired when a RequestModel sequence terminates (load succeeded, or fallback download+load succeeded, or any step failed). bSuccess is the final outcome. 
+
+
+        
+
+<hr>
+
+
+
 ### variable OnToolCall 
 
 ```C++
@@ -406,13 +425,25 @@ FOnTryllUnloadModel UTryllSubsystem::OnUnloadModelComplete;
 
 ```C++
 void UTryllSubsystem::ConfigureSession (
-    ETryllInferenceEngine Engine
+    ETryllInferenceEngine Engine,
+    bool bAllowAutoModelDownloading=false
 ) 
 ```
 
 
 
-Send ConfigureSessionRequest. Must be called after Connected and before CreateAgent. Result is delivered via OnConfigureSessionComplete delegate. 
+Send ConfigureSessionRequest. Must be called after Connected and before CreateAgent. Result is delivered via OnConfigureSessionComplete delegate.
+
+
+
+
+**Parameters:**
+
+
+* `Engine` Inference backend to use for this session. 
+* `bAllowAutoModelDownloading` When true, CreateAgent automatically downloads any missing models referenced by the graph instead of failing immediately. Intended for development and prototyping only. Pass [**UTryllRuntimeSettings::bAllowAutoModelDownloading**](class_u_tryll_runtime_settings.md#variable-ballowautomodeldownloading) to drive this from the project settings asset. 
+
+
 
 
         
@@ -907,6 +938,25 @@ Pin a model into memory on the server (LoadAndPin). Completion is broadcast via 
 
 
 
+### function RequestModel 
+
+```C++
+void UTryllSubsystem::RequestModel (
+    const FString & ModelName
+) 
+```
+
+
+
+Ensure a model is loaded and pinned. Tries LoadModel first; if the model is not present on disk the subsystem falls back to DownloadModel and retries the load. Single completion event: [**OnModelReady(name, bSuccess)**](class_u_tryll_subsystem.md#variable-onmodelready). 
+
+
+        
+
+<hr>
+
+
+
 ### function RequestUnloadModel 
 
 ```C++
@@ -999,5 +1049,5 @@ void UTryllSubsystem::UnregisterAgent (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

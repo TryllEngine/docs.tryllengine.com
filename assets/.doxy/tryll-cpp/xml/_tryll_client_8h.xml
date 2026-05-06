@@ -1,15 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="_tryll_client_8h" kind="file" language="C++">
     <compoundname>TryllClient.h</compoundname>
     <includes refid="_agent_proxy_8h" local="no">tryll/AgentProxy.h</includes>
     <includes refid="_graph_description_8h" local="no">tryll/GraphDescription.h</includes>
+    <includes refid="_managed_server_8h" local="no">tryll/ManagedServer.h</includes>
     <includes refid="_tryll_error_8h" local="no">tryll/TryllError.h</includes>
     <includes local="no">chrono</includes>
     <includes local="no">cstdint</includes>
     <includes local="no">functional</includes>
     <includes local="no">future</includes>
     <includes local="no">memory</includes>
+    <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">string_view</includes>
     <includes local="no">vector</includes>
@@ -35,21 +37,39 @@
         <link refid="_graph_description_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>tryll/ManagedServer.h</label>
+        <link refid="_managed_server_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
       </node>
       <node id="1">
-        <label>C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -63,11 +83,13 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -86,6 +108,9 @@
       <node id="5">
         <label>cstdint</label>
       </node>
+      <node id="16">
+        <label>filesystem</label>
+      </node>
       <node id="7">
         <label>functional</label>
       </node>
@@ -95,7 +120,7 @@
       <node id="9">
         <label>memory</label>
       </node>
-      <node id="12">
+      <node id="17">
         <label>optional</label>
       </node>
       <node id="4">
@@ -107,24 +132,36 @@
       <node id="10">
         <label>string_view</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>unordered_map</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="struct_tryll_1_1_client_1_1_model_info" prot="public">Tryll::Client::ModelInfo</innerclass>
     <innerclass refid="class_tryll_1_1_tryll_client" prot="public">Tryll::TryllClient</innerclass>
     <innerclass refid="struct_tryll_1_1_tryll_client_1_1_embedded_storage_info" prot="public">Tryll::TryllClient::EmbeddedStorageInfo</innerclass>
+    <innerclass refid="class_tryll_1_1_connected_session" prot="public">Tryll::ConnectedSession</innerclass>
     <innernamespace refid="namespace_tryll">Tryll</innernamespace>
     <innernamespace refid="namespace_tryll_1_1_client">Tryll::Client</innernamespace>
     <briefdescription>
 <para>TCP session to the Tryll server and its supporting value types. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares <ref refid="class_tryll_1_1_tryll_client" kindref="compound">Tryll::TryllClient</ref>, the entry point for the C++ client library. The session-level types — <ref refid="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcd" kindref="member">Tryll::Client::ModelStatus</ref>, <ref refid="struct_tryll_1_1_client_1_1_model_info" kindref="compound">Tryll::Client::ModelInfo</ref>, <ref refid="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" kindref="member">Tryll::Client::DownloadProgressCallback</ref> — live in the <computeroutput>Tryll::Client</computeroutput> namespace.</para>
-<para>Typical connect-create-use flow:</para>
+<para>Declares <ref refid="class_tryll_1_1_tryll_client" kindref="compound">Tryll::TryllClient</ref>, the primary client class, and <ref refid="class_tryll_1_1_connected_session" kindref="compound">Tryll::ConnectedSession</ref>, the recommended one-call entry point for local-server deployments. The session-level types — <ref refid="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcd" kindref="member">Tryll::Client::ModelStatus</ref>, <ref refid="struct_tryll_1_1_client_1_1_model_info" kindref="compound">Tryll::Client::ModelInfo</ref>, <ref refid="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" kindref="member">Tryll::Client::DownloadProgressCallback</ref> — live in the <computeroutput>Tryll::Client</computeroutput> namespace.</para>
+<para>Recommended flow (local server, automatic lifecycle):</para>
+<para><programlisting><codeline><highlight class="normal"><ref refid="struct_tryll_1_1_client_1_1_managed_server_options" kindref="compound">Tryll::Client::ManagedServerOptions</ref><sp/>opts;</highlight></codeline>
+<codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0694ac9161904e8c363fb2c284c79689" kindref="member">exe</ref><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;path/to/tryll_server.exe&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref><sp/>=<sp/>9100;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>session<sp/>=<sp/><ref refid="class_tryll_1_1_tryll_client_1aa56dfab6c46abdc5be450e8f0ed91114" kindref="member">Tryll::TryllClient::RunAndConnect</ref>(opts);</highlight></codeline>
+<codeline><highlight class="normal">session.GetClient().ConfigureSession(<ref refid="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a83888cbc1972ac14a87fcbde96092c29" kindref="member">Tryll::Client::InferenceEngine::LlamaCpp</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>session.GetClient().CreateAgent(graph);</highlight></codeline>
+<codeline><highlight class="normal">agent.SendText(</highlight><highlight class="stringliteral">&quot;hi&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">agent.Destroy();</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>session<sp/>destructor:<sp/>shuts<sp/>down<sp/>client,<sp/>then<sp/>stops<sp/>the<sp/>server</highlight></codeline>
+</programlisting></para>
+<para>Advanced / remote-server flow (no server management):</para>
 <para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>client<sp/>=<sp/><ref refid="class_tryll_1_1_tryll_client_1a6a2ceb8e0a5af81bd91baad797b69d02" kindref="member">Tryll::TryllClient::Connect</ref>(</highlight><highlight class="stringliteral">&quot;127.0.0.1&quot;</highlight><highlight class="normal">,<sp/>9100);</highlight></codeline>
 <codeline><highlight class="normal">client.ConfigureSession(<ref refid="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a83888cbc1972ac14a87fcbde96092c29" kindref="member">Tryll::Client::InferenceEngine::LlamaCpp</ref>);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>client.CreateAgent(graph);</highlight></codeline>
@@ -133,6 +170,6 @@
 <codeline><highlight class="normal">client.Shutdown();</highlight></codeline>
 </programlisting> </para>
     </detaileddescription>
-    <location file="C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllClient.h"/>
+    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h"/>
   </compounddef>
 </doxygen>

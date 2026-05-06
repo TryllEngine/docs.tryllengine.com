@@ -15,6 +15,7 @@ Here is a list of all files with brief descriptions:
                     * **file** [**TryllError.h**](_tryll_error_8h.md)     
                     * **file** [**TryllGraphDescription.h**](_tryll_graph_description_8h.md)     
                     * **file** [**TryllModelInfo.h**](_tryll_model_info_8h.md)     
+                    * **file** [**TryllRuntimeSettings.h**](_tryll_runtime_settings_8h.md)     
                     * **file** [**TryllSubsystem.h**](_tryll_subsystem_8h.md)     
                     * **file** [**TryllWorkflowAsset.h**](_tryll_workflow_asset_8h.md)     
 

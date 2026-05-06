@@ -14,6 +14,7 @@
 
 * **ChangeParam** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **ChangeParamAsync** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **ConnectedSession** ([**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md))
 * **ConfigureSession** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 * **Connect** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 * **ConnectAsync** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
@@ -38,13 +39,24 @@
 
 * **GetAgentId** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **GetDefaultModelName** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
-* **GetKnowledgePresentation** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **GetNodes** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **GetRoutes** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **GetStartNode** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
+* **GetClient** ([**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md))
+* **GetServer** ([**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md))
 * **GetSessionId** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 * **GetCode** ([**Tryll::TryllError**](class_tryll_1_1_tryll_error.md))
 * **GetMessage** ([**Tryll::TryllError**](class_tryll_1_1_tryll_error.md))
+
+
+## h
+
+* **Host** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+
+
+## i
+
+* **IsRunning** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
 
 
 ## l
@@ -53,9 +65,25 @@
 * **LoadModel** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 
 
+## m
+
+* **ManagedServer** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+
+
 ## o
 
-* **operator=** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
+* **operator=** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md), [**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md), [**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
+
+
+## p
+
+* **Port** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+
+
+## r
+
+* **RunAndConnect** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
+* **RunAndConnectAsync** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 
 
 ## s
@@ -64,9 +92,10 @@
 * **SendTextAsync** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetOnToolCall** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetDefaultModelName** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
-* **SetKnowledgePresentation** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **SetStartNode** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
-* **Shutdown** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
+* **Start** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+* **Stop** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+* **Shutdown** ([**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md), [**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 * **ShutdownAsync** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 
 
@@ -88,6 +117,8 @@
 
 ## ~
 
+* **~ManagedServer** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
+* **~ConnectedSession** ([**Tryll::ConnectedSession**](class_tryll_1_1_connected_session.md))
 * **~TryllClient** ([**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md))
 
 

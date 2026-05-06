@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_tryll_1_1_client_1_1_managed_server_options" kind="struct" language="C++" prot="public">
+    <compoundname>Tryll::Client::ManagedServerOptions</compoundname>
+    <includes refid="_managed_server_8h" local="no">ManagedServer.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a0694ac9161904e8c363fb2c284c79689" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Tryll::Client::ManagedServerOptions::exe</definition>
+        <argsstring></argsstring>
+        <name>exe</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::exe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Path to the <computeroutput>tryll_server</computeroutput> executable. <bold>Required</bold> — no automatic discovery is performed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="43" column="23" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a6b74be948e796572a17236cfaebcf3a1" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Tryll::Client::ManagedServerOptions::workingDirectory</definition>
+        <argsstring></argsstring>
+        <name>workingDirectory</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::workingDirectory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Working directory for the child process. Empty (default) means the executable&apos;s parent directory, which is where the server looks for its <computeroutput>data/</computeroutput> folder by default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="48" column="23" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a765de4beee7e443a547e3da5c7bcad07" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Tryll::Client::ManagedServerOptions::extraArgs</definition>
+        <argsstring></argsstring>
+        <name>extraArgs</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::extraArgs</qualifiedname>
+        <briefdescription>
+<para>Extra command-line arguments appended after <computeroutput>--<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref> &lt;<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref>&gt;</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="51" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t Tryll::Client::ManagedServerOptions::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::port</qualifiedname>
+        <initializer>= 9100</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TCP port the server will listen on. Passed as <computeroutput>--<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref> &lt;<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref>&gt;</computeroutput> on the server command line so it overrides whatever is in <computeroutput>server-config.json</computeroutput>. Default: 9100. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="56" column="15" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a19111a343ded21b4d5b66ac4fb96979c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tryll::Client::ManagedServerOptions::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::host</qualifiedname>
+        <initializer>= &quot;127.0.0.1&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Host name / IP for the TCP ready-probe after spawn. Almost always <computeroutput>"127.0.0.1"</computeroutput> (the default). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="60" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a3c67c041251d8360b60ed67d50625aaa" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Tryll::Client::ManagedServerOptions::stdoutLog</definition>
+        <argsstring></argsstring>
+        <name>stdoutLog</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::stdoutLog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If non-empty, the child process&apos;s stdout is redirected to this file. Empty (default) discards stdout. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="64" column="23" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1aabb6cf6a2427d82cb0cc92223df9c0e8" prot="public" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Tryll::Client::ManagedServerOptions::stderrLog</definition>
+        <argsstring></argsstring>
+        <name>stderrLog</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::stderrLog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If non-empty, the child process&apos;s stderr is redirected to this file. Empty (default) discards stderr. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="68" column="23" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1a93a9236f3907b9b47b0d7c53f821bc92" prot="public" static="no" mutable="no">
+        <type>std::chrono::milliseconds</type>
+        <definition>std::chrono::milliseconds Tryll::Client::ManagedServerOptions::startTimeout</definition>
+        <argsstring></argsstring>
+        <name>startTimeout</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::startTimeout</qualifiedname>
+        <initializer>= std::chrono::seconds{30}</initializer>
+        <briefdescription>
+<para>How long to wait for the TCP port to become reachable after spawn. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="71" column="27" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_managed_server_options_1abcff7c8b717761efecf70bb96c131f6f" prot="public" static="no" mutable="no">
+        <type>std::chrono::milliseconds</type>
+        <definition>std::chrono::milliseconds Tryll::Client::ManagedServerOptions::stopTimeout</definition>
+        <argsstring></argsstring>
+        <name>stopTimeout</name>
+        <qualifiedname>Tryll::Client::ManagedServerOptions::stopTimeout</qualifiedname>
+        <initializer>= std::chrono::seconds{8}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>How long to wait for the process to exit after <ref refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" kindref="member">ManagedServer::Stop</ref> (or the destructor) sends the termination signal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="75" column="27" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Configuration passed to <ref refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" kindref="member">ManagedServer::Start</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="39" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="40" bodyend="76"/>
+    <listofallmembers>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0694ac9161904e8c363fb2c284c79689" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>exe</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a765de4beee7e443a547e3da5c7bcad07" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>extraArgs</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a19111a343ded21b4d5b66ac4fb96979c" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>host</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>port</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a93a9236f3907b9b47b0d7c53f821bc92" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>startTimeout</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1aabb6cf6a2427d82cb0cc92223df9c0e8" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>stderrLog</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a3c67c041251d8360b60ed67d50625aaa" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>stdoutLog</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1abcff7c8b717761efecf70bb96c131f6f" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>stopTimeout</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_managed_server_options_1a6b74be948e796572a17236cfaebcf3a1" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServerOptions</scope><name>workingDirectory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

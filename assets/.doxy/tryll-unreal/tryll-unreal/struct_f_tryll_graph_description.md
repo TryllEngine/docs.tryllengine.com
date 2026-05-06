@@ -40,7 +40,6 @@
 |  TArray&lt; [**FTryllNodeDescription**](struct_f_tryll_node_description.md) &gt; | [**Nodes**](#variable-nodes)  <br> |
 |  TArray&lt; [**FTryllExitRoute**](struct_f_tryll_exit_route.md) &gt; | [**Routes**](#variable-routes)  <br> |
 |  FString | [**StartNode**](#variable-startnode)  <br> |
-|  bool | [**bHasKnowledgePresentation**](#variable-bhasknowledgepresentation)   = `false`<br> |
 
 
 
@@ -57,11 +56,6 @@
 
 
 
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Knowledge", meta=(EditCondition="bHasKnowledgePresentation")) <br> |
 
 
 
@@ -93,7 +87,7 @@
 ## Detailed Description
 
 
-Complete graph description: nodes, routing, and entry point. Sent inside CreateAgentRequest. Now includes an optional KnowledgePresentationConfig for graphs with Retrieve nodes. 
+Complete graph description: nodes, routing, and entry point. Sent inside CreateAgentRequest. 
 
 
     
@@ -156,43 +150,6 @@ FString FTryllGraphDescription::StartNode;
 
 <hr>
 
-
-
-### variable bHasKnowledgePresentation 
-
-```C++
-bool FTryllGraphDescription::bHasKnowledgePresentation;
-```
-
-
-
-Knowledge presentation config. Required when the graph contains a Retrieve node; ignored otherwise. bHasKnowledgePresentation must be true to include it. 
-
-
-        
-
-<hr>
-## Public Functions Documentation
-
-
-
-
-### function UPROPERTY 
-
-```C++
-FTryllGraphDescription::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Knowledge",
-    meta=(EditCondition="bHasKnowledgePresentation")
-) 
-```
-
-
-
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

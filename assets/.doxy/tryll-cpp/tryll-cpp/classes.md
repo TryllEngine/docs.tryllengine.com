@@ -8,6 +8,12 @@
 ([**Tryll**](namespace_tryll.md))
 
 
+## c
+
+* [**ConnectedSession**](class_tryll_1_1_connected_session.md)
+([**Tryll**](namespace_tryll.md))
+
+
 ## e
 
 * [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md)
@@ -20,14 +26,12 @@
 ([**Tryll::Client**](namespace_tryll_1_1_client.md))
 
 
-## k
-
-* [**KnowledgePresentationConfig**](struct_tryll_1_1_client_1_1_knowledge_presentation_config.md)
-([**Tryll::Client**](namespace_tryll_1_1_client.md))
-
-
 ## m
 
+* [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
 * [**MessageResult**](struct_tryll_1_1_message_result.md)
 ([**Tryll**](namespace_tryll.md))
 * [**ModelInfo**](struct_tryll_1_1_client_1_1_model_info.md)
@@ -42,8 +46,6 @@
 
 ## r
 
-* [**RetrievePresentationConfig**](struct_tryll_1_1_client_1_1_retrieve_presentation_config.md)
-([**Tryll::Client**](namespace_tryll_1_1_client.md))
 * [**RouteDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc.md)
 ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 

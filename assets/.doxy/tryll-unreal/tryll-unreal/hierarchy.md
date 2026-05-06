@@ -8,11 +8,9 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**FTryllExitRoute**](struct_f_tryll_exit_route.md) 
 * **struct** [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) 
 * **struct** [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) 
-* **struct** [**FTryllKnowledgePresentationConfig**](struct_f_tryll_knowledge_presentation_config.md) 
 * **struct** [**FTryllModelInfo**](struct_f_tryll_model_info.md) 
 * **struct** [**FTryllNodeDescription**](struct_f_tryll_node_description.md) 
 * **struct** [**FTryllNodeParam**](struct_f_tryll_node_param.md) 
-* **struct** [**FTryllRetrievePresentationConfig**](struct_f_tryll_retrieve_presentation_config.md) 
 * **struct** [**FTryllToolDefinition**](struct_f_tryll_tool_definition.md) 
 * **struct** [**FTryllToolParamDefinition**](struct_f_tryll_tool_param_definition.md) 
 * **struct** [**UTryllSubsystem::FEmbeddedStorageInfo**](struct_u_tryll_subsystem_1_1_f_embedded_storage_info.md) 
@@ -24,6 +22,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**FTryllAgent**](class_f_tryll_agent.md) 
 * **class** **IModuleInterface**    
     * **class** [**FTryllClientModule**](class_f_tryll_client_module.md) 
+* **class** **UDeveloperSettings**    
+    * **class** [**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md) 
 * **class** **UGameInstanceSubsystem**    
     * **class** [**UTryllSubsystem**](class_u_tryll_subsystem.md) 
 * **class** **FTickableGameObject**    

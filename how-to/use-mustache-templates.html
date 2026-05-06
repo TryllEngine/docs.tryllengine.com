@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="On-device SLM inference for games and tools — C++, Python, Unreal.">
+        <meta name="description" content="On-device SLM inference for games and tools — C++, Python, Unity, Unreal.">
       
       
       
-        <link rel="canonical" href="https://docs.tryllengine.com/how-to/configure-knowledge-presentation.html">
+        <link rel="canonical" href="https://docs.tryllengine.com/how-to/use-mustache-templates.html">
       
       
         <link rel="prev" href="create-simple-rag-assistant.html">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Configure Knowledge Presentation - Tryll Engine</title>
+        <title>Use Mustache Templates for Prompt Projection - Tryll Engine</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-knowledge-presentation" class="md-skip">
+        <a href="#use-mustache-templates-for-prompt-projection" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configure Knowledge Presentation
+              Use Mustache Templates for Prompt Projection
             
           </span>
         </div>
@@ -432,6 +432,8 @@
       
         
       
+        
+      
     
     
     
@@ -491,6 +493,41 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/first-inference-unity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First inference in Unity
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -618,6 +655,8 @@
       
         
           
+        
+      
         
       
         
@@ -974,7 +1013,7 @@
   <span class="md-ellipsis">
     
   
-    Configure knowledge presentation
+    Use Mustache templates
   
 
     
@@ -992,14 +1031,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="configure-knowledge-presentation.html" class="md-nav__link md-nav__link--active">
+      <a href="use-mustache-templates.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Configure knowledge presentation
+    Use Mustache templates
   
 
     
@@ -1032,10 +1071,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-moving-parts" class="md-nav__link">
+  <a href="#how-projection-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The moving parts
+        How projection works
       
     </span>
   </a>
@@ -1043,10 +1082,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-wrap-each-chunk" class="md-nav__link">
+  <a href="#placement-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — wrap each chunk
+        Placement values
       
     </span>
   </a>
@@ -1054,49 +1093,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-pick-a-placement" class="md-nav__link">
+  <a href="#step-1-simple-rag-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — pick a placement
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — pick a placement">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-five-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why five values
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-pick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to pick
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-handle-all-empty" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — handle "all empty"
+        Step 1 — Simple RAG template
       
     </span>
   </a>
@@ -1104,10 +1104,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-per-source-overrides" class="md-nav__link">
+  <a href="#step-2-direct-per-source-lookup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — per-source overrides
+        Step 2 — Direct per-source lookup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-instructions-from-instructionnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Instructions from InstructionNode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-combine-instructions-and-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Combine instructions and knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#placement-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placement guidance
       
     </span>
   </a>
@@ -1241,6 +1274,41 @@
     
   
     Change agent parameters at runtime
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enable-auto-model-downloading.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enable auto model downloading
   
 
     
@@ -1760,6 +1828,8 @@
       
         
       
+        
+      
     
     
     
@@ -1825,10 +1895,6 @@
       
         
           
-        
-      
-        
-      
         
       
         
@@ -2168,34 +2234,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../tryll-cpp/struct_tryll_1_1_client_1_1_knowledge_presentation_config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    KnowledgePresentationConfig
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../tryll-cpp/struct_tryll_1_1_client_1_1_model_info.html" class="md-nav__link">
         
   
@@ -2204,34 +2242,6 @@
     
   
     ModelInfo
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tryll-cpp/struct_tryll_1_1_client_1_1_retrieve_presentation_config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    RetrievePresentationConfig
   
 
     
@@ -2343,15 +2353,39 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../reference/client-api/unity/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
         
           
-        
-      
-        
-      
         
       
         
@@ -2395,7 +2429,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -2417,14 +2451,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2751,62 +2785,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../tryll-unreal/struct_f_tryll_knowledge_presentation_config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FTryllKnowledgePresentationConfig
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tryll-unreal/struct_f_tryll_retrieve_presentation_config.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FTryllRetrievePresentationConfig
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../tryll-unreal/struct_f_tryll_tool_definition.html" class="md-nav__link">
         
   
@@ -2958,6 +2936,8 @@
       
         
       
+        
+      
     
     
     
@@ -3034,6 +3014,41 @@
     
   
     Generate
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/instruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction
   
 
     
@@ -3550,10 +3565,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-moving-parts" class="md-nav__link">
+  <a href="#how-projection-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The moving parts
+        How projection works
       
     </span>
   </a>
@@ -3561,10 +3576,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-wrap-each-chunk" class="md-nav__link">
+  <a href="#placement-values" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — wrap each chunk
+        Placement values
       
     </span>
   </a>
@@ -3572,49 +3587,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-pick-a-placement" class="md-nav__link">
+  <a href="#step-1-simple-rag-template" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — pick a placement
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2 — pick a placement">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-five-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why five values
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-to-pick" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to pick
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-handle-all-empty" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3 — handle "all empty"
+        Step 1 — Simple RAG template
       
     </span>
   </a>
@@ -3622,10 +3598,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-per-source-overrides" class="md-nav__link">
+  <a href="#step-2-direct-per-source-lookup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — per-source overrides
+        Step 2 — Direct per-source lookup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-instructions-from-instructionnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Instructions from InstructionNode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-combine-instructions-and-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Combine instructions and knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#placement-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placement guidance
       
     </span>
   </a>
@@ -3682,377 +3691,297 @@
 
 
 
-<h1 id="configure-knowledge-presentation">Configure Knowledge Presentation<a class="headerlink" href="#configure-knowledge-presentation" title="Permanent link">&para;</a></h1>
-<p>Tune exactly how retrieved chunks land in the prompt — the wrapper
-text, where in the message list they go, and what happens when
-retrieval turns up empty.</p>
+<h1 id="use-mustache-templates-for-prompt-projection">Use Mustache Templates for Prompt Projection<a class="headerlink" href="#use-mustache-templates-for-prompt-projection" title="Permanent link">&para;</a></h1>
+<p>Control exactly how retrieved knowledge and instructions land in the prompt
+by writing a <a href="https://mustache.github.io/">Mustache</a> template on your
+<code>Generate</code> node's <code>template</code> parameter and choosing a <code>placement</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Prerequisites</p>
 <ul>
-<li>A RAG agent that works end-to-end — see
+<li>A working agent — see
+  <a href="build-chat-agent-with-graph.html">Build a chat agent with a graph</a>.</li>
+<li>For RAG templates: a RAG agent that retrieves chunks — see
   <a href="create-simple-rag-assistant.html">Create a Simple RAG Assistant</a>.</li>
 </ul>
 </div>
-<p>All of this lives on the
-<a href="../reference/agent-parameters.html"><code>KnowledgePresentationConfig</code></a>
-you attach to the graph via
-<code>graph.set_knowledge_presentation(...)</code> /
-<code>graph.SetKnowledgePresentation(...)</code> before <code>create_agent</code>. Every
-field is optional <em>except</em> <code>message_template</code>; everything else has
-sensible defaults.</p>
-<h2 id="the-moving-parts">The moving parts<a class="headerlink" href="#the-moving-parts" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>per-source (default + named overrides):
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  chunk_prefix   — before each chunk
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  chunk_suffix   — after each chunk
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  block_prefix   — before the whole list
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  block_suffix   — after the whole list
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  emit_when_empty + empty_text — what a single empty retrieve does
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>whole config:
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  message_template   — how the rendered {knowledge} slots into the user turn
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  placement          — where the turn is emitted
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  all_empty_behavior + all_empty_template — what to do when every retrieve is empty
+<hr />
+<h2 id="how-projection-works">How projection works<a class="headerlink" href="#how-projection-works" title="Permanent link">&para;</a></h2>
+<p>Before each <code>Generate</code> call the server builds a <strong>Mustache context</strong> from
+the current turn's data and renders the node's <code>template</code> string.  The
+rendered text is then spliced into the prompt according to <code>placement</code>.</p>
+<p>The context contains:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Type</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user_message</code></td>
+<td>string</td>
+<td>The raw user-message text for this turn.</td>
+</tr>
+<tr>
+<td><code>instructions</code></td>
+<td>list of <code>{name, text}</code></td>
+<td>All <code>InstructionComponent</code>s from the current interaction (one per <code>InstructionNode</code> that ran).</td>
+</tr>
+<tr>
+<td><code>instruction_&lt;name&gt;</code></td>
+<td>string</td>
+<td>Direct lookup for one instruction by node name, e.g. <code>{{instruction_greeter}}</code>.</td>
+</tr>
+<tr>
+<td><code>knowledge</code></td>
+<td>list of <code>{name, has_chunks, chunks:[{id,text,distance}]}</code></td>
+<td>All <code>KnowledgeComponent</code>s from the current interaction (one per <code>Retrieve</code> node).</td>
+</tr>
+<tr>
+<td><code>knowledge_&lt;source&gt;</code></td>
+<td>list of <code>{id,text,distance}</code></td>
+<td>Direct lookup for one retriever's chunks by source label, e.g. <code>{{#knowledge_rag}}</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Each <code>knowledge</code> item carries a <code>has_chunks</code> <strong>boolean</strong> that is <code>true</code> when the retriever found at least one chunk and <code>false</code> when it returned nothing.  Use it to gate the context preamble without the preamble accidentally repeating once per chunk:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{{#knowledge}}
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>{{#has_chunks}}Context from {{name}}:
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>{{#chunks}}- {{text}}
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>{{/chunks}}{{/has_chunks}}
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>{{^chunks}}No relevant information was found for this topic.{{/chunks}}
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>{{/knowledge}}
 </code></pre></div>
-<h2 id="step-1-wrap-each-chunk">Step 1 — wrap each chunk<a class="headerlink" href="#step-1-wrap-each-chunk" title="Permanent link">&para;</a></h2>
-<p>The defaults quote each chunk with <code>"</code> and separate them with
-newlines. Override when you want the model to clearly see chunk
-boundaries, or when it helps the model distinguish sources:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Unreal</label></div>
+<div class="admonition note">
+<p class="admonition-title">No HTML escaping</p>
+<p>All variable values are inserted verbatim — apostrophes, quotation marks, and
+ampersands are <strong>never</strong> HTML-encoded.  You do not need triple-brace syntax
+(<code>{{{variable}}}</code>).</p>
+</div>
+<hr />
+<h2 id="placement-values">Placement values<a class="headerlink" href="#placement-values" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value string</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in_place_of_user</code></td>
+<td>The rendered template <strong>replaces</strong> the user turn (default). Requires <code>{{user_message}}</code> in the template.</td>
+</tr>
+<tr>
+<td><code>before_user_as_user</code></td>
+<td>Emitted as an extra <code>user</code> turn <strong>before</strong> the real user message.</td>
+</tr>
+<tr>
+<td><code>before_user_as_system</code></td>
+<td>Emitted as a <code>system</code> turn before the user message.</td>
+</tr>
+<tr>
+<td><code>after_user_as_user</code></td>
+<td>Emitted as an extra <code>user</code> turn <strong>after</strong> the real user message.</td>
+</tr>
+<tr>
+<td><code>after_user_as_system</code></td>
+<td>Emitted as a <code>system</code> turn after the user message.</td>
+</tr>
+</tbody>
+</table>
+<p>For any placement other than <code>in_place_of_user</code> you should <strong>not</strong> put
+<code>{{user_message}}</code> in the template — the real user message appears as its
+own separate turn.</p>
+<hr />
+<h2 id="step-1-simple-rag-template">Step 1 — Simple RAG template<a class="headerlink" href="#step-1-simple-rag-template" title="Permanent link">&para;</a></h2>
+<p>The most common pattern: inject all retrieved chunks before the user message:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">KnowledgePresentationConfig</span><span class="p">,</span> <span class="n">RetrievePresentationConfig</span><span class="p">,</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">KnowledgePlacement</span><span class="p">,</span> <span class="n">KnowledgeAllEmptyBehavior</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">default_presentation</span> <span class="o">=</span> <span class="n">RetrievePresentationConfig</span><span class="p">(</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">block_prefix</span><span class="o">=</span><span class="s2">&quot;--- RELEVANT CONTEXT ---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">chunk_prefix</span><span class="o">=</span><span class="s2">&quot;[chunk] &quot;</span><span class="p">,</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">chunk_suffix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">block_suffix</span><span class="o">=</span><span class="s2">&quot;--- END CONTEXT ---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">presentation</span> <span class="o">=</span> <span class="n">KnowledgePresentationConfig</span><span class="p">(</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">message_template</span><span class="o">=</span><span class="p">(</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="s2">&quot;</span><span class="si">{knowledge}</span><span class="se">\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="s2">&quot;User question: </span><span class="si">{user_message}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="s2">&quot;Answer using the context above. If it is insufficient, say so.&quot;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    <span class="p">),</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="n">placement</span><span class="o">=</span><span class="n">KnowledgePlacement</span><span class="o">.</span><span class="n">InPlaceOfUser</span><span class="p">,</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="n">default_retrieve</span><span class="o">=</span><span class="n">default_presentation</span><span class="p">,</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphDescription</span><span class="p">,</span> <span class="n">NodeType</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">RAG_TEMPLATE</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="s2">&quot;{{#knowledge}}&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="s2">&quot;{{name}}:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="s2">&quot;{{#chunks}}- {{text}}</span><span class="se">\n</span><span class="s2">{{/chunks}}&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">{{/knowledge}}&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;retrieve&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Retrieve</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        <span class="s2">&quot;embedded_string_storage&quot;</span><span class="p">:</span> <span class="s2">&quot;my_kb&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="s2">&quot;embedding_model&quot;</span><span class="p">:</span> <span class="s2">&quot;nomic-embed-text-v1.5&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;docs&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="p">})</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;generate&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="s2">&quot;template&quot;</span><span class="p">:</span> <span class="n">RAG_TEMPLATE</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;before_user_as_system&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="s2">&quot;system_prompt&quot;</span><span class="p">:</span> <span class="s2">&quot;Answer using the context above.&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="p">})</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;retrieve&quot;</span><span class="p">,</span> <span class="s2">&quot;found&quot;</span><span class="p">,</span>     <span class="s2">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;retrieve&quot;</span><span class="p">,</span> <span class="s2">&quot;not_found&quot;</span><span class="p">,</span> <span class="s2">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;generate&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>   <span class="s2">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;retrieve&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;Llama 3.2 3B Instruct (Q4_K_M)&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">TC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">Tryll</span><span class="o">::</span><span class="nn">Client</span><span class="p">;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">TC</span><span class="o">::</span><span class="n">RetrievePresentationConfig</span><span class="w"> </span><span class="n">defaultPres</span><span class="p">;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">defaultPres</span><span class="p">.</span><span class="n">blockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;--- RELEVANT CONTEXT ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">defaultPres</span><span class="p">.</span><span class="n">chunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[chunk] &quot;</span><span class="p">;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">defaultPres</span><span class="p">.</span><span class="n">chunkSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">defaultPres</span><span class="p">.</span><span class="n">blockSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;--- END CONTEXT ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">kRagTemplate</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="s">&quot;{{#knowledge}}&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="s">&quot;{{name}}:</span><span class="se">\n</span><span class="s">&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="s">&quot;{{#chunks}}- {{text}}</span><span class="se">\n</span><span class="s">{{/chunks}}&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">{{/knowledge}}&quot;</span><span class="p">;</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">TC</span><span class="o">::</span><span class="n">KnowledgePresentationConfig</span><span class="w"> </span><span class="n">presentation</span><span class="p">;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">presentation</span><span class="p">.</span><span class="n">messageTemplate</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="s">&quot;{knowledge}</span><span class="se">\n</span><span class="s">&quot;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="s">&quot;User question: {user_message}</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="s">&quot;Answer using the context above. If it is insufficient, say so.&quot;</span><span class="p">;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">presentation</span><span class="p">.</span><span class="n">placement</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">KnowledgePlacement</span><span class="o">::</span><span class="n">InPlaceOfUser</span><span class="p">;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">presentation</span><span class="p">.</span><span class="n">defaultRetrieve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">defaultPres</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">TC</span><span class="o">::</span><span class="n">GraphDescription</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">graph</span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;retrieve&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Retrieve</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;embedded_string_storage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_kb&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;embedding_model&quot;</span><span class="p">,</span><span class="w">         </span><span class="s">&quot;nomic-embed-text-v1.5&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;source&quot;</span><span class="p">,</span><span class="w">                  </span><span class="s">&quot;docs&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">     </span><span class="p">})</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">     </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;generate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Generate</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;template&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">{</span><span class="n">kRagTemplate</span><span class="p">}},</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;placement&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;before_user_as_system&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;system_prompt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Answer using the context above.&quot;</span><span class="p">},</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">     </span><span class="p">})</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">     </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;retrieve&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;found&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">     </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;retrieve&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;not_found&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">     </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;generate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">,</span><span class="w">   </span><span class="s">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">     </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;retrieve&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">     </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama 3.2 3B Instruct (Q4_K_M)&quot;</span><span class="p">);</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="step-2-direct-per-source-lookup">Step 2 — Direct per-source lookup<a class="headerlink" href="#step-2-direct-per-source-lookup" title="Permanent link">&para;</a></h2>
+<p>When your graph has multiple <code>Retrieve</code> nodes with distinct <code>source</code> labels
+you can access each one directly and format them differently:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>{{#knowledge_rules}}
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Rule: {{text}}
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>{{/knowledge_rules}}
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>{{#knowledge_lore}}
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Lore: {{text}}
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>{{/knowledge_lore}}
+</code></pre></div>
+<p>Each <code>knowledge_&lt;source&gt;</code> section is a list of chunk objects, so you iterate
+over it with <code>{{#knowledge_rules}}…{{/knowledge_rules}}</code>.</p>
+<hr />
+<h2 id="step-3-instructions-from-instructionnode">Step 3 — Instructions from InstructionNode<a class="headerlink" href="#step-3-instructions-from-instructionnode" title="Permanent link">&para;</a></h2>
+<p>Use an <code>InstructionNode</code> to inject a changeable instruction string into the
+prompt without touching the graph:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">INSTRUCTION_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;{{#instructions}}{{text}}</span><span class="se">\n</span><span class="s2">{{/instructions}}&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;persona&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Instruction</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="s2">&quot;instruction&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a friendly guide.&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="p">})</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;generate&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s2">&quot;template&quot;</span><span class="p">:</span>  <span class="n">INSTRUCTION_TEMPLATE</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">&quot;placement&quot;</span><span class="p">:</span> <span class="s2">&quot;before_user_as_system&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="p">})</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;persona&quot;</span><span class="p">,</span>  <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;generate&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="s2">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;persona&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;Llama 3.2 3B Instruct (Q4_K_M)&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1"># Later, change persona without recreating the agent:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="n">agent</span><span class="o">.</span><span class="n">change_param</span><span class="p">(</span><span class="s2">&quot;persona&quot;</span><span class="p">,</span> <span class="s2">&quot;instruction&quot;</span><span class="p">,</span> <span class="s2">&quot;You are a sarcastic pirate.&quot;</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">FTryllRetrievePresentationConfig</span><span class="w"> </span><span class="n">DefaultPres</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">DefaultPres</span><span class="p">.</span><span class="n">BlockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;--- RELEVANT CONTEXT ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">DefaultPres</span><span class="p">.</span><span class="n">ChunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;[chunk] &quot;</span><span class="p">);</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">DefaultPres</span><span class="p">.</span><span class="n">ChunkSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">DefaultPres</span><span class="p">.</span><span class="n">BlockSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;--- END CONTEXT ---</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">FTryllKnowledgePresentationConfig</span><span class="w"> </span><span class="n">Presentation</span><span class="p">;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">MessageTemplate</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;{knowledge}</span><span class="se">\n</span><span class="s">User question: {user_message}</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">         </span><span class="s">&quot;Answer using the context above. If it is insufficient, say so.&quot;</span><span class="p">);</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">Placement</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">ETryllKnowledgePlacement</span><span class="o">::</span><span class="n">InPlaceOfUser</span><span class="p">;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">DefaultRetrieve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultPres</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">TC</span><span class="o">::</span><span class="n">GraphDescription</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">graph</span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;persona&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Instruction</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;instruction&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;You are a friendly guide.&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">     </span><span class="p">})</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">     </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;generate&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Generate</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;template&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;{{#instructions}}{{text}}</span><span class="se">\n</span><span class="s">{{/instructions}}&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">         </span><span class="p">{</span><span class="s">&quot;placement&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;before_user_as_system&quot;</span><span class="p">},</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">     </span><span class="p">})</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">     </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;persona&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;default&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;generate&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">     </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;generate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">     </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;persona&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">     </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama 3.2 3B Instruct (Q4_K_M)&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1">// Later:</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">agent</span><span class="p">.</span><span class="n">ChangeParam</span><span class="p">(</span><span class="s">&quot;persona&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;instruction&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;You are a sarcastic pirate.&quot;</span><span class="p">);</span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<h2 id="step-2-pick-a-placement">Step 2 — pick a placement<a class="headerlink" href="#step-2-pick-a-placement" title="Permanent link">&para;</a></h2>
-<p><code>placement</code> controls how the rendered knowledge block reaches the
-model. The five values split along two axes: <strong>one turn vs. two
-turns</strong>, and for the two-turn modes, <strong>Before/After</strong> the real user
-message × <strong>User/System</strong> role.</p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Turns emitted</th>
-<th>Roles</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>InPlaceOfUser</code> <em>(default)</em></td>
-<td>1</td>
-<td><code>user</code>: rendered <code>message_template</code> (with <code>{user_message}</code> and <code>{knowledge}</code> substituted)</td>
-</tr>
-<tr>
-<td><code>BeforeUserAsUser</code></td>
-<td>2</td>
-<td><code>user</code>: knowledge block → <code>user</code>: real message</td>
-</tr>
-<tr>
-<td><code>BeforeUserAsSystem</code></td>
-<td>2</td>
-<td><code>system</code>: knowledge block → <code>user</code>: real message</td>
-</tr>
-<tr>
-<td><code>AfterUserAsUser</code></td>
-<td>2</td>
-<td><code>user</code>: real message → <code>user</code>: knowledge block</td>
-</tr>
-<tr>
-<td><code>AfterUserAsSystem</code></td>
-<td>2</td>
-<td><code>user</code>: real message → <code>system</code>: knowledge block</td>
-</tr>
-</tbody>
-</table>
-<p>For the two-turn modes, <code>{user_message}</code> in <code>message_template</code>
-expands to the empty string — the real user message is emitted as
-its own turn, so you only template the knowledge block.</p>
-<h3 id="why-five-values">Why five values<a class="headerlink" href="#why-five-values" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong><code>InPlaceOfUser</code> is the default and right for most cases.</strong> One
-  turn, fewest tokens, no extra role juggling. Pick this unless the
-  model is clearly ignoring the context.</p>
-</li>
-<li>
-<p><strong><code>*AsSystem</code> placements</strong> (<code>BeforeUserAsSystem</code>,
-  <code>AfterUserAsSystem</code>) put the knowledge block in a <code>system</code> turn.
-  Modern chat-tuned models usually treat system messages as the
-  highest-priority instructions, so this is the cleanest way to say
-  "use this context." But some older or weakly-tuned models were
-  only trained to see a system message as the <strong>first</strong> turn of the
-  conversation — a system message mid-dialogue gets ignored,
-  mishandled, or confuses the model.</p>
-</li>
-<li>
-<p><strong><code>*AsUser</code> placements</strong> (<code>BeforeUserAsUser</code>, <code>AfterUserAsUser</code>)
-  are the safe fallback for those models. They inject the knowledge
-  as a second <code>user</code> turn, which every chat template accepts.</p>
-</li>
-<li>
-<p><strong>Before vs After</strong> is a prompt-engineering lever. <code>Before…</code> gives
-  the model the context first, then the question — often easiest for
-  the model to follow. <code>After…</code> puts the question first so the model
-  "sees what it's being asked" before scanning the context; this can
-  help when the context is large and you want to bias attention
-  toward the question.</p>
-</li>
-</ul>
-<h3 id="how-to-pick">How to pick<a class="headerlink" href="#how-to-pick" title="Permanent link">&para;</a></h3>
+<p>Use <code>{{instruction_&lt;name&gt;}}</code> for a direct single-instruction lookup:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>{{instruction_persona}}
+</code></pre></div>
+<hr />
+<h2 id="step-4-combine-instructions-and-knowledge">Step 4 — Combine instructions and knowledge<a class="headerlink" href="#step-4-combine-instructions-and-knowledge" title="Permanent link">&para;</a></h2>
+<p>Nothing prevents you from using both in one template:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{{#instructions}}{{text}}
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>{{/instructions}}
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>{{#knowledge}}{{name}}:
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>{{#chunks}}- {{text}}
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>{{/chunks}}
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>{{/knowledge}}
+</code></pre></div>
+<p>With <code>placement: before_user_as_system</code> the rendered block becomes a system
+turn immediately before the user message.</p>
+<hr />
+<h2 id="placement-guidance">Placement guidance<a class="headerlink" href="#placement-guidance" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Start with <code>InPlaceOfUser</code>.</li>
-<li>If the model ignores the context, try <code>BeforeUserAsSystem</code> —
-   typically the strongest instruction-following on modern models.</li>
-<li>If <code>BeforeUserAsSystem</code> is <em>also</em> ignored (or the model starts
-   producing garbled output), the model probably dislikes
-   mid-conversation system messages. Fall back to
-   <code>BeforeUserAsUser</code>.</li>
-<li>Reach for the <code>After…</code> variants only when you have a specific
-   reason — e.g. very long context that drowns out the question at
-   the top.</li>
+<li><strong><code>before_user_as_system</code></strong> is the default recommendation — most
+   modern chat-tuned models treat system turns as highest-priority.</li>
+<li>If the model ignores the context, try <code>before_user_as_user</code>.</li>
+<li><code>in_place_of_user</code> is useful when you want to completely control the
+   user-side turn (must include <code>{{user_message}}</code>).</li>
+<li>The <code>after_*</code> variants are uncommon; they exist for models that
+   prefer seeing the question before the context.</li>
 </ol>
-<h2 id="step-3-handle-all-empty">Step 3 — handle "all empty"<a class="headerlink" href="#step-3-handle-all-empty" title="Permanent link">&para;</a></h2>
-<p>If every <code>Retrieve</code> node in the graph ran and returned nothing, the
-default behaviour is to skip knowledge injection entirely (the user
-turn is emitted as-is). You usually want something better:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">C++</label><label for="__tabbed_2_3">Unreal</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">presentation</span><span class="o">.</span><span class="n">all_empty_behavior</span> <span class="o">=</span> <span class="n">KnowledgeAllEmptyBehavior</span><span class="o">.</span><span class="n">UseAlternateTemplate</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">presentation</span><span class="o">.</span><span class="n">all_empty_template</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">&quot;</span><span class="si">{user_message}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s2">&quot;(No relevant knowledge was found in the documents. &quot;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s2">&quot;If you don&#39;t know the answer, say so.)&quot;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">presentation</span><span class="p">.</span><span class="n">allEmptyBehavior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">KnowledgeAllEmptyBehavior</span><span class="o">::</span><span class="n">UseAlternateTemplate</span><span class="p">;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">presentation</span><span class="p">.</span><span class="n">allEmptyTemplate</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="s">&quot;{user_message}</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="s">&quot;(No relevant knowledge was found in the documents. &quot;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="s">&quot;If you don&#39;t know the answer, say so.)&quot;</span><span class="p">;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">AllEmptyBehavior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ETryllKnowledgeAllEmptyBehavior</span><span class="o">::</span><span class="n">UseAlternateTemplate</span><span class="p">;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">AllEmptyTemplate</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;{user_message}</span><span class="se">\n\n</span><span class="s">&quot;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">         </span><span class="s">&quot;(No relevant knowledge was found in the documents. &quot;</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">         </span><span class="s">&quot;If you don&#39;t know the answer, say so.)&quot;</span><span class="p">);</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>The alternate template receives <code>{user_message}</code>. <code>{knowledge}</code> is
-always substituted with the empty string on this path — per-source
-<code>empty_text</code> values do <strong>not</strong> surface here, because
-<code>all_empty_behavior</code> only fires when every retriever is empty and
-there is nothing to interleave them with.</p>
-<p>Per-source <code>empty_text</code> is instead a <strong>multi-source</strong> feature: in a
-graph with more than one <code>Retrieve</code> node, set <code>emit_when_empty=true</code>
-and <code>empty_text="…"</code> on a source so its block still appears in the
-rendered prompt when <em>that</em> retriever came back empty <strong>but at least
-one other retriever had results</strong>. This keeps the knowledge layout
-consistent across turns — the model sees "Lore: (nothing)" instead
-of the lore block silently disappearing:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">C++</label><label for="__tabbed_3_3">Unreal</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">presentation</span><span class="o">.</span><span class="n">overrides</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">RetrievePresentationConfig</span><span class="p">(</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;lore&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        <span class="n">emit_when_empty</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>        <span class="n">empty_text</span><span class="o">=</span><span class="s2">&quot;(no matching lore entries)&quot;</span><span class="p">),</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="p">]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">TC</span><span class="o">::</span><span class="n">RetrievePresentationConfig</span><span class="w"> </span><span class="n">loreOverride</span><span class="p">;</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">loreOverride</span><span class="p">.</span><span class="n">source</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lore&quot;</span><span class="p">;</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">loreOverride</span><span class="p">.</span><span class="n">emitWhenEmpty</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">loreOverride</span><span class="p">.</span><span class="n">emptyText</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;(no matching lore entries)&quot;</span><span class="p">;</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">presentation</span><span class="p">.</span><span class="n">overrides</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">loreOverride</span><span class="p">);</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">FTryllRetrievePresentationConfig</span><span class="w"> </span><span class="n">LoreOverride</span><span class="p">;</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">LoreOverride</span><span class="p">.</span><span class="n">Source</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;lore&quot;</span><span class="p">);</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">LoreOverride</span><span class="p">.</span><span class="n">bEmitWhenEmpty</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">LoreOverride</span><span class="p">.</span><span class="n">EmptyText</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;(no matching lore entries)&quot;</span><span class="p">);</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">Overrides</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">LoreOverride</span><span class="p">);</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Each override's <code>source</code> must match the <code>source</code> parameter on a
-<a href="../reference/nodes/retrieve.html"><code>Retrieve</code> node</a> — set it there or
-it defaults to the node's name.</p>
-<h2 id="step-4-per-source-overrides">Step 4 — per-source overrides<a class="headerlink" href="#step-4-per-source-overrides" title="Permanent link">&para;</a></h2>
-<p>If your graph has multiple <code>Retrieve</code> nodes (say one for gameplay rules and one for lore), you can give each a distinct <code>source</code> and wrap them differently:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python</label><label for="__tabbed_4_2">C++</label><label for="__tabbed_4_3">Unreal</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;gameplay&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Retrieve</span><span class="p">,</span> <span class="p">{</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>        <span class="s2">&quot;embedded_string_storage&quot;</span><span class="p">:</span> <span class="s2">&quot;gameplay_docs&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;gameplay&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="p">})</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;lore&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Retrieve</span><span class="p">,</span> <span class="p">{</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>        <span class="s2">&quot;embedded_string_storage&quot;</span><span class="p">:</span> <span class="s2">&quot;lore_docs&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;lore&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="p">})</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="c1"># ... wire retrieves into a Generate, etc.</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">)</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="n">presentation</span><span class="o">.</span><span class="n">overrides</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">RetrievePresentationConfig</span><span class="p">(</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;gameplay&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="n">block_prefix</span><span class="o">=</span><span class="s2">&quot;Rules:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">chunk_prefix</span><span class="o">=</span><span class="s2">&quot;- &quot;</span><span class="p">),</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>    <span class="n">RetrievePresentationConfig</span><span class="p">(</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;lore&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>        <span class="n">block_prefix</span><span class="o">=</span><span class="s2">&quot;Lore:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="n">chunk_prefix</span><span class="o">=</span><span class="s2">&quot;* &quot;</span><span class="p">),</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="p">]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">TC</span><span class="o">::</span><span class="n">GraphDescription</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">graph</span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;gameplay&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Retrieve</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;embedded_string_storage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gameplay_docs&quot;</span><span class="p">},</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;source&quot;</span><span class="p">,</span><span class="w">                  </span><span class="s">&quot;gameplay&quot;</span><span class="p">},</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">     </span><span class="p">})</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">     </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;lore&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">NodeType</span><span class="o">::</span><span class="n">Retrieve</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;embedded_string_storage&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lore_docs&quot;</span><span class="p">},</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">        </span><span class="p">{</span><span class="s">&quot;source&quot;</span><span class="p">,</span><span class="w">                  </span><span class="s">&quot;lore&quot;</span><span class="p">},</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">     </span><span class="p">});</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1">// ... wire retrieves into a Generate, etc.</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="n">TC</span><span class="o">::</span><span class="n">RetrievePresentationConfig</span><span class="w"> </span><span class="n">gameplayCfg</span><span class="p">;</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="n">gameplayCfg</span><span class="p">.</span><span class="n">source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gameplay&quot;</span><span class="p">;</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="n">gameplayCfg</span><span class="p">.</span><span class="n">blockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Rules:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="n">gameplayCfg</span><span class="p">.</span><span class="n">chunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;- &quot;</span><span class="p">;</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="n">TC</span><span class="o">::</span><span class="n">RetrievePresentationConfig</span><span class="w"> </span><span class="n">loreCfg</span><span class="p">;</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="n">loreCfg</span><span class="p">.</span><span class="n">source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lore&quot;</span><span class="p">;</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="n">loreCfg</span><span class="p">.</span><span class="n">blockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Lore:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="n">loreCfg</span><span class="p">.</span><span class="n">chunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;* &quot;</span><span class="p">;</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="n">presentation</span><span class="p">.</span><span class="n">overrides</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">gameplayCfg</span><span class="p">,</span><span class="w"> </span><span class="n">loreCfg</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">FTryllGraphDescription</span><span class="w"> </span><span class="n">Graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FTryllGraphBuilder</span><span class="p">()</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;gameplay&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">ETryllNodeType</span><span class="o">::</span><span class="n">Retrieve</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;embedded_string_storage&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;gameplay_docs&quot;</span><span class="p">)},</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;source&quot;</span><span class="p">),</span><span class="w">                  </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;gameplay&quot;</span><span class="p">)},</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;lore&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">ETryllNodeType</span><span class="o">::</span><span class="n">Retrieve</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;embedded_string_storage&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;lore_docs&quot;</span><span class="p">)},</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="p">{</span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;source&quot;</span><span class="p">),</span><span class="w">                  </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;lore&quot;</span><span class="p">)},</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="c1">// ... wire retrieves into a Generate, etc.</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">FTryllRetrievePresentationConfig</span><span class="w"> </span><span class="n">GameplayCfg</span><span class="p">;</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">GameplayCfg</span><span class="p">.</span><span class="n">Source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;gameplay&quot;</span><span class="p">);</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="n">GameplayCfg</span><span class="p">.</span><span class="n">BlockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Rules:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="n">GameplayCfg</span><span class="p">.</span><span class="n">ChunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;- &quot;</span><span class="p">);</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="n">FTryllRetrievePresentationConfig</span><span class="w"> </span><span class="n">LoreCfg</span><span class="p">;</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="n">LoreCfg</span><span class="p">.</span><span class="n">Source</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;lore&quot;</span><span class="p">);</span>
-<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="n">LoreCfg</span><span class="p">.</span><span class="n">BlockPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;Lore:</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="n">LoreCfg</span><span class="p">.</span><span class="n">ChunkPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">&quot;* &quot;</span><span class="p">);</span>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="n">Presentation</span><span class="p">.</span><span class="n">Overrides</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">GameplayCfg</span><span class="p">,</span><span class="w"> </span><span class="n">LoreCfg</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+<hr />
 <h2 id="verify-it-worked">Verify it worked<a class="headerlink" href="#verify-it-worked" title="Permanent link">&para;</a></h2>
-<p>Turn on <code>"include_interaction_in_diagnostics": true</code> in the server
-config temporarily, then create the agent with
-<code>enable_diagnostics=True</code> (Python) / <code>enableDiagnostics=true</code> (C++).
-The <code>TurnComplete.debug_info</code> JSON will include the full rendered
-prompt for the <code>Generate</code> node — you can see the exact knowledge block
-that ended up in front of the model.</p>
+<p>Create the agent with <code>enable_diagnostics=True</code> (Python) /
+<code>enableDiagnostics=true</code> (C++). The <code>TurnComplete.debug_info</code> JSON
+includes the full rendered prompt for each <code>Generate</code> node, so you
+can inspect exactly what the model received.</p>
+<hr />
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Unknown placeholder tokens.</strong> Only <code>{knowledge}</code> and
-  <code>{user_message}</code> are recognised. Anything else in
-  <code>message_template</code> or <code>all_empty_template</code> fails validation at
-  <code>CreateAgent</code> with error
-  <a href="../reference/error-codes.html#3xxx--agent">3003</a>.</li>
-<li><strong>Missing <code>{knowledge}</code>.</strong> <code>message_template</code> must contain it —
-  omitting it defeats the point.</li>
-<li><strong>Placement vs. model.</strong> Some models (older chat templates) will
-  not honour system messages mid-conversation. If
-  <code>BeforeUserAsSystem</code> is being ignored, try <code>BeforeUserAsUser</code>.</li>
-<li><strong>Too much context.</strong> Huge <code>block_prefix</code>/<code>suffix</code> strings
-  multiply across every turn. Keep them short.</li>
+<li><strong><code>in_place_of_user</code> without <code>{{user_message}}</code>.</strong> The user message is
+  silently dropped. Add <code>{{user_message}}</code> to the template or use a
+  different placement.</li>
+<li><strong>Placement with <code>{{user_message}}</code>.</strong> For non-<code>in_place_of_user</code>
+  placements <code>{{user_message}}</code> expands to the empty string — the user
+  message is emitted as its own separate turn. Remove it from the template.</li>
+<li><strong>Unknown sections.</strong> Mustache silently ignores unknown section names.
+  If <code>{{#knowledge_rag}}</code> renders nothing, check that your <code>Retrieve</code>
+  node has <code>source: "rag"</code>.</li>
+<li><strong>Empty knowledge — Before/After placements.</strong> When the template renders
+  to an empty string (e.g. a <code>{{#has_chunks}}</code> block with no chunks), the
+  server skips injecting the extra message entirely.  The user message still
+  goes through on its own, so the model is never left with an empty turn.</li>
+<li><strong>Empty knowledge — <code>in_place_of_user</code>.</strong> If the rendered string is empty
+  the server falls back to emitting the raw user message, so the model always
+  receives the question.</li>
 </ul>
+<hr />
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../reference/agent-parameters.html">Reference: Agent Parameters</a></li>
+<li><a href="../reference/nodes/generate.html">Reference: Generate node</a></li>
+<li><a href="../reference/nodes/instruction.html">Reference: Instruction node</a></li>
 <li><a href="../reference/nodes/retrieve.html">Reference: Retrieve node</a></li>
 <li><a href="../concepts/rag.html">Concept: RAG</a></li>
 <li><a href="../concepts/projection-and-token-budgets.html">Concept: Projection and Token Budgets</a></li>
 <li><a href="create-simple-rag-assistant.html">How-to: Create a Simple RAG Assistant</a></li>
+<li><a href="change-agent-parameters.html">How-to: Change Agent Parameters at Runtime</a></li>
 </ul>
 
 

@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_client_1_1_managed_server" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Tryll::Client::ManagedServer</compoundname>
+    <includes refid="_managed_server_8h" local="no">ManagedServer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_managed_server_1ad7acb8bb9ffe35215e871b2b5453be2f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; Impl &gt;</type>
+        <definition>std::unique_ptr&lt;Impl&gt; Tryll::Client::ManagedServer::_impl</definition>
+        <argsstring></argsstring>
+        <name>_impl</name>
+        <qualifiedname>Tryll::Client::ManagedServer::_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="132" column="17" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ManagedServer</type>
+        <definition>static ManagedServer Tryll::Client::ManagedServer::Start</definition>
+        <argsstring>(const ManagedServerOptions &amp;opts)</argsstring>
+        <name>Start</name>
+        <qualifiedname>Tryll::Client::ManagedServer::Start</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_managed_server_options" kindref="compound">ManagedServerOptions</ref> &amp;</type>
+          <declname>opts</declname>
+        </param>
+        <briefdescription>
+<para>Spawn the server and block until its TCP port accepts connections. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The server is launched with <computeroutput>--port &lt;opts.port&gt;</computeroutput> so the port is authoritative from the caller&apos;s side regardless of <computeroutput>server-config.json</computeroutput>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>opts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Launch options. <computeroutput>opts.exe</computeroutput> must exist.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A ready-to-use <ref refid="class_tryll_1_1_client_1_1_managed_server" kindref="compound">ManagedServer</ref>.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the executable is not found, the process fails to start, the process exits before the port opens, or <computeroutput>opts.startTimeout</computeroutput> expires. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="100" column="23"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a6b8dba3f0d5c51f759cbd18575e5c09c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Tryll::Client::ManagedServer::Host</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>Host</name>
+        <qualifiedname>Tryll::Client::ManagedServer::Host</qualifiedname>
+        <briefdescription>
+<para>The host string from <ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a19111a343ded21b4d5b66ac4fb96979c" kindref="member">ManagedServerOptions::host</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="103" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1af3573583a94422d449da0235b7fce3ad" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t Tryll::Client::ManagedServer::Port</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>Port</name>
+        <qualifiedname>Tryll::Client::ManagedServer::Port</qualifiedname>
+        <briefdescription>
+<para>The port from <ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">ManagedServerOptions::port</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="106" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a9476c8d7890f9880cce008a4c673fc2c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tryll::Client::ManagedServer::IsRunning</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsRunning</name>
+        <qualifiedname>Tryll::Client::ManagedServer::IsRunning</qualifiedname>
+        <briefdescription>
+<para>Returns <computeroutput>true</computeroutput> while the child process is still running. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="109" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::ManagedServer::Stop</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{8})</argsstring>
+        <name>Stop</name>
+        <qualifiedname>Tryll::Client::ManagedServer::Stop</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{8}</defval>
+        </param>
+        <briefdescription>
+<para>Terminate the child process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a termination signal and waits up to <computeroutput>timeout</computeroutput> for the process to exit. If the process does not exit in time it is force-killed. Idempotent — safe to call more than once.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Override for the stop timeout set in the options. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="120" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a6cfceea6385235e6684de8db098094aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::ManagedServer::~ManagedServer</definition>
+        <argsstring>()</argsstring>
+        <name>~ManagedServer</name>
+        <qualifiedname>Tryll::Client::ManagedServer::~ManagedServer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="122" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a4366bb592ce88ede725f85586f24346f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::ManagedServer::ManagedServer</definition>
+        <argsstring>(ManagedServer &amp;&amp;) noexcept</argsstring>
+        <name>ManagedServer</name>
+        <qualifiedname>Tryll::Client::ManagedServer::ManagedServer</qualifiedname>
+        <param>
+          <type>ManagedServer &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="123" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1af44572ea83498c4828820cdff58fa568" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>ManagedServer &amp;</type>
+        <definition>ManagedServer &amp; Tryll::Client::ManagedServer::operator=</definition>
+        <argsstring>(ManagedServer &amp;&amp;) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::Client::ManagedServer::operator=</qualifiedname>
+        <param>
+          <type>ManagedServer &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="124" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1aef9448c1300d88768ebefbde1e7734fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::ManagedServer::ManagedServer</definition>
+        <argsstring>(const ManagedServer &amp;)=delete</argsstring>
+        <name>ManagedServer</name>
+        <qualifiedname>Tryll::Client::ManagedServer::ManagedServer</qualifiedname>
+        <param>
+          <type>const ManagedServer &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="125" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1ab8994fd8aa5805c833d358c04403a206" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ManagedServer &amp;</type>
+        <definition>ManagedServer &amp; Tryll::Client::ManagedServer::operator=</definition>
+        <argsstring>(const ManagedServer &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::Client::ManagedServer::operator=</qualifiedname>
+        <param>
+          <type>const ManagedServer &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="126" column="15"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1aa6bb8b1da49589d055eb16aa65e183c6" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::ManagedServer::ManagedServer</definition>
+        <argsstring>(std::unique_ptr&lt; Impl &gt; impl)</argsstring>
+        <name>ManagedServer</name>
+        <qualifiedname>Tryll::Client::ManagedServer::ManagedServer</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; Impl &gt;</type>
+          <declname>impl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="130" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>RAII handle around a child <computeroutput>tryll_server</computeroutput> process. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Move-only. The destructor calls <ref refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" kindref="member">Stop</ref> if the process is still running. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" line="83" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/ManagedServer.h" bodystart="84" bodyend="133"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1ad7acb8bb9ffe35215e871b2b5453be2f" prot="private" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>_impl</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a6b8dba3f0d5c51f759cbd18575e5c09c" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Host</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a9476c8d7890f9880cce008a4c673fc2c" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>IsRunning</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a4366bb592ce88ede725f85586f24346f" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>ManagedServer</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1aef9448c1300d88768ebefbde1e7734fd" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>ManagedServer</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1aa6bb8b1da49589d055eb16aa65e183c6" prot="private" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>ManagedServer</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1af44572ea83498c4828820cdff58fa568" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1ab8994fd8aa5805c833d358c04403a206" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1af3573583a94422d449da0235b7fce3ad" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Port</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Start</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Stop</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a6cfceea6385235e6684de8db098094aa" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>~ManagedServer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

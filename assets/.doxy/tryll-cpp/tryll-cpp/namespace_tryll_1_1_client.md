@@ -30,9 +30,9 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) <br>_Fluent builder for a workflow graph description sent to the server._  |
-| struct | [**KnowledgePresentationConfig**](struct_tryll_1_1_client_1_1_knowledge_presentation_config.md) <br>_Per-agent knowledge presentation configuration._  |
+| class | [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md) <br>_RAII handle around a child_ `tryll_server` _process._ |
+| struct | [**ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md) <br>_Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_1_managed_server.md#function-start) _._ |
 | struct | [**ModelInfo**](struct_tryll_1_1_client_1_1_model_info.md) <br>_Summary information for one model returned by_ [_**Tryll::TryllClient::ListModels**_](class_tryll_1_1_tryll_client.md#function-listmodels) _._ |
-| struct | [**RetrievePresentationConfig**](struct_tryll_1_1_client_1_1_retrieve_presentation_config.md) <br>_Formatting rules for one knowledge source (or the default for all sources)._  |
 | struct | [**ToolDef**](struct_tryll_1_1_client_1_1_tool_def.md) <br>_Definition of a callable tool for a ToolCall node._  |
 | struct | [**ToolParamDef**](struct_tryll_1_1_client_1_1_tool_param_def.md) <br>_Description of one parameter of a tool definition._  |
 
@@ -43,8 +43,6 @@
 | ---: | :--- |
 | typedef std::function&lt; void(std::string\_view, std::uint64\_t, std::uint64\_t, float)&gt; | [**DownloadProgressCallback**](#typedef-downloadprogresscallback)  <br>_Callback invoked during_ [_**Tryll::TryllClient::DownloadModel**_](class_tryll_1_1_tryll_client.md#function-downloadmodel) _as data arrives._ |
 | enum std::uint8\_t | [**InferenceEngine**](#enum-inferenceengine)  <br>_Inference backend identifiers._  |
-| enum std::uint8\_t | [**KnowledgeAllEmptyBehavior**](#enum-knowledgeallemptybehavior)  <br>_What to do when every retriever returned zero chunks._  |
-| enum std::uint8\_t | [**KnowledgePlacement**](#enum-knowledgeplacement)  <br>_Where the knowledge message is placed relative to the current user turn._  |
 | enum std::uint8\_t | [**ModelStatus**](#enum-modelstatus)  <br>_Status of a model on the server side._  |
 | enum std::uint8\_t | [**NodeType**](#enum-nodetype)  <br>_Workflow node kinds recognised by the server._  |
 
@@ -147,51 +145,6 @@ Must match the FlatBuffers `InferenceEngine` enum and `Tryll::Workflow::Inferenc
 
 
 
-### enum KnowledgeAllEmptyBehavior 
-
-_What to do when every retriever returned zero chunks._ 
-```C++
-enum Tryll::Client::KnowledgeAllEmptyBehavior {
-    UseAlternateTemplate = 0,
-    Skip = 1
-};
-```
-
-
-
-Must stay in sync with the FlatBuffers `KnowledgeAllEmptyBehavior` enum. 
-
-
-        
-
-<hr>
-
-
-
-### enum KnowledgePlacement 
-
-_Where the knowledge message is placed relative to the current user turn._ 
-```C++
-enum Tryll::Client::KnowledgePlacement {
-    InPlaceOfUser = 0,
-    BeforeUserAsUser = 1,
-    BeforeUserAsSystem = 2,
-    AfterUserAsUser = 3,
-    AfterUserAsSystem = 4
-};
-```
-
-
-
-Must stay in sync with the FlatBuffers `KnowledgePlacement` enum. 
-
-
-        
-
-<hr>
-
-
-
 ### enum ModelStatus 
 
 _Status of a model on the server side._ 
@@ -225,7 +178,8 @@ enum Tryll::Client::NodeType {
     HumanMessageGuardrail = 1,
     CannedResponse = 2,
     ToolCall = 3,
-    Retrieve = 4
+    Retrieve = 4,
+    Instruction = 5
 };
 ```
 
@@ -239,5 +193,5 @@ Must match the FlatBuffers `NodeType` enum.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h`
 

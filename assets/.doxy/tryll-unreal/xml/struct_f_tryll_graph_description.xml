@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="struct_f_tryll_graph_description" kind="struct" language="C++" prot="public">
     <compoundname>FTryllGraphDescription</compoundname>
     <includes refid="_tryll_graph_description_8h" local="no">TryllGraphDescription.h</includes>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="252" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="252" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="160" column="8" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_graph_description_1a46f52da6258a44e1d544f44332e186c2" prot="public" static="no" mutable="no">
         <type>TArray&lt; <ref refid="struct_f_tryll_exit_route" kindref="compound">FTryllExitRoute</ref> &gt;</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="255" column="8" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="255" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="163" column="8" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_graph_description_1aa8298768b549e584cb053c81b7fedea2" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="258" column="9" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="258" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="166" column="9" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_graph_description_1a55c5890d6801348eb9b391249e38b475" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -59,68 +59,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="265" column="9" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="265" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="struct_f_tryll_graph_description_1a741a02f7a945480e0aaeb712b6473f28" prot="public" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool FTryllGraphDescription::bHasKnowledgePresentation</definition>
-        <argsstring></argsstring>
-        <name>bHasKnowledgePresentation</name>
-        <qualifiedname>FTryllGraphDescription::bHasKnowledgePresentation</qualifiedname>
-        <initializer>= false</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Knowledge presentation config. Required when the graph contains a Retrieve node; ignored otherwise. bHasKnowledgePresentation must be true to include it. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="272" column="6" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="272" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_f_tryll_graph_description_1aad47dbf2a9e4466d9f01001048797c6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>FTryllGraphDescription::UPROPERTY</definition>
-        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|Knowledge&quot;, meta=(EditCondition=&quot;bHasKnowledgePresentation&quot;)) FTryllKnowledgePresentationConfig KnowledgePresentation</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>FTryllGraphDescription::UPROPERTY</qualifiedname>
-        <param>
-          <type>EditAnywhere</type>
-        </param>
-        <param>
-          <type>BlueprintReadWrite</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Knowledge&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(EditCondition=&quot;bHasKnowledgePresentation&quot;)</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="274" column="1"/>
+        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="173" column="9" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="173" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Complete graph description: nodes, routing, and entry point. Sent inside CreateAgentRequest. Now includes an optional KnowledgePresentationConfig for graphs with Retrieve nodes. </para>
+<para>Complete graph description: nodes, routing, and entry point. Sent inside CreateAgentRequest. </para>
     </detaileddescription>
-    <location file="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="247" column="1" bodyfile="C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="248" bodyend="277"/>
+    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="155" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="156" bodyend="174"/>
     <listofallmembers>
-      <member refid="struct_f_tryll_graph_description_1a741a02f7a945480e0aaeb712b6473f28" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>bHasKnowledgePresentation</name></member>
       <member refid="struct_f_tryll_graph_description_1a55c5890d6801348eb9b391249e38b475" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>DefaultModelName</name></member>
       <member refid="struct_f_tryll_graph_description_1aa8958c618f6ea33d5d53791b84370dd1" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>Nodes</name></member>
       <member refid="struct_f_tryll_graph_description_1a46f52da6258a44e1d544f44332e186c2" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>Routes</name></member>
       <member refid="struct_f_tryll_graph_description_1aa8298768b549e584cb053c81b7fedea2" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>StartNode</name></member>
-      <member refid="struct_f_tryll_graph_description_1aad47dbf2a9e4466d9f01001048797c6d" prot="public" virt="non-virtual"><scope>FTryllGraphDescription</scope><name>UPROPERTY</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

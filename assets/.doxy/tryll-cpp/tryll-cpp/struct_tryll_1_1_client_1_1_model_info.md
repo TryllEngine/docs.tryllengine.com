@@ -144,5 +144,5 @@ ModelStatus Tryll::Client::ModelInfo::status;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/TryllClient.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h`
 

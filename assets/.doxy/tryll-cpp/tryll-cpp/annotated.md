@@ -10,11 +10,12 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
         * **class** [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) _Fluent builder for a workflow graph description sent to the server._     
             * **struct** [**NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) _Internal serialisable description of one node._     
             * **struct** [**RouteDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc.md) _Internal serialisable description of one wire between two nodes._     
-        * **struct** [**KnowledgePresentationConfig**](struct_tryll_1_1_client_1_1_knowledge_presentation_config.md) _Per-agent knowledge presentation configuration._     
+        * **class** [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md) _RAII handle around a child_ `tryll_server` _process._    
+        * **struct** [**ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md) _Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_1_managed_server.md#function-start) _._    
         * **struct** [**ModelInfo**](struct_tryll_1_1_client_1_1_model_info.md) _Summary information for one model returned by_ [_**Tryll::TryllClient::ListModels**_](class_tryll_1_1_tryll_client.md#function-listmodels) _._    
-        * **struct** [**RetrievePresentationConfig**](struct_tryll_1_1_client_1_1_retrieve_presentation_config.md) _Formatting rules for one knowledge source (or the default for all sources)._     
         * **struct** [**ToolDef**](struct_tryll_1_1_client_1_1_tool_def.md) _Definition of a callable tool for a ToolCall node._     
         * **struct** [**ToolParamDef**](struct_tryll_1_1_client_1_1_tool_param_def.md) _Description of one parameter of a tool definition._     
+    * **class** [**ConnectedSession**](class_tryll_1_1_connected_session.md) _RAII pair: owns a_ [_**Client::ManagedServer**_](class_tryll_1_1_client_1_1_managed_server.md) _child process and a connected_[_**TryllClient**_](class_tryll_1_1_tryll_client.md) _._    
     * **struct** [**MessageResult**](struct_tryll_1_1_message_result.md) _Placeholder for per-turn metadata returned from SendText._ 
     * **class** [**TryllClient**](class_tryll_1_1_tryll_client.md) _TCP session to the Tryll server._     
         * **struct** [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md) _Result returned by_ `CreateEmbeddedStringStorage` _variants._    

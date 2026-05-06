@@ -11,6 +11,7 @@
 
 
 * `#include "CoreMinimal.h"`
+* `#include "Containers/Ticker.h"`
 * `#include "Subsystems/GameInstanceSubsystem.h"`
 * `#include "Tickable.h"`
 * `#include "TryllError.h"`
@@ -81,6 +82,7 @@
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllDownloadComplete, const FString &, ModelName, bool, bSuccess) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllLoadModel, const FString &, ModelName, bool, bSuccess) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllUnloadModel, const FString &, ModelName, bool, bSuccess) <br> |
+|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams) (FOnTryllModelReady, const FString &, ModelName, bool, bSuccess) <br> |
 
 
 
@@ -337,6 +339,25 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
 
 <hr>
 
+
+
+### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
+    FOnTryllModelReady,
+    const FString &,
+    ModelName,
+    bool,
+    bSuccess
+) 
+```
+
+
+
+
+<hr>
+
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

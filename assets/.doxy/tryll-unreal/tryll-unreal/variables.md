@@ -7,8 +7,6 @@
 
 * **ETryllErrorCode** ([**TryllError.h**](_tryll_error_8h.md))
 * **ETryllInferenceEngine** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
-* **ETryllKnowledgeAllEmptyBehavior** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
-* **ETryllKnowledgePlacement** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
 * **ETryllNodeType** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
 * **ETryllTurnStatus** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
 * **ETryllModelStatus** ([**TryllModelInfo.h**](_tryll_model_info_8h.md))

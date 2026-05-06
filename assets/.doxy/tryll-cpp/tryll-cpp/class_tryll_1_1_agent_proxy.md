@@ -168,7 +168,7 @@ void Tryll::AgentProxy::ChangeParam (
 **Exception:**
 
 
-* [**TryllError**](class_tryll_1_1_tryll_error.md) On server-reported errors or disconnect. 
+* `TryllError` On server-reported errors or disconnect. 
 
 
 
@@ -234,7 +234,7 @@ void Tryll::AgentProxy::Destroy ()
 **Exception:**
 
 
-* [**TryllError**](class_tryll_1_1_tryll_error.md) On server-reported errors, disconnect, or timeout (configured by the owning client). 
+* `TryllError` On server-reported errors, disconnect, or timeout (configured by the owning client). 
 
 
 
@@ -323,7 +323,7 @@ void Tryll::AgentProxy::SendText (
 **Exception:**
 
 
-* [**TryllError**](class_tryll_1_1_tryll_error.md) On server-reported errors or disconnect. 
+* `TryllError` On server-reported errors or disconnect. 
 
 
 
@@ -369,7 +369,7 @@ Future completing when the turn finishes. Calling `future::get()` propagates any
 **Exception:**
 
 
-* [**TryllError**](class_tryll_1_1_tryll_error.md) Only via the returned future; never directly. 
+* `TryllError` Only via the returned future; never directly. 
 
 
 
@@ -412,5 +412,5 @@ The callback fires on the reader thread for every `ToolCallNotification` frame t
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/tryll-mono/server/client-cpp/include/tryll/AgentProxy.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h`
 
