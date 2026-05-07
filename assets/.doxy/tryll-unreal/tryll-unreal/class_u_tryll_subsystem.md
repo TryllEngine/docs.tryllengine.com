@@ -84,7 +84,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false) <br> |
+|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, const FString & GameName=FString{}) <br> |
 |  void | [**Connect**](#function-connect) () <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_dynamic_multicast_delegate_threeparams) (FOnTryllCreateEmbeddedStringStorage, const FString &, Name, int32, RecordCount, bool, bSuccess) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-13) (FOnTryllCreateStringStorage, const FString &, Name, bool, bSuccess) <br> |
@@ -426,7 +426,8 @@ FOnTryllUnloadModel UTryllSubsystem::OnUnloadModelComplete;
 ```C++
 void UTryllSubsystem::ConfigureSession (
     ETryllInferenceEngine Engine,
-    bool bAllowAutoModelDownloading=false
+    bool bAllowAutoModelDownloading=false,
+    const FString & GameName=FString{}
 ) 
 ```
 
@@ -442,6 +443,7 @@ Send ConfigureSessionRequest. Must be called after Connected and before CreateAg
 
 * `Engine` Inference backend to use for this session. 
 * `bAllowAutoModelDownloading` When true, CreateAgent automatically downloads any missing models referenced by the graph instead of failing immediately. Intended for development and prototyping only. Pass [**UTryllRuntimeSettings::bAllowAutoModelDownloading**](class_u_tryll_runtime_settings.md#variable-ballowautomodeldownloading) to drive this from the project settings asset. 
+* `GameName` Integration identifier for telemetry grouping (e.g. "tryll-roleplay-demo"). Leave empty to omit; the server defaults to "unknown" when telemetry is on. Pass [**UTryllRuntimeSettings::GameName**](class_u_tryll_runtime_settings.md#variable-gamename) to drive this from the project settings asset. 
 
 
 

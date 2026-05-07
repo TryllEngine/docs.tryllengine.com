@@ -679,6 +679,8 @@
       
         
       
+        
+      
     
     
     
@@ -755,6 +757,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1557,6 +1594,8 @@
       
         
           
+        
+      
         
       
         
@@ -5318,6 +5357,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../../telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../error-codes.html" class="md-nav__link">
         
   
@@ -8788,7 +8862,7 @@ the client; use it as a context manager to guarantee clean teardown::</p>
 
 
 <a href="#tryll_client.TryllClient.configure_session" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">configure_session</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">allow_auto_model_downloading</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">configure_session</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">allow_auto_model_downloading</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">game_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -8841,6 +8915,23 @@ prototyping — not for production use.  The default timeout for
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>game_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Integration identifier for telemetry grouping (e.g. <code>"qa-and-eval"</code>).
+       Leave empty for anonymous sessions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -11436,7 +11527,7 @@ the client; use it as a context manager to guarantee clean teardown::</p>
 
 
 <a href="#tryll_client.client.TryllClient.configure_session" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">configure_session</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">allow_auto_model_downloading</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">configure_session</span><span class="p">(</span><span class="n">engine</span><span class="p">,</span> <span class="n">allow_auto_model_downloading</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">game_name</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -11489,6 +11580,23 @@ prototyping — not for production use.  The default timeout for
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>game_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Integration identifier for telemetry grouping (e.g. <code>"qa-and-eval"</code>).
+       Leave empty for anonymous sessions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -15244,7 +15352,7 @@ takes precedence over whatever is in <code>server-config.json</code>.</p>
 
 
 <a href="#tryll_client.managed_server.start_server_process" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">start_server_process</span><span class="p">(</span><span class="n">exe</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">9100</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">start_server_process</span><span class="p">(</span><span class="n">exe</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">9100</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">log_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_args</span><span class="o">=</span><span class="p">())</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -15254,6 +15362,8 @@ takes precedence over whatever is in <code>server-config.json</code>.</p>
 <p><em>log_dir</em> is the directory where <code>server_stdout.txt</code> and
 <code>server_stderr.txt</code> are written.  Defaults to the executable's directory.
 Pass <code>Path(os.devnull)</code> to suppress output entirely.</p>
+<p><em>extra_args</em> is appended to the command line after <code>--port &lt;port&gt;</code>; use it
+to pass server-startup flags such as <code>--disable-telemetry</code>.</p>
 
 
     </div>

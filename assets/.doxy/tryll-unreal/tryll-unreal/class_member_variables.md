@@ -39,6 +39,11 @@
 * **EmbeddingDim** ([**UTryllSubsystem::FEmbeddedStorageInfo**](struct_u_tryll_subsystem_1_1_f_embedded_storage_info.md))
 
 
+## g
+
+* **GameName** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
+
+
 ## k
 
 * **Key** ([**FTryllNodeParam**](struct_f_tryll_node_param.md))

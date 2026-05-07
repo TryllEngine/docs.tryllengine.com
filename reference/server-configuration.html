@@ -16,7 +16,7 @@
         <link rel="prev" href="model-management.html">
       
       
-        <link rel="next" href="error-codes.html">
+        <link rel="next" href="telemetry.html">
       
       
         
@@ -679,6 +679,8 @@
       
         
       
+        
+      
     
     
     
@@ -755,6 +757,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1557,6 +1594,8 @@
       
         
           
+        
+      
         
       
         
@@ -3368,6 +3407,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#telemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telemetry
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3399,6 +3449,41 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
     </li>
   
 
@@ -3665,6 +3750,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#telemetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Telemetry
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3871,6 +3967,93 @@ fine as long as no node ever requests the default list.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="telemetry">Telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
+<p>Tryll ships with usage telemetry <strong>enabled by default</strong>. The top-level
+<code>"telemetry"</code> object controls it. See <a href="telemetry.html">Telemetry</a> for the full
+background — what is collected, where it goes, and what you must do before
+shipping a game to players.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>telemetry.enabled</code></td>
+<td>bool</td>
+<td><code>true</code></td>
+<td>Master switch. Set to <code>false</code> to disable all telemetry with zero hot-path cost.</td>
+</tr>
+<tr>
+<td><code>telemetry.include_user_content</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+<td>When <code>true</code>, human messages and character replies are included in turn events. Keep <code>false</code> unless you explicitly want conversation content in your analytics sink.</td>
+</tr>
+<tr>
+<td><code>telemetry.sinks</code></td>
+<td>array</td>
+<td>PostHog EU sink</td>
+<td>List of sink objects. Remove or empty this array to stop sending data to PostHog (required before shipping a game to players).</td>
+</tr>
+</tbody>
+</table>
+<p>Each sink in <code>"sinks"</code> supports:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td>string</td>
+<td>Sink type. Currently only <code>"posthog"</code> is supported.</td>
+</tr>
+<tr>
+<td><code>enabled</code></td>
+<td>bool</td>
+<td>Per-sink on/off switch.</td>
+</tr>
+<tr>
+<td><code>endpoint</code></td>
+<td>string</td>
+<td>PostHog ingest URL, e.g. <code>"https://eu.i.posthog.com"</code>.</td>
+</tr>
+<tr>
+<td><code>project_api_key</code></td>
+<td>string</td>
+<td>PostHog project API key (<code>phc_…</code>).</td>
+</tr>
+<tr>
+<td><code>batch_max_records</code></td>
+<td>uint</td>
+<td>Maximum events per batch before flushing. Default <code>50</code>.</td>
+</tr>
+<tr>
+<td><code>batch_max_ms</code></td>
+<td>uint</td>
+<td>Maximum milliseconds before a batch is flushed. Default <code>2000</code>.</td>
+</tr>
+<tr>
+<td><code>queue_capacity</code></td>
+<td>uint</td>
+<td>In-memory event queue size; oldest entry dropped when full. Default <code>5000</code>.</td>
+</tr>
+<tr>
+<td><code>shutdown_flush_ms</code></td>
+<td>uint</td>
+<td>How long (ms) to wait for queue drain on server shutdown. Default <code>5000</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="log-mode-details">Log-mode details<a class="headerlink" href="#log-mode-details" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3895,6 +4078,8 @@ fine as long as no node ever requests the default list.</p>
 </table>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="telemetry.html">Telemetry</a> — what is collected, where it goes, and how to
+  disable before shipping.</li>
 <li><a href="model-management.html">Model Management</a> — <code>models.json</code> schema and
   lifecycle.</li>
 <li><a href="../how-to/run-the-tryll-server.html">How to run the Tryll server</a> —
@@ -3960,13 +4145,13 @@ fine as long as no node ever requests the default list.</p>
         
         
           
-          <a href="error-codes.html" class="md-footer__link md-footer__link--next" aria-label="Next: Error Codes">
+          <a href="telemetry.html" class="md-footer__link md-footer__link--next" aria-label="Next: Telemetry">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Error Codes
+                Telemetry
               </div>
             </div>
             <div class="md-footer__button md-icon">

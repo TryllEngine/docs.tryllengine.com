@@ -41,6 +41,7 @@ Inherits the following classes: UDeveloperSettings
 |  int32 | [**ConnectMaxAttempts**](#variable-connectmaxattempts)   = `5`<br> |
 |  float | [**ConnectRetryDelaySeconds**](#variable-connectretrydelayseconds)   = `1.0f`<br> |
 |  FString | [**EditorServerExePath**](#variable-editorserverexepath)  <br> |
+|  FString | [**GameName**](#variable-gamename)  <br> |
 |  bool | [**bAllowAutoModelDownloading**](#variable-ballowautomodeldownloading)   = `false`<br> |
 |  bool | [**bAutoLaunchServer**](#variable-bautolaunchserver)   = `true`<br> |
 
@@ -164,6 +165,23 @@ FString UTryllRuntimeSettings::EditorServerExePath;
 
 
 Path to the server exe used in editor builds. Empty disables auto-launch in editor — developers run the server manually. Relative paths resolve against the project dir. 
+
+
+        
+
+<hr>
+
+
+
+### variable GameName 
+
+```C++
+FString UTryllRuntimeSettings::GameName;
+```
+
+
+
+Integration identifier sent to the server on every session for telemetry grouping. Use a short, stable, lowercase slug — e.g. "my-game" or "tryll-roleplay-demo". Leave empty to omit (server defaults to "unknown" when telemetry is enabled). 
 
 
         

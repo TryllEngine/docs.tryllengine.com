@@ -679,6 +679,8 @@
       
         
       
+        
+      
     
     
     
@@ -755,6 +757,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1557,6 +1594,8 @@
       
         
           
+        
+      
         
       
         
@@ -3970,6 +4009,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/error-codes.html" class="md-nav__link">
         
   
@@ -4957,7 +5031,7 @@
 <tbody>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-configuresession"><strong>ConfigureSession</strong></a> (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false) <br></td>
+<td style="text-align: left;"><a href="#function-configuresession"><strong>ConfigureSession</strong></a> (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, const FString &amp; GameName=FString{}) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
@@ -5200,14 +5274,16 @@
 <h3 id="function-configuresession">function ConfigureSession<a class="headerlink" href="#function-configuresession" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">UTryllSubsystem</span><span class="o">::</span><span class="n">ConfigureSession</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">ETryllInferenceEngine</span><span class="w"> </span><span class="n">Engine</span><span class="p">,</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bAllowAutoModelDownloading</span><span class="o">=</span><span class="nb">false</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bAllowAutoModelDownloading</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">GameName</span><span class="o">=</span><span class="n">FString</span><span class="p">{}</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>Send ConfigureSessionRequest. Must be called after Connected and before CreateAgent. Result is delivered via OnConfigureSessionComplete delegate.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>Engine</code> Inference backend to use for this session. </li>
 <li><code>bAllowAutoModelDownloading</code> When true, CreateAgent automatically downloads any missing models referenced by the graph instead of failing immediately. Intended for development and prototyping only. Pass <a href="class_u_tryll_runtime_settings.html#variable-ballowautomodeldownloading"><strong>UTryllRuntimeSettings::bAllowAutoModelDownloading</strong></a> to drive this from the project settings asset. </li>
+<li><code>GameName</code> Integration identifier for telemetry grouping (e.g. "tryll-roleplay-demo"). Leave empty to omit; the server defaults to "unknown" when telemetry is on. Pass <a href="class_u_tryll_runtime_settings.html#variable-gamename"><strong>UTryllRuntimeSettings::GameName</strong></a> to drive this from the project settings asset. </li>
 </ul>
 <hr>
 

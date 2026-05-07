@@ -11,6 +11,7 @@
 ## t
 
 * **ToolCallCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **TurnCompleteCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 
 
 

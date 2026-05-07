@@ -679,6 +679,8 @@
       
         
       
+        
+      
     
     
     
@@ -755,6 +757,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1579,6 +1616,8 @@
       
         
       
+        
+      
     
     
     
@@ -1996,6 +2035,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#typedef-turncompletecallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        typedef TurnCompleteCallback
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2106,6 +2156,17 @@
     <span class="md-ellipsis">
       
         function SetOnToolCall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-setonturncomplete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        function SetOnTurnComplete
       
     </span>
   </a>
@@ -3469,6 +3530,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/error-codes.html" class="md-nav__link">
         
   
@@ -3690,6 +3786,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#typedef-turncompletecallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        typedef TurnCompleteCallback
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3806,6 +3913,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#function-setonturncomplete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        function SetOnTurnComplete
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3846,6 +3964,10 @@
 <tr>
 <td style="text-align: right;">typedef std::function&lt; void(std::string_view toolName, std::string_view argumentsJson)&gt;</td>
 <td style="text-align: left;"><a href="#typedef-toolcallcallback"><strong>ToolCallCallback</strong></a>  <br><em>Callback type for tool-call notifications.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">typedef std::function&lt; void(std::string_view debugInfoJson)&gt;</td>
+<td style="text-align: left;"><a href="#typedef-turncompletecallback"><strong>TurnCompleteCallback</strong></a>  <br><em>Callback type for turn-complete notifications.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3894,6 +4016,10 @@
 <td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="#function-setontoolcall"><strong>SetOnToolCall</strong></a> (<a href="class_tryll_1_1_agent_proxy.html#typedef-toolcallcallback"><strong>ToolCallCallback</strong></a> cb) <br><em>Register a callback to be invoked on each tool-call notification.</em></td>
 </tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setonturncomplete"><strong>SetOnTurnComplete</strong></a> (<a href="class_tryll_1_1_agent_proxy.html#typedef-turncompletecallback"><strong>TurnCompleteCallback</strong></a> cb) <br><em>Register a callback to be invoked when each turn completes.</em></td>
+</tr>
 </tbody>
 </table>
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
@@ -3910,19 +4036,27 @@
 * <code>argumentsJson</code> — compact JSON object of arguments, e.g. <code>{"city"</code>:"Berlin"}.</p>
 <p>Keep the callback short and non-blocking (same contract as the <code>onAnswerText</code> streaming callback on <a href="class_tryll_1_1_agent_proxy.html#function-sendtextasync"><strong>SendTextAsync</strong></a>). </p>
 <hr>
+
+<h3 id="typedef-turncompletecallback">typedef TurnCompleteCallback<a class="headerlink" href="#typedef-turncompletecallback" title="Permanent link">&para;</a></h3>
+<p><em>Callback type for turn-complete notifications.</em> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">TurnCompleteCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">debugInfoJson</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Invoked on the reader thread once per turn, immediately after <code>TurnComplete</code> arrives and before the <a href="class_tryll_1_1_agent_proxy.html#function-sendtext"><strong>SendText</strong></a> future resolves. <code>debugInfoJson</code> is the raw JSON string from <code>TurnComplete.debug_info</code>; it is non-empty only when the agent was created with <code>enableDiagnostics=true</code>.</p>
+<p>Keep the callback short and non-blocking (same contract as <a href="class_tryll_1_1_agent_proxy.html#typedef-toolcallcallback"><strong>ToolCallCallback</strong></a>). </p>
+<hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-agentproxy-12">function AgentProxy [1/2]<a class="headerlink" href="#function-agentproxy-12" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">AgentProxy</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">AgentProxy</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </code></pre></div>
 <hr>
 
 <h3 id="function-changeparam">function ChangeParam<a class="headerlink" href="#function-changeparam" title="Permanent link">&para;</a></h3>
 <p><em>Blocking convenience wrapper over</em> <a href="class_tryll_1_1_agent_proxy.html#function-changeparamasync"><em><strong>ChangeParamAsync</strong></em></a> <em>.</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">ChangeParam</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">nodeName</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramName</span><span class="p">,</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramValue</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">ChangeParam</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">nodeName</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramName</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramValue</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p><strong>Exception:</strong></p>
 <ul>
@@ -3932,11 +4066,11 @@
 
 <h3 id="function-changeparamasync">function ChangeParamAsync<a class="headerlink" href="#function-changeparamasync" title="Permanent link">&para;</a></h3>
 <p><em>Mutate a named parameter on a workflow node asynchronously.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">ChangeParamAsync</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">nodeName</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramName</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramValue</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">ChangeParamAsync</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">nodeName</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramName</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">paramValue</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p>The agent must not be processing a turn; if it is, the returned future completes with a <a href="class_tryll_1_1_tryll_error.html"><strong>TryllError</strong></a> carrying error code <code>AgentBusy</code> (3004).</p>
 <p><strong>Parameters:</strong></p>
@@ -3951,7 +4085,7 @@
 
 <h3 id="function-destroy">function Destroy<a class="headerlink" href="#function-destroy" title="Permanent link">&para;</a></h3>
 <p><em>Blocking convenience wrapper over</em> <a href="class_tryll_1_1_agent_proxy.html#function-destroyasync"><em><strong>DestroyAsync</strong></em></a> <em>.</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">Destroy</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">Destroy</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </code></pre></div></p>
 <p><strong>Exception:</strong></p>
 <ul>
@@ -3961,7 +4095,7 @@
 
 <h3 id="function-destroyasync">function DestroyAsync<a class="headerlink" href="#function-destroyasync" title="Permanent link">&para;</a></h3>
 <p><em>Request agent destruction on the server asynchronously.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">DestroyAsync</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">DestroyAsync</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </code></pre></div></p>
 <p>The proxy becomes inert once the returned future completes; further <code>SendText</code> calls fail with <a href="class_tryll_1_1_tryll_error.html"><strong>TryllError</strong></a>.</p>
 <p><strong>Returns:</strong></p>
@@ -3970,7 +4104,7 @@
 
 <h3 id="function-getagentid">function GetAgentId<a class="headerlink" href="#function-getagentid" title="Permanent link">&para;</a></h3>
 <p><em>Server-assigned agent identifier.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">GetAgentId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">GetAgentId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The <code>agent_id</code> field from the original <code>CreateAgentResponse</code>. </p>
@@ -3978,10 +4112,10 @@
 
 <h3 id="function-sendtext">function SendText<a class="headerlink" href="#function-sendtext" title="Permanent link">&para;</a></h3>
 <p><em>Blocking convenience wrapper over</em> <a href="class_tryll_1_1_agent_proxy.html#function-sendtextasync"><em><strong>SendTextAsync</strong></em></a> <em>.</em>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Tryll::AgentProxy::SendText</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onAnswerText</span><span class="o">=</span><span class="p">{}</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">Tryll::AgentProxy::SendText</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onAnswerText</span><span class="o">=</span><span class="p">{}</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3996,10 +4130,10 @@
 
 <h3 id="function-sendtextasync">function SendTextAsync<a class="headerlink" href="#function-sendtextasync" title="Permanent link">&para;</a></h3>
 <p><em>Send a text message to the agent asynchronously.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">SendTextAsync</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onAnswerText</span><span class="o">=</span><span class="p">{}</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">std</span><span class="o">::</span><span class="n">future</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">SendTextAsync</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onAnswerText</span><span class="o">=</span><span class="p">{}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p>The returned future completes (with <code>void</code>) when <code>TurnComplete</code> arrives. Any streaming <code>AnswerText</code> frames received before <code>TurnComplete</code> are dispatched to <code>onAnswerText</code> on the reader thread; keep the callback short and non-blocking.</p>
 <p><strong>Parameters:</strong></p>
@@ -4017,15 +4151,29 @@
 
 <h3 id="function-setontoolcall">function SetOnToolCall<a class="headerlink" href="#function-setontoolcall" title="Permanent link">&para;</a></h3>
 <p><em>Register a callback to be invoked on each tool-call notification.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">SetOnToolCall</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">ToolCallCallback</span><span class="w"> </span><span class="n">cb</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">SetOnToolCall</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">ToolCallCallback</span><span class="w"> </span><span class="n">cb</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p>Replaces any previously set callback. Pass an empty (default- constructed) <a href="class_tryll_1_1_agent_proxy.html#typedef-toolcallcallback"><strong>ToolCallCallback</strong></a> to unregister.</p>
 <p>The callback fires on the reader thread for every <code>ToolCallNotification</code> frame the server sends for this agent. It must return quickly and must not call any blocking <a href="class_tryll_1_1_tryll_client.html"><strong>TryllClient</strong></a> or <a href="class_tryll_1_1_agent_proxy.html"><strong>AgentProxy</strong></a> methods.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>cb</code> Callable to invoke with ``(toolName, argumentsJson), or empty to clear the current callback. </li>
+</ul>
+<hr>
+
+<h3 id="function-setonturncomplete">function SetOnTurnComplete<a class="headerlink" href="#function-setonturncomplete" title="Permanent link">&para;</a></h3>
+<p><em>Register a callback to be invoked when each turn completes.</em> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">AgentProxy</span><span class="o">::</span><span class="n">SetOnTurnComplete</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">TurnCompleteCallback</span><span class="w"> </span><span class="n">cb</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p>Replaces any previously set callback. Pass an empty (default- constructed) <a href="class_tryll_1_1_agent_proxy.html#typedef-turncompletecallback"><strong>TurnCompleteCallback</strong></a> to unregister.</p>
+<p>The callback fires on the reader thread once per <code>TurnComplete</code> frame, before the <a href="class_tryll_1_1_agent_proxy.html#function-sendtext"><strong>SendText</strong></a> future resolves. <code>debugInfoJson</code> contains the JSON diagnostic blob only when the agent was created with <code>enableDiagnostics=true</code>; otherwise it is an empty string.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>cb</code> Callable to invoke with ``(debugInfoJson), or empty to clear. </li>
 </ul>
 <hr>
 

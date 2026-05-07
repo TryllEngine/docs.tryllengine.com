@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://docs.tryllengine.com/how-to/connect-and-manage-session.html">
       
       
-        <link rel="prev" href="run-the-tryll-server.html">
+        <link rel="prev" href="test-agent-in-editor.html">
       
       
         <link rel="next" href="build-chat-agent-with-graph.html">
@@ -681,6 +681,8 @@
       
         
       
+        
+      
     
     
     
@@ -760,6 +762,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -887,6 +924,17 @@
     <span class="md-ellipsis">
       
         Session lifetime rules to remember
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suppress-telemetry-for-a-process-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suppress telemetry for a process run
       
     </span>
   </a>
@@ -1669,6 +1717,8 @@
       
         
           
+        
+      
         
       
         
@@ -3344,6 +3394,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/error-codes.html" class="md-nav__link">
         
   
@@ -3543,6 +3628,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#suppress-telemetry-for-a-process-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Suppress telemetry for a process run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verify-it-worked" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3711,11 +3807,20 @@ from scratch on reconnect.</p>
 <p>See <a href="../concepts/lifetime-and-ownership.html">Lifetime and Ownership</a>
 for the full picture of what survives session close and what does
 not.</p>
+<h2 id="suppress-telemetry-for-a-process-run">Suppress telemetry for a process run<a class="headerlink" href="#suppress-telemetry-for-a-process-run" title="Permanent link">&para;</a></h2>
+<p>To prevent a server from emitting telemetry events (e.g. to PostHog) for a
+specific run — such as a QA or CI pipeline — pass <code>--disable-telemetry</code> on the
+server command line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tryll_server.exe --disable-telemetry
+</code></pre></div>
+<p>This overrides <code>"enabled": true</code> in <code>server-config.json</code> for that process
+lifetime. See <a href="../reference/telemetry.html#suppress-telemetry-for-a-process-run-cli-override">Telemetry — CLI override</a>
+for details.</p>
 <h2 id="verify-it-worked">Verify it worked<a class="headerlink" href="#verify-it-worked" title="Permanent link">&para;</a></h2>
 <p>Connecting and configuring produces these server-side log lines (at
 <code>info</code> level):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[info] Session 42 accepted 127.0.0.1:56102
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[info] Session 42 configured engine=LlamaCpp
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[info] Session 42 accepted 127.0.0.1:56102
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>[info] Session 42 configured engine=LlamaCpp
 </code></pre></div>
 <p>If you do not see a configure line, check that
 <code>OnConfigureSessionComplete</code> fired with <code>bSuccess = true</code> on the
@@ -3770,7 +3875,7 @@ issue — see <a href="../reference/error-codes.html#2xxx--session">error codes 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="run-the-tryll-server.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Run the Tryll server">
+          <a href="test-agent-in-editor.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Test an agent in the editor">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3780,7 +3885,7 @@ issue — see <a href="../reference/error-codes.html#2xxx--session">error codes 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Run the Tryll server
+                Test an agent in the editor
               </div>
             </div>
           </a>

@@ -112,6 +112,7 @@
 * **SendText** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SendTextAsync** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetOnToolCall** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **SetOnTurnComplete** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetDefaultModelName** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **SetStartNode** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **sourceNode** ([**Tryll::Client::GraphDescription::RouteDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc.md))
@@ -130,6 +131,7 @@
 ## t
 
 * **ToolCallCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **TurnCompleteCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **tools** ([**Tryll::Client::GraphDescription::NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md))
 * **type** ([**Tryll::Client::GraphDescription::NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md), [**Tryll::Client::ToolParamDef**](struct_tryll_1_1_client_1_1_tool_param_def.md))
 * **targetNode** ([**Tryll::Client::GraphDescription::RouteDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc.md))

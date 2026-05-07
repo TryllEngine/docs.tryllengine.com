@@ -673,6 +673,8 @@
       
         
       
+        
+      
     
     
     
@@ -749,6 +751,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1549,6 +1586,8 @@
       
         
           
+        
+      
         
       
         
@@ -3224,6 +3263,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/error-codes.html" class="md-nav__link">
         
   
@@ -3479,6 +3553,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#variable-gamename" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        variable GameName
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#variable-ballowautomodeldownloading" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3583,6 +3668,10 @@
 <td style="text-align: left;"><a href="#variable-editorserverexepath"><strong>EditorServerExePath</strong></a>  <br></td>
 </tr>
 <tr>
+<td style="text-align: right;">FString</td>
+<td style="text-align: left;"><a href="#variable-gamename"><strong>GameName</strong></a>  <br></td>
+</tr>
+<tr>
 <td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#variable-ballowautomodeldownloading"><strong>bAllowAutoModelDownloading</strong></a>   = <code>false</code><br></td>
 </tr>
@@ -3634,21 +3723,27 @@
 <p>Path to the server exe used in editor builds. Empty disables auto-launch in editor — developers run the server manually. Relative paths resolve against the project dir. </p>
 <hr>
 
+<h3 id="variable-gamename">variable GameName<a class="headerlink" href="#variable-gamename" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">GameName</span><span class="p">;</span>
+</code></pre></div>
+<p>Integration identifier sent to the server on every session for telemetry grouping. Use a short, stable, lowercase slug — e.g. "my-game" or "tryll-roleplay-demo". Leave empty to omit (server defaults to "unknown" when telemetry is enabled). </p>
+<hr>
+
 <h3 id="variable-ballowautomodeldownloading">variable bAllowAutoModelDownloading<a class="headerlink" href="#variable-ballowautomodeldownloading" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">bAllowAutoModelDownloading</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">bAllowAutoModelDownloading</span><span class="p">;</span>
 </code></pre></div>
 <p>When enabled, ConfigureSession tells the server to automatically download any missing models referenced by a graph during CreateAgent, instead of failing immediately. The CreateAgent call will block until the download completes (up to 30 minutes).</p>
 <p>DEVELOPMENT AND PROTOTYPING USE ONLY. Disable before shipping to production. In production, use the explicit DownloadModel API with a progress UI. </p>
 <hr>
 
 <h3 id="variable-bautolaunchserver">variable bAutoLaunchServer<a class="headerlink" href="#variable-bautolaunchserver" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">bAutoLaunchServer</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">bAutoLaunchServer</span><span class="p">;</span>
 </code></pre></div>
 <p>When true, <a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a> spawns tryll_server.exe automatically on Initialize. </p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getcategoryname">function GetCategoryName<a class="headerlink" href="#function-getcategoryname" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">GetCategoryName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">UTryllRuntimeSettings</span><span class="o">::</span><span class="n">GetCategoryName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
 <hr>
 

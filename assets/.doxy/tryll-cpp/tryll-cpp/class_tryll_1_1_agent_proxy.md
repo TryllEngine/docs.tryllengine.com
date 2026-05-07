@@ -33,6 +33,7 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | typedef std::function&lt; void(std::string\_view toolName, std::string\_view argumentsJson)&gt; | [**ToolCallCallback**](#typedef-toolcallcallback)  <br>_Callback type for tool-call notifications._  |
+| typedef std::function&lt; void(std::string\_view debugInfoJson)&gt; | [**TurnCompleteCallback**](#typedef-turncompletecallback)  <br>_Callback type for turn-complete notifications._  |
 
 
 
@@ -66,6 +67,7 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 |  void | [**SendText**](#function-sendtext) (std::string\_view text, std::function&lt; void(std::string\_view text, bool isDelta, bool isFinal)&gt; onAnswerText={}) <br>_Blocking convenience wrapper over_ [_**SendTextAsync**_](class_tryll_1_1_agent_proxy.md#function-sendtextasync) _._ |
 |  std::future&lt; void &gt; | [**SendTextAsync**](#function-sendtextasync) (std::string\_view text, std::function&lt; void(std::string\_view text, bool isDelta, bool isFinal)&gt; onAnswerText={}) <br>_Send a text message to the agent asynchronously._  |
 |  void | [**SetOnToolCall**](#function-setontoolcall) ([**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback) cb) <br>_Register a callback to be invoked on each tool-call notification._  |
+|  void | [**SetOnTurnComplete**](#function-setonturncomplete) ([**TurnCompleteCallback**](class_tryll_1_1_agent_proxy.md#typedef-turncompletecallback) cb) <br>_Register a callback to be invoked when each turn completes._  |
 
 
 
@@ -127,6 +129,27 @@ Parameters:
 
 
 Keep the callback short and non-blocking (same contract as the `onAnswerText` streaming callback on [**SendTextAsync**](class_tryll_1_1_agent_proxy.md#function-sendtextasync)). 
+
+
+        
+
+<hr>
+
+
+
+### typedef TurnCompleteCallback 
+
+_Callback type for turn-complete notifications._ 
+```C++
+using Tryll::AgentProxy::TurnCompleteCallback = std::function<void(std::string_view debugInfoJson)>;
+```
+
+
+
+Invoked on the reader thread once per turn, immediately after `TurnComplete` arrives and before the [**SendText**](class_tryll_1_1_agent_proxy.md#function-sendtext) future resolves. `debugInfoJson` is the raw JSON string from `TurnComplete.debug_info`; it is non-empty only when the agent was created with `enableDiagnostics=true`.
+
+
+Keep the callback short and non-blocking (same contract as [**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback)). 
 
 
         
@@ -403,6 +426,39 @@ The callback fires on the reader thread for every `ToolCallNotification` frame t
 
 
 * `cb` Callable to invoke with ``(toolName, argumentsJson), or empty to clear the current callback. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function SetOnTurnComplete 
+
+_Register a callback to be invoked when each turn completes._ 
+```C++
+void Tryll::AgentProxy::SetOnTurnComplete (
+    TurnCompleteCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default- constructed) [**TurnCompleteCallback**](class_tryll_1_1_agent_proxy.md#typedef-turncompletecallback) to unregister.
+
+
+The callback fires on the reader thread once per `TurnComplete` frame, before the [**SendText**](class_tryll_1_1_agent_proxy.md#function-sendtext) future resolves. `debugInfoJson` contains the JSON diagnostic blob only when the agent was created with `enableDiagnostics=true`; otherwise it is an empty string.
+
+
+
+
+**Parameters:**
+
+
+* `cb` Callable to invoke with ``(debugInfoJson), or empty to clear. 
 
 
 

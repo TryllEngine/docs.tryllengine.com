@@ -57,7 +57,7 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) ([**Client::InferenceEngine**](namespace_tryll_1_1_client.md#enum-inferenceengine) engine, bool allowAutoModelDownloading=false, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Select the session's inference engine._  |
+|  void | [**ConfigureSession**](#function-configuresession) ([**Client::InferenceEngine**](namespace_tryll_1_1_client.md#enum-inferenceengine) engine, bool allowAutoModelDownloading=false, std::string\_view gameName={}, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Select the session's inference engine._  |
 |  [**AgentProxy**](class_tryll_1_1_agent_proxy.md) | [**CreateAgent**](#function-createagent) (const [**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_tryll_client.md#function-createagentasync) _._ |
 |  std::future&lt; [**AgentProxy**](class_tryll_1_1_agent_proxy.md) &gt; | [**CreateAgentAsync**](#function-createagentasync) (const [**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false) <br>_Asynchronously create an agent with the given graph description._  |
 |  [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md) | [**CreateEmbeddedStringStorage**](#function-createembeddedstringstorage) (std::string\_view name, std::string\_view configPath, std::string\_view embeddingModel={}, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Create an_ `EmbeddedStringStorage` _from a server-side config._ |
@@ -133,6 +133,7 @@ _Select the session's inference engine._
 void Tryll::TryllClient::ConfigureSession (
     Client::InferenceEngine engine,
     bool allowAutoModelDownloading=false,
+    std::string_view gameName={},
     std::chrono::milliseconds timeout=std::chrono::seconds{30}
 ) 
 ```
@@ -157,6 +158,13 @@ Must be called after [**Connect**](class_tryll_1_1_tryll_client.md#function-conn
 
 
 * `TryllError` On server-reported errors or timeout. 
+
+
+
+**Parameters:**
+
+
+* `gameName` Integration identifier for telemetry grouping (e.g. "my-game"). Nullable — omit for anonymous sessions. 
 
 
 

@@ -64,6 +64,7 @@
 ## g
 
 * **GetAgentId** ([**FTryllAgent**](class_f_tryll_agent.md))
+* **GameName** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **GetCategoryName** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **GetSessionId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **GetStatId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))

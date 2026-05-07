@@ -91,6 +91,7 @@
 * **SendText** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SendTextAsync** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetOnToolCall** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **SetOnTurnComplete** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
 * **SetDefaultModelName** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **SetStartNode** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **Start** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))

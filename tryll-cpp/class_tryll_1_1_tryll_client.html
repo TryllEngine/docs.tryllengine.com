@@ -679,6 +679,8 @@
       
         
       
+        
+      
     
     
     
@@ -755,6 +757,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
   
 
     
@@ -1557,6 +1594,8 @@
       
         
           
+        
+      
         
       
         
@@ -3645,6 +3684,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/error-codes.html" class="md-nav__link">
         
   
@@ -4212,7 +4286,7 @@
 <tbody>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-configuresession"><strong>ConfigureSession</strong></a> (<a href="namespace_tryll_1_1_client.html#enum-inferenceengine"><strong>Client::InferenceEngine</strong></a> engine, bool allowAutoModelDownloading=false, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br><em>Select the session's inference engine.</em></td>
+<td style="text-align: left;"><a href="#function-configuresession"><strong>ConfigureSession</strong></a> (<a href="namespace_tryll_1_1_client.html#enum-inferenceengine"><strong>Client::InferenceEngine</strong></a> engine, bool allowAutoModelDownloading=false, std::string_view gameName={}, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br><em>Select the session's inference engine.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="class_tryll_1_1_agent_proxy.html"><strong>AgentProxy</strong></a></td>
@@ -4331,8 +4405,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">TryllClient</span><span class="o">::</span><span class="n">ConfigureSession</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Client</span><span class="o">::</span><span class="n">InferenceEngine</span><span class="w"> </span><span class="n">engine</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">allowAutoModelDownloading</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="w"> </span><span class="n">timeout</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">{</span><span class="mi">30</span><span class="p">}</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">gameName</span><span class="o">=</span><span class="p">{},</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="w"> </span><span class="n">timeout</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">{</span><span class="mi">30</span><span class="p">}</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p>Must be called after <a href="class_tryll_1_1_tryll_client.html#function-connect"><strong>Connect</strong></a> and before <a href="class_tryll_1_1_tryll_client.html#function-createagent"><strong>CreateAgent</strong></a> or any model-management call.</p>
 <p><strong>Parameters:</strong></p>
@@ -4344,6 +4419,10 @@
 <p><strong>Exception:</strong></p>
 <ul>
 <li><code>TryllError</code> On server-reported errors or timeout. </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>gameName</code> Integration identifier for telemetry grouping (e.g. "my-game"). Nullable — omit for anonymous sessions. </li>
 </ul>
 <hr>
 
