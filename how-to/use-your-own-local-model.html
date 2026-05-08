@@ -3694,12 +3694,20 @@
 </li>
 <li>
 <p><strong>Verify via <code>ListModels</code>.</strong> From a client:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Unreal</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Unity</label><label for="__tabbed_1_2">Unreal</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">list_models</span><span class="p">():</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>   <span class="c1"># expect &quot;My Local Model Local&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">models</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">RequestListModelsAsync</span><span class="p">();</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">error</span><span class="p">.</span><span class="n">IsOk</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="n">error</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">models</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;{m.Name} {m.Status}&quot;</span><span class="p">);</span><span class="w">   </span><span class="c1">// expect &quot;My Local Model Local&quot;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Call <code>UTryllSubsystem::ListModels</code> (Blueprint:
+<strong>Tryll|Models → List Models</strong>). Bind
+<strong>On List Models Complete</strong> to iterate
+<code>TArray&lt;FTryllModelInfo&gt;</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">auto</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">ListModels</span><span class="p">();</span>
@@ -3710,10 +3718,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Call <code>UTryllSubsystem::ListModels</code> (Blueprint:
-<strong>Tryll|Models → List Models</strong>). Bind
-<strong>On List Models Complete</strong> to iterate
-<code>TArray&lt;FTryllModelInfo&gt;</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">list_models</span><span class="p">():</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>   <span class="c1"># expect &quot;My Local Model Local&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -3725,16 +3732,16 @@ the file is present on disk and can be loaded. If you see
 <p><strong>Reference the model from a graph.</strong> Pass the <code>name</code> you chose
    as <code>model_name</code> on any <code>Generate</code> or <code>ToolCall</code> node, or as the
    agent's <code>default_model_name</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">,</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>               <span class="p">{</span><span class="s2">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Local Model&quot;</span><span class="p">})</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># or, more commonly, set it as the graph&#39;s default:</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">graph</span><span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>               <span class="p">{</span><span class="s2">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Local Model&quot;</span><span class="p">})</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># or, more commonly, set it as the graph&#39;s default:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">graph</span><span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p><strong>(Optional) pin it.</strong> Load the model eagerly so the first turn
    does not pay the load cost:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">client</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">client</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>See <a href="pin-and-unpin-models.html">Pin and Unpin Models</a> for the
 trade-offs.</p>
@@ -3743,8 +3750,8 @@ trade-offs.</p>
 <h2 id="verify-it-worked">Verify it worked<a class="headerlink" href="#verify-it-worked" title="Permanent link">&para;</a></h2>
 <p>Create an agent using the model and send one message. A successful
 load shows up server-side as:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>[info] Loading model &quot;My Local Model&quot; from C:/models/my-model-q4_k_m.gguf
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>[info] Model loaded: ctx=4096 vocab=128256 dtype=q8_0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[info] Loading model &quot;My Local Model&quot; from C:/models/my-model-q4_k_m.gguf
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[info] Model loaded: ctx=4096 vocab=128256 dtype=q8_0
 </code></pre></div>
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <ul>

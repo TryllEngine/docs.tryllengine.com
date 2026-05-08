@@ -3648,30 +3648,51 @@ streamed reply.</p>
 </ul>
 </div>
 <h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Unreal</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Unity</label><label for="__tabbed_1_2">Unreal</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphDescription</span><span class="p">,</span> <span class="n">NodeType</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 1. Build the graph.</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="n">NodeType</span><span class="o">.</span><span class="n">HumanMessageGuardrail</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="s2">&quot;triggered&quot;</span><span class="p">,</span>     <span class="s2">&quot;END&quot;</span><span class="p">)</span>      <span class="c1"># drop jailbreaks silently</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="s2">&quot;not_triggered&quot;</span><span class="p">,</span> <span class="s2">&quot;answer&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>       <span class="s2">&quot;END&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># 2. Create the agent.</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># 3. Send a message. send_message blocks and returns the full reply.</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">reply</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// 1. Attach TryllAgentComponent to a GameObject.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">//    Assign a TryllWorkflowAsset in the Inspector, or build the graph at runtime:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">var</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TryllGraphBuilder</span><span class="p">()</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;guard&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">TryllNodeType</span><span class="p">.</span><span class="n">HumanMessageGuardrail</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p">.</span><span class="n">AddNode</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TryllNodeType</span><span class="p">.</span><span class="n">Generate</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;guard&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;triggered&quot;</span><span class="p">,</span><span class="w">     </span><span class="s">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;guard&quot;</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;not_triggered&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;answer&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p">.</span><span class="n">Wire</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;default&quot;</span><span class="p">,</span><span class="w">       </span><span class="s">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;guard&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;My Local Model&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kt">var</span><span class="w"> </span><span class="n">agentComp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">TryllAgentComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">InlineGraphDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1">// 2. Wire events.</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">OnAnswerText</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">chatText</span><span class="p">.</span><span class="n">text</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">OnTurnComplete</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="p">(</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">typingIndicator</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1">// 3. When the agent is created, send the first message.</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">OnAgentCreated</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">agentComp</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">));</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Add a <code>UTryllAgentComponent</code> to your actor.</li>
+<li>In the Details panel, edit <strong>Graph</strong> on the component, or
+   reference a <code>UTryllWorkflowAsset</code> you authored in the Content
+   Browser. Wire <strong>guard.triggered → END</strong>, <strong>guard.not_triggered
+   → answer</strong>, <strong>answer.default → END</strong>.</li>
+<li>In Blueprint:<ul>
+<li>Bind <strong>On Agent Ready</strong> to a handler that calls <strong>Send
+  Message</strong>.</li>
+<li>Bind <strong>On Answer Text</strong> to append each chunk to a UI text
+  block.</li>
+<li>Bind <strong>On Turn Complete</strong> to flip the "typing" indicator
+  off.</li>
+</ul>
+</li>
+</ol>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tryll/TryllClient.h&gt;</span>
@@ -3696,31 +3717,36 @@ streamed reply.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<ol>
-<li>Add a <code>UTryllAgentComponent</code> to your actor.</li>
-<li>In the Details panel, edit <strong>Graph</strong> on the component, or
-   reference a <code>UTryllWorkflowAsset</code> you authored in the Content
-   Browser. Wire <strong>guard.triggered → END</strong>, <strong>guard.not_triggered
-   → answer</strong>, <strong>answer.default → END</strong>.</li>
-<li>In Blueprint:<ul>
-<li>Bind <strong>On Agent Ready</strong> to a handler that calls <strong>Send
-  Message</strong>.</li>
-<li>Bind <strong>On Answer Text</strong> to append each chunk to a UI text
-  block.</li>
-<li>Bind <strong>On Turn Complete</strong> to flip the "typing" indicator
-  off.</li>
-</ul>
-</li>
-</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphDescription</span><span class="p">,</span> <span class="n">NodeType</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># 1. Build the graph.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="n">NodeType</span><span class="o">.</span><span class="n">HumanMessageGuardrail</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">Generate</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="s2">&quot;triggered&quot;</span><span class="p">,</span>     <span class="s2">&quot;END&quot;</span><span class="p">)</span>      <span class="c1"># drop jailbreaks silently</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">,</span>  <span class="s2">&quot;not_triggered&quot;</span><span class="p">,</span> <span class="s2">&quot;answer&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="o">.</span><span class="n">wire</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>       <span class="s2">&quot;END&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;guard&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;My Local Model&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># 2. Create the agent.</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># 3. Send a message. send_message blocks and returns the full reply.</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">reply</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <h2 id="verify-it-worked">Verify it worked<a class="headerlink" href="#verify-it-worked" title="Permanent link">&para;</a></h2>
 <p>Server-side, at <code>info</code> log level, one turn produces:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[info] Agent 7: turn starting
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[info] Node guard: not_triggered
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>[info] Node answer: default
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>[info] Agent 7: turn complete (Success, tokens=128)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[info] Agent 7: turn starting
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>[info] Node guard: not_triggered
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>[info] Node answer: default
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>[info] Agent 7: turn complete (Success, tokens=128)
 </code></pre></div>
 <p>Client-side, Python returns the full reply string from
 <code>send_message</code>, while C++ and Unreal see each streamed chunk arrive

@@ -3671,26 +3671,41 @@ in a turn has <code>is_final = true</code>; a final <code>TurnComplete</code> fr
 the turn's outcome (success / error / cancelled) and the total token
 count.</p>
 <h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Unreal</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Unity</label><label for="__tabbed_1_2">Unreal</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Python</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="admonition warning">
-<p class="admonition-title">Python does not expose per-chunk streaming today.</p>
-<p><code>TryllClient.send_message</code> blocks until the server sends
-<code>TurnComplete</code> and returns the complete reply text.
-Streaming chunks arrive over the wire and are accumulated
-inside the client, but there is no user callback for each
-chunk. Use C++ or Unreal when you need a per-token UI.</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Blocks, accumulates all AnswerText chunks, returns the full reply.</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">reply</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Tell me about the architecture.&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">your_chat_widget</span><span class="o">.</span><span class="n">set_current_reply</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Diagnostics about the last turn:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">last_tokens_generated</span><span class="p">,</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>      <span class="n">agent</span><span class="o">.</span><span class="n">last_answer_chunk_count</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>      <span class="n">agent</span><span class="o">.</span><span class="n">last_ttft_s</span><span class="p">)</span>
+<p>On <code>TryllAgentComponent</code>, bind two events. All callbacks fire on
+the Unity <strong>main thread</strong> — you can update UGUI / UI Toolkit widgets
+directly without marshalling.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">var</span><span class="w"> </span><span class="n">agentComp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">TryllAgentComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// OnAnswerText fires for every streamed chunk.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">OnAnswerText</span><span class="p">.</span><span class="n">AddListener</span><span class="p">((</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">isDelta</span><span class="p">,</span><span class="w"> </span><span class="n">isFinal</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">chatBubble</span><span class="p">.</span><span class="n">AppendText</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isFinal</span><span class="p">)</span><span class="w"> </span><span class="n">chatBubble</span><span class="p">.</span><span class="n">HideCursor</span><span class="p">();</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">});</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">// OnTurnComplete fires once the turn ends.</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">agentComp</span><span class="p">.</span><span class="n">OnTurnComplete</span><span class="p">.</span><span class="n">AddListener</span><span class="p">((</span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">typingIndicator</span><span class="p">.</span><span class="n">SetActive</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">chatBubble</span><span class="p">.</span><span class="n">CommitReply</span><span class="p">();</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">});</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>On the <code>UTryllAgentComponent</code>, bind two events in Blueprint:</p>
+<ul>
+<li><strong>On Answer Text (Text: FString, bIsFinal: bool)</strong> — append
+  <code>Text</code> to your <code>UTextBlock</code>. <code>bIsFinal</code> is <code>true</code> only on the
+  very last chunk.</li>
+<li><strong>On Turn Complete (Status: ETryllTurnStatus)</strong> — stop the
+  typing indicator and commit the final reply.</li>
+</ul>
+<p>There is also <strong>On Answer Full (FullText: FString)</strong> which fires
+once after the turn completes, with the whole response in one
+string — useful if your UI only needs the final text.</p>
 </div>
 <div class="tabbed-block">
 <p><code>AgentProxy::SendText</code> takes the per-chunk callback directly; it
@@ -3716,17 +3731,23 @@ the method returns; the reply is still delivered to whatever
 accumulator you maintain inside the callback.</p>
 </div>
 <div class="tabbed-block">
-<p>On the <code>UTryllAgentComponent</code>, bind two events in Blueprint:</p>
-<ul>
-<li><strong>On Answer Text (Text: FString, bIsFinal: bool)</strong> — append
-  <code>Text</code> to your <code>UTextBlock</code>. <code>bIsFinal</code> is <code>true</code> only on the
-  very last chunk.</li>
-<li><strong>On Turn Complete (Status: ETryllTurnStatus)</strong> — stop the
-  typing indicator and commit the final reply.</li>
-</ul>
-<p>There is also <strong>On Answer Full (FullText: FString)</strong> which fires
-once after the turn completes, with the whole response in one
-string — useful if your UI only needs the final text.</p>
+<div class="admonition warning">
+<p class="admonition-title">Python does not expose per-chunk streaming today.</p>
+<p><code>TryllClient.send_message</code> blocks until the server sends
+<code>TurnComplete</code> and returns the complete reply text.
+Streaming chunks arrive over the wire and are accumulated
+inside the client, but there is no user callback for each
+chunk. Use Unity, C++, or Unreal when you need a per-token UI.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Blocks, accumulates all AnswerText chunks, returns the full reply.</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">reply</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">&quot;Tell me about the architecture.&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">your_chat_widget</span><span class="o">.</span><span class="n">set_current_reply</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Diagnostics about the last turn:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">last_tokens_generated</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>      <span class="n">agent</span><span class="o">.</span><span class="n">last_answer_chunk_count</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>      <span class="n">agent</span><span class="o">.</span><span class="n">last_ttft_s</span><span class="p">)</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -3777,10 +3798,10 @@ frames. For example:</p>
   inside a <code>Generate</code> turn but misleading for <code>CannedResponse</code> — you
   will get one chunk with <code>is_final = true</code>. Always also bind
   <code>TurnComplete</code> for "turn is really done".</li>
-<li><strong>Threading in Unreal.</strong> <code>OnAnswerText</code> is dispatched on the game
-  thread; you can touch UMG widgets directly. In C++, the <code>SendText</code>
-  callback fires on the client library's reader thread — marshal to
-  your UI thread explicitly. Python is non-streaming and
+<li><strong>Threading.</strong> <code>OnAnswerText</code> in Unity and Unreal is dispatched on
+  the main/game thread; you can touch UI widgets directly. In C++, the
+  <code>SendText</code> callback fires on the client library's reader thread —
+  marshal to your UI thread explicitly. Python is non-streaming and
   single-threaded at the call site.</li>
 <li><strong>Accumulating bytes, not chars.</strong> For multi-byte scripts,
   concatenate the <code>FString</code> / <code>std::string</code> as you receive them;
