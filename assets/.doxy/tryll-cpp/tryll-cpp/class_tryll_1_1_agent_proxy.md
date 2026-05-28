@@ -32,8 +32,13 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
+| typedef std::function&lt; void(std::string\_view text, bool isDelta, bool isFinal)&gt; | [**AnswerTextCallback**](#typedef-answertextcallback)  <br>_Callback type for streaming text chunks._  |
+| typedef std::function&lt; void(const [**TryllError**](class_tryll_1_1_tryll_error.md) &error)&gt; | [**ErrorCallback**](#typedef-errorcallback)  <br>_Callback type for agent-level error notifications._  |
+| typedef std::function&lt; void(std::string\_view intent, std::string\_view recordId, std::size\_t recordIndex, float distance)&gt; | [**IntentClassifiedCallback**](#typedef-intentclassifiedcallback)  <br>_Callback type for intent-classification notifications._  |
+| typedef std::function&lt; void(std::string\_view nodeName, std::string\_view eventType, const std::vector&lt; [**NodeEventKeyValue**](class_tryll_1_1_agent_proxy.md#typedef-nodeeventkeyvalue) &gt; &kvPairs)&gt; | [**NodeEventCallback**](#typedef-nodeeventcallback)  <br>_Generic_ `NodeEvent` _callback._ |
+| typedef std::pair&lt; std::string, std::string &gt; | [**NodeEventKeyValue**](#typedef-nodeeventkeyvalue)  <br>_One ordered key/value pair in a_ `NodeEvent` _payload._ |
 | typedef std::function&lt; void(std::string\_view toolName, std::string\_view argumentsJson)&gt; | [**ToolCallCallback**](#typedef-toolcallcallback)  <br>_Callback type for tool-call notifications._  |
-| typedef std::function&lt; void(std::string\_view debugInfoJson)&gt; | [**TurnCompleteCallback**](#typedef-turncompletecallback)  <br>_Callback type for turn-complete notifications._  |
+| typedef std::function&lt; void(::Tryll::TurnStatus status, std::string\_view debugInfoJson, std::int32\_t tokensGenerated)&gt; | [**TurnCompleteCallback**](#typedef-turncompletecallback)  <br>_Callback type for turn-complete notifications._  |
 
 
 
@@ -59,15 +64,18 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**AgentProxy**](#function-agentproxy-12) () = default<br> |
-|  void | [**ChangeParam**](#function-changeparam) (std::string\_view nodeName, std::string\_view paramName, std::string\_view paramValue) <br>_Blocking convenience wrapper over_ [_**ChangeParamAsync**_](class_tryll_1_1_agent_proxy.md#function-changeparamasync) _._ |
-|  std::future&lt; void &gt; | [**ChangeParamAsync**](#function-changeparamasync) (std::string\_view nodeName, std::string\_view paramName, std::string\_view paramValue) <br>_Mutate a named parameter on a workflow node asynchronously._  |
+|  void | [**ChangeParams**](#function-changeparams) (std::string\_view nodeName, [**::Tryll::Client::NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) params) <br>_Blocking convenience wrapper over_ [_**ChangeParamsAsync**_](class_tryll_1_1_agent_proxy.md#function-changeparamsasync) _._ |
+|  std::future&lt; void &gt; | [**ChangeParamsAsync**](#function-changeparamsasync) (std::string\_view nodeName, [**::Tryll::Client::NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) params) <br>_Apply typed node parameters to a named workflow node asynchronously._  |
 |  void | [**Destroy**](#function-destroy) () <br>_Blocking convenience wrapper over_ [_**DestroyAsync**_](class_tryll_1_1_agent_proxy.md#function-destroyasync) _._ |
 |  std::future&lt; void &gt; | [**DestroyAsync**](#function-destroyasync) () <br>_Request agent destruction on the server asynchronously._  |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br>_Server-assigned agent identifier._  |
-|  void | [**SendText**](#function-sendtext) (std::string\_view text, std::function&lt; void(std::string\_view text, bool isDelta, bool isFinal)&gt; onAnswerText={}) <br>_Blocking convenience wrapper over_ [_**SendTextAsync**_](class_tryll_1_1_agent_proxy.md#function-sendtextasync) _._ |
-|  std::future&lt; void &gt; | [**SendTextAsync**](#function-sendtextasync) (std::string\_view text, std::function&lt; void(std::string\_view text, bool isDelta, bool isFinal)&gt; onAnswerText={}) <br>_Send a text message to the agent asynchronously._  |
-|  void | [**SetOnToolCall**](#function-setontoolcall) ([**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback) cb) <br>_Register a callback to be invoked on each tool-call notification._  |
-|  void | [**SetOnTurnComplete**](#function-setonturncomplete) ([**TurnCompleteCallback**](class_tryll_1_1_agent_proxy.md#typedef-turncompletecallback) cb) <br>_Register a callback to be invoked when each turn completes._  |
+|  void | [**SendText**](#function-sendtext) (std::string\_view text) <br>_Send a text message to the agent (fire-and-forget)._  |
+|  void | [**SetOnAnswerText**](#function-setonanswertext) ([**AnswerTextCallback**](class_tryll_1_1_agent_proxy.md#typedef-answertextcallback) cb) <br>_Register a callback for streaming text chunks._  |
+|  void | [**SetOnError**](#function-setonerror) ([**ErrorCallback**](class_tryll_1_1_agent_proxy.md#typedef-errorcallback) cb) <br>_Register a callback for agent-level error notifications._  |
+|  void | [**SetOnIntentClassified**](#function-setonintentclassified) ([**IntentClassifiedCallback**](class_tryll_1_1_agent_proxy.md#typedef-intentclassifiedcallback) cb) <br>_Register a callback for intent-classification notifications._  |
+|  void | [**SetOnNodeEvent**](#function-setonnodeevent) ([**NodeEventCallback**](class_tryll_1_1_agent_proxy.md#typedef-nodeeventcallback) cb) <br>_Register a generic_ `NodeEvent` _fallback callback._ |
+|  void | [**SetOnToolCall**](#function-setontoolcall) ([**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback) cb) <br>_Register a callback for tool-call notifications._  |
+|  void | [**SetOnTurnComplete**](#function-setonturncomplete) ([**TurnCompleteCallback**](class_tryll_1_1_agent_proxy.md#typedef-turncompletecallback) cb) <br>_Register a callback for turn-complete notifications._  |
 
 
 
@@ -99,12 +107,140 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 ## Detailed Description
 
 
-Obtained from [**TryllClient::CreateAgent**](class_tryll_1_1_tryll_client.md#function-createagent). The proxy is copyable — all copies share the same underlying agent binding; the server-side agent is destroyed when [**Destroy**](class_tryll_1_1_agent_proxy.md#function-destroy) is called explicitly. 
-
-
-    
 ## Public Types Documentation
 
+
+
+
+### typedef AnswerTextCallback 
+
+_Callback type for streaming text chunks._ 
+```C++
+using Tryll::AgentProxy::AnswerTextCallback = 
+std::function<void(std::string_view text, bool isDelta, bool isFinal)>;
+```
+
+
+
+Invoked on the reader thread for each `AnswerText` frame received from the server (including frames from server-initiated turns such as voice autosend). Must return quickly and must not call any blocking [**TryllClient**](class_tryll_1_1_tryll_client.md) or [**AgentProxy**](class_tryll_1_1_agent_proxy.md) methods.
+
+
+Parameters:
+* `text` — streamed text chunk.
+* `isDelta` — true when `text` is an incremental token/chunk; false when it is the accumulated response so far.
+* `isFinal` — true for the last chunk before `TurnComplete`. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### typedef ErrorCallback 
+
+_Callback type for agent-level error notifications._ 
+```C++
+using Tryll::AgentProxy::ErrorCallback = std::function<void(const TryllError& error)>;
+```
+
+
+
+Invoked on the reader thread when a `SendText` turn is terminated by a server-reported `ErrorResponse`, or when the connection drops mid-turn. Must return quickly and must not call any blocking methods.
+
+
+
+
+**Parameters:**
+
+
+* `error` The error reported by the server or transport layer. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### typedef IntentClassifiedCallback 
+
+_Callback type for intent-classification notifications._ 
+```C++
+using Tryll::AgentProxy::IntentClassifiedCallback = 
+std::function<void(std::string_view intent,
+                   std::string_view recordId,
+                   std::size_t      recordIndex,
+                   float            distance)>;
+```
+
+
+
+Invoked on the reader thread for each `NodeEvent` with `event_type="intent_classified"` — fired by `ClassifyIntentNode` on its "found" path when `notify_client="true"`.
+
+
+Parameters:
+* `intent` — the classified intent label.
+* `recordId` — id of the top-1 matched KB record.
+* `recordIndex` — 0-based index of the matched record in storage.
+* `distance` — cosine distance of the match.
+
+
+
+
+Must return quickly and must not call any blocking methods. 
+
+
+        
+
+<hr>
+
+
+
+### typedef NodeEventCallback 
+
+_Generic_ `NodeEvent` _callback._
+```C++
+using Tryll::AgentProxy::NodeEventCallback = 
+std::function<void(std::string_view nodeName,
+                   std::string_view eventType,
+                   const std::vector<NodeEventKeyValue>& kvPairs)>;
+```
+
+
+
+Invoked on the reader thread when a `NodeEvent` arrives whose `event_type` is unrecognised or whose typed callback is not set. If a typed callback (e.g. [**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback), [**IntentClassifiedCallback**](class_tryll_1_1_agent_proxy.md#typedef-intentclassifiedcallback)) is registered for the incoming `event_type`, this callback is NOT fired for that event.
+
+
+Parameters:
+* `nodeName` — name of the emitting workflow node.
+* `eventType` — event discriminator.
+* `kvPairs` — ordered string→string payload. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### typedef NodeEventKeyValue 
+
+_One ordered key/value pair in a_ `NodeEvent` _payload._
+```C++
+using Tryll::AgentProxy::NodeEventKeyValue = std::pair<std::string, std::string>;
+```
+
+
+
+
+<hr>
 
 
 
@@ -118,7 +254,7 @@ std::function<void(std::string_view toolName, std::string_view argumentsJson)>;
 
 
 
-Invoked on the reader thread for each `ToolCallNotification` received from the server (i.e. when the agent's graph has a `ToolCall` node with `notify_client` = "true").
+Invoked on the reader thread for each `NodeEvent` with `event_type="tool_call"` received from the server (i.e. when the agent's graph has a `ToolCall` node with `notify_client="true"`).
 
 
 Parameters:
@@ -128,7 +264,7 @@ Parameters:
 
 
 
-Keep the callback short and non-blocking (same contract as the `onAnswerText` streaming callback on [**SendTextAsync**](class_tryll_1_1_agent_proxy.md#function-sendtextasync)). 
+Must return quickly and must not call any blocking methods. 
 
 
         
@@ -141,15 +277,26 @@ Keep the callback short and non-blocking (same contract as the `onAnswerText` st
 
 _Callback type for turn-complete notifications._ 
 ```C++
-using Tryll::AgentProxy::TurnCompleteCallback = std::function<void(std::string_view debugInfoJson)>;
+using Tryll::AgentProxy::TurnCompleteCallback = 
+std::function<void(::Tryll::TurnStatus status,
+                   std::string_view debugInfoJson,
+                   std::int32_t tokensGenerated)>;
 ```
 
 
 
-Invoked on the reader thread once per turn, immediately after `TurnComplete` arrives and before the [**SendText**](class_tryll_1_1_agent_proxy.md#function-sendtext) future resolves. `debugInfoJson` is the raw JSON string from `TurnComplete.debug_info`; it is non-empty only when the agent was created with `enableDiagnostics=true`.
+Invoked on the reader thread once per turn, immediately after `TurnComplete` arrives. Covers both client-initiated turns (via [**SendText**](class_tryll_1_1_agent_proxy.md#function-sendtext)) and server-initiated turns (voice autosend).
 
 
-Keep the callback short and non-blocking (same contract as [**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback)). 
+Parameters:
+* `status` — turn outcome (::Tryll::TurnStatus).
+* `debugInfoJson` — JSON diagnostics string; non-empty only when the agent was created with `enableDiagnostics=true`.
+* `tokensGenerated` — total tokens sampled across all generation nodes.
+
+
+
+
+Must return quickly and must not call any blocking methods. 
 
 
         
@@ -173,14 +320,13 @@ Tryll::AgentProxy::AgentProxy () = default
 
 
 
-### function ChangeParam 
+### function ChangeParams 
 
-_Blocking convenience wrapper over_ [_**ChangeParamAsync**_](class_tryll_1_1_agent_proxy.md#function-changeparamasync) _._
+_Blocking convenience wrapper over_ [_**ChangeParamsAsync**_](class_tryll_1_1_agent_proxy.md#function-changeparamsasync) _._
 ```C++
-void Tryll::AgentProxy::ChangeParam (
+void Tryll::AgentProxy::ChangeParams (
     std::string_view nodeName,
-    std::string_view paramName,
-    std::string_view paramValue
+    ::Tryll::Client::NodeParamsVariant params
 ) 
 ```
 
@@ -202,20 +348,31 @@ void Tryll::AgentProxy::ChangeParam (
 
 
 
-### function ChangeParamAsync 
+### function ChangeParamsAsync 
 
-_Mutate a named parameter on a workflow node asynchronously._ 
+_Apply typed node parameters to a named workflow node asynchronously._ 
 ```C++
-std::future< void > Tryll::AgentProxy::ChangeParamAsync (
+std::future< void > Tryll::AgentProxy::ChangeParamsAsync (
     std::string_view nodeName,
-    std::string_view paramName,
-    std::string_view paramValue
+    ::Tryll::Client::NodeParamsVariant params
 ) 
 ```
 
 
 
-The agent must not be processing a turn; if it is, the returned future completes with a [**TryllError**](class_tryll_1_1_tryll_error.md) carrying error code `AgentBusy` (3004).
+The supplied `params` must match the concrete type of the target node (type mismatch → `InvalidParamValue` 3007 from the server). The mutation diff-loop on the server vetoes structural fields and invokes OnXxxChanged callbacks for fields that have changed.
+
+
+The C++ client does not cache a baseline copy of authored params: callers must own the typed params they last sent (or authored at `CreateAgent`) and start each mutation from that local copy. Structural fields must match the create-time values or the server returns `ParamNotMutable`.
+
+
+Typical clone-set-send idiom: 
+```C++
+GenerateParamsT p = myBaseline;   // caller-owned copy of authored params
+p.system_prompt    = "New system prompt";
+agent.ChangeParams("gen", std::move(p));
+```
+
 
 
 
@@ -224,14 +381,13 @@ The agent must not be processing a turn; if it is, the returned future completes
 
 
 * `nodeName` Instance name of the target node (as declared in the graph). 
-* `paramName` Parameter key to set. 
-* `paramValue` New value as a string.
+* `params` Whole authored typed params for the node.
 
 
 
 **Returns:**
 
-Future completing on `Ack`. Throws [**TryllError**](class_tryll_1_1_tryll_error.md) on any server-reported error (UnknownNode 3005, ParamNotMutable 3006, InvalidParamValue 3007, or AgentBusy 3004). 
+Future completing on `Ack`. Throws [**TryllError**](class_tryll_1_1_tryll_error.md) on server-reported errors (UnknownNode 3005, ParamNotMutable 3006, InvalidParamValue 3007, or AgentBusy 3004). 
 
 
 
@@ -277,7 +433,7 @@ std::future< void > Tryll::AgentProxy::DestroyAsync ()
 
 
 
-The proxy becomes inert once the returned future completes; further `SendText` calls fail with [**TryllError**](class_tryll_1_1_tryll_error.md).
+All registered callbacks are cleared before the destroy request is sent. The proxy becomes inert once the returned future completes; further `SendText` calls are no-ops.
 
 
 
@@ -323,14 +479,16 @@ The `agent_id` field from the original `CreateAgentResponse`.
 
 ### function SendText 
 
-_Blocking convenience wrapper over_ [_**SendTextAsync**_](class_tryll_1_1_agent_proxy.md#function-sendtextasync) _._
+_Send a text message to the agent (fire-and-forget)._ 
 ```C++
 void Tryll::AgentProxy::SendText (
-    std::string_view text,
-    std::function< void(std::string_view text, bool isDelta, bool isFinal)> onAnswerText={}
+    std::string_view text
 ) 
 ```
 
+
+
+Enqueues the message and returns immediately. The response arrives through the persistent callbacks registered via [**SetOnAnswerText**](class_tryll_1_1_agent_proxy.md#function-setonanswertext), [**SetOnTurnComplete**](class_tryll_1_1_agent_proxy.md#function-setonturncomplete), and [**SetOnError**](class_tryll_1_1_agent_proxy.md#function-setonerror). Register those callbacks before the first `SendText` call.
 
 
 
@@ -339,14 +497,6 @@ void Tryll::AgentProxy::SendText (
 
 
 * `text` User-turn text to send. 
-* `onAnswerText` Optional streaming callback; see [**SendTextAsync**](class_tryll_1_1_agent_proxy.md#function-sendtextasync).
-
-
-
-**Exception:**
-
-
-* `TryllError` On server-reported errors or disconnect. 
 
 
 
@@ -357,19 +507,21 @@ void Tryll::AgentProxy::SendText (
 
 
 
-### function SendTextAsync 
+### function SetOnAnswerText 
 
-_Send a text message to the agent asynchronously._ 
+_Register a callback for streaming text chunks._ 
 ```C++
-std::future< void > Tryll::AgentProxy::SendTextAsync (
-    std::string_view text,
-    std::function< void(std::string_view text, bool isDelta, bool isFinal)> onAnswerText={}
+void Tryll::AgentProxy::SetOnAnswerText (
+    AnswerTextCallback cb
 ) 
 ```
 
 
 
-The returned future completes (with `void`) when `TurnComplete` arrives. Any streaming `AnswerText` frames received before `TurnComplete` are dispatched to `onAnswerText` on the reader thread; keep the callback short and non-blocking.
+Replaces any previously set callback. Pass an empty (default- constructed) [**AnswerTextCallback**](class_tryll_1_1_agent_proxy.md#typedef-answertextcallback) to unregister.
+
+
+Fires on the reader thread for every `AnswerText` frame, including frames from server-initiated turns (e.g. voice autosend).
 
 
 
@@ -377,22 +529,106 @@ The returned future completes (with `void`) when `TurnComplete` arrives. Any str
 **Parameters:**
 
 
-* `text` User-turn text to send. 
-* `onAnswerText` Optional streaming callback invoked with (chunk, isDelta, isFinal) for each streamed chunk. Ignored when empty.
-
-
-
-**Returns:**
-
-Future completing when the turn finishes. Calling `future::get()` propagates any [**TryllError**](class_tryll_1_1_tryll_error.md) reported by the server or raised locally on disconnect.
+* `cb` Callable invoked with ``(text, isDelta, isFinal), or empty to clear. 
 
 
 
 
-**Exception:**
+        
+
+<hr>
 
 
-* `TryllError` Only via the returned future; never directly. 
+
+### function SetOnError 
+
+_Register a callback for agent-level error notifications._ 
+```C++
+void Tryll::AgentProxy::SetOnError (
+    ErrorCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default- constructed) [**ErrorCallback**](class_tryll_1_1_agent_proxy.md#typedef-errorcallback) to unregister.
+
+
+Fires on the reader thread when a `SendText` turn is terminated by a server-reported error or a connection drop. Does not fire for ::Tryll::TurnStatus\_Error turns (those arrive via [**SetOnTurnComplete**](class_tryll_1_1_agent_proxy.md#function-setonturncomplete)).
+
+
+
+
+**Parameters:**
+
+
+* `cb` Callable invoked with the [**TryllError**](class_tryll_1_1_tryll_error.md), or empty to clear. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function SetOnIntentClassified 
+
+_Register a callback for intent-classification notifications._ 
+```C++
+void Tryll::AgentProxy::SetOnIntentClassified (
+    IntentClassifiedCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default- constructed) [**IntentClassifiedCallback**](class_tryll_1_1_agent_proxy.md#typedef-intentclassifiedcallback) to unregister.
+
+
+Fires on the reader thread for every `NodeEvent` with `event_type="intent_classified"` the server sends for this agent (emitted by `ClassifyIntentNode` when `notify_client="true"`).
+
+
+
+
+**Parameters:**
+
+
+* `cb` Callable invoked with ``(intent, recordId, recordIndex, distance), or empty to clear. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function SetOnNodeEvent 
+
+_Register a generic_ `NodeEvent` _fallback callback._
+```C++
+void Tryll::AgentProxy::SetOnNodeEvent (
+    NodeEventCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default-constructed) [**NodeEventCallback**](class_tryll_1_1_agent_proxy.md#typedef-nodeeventcallback) to unregister.
+
+
+Fires on the reader thread for every `NodeEvent` whose `event_type` is either unrecognised or has no typed callback registered. When a typed callback handles the event, this one is NOT invoked for the same event.
+
+
+
+
+**Parameters:**
+
+
+* `cb` Callable invoked with ``(nodeName, eventType, kvPairs), or empty to clear. 
 
 
 
@@ -405,7 +641,7 @@ Future completing when the turn finishes. Calling `future::get()` propagates any
 
 ### function SetOnToolCall 
 
-_Register a callback to be invoked on each tool-call notification._ 
+_Register a callback for tool-call notifications._ 
 ```C++
 void Tryll::AgentProxy::SetOnToolCall (
     ToolCallCallback cb
@@ -417,7 +653,7 @@ void Tryll::AgentProxy::SetOnToolCall (
 Replaces any previously set callback. Pass an empty (default- constructed) [**ToolCallCallback**](class_tryll_1_1_agent_proxy.md#typedef-toolcallcallback) to unregister.
 
 
-The callback fires on the reader thread for every `ToolCallNotification` frame the server sends for this agent. It must return quickly and must not call any blocking [**TryllClient**](class_tryll_1_1_tryll_client.md) or [**AgentProxy**](class_tryll_1_1_agent_proxy.md) methods.
+Fires on the reader thread for every `NodeEvent` with `event_type="tool_call"` the server sends for this agent.
 
 
 
@@ -425,7 +661,7 @@ The callback fires on the reader thread for every `ToolCallNotification` frame t
 **Parameters:**
 
 
-* `cb` Callable to invoke with ``(toolName, argumentsJson), or empty to clear the current callback. 
+* `cb` Callable invoked with ``(toolName, argumentsJson), or empty to clear. 
 
 
 
@@ -438,7 +674,7 @@ The callback fires on the reader thread for every `ToolCallNotification` frame t
 
 ### function SetOnTurnComplete 
 
-_Register a callback to be invoked when each turn completes._ 
+_Register a callback for turn-complete notifications._ 
 ```C++
 void Tryll::AgentProxy::SetOnTurnComplete (
     TurnCompleteCallback cb
@@ -450,7 +686,7 @@ void Tryll::AgentProxy::SetOnTurnComplete (
 Replaces any previously set callback. Pass an empty (default- constructed) [**TurnCompleteCallback**](class_tryll_1_1_agent_proxy.md#typedef-turncompletecallback) to unregister.
 
 
-The callback fires on the reader thread once per `TurnComplete` frame, before the [**SendText**](class_tryll_1_1_agent_proxy.md#function-sendtext) future resolves. `debugInfoJson` contains the JSON diagnostic blob only when the agent was created with `enableDiagnostics=true`; otherwise it is an empty string.
+Fires on the reader thread once per `TurnComplete` frame, for both client-initiated and server-initiated turns.
 
 
 
@@ -458,7 +694,7 @@ The callback fires on the reader thread once per `TurnComplete` frame, before th
 **Parameters:**
 
 
-* `cb` Callable to invoke with ``(debugInfoJson), or empty to clear. 
+* `cb` Callable invoked with ``(status, debugInfoJson, tokensGenerated), or empty to clear. 
 
 
 
@@ -468,5 +704,5 @@ The callback fires on the reader thread once per `TurnComplete` frame, before th
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h`
 

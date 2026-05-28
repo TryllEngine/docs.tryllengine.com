@@ -4,12 +4,15 @@
     <compoundname>GraphDescription.h</compoundname>
     <includes local="no">cstdint</includes>
     <includes local="no">string</includes>
-    <includes local="no">unordered_map</includes>
+    <includes local="no">variant</includes>
     <includes local="no">vector</includes>
-    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</includedby>
+    <includes local="no">nodes_generated.h</includes>
+    <includes local="no">messages_generated.h</includes>
+    <includedby refid="_agent_proxy_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</includedby>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h</label>
         <link refid="_graph_description_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -19,46 +22,59 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>messages_generated.h</label>
+      </node>
+      <node id="6">
+        <label>nodes_generated.h</label>
       </node>
       <node id="3">
         <label>string</label>
       </node>
       <node id="4">
-        <label>unordered_map</label>
+        <label>variant</label>
       </node>
       <node id="5">
         <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</label>
+        <link refid="_agent_proxy_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h</label>
         <link refid="_graph_description_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
-      <node id="2">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</label>
+      <node id="3">
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
       </node>
     </invincdepgraph>
-    <innerclass refid="struct_tryll_1_1_client_1_1_tool_param_def" prot="public">Tryll::Client::ToolParamDef</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_tool_def" prot="public">Tryll::Client::ToolDef</innerclass>
     <innerclass refid="class_tryll_1_1_client_1_1_graph_description" prot="public">Tryll::Client::GraphDescription</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc" prot="public">Tryll::Client::GraphDescription::NodeDesc</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc" prot="public">Tryll::Client::GraphDescription::RouteDesc</innerclass>
     <innernamespace refid="namespace_tryll">Tryll</innernamespace>
     <innernamespace refid="namespace_tryll_1_1_client">Tryll::Client</innernamespace>
     <briefdescription>
 <para>Workflow graph builder and associated value types for the C++ client. </para>
     </briefdescription>
     <detaileddescription>
-<para>Declares <ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">Tryll::Client::GraphDescription</ref> (the fluent builder used on <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">Tryll::TryllClient::CreateAgent</ref>) along with the enums and structs referenced by the graph — <ref refid="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89" kindref="member">Tryll::Client::NodeType</ref>, <ref refid="_graph_description_8h_1ac21687d02192ae842125519cf23f2185" kindref="member">Tryll::Client::InferenceEngine</ref>, and <ref refid="struct_tryll_1_1_client_1_1_tool_def" kindref="compound">Tryll::Client::ToolDef</ref>.</para>
-<para>All enum values mirror the FlatBuffers wire schema in <computeroutput>server/schema/messages.fbs</computeroutput>; edits here must be paired with the schema. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h"/>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h"/>
   </compounddef>
 </doxygen>

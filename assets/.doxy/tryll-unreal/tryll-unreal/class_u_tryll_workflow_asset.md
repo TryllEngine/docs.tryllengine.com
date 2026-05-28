@@ -54,6 +54,7 @@ Inherits the following classes: UPrimaryDataAsset
 | Type | Name |
 | ---: | :--- |
 | virtual FPrimaryAssetId | [**GetPrimaryAssetId**](#function-getprimaryassetid) () override const<br> |
+|  TArray&lt; FString &gt; | [**GetStartNodeOptions**](#function-getstartnodeoptions) () const<br> |
 |   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadOnly, Category="Tryll\|Workflow", meta=(ToolTip="Workflow graph stored by this asset. Edit nodes, routes, start node and default model here.")) <br> |
 
 
@@ -119,6 +120,23 @@ inline virtual FPrimaryAssetId UTryllWorkflowAsset::GetPrimaryAssetId () overrid
 
 
 
+### function GetStartNodeOptions 
+
+```C++
+inline TArray< FString > UTryllWorkflowAsset::GetStartNodeOptions () const
+```
+
+
+
+Options provider for FTryllGraphDescription::StartNode dropdown in the Details panel. 
+
+
+        
+
+<hr>
+
+
+
 ### function UPROPERTY 
 
 ```C++
@@ -140,5 +158,5 @@ Workflow graph stored by this asset. Assign this asset to UTryllAgentComponent::
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h`
 

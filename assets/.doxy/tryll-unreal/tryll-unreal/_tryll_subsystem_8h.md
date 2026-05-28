@@ -17,6 +17,7 @@
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllModelInfo.h"`
+* `#include "TryllVoiceInput.h"`
 * `#include "TryllSubsystem.generated.h"`
 
 
@@ -37,6 +38,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| struct | [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) <br> |
 | class | [**UTryllSubsystem**](class_u_tryll_subsystem.md) <br> |
 | struct | [**FEmbeddedStorageInfo**](struct_u_tryll_subsystem_1_1_f_embedded_storage_info.md) <br> |
 
@@ -48,6 +50,7 @@
 | typedef void(TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnAgentCreated**](#typedef-ftryllonagentcreated)  <br> |
 | typedef void([**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnConfigureSession**](#typedef-ftryllonconfiguresession)  <br> |
 | typedef void(TArray&lt; [**FTryllModelInfo**](struct_f_tryll_model_info.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnListModels**](#typedef-ftryllonlistmodels)  <br> |
+| typedef void(TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnVoiceInputCreated**](#typedef-ftryllonvoiceinputcreated)  <br> |
 
 
 
@@ -72,6 +75,8 @@
 
 | Type | Name |
 | ---: | :--- |
+|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_FiveParams**](#function-declare_dynamic_multicast_delegate_fiveparams) (FOnTryllIntentClassified, int64, AgentId, const FString &, Intent, const FString &, RecordId, int64, RecordIndex, float, Distance) <br>_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._  |
+|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_FourParams**](#function-declare_dynamic_multicast_delegate_fourparams) (FOnTryllNodeEvent, int64, AgentId, const FString &, NodeName, const FString &, EventType, const TArray&lt; [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) &gt; &, KvPairs) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllConnectionChanged, bool, bConnected) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllError, const FString &, ErrorMessage) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllAgentDestroyed, int64, AgentId) <br> |
@@ -152,8 +157,70 @@ using FTryllOnListModels = void(TArray<FTryllModelInfo>, FTryllError);
 
 
 <hr>
+
+
+
+### typedef FTryllOnVoiceInputCreated 
+
+```C++
+using FTryllOnVoiceInputCreated = void(TSharedPtr<FTryllVoiceInput>, FTryllError);
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
+
+
+
+### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_FiveParams 
+
+_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._ 
+```C++
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams (
+    FOnTryllIntentClassified,
+    int64,
+    AgentId,
+    const FString &,
+    Intent,
+    const FString &,
+    RecordId,
+    int64,
+    RecordIndex,
+    float,
+    Distance
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_FourParams 
+
+```C++
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams (
+    FOnTryllNodeEvent,
+    int64,
+    AgentId,
+    const FString &,
+    NodeName,
+    const FString &,
+    EventType,
+    const TArray< FTryllNodeEventKeyValue > &,
+    KvPairs
+) 
+```
+
+
+
+
+<hr>
 
 
 
@@ -359,5 +426,5 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

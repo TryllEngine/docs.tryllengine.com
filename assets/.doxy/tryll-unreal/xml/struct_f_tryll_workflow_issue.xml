@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_workflow_issue" kind="struct" language="C++" prot="public">
+    <compoundname>FTryllWorkflowIssue</compoundname>
+    <includes refid="_tryll_workflow_validator_8h" local="no">TryllWorkflowValidator.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_f_tryll_workflow_issue_1aebba597c8085dc7baf919c53c57d93f6" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ESeverity</name>
+        <qualifiedname>FTryllWorkflowIssue::ESeverity</qualifiedname>
+        <enumvalue id="struct_f_tryll_workflow_issue_1aebba597c8085dc7baf919c53c57d93f6a0eaadb4fcb48a0a0ed7bc9868be9fbaa" prot="public">
+          <name>Warning</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_f_tryll_workflow_issue_1aebba597c8085dc7baf919c53c57d93f6a902b0d55fddef6f8d651fe1035b7d4bd" prot="public">
+          <name>Error</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_workflow_issue_1a9cfd058b719fcf54e39e22bd07cccc19" prot="public" static="no" mutable="no">
+        <type>ESeverity</type>
+        <definition>ESeverity FTryllWorkflowIssue::Severity</definition>
+        <argsstring></argsstring>
+        <name>Severity</name>
+        <qualifiedname>FTryllWorkflowIssue::Severity</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="30" column="11" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_workflow_issue_1aec45694365c16ba89b9062764f4279a2" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllWorkflowIssue::Message</definition>
+        <argsstring></argsstring>
+        <name>Message</name>
+        <qualifiedname>FTryllWorkflowIssue::Message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="31" column="11" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Static helper that validates a <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> for common authoring errors.</para>
+<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md0_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md0">
+<title>Usage</title><para>Call Validate() from:<itemizedlist>
+<listitem><para>A &quot;Validate Workflow&quot; toolbar button in a custom asset editor.</para>
+</listitem><listitem><para>Blueprint / C++ tooling scripts.</para>
+</listitem><listitem><para>The future visual-graph-editor canvas overlay.</para>
+</listitem></itemizedlist>
+</para>
+</sect2></sect1>
+<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md1_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md1">
+<title>Checks performed</title><para><orderedlist>
+<listitem><para>StartNode is non-empty and present in Nodes.</para>
+</listitem><listitem><para>No duplicate node names.</para>
+</listitem><listitem><para>Each exit field (on the typed params) references a node that exists in the graph, or is empty (END).</para>
+</listitem><listitem><para>Orphan nodes (no incoming exit and not the start node) — reported as warnings. </para>
+</listitem></orderedlist>
+</para>
+</sect2></sect1>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="26" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="27" bodyend="32"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_workflow_issue_1aebba597c8085dc7baf919c53c57d93f6" prot="public" virt="non-virtual"><scope>FTryllWorkflowIssue</scope><name>ESeverity</name></member>
+      <member refid="struct_f_tryll_workflow_issue_1aec45694365c16ba89b9062764f4279a2" prot="public" virt="non-virtual"><scope>FTryllWorkflowIssue</scope><name>Message</name></member>
+      <member refid="struct_f_tryll_workflow_issue_1a9cfd058b719fcf54e39e22bd07cccc19" prot="public" virt="non-virtual"><scope>FTryllWorkflowIssue</scope><name>Severity</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -9,6 +9,7 @@
     <includes refid="_tryll_error_8h" local="yes">TryllError.h</includes>
     <includes refid="_tryll_graph_description_8h" local="yes">TryllGraphDescription.h</includes>
     <includes refid="_tryll_model_info_8h" local="yes">TryllModelInfo.h</includes>
+    <includes refid="_tryll_voice_input_8h" local="yes">TryllVoiceInput.h</includes>
     <includes local="yes">TryllSubsystem.generated.h</includes>
     <incdepgraph>
       <node id="6">
@@ -36,7 +37,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
         <link refid="_tryll_subsystem_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -53,6 +54,18 @@
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>TryllVoiceInput.h</label>
+        <link refid="_tryll_voice_input_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -76,16 +89,21 @@
       <node id="11">
         <label>TryllModelInfo.generated.h</label>
       </node>
-      <node id="12">
+      <node id="14">
         <label>TryllSubsystem.generated.h</label>
       </node>
+      <node id="13">
+        <label>TryllVoiceInput.generated.h</label>
+      </node>
     </incdepgraph>
+    <innerclass refid="struct_f_tryll_node_event_key_value" prot="public">FTryllNodeEventKeyValue</innerclass>
     <innerclass refid="class_u_tryll_subsystem" prot="public">UTryllSubsystem</innerclass>
     <innerclass refid="struct_u_tryll_subsystem_1_1_f_embedded_storage_info" prot="public">UTryllSubsystem::FEmbeddedStorageInfo</innerclass>
     <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_create" prot="private">UTryllSubsystem::FPendingCreate</innerclass>
     <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_list_models" prot="private">UTryllSubsystem::FPendingListModels</innerclass>
     <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_string_storage" prot="private">UTryllSubsystem::FPendingStringStorage</innerclass>
     <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_embedded_storage" prot="private">UTryllSubsystem::FPendingEmbeddedStorage</innerclass>
+    <innerclass refid="struct_u_tryll_subsystem_1_1_f_pending_create_voice_input" prot="private">UTryllSubsystem::FPendingCreateVoiceInput</innerclass>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="_tryll_subsystem_8h_1a91b1518e91c57e1b3e34927ff3ec3cea" prot="public" static="no">
         <type>void(TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt;, <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
@@ -98,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="19" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="19" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_tryll_subsystem_8h_1acdaf5a952937c7cf005a107a5556d9c9" prot="public" static="no">
         <type>void(TArray&lt; <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> &gt;, <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
@@ -111,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="20" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="20" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="22" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_tryll_subsystem_8h_1a7bd50ad9244c680aaa33d84919305e28" prot="public" static="no">
         <type>void(<ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
@@ -124,7 +142,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="21" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="23" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_tryll_subsystem_8h_1a4d78411eb0f5701dcbe60937ea919f80" prot="public" static="no">
+        <type>void(TSharedPtr&lt; <ref refid="class_f_tryll_voice_input" kindref="compound">FTryllVoiceInput</ref> &gt;, <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref>)</type>
+        <definition>using FTryllOnVoiceInputCreated = void(TSharedPtr&lt;FTryllVoiceInput&gt;, FTryllError)</definition>
+        <argsstring></argsstring>
+        <name>FTryllOnVoiceInputCreated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="24" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" bodystart="24" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -148,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="25" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="25" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="28" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="28" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a038444d92fa1220e69b0a6efb648a11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -170,7 +201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="26" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="26" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="29" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="29" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1ac26bbeae9442b8265f0a82b067e2ef86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -192,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="27" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="27" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="30" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="30" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a75362d8444dc2d6337201e5d586dea6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -214,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="28" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="28" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="31" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="31" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a996f53915c4799f7d943ecb90d7fe49d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -242,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="29" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="29" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="32" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="32" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a94e39286b446abdc21dcdd84e12a7164" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -270,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="30" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="30" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="33" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="33" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a8153155389e852c64fe83736346e6a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -298,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="31" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="31" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="34" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="34" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1aba7663546a86ced8fd1e93909e42831d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -326,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="32" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="32" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="35" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="35" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a8b247d4ef896489e626b15baa0ca461a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -354,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="33" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="33" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="36" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="36" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1ab5e09da58070a96b887c32c0725e0036" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -382,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="34" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="34" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="37" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="37" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="_tryll_subsystem_8h_1a4546d04240b08791d9070704c3d6fbd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -416,13 +447,100 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="35" column="1" declfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="35" declcolumn="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="38" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="38" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_tryll_subsystem_8h_1a2ab04c7d880757dee3274359aa8fde1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams</definition>
+        <argsstring>(FOnTryllIntentClassified, int64, AgentId, const FString &amp;, Intent, const FString &amp;, RecordId, int64, RecordIndex, float, Distance)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_FiveParams</name>
+        <param>
+          <type>FOnTryllIntentClassified</type>
+        </param>
+        <param>
+          <type>int64</type>
+        </param>
+        <param>
+          <type>AgentId</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>Intent</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>RecordId</type>
+        </param>
+        <param>
+          <type>int64</type>
+        </param>
+        <param>
+          <type>RecordIndex</type>
+        </param>
+        <param>
+          <type>float</type>
+        </param>
+        <param>
+          <type>Distance</type>
+        </param>
+        <briefdescription>
+<para>Intent classification typed event — fired for NodeEvent event_type=&quot;intent_classified&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="41" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="41" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_tryll_subsystem_8h_1a36d7dfddaed8c0faa3da48e87e753de6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams</definition>
+        <argsstring>(FOnTryllNodeEvent, int64, AgentId, const FString &amp;, NodeName, const FString &amp;, EventType, const TArray&lt; FTryllNodeEventKeyValue &gt; &amp;, KvPairs)</argsstring>
+        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_FourParams</name>
+        <param>
+          <type>FOnTryllNodeEvent</type>
+        </param>
+        <param>
+          <type>int64</type>
+        </param>
+        <param>
+          <type>AgentId</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>NodeName</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>EventType</type>
+        </param>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_node_event_key_value" kindref="compound">FTryllNodeEventKeyValue</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>KvPairs</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" line="59" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h" declline="59" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h"/>
+    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h"/>
   </compounddef>
 </doxygen>

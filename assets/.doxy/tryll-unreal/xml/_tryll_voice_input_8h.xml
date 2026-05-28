@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="_tryll_voice_input_8h" kind="file" language="C++">
+    <compoundname>TryllVoiceInput.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes refid="_tryll_error_8h" local="yes">TryllError.h</includes>
+    <includes local="yes">TryllVoiceInput.generated.h</includes>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_voice_input_component_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>TryllError.h</label>
+        <link refid="_tryll_error_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
+        <link refid="_tryll_voice_input_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="4">
+        <label>TryllError.generated.h</label>
+      </node>
+      <node id="5">
+        <label>TryllVoiceInput.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
+        <link refid="_tryll_voice_input_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
+        <link refid="_tryll_voice_input_component_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_transcript_update" prot="public">FTryllTranscriptUpdate</innerclass>
+    <innerclass refid="struct_f_tryll_audio_format" prot="public">FTryllAudioFormat</innerclass>
+    <innerclass refid="struct_f_tryll_voice_input_config" prot="public">FTryllVoiceInputConfig</innerclass>
+    <innerclass refid="struct_f_tryll_utterance_options" prot="public">FTryllUtteranceOptions</innerclass>
+    <innerclass refid="class_f_tryll_voice_input" prot="public">FTryllVoiceInput</innerclass>
+    <innerclass refid="struct_f_tryll_voice_input_1_1_f_pending_ack" prot="private">FTryllVoiceInput::FPendingAck</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_voice_input_8h_1ab4b944e336983b0fa32974360b5b84a6" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllTranscriptUpdateKind</name>
+        <enumvalue id="_tryll_voice_input_8h_1ab4b944e336983b0fa32974360b5b84a6a8dc419ac27057b7ec992b18854f35052" prot="public">
+          <name>SpeechStart</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>VAD rising edge; Text is empty. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_voice_input_8h_1ab4b944e336983b0fa32974360b5b84a6a44ffd38a6dea695cbe2b34efdcc6cf27" prot="public">
+          <name>Partial</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Revisable in-progress hypothesis (online STT). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_voice_input_8h_1ab4b944e336983b0fa32974360b5b84a6ae1fd3511751d914a1f0a295ed0ae3785" prot="public">
+          <name>SegmentFinal</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Engine committed a chunk; the utterance is still open. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_voice_input_8h_1ab4b944e336983b0fa32974360b5b84a6a69df1867c7b8a56ced780c123e317cb2" prot="public">
+          <name>UtteranceFinal</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Last update for this Begin/End cycle. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Classifies a transcript update. Mirrors the wire schema enum Tryll::TranscriptUpdateKind — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h" line="18" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h" bodystart="19" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h"/>
+  </compounddef>
+</doxygen>

@@ -4,24 +4,6 @@
     <compoundname>Tryll::Client::GraphDescription</compoundname>
     <includes refid="_graph_description_8h" local="no">GraphDescription.h</includes>
     <innerclass refid="struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc" prot="public">Tryll::Client::GraphDescription::NodeDesc</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc" prot="public">Tryll::Client::GraphDescription::RouteDesc</innerclass>
-    <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_tryll_1_1_client_1_1_graph_description_1adb554a6b60542469aff3e6a4192590d3" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, std::string &gt;</type>
-        <definition>using Tryll::Client::GraphDescription::Params = std::unordered_map&lt;std::string, std::string&gt;</definition>
-        <argsstring></argsstring>
-        <name>Params</name>
-        <qualifiedname>Tryll::Client::GraphDescription::Params</qualifiedname>
-        <briefdescription>
-<para>String → string map of per-node parameters sent on the wire. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="101" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="101" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_tryll_1_1_client_1_1_graph_description_1a3b5a58ae02adb06b2f94f2f9b263041e" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc" kindref="compound">NodeDesc</ref> &gt;</type>
@@ -35,21 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="203" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="203" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_graph_description_1a92d79226d6cf0e14ffd0cf9e1d252822" prot="private" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc" kindref="compound">RouteDesc</ref> &gt;</type>
-        <definition>std::vector&lt;RouteDesc&gt; Tryll::Client::GraphDescription::_routes</definition>
-        <argsstring></argsstring>
-        <name>_routes</name>
-        <qualifiedname>Tryll::Client::GraphDescription::_routes</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="204" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="204" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="114" column="14" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_tryll_1_1_client_1_1_graph_description_1ae756040f465a6c1fe5a884813cb5dd03" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -63,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="205" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="205" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="115" column="24" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_tryll_1_1_client_1_1_graph_description_1ab454dc39cb6328fb4b7652fca31ec38d" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -77,177 +45,207 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="206" column="13" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="206" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="116" column="24" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="116" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a55d6bdfe35ece957c163a0708eea4410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a68b7f3ea678227b79d9d5f853ef534eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
-        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddNode</definition>
-        <argsstring>(std::string name, NodeType type, Params params={})</argsstring>
-        <name>AddNode</name>
-        <qualifiedname>Tryll::Client::GraphDescription::AddNode</qualifiedname>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddGenerate</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::GenerateParamsT params)</argsstring>
+        <name>AddGenerate</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddGenerate</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89" kindref="member">NodeType</ref></type>
-          <declname>type</declname>
-        </param>
-        <param>
-          <type><ref refid="class_tryll_1_1_client_1_1_graph_description_1adb554a6b60542469aff3e6a4192590d3" kindref="member">Params</ref></type>
+          <type>::Tryll::NodeParams::GenerateParamsT</type>
           <declname>params</declname>
-          <defval>{}</defval>
         </param>
         <briefdescription>
-<para>Append a node to the graph. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Graph-unique node name; used by <ref refid="class_tryll_1_1_client_1_1_graph_description_1ae52307e9d8e1398553e47ae86f172eab" kindref="member">Wire</ref> and <ref refid="class_tryll_1_1_client_1_1_graph_description_1af64e07f8349884fb4e841b86338e6596" kindref="member">SetStartNode</ref> to reference this node. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>type</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Node kind; see <ref refid="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89" kindref="member">NodeType</ref>. For <computeroutput><ref refid="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89a56cf76fe1bae84d5d923b81016d60116" kindref="member">NodeType::ToolCall</ref></computeroutput> prefer <ref refid="class_tryll_1_1_client_1_1_graph_description_1a07058e2a19727c107fffd50c333dd97f" kindref="member">AddToolCallNode</ref>. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>params</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Key/value node parameters. All values are sent as strings on the wire.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>*this</computeroutput> for fluent chaining. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="136" column="18"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="72" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a07058e2a19727c107fffd50c333dd97f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ae3fe922c4b73a13df4aed60366b9bc41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
-        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddToolCallNode</definition>
-        <argsstring>(std::string name, std::vector&lt; ToolDef &gt; tools, Params params={})</argsstring>
-        <name>AddToolCallNode</name>
-        <qualifiedname>Tryll::Client::GraphDescription::AddToolCallNode</qualifiedname>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddHumanMessageGuardrail</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params)</argsstring>
+        <name>AddHumanMessageGuardrail</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddHumanMessageGuardrail</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>name</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_tool_def" kindref="compound">ToolDef</ref> &gt;</type>
-          <declname>tools</declname>
-        </param>
-        <param>
-          <type><ref refid="class_tryll_1_1_client_1_1_graph_description_1adb554a6b60542469aff3e6a4192590d3" kindref="member">Params</ref></type>
+          <type>::Tryll::NodeParams::HumanMessageGuardrailParamsT</type>
           <declname>params</declname>
-          <defval>{}</defval>
         </param>
         <briefdescription>
-<para>Append a <computeroutput>ToolCall</computeroutput> node with structured tool definitions. </para>
         </briefdescription>
         <detaileddescription>
-<para>Convenience over <ref refid="class_tryll_1_1_client_1_1_graph_description_1a55d6bdfe35ece957c163a0708eea4410" kindref="member">AddNode</ref> that accepts a list of <ref refid="struct_tryll_1_1_client_1_1_tool_def" kindref="compound">ToolDef</ref> rather than encoding tools into string params.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Graph-unique node name. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>tools</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Tool definitions available to the model at this node. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>params</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Additional key/value node parameters.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>*this</computeroutput> for fluent chaining. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="150" column="18"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="75" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ae52307e9d8e1398553e47ae86f172eab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ad95502ecd84335e648b2a8ce0041435f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
-        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::Wire</definition>
-        <argsstring>(std::string source, std::string exitName, std::string target)</argsstring>
-        <name>Wire</name>
-        <qualifiedname>Tryll::Client::GraphDescription::Wire</qualifiedname>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddCannedResponse</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::CannedResponseParamsT params)</argsstring>
+        <name>AddCannedResponse</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddCannedResponse</qualifiedname>
         <param>
           <type>std::string</type>
-          <declname>source</declname>
+          <declname>name</declname>
         </param>
         <param>
-          <type>std::string</type>
-          <declname>exitName</declname>
-        </param>
-        <param>
-          <type>std::string</type>
-          <declname>target</declname>
+          <type>::Tryll::NodeParams::CannedResponseParamsT</type>
+          <declname>params</declname>
         </param>
         <briefdescription>
-<para>Add a wire (exit route) from one node to another. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>source</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Name of the node the wire leaves. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>exitName</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Name of the exit route on <computeroutput>source</computeroutput> (exit names are node-type-specific; see the node reference). </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Name of the node the wire enters.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>*this</computeroutput> for fluent chaining. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="165" column="18"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="78" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ac4094e9b47aa296495f9ee5ebc83ca98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddToolCall</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ToolCallParamsT params)</argsstring>
+        <name>AddToolCall</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddToolCall</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ToolCallParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="81" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a1eee937ae4318a2965f96200a4751d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddRetrieve</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::RetrieveParamsT params)</argsstring>
+        <name>AddRetrieve</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddRetrieve</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::RetrieveParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="84" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a8ff8ef732fb6604c2d6f20978b2755f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddInstruction</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::InstructionParamsT params)</argsstring>
+        <name>AddInstruction</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddInstruction</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::InstructionParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="87" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ad3d2327312c54f09bbcb953c60ec7209" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddClassifyIntent</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params)</argsstring>
+        <name>AddClassifyIntent</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddClassifyIntent</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ClassifyIntentParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="90" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a36b774bcceb89f239d1d9a117da202b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddClassifyIntentLLM</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params)</argsstring>
+        <name>AddClassifyIntentLLM</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddClassifyIntentLLM</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ClassifyIntentLLMParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="93" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a563cc248c6810055c40298043d749672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+        <definition>GraphDescription &amp; Tryll::Client::GraphDescription::AddIntentToInstruction</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params)</argsstring>
+        <name>AddIntentToInstruction</name>
+        <qualifiedname>Tryll::Client::GraphDescription::AddIntentToInstruction</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::IntentToInstructionParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="96" column="18"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1af64e07f8349884fb4e841b86338e6596" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
@@ -260,25 +258,12 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Nominate which node receives the turn when the agent runs. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Name of a node previously added via <ref refid="class_tryll_1_1_client_1_1_graph_description_1a55d6bdfe35ece957c163a0708eea4410" kindref="member">AddNode</ref> or <ref refid="class_tryll_1_1_client_1_1_graph_description_1a07058e2a19727c107fffd50c333dd97f" kindref="member">AddToolCallNode</ref>.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>*this</computeroutput> for fluent chaining. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="175" column="18"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="104" column="18"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1ab4b895beebfc117a32f9fd88b8982887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
@@ -291,26 +276,13 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Set the fallback model name for nodes that do not specify <computeroutput>model_name</computeroutput>. </para>
+<para>Set the fallback model name for nodes that do not specify model_name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sent as <computeroutput>default_model_name</computeroutput> in <computeroutput>CreateAgentRequest</computeroutput>. Nodes that invoke a language model (<computeroutput>Generate</computeroutput>, <computeroutput>ToolCall</computeroutput>) use this value when their own <computeroutput>model</computeroutput> param is unset.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Catalog model name as registered in <computeroutput>models.json</computeroutput>.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><computeroutput>*this</computeroutput> for fluent chaining. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="188" column="18"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="107" column="18"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1afcee8035990b84985d10090a6652dd74" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc" kindref="compound">NodeDesc</ref> &gt; &amp;</type>
@@ -321,30 +293,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Nodes in insertion order. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="191" column="20" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="191" bodyend="191"/>
-      </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a1660f741145a4cb701ccb45e2286bc01" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_graph_description_1_1_route_desc" kindref="compound">RouteDesc</ref> &gt; &amp;</type>
-        <definition>const std::vector&lt; RouteDesc &gt; &amp; Tryll::Client::GraphDescription::GetRoutes</definition>
-        <argsstring>() const noexcept</argsstring>
-        <name>GetRoutes</name>
-        <qualifiedname>Tryll::Client::GraphDescription::GetRoutes</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>Wires in insertion order. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="194" column="20" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="194" bodyend="194"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="109" column="21" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="109" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1a64b675fe0746b0cb0a603446c2d36db8" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -355,13 +307,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Start node name, or empty if none has been set. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="197" column="20" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="197" bodyend="197"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="110" column="31" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="110" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_1acf39f1eb5ed87027dffbafb1eab3e50f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
@@ -372,43 +321,42 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Default model name, or empty if none has been set. </para>
-</simplesect>
-</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="200" column="20" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="200" bodyend="200"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="111" column="31" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="111" bodyend="111"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Fluent builder for a workflow graph description sent to the server. </para>
     </briefdescription>
     <detaileddescription>
-<para>Typical usage: <programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>graph<sp/>=<sp/>Tryll::Client::GraphDescription{}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.AddNode(</highlight><highlight class="stringliteral">&quot;gen&quot;</highlight><highlight class="normal">,<sp/>Tryll::Client::NodeType::Generate,<sp/>{{</highlight><highlight class="stringliteral">&quot;prompt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;...&quot;</highlight><highlight class="normal">}})</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.<ref refid="class_tryll_1_1_client_1_1_graph_description_1af64e07f8349884fb4e841b86338e6596" kindref="member">SetStartNode</ref>(</highlight><highlight class="stringliteral">&quot;gen&quot;</highlight><highlight class="normal">)</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.<ref refid="class_tryll_1_1_client_1_1_graph_description_1ab4b895beebfc117a32f9fd88b8982887" kindref="member">SetDefaultModelName</ref>(</highlight><highlight class="stringliteral">&quot;qwen2.5-0.5b-instruct&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>client.CreateAgent(graph);</highlight></codeline>
-</programlisting></para>
-<para>The graph is serialised into <computeroutput>CreateAgentRequest</computeroutput> on <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">Tryll::TryllClient::CreateAgent</ref>; there is no server-side validation until that point. </para>
+<para>Typical usage: <programlisting><codeline><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">Tryll::NodeParams;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>graph<sp/>=<sp/>Tryll::Client::GraphDescription{}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.AddGenerate(</highlight><highlight class="stringliteral">&quot;gen&quot;</highlight><highlight class="normal">,<sp/>GenerateParamsT{.model_name=</highlight><highlight class="stringliteral">&quot;qwen2.5-0.5b-instruct&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.system_prompt=</highlight><highlight class="stringliteral">&quot;You<sp/>are<sp/>helpful.&quot;</highlight><highlight class="normal">})</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.SetStartNode(</highlight><highlight class="stringliteral">&quot;gen&quot;</highlight><highlight class="normal">);</highlight></codeline>
+</programlisting> </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="97" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="98" bodyend="207"/>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="54" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="55" bodyend="117"/>
     <listofallmembers>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1ab454dc39cb6328fb4b7652fca31ec38d" prot="private" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>_defaultModelName</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1a3b5a58ae02adb06b2f94f2f9b263041e" prot="private" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>_nodes</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1a92d79226d6cf0e14ffd0cf9e1d252822" prot="private" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>_routes</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1ae756040f465a6c1fe5a884813cb5dd03" prot="private" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>_startNode</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1a55d6bdfe35ece957c163a0708eea4410" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddNode</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1a07058e2a19727c107fffd50c333dd97f" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddToolCallNode</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1ad95502ecd84335e648b2a8ce0041435f" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddCannedResponse</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1ad3d2327312c54f09bbcb953c60ec7209" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddClassifyIntent</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1a36b774bcceb89f239d1d9a117da202b3" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddClassifyIntentLLM</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1a68b7f3ea678227b79d9d5f853ef534eb" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddGenerate</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1ae3fe922c4b73a13df4aed60366b9bc41" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddHumanMessageGuardrail</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1a8ff8ef732fb6604c2d6f20978b2755f8" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddInstruction</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1a563cc248c6810055c40298043d749672" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddIntentToInstruction</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1a1eee937ae4318a2965f96200a4751d01" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddRetrieve</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_1ac4094e9b47aa296495f9ee5ebc83ca98" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>AddToolCall</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1acf39f1eb5ed87027dffbafb1eab3e50f" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>GetDefaultModelName</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1afcee8035990b84985d10090a6652dd74" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>GetNodes</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1a1660f741145a4cb701ccb45e2286bc01" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>GetRoutes</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1a64b675fe0746b0cb0a603446c2d36db8" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>GetStartNode</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1adb554a6b60542469aff3e6a4192590d3" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>Params</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1ab4b895beebfc117a32f9fd88b8982887" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>SetDefaultModelName</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_1af64e07f8349884fb4e841b86338e6596" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>SetStartNode</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_1ae52307e9d8e1398553e47ae86f172eab" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescription</scope><name>Wire</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

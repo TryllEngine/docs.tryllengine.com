@@ -10,7 +10,7 @@
 
 [More...](#detailed-description)
 
-* `#include <TryllGraphDescription.h>`
+* `#include <TryllToolParamDefinition.h>`
 
 
 
@@ -36,9 +36,9 @@
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**Description**](#variable-description)  <br> |
-|  FString | [**Name**](#variable-name)  <br> |
-|  FString | [**Type**](#variable-type)  <br> |
+|  bool | [**bOverrideDescription**](#variable-boverridedescription)   = `false`<br> |
+|  bool | [**bOverrideName**](#variable-boverridename)   = `false`<br> |
+|  bool | [**bOverrideType**](#variable-boverridetype)   = `false`<br> |
 
 
 
@@ -55,6 +55,13 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolParamDefinition", meta=(EditCondition="bOverrideName")) <br> |
+|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolParamDefinition", meta=(EditCondition="bOverrideType")) <br> |
+|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolParamDefinition", meta=(EditCondition="bOverrideDescription")) <br> |
 
 
 
@@ -86,7 +93,7 @@
 ## Detailed Description
 
 
-Description of one parameter of a tool definition. 
+One named parameter in a tool's schema (used in SLM prompt construction). 
 
 
     
@@ -95,47 +102,111 @@ Description of one parameter of a tool definition.
 
 
 
-### variable Description 
+### variable bOverrideDescription 
 
 ```C++
-FString FTryllToolParamDefinition::Description;
+bool FTryllToolParamDefinition::bOverrideDescription;
 ```
 
 
 
-
-<hr>
-
-
-
-### variable Name 
-
-```C++
-FString FTryllToolParamDefinition::Name;
-```
-
-
-
-
-<hr>
-
-
-
-### variable Type 
-
-```C++
-FString FTryllToolParamDefinition::Type;
-```
-
-
-
-e.g. "string", "integer", "boolean" 
+Human-readable parameter description for the SLM prompt. 
 
 
         
 
 <hr>
 
+
+
+### variable bOverrideName 
+
+```C++
+bool FTryllToolParamDefinition::bOverrideName;
+```
+
+
+
+Parameter name exposed to the SLM in the tool schema. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideType 
+
+```C++
+bool FTryllToolParamDefinition::bOverrideType;
+```
+
+
+
+JSON-schema-style type string (e.g. "string", "number"). 
+
+
+        
+
+<hr>
+## Public Functions Documentation
+
+
+
+
+### function UPROPERTY [1/3]
+
+```C++
+FTryllToolParamDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolParamDefinition",
+    meta=(EditCondition="bOverrideName")
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function UPROPERTY [2/3]
+
+```C++
+FTryllToolParamDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolParamDefinition",
+    meta=(EditCondition="bOverrideType")
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function UPROPERTY [3/3]
+
+```C++
+FTryllToolParamDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolParamDefinition",
+    meta=(EditCondition="bOverrideDescription")
+) 
+```
+
+
+
+
+<hr>
+
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolParamDefinition.h`
 

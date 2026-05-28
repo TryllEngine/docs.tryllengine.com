@@ -37,9 +37,7 @@ _Internal serialisable description of one node._
 | Type | Name |
 | ---: | :--- |
 |  std::string | [**name**](#variable-name)  <br>_Graph-unique node name._  |
-|  [**Params**](class_tryll_1_1_client_1_1_graph_description.md#typedef-params) | [**params**](#variable-params)  <br>_Key/value node parameters (string-typed on the wire)._  |
-|  std::vector&lt; [**ToolDef**](struct_tryll_1_1_client_1_1_tool_def.md) &gt; | [**tools**](#variable-tools)  <br>_Tool definitions; populated for_ `ToolCall` _nodes only._ |
-|  [**NodeType**](namespace_tryll_1_1_client.md#enum-nodetype) | [**type**](#variable-type)  <br>_Node kind; see_ [_**NodeType**_](namespace_tryll_1_1_client.md#enum-nodetype) _._ |
+|  [**NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) | [**params**](#variable-params)  <br>_Typed node parameters (one variant per node type)._  |
 
 
 
@@ -105,37 +103,9 @@ std::string Tryll::Client::GraphDescription::NodeDesc::name;
 
 ### variable params 
 
-_Key/value node parameters (string-typed on the wire)._ 
+_Typed node parameters (one variant per node type)._ 
 ```C++
-Params Tryll::Client::GraphDescription::NodeDesc::params;
-```
-
-
-
-
-<hr>
-
-
-
-### variable tools 
-
-_Tool definitions; populated for_ `ToolCall` _nodes only._
-```C++
-std::vector<ToolDef> Tryll::Client::GraphDescription::NodeDesc::tools;
-```
-
-
-
-
-<hr>
-
-
-
-### variable type 
-
-_Node kind; see_ [_**NodeType**_](namespace_tryll_1_1_client.md#enum-nodetype) _._
-```C++
-NodeType Tryll::Client::GraphDescription::NodeDesc::type;
+NodeParamsVariant Tryll::Client::GraphDescription::NodeDesc::params;
 ```
 
 
@@ -144,5 +114,5 @@ NodeType Tryll::Client::GraphDescription::NodeDesc::type;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h`
 

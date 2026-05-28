@@ -3,209 +3,36 @@
   <compounddef id="namespace_tryll_1_1_client" kind="namespace" language="C++">
     <compoundname>Tryll::Client</compoundname>
     <innerclass refid="class_tryll_1_1_client_1_1_graph_description" prot="public">Tryll::Client::GraphDescription</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_graph_description_node_methods" prot="public">Tryll::Client::GraphDescriptionNodeMethods</innerclass>
     <innerclass refid="class_tryll_1_1_client_1_1_managed_server" prot="public">Tryll::Client::ManagedServer</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_managed_server_options" prot="public">Tryll::Client::ManagedServerOptions</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_model_info" prot="public">Tryll::Client::ModelInfo</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_tool_def" prot="public">Tryll::Client::ToolDef</innerclass>
-    <innerclass refid="struct_tryll_1_1_client_1_1_tool_param_def" prot="public">Tryll::Client::ToolParamDef</innerclass>
-    <sectiondef kind="enum">
-      <memberdef kind="enum" id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185" prot="public" static="no" strong="yes">
-        <type>std::uint8_t</type>
-        <name>InferenceEngine</name>
-        <qualifiedname>Tryll::Client::InferenceEngine</qualifiedname>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a2bb15221819b63cb5ac5653baa0ad3d3" prot="public">
-          <name>Mock</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>In-process mock engine used by tests. No real inference. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a83888cbc1972ac14a87fcbde96092c29" prot="public">
-          <name>LlamaCpp</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>llama.cpp GGUF runtime. The default production engine. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a9a567bf99eb9183e3b009f94f87d76df" prot="public">
-          <name>OnnxGenAI</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>ONNX GenAI — reserved; not yet implemented. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a5ab1186193e5a7e09ca405c03f2b65a2" prot="public">
-          <name>WindowsML</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Windows ML — reserved; not yet implemented. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a92ad101020799831bf8c0323e46c722d" prot="public">
-          <name>OpenVino</name>
-          <initializer>= 4</initializer>
-          <briefdescription>
-<para>Intel OpenVINO — reserved; not yet implemented. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1ac21687d02192ae842125519cf23f2185a941779bc9bfdc5be3de8b9f6b94a6b0a" prot="public">
-          <name>TensorRtLlm</name>
-          <initializer>= 5</initializer>
-          <briefdescription>
-<para>NVIDIA TensorRT-LLM — reserved; not yet implemented. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>Inference backend identifiers. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Must match the FlatBuffers <computeroutput><ref refid="_graph_description_8h_1ac21687d02192ae842125519cf23f2185" kindref="member">InferenceEngine</ref></computeroutput> enum and <computeroutput>Tryll::Workflow::InferenceEngine</computeroutput>. Selected once per session via <ref refid="class_tryll_1_1_tryll_client_1a9d7792ef409f038defd91b02470e196f" kindref="member">Tryll::TryllClient::ConfigureSession</ref>. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="31" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="32" bodyend="39"/>
-      </memberdef>
-      <memberdef kind="enum" id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89" prot="public" static="no" strong="yes">
-        <type>std::uint8_t</type>
-        <name>NodeType</name>
-        <qualifiedname>Tryll::Client::NodeType</qualifiedname>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89a32b919d18cfaca89383f6000dcc9c031" prot="public">
-          <name>Generate</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>LLM-driven text generation. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89aa317a08d3d4e98d7f609395efda04d05" prot="public">
-          <name>HumanMessageGuardrail</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>Pattern-match on the user message; routes accordingly. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89aa2ea73032f48643bc779c6b62a4430a9" prot="public">
-          <name>CannedResponse</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>Emit a pre-written reply without invoking a model. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89a56cf76fe1bae84d5d923b81016d60116" prot="public">
-          <name>ToolCall</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Detect a tool-call emission from the model. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89a2d67a16bc732d3b6a4a245d1a866996c" prot="public">
-          <name>Retrieve</name>
-          <initializer>= 4</initializer>
-          <briefdescription>
-<para>RAG retrieval from an embedded string storage. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89ac742c5a36b6307267bb709355feb2c41" prot="public">
-          <name>Instruction</name>
-          <initializer>= 5</initializer>
-          <briefdescription>
-<para>Attach a named instruction string to the current interaction. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>Workflow node kinds recognised by the server. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Must match the FlatBuffers <computeroutput><ref refid="_graph_description_8h_1a50c84875adf3b9b5cfc12e67af55ef89" kindref="member">NodeType</ref></computeroutput> enum. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="46" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" bodystart="47" bodyend="54"/>
-      </memberdef>
-      <memberdef kind="enum" id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcd" prot="public" static="no" strong="yes">
-        <type>std::uint8_t</type>
-        <name>ModelStatus</name>
-        <qualifiedname>Tryll::Client::ModelStatus</qualifiedname>
-        <enumvalue id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcdae384f071109188762a0f4349e8a38a88" prot="public">
-          <name>Absent</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-<para>Known in catalog but not on disk; call <computeroutput>DownloadModel</computeroutput> first. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcda509820290d57f333403f490dde7316f4" prot="public">
-          <name>Local</name>
-          <initializer>= 1</initializer>
-          <briefdescription>
-<para>User-supplied <computeroutput>localPath</computeroutput> model on disk; ready to load. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcdac7e71badf20a04f36d11be557ceb7a5b" prot="public">
-          <name>Downloading</name>
-          <initializer>= 2</initializer>
-          <briefdescription>
-<para>Transfer currently in progress from HuggingFace. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcda7381d487d18845b379422325c0a768d6" prot="public">
-          <name>Loaded</name>
-          <initializer>= 3</initializer>
-          <briefdescription>
-<para>Currently loaded in memory (pinned). </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcdaa6a04307fd90d0c2821b45125e6a0a25" prot="public">
-          <name>Downloaded</name>
-          <initializer>= 4</initializer>
-          <briefdescription>
-<para>On disk from HuggingFace cache; can be loaded on demand. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>Status of a model on the server side. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Mirrors the FlatBuffers <computeroutput><ref refid="_tryll_client_8h_1a9d11d2210bc3e16a2ec7164bcc361bcd" kindref="member">ModelStatus</ref></computeroutput> enum. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h" line="62" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h" bodystart="63" bodyend="69"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" prot="public" static="no">
+        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::HumanMessageGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT &gt;</type>
+        <definition>using Tryll::Client::NodeParamsVariant =  std::variant&lt;
+    ::Tryll::NodeParams::GenerateParamsT,
+    ::Tryll::NodeParams::HumanMessageGuardrailParamsT,
+    ::Tryll::NodeParams::CannedResponseParamsT,
+    ::Tryll::NodeParams::ToolCallParamsT,
+    ::Tryll::NodeParams::RetrieveParamsT,
+    ::Tryll::NodeParams::InstructionParamsT,
+    ::Tryll::NodeParams::ClassifyIntentParamsT,
+    ::Tryll::NodeParams::ClassifyIntentLLMParamsT,
+    ::Tryll::NodeParams::IntentToInstructionParamsT
+&gt;</definition>
+        <argsstring></argsstring>
+        <name>NodeParamsVariant</name>
+        <qualifiedname>Tryll::Client::NodeParamsVariant</qualifiedname>
+        <briefdescription>
+<para>Typed variant discriminating all concrete node-parameter PODs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" prot="public" static="no">
         <type>std::function&lt; void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;</type>
         <definition>using Tryll::Client::DownloadProgressCallback = 
@@ -222,13 +49,13 @@ std::function&lt;void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h" line="91" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h" bodystart="91" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h" line="70" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h" bodystart="70" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h" line="22" column="1"/>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="16" column="1"/>
   </compounddef>
 </doxygen>

@@ -10,12 +10,18 @@
 
 _Client-side handle for a server-hosted Tryll agent._ [More...](#detailed-description)
 
+* `#include <tryll/GraphDescription.h>`
 * `#include <tryll/TryllError.h>`
+* `#include <messages_generated.h>`
+* `#include <cstddef>`
 * `#include <cstdint>`
 * `#include <functional>`
 * `#include <future>`
 * `#include <memory>`
+* `#include <string>`
 * `#include <string_view>`
+* `#include <utility>`
+* `#include <vector>`
 
 
 
@@ -94,11 +100,7 @@ _Client-side handle for a server-hosted Tryll agent._ [More...](#detailed-descri
 ## Detailed Description
 
 
-An [**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md) is returned by [**Tryll::TryllClient::CreateAgent**](class_tryll_1_1_tryll_client.md#function-createagent) (or its async twin) and represents one agent running a workflow graph on the server. All turn-driving APIs live on the proxy; the owning [**Tryll::TryllClient**](class_tryll_1_1_tryll_client.md) handles the underlying session. 
-
-
-    
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h`
 

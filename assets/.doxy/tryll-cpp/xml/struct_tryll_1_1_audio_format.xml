@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_tryll_1_1_audio_format" kind="struct" language="C++" prot="public">
+    <compoundname>Tryll::AudioFormat</compoundname>
+    <includes refid="_voice_input_8h" local="no">VoiceInput.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_tryll_1_1_audio_format_1aeb6add41844d85dcc783aaf75b4cb145" prot="public" static="no" mutable="no">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t Tryll::AudioFormat::sampleRate</definition>
+        <argsstring></argsstring>
+        <name>sampleRate</name>
+        <qualifiedname>Tryll::AudioFormat::sampleRate</qualifiedname>
+        <initializer>= 16000</initializer>
+        <briefdescription>
+<para>Sample rate in Hz (e.g. 48000 for mic capture). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="26" column="15" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_audio_format_1a5d5ee5e51eb6dec0dbc41fe88d796d68" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t Tryll::AudioFormat::channels</definition>
+        <argsstring></argsstring>
+        <name>channels</name>
+        <qualifiedname>Tryll::AudioFormat::channels</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Channel count (mic capture is typically 1). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="27" column="15" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_audio_format_1a9a6fa54c1e540ad536c4ce7ca77f6c32" prot="public" static="no" mutable="no">
+        <type>std::uint16_t</type>
+        <definition>std::uint16_t Tryll::AudioFormat::bitsPerSample</definition>
+        <argsstring></argsstring>
+        <name>bitsPerSample</name>
+        <qualifiedname>Tryll::AudioFormat::bitsPerSample</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>Only 16-bit PCM is supported. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="28" column="15" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Declares the audio format of samples the client will push via SendAudioBuffer. The server resamples to 16 kHz mono int16 as needed. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="24" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="25" bodyend="29"/>
+    <listofallmembers>
+      <member refid="struct_tryll_1_1_audio_format_1a9a6fa54c1e540ad536c4ce7ca77f6c32" prot="public" virt="non-virtual"><scope>Tryll::AudioFormat</scope><name>bitsPerSample</name></member>
+      <member refid="struct_tryll_1_1_audio_format_1a5d5ee5e51eb6dec0dbc41fe88d796d68" prot="public" virt="non-virtual"><scope>Tryll::AudioFormat</scope><name>channels</name></member>
+      <member refid="struct_tryll_1_1_audio_format_1aeb6add41844d85dcc783aaf75b4cb145" prot="public" virt="non-virtual"><scope>Tryll::AudioFormat</scope><name>sampleRate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

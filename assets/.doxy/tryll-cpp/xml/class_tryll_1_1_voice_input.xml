@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_voice_input" kind="class" language="C++" prot="public">
+    <compoundname>Tryll::VoiceInput</compoundname>
+    <includes refid="_voice_input_8h" local="no">VoiceInput.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_tryll_1_1_voice_input_1a6aad303f86275503113a6915807a12df" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="struct_tryll_1_1_transcript_update" kindref="compound">TranscriptUpdate</ref> &amp;)&gt;</type>
+        <definition>using Tryll::VoiceInput::TranscriptCallback = std::function&lt;void(const TranscriptUpdate&amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>TranscriptCallback</name>
+        <qualifiedname>Tryll::VoiceInput::TranscriptCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="84" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_tryll_1_1_voice_input_1a671f75bdf94c3a577f7f3ec7931a56b2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class TryllClientImpl</definition>
+        <argsstring></argsstring>
+        <name>TryllClientImpl</name>
+        <qualifiedname>Tryll::VoiceInput::TryllClientImpl</qualifiedname>
+        <param>
+          <type>TryllClientImpl</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="135" column="14" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_tryll_1_1_voice_input_1a487459da17b4e31150b0bfa7bca031e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class TryllClient</definition>
+        <argsstring></argsstring>
+        <name>TryllClient</name>
+        <qualifiedname>Tryll::VoiceInput::TryllClient</qualifiedname>
+        <param>
+          <type>TryllClient</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="136" column="14" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tryll_1_1_voice_input_1a279c728eb6c386ffec19fc2ff09819ed" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; TryllClientImpl &gt;</type>
+        <definition>std::shared_ptr&lt;TryllClientImpl&gt; Tryll::VoiceInput::_impl</definition>
+        <argsstring></argsstring>
+        <name>_impl</name>
+        <qualifiedname>Tryll::VoiceInput::_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="140" column="19" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_voice_input_1af6453c176a9d09fb0d440253a306d284" prot="private" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t Tryll::VoiceInput::_voiceInputId</definition>
+        <argsstring></argsstring>
+        <name>_voiceInputId</name>
+        <qualifiedname>Tryll::VoiceInput::_voiceInputId</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="141" column="36" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_voice_input_1a2d00f681e4dd58d81c3e874d7d908909" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; std::atomic&lt; bool &gt; &gt;</type>
+        <definition>std::shared_ptr&lt;std::atomic&lt;bool&gt; &gt; Tryll::VoiceInput::_utteranceActive</definition>
+        <argsstring></argsstring>
+        <name>_utteranceActive</name>
+        <qualifiedname>Tryll::VoiceInput::_utteranceActive</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="142" column="17" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1ae100969f7a0490992fe118a82f70c368" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; void &gt;</type>
+        <definition>std::future&lt; void &gt; Tryll::VoiceInput::BeginUtteranceAsync</definition>
+        <argsstring>(UtteranceOptions opts={})</argsstring>
+        <name>BeginUtteranceAsync</name>
+        <qualifiedname>Tryll::VoiceInput::BeginUtteranceAsync</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_utterance_options" kindref="compound">UtteranceOptions</ref></type>
+          <declname>opts</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+<para>Open a new utterance. Rejects if one is already active (throws <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref>). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="89" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a1b4d3a972f360674afcf52a0ed405a50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::VoiceInput::BeginUtterance</definition>
+        <argsstring>(UtteranceOptions opts={}, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>BeginUtterance</name>
+        <qualifiedname>Tryll::VoiceInput::BeginUtterance</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_utterance_options" kindref="compound">UtteranceOptions</ref></type>
+          <declname>opts</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="90" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1aec0edde9a3b49770b2a58c31a94dcc74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::VoiceInput::SendAudioBuffer</definition>
+        <argsstring>(std::span&lt; const std::int16_t &gt; pcm)</argsstring>
+        <name>SendAudioBuffer</name>
+        <qualifiedname>Tryll::VoiceInput::SendAudioBuffer</qualifiedname>
+        <param>
+          <type>std::span&lt; const std::int16_t &gt;</type>
+          <declname>pcm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Push a block of mono int16 PCM samples to the server. Fire-and-forget (no ack expected). Thread-safe. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="96" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a22cb659772115a555fbbd9e3c8f70f2f" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; void &gt;</type>
+        <definition>std::future&lt; void &gt; Tryll::VoiceInput::EndUtteranceAsync</definition>
+        <argsstring>()</argsstring>
+        <name>EndUtteranceAsync</name>
+        <qualifiedname>Tryll::VoiceInput::EndUtteranceAsync</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Commit the utterance (push-to-talk release). The engine drains pending audio, decodes, and delivers the final <ref refid="struct_tryll_1_1_transcript_update" kindref="compound">TranscriptUpdate</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="100" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a7daa5d08aa127f622225abc4c88fdba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::VoiceInput::EndUtterance</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{60})</argsstring>
+        <name>EndUtterance</name>
+        <qualifiedname>Tryll::VoiceInput::EndUtterance</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{60}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="101" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a1bd429b04ecb60d4aca52e36e45afebf" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; void &gt;</type>
+        <definition>std::future&lt; void &gt; Tryll::VoiceInput::CancelUtteranceAsync</definition>
+        <argsstring>()</argsstring>
+        <name>CancelUtteranceAsync</name>
+        <qualifiedname>Tryll::VoiceInput::CancelUtteranceAsync</qualifiedname>
+        <briefdescription>
+<para>Cancel the utterance without producing a transcript. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="106" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a4bf8923abd5a353d62bb8229feff6e18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::VoiceInput::CancelUtterance</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>CancelUtterance</name>
+        <qualifiedname>Tryll::VoiceInput::CancelUtterance</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="107" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1ad86b7f3cc1790bfa58dccf1fd17eeba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::VoiceInput::SetOnTranscriptUpdate</definition>
+        <argsstring>(TranscriptCallback cb)</argsstring>
+        <name>SetOnTranscriptUpdate</name>
+        <qualifiedname>Tryll::VoiceInput::SetOnTranscriptUpdate</qualifiedname>
+        <param>
+          <type>TranscriptCallback</type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register a callback for transcript updates. Called on the reader thread — keep brief and non-blocking. Pass nullptr to clear. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="116" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1aac10f538aeed8be8cc02341d292550de" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tryll::VoiceInput::IsUtteranceActive</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsUtteranceActive</name>
+        <qualifiedname>Tryll::VoiceInput::IsUtteranceActive</qualifiedname>
+        <briefdescription>
+<para>True if BeginUtterance has been called and the utterance is not yet complete. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="119" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1aedbe3f7f336d6375fd476e91d6ee4ccd" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t Tryll::VoiceInput::GetVoiceInputId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetVoiceInputId</name>
+        <qualifiedname>Tryll::VoiceInput::GetVoiceInputId</qualifiedname>
+        <briefdescription>
+<para>The server-assigned handle id (zero before the handle is valid). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="122" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a462500ca189ee99ad5933a473f9ca88a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::VoiceInput::~VoiceInput</definition>
+        <argsstring>()</argsstring>
+        <name>~VoiceInput</name>
+        <qualifiedname>Tryll::VoiceInput::~VoiceInput</qualifiedname>
+        <briefdescription>
+<para>Implicitly cancels any active utterance and destroys the server-side handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a7ab24b338844e8ab6b3b11cc17c6e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::VoiceInput::VoiceInput</definition>
+        <argsstring>(const VoiceInput &amp;)=delete</argsstring>
+        <name>VoiceInput</name>
+        <qualifiedname>Tryll::VoiceInput::VoiceInput</qualifiedname>
+        <param>
+          <type>const VoiceInput &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="129" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1addc13cd54216b89ebd644d2238436f14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>VoiceInput &amp;</type>
+        <definition>VoiceInput &amp; Tryll::VoiceInput::operator=</definition>
+        <argsstring>(const VoiceInput &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::VoiceInput::operator=</qualifiedname>
+        <param>
+          <type>const VoiceInput &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="130" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1ae5cb13a8952392c0206153c7f5854094" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::VoiceInput::VoiceInput</definition>
+        <argsstring>(VoiceInput &amp;&amp;) noexcept</argsstring>
+        <name>VoiceInput</name>
+        <qualifiedname>Tryll::VoiceInput::VoiceInput</qualifiedname>
+        <param>
+          <type>VoiceInput &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="131" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a770b4014d8c449e5ff79dd7a7337c379" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>VoiceInput &amp;</type>
+        <definition>VoiceInput &amp; Tryll::VoiceInput::operator=</definition>
+        <argsstring>(VoiceInput &amp;&amp;) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::VoiceInput::operator=</qualifiedname>
+        <param>
+          <type>VoiceInput &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="132" column="12"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_tryll_1_1_voice_input_1a2276581009099c7344ed804f16f6a00b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::VoiceInput::VoiceInput</definition>
+        <argsstring>(std::shared_ptr&lt; TryllClientImpl &gt; impl, std::uint64_t voiceInputId)</argsstring>
+        <name>VoiceInput</name>
+        <qualifiedname>Tryll::VoiceInput::VoiceInput</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; TryllClientImpl &gt;</type>
+          <declname>impl</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>voiceInputId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="138" column="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Move-only handle to a server-side <ref refid="class_tryll_1_1_voice_input" kindref="compound">VoiceInput</ref> session.</para>
+<para>Obtained via <ref refid="class_tryll_1_1_tryll_client_1ae3ab8e441dec4ab87f57d51d1390905a" kindref="member">TryllClient::CreateVoiceInput</ref> or CreateVoiceInputAsync.</para>
+<para>Lifetime guarantee: the destructor issues an implicit CancelUtterance (if active) followed by DestroyVoiceInput so the server-side ISttSession is always cleaned up. Move the handle to extend its lifetime.</para>
+<para>Thread-safety: this handle is NOT internally synchronized. All public methods — including SendAudioBuffer — must be called from the same thread, or the caller must provide external synchronization. Moving or destroying the handle must likewise be serialized with any concurrent method calls. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" line="81" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/VoiceInput.h" bodystart="82" bodyend="143"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_voice_input_1a279c728eb6c386ffec19fc2ff09819ed" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>_impl</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a2d00f681e4dd58d81c3e874d7d908909" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>_utteranceActive</name></member>
+      <member refid="class_tryll_1_1_voice_input_1af6453c176a9d09fb0d440253a306d284" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>_voiceInputId</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a1b4d3a972f360674afcf52a0ed405a50" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>BeginUtterance</name></member>
+      <member refid="class_tryll_1_1_voice_input_1ae100969f7a0490992fe118a82f70c368" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>BeginUtteranceAsync</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a4bf8923abd5a353d62bb8229feff6e18" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>CancelUtterance</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a1bd429b04ecb60d4aca52e36e45afebf" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>CancelUtteranceAsync</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a7daa5d08aa127f622225abc4c88fdba9" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>EndUtterance</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a22cb659772115a555fbbd9e3c8f70f2f" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>EndUtteranceAsync</name></member>
+      <member refid="class_tryll_1_1_voice_input_1aedbe3f7f336d6375fd476e91d6ee4ccd" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>GetVoiceInputId</name></member>
+      <member refid="class_tryll_1_1_voice_input_1aac10f538aeed8be8cc02341d292550de" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>IsUtteranceActive</name></member>
+      <member refid="class_tryll_1_1_voice_input_1addc13cd54216b89ebd644d2238436f14" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a770b4014d8c449e5ff79dd7a7337c379" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_voice_input_1aec0edde9a3b49770b2a58c31a94dcc74" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>SendAudioBuffer</name></member>
+      <member refid="class_tryll_1_1_voice_input_1ad86b7f3cc1790bfa58dccf1fd17eeba9" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>SetOnTranscriptUpdate</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a6aad303f86275503113a6915807a12df" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>TranscriptCallback</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a487459da17b4e31150b0bfa7bca031e8" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>TryllClient</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a671f75bdf94c3a577f7f3ec7931a56b2" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>TryllClientImpl</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a7ab24b338844e8ab6b3b11cc17c6e3d4" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>VoiceInput</name></member>
+      <member refid="class_tryll_1_1_voice_input_1ae5cb13a8952392c0206153c7f5854094" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>VoiceInput</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a2276581009099c7344ed804f16f6a00b" prot="private" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>VoiceInput</name></member>
+      <member refid="class_tryll_1_1_voice_input_1a462500ca189ee99ad5933a473f9ca88a" prot="public" virt="non-virtual"><scope>Tryll::VoiceInput</scope><name>~VoiceInput</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

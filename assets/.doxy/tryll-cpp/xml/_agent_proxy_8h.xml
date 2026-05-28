@@ -2,20 +2,56 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="_agent_proxy_8h" kind="file" language="C++">
     <compoundname>AgentProxy.h</compoundname>
+    <includes refid="_graph_description_8h" local="no">tryll/GraphDescription.h</includes>
     <includes refid="_tryll_error_8h" local="no">tryll/TryllError.h</includes>
+    <includes local="no">messages_generated.h</includes>
+    <includes local="no">cstddef</includes>
     <includes local="no">cstdint</includes>
     <includes local="no">functional</includes>
     <includes local="no">future</includes>
     <includes local="no">memory</includes>
+    <includes local="no">string</includes>
     <includes local="no">string_view</includes>
-    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</includedby>
+    <includes local="no">utility</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</label>
         <link refid="_agent_proxy_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>tryll/GraphDescription.h</label>
+        <link refid="_graph_description_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -23,50 +59,66 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
       </node>
-      <node id="2">
+      <node id="9">
         <label>tryll/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
-      <node id="4">
-        <label>cstdint</label>
-      </node>
-      <node id="6">
-        <label>functional</label>
-      </node>
-      <node id="7">
-        <label>future</label>
-      </node>
-      <node id="8">
-        <label>memory</label>
+      <node id="11">
+        <label>cstddef</label>
       </node>
       <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="12">
+        <label>functional</label>
+      </node>
+      <node id="13">
+        <label>future</label>
+      </node>
+      <node id="14">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>messages_generated.h</label>
+      </node>
+      <node id="7">
+        <label>nodes_generated.h</label>
+      </node>
+      <node id="10">
         <label>stdexcept</label>
       </node>
-      <node id="5">
+      <node id="4">
         <label>string</label>
       </node>
-      <node id="9">
+      <node id="15">
         <label>string_view</label>
+      </node>
+      <node id="16">
+        <label>utility</label>
+      </node>
+      <node id="5">
+        <label>variant</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</label>
         <link refid="_agent_proxy_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
-        <label>C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
       </node>
     </invincdepgraph>
@@ -76,8 +128,22 @@
 <para>Client-side handle for a server-hosted Tryll agent. </para>
     </briefdescription>
     <detaileddescription>
-<para>An <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">Tryll::AgentProxy</ref> is returned by <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">Tryll::TryllClient::CreateAgent</ref> (or its async twin) and represents one agent running a workflow graph on the server. All turn-driving APIs live on the proxy; the owning <ref refid="class_tryll_1_1_tryll_client" kindref="compound">Tryll::TryllClient</ref> handles the underlying session. </para>
+<para>An <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">Tryll::AgentProxy</ref> is returned by <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">Tryll::TryllClient::CreateAgent</ref> (or its async twin) and represents one agent running a workflow graph on the server. All turn-driving APIs live on the proxy; the owning <ref refid="class_tryll_1_1_tryll_client" kindref="compound">Tryll::TryllClient</ref> handles the underlying session.</para>
+<sect1 id="_agent_proxy_8h_1autotoc_md0_1s1"><sect2 id="_agent_proxy_8h_1autotoc_md0">
+<title>Callback-first model</title><para>All streaming output and turn lifecycle events are delivered through three persistent per-agent callbacks:</para>
+<para><itemizedlist>
+<listitem><para>SetOnAnswerText — streaming text chunks as they arrive.</para>
+</listitem><listitem><para>SetOnTurnComplete — turn outcome (status, diagnostics, token count).</para>
+</listitem><listitem><para>SetOnError — server-reported or disconnect errors.</para>
+</listitem><listitem><para>SetOnToolCall — tool-call notifications from the graph (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;tool_call&quot;</computeroutput>).</para>
+</listitem><listitem><para>SetOnIntentClassified — intent-classification notifications (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput>).</para>
+</listitem><listitem><para>SetOnNodeEvent — fallback for any other <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type</computeroutput> or for events whose typed callback is not set.</para>
+</listitem></itemizedlist>
+</para>
+<para>SendText is fire-and-forget; it enqueues the message and returns immediately. Register the callbacks before the first SendText call.</para>
+<para>This model also covers server-initiated turns (e.g. voice autosend after VoiceInput::EndUtterance): those turns carry <computeroutput>agent_id</computeroutput> but no client-side <computeroutput>request_id</computeroutput>, and are delivered through the same persistent callbacks. </para>
+</sect2></sect1>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h"/>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h"/>
   </compounddef>
 </doxygen>

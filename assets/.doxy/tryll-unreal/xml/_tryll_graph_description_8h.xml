@@ -4,13 +4,24 @@
     <compoundname>TryllGraphDescription.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">TryllGraphDescription.generated.h</includes>
-    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
-    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
-    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
-    <includedby refid="_tryll_workflow_asset_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</includedby>
+    <includedby refid="_tryll_canned_response_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h</includedby>
+    <includedby refid="_tryll_classify_intent_l_l_m_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h</includedby>
+    <includedby refid="_tryll_classify_intent_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h</includedby>
+    <includedby refid="_tryll_generate_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h</includedby>
+    <includedby refid="_tryll_human_message_guardrail_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h</includedby>
+    <includedby refid="_tryll_instruction_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllInstructionParams.h</includedby>
+    <includedby refid="_tryll_intent_to_instruction_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h</includedby>
+    <includedby refid="_tryll_retrieve_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllRetrieveParams.h</includedby>
+    <includedby refid="_tryll_tool_call_params_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</includedby>
+    <includedby refid="_tryll_graph_builder_8_nodes_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</includedby>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_workflow_asset_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</includedby>
+    <includedby refid="_tryll_workflow_validator_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
         <link refid="_tryll_graph_description_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -26,40 +37,143 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
-        <link refid="_tryll_agent_8h_source"/>
-      </node>
-      <node id="3">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
-        <link refid="_tryll_agent_component_8h_source"/>
-      </node>
-      <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
-        <link refid="_tryll_graph_description_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h</label>
+        <link refid="_tryll_canned_response_params_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
-        <link refid="_tryll_subsystem_8h_source"/>
       </node>
       <node id="5">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h</label>
+        <link refid="_tryll_classify_intent_l_l_m_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h</label>
+        <link refid="_tryll_classify_intent_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h</label>
+        <link refid="_tryll_generate_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h</label>
+        <link refid="_tryll_human_message_guardrail_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllInstructionParams.h</label>
+        <link refid="_tryll_instruction_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h</label>
+        <link refid="_tryll_intent_to_instruction_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllRetrieveParams.h</label>
+        <link refid="_tryll_retrieve_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</label>
+        <link refid="_tryll_tool_call_params_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</label>
+        <link refid="_tryll_graph_builder_8_nodes_8h_source"/>
+      </node>
+      <node id="4">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h</label>
+        <link refid="_tryll_node_params_factory_8h_source"/>
+      </node>
+      <node id="13">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <link refid="_tryll_agent_8h_source"/>
+      </node>
+      <node id="14">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <link refid="_tryll_agent_component_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h</label>
+        <link refid="_tryll_graph_description_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+      <node id="16">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h</label>
         <link refid="_tryll_workflow_asset_8h_source"/>
       </node>
+      <node id="17">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h</label>
+        <link refid="_tryll_workflow_validator_8h_source"/>
+      </node>
     </invincdepgraph>
-    <innerclass refid="struct_f_tryll_tool_param_definition" prot="public">FTryllToolParamDefinition</innerclass>
-    <innerclass refid="struct_f_tryll_tool_definition" prot="public">FTryllToolDefinition</innerclass>
-    <innerclass refid="struct_f_tryll_node_param" prot="public">FTryllNodeParam</innerclass>
     <innerclass refid="struct_f_tryll_node_description" prot="public">FTryllNodeDescription</innerclass>
-    <innerclass refid="struct_f_tryll_exit_route" prot="public">FTryllExitRoute</innerclass>
     <innerclass refid="struct_f_tryll_graph_description" prot="public">FTryllGraphDescription</innerclass>
+    <innerclass refid="struct_f_tryll_graph_options" prot="public">FTryllGraphOptions</innerclass>
     <innerclass refid="struct_f_tryll_graph_builder" prot="public">FTryllGraphBuilder</innerclass>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ff" prot="public" static="no" strong="yes">
@@ -119,6 +233,15 @@
 <para>NVIDIA TensorRT-LLM — reserved; not yet implemented. </para>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1ad09d45cd3e26ae8450f3548d5c7a02ffa437681d420e695a5506c747c6554aff3" prot="public">
+          <name>SherpaOnnx</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Sherpa-ONNX — STT/TTS engine. </para>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -126,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="13" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="14" bodyend="27"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="15" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="16" bodyend="31"/>
       </memberdef>
       <memberdef kind="enum" id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8f" prot="public" static="no" strong="yes">
         <type>uint8</type>
@@ -185,6 +308,33 @@
 <para>Attach a named instruction string to the current interaction. </para>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fac73a3407383b53a732bde0bda1a3bcfa" prot="public">
+          <name>ClassifyIntent</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Top-1 embedding similarity against a labelled KB; attaches IntentionComponent for downstream routing. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa2dc0c04597b9210bd14075f256e03c00" prot="public">
+          <name>IntentToInstruction</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Look up detected intent in a Map-kind StringStorage; attaches InstructionComponent. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8faf73a98aa329740f9054807ac7fcce882" prot="public">
+          <name>ClassifyIntentLLM</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Single-token logprob intent classifier (SLM-based, no generation). </para>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -192,7 +342,100 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="34" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="35" bodyend="48"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="38" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="39" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllPlacement</name>
+        <enumvalue id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a84176a99f554d911653e280c9270426e" prot="public">
+          <name>InPlaceOfUser</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Replaces the user turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a1cb2898b369c491dd824f0edd16c0b7e" prot="public">
+          <name>BeforeUserAsUser</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Inserted as role=user before the user turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a8755a398ad3ffc502ccaf1f24ff1057c" prot="public">
+          <name>BeforeUserAsSystem</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Inserted as role=system before the user turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a4084bb3e4d3bf39e436c14b1277f02f0" prot="public">
+          <name>AfterUserAsUser</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Inserted as role=user after the user turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a3c528652e92965398e5c6c07335ca74b" prot="public">
+          <name>AfterUserAsSystem</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Inserted as role=system after the user turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Where the rendered Mustache body is inserted relative to the user turn. Mirrors the Placement enum in common_enums.fbs — ordinals must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="69" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="70" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllCannedResponseSelectionStrategy</name>
+        <enumvalue id="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a64663f4646781c9c0110838b905daa23" prot="public">
+          <name>Random</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a7fb55ed0b7a30342ba6da306428cae04" prot="public">
+          <name>First</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a91a63281bd2e647fe3b92d1d22cd3380" prot="public">
+          <name>RoundRobin</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Selection strategy for the CannedResponse node. Mirrors the CannedResponseSelectionStrategy enum in common_enums.fbs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="88" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="89" bodyend="93"/>
       </memberdef>
       <memberdef kind="enum" id="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1" prot="public" static="no" strong="yes">
         <type>uint8</type>
@@ -231,13 +474,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="52" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="53" bodyend="60"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" line="97" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h" bodystart="98" bodyend="105"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h"/>
+    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h"/>
   </compounddef>
 </doxygen>

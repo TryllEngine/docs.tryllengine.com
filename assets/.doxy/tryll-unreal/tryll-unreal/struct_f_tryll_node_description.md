@@ -37,9 +37,7 @@
 | Type | Name |
 | ---: | :--- |
 |  FString | [**Name**](#variable-name)  <br> |
-|  TMap&lt; FString, FString &gt; | [**Params**](#variable-params)  <br> |
-|  TArray&lt; [**FTryllToolDefinition**](struct_f_tryll_tool_definition.md) &gt; | [**Tools**](#variable-tools)  <br> |
-|  ETryllNodeType | [**Type**](#variable-type)   = `ETryllNodeType::Generate`<br> |
+|  TObjectPtr&lt; [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) &gt; | [**Params**](#variable-params)  <br> |
 
 
 
@@ -112,48 +110,18 @@ FString FTryllNodeDescription::Name;
 ### variable Params 
 
 ```C++
-TMap<FString, FString> FTryllNodeDescription::Params;
+TObjectPtr<UTryllNodeParamsBase> FTryllNodeDescription::Params;
 ```
 
 
 
-String key/value parameters passed to the node (e.g. "model\_name", "system\_prompt"). Using TMap for convenience; serialized as a flat vector of NodeParam in the FlatBuffers payload. 
+Typed node parameters. Use UTryllNodeParamsFactory::MakeXxxParams() to create; use Instanced so the UObject is serialised inline in Blueprint/editor assets. 
 
 
         
-
-<hr>
-
-
-
-### variable Tools 
-
-```C++
-TArray<FTryllToolDefinition> FTryllNodeDescription::Tools;
-```
-
-
-
-Tool definitions for ToolCall nodes. Ignored for all other node types. 
-
-
-        
-
-<hr>
-
-
-
-### variable Type 
-
-```C++
-ETryllNodeType FTryllNodeDescription::Type;
-```
-
-
-
 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

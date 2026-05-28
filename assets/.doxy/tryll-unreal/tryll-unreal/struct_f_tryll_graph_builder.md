@@ -52,12 +52,10 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddNode**](#function-addnode) (FString Name, ETryllNodeType Type, TMap&lt; FString, FString &gt; Params={}) <br> |
-|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddToolCallNode**](#function-addtoolcallnode) (FString Name, TArray&lt; [**FTryllToolDefinition**](struct_f_tryll_tool_definition.md) &gt; Tools, TMap&lt; FString, FString &gt; Params={}) <br> |
+|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddNode**](#function-addnode) (FString Name, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params) <br> |
 |  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**Build**](#function-build) () const<br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**SetDefaultModelName**](#function-setdefaultmodelname) (FString Name) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**SetStartNode**](#function-setstartnode) (FString Name) <br> |
-|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**Wire**](#function-wire) (FString SourceNode, FString ExitName, FString TargetNode) <br> |
 
 
 
@@ -89,10 +87,13 @@
 ## Detailed Description
 
 
-Fluent C++ builder for [**FTryllGraphDescription**](struct_f_tryll_graph_description.md). Mirrors Tryll::Client::GraphDescription from client-cpp. Not a USTRUCT — for programmatic C++ use only.
+Fluent C++ builder for [**FTryllGraphDescription**](struct_f_tryll_graph_description.md). Typed AddXxx methods are declared in TryllGraphBuilder.Nodes.h (generated). Not a USTRUCT — for programmatic C++ use only.
 
 
-Example: [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) Graph = [**FTryllGraphBuilder()**](struct_f_tryll_graph_builder.md) .AddNode(TEXT("gen"), ETryllNodeType::Generate, {{TEXT("model\_name"), TEXT("mymodel")}}) .Wire(TEXT("gen"), TEXT("done"), TEXT("END")) .SetStartNode(TEXT("gen")) .SetDefaultModelName(TEXT("mymodel")) .Build(); 
+Example: UTryllGenerateParams\* P = UTryllNodeParamsFactory::MakeGenerateParams(this); P-&gt;ModelName = TEXT("qwen2.5-0.5b-instruct"); P-&gt;SystemPrompt = TEXT("You are helpful.");
+
+
+// Protocol v2: wiring lives on each node's params (e.g. P-&gt;DefaultExit). [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) Graph = [**FTryllGraphBuilder()**](struct_f_tryll_graph_builder.md) .AddGenerate(TEXT("gen"), P) // P-&gt;DefaultExit defaults to "" = END .SetStartNode(TEXT("gen")) .Build(); 
 
 
     
@@ -106,34 +107,12 @@ Example: [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) Graph
 ```C++
 FTryllGraphBuilder & FTryllGraphBuilder::AddNode (
     FString Name,
-    ETryllNodeType Type,
-    TMap< FString, FString > Params={}
+    UTryllNodeParamsBase * Params
 ) 
 ```
 
 
 
-
-<hr>
-
-
-
-### function AddToolCallNode 
-
-```C++
-FTryllGraphBuilder & FTryllGraphBuilder::AddToolCallNode (
-    FString Name,
-    TArray< FTryllToolDefinition > Tools,
-    TMap< FString, FString > Params={}
-) 
-```
-
-
-
-Convenience method to add a ToolCall node with structured tool definitions. 
-
-
-        
 
 <hr>
 
@@ -180,23 +159,6 @@ FTryllGraphBuilder & FTryllGraphBuilder::SetStartNode (
 
 <hr>
 
-
-
-### function Wire 
-
-```C++
-FTryllGraphBuilder & FTryllGraphBuilder::Wire (
-    FString SourceNode,
-    FString ExitName,
-    FString TargetNode
-) 
-```
-
-
-
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

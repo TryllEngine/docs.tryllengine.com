@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_client_1_1_graph_description_node_methods" kind="class" language="C++" prot="public">
+    <compoundname>Tryll::Client::GraphDescriptionNodeMethods</compoundname>
+    <includes refid="_graph_description_8_nodes_8gen_8h" local="no">GraphDescription.Nodes.gen.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1a70aa9634fbb9abda3aa59ef64dfc9341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddGenerate</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::GenerateParamsT params)</argsstring>
+        <name>AddGenerate</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddGenerate</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::GenerateParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a Generate node. LLM-driven text generation node. Renders a Mustache template, runs sampling, produces a streamed AnswerText. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="25" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1a97a5af7e53d1382e76c0ba03e321216f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddHumanMessageGuardrail</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params)</argsstring>
+        <name>AddHumanMessageGuardrail</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddHumanMessageGuardrail</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::HumanMessageGuardrailParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a HumanMessageGuardrail node. Guardrail node backed by session string storage. Blocks turns whose human message matches a pattern in the storage. Resolution priority (factory): named string_storage → inline_strings → server-wide default (default-guardrail-patterns.txt from server-config). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="31" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad0dff7e3cdae73521ec27dcd8c3b0261" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddCannedResponse</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::CannedResponseParamsT params)</argsstring>
+        <name>AddCannedResponse</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddCannedResponse</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::CannedResponseParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a CannedResponse node. Canned-response node backed by session string storage. Resolution priority (factory): named string_storage → inline_strings → server-wide default (default-canned-responses.txt from server-config). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="37" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1af221d439a6f3e74b2a5889ca4e1b246d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddToolCall</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ToolCallParamsT params)</argsstring>
+        <name>AddToolCall</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddToolCall</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ToolCallParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a ToolCall node. LLM-driven tool-call node. Constructs a tool-call prompt, runs sampling, parses the result. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="43" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1a867ad16c188c17642d0f4aa66a02e5b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddRetrieve</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::RetrieveParamsT params)</argsstring>
+        <name>AddRetrieve</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddRetrieve</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::RetrieveParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a Retrieve node. RAG retrieval node. Embeds the HumanMessage, searches an embedded storage, and attaches a KnowledgeComponent to the current interaction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="49" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad6657d3cba6a01552e2b666ea677b5c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddInstruction</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::InstructionParamsT params)</argsstring>
+        <name>AddInstruction</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddInstruction</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::InstructionParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a Instruction node. Plain instruction node. Attaches an InstructionComponent to the current interaction so downstream Mustache templates can reference it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="55" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1aac3b4e8e3c08a7eb12536a24ea79e708" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddClassifyIntent</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params)</argsstring>
+        <name>AddClassifyIntent</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddClassifyIntent</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ClassifyIntentParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a ClassifyIntent node. Intent classification node (embedding-based, top-1 nearest-neighbour). Searches a labelled embedded storage and attaches an IntentionComponent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="61" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1aa142caefe61d224670696936d7b25e0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddClassifyIntentLLM</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params)</argsstring>
+        <name>AddClassifyIntentLLM</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddClassifyIntentLLM</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::ClassifyIntentLLMParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a ClassifyIntentLLM node. Intent classification node (LLM first-token logprob over letter candidates). Scores labels via a dedicated LLM and attaches an IntentionComponent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="67" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1a66b44d9a01120b407486e63af95c10d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddIntentToInstruction</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params)</argsstring>
+        <name>AddIntentToInstruction</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddIntentToInstruction</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::IntentToInstructionParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a IntentToInstruction node. Maps an intent label to an instruction text from a Map-kind string storage. Resolution priority (factory): named string_storage → inline_keys + inline_strings (Map-kind in-memory storage built from the equal-length pair). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="73" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Typed AddX methods generated from the NodeParams union. Mixed into <ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> via inheritance or friend-include. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="20" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" bodystart="21" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad0dff7e3cdae73521ec27dcd8c3b0261" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddCannedResponse</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1aac3b4e8e3c08a7eb12536a24ea79e708" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddClassifyIntent</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1aa142caefe61d224670696936d7b25e0a" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddClassifyIntentLLM</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a70aa9634fbb9abda3aa59ef64dfc9341" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddGenerate</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a97a5af7e53d1382e76c0ba03e321216f" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddHumanMessageGuardrail</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad6657d3cba6a01552e2b666ea677b5c0" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddInstruction</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a66b44d9a01120b407486e63af95c10d1" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddIntentToInstruction</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a867ad16c188c17642d0f4aa66a02e5b2" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddRetrieve</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1af221d439a6f3e74b2a5889ca4e1b246d" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddToolCall</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

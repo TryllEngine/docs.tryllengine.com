@@ -53,16 +53,18 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ChangeParam**](#function-changeparam) (const FString & NodeName, const FString & ParamName, const FString & ParamValue, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
+|  void | [**ChangeParams**](#function-changeparams) (const FString & NodeName, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**ClearAfterDestroyRequest**](#function-clearafterdestroyrequest) () <br> |
 |   | [**FTryllAgent**](#function-ftryllagent) (TSharedPtr&lt; FTryllConnection &gt; InConnection, std::uint64\_t InAgentId) <br> |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br> |
+|  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
 |  void | [**HandleAnswerText**](#function-handleanswertext) (const FString & Text, bool bIsDelta, bool bIsFinal) <br> |
 |  void | [**HandleChangeParamResult**](#function-handlechangeparamresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleError**](#function-handleerror) (const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleTurnComplete**](#function-handleturncomplete) (ETryllTurnStatus Status, const FString & DebugInfo, int32 TokensGenerated) <br> |
 |  bool | [**IsValid**](#function-isvalid) () noexcept const<br> |
 |  void | [**SendMessage**](#function-sendmessage) (const FString & Text) <br> |
+|  void | [**SetNodeParamsBaseline**](#function-setnodeparamsbaseline) (const FString & NodeName, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params) <br> |
 |  void | [**SetOnAnswerText**](#function-setonanswertext) (TFunction&lt; void(const FString &Text, bool bIsDelta, bool bIsFinal)&gt; Callback) <br> |
 |  void | [**SetOnError**](#function-setonerror) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &Error)&gt; Callback) <br> |
 |  void | [**SetOnTurnComplete**](#function-setonturncomplete) (TFunction&lt; void(ETryllTurnStatus Status, const FString &DebugInfo, int32 TokensGenerated)&gt; Callback) <br> |
@@ -113,20 +115,22 @@ All callbacks are invoked on the game thread (from UTryllSubsystem::Tick).
 
 
 
-### function ChangeParam 
+### function ChangeParams 
 
 ```C++
-void FTryllAgent::ChangeParam (
+void FTryllAgent::ChangeParams (
     const FString & NodeName,
-    const FString & ParamName,
-    const FString & ParamValue,
+    UTryllNodeParamsBase * Params,
     TFunction< void(const FTryllError &)> OnComplete=nullptr
 ) 
 ```
 
 
 
-Mutate a named parameter on a workflow node. The agent must not be processing a turn; completion is reported via the UTryllSubsystem::RequestChangeAgentParam OnComplete callback. 
+Apply typed node parameters to a workflow node at runtime. The agent must not be processing a turn. Completion is invoked on the game thread via the OnComplete callback.
+
+
+Clone-set-send idiom (C++): auto\* P = UTryllNodeParamsFactory::CloneParams(AgentComp-&gt;GetNodeParamsBaseline("gen"), this); Cast&lt;UTryllGenerateParams&gt;(P)-&gt;SystemPrompt = TEXT("New prompt"); Agent-&gt;ChangeParams(TEXT("gen"), P); 
 
 
         
@@ -176,6 +180,25 @@ inline std::uint64_t FTryllAgent::GetAgentId () noexcept const
 
 
 
+
+<hr>
+
+
+
+### function GetNodeParamsBaseline 
+
+```C++
+UTryllNodeParamsBase * FTryllAgent::GetNodeParamsBaseline (
+    const FString & NodeName
+) const
+```
+
+
+
+Return a deep copy of the last authored params for the named node. Use this as the starting point for a clone-set-send mutation; structural fields are automatically propagated from the baseline. 
+
+
+        
 
 <hr>
 
@@ -282,6 +305,26 @@ Send a text message to the agent. Response arrives via the OnAnswerText / OnTurn
 
 
 
+### function SetNodeParamsBaseline 
+
+```C++
+void FTryllAgent::SetNodeParamsBaseline (
+    const FString & NodeName,
+    UTryllNodeParamsBase * Params
+) 
+```
+
+
+
+Store/update the authored params baseline for a node (called by the subsystem). 
+
+
+        
+
+<hr>
+
+
+
 ### function SetOnAnswerText 
 
 ```C++
@@ -356,5 +399,5 @@ FTryllAgent::~FTryllAgent ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgent.h`
 

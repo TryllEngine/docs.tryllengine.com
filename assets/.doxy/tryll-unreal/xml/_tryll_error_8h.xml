@@ -4,12 +4,14 @@
     <compoundname>TryllError.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">TryllError.generated.h</includes>
-    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
-    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
-    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_voice_input_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h</includedby>
+    <includedby refid="_tryll_voice_input_component_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -25,15 +27,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgent.h</label>
         <link refid="_tryll_agent_8h_source"/>
       </node>
       <node id="3">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
         <link refid="_tryll_agent_component_8h_source"/>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -41,10 +43,26 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="4">
-        <label>C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
         <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+      <node id="5">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
+        <link refid="_tryll_voice_input_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
+        <link refid="_tryll_voice_input_component_8h_source"/>
       </node>
     </invincdepgraph>
     <innerclass refid="struct_f_tryll_error" prot="public">FTryllError</innerclass>
@@ -268,6 +286,60 @@
 <para>StringStorage content was rejected (unreadable file, bad format, empty array, etc.). </para>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dad503c15ae7d9e2a378ca6a9c3268e892" prot="public">
+          <name>SttModelLoadFailed</name>
+          <initializer>= 4100</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Server failed to load the STT model requested by CreateVoiceInput. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae4a1a9abbd1552d9d2a503937c0e9908" prot="public">
+          <name>AudioFormatUnsupported</name>
+          <initializer>= 4101</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Declared audio format is not supported (only 16-bit mono PCM is accepted). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da167cc15638b9d48288fb5ed0c65dd167" prot="public">
+          <name>VoiceInputNotFound</name>
+          <initializer>= 4102</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Request referenced a voice_input_id the server does not know. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dafabd1f27a2cd142ea38cfbd1b68b6948" prot="public">
+          <name>UtteranceInProgress</name>
+          <initializer>= 4103</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>BeginUtterance issued while an utterance is already active on this handle. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da8c0430c662923a2896b4f9d8fb268f6d" prot="public">
+          <name>NoActiveUtterance</name>
+          <initializer>= 4104</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>End/Cancel issued with no utterance open. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da5ee4b2bcc9f0c2b9ea4bb32bf323f114" prot="public">
+          <name>UtteranceTimeout</name>
+          <initializer>= 4105</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Utterance exceeded max_utterance_ms before being committed. </para>
+          </detaileddescription>
+        </enumvalue>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -276,13 +348,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="85"/>
+        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="99"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h"/>
+    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h"/>
   </compounddef>
 </doxygen>

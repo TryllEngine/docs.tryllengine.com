@@ -30,11 +30,9 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) <br>_Fluent builder for a workflow graph description sent to the server._  |
+| class | [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) <br> |
 | class | [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md) <br>_RAII handle around a child_ `tryll_server` _process._ |
 | struct | [**ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md) <br>_Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_1_managed_server.md#function-start) _._ |
-| struct | [**ModelInfo**](struct_tryll_1_1_client_1_1_model_info.md) <br>_Summary information for one model returned by_ [_**Tryll::TryllClient::ListModels**_](class_tryll_1_1_tryll_client.md#function-listmodels) _._ |
-| struct | [**ToolDef**](struct_tryll_1_1_client_1_1_tool_def.md) <br>_Definition of a callable tool for a ToolCall node._  |
-| struct | [**ToolParamDef**](struct_tryll_1_1_client_1_1_tool_param_def.md) <br>_Description of one parameter of a tool definition._  |
 
 
 ## Public Types
@@ -42,9 +40,7 @@
 | Type | Name |
 | ---: | :--- |
 | typedef std::function&lt; void(std::string\_view, std::uint64\_t, std::uint64\_t, float)&gt; | [**DownloadProgressCallback**](#typedef-downloadprogresscallback)  <br>_Callback invoked during_ [_**Tryll::TryllClient::DownloadModel**_](class_tryll_1_1_tryll_client.md#function-downloadmodel) _as data arrives._ |
-| enum std::uint8\_t | [**InferenceEngine**](#enum-inferenceengine)  <br>_Inference backend identifiers._  |
-| enum std::uint8\_t | [**ModelStatus**](#enum-modelstatus)  <br>_Status of a model on the server side._  |
-| enum std::uint8\_t | [**NodeType**](#enum-nodetype)  <br>_Workflow node kinds recognised by the server._  |
+| typedef std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::HumanMessageGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT &gt; | [**NodeParamsVariant**](#typedef-nodeparamsvariant)  <br>_Typed variant discriminating all concrete node-parameter PODs._  |
 
 
 
@@ -120,72 +116,26 @@ Parameters (in order): `modelName`, `bytesDownloaded`, `totalBytes`, `percent` (
 
 
 
-### enum InferenceEngine 
+### typedef NodeParamsVariant 
 
-_Inference backend identifiers._ 
+_Typed variant discriminating all concrete node-parameter PODs._ 
 ```C++
-enum Tryll::Client::InferenceEngine {
-    Mock = 0,
-    LlamaCpp = 1,
-    OnnxGenAI = 2,
-    WindowsML = 3,
-    OpenVino = 4,
-    TensorRtLlm = 5
-};
+using Tryll::Client::NodeParamsVariant =  std::variant<
+    ::Tryll::NodeParams::GenerateParamsT,
+    ::Tryll::NodeParams::HumanMessageGuardrailParamsT,
+    ::Tryll::NodeParams::CannedResponseParamsT,
+    ::Tryll::NodeParams::ToolCallParamsT,
+    ::Tryll::NodeParams::RetrieveParamsT,
+    ::Tryll::NodeParams::InstructionParamsT,
+    ::Tryll::NodeParams::ClassifyIntentParamsT,
+    ::Tryll::NodeParams::ClassifyIntentLLMParamsT,
+    ::Tryll::NodeParams::IntentToInstructionParamsT
+>;
 ```
 
 
 
-Must match the FlatBuffers `InferenceEngine` enum and `Tryll::Workflow::InferenceEngine`. Selected once per session via [**Tryll::TryllClient::ConfigureSession**](class_tryll_1_1_tryll_client.md#function-configuresession). 
-
-
-        
-
-<hr>
-
-
-
-### enum ModelStatus 
-
-_Status of a model on the server side._ 
-```C++
-enum Tryll::Client::ModelStatus {
-    Absent = 0,
-    Local = 1,
-    Downloading = 2,
-    Loaded = 3,
-    Downloaded = 4
-};
-```
-
-
-
-Mirrors the FlatBuffers `ModelStatus` enum. 
-
-
-        
-
-<hr>
-
-
-
-### enum NodeType 
-
-_Workflow node kinds recognised by the server._ 
-```C++
-enum Tryll::Client::NodeType {
-    Generate = 0,
-    HumanMessageGuardrail = 1,
-    CannedResponse = 2,
-    ToolCall = 3,
-    Retrieve = 4,
-    Instruction = 5
-};
-```
-
-
-
-Must match the FlatBuffers `NodeType` enum. 
+Generated AddXxx methods build a [**NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. 
 
 
         
@@ -193,5 +143,5 @@ Must match the FlatBuffers `NodeType` enum.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
 

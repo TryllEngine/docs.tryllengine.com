@@ -59,9 +59,11 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  FOnTryllDownloadComplete | [**OnDownloadComplete**](#variable-ondownloadcomplete)  <br> |
 |  FOnTryllDownloadProgress | [**OnDownloadProgress**](#variable-ondownloadprogress)  <br> |
 |  FOnTryllError | [**OnError**](#variable-onerror)  <br> |
+|  FOnTryllIntentClassified | [**OnIntentClassified**](#variable-onintentclassified)  <br> |
 |  FOnTryllListModels | [**OnListModelsComplete**](#variable-onlistmodelscomplete)  <br> |
 |  FOnTryllLoadModel | [**OnLoadModelComplete**](#variable-onloadmodelcomplete)  <br> |
 |  FOnTryllModelReady | [**OnModelReady**](#variable-onmodelready)  <br> |
+|  FOnTryllNodeEvent | [**OnNodeEvent**](#variable-onnodeevent)  <br> |
 |  FOnTryllToolCall | [**OnToolCall**](#variable-ontoolcall)  <br> |
 |  FOnTryllUnloadModel | [**OnUnloadModelComplete**](#variable-onunloadmodelcomplete)  <br> |
 
@@ -84,7 +86,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, const FString & GameName=FString{}) <br> |
+|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock) <br> |
 |  void | [**Connect**](#function-connect) () <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_dynamic_multicast_delegate_threeparams) (FOnTryllCreateEmbeddedStringStorage, const FString &, Name, int32, RecordCount, bool, bSuccess) <br> |
 |   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-13) (FOnTryllCreateStringStorage, const FString &, Name, bool, bSuccess) <br> |
@@ -105,10 +107,13 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  void | [**RequestCreateEmbeddedStringStorage**](#function-requestcreateembeddedstringstorage) (const FString & Name, const FString & ConfigPath, const FString & EmbeddingModel=FString{}, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateEmbeddedStringStorageFromStrings**](#function-requestcreateembeddedstringstoragefromstrings) (const FString & Name, const TArray&lt; FString &gt; & Strings, const FString & EmbeddingModel, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateStringStorage**](#function-requestcreatestringstorage) (const FString & Name, const TArray&lt; FString &gt; & Strings, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
-|  void | [**RequestCreateStringStorageFromFile**](#function-requestcreatestringstoragefromfile) (const FString & Name, const FString & FilePath, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
+|  void | [**RequestCreateStringStorageFromFile**](#function-requestcreatestringstoragefromfile) (const FString & Name, const FString & FilePath, uint8 Kind=0, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
+|  void | [**RequestCreateStringStorageKeyed**](#function-requestcreatestringstoragekeyed) (const FString & Name, const TArray&lt; FString &gt; & Keys, const TArray&lt; FString &gt; & Values, uint8 Kind=1, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
+|  void | [**RequestCreateVoiceInput**](#function-requestcreatevoiceinput) (const [**FTryllVoiceInputConfig**](struct_f_tryll_voice_input_config.md) & Config, TFunction&lt; FTryllOnVoiceInputCreated &gt; OnComplete) <br> |
 |  void | [**RequestDestroyAgent**](#function-requestdestroyagent) (TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; Agent) <br> |
 |  void | [**RequestDestroyEmbeddedStringStorage**](#function-requestdestroyembeddedstringstorage) (const FString & Name, TFunction&lt; FTryllOnEmbeddedStorageDestroyed &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestDestroyStringStorage**](#function-requestdestroystringstorage) (const FString & Name, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
+|  void | [**RequestDestroyVoiceInput**](#function-requestdestroyvoiceinput) (TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; Voice) <br> |
 |  void | [**RequestDownloadModel**](#function-requestdownloadmodel) (const FString & ModelName) <br> |
 |  void | [**RequestListModels**](#function-requestlistmodels) (TFunction&lt; FTryllOnListModels &gt; OnComplete) <br> |
 |  void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) <br> |
@@ -346,6 +351,23 @@ FOnTryllError UTryllSubsystem::OnError;
 
 
 
+### variable OnIntentClassified 
+
+```C++
+FOnTryllIntentClassified UTryllSubsystem::OnIntentClassified;
+```
+
+
+
+Broadcast when a ClassifyIntentNode emits an intent on its "found" path with notify\_client enabled. 
+
+
+        
+
+<hr>
+
+
+
 ### variable OnListModelsComplete 
 
 ```C++
@@ -381,6 +403,23 @@ FOnTryllModelReady UTryllSubsystem::OnModelReady;
 
 
 Fired when a RequestModel sequence terminates (load succeeded, or fallback download+load succeeded, or any step failed). bSuccess is the final outcome. 
+
+
+        
+
+<hr>
+
+
+
+### variable OnNodeEvent 
+
+```C++
+FOnTryllNodeEvent UTryllSubsystem::OnNodeEvent;
+```
+
+
+
+Broadcast for any NodeEvent whose event\_type has no typed delegate (or whose typed delegate has no subscribers). Untyped fallback. 
 
 
         
@@ -427,7 +466,10 @@ FOnTryllUnloadModel UTryllSubsystem::OnUnloadModelComplete;
 void UTryllSubsystem::ConfigureSession (
     ETryllInferenceEngine Engine,
     bool bAllowAutoModelDownloading=false,
-    const FString & GameName=FString{}
+    FString GameName=TEXT(""),
+    ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock,
+    ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock,
+    ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock
 ) 
 ```
 
@@ -809,13 +851,71 @@ Create a named StringStorage on the server from an inline string array. Completi
 void UTryllSubsystem::RequestCreateStringStorageFromFile (
     const FString & Name,
     const FString & FilePath,
+    uint8 Kind=0,
     TFunction< FTryllOnStringStorage > OnComplete=nullptr
 ) 
 ```
 
 
 
-Create a named StringStorage on the server from a server-side file path. Completion is broadcast via OnCreateStringStorageComplete. 
+Create a named StringStorage on the server from a server-side file path. 
+
+**Parameters:**
+
+
+* `Kind` 0=List (default), 1=Map, 2=Multimap. When Kind is Map or Multimap the file must be a JSON array of {id, text} objects. Completion is broadcast via OnCreateStringStorageComplete. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function RequestCreateStringStorageKeyed 
+
+```C++
+void UTryllSubsystem::RequestCreateStringStorageKeyed (
+    const FString & Name,
+    const TArray< FString > & Keys,
+    const TArray< FString > & Values,
+    uint8 Kind=1,
+    TFunction< FTryllOnStringStorage > OnComplete=nullptr
+) 
+```
+
+
+
+Create a named StringStorage on the server from inline key/value pairs. 
+
+**Parameters:**
+
+
+* `Kind` 1=Map (default; keys must be unique), 2=Multimap (duplicate keys allowed). Completion is broadcast via OnCreateStringStorageComplete. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function RequestCreateVoiceInput 
+
+```C++
+void UTryllSubsystem::RequestCreateVoiceInput (
+    const FTryllVoiceInputConfig & Config,
+    TFunction< FTryllOnVoiceInputCreated > OnComplete
+) 
+```
+
+
+
+Create a server-side VoiceInput (STT) handle. Completion is delivered via OnComplete on the game thread with a TSharedPtr&lt;FTryllVoiceInput&gt; on success. 
 
 
         
@@ -875,6 +975,25 @@ void UTryllSubsystem::RequestDestroyStringStorage (
 
 
 Destroy a named StringStorage on the server. Nodes that already hold the storage are unaffected. 
+
+
+        
+
+<hr>
+
+
+
+### function RequestDestroyVoiceInput 
+
+```C++
+void UTryllSubsystem::RequestDestroyVoiceInput (
+    TSharedPtr< FTryllVoiceInput > Voice
+) 
+```
+
+
+
+Queue destroy for the given VoiceInput handle. 
 
 
         
@@ -1051,5 +1170,5 @@ void UTryllSubsystem::UnregisterAgent (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

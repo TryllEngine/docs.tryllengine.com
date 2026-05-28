@@ -4,6 +4,81 @@
     <compoundname>Tryll::AgentProxy</compoundname>
     <includes refid="_agent_proxy_8h" local="no">AgentProxy.h</includes>
     <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1a7c48a254f7341eea77f1ed1863afb39d" prot="public" static="no">
+        <type>std::function&lt; void(std::string_view text, bool isDelta, bool isFinal)&gt;</type>
+        <definition>using Tryll::AgentProxy::AnswerTextCallback = 
+std::function&lt;void(std::string_view text, bool isDelta, bool isFinal)&gt;</definition>
+        <argsstring></argsstring>
+        <name>AnswerTextCallback</name>
+        <qualifiedname>Tryll::AgentProxy::AnswerTextCallback</qualifiedname>
+        <briefdescription>
+<para>Callback type for streaming text chunks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked on the reader thread for each <computeroutput>AnswerText</computeroutput> frame received from the server (including frames from server-initiated turns such as voice autosend). Must return quickly and must not call any blocking <ref refid="class_tryll_1_1_tryll_client" kindref="compound">TryllClient</ref> or <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">AgentProxy</ref> methods.</para>
+<para>Parameters:<itemizedlist>
+<listitem><para><computeroutput>text</computeroutput> — streamed text chunk.</para>
+</listitem><listitem><para><computeroutput>isDelta</computeroutput> — true when <computeroutput>text</computeroutput> is an incremental token/chunk; false when it is the accumulated response so far.</para>
+</listitem><listitem><para><computeroutput>isFinal</computeroutput> — true for the last chunk before <computeroutput>TurnComplete</computeroutput>. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="100" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1ad271be7b5ca48a73b786a93adad37931" prot="public" static="no">
+        <type>std::function&lt; void(::Tryll::TurnStatus status, std::string_view debugInfoJson, std::int32_t tokensGenerated)&gt;</type>
+        <definition>using Tryll::AgentProxy::TurnCompleteCallback = 
+std::function&lt;void(::Tryll::TurnStatus status,
+                   std::string_view debugInfoJson,
+                   std::int32_t tokensGenerated)&gt;</definition>
+        <argsstring></argsstring>
+        <name>TurnCompleteCallback</name>
+        <qualifiedname>Tryll::AgentProxy::TurnCompleteCallback</qualifiedname>
+        <briefdescription>
+<para>Callback type for turn-complete notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked on the reader thread once per turn, immediately after <computeroutput>TurnComplete</computeroutput> arrives. Covers both client-initiated turns (via <ref refid="class_tryll_1_1_agent_proxy_1acac838d4e56195490697f75f87bf2030" kindref="member">SendText</ref>) and server-initiated turns (voice autosend).</para>
+<para>Parameters:<itemizedlist>
+<listitem><para><computeroutput>status</computeroutput> — turn outcome (::Tryll::TurnStatus).</para>
+</listitem><listitem><para><computeroutput>debugInfoJson</computeroutput> — JSON diagnostics string; non-empty only when the agent was created with <computeroutput>enableDiagnostics=true</computeroutput>.</para>
+</listitem><listitem><para><computeroutput>tokensGenerated</computeroutput> — total tokens sampled across all generation nodes.</para>
+</listitem></itemizedlist>
+</para>
+<para>Must return quickly and must not call any blocking methods. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="118" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1aeb7a931d299ad15a9619780eccf2a13d" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref> &amp;error)&gt;</type>
+        <definition>using Tryll::AgentProxy::ErrorCallback = std::function&lt;void(const TryllError&amp; error)&gt;</definition>
+        <argsstring></argsstring>
+        <name>ErrorCallback</name>
+        <qualifiedname>Tryll::AgentProxy::ErrorCallback</qualifiedname>
+        <briefdescription>
+<para>Callback type for agent-level error notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked on the reader thread when a <computeroutput>SendText</computeroutput> turn is terminated by a server-reported <computeroutput>ErrorResponse</computeroutput>, or when the connection drops mid-turn. Must return quickly and must not call any blocking methods.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error reported by the server or transport layer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="132" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1af62d70b0e0d22f8e2bae8c0a9d4a86c0" prot="public" static="no">
         <type>std::function&lt; void(std::string_view toolName, std::string_view argumentsJson)&gt;</type>
         <definition>using Tryll::AgentProxy::ToolCallCallback = 
@@ -15,34 +90,85 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
 <para>Callback type for tool-call notifications. </para>
         </briefdescription>
         <detaileddescription>
-<para>Invoked on the reader thread for each <computeroutput>ToolCallNotification</computeroutput> received from the server (i.e. when the agent&apos;s graph has a <computeroutput>ToolCall</computeroutput> node with <computeroutput>notify_client</computeroutput> = &quot;true&quot;).</para>
+<para>Invoked on the reader thread for each <computeroutput>NodeEvent</computeroutput> with <computeroutput>event_type=&quot;tool_call&quot;</computeroutput> received from the server (i.e. when the agent&apos;s graph has a <computeroutput>ToolCall</computeroutput> node with <computeroutput>notify_client=&quot;true&quot;</computeroutput>).</para>
 <para>Parameters:<itemizedlist>
 <listitem><para><computeroutput>toolName</computeroutput> — the tool the model asked to call.</para>
 </listitem><listitem><para><computeroutput>argumentsJson</computeroutput> — compact JSON object of arguments, e.g. <computeroutput>{&quot;city&quot;</computeroutput>:&quot;Berlin&quot;}.</para>
 </listitem></itemizedlist>
 </para>
-<para>Keep the callback short and non-blocking (same contract as the <computeroutput>onAnswerText</computeroutput> streaming callback on <ref refid="class_tryll_1_1_agent_proxy_1ac62da58662e04d1b2790ae31733cc4b4" kindref="member">SendTextAsync</ref>). </para>
+<para>Must return quickly and must not call any blocking methods. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="52" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="52" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="148" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="148" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1a9fbec18fd29426945fb3a608aff8f055" prot="public" static="no">
-        <type>std::function&lt; void(std::string_view debugInfoJson)&gt;</type>
-        <definition>using Tryll::AgentProxy::TurnCompleteCallback = std::function&lt;void(std::string_view debugInfoJson)&gt;</definition>
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1a93c50be95b814379f445bc2683263814" prot="public" static="no">
+        <type>std::function&lt; void(std::string_view intent, std::string_view recordId, std::size_t recordIndex, float distance)&gt;</type>
+        <definition>using Tryll::AgentProxy::IntentClassifiedCallback = 
+std::function&lt;void(std::string_view intent,
+                   std::string_view recordId,
+                   std::size_t      recordIndex,
+                   float            distance)&gt;</definition>
         <argsstring></argsstring>
-        <name>TurnCompleteCallback</name>
-        <qualifiedname>Tryll::AgentProxy::TurnCompleteCallback</qualifiedname>
+        <name>IntentClassifiedCallback</name>
+        <qualifiedname>Tryll::AgentProxy::IntentClassifiedCallback</qualifiedname>
         <briefdescription>
-<para>Callback type for turn-complete notifications. </para>
+<para>Callback type for intent-classification notifications. </para>
         </briefdescription>
         <detaileddescription>
-<para>Invoked on the reader thread once per turn, immediately after <computeroutput>TurnComplete</computeroutput> arrives and before the <ref refid="class_tryll_1_1_agent_proxy_1acc86d42f63e5aa9e296df10d6997ebb4" kindref="member">SendText</ref> future resolves. <computeroutput>debugInfoJson</computeroutput> is the raw JSON string from <computeroutput>TurnComplete.debug_info</computeroutput>; it is non-empty only when the agent was created with <computeroutput>enableDiagnostics=true</computeroutput>.</para>
-<para>Keep the callback short and non-blocking (same contract as <ref refid="class_tryll_1_1_agent_proxy_1af62d70b0e0d22f8e2bae8c0a9d4a86c0" kindref="member">ToolCallCallback</ref>). </para>
+<para>Invoked on the reader thread for each <computeroutput>NodeEvent</computeroutput> with <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput> — fired by <computeroutput>ClassifyIntentNode</computeroutput> on its &quot;found&quot; path when <computeroutput>notify_client=&quot;true&quot;</computeroutput>.</para>
+<para>Parameters:<itemizedlist>
+<listitem><para><computeroutput>intent</computeroutput> — the classified intent label.</para>
+</listitem><listitem><para><computeroutput>recordId</computeroutput> — id of the top-1 matched KB record.</para>
+</listitem><listitem><para><computeroutput>recordIndex</computeroutput> — 0-based index of the matched record in storage.</para>
+</listitem><listitem><para><computeroutput>distance</computeroutput> — cosine distance of the match.</para>
+</listitem></itemizedlist>
+</para>
+<para>Must return quickly and must not call any blocking methods. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="65" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="166" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1adaac51b98bd33ee15b00ddd120e48f41" prot="public" static="no">
+        <type>std::pair&lt; std::string, std::string &gt;</type>
+        <definition>using Tryll::AgentProxy::NodeEventKeyValue = std::pair&lt;std::string, std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>NodeEventKeyValue</name>
+        <qualifiedname>Tryll::AgentProxy::NodeEventKeyValue</qualifiedname>
+        <briefdescription>
+<para>One ordered key/value pair in a <computeroutput>NodeEvent</computeroutput> payload. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="175" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_tryll_1_1_agent_proxy_1a6e98110515a8dcbe5e188a6ae63057c7" prot="public" static="no">
+        <type>std::function&lt; void(std::string_view nodeName, std::string_view eventType, const std::vector&lt; <ref refid="class_tryll_1_1_agent_proxy_1adaac51b98bd33ee15b00ddd120e48f41" kindref="member">NodeEventKeyValue</ref> &gt; &amp;kvPairs)&gt;</type>
+        <definition>using Tryll::AgentProxy::NodeEventCallback = 
+std::function&lt;void(std::string_view nodeName,
+                   std::string_view eventType,
+                   const std::vector&lt;NodeEventKeyValue&gt;&amp; kvPairs)&gt;</definition>
+        <argsstring></argsstring>
+        <name>NodeEventCallback</name>
+        <qualifiedname>Tryll::AgentProxy::NodeEventCallback</qualifiedname>
+        <briefdescription>
+<para>Generic <computeroutput>NodeEvent</computeroutput> callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked on the reader thread when a <computeroutput>NodeEvent</computeroutput> arrives whose <computeroutput>event_type</computeroutput> is unrecognised or whose typed callback is not set. If a typed callback (e.g. <ref refid="class_tryll_1_1_agent_proxy_1af62d70b0e0d22f8e2bae8c0a9d4a86c0" kindref="member">ToolCallCallback</ref>, <ref refid="class_tryll_1_1_agent_proxy_1a93c50be95b814379f445bc2683263814" kindref="member">IntentClassifiedCallback</ref>) is registered for the incoming <computeroutput>event_type</computeroutput>, this callback is NOT fired for that event.</para>
+<para>Parameters:<itemizedlist>
+<listitem><para><computeroutput>nodeName</computeroutput> — name of the emitting workflow node.</para>
+</listitem><listitem><para><computeroutput>eventType</computeroutput> — event discriminator.</para>
+</listitem><listitem><para><computeroutput>kvPairs</computeroutput> — ordered string→string payload. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="191" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="191" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -61,7 +187,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="191" column="14" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="191" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="371" column="14" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="371" bodyend="-1"/>
       </memberdef>
       <memberdef kind="friend" id="class_tryll_1_1_agent_proxy_1a487459da17b4e31150b0bfa7bca031e8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>class</type>
@@ -78,7 +204,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="192" column="14" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="192" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="372" column="14" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="372" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -94,7 +220,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="196" column="17" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="196" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="376" column="17" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="376" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_tryll_1_1_agent_proxy_1a2e0b94c318971cb770f9158fafe6c7f5" prot="private" static="no" mutable="no">
         <type>std::uint64_t</type>
@@ -109,83 +235,25 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="197" column="15" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="197" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="377" column="15" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="377" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1ac62da58662e04d1b2790ae31733cc4b4" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::future&lt; void &gt;</type>
-        <definition>std::future&lt; void &gt; Tryll::AgentProxy::SendTextAsync</definition>
-        <argsstring>(std::string_view text, std::function&lt; void(std::string_view text, bool isDelta, bool isFinal)&gt; onAnswerText={})</argsstring>
-        <name>SendTextAsync</name>
-        <qualifiedname>Tryll::AgentProxy::SendTextAsync</qualifiedname>
-        <param>
-          <type>std::string_view</type>
-          <declname>text</declname>
-        </param>
-        <param>
-          <type>std::function&lt; void(std::string_view text, bool isDelta, bool isFinal)&gt;</type>
-          <declname>onAnswerText</declname>
-          <defval>{}</defval>
-        </param>
-        <briefdescription>
-<para>Send a text message to the agent asynchronously. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>The returned future completes (with <computeroutput>void</computeroutput>) when <computeroutput>TurnComplete</computeroutput> arrives. Any streaming <computeroutput>AnswerText</computeroutput> frames received before <computeroutput>TurnComplete</computeroutput> are dispatched to <computeroutput>onAnswerText</computeroutput> on the reader thread; keep the callback short and non-blocking.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>text</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>User-turn text to send. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>onAnswerText</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional streaming callback invoked with (chunk, isDelta, isFinal) for each streamed chunk. Ignored when empty.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>Future completing when the turn finishes. Calling <computeroutput>future::get()</computeroutput> propagates any <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref> reported by the server or raised locally on disconnect.</para>
-</simplesect>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-<parametername>TryllError</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Only via the returned future; never directly. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="85" column="14"/>
-      </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1acc86d42f63e5aa9e296df10d6997ebb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1acac838d4e56195490697f75f87bf2030" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void Tryll::AgentProxy::SendText</definition>
-        <argsstring>(std::string_view text, std::function&lt; void(std::string_view text, bool isDelta, bool isFinal)&gt; onAnswerText={})</argsstring>
+        <argsstring>(std::string_view text)</argsstring>
         <name>SendText</name>
         <qualifiedname>Tryll::AgentProxy::SendText</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>text</declname>
         </param>
-        <param>
-          <type>std::function&lt; void(std::string_view text, bool isDelta, bool isFinal)&gt;</type>
-          <declname>onAnswerText</declname>
-          <defval>{}</defval>
-        </param>
         <briefdescription>
-<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_agent_proxy_1ac62da58662e04d1b2790ae31733cc4b4" kindref="member">SendTextAsync</ref>. </para>
+<para>Send a text message to the agent (fire-and-forget). </para>
         </briefdescription>
         <detaileddescription>
+<para>Enqueues the message and returns immediately. The response arrives through the persistent callbacks registered via <ref refid="class_tryll_1_1_agent_proxy_1ab7977336473dd8678e26ca747b9cbaf4" kindref="member">SetOnAnswerText</ref>, <ref refid="class_tryll_1_1_agent_proxy_1a9ee0574c5ab152a47de8beb2cb4aee10" kindref="member">SetOnTurnComplete</ref>, and <ref refid="class_tryll_1_1_agent_proxy_1a83c6893938918c7d7c8fcc559d7d75aa" kindref="member">SetOnError</ref>. Register those callbacks before the first <computeroutput>SendText</computeroutput> call.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>text</parametername>
@@ -194,53 +262,37 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
 <para>User-turn text to send. </para>
 </parameterdescription>
 </parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>onAnswerText</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional streaming callback; see <ref refid="class_tryll_1_1_agent_proxy_1ac62da58662e04d1b2790ae31733cc4b4" kindref="member">SendTextAsync</ref>.</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-<parametername>TryllError</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>On server-reported errors or disconnect. </para>
-</parameterdescription>
-</parameteritem>
 </parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="97" column="6"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="208" column="6"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a381a28c71a200ab134d00d0d8b51cf56" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a80bb4fa839e8d5d27ea15090f650f02a" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; void &gt;</type>
-        <definition>std::future&lt; void &gt; Tryll::AgentProxy::ChangeParamAsync</definition>
-        <argsstring>(std::string_view nodeName, std::string_view paramName, std::string_view paramValue)</argsstring>
-        <name>ChangeParamAsync</name>
-        <qualifiedname>Tryll::AgentProxy::ChangeParamAsync</qualifiedname>
+        <definition>std::future&lt; void &gt; Tryll::AgentProxy::ChangeParamsAsync</definition>
+        <argsstring>(std::string_view nodeName, ::Tryll::Client::NodeParamsVariant params)</argsstring>
+        <name>ChangeParamsAsync</name>
+        <qualifiedname>Tryll::AgentProxy::ChangeParamsAsync</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>nodeName</declname>
         </param>
         <param>
-          <type>std::string_view</type>
-          <declname>paramName</declname>
-        </param>
-        <param>
-          <type>std::string_view</type>
-          <declname>paramValue</declname>
+          <type><ref refid="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" kindref="member">::Tryll::Client::NodeParamsVariant</ref></type>
+          <declname>params</declname>
         </param>
         <briefdescription>
-<para>Mutate a named parameter on a workflow node asynchronously. </para>
+<para>Apply typed node parameters to a named workflow node asynchronously. </para>
         </briefdescription>
         <detaileddescription>
-<para>The agent must not be processing a turn; if it is, the returned future completes with a <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref> carrying error code <computeroutput>AgentBusy</computeroutput> (3004).</para>
+<para>The supplied <computeroutput>params</computeroutput> must match the concrete type of the target node (type mismatch → <computeroutput>InvalidParamValue</computeroutput> 3007 from the server). The mutation diff-loop on the server vetoes structural fields and invokes OnXxxChanged callbacks for fields that have changed.</para>
+<para>The C++ client does not cache a baseline copy of authored params: callers must own the typed params they last sent (or authored at <computeroutput>CreateAgent</computeroutput>) and start each mutation from that local copy. Structural fields must match the create-time values or the server returns <computeroutput>ParamNotMutable</computeroutput>.</para>
+<para>Typical clone-set-send idiom: <programlisting><codeline><highlight class="normal">GenerateParamsT<sp/>p<sp/>=<sp/>myBaseline;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>caller-owned<sp/>copy<sp/>of<sp/>authored<sp/>params</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">p.system_prompt<sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;New<sp/>system<sp/>prompt&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">agent.ChangeParams(</highlight><highlight class="stringliteral">&quot;gen&quot;</highlight><highlight class="normal">,<sp/>std::move(p));</highlight></codeline>
+</programlisting></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>nodeName</parametername>
@@ -251,49 +303,37 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>paramName</parametername>
+<parametername>params</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Parameter key to set. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>paramValue</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>New value as a string.</para>
+<para>Whole authored typed params for the node.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Future completing on <computeroutput>Ack</computeroutput>. Throws <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref> on any server-reported error (UnknownNode 3005, ParamNotMutable 3006, InvalidParamValue 3007, or AgentBusy 3004). </para>
+<simplesect kind="return"><para>Future completing on <computeroutput>Ack</computeroutput>. Throws <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref> on server-reported errors (UnknownNode 3005, ParamNotMutable 3006, InvalidParamValue 3007, or AgentBusy 3004). </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="116" column="14"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="239" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1abf7102901cfdc809d88580f9c6dee1c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a9f00c3595ed7e69d8702391e272abba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void Tryll::AgentProxy::ChangeParam</definition>
-        <argsstring>(std::string_view nodeName, std::string_view paramName, std::string_view paramValue)</argsstring>
-        <name>ChangeParam</name>
-        <qualifiedname>Tryll::AgentProxy::ChangeParam</qualifiedname>
+        <definition>void Tryll::AgentProxy::ChangeParams</definition>
+        <argsstring>(std::string_view nodeName, ::Tryll::Client::NodeParamsVariant params)</argsstring>
+        <name>ChangeParams</name>
+        <qualifiedname>Tryll::AgentProxy::ChangeParams</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>nodeName</declname>
         </param>
         <param>
-          <type>std::string_view</type>
-          <declname>paramName</declname>
-        </param>
-        <param>
-          <type>std::string_view</type>
-          <declname>paramValue</declname>
+          <type><ref refid="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" kindref="member">::Tryll::Client::NodeParamsVariant</ref></type>
+          <declname>params</declname>
         </param>
         <briefdescription>
-<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_agent_proxy_1a381a28c71a200ab134d00d0d8b51cf56" kindref="member">ChangeParamAsync</ref>. </para>
+<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_agent_proxy_1a80bb4fa839e8d5d27ea15090f650f02a" kindref="member">ChangeParamsAsync</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="exception"><parameteritem>
@@ -309,7 +349,100 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="126" column="6"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="248" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1ab7977336473dd8678e26ca747b9cbaf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::AgentProxy::SetOnAnswerText</definition>
+        <argsstring>(AnswerTextCallback cb)</argsstring>
+        <name>SetOnAnswerText</name>
+        <qualifiedname>Tryll::AgentProxy::SetOnAnswerText</qualifiedname>
+        <param>
+          <type><ref refid="class_tryll_1_1_agent_proxy_1a7c48a254f7341eea77f1ed1863afb39d" kindref="member">AnswerTextCallback</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for streaming text chunks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1a7c48a254f7341eea77f1ed1863afb39d" kindref="member">AnswerTextCallback</ref> to unregister.</para>
+<para>Fires on the reader thread for every <computeroutput>AnswerText</computeroutput> frame, including frames from server-initiated turns (e.g. voice autosend).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invoked with <computeroutput></computeroutput>(text, isDelta, isFinal), or empty to clear. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="265" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a9ee0574c5ab152a47de8beb2cb4aee10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::AgentProxy::SetOnTurnComplete</definition>
+        <argsstring>(TurnCompleteCallback cb)</argsstring>
+        <name>SetOnTurnComplete</name>
+        <qualifiedname>Tryll::AgentProxy::SetOnTurnComplete</qualifiedname>
+        <param>
+          <type><ref refid="class_tryll_1_1_agent_proxy_1ad271be7b5ca48a73b786a93adad37931" kindref="member">TurnCompleteCallback</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for turn-complete notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1ad271be7b5ca48a73b786a93adad37931" kindref="member">TurnCompleteCallback</ref> to unregister.</para>
+<para>Fires on the reader thread once per <computeroutput>TurnComplete</computeroutput> frame, for both client-initiated and server-initiated turns.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invoked with <computeroutput></computeroutput>(status, debugInfoJson, tokensGenerated), or empty to clear. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="279" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a83c6893938918c7d7c8fcc559d7d75aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::AgentProxy::SetOnError</definition>
+        <argsstring>(ErrorCallback cb)</argsstring>
+        <name>SetOnError</name>
+        <qualifiedname>Tryll::AgentProxy::SetOnError</qualifiedname>
+        <param>
+          <type><ref refid="class_tryll_1_1_agent_proxy_1aeb7a931d299ad15a9619780eccf2a13d" kindref="member">ErrorCallback</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Register a callback for agent-level error notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1aeb7a931d299ad15a9619780eccf2a13d" kindref="member">ErrorCallback</ref> to unregister.</para>
+<para>Fires on the reader thread when a <computeroutput>SendText</computeroutput> turn is terminated by a server-reported error or a connection drop. Does not fire for ::Tryll::TurnStatus_Error turns (those arrive via <ref refid="class_tryll_1_1_agent_proxy_1a9ee0574c5ab152a47de8beb2cb4aee10" kindref="member">SetOnTurnComplete</ref>).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invoked with the <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref>, or empty to clear. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="293" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1ade1d2ff25b11903acd3d5232bd143c92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -322,17 +455,17 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
           <declname>cb</declname>
         </param>
         <briefdescription>
-<para>Register a callback to be invoked on each tool-call notification. </para>
+<para>Register a callback for tool-call notifications. </para>
         </briefdescription>
         <detaileddescription>
 <para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1af62d70b0e0d22f8e2bae8c0a9d4a86c0" kindref="member">ToolCallCallback</ref> to unregister.</para>
-<para>The callback fires on the reader thread for every <computeroutput>ToolCallNotification</computeroutput> frame the server sends for this agent. It must return quickly and must not call any blocking <ref refid="class_tryll_1_1_tryll_client" kindref="compound">TryllClient</ref> or <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">AgentProxy</ref> methods.</para>
+<para>Fires on the reader thread for every <computeroutput>NodeEvent</computeroutput> with <computeroutput>event_type=&quot;tool_call&quot;</computeroutput> the server sends for this agent.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>cb</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Callable to invoke with <computeroutput></computeroutput>(toolName, argumentsJson), or empty to clear the current callback. </para>
+<para>Callable invoked with <computeroutput></computeroutput>(toolName, argumentsJson), or empty to clear. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -340,30 +473,30 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="145" column="6"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="306" column="6"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a9ee0574c5ab152a47de8beb2cb4aee10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a7d2ae2bb2c956e7edbc2e696210f8c93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void Tryll::AgentProxy::SetOnTurnComplete</definition>
-        <argsstring>(TurnCompleteCallback cb)</argsstring>
-        <name>SetOnTurnComplete</name>
-        <qualifiedname>Tryll::AgentProxy::SetOnTurnComplete</qualifiedname>
+        <definition>void Tryll::AgentProxy::SetOnIntentClassified</definition>
+        <argsstring>(IntentClassifiedCallback cb)</argsstring>
+        <name>SetOnIntentClassified</name>
+        <qualifiedname>Tryll::AgentProxy::SetOnIntentClassified</qualifiedname>
         <param>
-          <type><ref refid="class_tryll_1_1_agent_proxy_1a9fbec18fd29426945fb3a608aff8f055" kindref="member">TurnCompleteCallback</ref></type>
+          <type><ref refid="class_tryll_1_1_agent_proxy_1a93c50be95b814379f445bc2683263814" kindref="member">IntentClassifiedCallback</ref></type>
           <declname>cb</declname>
         </param>
         <briefdescription>
-<para>Register a callback to be invoked when each turn completes. </para>
+<para>Register a callback for intent-classification notifications. </para>
         </briefdescription>
         <detaileddescription>
-<para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1a9fbec18fd29426945fb3a608aff8f055" kindref="member">TurnCompleteCallback</ref> to unregister.</para>
-<para>The callback fires on the reader thread once per <computeroutput>TurnComplete</computeroutput> frame, before the <ref refid="class_tryll_1_1_agent_proxy_1acc86d42f63e5aa9e296df10d6997ebb4" kindref="member">SendText</ref> future resolves. <computeroutput>debugInfoJson</computeroutput> contains the JSON diagnostic blob only when the agent was created with <computeroutput>enableDiagnostics=true</computeroutput>; otherwise it is an empty string.</para>
+<para>Replaces any previously set callback. Pass an empty (default- constructed) <ref refid="class_tryll_1_1_agent_proxy_1a93c50be95b814379f445bc2683263814" kindref="member">IntentClassifiedCallback</ref> to unregister.</para>
+<para>Fires on the reader thread for every <computeroutput>NodeEvent</computeroutput> with <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput> the server sends for this agent (emitted by <computeroutput>ClassifyIntentNode</computeroutput> when <computeroutput>notify_client=&quot;true&quot;</computeroutput>).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>cb</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Callable to invoke with <computeroutput></computeroutput>(debugInfoJson), or empty to clear. </para>
+<para>Callable invoked with <computeroutput></computeroutput>(intent, recordId, recordIndex, distance), or empty to clear. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -371,7 +504,38 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="160" column="6"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="321" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a8895deb9f1149097f68bbc97523313f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::AgentProxy::SetOnNodeEvent</definition>
+        <argsstring>(NodeEventCallback cb)</argsstring>
+        <name>SetOnNodeEvent</name>
+        <qualifiedname>Tryll::AgentProxy::SetOnNodeEvent</qualifiedname>
+        <param>
+          <type><ref refid="class_tryll_1_1_agent_proxy_1a6e98110515a8dcbe5e188a6ae63057c7" kindref="member">NodeEventCallback</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Register a generic <computeroutput>NodeEvent</computeroutput> fallback callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Replaces any previously set callback. Pass an empty (default-constructed) <ref refid="class_tryll_1_1_agent_proxy_1a6e98110515a8dcbe5e188a6ae63057c7" kindref="member">NodeEventCallback</ref> to unregister.</para>
+<para>Fires on the reader thread for every <computeroutput>NodeEvent</computeroutput> whose <computeroutput>event_type</computeroutput> is either unrecognised or has no typed callback registered. When a typed callback handles the event, this one is NOT invoked for the same event.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callable invoked with <computeroutput></computeroutput>(nodeName, eventType, kvPairs), or empty to clear. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="337" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1aac35a8e5312f9c19f9afa34eac463979" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; void &gt;</type>
@@ -383,14 +547,14 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
 <para>Request agent destruction on the server asynchronously. </para>
         </briefdescription>
         <detaileddescription>
-<para>The proxy becomes inert once the returned future completes; further <computeroutput>SendText</computeroutput> calls fail with <ref refid="class_tryll_1_1_tryll_error" kindref="compound">TryllError</ref>.</para>
+<para>All registered callbacks are cleared before the destroy request is sent. The proxy becomes inert once the returned future completes; further <computeroutput>SendText</computeroutput> calls are no-ops.</para>
 <para><simplesect kind="return"><para>Future completing when the server acknowledges destruction. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="170" column="14"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="350" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a0c2f1e60bc7e408668df2b8f2eac6c12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -415,7 +579,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="178" column="6"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="358" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a20b6aee5a7b35fdc487222546889a2b7" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>std::uint64_t</type>
@@ -433,7 +597,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="186" column="16" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="186" bodyend="186"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="366" column="16" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="366" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_agent_proxy_1a74df74baeaaf677c1e9104ced60b5005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -447,7 +611,7 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="188" column="1"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="368" column="1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -471,34 +635,56 @@ std::function&lt;void(std::string_view toolName, std::string_view argumentsJson)
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="194" column="10"/>
+        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="374" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Client-side handle for one server-side agent. </para>
     </briefdescription>
     <detaileddescription>
-<para>Obtained from <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">TryllClient::CreateAgent</ref>. The proxy is copyable — all copies share the same underlying agent binding; the server-side agent is destroyed when <ref refid="class_tryll_1_1_agent_proxy_1a0c2f1e60bc7e408668df2b8f2eac6c12" kindref="member">Destroy</ref> is called explicitly. </para>
+<para>Obtained from <ref refid="class_tryll_1_1_tryll_client_1a1bb5b8c9656000808a8d12c324c3d490" kindref="member">TryllClient::CreateAgent</ref>. The proxy is copyable — all copies share the same underlying agent binding. The server-side agent is destroyed when <ref refid="class_tryll_1_1_agent_proxy_1a0c2f1e60bc7e408668df2b8f2eac6c12" kindref="member">Destroy</ref> is called explicitly.</para>
+<sect1 id="class_tryll_1_1_agent_proxy_1autotoc_md1_1s1"><sect2 id="class_tryll_1_1_agent_proxy_1autotoc_md1_1s2"><sect3 id="class_tryll_1_1_agent_proxy_1autotoc_md1">
+<title>Usage pattern</title><para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>client.CreateAgent(graph,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>std::chrono::seconds{15});</highlight></codeline>
+<codeline><highlight class="normal">agent.SetOnAnswerText([&amp;](std::string_view<sp/>text,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>text<sp/>&lt;&lt;<sp/>std::flush;</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal">agent.SetOnTurnComplete([&amp;](::Tryll::TurnStatus<sp/>status,<sp/>std::string_view<sp/>debug,<sp/>std::int32_t<sp/>tokens)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal">agent.SetOnError([&amp;](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Tryll::TryllError&amp;<sp/>err)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>err.what()<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal">agent.SendText(</highlight><highlight class="stringliteral">&quot;Hello!&quot;</highlight><highlight class="normal">);<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fire-and-forget</highlight></codeline>
+</programlisting> </para>
+</sect3></sect2></sect1>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" line="34" column="1" bodyfile="C:/_tryll/_monorepo/server/client-cpp/include/tryll/AgentProxy.h" bodystart="35" bodyend="198"/>
+    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" line="81" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h" bodystart="82" bodyend="378"/>
     <listofallmembers>
       <member refid="class_tryll_1_1_agent_proxy_1a2e0b94c318971cb770f9158fafe6c7f5" prot="private" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>_agentId</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1acbfc7245d832fb8b1ab0546698fcdc32" prot="private" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>_impl</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a74df74baeaaf677c1e9104ced60b5005" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>AgentProxy</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1acbced9e3fa26cb221152952de977ecb7" prot="private" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>AgentProxy</name></member>
-      <member refid="class_tryll_1_1_agent_proxy_1abf7102901cfdc809d88580f9c6dee1c9" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ChangeParam</name></member>
-      <member refid="class_tryll_1_1_agent_proxy_1a381a28c71a200ab134d00d0d8b51cf56" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ChangeParamAsync</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a7c48a254f7341eea77f1ed1863afb39d" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>AnswerTextCallback</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a9f00c3595ed7e69d8702391e272abba2" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ChangeParams</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a80bb4fa839e8d5d27ea15090f650f02a" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ChangeParamsAsync</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a0c2f1e60bc7e408668df2b8f2eac6c12" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>Destroy</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1aac35a8e5312f9c19f9afa34eac463979" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>DestroyAsync</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1aeb7a931d299ad15a9619780eccf2a13d" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ErrorCallback</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a20b6aee5a7b35fdc487222546889a2b7" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>GetAgentId</name></member>
-      <member refid="class_tryll_1_1_agent_proxy_1acc86d42f63e5aa9e296df10d6997ebb4" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SendText</name></member>
-      <member refid="class_tryll_1_1_agent_proxy_1ac62da58662e04d1b2790ae31733cc4b4" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SendTextAsync</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a93c50be95b814379f445bc2683263814" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>IntentClassifiedCallback</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a6e98110515a8dcbe5e188a6ae63057c7" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>NodeEventCallback</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1adaac51b98bd33ee15b00ddd120e48f41" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>NodeEventKeyValue</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1acac838d4e56195490697f75f87bf2030" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SendText</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1ab7977336473dd8678e26ca747b9cbaf4" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnAnswerText</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a83c6893938918c7d7c8fcc559d7d75aa" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnError</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a7d2ae2bb2c956e7edbc2e696210f8c93" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnIntentClassified</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1a8895deb9f1149097f68bbc97523313f4" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnNodeEvent</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1ade1d2ff25b11903acd3d5232bd143c92" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnToolCall</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a9ee0574c5ab152a47de8beb2cb4aee10" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>SetOnTurnComplete</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1af62d70b0e0d22f8e2bae8c0a9d4a86c0" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>ToolCallCallback</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a487459da17b4e31150b0bfa7bca031e8" prot="private" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>TryllClient</name></member>
       <member refid="class_tryll_1_1_agent_proxy_1a671f75bdf94c3a577f7f3ec7931a56b2" prot="private" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>TryllClientImpl</name></member>
-      <member refid="class_tryll_1_1_agent_proxy_1a9fbec18fd29426945fb3a608aff8f055" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>TurnCompleteCallback</name></member>
+      <member refid="class_tryll_1_1_agent_proxy_1ad271be7b5ca48a73b786a93adad37931" prot="public" virt="non-virtual"><scope>Tryll::AgentProxy</scope><name>TurnCompleteCallback</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

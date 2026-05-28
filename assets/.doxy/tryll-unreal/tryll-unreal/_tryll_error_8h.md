@@ -119,7 +119,13 @@ enum ETryllErrorCode {
     DownloadAlreadyActive = 6004,
     InvalidStringStorageName = 7001,
     StringStorageAlreadyExists = 7002,
-    InvalidStringStorageData = 7003
+    InvalidStringStorageData = 7003,
+    SttModelLoadFailed = 4100,
+    AudioFormatUnsupported = 4101,
+    VoiceInputNotFound = 4102,
+    UtteranceInProgress = 4103,
+    NoActiveUtterance = 4104,
+    UtteranceTimeout = 4105
 };
 ```
 
@@ -136,5 +142,5 @@ Ranges: 1xxx connection-level 2xxx session-level 3xxx agent-level 4xxx inference
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllError.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllError.h`
 

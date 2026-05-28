@@ -38,8 +38,6 @@
 | ---: | :--- |
 |  FString | [**DefaultModelName**](#variable-defaultmodelname)  <br> |
 |  TArray&lt; [**FTryllNodeDescription**](struct_f_tryll_node_description.md) &gt; | [**Nodes**](#variable-nodes)  <br> |
-|  TArray&lt; [**FTryllExitRoute**](struct_f_tryll_exit_route.md) &gt; | [**Routes**](#variable-routes)  <br> |
-|  FString | [**StartNode**](#variable-startnode)  <br> |
 
 
 
@@ -56,6 +54,11 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Graph", meta=(GetOptions="GetStartNodeOptions")) <br> |
 
 
 
@@ -87,7 +90,10 @@
 ## Detailed Description
 
 
-Complete graph description: nodes, routing, and entry point. Sent inside CreateAgentRequest. 
+Complete graph description: nodes and entry point. Sent inside CreateAgentRequest.
+
+
+Protocol v2: wiring lives on each node's typed [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) in fields marked with `meta=(GetOptions="GetExitTargetOptions")` (one per declared exit). Empty value = END (turn finishes after the node). There is no separate Routes list. 
 
 
     
@@ -123,26 +129,20 @@ TArray<FTryllNodeDescription> FTryllGraphDescription::Nodes;
 
 
 <hr>
-
-
-
-### variable Routes 
-
-```C++
-TArray<FTryllExitRoute> FTryllGraphDescription::Routes;
-```
+## Public Functions Documentation
 
 
 
 
-<hr>
-
-
-
-### variable StartNode 
+### function UPROPERTY 
 
 ```C++
-FString FTryllGraphDescription::StartNode;
+FTryllGraphDescription::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|Graph",
+    meta=(GetOptions="GetStartNodeOptions")
+) 
 ```
 
 
@@ -151,5 +151,5 @@ FString FTryllGraphDescription::StartNode;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

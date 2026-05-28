@@ -10,7 +10,7 @@
 
 [More...](#detailed-description)
 
-* `#include <TryllGraphDescription.h>`
+* `#include <TryllToolDefinition.h>`
 
 
 
@@ -36,9 +36,9 @@
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**Description**](#variable-description)  <br> |
-|  FString | [**Name**](#variable-name)  <br> |
-|  TArray&lt; [**FTryllToolParamDefinition**](struct_f_tryll_tool_param_definition.md) &gt; | [**Parameters**](#variable-parameters)  <br> |
+|  bool | [**bOverrideDescription**](#variable-boverridedescription)   = `false`<br> |
+|  bool | [**bOverrideName**](#variable-boverridename)   = `false`<br> |
+|  bool | [**bOverrideParameters**](#variable-boverrideparameters)   = `false`<br> |
 
 
 
@@ -55,6 +55,13 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideName")) <br> |
+|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideDescription")) <br> |
+|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideParameters")) <br> |
 
 
 
@@ -86,7 +93,7 @@
 ## Detailed Description
 
 
-Definition of a callable tool for a ToolCall node (prompt construction only). 
+A callable tool definition used for prompt construction by ToolCallNode. The server does not execute tools; these are schema-only for SLM prompting. 
 
 
     
@@ -95,10 +102,68 @@ Definition of a callable tool for a ToolCall node (prompt construction only).
 
 
 
-### variable Description 
+### variable bOverrideDescription 
 
 ```C++
-FString FTryllToolDefinition::Description;
+bool FTryllToolDefinition::bOverrideDescription;
+```
+
+
+
+What the tool does; included in the SLM tool-call prompt. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideName 
+
+```C++
+bool FTryllToolDefinition::bOverrideName;
+```
+
+
+
+Tool name the SLM must use when calling this tool. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideParameters 
+
+```C++
+bool FTryllToolDefinition::bOverrideParameters;
+```
+
+
+
+Named parameters accepted by this tool. 
+
+
+        
+
+<hr>
+## Public Functions Documentation
+
+
+
+
+### function UPROPERTY [1/3]
+
+```C++
+FTryllToolDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolDefinition",
+    meta=(EditCondition="bOverrideName")
+) 
 ```
 
 
@@ -108,10 +173,15 @@ FString FTryllToolDefinition::Description;
 
 
 
-### variable Name 
+### function UPROPERTY [2/3]
 
 ```C++
-FString FTryllToolDefinition::Name;
+FTryllToolDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolDefinition",
+    meta=(EditCondition="bOverrideDescription")
+) 
 ```
 
 
@@ -121,10 +191,15 @@ FString FTryllToolDefinition::Name;
 
 
 
-### variable Parameters 
+### function UPROPERTY [3/3]
 
 ```C++
-TArray<FTryllToolParamDefinition> FTryllToolDefinition::Parameters;
+FTryllToolDefinition::UPROPERTY (
+    EditAnywhere,
+    BlueprintReadWrite,
+    Category="Tryll|ToolDefinition",
+    meta=(EditCondition="bOverrideParameters")
+) 
 ```
 
 
@@ -133,5 +208,5 @@ TArray<FTryllToolParamDefinition> FTryllToolDefinition::Parameters;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolDefinition.h`
 

@@ -31,6 +31,7 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | struct | [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md) <br>_Result returned by_ `CreateEmbeddedStringStorage` _variants._ |
+| struct | [**SessionConfig**](struct_tryll_1_1_tryll_client_1_1_session_config.md) <br>_Per-model-kind session configuration._  |
 
 
 
@@ -57,18 +58,21 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) ([**Client::InferenceEngine**](namespace_tryll_1_1_client.md#enum-inferenceengine) engine, bool allowAutoModelDownloading=false, std::string\_view gameName={}, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Select the session's inference engine._  |
+|  void | [**ConfigureSession**](#function-configuresession) (const [**SessionConfig**](struct_tryll_1_1_tryll_client_1_1_session_config.md) & cfg) <br>_Configure session-level engines and options._  |
 |  [**AgentProxy**](class_tryll_1_1_agent_proxy.md) | [**CreateAgent**](#function-createagent) (const [**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_tryll_client.md#function-createagentasync) _._ |
 |  std::future&lt; [**AgentProxy**](class_tryll_1_1_agent_proxy.md) &gt; | [**CreateAgentAsync**](#function-createagentasync) (const [**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false) <br>_Asynchronously create an agent with the given graph description._  |
 |  [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md) | [**CreateEmbeddedStringStorage**](#function-createembeddedstringstorage) (std::string\_view name, std::string\_view configPath, std::string\_view embeddingModel={}, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Create an_ `EmbeddedStringStorage` _from a server-side config._ |
 |  [**EmbeddedStorageInfo**](struct_tryll_1_1_tryll_client_1_1_embedded_storage_info.md) | [**CreateEmbeddedStringStorageFromStrings**](#function-createembeddedstringstoragefromstrings) (std::string\_view name, const std::vector&lt; std::string &gt; & strings, std::string\_view embeddingModel, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Create an_ `EmbeddedStringStorage` _from inline strings._ |
 |  void | [**CreateStringStorage**](#function-createstringstorage) (std::string\_view name, const std::vector&lt; std::string &gt; & strings, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Create a named_ `StringStorage` _on the server from an inline list._ |
-|  void | [**CreateStringStorageFromFile**](#function-createstringstoragefromfile) (std::string\_view name, std::string\_view filePath, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Create a named_ `StringStorage` _on the server from a server-side file._ |
+|  void | [**CreateStringStorageFromFile**](#function-createstringstoragefromfile) (std::string\_view name, std::string\_view filePath, ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind\_List, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Create a named_ `StringStorage` _on the server from a server-side file._ |
+|  void | [**CreateStringStorageKeyed**](#function-createstringstoragekeyed) (std::string\_view name, const std::vector&lt; std::string &gt; & keys, const std::vector&lt; std::string &gt; & values, ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind\_Map, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Create a named_ `StringStorage` _on the server from inline key/value pairs._ |
+|  [**VoiceInput**](class_tryll_1_1_voice_input.md) | [**CreateVoiceInput**](#function-createvoiceinput) ([**VoiceInputConfig**](struct_tryll_1_1_voice_input_config.md) cfg, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Blocking convenience wrapper over_ [_**CreateVoiceInputAsync**_](class_tryll_1_1_tryll_client.md#function-createvoiceinputasync) _._ |
+|  std::future&lt; [**VoiceInput**](class_tryll_1_1_voice_input.md) &gt; | [**CreateVoiceInputAsync**](#function-createvoiceinputasync) ([**VoiceInputConfig**](struct_tryll_1_1_voice_input_config.md) cfg) <br>_Asynchronously create a_ [_**VoiceInput**_](class_tryll_1_1_voice_input.md) _handle backed by the named STT model._ |
 |  void | [**DestroyEmbeddedStringStorage**](#function-destroyembeddedstringstorage) (std::string\_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Destroy a named_ `EmbeddedStringStorage` _._ |
 |  void | [**DestroyStringStorage**](#function-destroystringstorage) (std::string\_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Destroy a named_ `StringStorage` _on the server._ |
 |  void | [**DownloadModel**](#function-downloadmodel) (std::string\_view modelName, [**Client::DownloadProgressCallback**](namespace_tryll_1_1_client.md#typedef-downloadprogresscallback) onProgress=nullptr, std::chrono::milliseconds timeout=std::chrono::minutes{30}) <br>_Start downloading a model on the server and block until complete._  |
 |  std::uint64\_t | [**GetSessionId**](#function-getsessionid) () noexcept const<br>_Server-assigned session identifier._  |
-|  std::vector&lt; [**Client::ModelInfo**](struct_tryll_1_1_client_1_1_model_info.md) &gt; | [**ListModels**](#function-listmodels) (std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Request the list of models known to the server for the session's engine._  |
+|  std::vector&lt;::Tryll::ModelInfoT &gt; | [**ListModels**](#function-listmodels) (std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Request the list of models known to the server for the session's engine._  |
 |  void | [**LoadModel**](#function-loadmodel) (std::string\_view modelName, std::chrono::milliseconds timeout=std::chrono::minutes{5}) <br>_Explicitly load and pin a model into memory._  |
 |  void | [**Shutdown**](#function-shutdown) (std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Blocking convenience wrapper over_ [_**ShutdownAsync**_](class_tryll_1_1_tryll_client.md#function-shutdownasync) _._ |
 |  std::future&lt; void &gt; | [**ShutdownAsync**](#function-shutdownasync) () <br>_Asynchronously shut down the connection._  |
@@ -128,13 +132,10 @@ Copyable — all copies share the same underlying connection via `shared_ptr`. T
 
 ### function ConfigureSession 
 
-_Select the session's inference engine._ 
+_Configure session-level engines and options._ 
 ```C++
 void Tryll::TryllClient::ConfigureSession (
-    Client::InferenceEngine engine,
-    bool allowAutoModelDownloading=false,
-    std::string_view gameName={},
-    std::chrono::milliseconds timeout=std::chrono::seconds{30}
+    const SessionConfig & cfg
 ) 
 ```
 
@@ -145,26 +146,10 @@ Must be called after [**Connect**](class_tryll_1_1_tryll_client.md#function-conn
 
 
 
-**Parameters:**
-
-
-* `engine` Inference backend; see [**Client::InferenceEngine**](namespace_tryll_1_1_client.md#enum-inferenceengine). 
-* `allowAutoModelDownloading` When `true`, the server automatically downloads any missing models referenced by a graph during [**CreateAgent**](class_tryll_1_1_tryll_client.md#function-createagent) instead of failing immediately. Intended for development and prototyping — not for production use. When this flag is set, [**CreateAgent**](class_tryll_1_1_tryll_client.md#function-createagent) and [**CreateAgentAsync**](class_tryll_1_1_tryll_client.md#function-createagentasync) use a 30-minute default timeout unless the caller overrides it explicitly. 
-* `timeout` Maximum time to wait for the response.
-
-
-
 **Exception:**
 
 
 * `TryllError` On server-reported errors or timeout. 
-
-
-
-**Parameters:**
-
-
-* `gameName` Integration identifier for telemetry grouping (e.g. "my-game"). Nullable — omit for anonymous sessions. 
 
 
 
@@ -417,7 +402,94 @@ _Create a named_ `StringStorage` _on the server from a server-side file._
 void Tryll::TryllClient::CreateStringStorageFromFile (
     std::string_view name,
     std::string_view filePath,
+    ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind_List,
     std::chrono::milliseconds timeout=std::chrono::seconds{10}
+) 
+```
+
+
+
+When `kind` is `List` (default), `filePath` must point to a newline-delimited `*`.txt file. When `kind` is `Map` or `Multimap`, `filePath` must point to a `*`.json array of `{id`, text} objects (where `id` is the key and `text` is the value).
+
+
+
+
+**Parameters:**
+
+
+* `name` Session-unique storage name. 
+* `filePath` Server-side path to the source file. 
+* `kind` Storage kind; defaults to `List`. 
+* `timeout` Maximum time to wait for the response.
+
+
+
+**Exception:**
+
+
+* `TryllError` On server-reported errors, missing file, or timeout. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function CreateStringStorageKeyed 
+
+_Create a named_ `StringStorage` _on the server from inline key/value pairs._
+```C++
+void Tryll::TryllClient::CreateStringStorageKeyed (
+    std::string_view name,
+    const std::vector< std::string > & keys,
+    const std::vector< std::string > & values,
+    ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind_Map,
+    std::chrono::milliseconds timeout=std::chrono::seconds{10}
+) 
+```
+
+
+
+`kind` must be `Map` or `Multimap`. For `Map`, all keys must be unique. For `Multimap`, duplicate keys are allowed. Both `keys` and `values` must be non-empty and the same length.
+
+
+
+
+**Parameters:**
+
+
+* `name` Session-unique storage name. 
+* `keys` Ordered list of keys. 
+* `values` Ordered list of values (one per key). 
+* `kind` `Map` (default) or `Multimap`. 
+* `timeout` Maximum time to wait for the response.
+
+
+
+**Exception:**
+
+
+* `TryllError` On server-reported errors or timeout. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function CreateVoiceInput 
+
+_Blocking convenience wrapper over_ [_**CreateVoiceInputAsync**_](class_tryll_1_1_tryll_client.md#function-createvoiceinputasync) _._
+```C++
+VoiceInput Tryll::TryllClient::CreateVoiceInput (
+    VoiceInputConfig cfg,
+    std::chrono::milliseconds timeout=std::chrono::seconds{30}
 ) 
 ```
 
@@ -428,16 +500,56 @@ void Tryll::TryllClient::CreateStringStorageFromFile (
 **Parameters:**
 
 
-* `name` Session-unique storage name. 
-* `filePath` Server-side path to a newline-delimited text file. 
-* `timeout` Maximum time to wait for the response.
+* `cfg` Configuration (see [**VoiceInputConfig**](struct_tryll_1_1_voice_input_config.md)). 
+* `timeout` Maximum time to wait for the server's response.
+
+
+
+**Returns:**
+
+A move-only [**VoiceInput**](class_tryll_1_1_voice_input.md) handle.
+
 
 
 
 **Exception:**
 
 
-* `TryllError` On server-reported errors, missing file, or timeout. 
+* `TryllError` On server-reported errors (e.g. SttModelLoadFailed) or timeout. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function CreateVoiceInputAsync 
+
+_Asynchronously create a_ [_**VoiceInput**_](class_tryll_1_1_voice_input.md) _handle backed by the named STT model._
+```C++
+std::future< VoiceInput > Tryll::TryllClient::CreateVoiceInputAsync (
+    VoiceInputConfig cfg
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `cfg` Configuration including model name, input audio format, and VAD params.
+
+
+
+**Returns:**
+
+Future yielding a move-only [**VoiceInput**](class_tryll_1_1_voice_input.md) handle. Calling `future::get()` propagates any [**TryllError**](class_tryll_1_1_tryll_error.md). 
+
 
 
 
@@ -596,7 +708,7 @@ The `session_id` field received in `SessionReady`.
 
 _Request the list of models known to the server for the session's engine._ 
 ```C++
-std::vector< Client::ModelInfo > Tryll::TryllClient::ListModels (
+std::vector<::Tryll::ModelInfoT > Tryll::TryllClient::ListModels (
     std::chrono::milliseconds timeout=std::chrono::seconds{10}
 ) 
 ```
@@ -1011,5 +1123,5 @@ Future yielding a [**ConnectedSession**](class_tryll_1_1_connected_session.md). 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo/server/client-cpp/include/tryll/TryllClient.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h`
 
