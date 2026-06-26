@@ -84,7 +84,7 @@
 ## Detailed Description
 
 
-Shared helpers for Details-panel dropdowns that enumerate node names. Used by GetExitTargetOptions (on [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md)) and GetStartNodeOptions (on [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) / UTryllAgentComponent). 
+Shared helpers for Details-panel dropdowns that enumerate node names. Used by GetExitTargetOptions (on [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md)) and GetStartNodeOptions (on [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) / [**UTryllAgentComponent**](class_u_tryll_agent_component.md)). 
 
 
     
@@ -111,5 +111,5 @@ Returns all non-empty node names from Graph.Nodes, in authoring order. No END se
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

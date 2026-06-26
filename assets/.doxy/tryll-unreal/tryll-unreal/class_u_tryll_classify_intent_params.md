@@ -41,15 +41,14 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  int32 | [**DiagnosticTopk**](#variable-diagnostictopk)   = `1`<br> |
-|  FString | [**EmbeddedStringStorage**](#variable-embeddedstringstorage)  <br> |
-|  FString | [**EmbeddingModel**](#variable-embeddingmodel)  <br> |
+|  int32 | [**DiagnosticTopk**](#variable-diagnostictopk)   = `5`<br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**EmbeddedStringStorage**](#variable-embeddedstringstorage)  <br> |
 |  FString | [**Filter**](#variable-filter)  <br> |
+|  FString | [**FoundExit**](#variable-foundexit)  <br> |
 |  FString | [**MetadataField**](#variable-metadatafield)  <br> |
-|  float | [**Threshold**](#variable-threshold)   = `0.0f`<br> |
+|  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
+|  float | [**Threshold**](#variable-threshold)   = `0.25f`<br> |
 |  bool | [**bNotifyClient**](#variable-bnotifyclient)   = `false`<br> |
-|  bool | [**bOverrideEmbeddedStringStorage**](#variable-boverrideembeddedstringstorage)   = `false`<br> |
-|  bool | [**bOverrideEmbeddingModel**](#variable-boverrideembeddingmodel)   = `false`<br> |
 |  bool | [**bOverrideFilter**](#variable-boverridefilter)   = `false`<br> |
 |  bool | [**bOverrideMetadataField**](#variable-boverridemetadatafield)   = `false`<br> |
 
@@ -90,8 +89,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -190,24 +187,15 @@ Hits to fetch for diagnostic purposes (routing always uses top-1).
 ### variable EmbeddedStringStorage 
 
 ```C++
-FString UTryllClassifyIntentParams::EmbeddedStringStorage;
+FTryllStoragePath UTryllClassifyIntentParams::EmbeddedStringStorage;
 ```
 
 
 
-
-<hr>
-
+Named embedded string storage. Structural. 
 
 
-### variable EmbeddingModel 
-
-```C++
-FString UTryllClassifyIntentParams::EmbeddingModel;
-```
-
-
-
+        
 
 <hr>
 
@@ -226,6 +214,23 @@ FString UTryllClassifyIntentParams::Filter;
 
 
 
+### variable FoundExit 
+
+```C++
+FString UTryllClassifyIntentParams::FoundExit;
+```
+
+
+
+Exit taken when classification produced a label above threshold. Empty string = END. Graph exit "found" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
 ### variable MetadataField 
 
 ```C++
@@ -234,6 +239,23 @@ FString UTryllClassifyIntentParams::MetadataField;
 
 
 
+
+<hr>
+
+
+
+### variable NotFoundExit 
+
+```C++
+FString UTryllClassifyIntentParams::NotFoundExit;
+```
+
+
+
+Exit taken when no label cleared the threshold. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
+
+
+        
 
 <hr>
 
@@ -265,40 +287,6 @@ bool UTryllClassifyIntentParams::bNotifyClient;
 
 
 When true, fire OnNodeEvent("intent\_classified", …) on the found path. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideEmbeddedStringStorage 
-
-```C++
-bool UTryllClassifyIntentParams::bOverrideEmbeddedStringStorage;
-```
-
-
-
-Named embedded string storage. Structural. Set to true to override the inherited EmbeddedStringStorage value. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideEmbeddingModel 
-
-```C++
-bool UTryllClassifyIntentParams::bOverrideEmbeddingModel;
-```
-
-
-
-Embedding model catalog name. Structural. Set to true to override the inherited EmbeddingModel value. 
 
 
         
@@ -374,50 +362,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/2]
-
-```C++
-UTryllClassifyIntentParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when classification produced a label above threshold. Empty string = END. Graph exit "found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [2/2]
-
-```C++
-UTryllClassifyIntentParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when no label cleared the threshold. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h`
 

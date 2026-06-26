@@ -66,6 +66,8 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  FOnTryllNodeEvent | [**OnNodeEvent**](#variable-onnodeevent)  <br> |
 |  FOnTryllToolCall | [**OnToolCall**](#variable-ontoolcall)  <br> |
 |  FOnTryllUnloadModel | [**OnUnloadModelComplete**](#variable-onunloadmodelcomplete)  <br> |
+|  FString | [**ServerHost**](#variable-serverhost)   = `TEXT("127.0.0.1")`<br> |
+|  int32 | [**ServerPort**](#variable-serverport)   = `9100`<br> |
 
 
 
@@ -86,12 +88,9 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock) <br> |
+|  void | [**ConfigureSession**](#function-configuresession) (ETryllInferenceEngine Engine, bool bAllowAutoModelDownloading=false, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock, FString StorageDataFolder=TEXT("")) <br> |
+|  void | [**ConfigureSessionFromSettings**](#function-configuresessionfromsettings) () <br> |
 |  void | [**Connect**](#function-connect) () <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_dynamic_multicast_delegate_threeparams) (FOnTryllCreateEmbeddedStringStorage, const FString &, Name, int32, RecordCount, bool, bSuccess) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-13) (FOnTryllCreateStringStorage, const FString &, Name, bool, bSuccess) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-23) (FOnTryllDestroyStringStorage, const FString &, Name, bool, bSuccess) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_dynamic_multicast_delegate_twoparams-33) (FOnTryllDestroyEmbeddedStringStorage, const FString &, Name, bool, bSuccess) <br> |
 | virtual void | [**Deinitialize**](#function-deinitialize) () override<br> |
 |  void | [**Disconnect**](#function-disconnect) () <br> |
 |  int64 | [**GetSessionId**](#function-getsessionid) () const<br> |
@@ -99,6 +98,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 | virtual ETickableTickType | [**GetTickableTickType**](#function-gettickableticktype) () override const<br> |
 | virtual void | [**Initialize**](#function-initialize) (FSubsystemCollectionBase & Collection) override<br> |
 |  bool | [**IsConnected**](#function-isconnected) () const<br> |
+|  bool | [**IsSessionReady**](#function-issessionready) () const<br> |
 | virtual bool | [**IsTickable**](#function-istickable) () override const<br> |
 | virtual bool | [**IsTickableInEditor**](#function-istickableineditor) () override const<br> |
 | virtual bool | [**IsTickableWhenPaused**](#function-istickablewhenpaused) () override const<br> |
@@ -120,11 +120,16 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  void | [**RequestModel**](#function-requestmodel) (const FString & ModelName) <br> |
 |  void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) <br> |
 | virtual void | [**Tick**](#function-tick) (float DeltaTime) override<br> |
-|   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Connection", meta=(ToolTip="Host name or IP address of the Tryll server (default: 127.0.0.1).")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Connection", meta=(ToolTip="TCP port the Tryll server is listening on (default: 9100).", ClampMin="1", ClampMax="65535")) <br> |
 |  void | [**UnregisterAgent**](#function-unregisteragent) (std::uint64\_t AgentId) <br> |
 
 
+## Public Static Functions
+
+| Type | Name |
+| ---: | :--- |
+|  TArray&lt; EServerBuildVariant &gt; | [**GetAvailableServerVariants**](#function-getavailableservervariants) () <br> |
+|  FString | [**GetServerRootDir**](#function-getserverrootdir) () <br> |
+|  FString | [**ResolveServerExePath**](#function-resolveserverexepath) (EServerBuildVariant Preferred) <br> |
 
 
 
@@ -157,21 +162,26 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 Game-instance subsystem: one TCP session to the Tryll server. Manages the socket connection on a background thread (FTryllConnection) and drains the event queue on Tick(), dispatching to registered agents and delegates.
 
 
-Lifecycle (game-thread, event-driven):
+Default (zero-wiring) path — driven by [**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md):
+* bAutoLaunchServer → spawns the bundled tryll\_server.exe on Initialize.
+* bAutoConnect → [**Connect()**](class_u_tryll_subsystem.md#function-connect) on Initialize (connect-retry covers server startup).
+* bAutoConfigureSession → on Connected, [**ConfigureSessionFromSettings()**](class_u_tryll_subsystem.md#function-configuresessionfromsettings) applies the Engine / Stt / Tts / Embedding selections from settings. [**UTryllAgentComponent**](class_u_tryll_agent_component.md) / [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md) then create themselves once [**IsSessionReady()**](class_u_tryll_subsystem.md#function-issessionready) — they queue until OnConfigureSessionComplete if they spawn earlier. So the common case is: add the components, pick engines in Project Settings, press play.
+
+
+
+
+Manual path — turn those flags off to drive the session yourself:
 * [**Connect()**](class_u_tryll_subsystem.md#function-connect) — open TCP session to ServerHost:ServerPort.
-* OnConnectionChanged(bConnected=true) — bind this to continue; or poll [**IsConnected()**](class_u_tryll_subsystem.md#function-isconnected).
-* ConfigureSession(Engine) — select the inference engine for this session. Completion arrives on OnConfigureSessionComplete.
-* CreateAgent — either attach a UTryllAgentComponent (which calls RequestCreateAgent under the hood when bAutoCreateOnConnect is true) or invoke [**RequestCreateAgent()**](class_u_tryll_subsystem.md#function-requestcreateagent) directly with a graph. On success the callback gets a TSharedPtr&lt;FTryllAgent&gt;.
-* SendMessage(Text) — drive one turn through the agent. Streaming chunks arrive on OnAnswerText; the turn ends with OnTurnComplete(Status).
+* OnConnectionChanged(bConnected=true) — bind to continue; or poll [**IsConnected()**](class_u_tryll_subsystem.md#function-isconnected).
+* ConfigureSession(Engine, ...) — configure explicitly (overrides settings). Completion arrives on OnConfigureSessionComplete; [**IsSessionReady()**](class_u_tryll_subsystem.md#function-issessionready) is true thereafter.
+* CreateAgent — attach a [**UTryllAgentComponent**](class_u_tryll_agent_component.md) (auto-creates once the session is ready) or call [**RequestCreateAgent()**](class_u_tryll_subsystem.md#function-requestcreateagent).
+* SendMessage(Text) — drive one turn; chunks on OnAnswerText, the turn ends with OnTurnComplete(Status).
 * RequestDestroyAgent / Disconnect — tear down when done.
 
 
 
 
-All delegates fire on the game thread from Tick(); it is safe to touch UObjects and UI directly from callbacks.
-
-
-Usage: UTryllSubsystem\* Tryll = GetGameInstance()-&gt;GetSubsystem&lt;UTryllSubsystem&gt;(); Tryll-&gt;[**Connect()**](class_u_tryll_subsystem.md#function-connect); // Bind OnConnectionChanged to ConfigureSession, then CreateAgent, then SendMessage. 
+All delegates fire on the game thread from Tick(); it is safe to touch UObjects and UI directly from callbacks. 
 
 
     
@@ -455,6 +465,40 @@ FOnTryllUnloadModel UTryllSubsystem::OnUnloadModelComplete;
 
 
 <hr>
+
+
+
+### variable ServerHost 
+
+```C++
+FString UTryllSubsystem::ServerHost;
+```
+
+
+
+Host name or IP address of the Tryll server. Defaults to localhost. 
+
+
+        
+
+<hr>
+
+
+
+### variable ServerPort 
+
+```C++
+int32 UTryllSubsystem::ServerPort;
+```
+
+
+
+TCP port the Tryll server is listening on (default: 9100). 
+
+
+        
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -469,7 +513,8 @@ void UTryllSubsystem::ConfigureSession (
     FString GameName=TEXT(""),
     ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock,
     ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock,
-    ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock
+    ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock,
+    FString StorageDataFolder=TEXT("")
 ) 
 ```
 
@@ -486,8 +531,29 @@ Send ConfigureSessionRequest. Must be called after Connected and before CreateAg
 * `Engine` Inference backend to use for this session. 
 * `bAllowAutoModelDownloading` When true, CreateAgent automatically downloads any missing models referenced by the graph instead of failing immediately. Intended for development and prototyping only. Pass [**UTryllRuntimeSettings::bAllowAutoModelDownloading**](class_u_tryll_runtime_settings.md#variable-ballowautomodeldownloading) to drive this from the project settings asset. 
 * `GameName` Integration identifier for telemetry grouping (e.g. "tryll-roleplay-demo"). Leave empty to omit; the server defaults to "unknown" when telemetry is on. Pass [**UTryllRuntimeSettings::GameName**](class_u_tryll_runtime_settings.md#variable-gamename) to drive this from the project settings asset. 
+* `StorageDataFolder` Project-relative storage root (e.g. [**UTryllRuntimeSettings::StorageDataFolder**](class_u_tryll_runtime_settings.md#variable-storagedatafolder)) or an absolute path. Resolved to a full path on the wire. Empty = server default storage root. 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function ConfigureSessionFromSettings 
+
+```C++
+void UTryllSubsystem::ConfigureSessionFromSettings () 
+```
+
+
+
+Configure the session from project settings ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md)): engine selections, model auto-download, game name, and storage folder.
+
+
+This is the "use settings" path. It runs automatically once connected when [**UTryllRuntimeSettings::bAutoConfigureSession**](class_u_tryll_runtime_settings.md#variable-bautoconfiguresession) is true; call it yourself if you connected with that flag disabled and still want the settings-driven config. To override settings, call [**ConfigureSession()**](class_u_tryll_subsystem.md#function-configuresession) with explicit parameters instead. 
 
 
         
@@ -508,84 +574,6 @@ Open a TCP session to ServerHost:ServerPort. Asynchronous — completion is repo
 
 
         
-
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_ThreeParams 
-
-```C++
-UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams (
-    FOnTryllCreateEmbeddedStringStorage,
-    const FString &,
-    Name,
-    int32,
-    RecordCount,
-    bool,
-    bSuccess
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams [1/3]
-
-```C++
-UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
-    FOnTryllCreateStringStorage,
-    const FString &,
-    Name,
-    bool,
-    bSuccess
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams [2/3]
-
-```C++
-UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
-    FOnTryllDestroyStringStorage,
-    const FString &,
-    Name,
-    bool,
-    bSuccess
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_TwoParams [3/3]
-
-```C++
-UTryllSubsystem::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams (
-    FOnTryllDestroyEmbeddedStringStorage,
-    const FString &,
-    Name,
-    bool,
-    bSuccess
-) 
-```
-
-
-
 
 <hr>
 
@@ -688,6 +676,23 @@ bool UTryllSubsystem::IsConnected () const
 
 
 True while the background connection is in the Connected state. 
+
+
+        
+
+<hr>
+
+
+
+### function IsSessionReady 
+
+```C++
+bool UTryllSubsystem::IsSessionReady () const
+```
+
+
+
+True once the current connection has a successfully configured session (ConfigureSession completed OK). Agent / VoiceInput creation must wait for this — creating against an unconfigured session is rejected by the server. 
 
 
         
@@ -1112,50 +1117,6 @@ virtual void UTryllSubsystem::Tick (
 
 
 
-### function UPROPERTY [1/2]
-
-```C++
-UTryllSubsystem::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Connection",
-    meta=(ToolTip="Host name or IP address of the Tryll server (default: 127.0.0.1).")
-) 
-```
-
-
-
-Host name or IP address of the Tryll server. Defaults to localhost. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [2/2]
-
-```C++
-UTryllSubsystem::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Connection",
-    meta=(ToolTip="TCP port the Tryll server is listening on (default: 9100).", ClampMin="1", ClampMax="65535")
-) 
-```
-
-
-
-TCP port the Tryll server is listening on (default: 9100). 
-
-
-        
-
-<hr>
-
-
-
 ### function UnregisterAgent 
 
 ```C++
@@ -1168,7 +1129,62 @@ void UTryllSubsystem::UnregisterAgent (
 
 
 <hr>
+## Public Static Functions Documentation
+
+
+
+
+### function GetAvailableServerVariants 
+
+```C++
+static TArray< EServerBuildVariant > UTryllSubsystem::GetAvailableServerVariants () 
+```
+
+
+
+Variant subfolders (Default/Release) whose target resolves on disk. 
+
+
+        
+
+<hr>
+
+
+
+### function GetServerRootDir 
+
+```C++
+static FString UTryllSubsystem::GetServerRootDir () 
+```
+
+
+
+&lt;PluginBaseDir&gt;/Binaries/ThirdParty/TryllServer; empty if the plugin is not found. 
+
+
+        
+
+<hr>
+
+
+
+### function ResolveServerExePath 
+
+```C++
+static FString UTryllSubsystem::ResolveServerExePath (
+    EServerBuildVariant Preferred
+) 
+```
+
+
+
+Server exe to launch for Preferred; see .cpp for the editor/packaged resolution. 
+
+
+        
+
+<hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

@@ -8,7 +8,7 @@
 
 
 
-[More...](#detailed-description)
+_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._ [More...](#detailed-description)
 
 * `#include <TryllSubsystem.h>`
 
@@ -32,28 +32,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions
+## Public Attributes
 
 | Type | Name |
 | ---: | :--- |
-|   | [**UPROPERTY**](#function-uproperty-12) (BlueprintReadOnly, Category="Tryll") <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (BlueprintReadOnly, Category="Tryll") <br> |
+|  FString | [**Key**](#variable-key)  <br> |
+|  FString | [**Value**](#variable-value)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -89,18 +89,15 @@ Generic NodeEvent fallback — fired for any event\_type without a typed delegat
 
 
     
-## Public Functions Documentation
+## Public Attributes Documentation
 
 
 
 
-### function UPROPERTY [1/2]
+### variable Key 
 
 ```C++
-FTryllNodeEventKeyValue::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll"
-) 
+FString FTryllNodeEventKeyValue::Key;
 ```
 
 
@@ -110,13 +107,10 @@ FTryllNodeEventKeyValue::UPROPERTY (
 
 
 
-### function UPROPERTY [2/2]
+### variable Value 
 
 ```C++
-FTryllNodeEventKeyValue::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll"
-) 
+FString FTryllNodeEventKeyValue::Value;
 ```
 
 
@@ -125,5 +119,5 @@ FTryllNodeEventKeyValue::UPROPERTY (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

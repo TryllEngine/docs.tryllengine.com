@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**client-unreal**](dir_95d666eee9112f2bfa7f2b736b6243b9.md) **>** [**Source**](dir_e37f8a870dc803113e92bf135247a735.md) **>** [**TryllClient**](dir_0869abba98a308e3c3eadd7e169e0f62.md) **>** [**Public**](dir_338741d27b4bda5805009de80ddaf6fc.md) **>** [**TryllVoiceInputComponent.h**](_tryll_voice_input_component_8h.md)
+[**FileList**](files.md) **>** [**clients**](dir_ae1e47b40792601544f85532b4958859.md) **>** [**unreal**](dir_b8761365e93ebda0e5697455672eef41.md) **>** [**Source**](dir_2d515141515bf2e74d881ba79f9137e4.md) **>** [**TryllClient**](dir_86e4d1eacb47bf47a46b7a1cbe7617d1.md) **>** [**Public**](dir_ce990ac36c6f0b3bdd019ac68edf26a8.md) **>** [**TryllVoiceInputComponent.h**](_tryll_voice_input_component_8h.md)
 
 
 
@@ -13,6 +13,8 @@
 * `#include "CoreMinimal.h"`
 * `#include "Components/ActorComponent.h"`
 * `#include "TryllError.h"`
+* `#include "TryllModelName.h"`
+* `#include "TryllStoragePath.h"`
 * `#include "TryllVoiceInput.h"`
 * `#include "TryllVoiceInputComponent.generated.h"`
 
@@ -30,35 +32,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions
+## Classes
 
 | Type | Name |
 | ---: | :--- |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE**](#function-declare_dynamic_multicast_delegate) (FOnTryllVoiceInputCreated) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllTranscriptUpdate, const [**FTryllTranscriptUpdate**](struct_f_tryll_transcript_update.md) &, Update) <br> |
-|   | [**DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam**](#function-declare_dynamic_multicast_delegate_oneparam) (FOnTryllVoiceError, const FString &, ErrorMessage) <br> |
+| class | [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md) <br> |
 
 
 
@@ -87,58 +65,29 @@
 
 
 
-## Public Functions Documentation
 
 
 
 
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE 
-
-```C++
-DECLARE_DYNAMIC_MULTICAST_DELEGATE (
-    FOnTryllVoiceInputCreated
-) 
-```
 
 
 
 
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam 
-
-```C++
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (
-    FOnTryllTranscriptUpdate,
-    const FTryllTranscriptUpdate &,
-    Update
-) 
-```
 
 
 
 
-<hr>
-
-
-
-### function DECLARE\_DYNAMIC\_MULTICAST\_DELEGATE\_OneParam 
-
-```C++
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam (
-    FOnTryllVoiceError,
-    const FString &,
-    ErrorMessage
-) 
-```
 
 
 
 
-<hr>
+
+
+
+
+
+
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h`
 

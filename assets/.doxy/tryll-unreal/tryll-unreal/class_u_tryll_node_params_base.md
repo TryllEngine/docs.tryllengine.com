@@ -17,7 +17,7 @@
 Inherits the following classes: UObject
 
 
-Inherited by the following classes: [UTryllCannedResponseParams](class_u_tryll_canned_response_params.md),  [UTryllClassifyIntentLLMParams](class_u_tryll_classify_intent_l_l_m_params.md),  [UTryllClassifyIntentParams](class_u_tryll_classify_intent_params.md),  [UTryllGenerateParams](class_u_tryll_generate_params.md),  [UTryllHumanMessageGuardrailParams](class_u_tryll_human_message_guardrail_params.md),  [UTryllInstructionParams](class_u_tryll_instruction_params.md),  [UTryllIntentToInstructionParams](class_u_tryll_intent_to_instruction_params.md),  [UTryllRetrieveParams](class_u_tryll_retrieve_params.md),  [UTryllToolCallParams](class_u_tryll_tool_call_params.md)
+Inherited by the following classes: [UTryllCannedResponseParams](class_u_tryll_canned_response_params.md),  [UTryllClassifyIntentLLMParams](class_u_tryll_classify_intent_l_l_m_params.md),  [UTryllClassifyIntentParams](class_u_tryll_classify_intent_params.md),  [UTryllGenerateAndSpeakParams](class_u_tryll_generate_and_speak_params.md),  [UTryllGenerateParams](class_u_tryll_generate_params.md),  [UTryllHumanMessageGuardrailParams](class_u_tryll_human_message_guardrail_params.md),  [UTryllInstructionParams](class_u_tryll_instruction_params.md),  [UTryllIntentToInstructionParams](class_u_tryll_intent_to_instruction_params.md),  [UTryllRetrieveParams](class_u_tryll_retrieve_params.md),  [UTryllSpeakParams](class_u_tryll_speak_params.md),  [UTryllToolCallParams](class_u_tryll_tool_call_params.md)
 
 
 
@@ -106,7 +106,7 @@ virtual TArray< FString > UTryllNodeParamsBase::GetExitTargetOptions () const
 
 
 
-Dropdown options for fields tagged with FlatBuffers `(exit)`. Walks the Outer chain to find the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (typically owned by a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) or UTryllAgentComponent), then returns: [""] + node names from that graph.
+Dropdown options for fields tagged with FlatBuffers `(exit)`. Walks the Outer chain to find the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (typically owned by a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) or [**UTryllAgentComponent**](class_u_tryll_agent_component.md)), then returns: [""] + node names from that graph.
 
 
 The leading empty string represents END (turn finishes after this node); Unreal's Details panel renders it as a blank entry in the dropdown.
@@ -164,5 +164,5 @@ ETryllNodeType return UTryllNodeParamsBase::static_cast (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h`
 

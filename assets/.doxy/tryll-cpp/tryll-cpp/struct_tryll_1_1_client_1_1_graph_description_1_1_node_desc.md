@@ -114,5 +114,5 @@ NodeParamsVariant Tryll::Client::GraphDescription::NodeDesc::params;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/GraphDescription.h`
 

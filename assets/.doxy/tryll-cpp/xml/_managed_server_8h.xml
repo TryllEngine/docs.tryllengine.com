@@ -9,10 +9,10 @@
     <includes local="no">memory</includes>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
-    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</includedby>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h</label>
         <link refid="_managed_server_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -63,13 +63,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h</label>
         <link refid="_managed_server_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
       </node>
     </invincdepgraph>
@@ -87,7 +87,7 @@
 <codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref><sp/>=<sp/>9100;</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>server<sp/>=<sp/><ref refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" kindref="member">Tryll::Client::ManagedServer::Start</ref>(opts);</highlight></codeline>
-<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>client<sp/>=<sp/><ref refid="class_tryll_1_1_tryll_client_1a6a2ceb8e0a5af81bd91baad797b69d02" kindref="member">Tryll::TryllClient::Connect</ref>(server.Host(),<sp/>server.Port());</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>client<sp/>=<sp/><ref refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" kindref="member">Tryll::Client::TryllClient::Connect</ref>(server.Host(),<sp/>server.Port());</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>…<sp/>use<sp/>client<sp/>…</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">client.Shutdown();</highlight></codeline>
 <codeline><highlight class="normal">server.Stop();<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>just<sp/>let<sp/>the<sp/>destructor<sp/>run</highlight></codeline>
@@ -96,6 +96,6 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h"/>
   </compounddef>
 </doxygen>

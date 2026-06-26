@@ -36,9 +36,11 @@
 
 | Type | Name |
 | ---: | :--- |
+|  FString | [**Description**](#variable-description)  <br> |
+|  FString | [**Name**](#variable-name)  <br> |
+|  TArray&lt; [**FTryllToolParamDefinition**](struct_f_tryll_tool_param_definition.md) &gt; | [**Parameters**](#variable-parameters)  <br> |
 |  bool | [**bOverrideDescription**](#variable-boverridedescription)   = `false`<br> |
 |  bool | [**bOverrideName**](#variable-boverridename)   = `false`<br> |
-|  bool | [**bOverrideParameters**](#variable-boverrideparameters)   = `false`<br> |
 
 
 
@@ -55,13 +57,6 @@
 
 
 
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideName")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideDescription")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolDefinition", meta=(EditCondition="bOverrideParameters")) <br> |
 
 
 
@@ -102,6 +97,49 @@ A callable tool definition used for prompt construction by ToolCallNode. The ser
 
 
 
+### variable Description 
+
+```C++
+FString FTryllToolDefinition::Description;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Name 
+
+```C++
+FString FTryllToolDefinition::Name;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Parameters 
+
+```C++
+TArray<FTryllToolParamDefinition> FTryllToolDefinition::Parameters;
+```
+
+
+
+Named parameters accepted by this tool. 
+
+
+        
+
+<hr>
+
+
+
 ### variable bOverrideDescription 
 
 ```C++
@@ -134,79 +172,6 @@ Tool name the SLM must use when calling this tool.
 
 <hr>
 
-
-
-### variable bOverrideParameters 
-
-```C++
-bool FTryllToolDefinition::bOverrideParameters;
-```
-
-
-
-Named parameters accepted by this tool. 
-
-
-        
-
-<hr>
-## Public Functions Documentation
-
-
-
-
-### function UPROPERTY [1/3]
-
-```C++
-FTryllToolDefinition::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|ToolDefinition",
-    meta=(EditCondition="bOverrideName")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/3]
-
-```C++
-FTryllToolDefinition::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|ToolDefinition",
-    meta=(EditCondition="bOverrideDescription")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [3/3]
-
-```C++
-FTryllToolDefinition::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|ToolDefinition",
-    meta=(EditCondition="bOverrideParameters")
-) 
-```
-
-
-
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolDefinition.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolDefinition.h`
 

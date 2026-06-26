@@ -4,16 +4,38 @@
     <compoundname>TryllRuntimeSettings.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">Engine/DeveloperSettings.h</includes>
+    <includes refid="_tryll_graph_description_8h" local="yes">TryllGraphDescription.h</includes>
     <includes local="yes">TryllRuntimeSettings.generated.h</includes>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
     <incdepgraph>
+      <node id="4">
+        <label>TryllGraphDescription.h</label>
+        <link refid="_tryll_graph_description_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>TryllModelName.h</label>
+        <link refid="_tryll_model_name_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h</label>
         <link refid="_tryll_runtime_settings_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -22,15 +44,61 @@
       <node id="3">
         <label>Engine/DeveloperSettings.h</label>
       </node>
-      <node id="4">
+      <node id="7">
+        <label>TryllGraphDescription.generated.h</label>
+      </node>
+      <node id="6">
+        <label>TryllModelName.generated.h</label>
+      </node>
+      <node id="8">
         <label>TryllRuntimeSettings.generated.h</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h</label>
+        <link refid="_tryll_runtime_settings_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+      </node>
+    </invincdepgraph>
     <innerclass refid="class_u_tryll_runtime_settings" prot="public">UTryllRuntimeSettings</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_runtime_settings_8h_1a41384b81978f7e948a6dc28b65f0f469" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>EServerBuildVariant</name>
+        <enumvalue id="_tryll_runtime_settings_8h_1a41384b81978f7e948a6dc28b65f0f469a7a1920d61156abc05a60135aefe8bc67" prot="public">
+          <name>Default</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_runtime_settings_8h_1a41384b81978f7e948a6dc28b65f0f469ab8e7b465df7c5979dc731d06e84ce2cf" prot="public">
+          <name>Release</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bundled server build to launch — the Default / Release subfolder of TryllServer/. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="12" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="13" bodyend="16"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h"/>
   </compounddef>
 </doxygen>

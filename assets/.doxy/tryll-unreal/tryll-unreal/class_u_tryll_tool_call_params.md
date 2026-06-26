@@ -41,16 +41,18 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**ModelName**](#variable-modelname)  <br> |
+|  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
+|  FString | [**NoToolCalledExit**](#variable-notoolcalledexit)  <br> |
 |  [**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md) | [**Sampling**](#variable-sampling)  <br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  FString | [**ToolCallFormat**](#variable-toolcallformat)  <br> |
+|  FString | [**ToolCalledExit**](#variable-toolcalledexit)  <br> |
+|  TArray&lt; [**FTryllToolDefinition**](struct_f_tryll_tool_definition.md) &gt; | [**Tools**](#variable-tools)  <br> |
 |  bool | [**bGenerateOnNoTool**](#variable-bgenerateonnotool)   = `false`<br> |
 |  bool | [**bNotifyClient**](#variable-bnotifyclient)   = `false`<br> |
 |  bool | [**bOverrideModelName**](#variable-boverridemodelname)   = `false`<br> |
 |  bool | [**bOverrideSystemPrompt**](#variable-boverridesystemprompt)   = `false`<br> |
 |  bool | [**bOverrideToolCallFormat**](#variable-boverridetoolcallformat)   = `false`<br> |
-|  bool | [**bOverrideTools**](#variable-boverridetools)   = `false`<br> |
 
 
 
@@ -89,9 +91,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|ToolCall", meta=(EditCondition="bOverrideTools")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -173,11 +172,28 @@ LLM-driven tool-call node. Constructs a tool-call prompt, runs sampling, parses 
 ### variable ModelName 
 
 ```C++
-FString UTryllToolCallParams::ModelName;
+FTryllModelName UTryllToolCallParams::ModelName;
 ```
 
 
 
+
+<hr>
+
+
+
+### variable NoToolCalledExit 
+
+```C++
+FString UTryllToolCallParams::NoToolCalledExit;
+```
+
+
+
+Exit taken when no tool call is parsed (or when generate\_on\_no\_tool produced a plain text reply). Empty string = END. Graph exit "no\_tool\_called" — target node name; empty = END. 
+
+
+        
 
 <hr>
 
@@ -221,6 +237,40 @@ FString UTryllToolCallParams::ToolCallFormat;
 
 
 
+
+<hr>
+
+
+
+### variable ToolCalledExit 
+
+```C++
+FString UTryllToolCallParams::ToolCalledExit;
+```
+
+
+
+Exit taken when one or more tool calls are parsed from the response. Empty string = END. Graph exit "tool\_called" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable Tools 
+
+```C++
+TArray<FTryllToolDefinition> UTryllToolCallParams::Tools;
+```
+
+
+
+Callable tool definitions. Structural because the tool-call prompt schema and parser contract are materialised at construction. 
+
+
+        
 
 <hr>
 
@@ -308,23 +358,6 @@ Tool-call dialect used for both prompt construction and output parsing. Structur
         
 
 <hr>
-
-
-
-### variable bOverrideTools 
-
-```C++
-bool UTryllToolCallParams::bOverrideTools;
-```
-
-
-
-Callable tool definitions. Structural because the tool-call prompt schema and parser contract are materialised at construction. 
-
-
-        
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -361,68 +394,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/3]
-
-```C++
-UTryllToolCallParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|ToolCall",
-    meta=(EditCondition="bOverrideTools")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/3]
-
-```C++
-UTryllToolCallParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when one or more tool calls are parsed from the response. Empty string = END. Graph exit "tool\_called" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [3/3]
-
-```C++
-UTryllToolCallParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when no tool call is parsed (or when generate\_on\_no\_tool produced a plain text reply). Empty string = END. Graph exit "no\_tool\_called" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h`
 

@@ -56,10 +56,12 @@
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddClassifyIntent**](#function-addclassifyintent) (std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddGenerate**](#function-addgenerate) (std::string name, ::Tryll::NodeParams::GenerateParamsT params) <br> |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddGenerateAndSpeak**](#function-addgenerateandspeak) (std::string name, ::Tryll::NodeParams::GenerateAndSpeakParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddHumanMessageGuardrail**](#function-addhumanmessageguardrail) (std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
 
 
@@ -181,6 +183,26 @@ Add a Generate node. LLM-driven text generation node. Renders a Mustache templat
 
 
 
+### function AddGenerateAndSpeak 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddGenerateAndSpeak (
+    std::string name,
+    ::Tryll::NodeParams::GenerateAndSpeakParamsT params
+) 
+```
+
+
+
+Add a GenerateAndSpeak node. LLM-driven text generation + streaming TTS synthesis in a single fused node. Streams LLM tokens, segments them into sentences, synthesizes each sentence on a dedicated TTS strand, and emits PCM frames via OnTtsAudio callbacks. 
+
+
+        
+
+<hr>
+
+
+
 ### function AddHumanMessageGuardrail 
 
 ```C++
@@ -261,6 +283,26 @@ Add a Retrieve node. RAG retrieval node. Embeds the HumanMessage, searches an em
 
 
 
+### function AddSpeak 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddSpeak (
+    std::string name,
+    ::Tryll::NodeParams::SpeakParamsT params
+) 
+```
+
+
+
+Add a Speak node. Standalone TTS-only node. Voices the latest assistant text produced upstream on the current interaction (whatever node wrote it — Generate, CannedResponse, etc.), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
+
+
+        
+
+<hr>
+
+
+
 ### function AddToolCall 
 
 ```C++
@@ -280,5 +322,5 @@ Add a ToolCall node. LLM-driven tool-call node. Constructs a tool-call prompt, r
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
 

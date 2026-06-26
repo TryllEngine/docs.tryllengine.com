@@ -41,10 +41,10 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  TArray&lt; FString &gt; | [**InlineStrings**](#variable-inlinestrings)  <br> |
 |  ETryllCannedResponseSelectionStrategy | [**SelectionStrategy**](#variable-selectionstrategy)   = `ETryllCannedResponseSelectionStrategy::RoundRobin`<br> |
-|  FString | [**StringStorage**](#variable-stringstorage)  <br> |
-|  bool | [**bOverrideInlineStrings**](#variable-boverrideinlinestrings)   = `false`<br> |
-|  bool | [**bOverrideStringStorage**](#variable-boverridestringstorage)   = `false`<br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**StringStorage**](#variable-stringstorage)  <br> |
 
 
 
@@ -83,8 +83,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|CannedResponse", meta=(EditCondition="bOverrideInlineStrings")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -163,6 +161,40 @@ Canned-response node backed by session string storage. Resolution priority (fact
 
 
 
+### variable DefaultExit 
+
+```C++
+FString UTryllCannedResponseParams::DefaultExit;
+```
+
+
+
+Default exit target after emitting a canned response. Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable InlineStrings 
+
+```C++
+TArray<FString> UTryllCannedResponseParams::InlineStrings;
+```
+
+
+
+Inline response list. Structural because it materialises the underlying StringStorage at construction. 
+
+
+        
+
+<hr>
+
+
+
 ### variable SelectionStrategy 
 
 ```C++
@@ -183,42 +215,12 @@ How the next canned response is chosen from the storage list.
 ### variable StringStorage 
 
 ```C++
-FString UTryllCannedResponseParams::StringStorage;
+FTryllStoragePath UTryllCannedResponseParams::StringStorage;
 ```
 
 
 
-
-<hr>
-
-
-
-### variable bOverrideInlineStrings 
-
-```C++
-bool UTryllCannedResponseParams::bOverrideInlineStrings;
-```
-
-
-
-Inline response list. Structural because it materialises the underlying StringStorage at construction. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideStringStorage 
-
-```C++
-bool UTryllCannedResponseParams::bOverrideStringStorage;
-```
-
-
-
-Named session string storage. Mutable — rebinds the underlying storage. Set to true to override the inherited StringStorage value. 
+Named session string storage. Mutable — rebinds the underlying storage. 
 
 
         
@@ -260,46 +262,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/2]
-
-```C++
-UTryllCannedResponseParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|CannedResponse",
-    meta=(EditCondition="bOverrideInlineStrings")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/2]
-
-```C++
-UTryllCannedResponseParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Default exit target after emitting a canned response. Empty string = END. Graph exit "default" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h`
 

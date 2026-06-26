@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_speaker_component" kind="class" language="C++" prot="public">
+    <compoundname>UTryllSpeakerComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UActorComponent</basecompoundref>
+    <includes refid="_tryll_speaker_component_8h" local="no">TryllSpeakerComponent.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1aa8c0bca3536eab86000d3f751a97b8d3" prot="public" static="no" mutable="no">
+        <type>FOnTryllTtsAudioStarted</type>
+        <definition>FOnTryllTtsAudioStarted UTryllSpeakerComponent::OnTtsAudioStarted</definition>
+        <argsstring></argsstring>
+        <name>OnTtsAudioStarted</name>
+        <qualifiedname>UTryllSpeakerComponent::OnTtsAudioStarted</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired once when the first PCM chunk of a turn is queued for playback. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="45" column="25" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1aaeb8df3b005ff7704f6c22599d1b4481" prot="public" static="no" mutable="no">
+        <type>FOnTryllTtsAudioFinished</type>
+        <definition>FOnTryllTtsAudioFinished UTryllSpeakerComponent::OnTtsAudioFinished</definition>
+        <argsstring></argsstring>
+        <name>OnTtsAudioFinished</name>
+        <qualifiedname>UTryllSpeakerComponent::OnTtsAudioFinished</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when the underlying audio component reports playback completion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="49" column="26" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1a92243ecd5b611212498c9c13de97452f" prot="private" static="no" mutable="no">
+        <type>TObjectPtr&lt; UAudioComponent &gt;</type>
+        <definition>TObjectPtr&lt;UAudioComponent&gt; UTryllSpeakerComponent::AudioComponent</definition>
+        <argsstring></argsstring>
+        <name>AudioComponent</name>
+        <qualifiedname>UTryllSpeakerComponent::AudioComponent</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="73" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1aa473b1d2271577898ca09722411cc1d1" prot="private" static="no" mutable="no">
+        <type>TObjectPtr&lt; USoundWaveProcedural &gt;</type>
+        <definition>TObjectPtr&lt;USoundWaveProcedural&gt; UTryllSpeakerComponent::ProceduralSound</definition>
+        <argsstring></argsstring>
+        <name>ProceduralSound</name>
+        <qualifiedname>UTryllSpeakerComponent::ProceduralSound</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="76" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1a84415b95279e9f6171622e569ffc5ce4" prot="private" static="no" mutable="no">
+        <type>uint32</type>
+        <definition>uint32 UTryllSpeakerComponent::CurrentSampleRate</definition>
+        <argsstring></argsstring>
+        <name>CurrentSampleRate</name>
+        <qualifiedname>UTryllSpeakerComponent::CurrentSampleRate</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="78" column="8" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speaker_component_1a05d6ea076e5593f200c7b532bc3abe14" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSpeakerComponent::bStartedNotified</definition>
+        <argsstring></argsstring>
+        <name>bStartedNotified</name>
+        <qualifiedname>UTryllSpeakerComponent::bStartedNotified</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="79" column="8" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1aff4a12a82d1cf6fdb7c9ccaed55d15fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllSpeakerComponent::UTryllSpeakerComponent</definition>
+        <argsstring>()</argsstring>
+        <name>UTryllSpeakerComponent</name>
+        <qualifiedname>UTryllSpeakerComponent::UTryllSpeakerComponent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1a221025eb20eaeecbd879374cd71f7d65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSpeakerComponent::HandleFormat</definition>
+        <argsstring>(uint32 SampleRate, uint16 Channels, uint16 BitsPerSample)</argsstring>
+        <name>HandleFormat</name>
+        <qualifiedname>UTryllSpeakerComponent::HandleFormat</qualifiedname>
+        <param>
+          <type>uint32</type>
+          <declname>SampleRate</declname>
+        </param>
+        <param>
+          <type>uint16</type>
+          <declname>Channels</declname>
+        </param>
+        <param>
+          <type>uint16</type>
+          <declname>BitsPerSample</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called by <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> when the server announces the audio format for the current turn. (Re)creates the procedural sound if the sample rate differs from the previous turn&apos;s. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="56" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1a0126a5248f4f62843ceb1dcde7e561ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSpeakerComponent::HandleAudio</definition>
+        <argsstring>(TArrayView&lt; const int16 &gt; Pcm)</argsstring>
+        <name>HandleAudio</name>
+        <qualifiedname>UTryllSpeakerComponent::HandleAudio</qualifiedname>
+        <param>
+          <type>TArrayView&lt; const int16 &gt;</type>
+          <declname>Pcm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called by <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> for each PCM chunk in the current turn. The view references caller-owned memory and is consumed synchronously. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="62" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1afab9d102d1b44fa3e5559cd987534fc7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllSpeakerComponent::BeginPlay</definition>
+        <argsstring>() override</argsstring>
+        <name>BeginPlay</name>
+        <qualifiedname>UTryllSpeakerComponent::BeginPlay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="65" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1afd9f10d32ce71bc64c9369d9e4f72ad0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllSpeakerComponent::EndPlay</definition>
+        <argsstring>(const EEndPlayReason::Type EndPlayReason) override</argsstring>
+        <name>EndPlay</name>
+        <qualifiedname>UTryllSpeakerComponent::EndPlay</qualifiedname>
+        <param>
+          <type>const EEndPlayReason::Type</type>
+          <declname>EndPlayReason</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="66" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_u_tryll_speaker_component_1a125da7c13ce85eec7f14a63aa5e618d0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllSpeakerComponent::HandleAudioFinishedInternal</definition>
+        <argsstring>()</argsstring>
+        <name>HandleAudioFinishedInternal</name>
+        <qualifiedname>UTryllSpeakerComponent::HandleAudioFinishedInternal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="70" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Plays streaming TTS audio from a server-side agent through a USoundWaveProcedural fed by a hidden UAudioComponent.</para>
+<para>Wire it up by assigning this component to the Speaker slot on a <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref>; the agent forwards TTS audio frames here.</para>
+<sect1 id="class_u_tryll_speaker_component_1autotoc_md0_1s1"><sect2 id="class_u_tryll_speaker_component_1autotoc_md0">
+<title>Threading</title><para>HandleFormat and HandleAudio fire on the game thread (drained by UTryllSubsystem::Tick). USoundWaveProcedural::QueueAudio is internally thread-safe — it copies into its own consumer queue, which the audio mixer thread drains.</para>
+</sect2></sect1>
+<sect1 id="class_u_tryll_speaker_component_1autotoc_md1_1s1"><sect2 id="class_u_tryll_speaker_component_1autotoc_md1">
+<title>End-of-stream</title><para>TtsAudioFrame carries no is_final flag — the turn ends with TurnComplete. Audio drains naturally; OnTtsAudioFinished fires when the procedural sound&apos;s queue empties and the UAudioComponent stops. </para>
+</sect2></sect1>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllSpeakerComponent</label>
+        <link refid="class_u_tryll_speaker_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllSpeakerComponent</label>
+        <link refid="class_u_tryll_speaker_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="36" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="37" bodyend="80"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_speaker_component_1a92243ecd5b611212498c9c13de97452f" prot="private" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>AudioComponent</name></member>
+      <member refid="class_u_tryll_speaker_component_1afab9d102d1b44fa3e5559cd987534fc7" prot="protected" virt="virtual"><scope>UTryllSpeakerComponent</scope><name>BeginPlay</name></member>
+      <member refid="class_u_tryll_speaker_component_1a05d6ea076e5593f200c7b532bc3abe14" prot="private" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>bStartedNotified</name></member>
+      <member refid="class_u_tryll_speaker_component_1a84415b95279e9f6171622e569ffc5ce4" prot="private" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>CurrentSampleRate</name></member>
+      <member refid="class_u_tryll_speaker_component_1afd9f10d32ce71bc64c9369d9e4f72ad0" prot="protected" virt="virtual"><scope>UTryllSpeakerComponent</scope><name>EndPlay</name></member>
+      <member refid="class_u_tryll_speaker_component_1a0126a5248f4f62843ceb1dcde7e561ca" prot="public" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>HandleAudio</name></member>
+      <member refid="class_u_tryll_speaker_component_1a125da7c13ce85eec7f14a63aa5e618d0" prot="private" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>HandleAudioFinishedInternal</name></member>
+      <member refid="class_u_tryll_speaker_component_1a221025eb20eaeecbd879374cd71f7d65" prot="public" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>HandleFormat</name></member>
+      <member refid="class_u_tryll_speaker_component_1aaeb8df3b005ff7704f6c22599d1b4481" prot="public" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>OnTtsAudioFinished</name></member>
+      <member refid="class_u_tryll_speaker_component_1aa8c0bca3536eab86000d3f751a97b8d3" prot="public" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>OnTtsAudioStarted</name></member>
+      <member refid="class_u_tryll_speaker_component_1aa473b1d2271577898ca09722411cc1d1" prot="private" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>ProceduralSound</name></member>
+      <member refid="class_u_tryll_speaker_component_1aff4a12a82d1cf6fdb7c9ccaed55d15fb" prot="public" virt="non-virtual"><scope>UTryllSpeakerComponent</scope><name>UTryllSpeakerComponent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

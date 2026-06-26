@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_speak_params" kind="class" language="C++" prot="public">
+    <compoundname>UTryllSpeakParams</compoundname>
+    <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
+    <includes refid="_tryll_speak_params_8h" local="no">TryllSpeakParams.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1a4271f50d0e23dc9f8a7a406ab9691f22" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSpeakParams::bOverrideTtsModelName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideTtsModelName</name>
+        <qualifiedname>UTryllSpeakParams::bOverrideTtsModelName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TTS model catalog name. Optional — when empty the server uses the first available TTS voice in the model catalog. Set it to pick a specific voice. Set to true to override the inherited TtsModelName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="36" column="10" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1ac715f2d73611b8b41989f30ce8f30083" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllSpeakParams::TtsModelName</definition>
+        <argsstring></argsstring>
+        <name>TtsModelName</name>
+        <qualifiedname>UTryllSpeakParams::TtsModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="39" column="21" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1a3793d2b114b2e6998bb909a2fbd333c7" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSpeakParams::SpeakerId</definition>
+        <argsstring></argsstring>
+        <name>SpeakerId</name>
+        <qualifiedname>UTryllSpeakParams::SpeakerId</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TTS speaker / voice index for multi-speaker models (default 0). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="43" column="11" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1ae2dc17ee6dd85ae103cfa78fc4701332" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllSpeakParams::Speed</definition>
+        <argsstring></argsstring>
+        <name>Speed</name>
+        <qualifiedname>UTryllSpeakParams::Speed</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TTS speech-rate multiplier. 1.0 = native speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="47" column="11" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1ae754ebe4ccead6e738f0a33e7cfea5ff" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSpeakParams::MinSentenceChars</definition>
+        <argsstring></argsstring>
+        <name>MinSentenceChars</name>
+        <qualifiedname>UTryllSpeakParams::MinSentenceChars</qualifiedname>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum characters before a sentence boundary fires. Lower values reduce first-utterance latency at the cost of more, smaller TTS calls. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="51" column="11" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_speak_params_1a2a42ceb49892e8c2b76b84f3bc467421" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllSpeakParams::DefaultExit</definition>
+        <argsstring></argsstring>
+        <name>DefaultExit</name>
+        <qualifiedname>UTryllSpeakParams::DefaultExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default exit target — routes here after synthesis completes. Empty string = END. Graph exit &quot;default&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="57" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_speak_params_1a105f0fa674932669706b3683b6d9370e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ETryllNodeType</type>
+        <definition>virtual ETryllNodeType UTryllSpeakParams::GetNodeType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetNodeType</name>
+        <qualifiedname>UTryllSpeakParams::GetNodeType</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6">GetNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="60" column="28" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_speak_params_1a9d2c898158f91f9b34d8ab2926d99cf2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>flatbuffers::Offset&lt; void &gt;</type>
+        <definition>virtual flatbuffers::Offset&lt; void &gt; UTryllSpeakParams::Pack</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;Fbb, Tryll::NodeParams::NodeParams &amp;OutType) const override</argsstring>
+        <name>Pack</name>
+        <qualifiedname>UTryllSpeakParams::Pack</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d">Pack</reimplements>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>Fbb</declname>
+        </param>
+        <param>
+          <type>Tryll::NodeParams::NodeParams &amp;</type>
+          <declname>OutType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="61" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Standalone TTS-only node. Voices the latest assistant text produced upstream on the current interaction (whatever node wrote it — Generate, CannedResponse, etc.), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UTryllSpeakParams</label>
+        <link refid="class_u_tryll_speak_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UTryllSpeakParams</label>
+        <link refid="class_u_tryll_speak_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>TtsModelName</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h" bodystart="30" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_speak_params_1a4271f50d0e23dc9f8a7a406ab9691f22" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>bOverrideTtsModelName</name></member>
+      <member refid="class_u_tryll_speak_params_1a2a42ceb49892e8c2b76b84f3bc467421" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllSpeakParams</scope><name>GetExitTargetOptions</name></member>
+      <member refid="class_u_tryll_speak_params_1a105f0fa674932669706b3683b6d9370e" prot="public" virt="virtual"><scope>UTryllSpeakParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_speak_params_1ae754ebe4ccead6e738f0a33e7cfea5ff" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>MinSentenceChars</name></member>
+      <member refid="class_u_tryll_speak_params_1a9d2c898158f91f9b34d8ab2926d99cf2" prot="public" virt="virtual"><scope>UTryllSpeakParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_speak_params_1a3793d2b114b2e6998bb909a2fbd333c7" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>SpeakerId</name></member>
+      <member refid="class_u_tryll_speak_params_1ae2dc17ee6dd85ae103cfa78fc4701332" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>Speed</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_speak_params_1ac715f2d73611b8b41989f30ce8f30083" prot="public" virt="non-virtual"><scope>UTryllSpeakParams</scope><name>TtsModelName</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

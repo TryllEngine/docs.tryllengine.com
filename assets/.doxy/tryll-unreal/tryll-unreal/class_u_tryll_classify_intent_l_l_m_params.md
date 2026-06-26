@@ -41,11 +41,13 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  int32 | [**HistoryTurns**](#variable-historyturns)   = `4`<br> |
+|  FString | [**FoundExit**](#variable-foundexit)  <br> |
+|  int32 | [**HistoryTurns**](#variable-historyturns)   = `2`<br> |
 |  FString | [**IntentsIds**](#variable-intentsids)  <br> |
 |  FString | [**IntentsPrompt**](#variable-intentsprompt)  <br> |
-|  float | [**Margin**](#variable-margin)   = `0.0f`<br> |
-|  FString | [**ModelName**](#variable-modelname)  <br> |
+|  float | [**Margin**](#variable-margin)   = `0.15f`<br> |
+|  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
+|  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
 |  FString | [**NotFoundIntent**](#variable-notfoundintent)  <br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
@@ -93,8 +95,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -173,6 +173,23 @@ Intent classification node (LLM first-token logprob over letter candidates). Sco
 
 
 
+### variable FoundExit 
+
+```C++
+FString UTryllClassifyIntentLLMParams::FoundExit;
+```
+
+
+
+Exit taken when classification produced a label above threshold/margin. Empty string = END. Graph exit "found" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
 ### variable HistoryTurns 
 
 ```C++
@@ -236,11 +253,28 @@ Minimum margin between top and second label probabilities.
 ### variable ModelName 
 
 ```C++
-FString UTryllClassifyIntentLLMParams::ModelName;
+FTryllModelName UTryllClassifyIntentLLMParams::ModelName;
 ```
 
 
 
+
+<hr>
+
+
+
+### variable NotFoundExit 
+
+```C++
+FString UTryllClassifyIntentLLMParams::NotFoundExit;
+```
+
+
+
+Exit taken when no label cleared the threshold/margin. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
+
+
+        
 
 <hr>
 
@@ -424,50 +458,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/2]
-
-```C++
-UTryllClassifyIntentLLMParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when classification produced a label above threshold/margin. Empty string = END. Graph exit "found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [2/2]
-
-```C++
-UTryllClassifyIntentLLMParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when no label cleared the threshold/margin. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h`
 

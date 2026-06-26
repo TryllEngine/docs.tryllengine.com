@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="28" bodyend="28"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="30" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="30" bodyend="30"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-attrib">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="30" column="11" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="30" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="32" column="11" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_workflow_issue_1aec45694365c16ba89b9062764f4279a2" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -58,14 +58,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="31" column="11" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="33" column="11" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="33" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Static helper that validates a <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> for common authoring errors.</para>
-<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md0_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md0">
+<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md2_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md2">
 <title>Usage</title><para>Call Validate() from:<itemizedlist>
 <listitem><para>A &quot;Validate Workflow&quot; toolbar button in a custom asset editor.</para>
 </listitem><listitem><para>Blueprint / C++ tooling scripts.</para>
@@ -73,17 +73,18 @@
 </listitem></itemizedlist>
 </para>
 </sect2></sect1>
-<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md1_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md1">
+<sect1 id="struct_f_tryll_workflow_issue_1autotoc_md3_1s1"><sect2 id="struct_f_tryll_workflow_issue_1autotoc_md3">
 <title>Checks performed</title><para><orderedlist>
 <listitem><para>StartNode is non-empty and present in Nodes.</para>
 </listitem><listitem><para>No duplicate node names.</para>
 </listitem><listitem><para>Each exit field (on the typed params) references a node that exists in the graph, or is empty (END).</para>
-</listitem><listitem><para>Orphan nodes (no incoming exit and not the start node) — reported as warnings. </para>
+</listitem><listitem><para>Orphan nodes (no incoming exit and not the start node) — reported as warnings.</para>
+</listitem><listitem><para>Storage file-picker fields: absolute paths and &quot;..&quot; traversal are errors; kind mismatch and virtual names (no recognized extension) are warnings. </para>
 </listitem></orderedlist>
 </para>
 </sect2></sect1>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="26" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="27" bodyend="32"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowValidator.h" bodystart="29" bodyend="34"/>
     <listofallmembers>
       <member refid="struct_f_tryll_workflow_issue_1aebba597c8085dc7baf919c53c57d93f6" prot="public" virt="non-virtual"><scope>FTryllWorkflowIssue</scope><name>ESeverity</name></member>
       <member refid="struct_f_tryll_workflow_issue_1aec45694365c16ba89b9062764f4279a2" prot="public" virt="non-virtual"><scope>FTryllWorkflowIssue</scope><name>Message</name></member>

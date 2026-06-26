@@ -36,6 +36,15 @@
 
 | Type | Name |
 | ---: | :--- |
+|  float | [**FrequencyPenalty**](#variable-frequencypenalty)   = `0.0`<br> |
+|  int32 | [**MaxTokens**](#variable-maxtokens)   = `0`<br> |
+|  float | [**MinP**](#variable-minp)   = `0.0`<br> |
+|  float | [**PresencePenalty**](#variable-presencepenalty)   = `0.0`<br> |
+|  float | [**RepeatPenalty**](#variable-repeatpenalty)   = `0.0`<br> |
+|  int32 | [**Seed**](#variable-seed)   = `0`<br> |
+|  float | [**Temperature**](#variable-temperature)   = `0.0`<br> |
+|  int32 | [**TopK**](#variable-topk)   = `0`<br> |
+|  float | [**TopP**](#variable-topp)   = `0.0`<br> |
 |  bool | [**bOverrideFrequencyPenalty**](#variable-boverridefrequencypenalty)   = `false`<br> |
 |  bool | [**bOverrideMaxTokens**](#variable-boverridemaxtokens)   = `false`<br> |
 |  bool | [**bOverrideMinP**](#variable-boverrideminp)   = `false`<br> |
@@ -61,19 +70,6 @@
 
 
 
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-| virtual  | [**UPROPERTY**](#function-uproperty-19) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideTemperature", ClampMin="0.0", ClampMax="2.0", UIMin="0.0", UIMax="2.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-29) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideTopP", ClampMin="0.0", ClampMax="1.0", UIMin="0.0", UIMax="1.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-39) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideTopK", ClampMin="0.0", UIMin="0.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-49) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideMinP", ClampMin="0.0", ClampMax="1.0", UIMin="0.0", UIMax="1.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-59) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideMaxTokens", ClampMin="1.0", UIMin="1.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-69) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideSeed")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-79) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideRepeatPenalty", ClampMin="0.0", UIMin="0.0")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-89) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverridePresencePenalty")) = 0<br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-99) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|SamplingOverrides", meta=(EditCondition="bOverrideFrequencyPenalty")) = 0<br> |
 
 
 
@@ -111,6 +107,123 @@ Sparse sampling override block. Null on any field means "inherit the selected mo
     
 ## Public Attributes Documentation
 
+
+
+
+### variable FrequencyPenalty 
+
+```C++
+float FTryllSamplingOverrides::FrequencyPenalty;
+```
+
+
+
+
+<hr>
+
+
+
+### variable MaxTokens 
+
+```C++
+int32 FTryllSamplingOverrides::MaxTokens;
+```
+
+
+
+
+<hr>
+
+
+
+### variable MinP 
+
+```C++
+float FTryllSamplingOverrides::MinP;
+```
+
+
+
+
+<hr>
+
+
+
+### variable PresencePenalty 
+
+```C++
+float FTryllSamplingOverrides::PresencePenalty;
+```
+
+
+
+
+<hr>
+
+
+
+### variable RepeatPenalty 
+
+```C++
+float FTryllSamplingOverrides::RepeatPenalty;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Seed 
+
+```C++
+int32 FTryllSamplingOverrides::Seed;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Temperature 
+
+```C++
+float FTryllSamplingOverrides::Temperature;
+```
+
+
+
+
+<hr>
+
+
+
+### variable TopK 
+
+```C++
+int32 FTryllSamplingOverrides::TopK;
+```
+
+
+
+
+<hr>
+
+
+
+### variable TopP 
+
+```C++
+float FTryllSamplingOverrides::TopP;
+```
+
+
+
+
+<hr>
 
 
 
@@ -264,171 +377,7 @@ Nucleus sampling cutoff. Null = inherit model default.
         
 
 <hr>
-## Public Functions Documentation
-
-
-
-
-### function UPROPERTY [1/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideTemperature", ClampMin="0.0", ClampMax="2.0", UIMin="0.0", UIMax="2.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideTopP", ClampMin="0.0", ClampMax="1.0", UIMin="0.0", UIMax="1.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [3/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideTopK", ClampMin="0.0", UIMin="0.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [4/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideMinP", ClampMin="0.0", ClampMax="1.0", UIMin="0.0", UIMax="1.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [5/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideMaxTokens", ClampMin="1.0", UIMin="1.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [6/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideSeed")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [7/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideRepeatPenalty", ClampMin="0.0", UIMin="0.0")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [8/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverridePresencePenalty")
-) = 0
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [9/9]
-
-```C++
-virtual FTryllSamplingOverrides::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|SamplingOverrides",
-    meta=(EditCondition="bOverrideFrequencyPenalty")
-) = 0
-```
-
-
-
-
-<hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllSamplingOverrides.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSamplingOverrides.h`
 

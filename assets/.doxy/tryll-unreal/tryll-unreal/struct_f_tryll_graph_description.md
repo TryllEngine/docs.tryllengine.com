@@ -36,8 +36,9 @@
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**DefaultModelName**](#variable-defaultmodelname)  <br> |
+|  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**DefaultModelName**](#variable-defaultmodelname)  <br> |
 |  TArray&lt; [**FTryllNodeDescription**](struct_f_tryll_node_description.md) &gt; | [**Nodes**](#variable-nodes)  <br> |
+|  FString | [**StartNode**](#variable-startnode)  <br> |
 
 
 
@@ -54,11 +55,6 @@
 
 
 
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Graph", meta=(GetOptions="GetStartNodeOptions")) <br> |
 
 
 
@@ -105,7 +101,7 @@ Protocol v2: wiring lives on each node's typed [**UTryllNodeParamsBase**](class_
 ### variable DefaultModelName 
 
 ```C++
-FString FTryllGraphDescription::DefaultModelName;
+FTryllModelName FTryllGraphDescription::DefaultModelName;
 ```
 
 
@@ -129,20 +125,13 @@ TArray<FTryllNodeDescription> FTryllGraphDescription::Nodes;
 
 
 <hr>
-## Public Functions Documentation
 
 
 
-
-### function UPROPERTY 
+### variable StartNode 
 
 ```C++
-FTryllGraphDescription::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Graph",
-    meta=(GetOptions="GetStartNodeOptions")
-) 
+FString FTryllGraphDescription::StartNode;
 ```
 
 
@@ -151,5 +140,5 @@ FTryllGraphDescription::UPROPERTY (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

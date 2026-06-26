@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**client-cpp**](dir_609af48e6c91725f4b3bc7ea6c8d260d.md) **>** [**include**](dir_e007c6614a1ec85f1d1448223783a2c8.md) **>** [**tryll**](dir_8463b878364fc27e5e1890816f6531c6.md) **>** [**Generated**](dir_bd03f3772d0f9bc921d9f3ee86227f5a.md) **>** [**GraphDescription.Nodes.gen.h**](_graph_description_8_nodes_8gen_8h.md)
+[**FileList**](files.md) **>** [**clients**](dir_ae1e47b40792601544f85532b4958859.md) **>** [**cpp**](dir_bfb9b1426fa54ff893373dfbed66c670.md) **>** [**include**](dir_3428be636e548afd883ca44bef078c76.md) **>** [**tryll**](dir_3ee824def4798d48f3bfea3e4f65c1f8.md) **>** [**Generated**](dir_f116b38854a4105ed0bf601f8c14f26a.md) **>** [**GraphDescription.Nodes.gen.h**](_graph_description_8_nodes_8gen_8h.md)
 
 
 
@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <vector>`
 * `#include "tryll/Generated/CodegenFingerprint.gen.h"`
+* `#include <string_view>`
 
 
 
@@ -93,5 +94,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
 

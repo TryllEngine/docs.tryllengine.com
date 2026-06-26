@@ -41,8 +41,9 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**ModelName**](#variable-modelname)  <br> |
-|  ETryllPlacement | [**Placement**](#variable-placement)   = `ETryllPlacement::InPlaceOfUser`<br> |
+|  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
+|  ETryllPlacement | [**Placement**](#variable-placement)   = `ETryllPlacement::BeforeUserAsSystem`<br> |
 |  [**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md) | [**Sampling**](#variable-sampling)  <br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  FString | [**Template**](#variable-template)  <br> |
@@ -88,7 +89,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -167,10 +167,27 @@ LLM-driven text generation node. Renders a Mustache template, runs sampling, pro
 
 
 
+### variable DefaultExit 
+
+```C++
+FString UTryllGenerateParams::DefaultExit;
+```
+
+
+
+Default exit target — routes here after generation completes. Empty string = END (turn finishes). Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
 ### variable ModelName 
 
 ```C++
-FString UTryllGenerateParams::ModelName;
+FTryllModelName UTryllGenerateParams::ModelName;
 ```
 
 
@@ -341,28 +358,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY 
-
-```C++
-UTryllGenerateParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Default exit target — routes here after generation completes. Empty string = END (turn finishes). Graph exit "default" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h`
 

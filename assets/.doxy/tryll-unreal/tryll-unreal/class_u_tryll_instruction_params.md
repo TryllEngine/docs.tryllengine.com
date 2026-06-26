@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  FString | [**Instruction**](#variable-instruction)  <br> |
 |  FString | [**InstructionName**](#variable-instructionname)  <br> |
 |  bool | [**bOverrideInstruction**](#variable-boverrideinstruction)   = `false`<br> |
@@ -83,7 +84,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -159,6 +159,23 @@ Plain instruction node. Attaches an InstructionComponent to the current interact
     
 ## Public Attributes Documentation
 
+
+
+
+### variable DefaultExit 
+
+```C++
+FString UTryllInstructionParams::DefaultExit;
+```
+
+
+
+Default exit target after attaching the instruction. Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
 
 
 
@@ -255,28 +272,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY 
-
-```C++
-UTryllInstructionParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Default exit target after attaching the instruction. Empty string = END. Graph exit "default" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllInstructionParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllInstructionParams.h`
 

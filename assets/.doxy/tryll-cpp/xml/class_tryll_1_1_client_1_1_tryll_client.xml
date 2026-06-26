@@ -1,0 +1,1402 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_client_1_1_tryll_client" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>Tryll::Client::TryllClient</compoundname>
+    <includes refid="_tryll_client_8h" local="no">TryllClient.h</includes>
+    <innerclass refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" prot="public">Tryll::Client::TryllClient::SessionConfig</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result" prot="public">Tryll::Client::TryllClient::DebugCommandResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" prot="public">Tryll::Client::TryllClient::EmbeddedStorageInfo</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_tryll_client_1a192e750dabd33099354ea6110a73d8ee" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; Internal::TryllClientImpl &gt;</type>
+        <definition>std::shared_ptr&lt;Internal::TryllClientImpl&gt; Tryll::Client::TryllClient::_impl</definition>
+        <argsstring></argsstring>
+        <name>_impl</name>
+        <qualifiedname>Tryll::Client::TryllClient::_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="557" column="17" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="557" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a4c21d6b294b8ab6cbca7b26e9644f010" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; TryllClient &gt;</type>
+        <definition>static std::future&lt; TryllClient &gt; Tryll::Client::TryllClient::ConnectAsync</definition>
+        <argsstring>(std::string_view host, std::uint16_t port)</argsstring>
+        <name>ConnectAsync</name>
+        <qualifiedname>Tryll::Client::TryllClient::ConnectAsync</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>std::uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Asynchronously connect and wait for <computeroutput>SessionReady</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hostname or IP of the Tryll server. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TCP port the server is listening on.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Future yielding a ready-to-use <ref refid="class_tryll_1_1_client_1_1_tryll_client" kindref="compound">TryllClient</ref>. Calling <computeroutput>future::get()</computeroutput> propagates any <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> raised during the handshake. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="94" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TryllClient</type>
+        <definition>static TryllClient Tryll::Client::TryllClient::Connect</definition>
+        <argsstring>(std::string_view host, std::uint16_t port, std::chrono::milliseconds timeout=std::chrono::seconds{30})</argsstring>
+        <name>Connect</name>
+        <qualifiedname>Tryll::Client::TryllClient::Connect</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>std::uint16_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{30}</defval>
+        </param>
+        <briefdescription>
+<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4c21d6b294b8ab6cbca7b26e9644f010" kindref="member">ConnectAsync</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>host</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Hostname or IP of the Tryll server. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TCP port. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for <computeroutput>SessionReady</computeroutput>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A ready-to-use <ref refid="class_tryll_1_1_client_1_1_tryll_client" kindref="compound">TryllClient</ref>.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On connection failure, timeout, or a failed session handshake. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="109" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_connected_session" kindref="compound">ConnectedSession</ref></type>
+        <definition>static ConnectedSession Tryll::Client::TryllClient::RunAndConnect</definition>
+        <argsstring>(ManagedServerOptions serverOpts, std::chrono::milliseconds connectTimeout=std::chrono::seconds{30})</argsstring>
+        <name>RunAndConnect</name>
+        <qualifiedname>Tryll::Client::TryllClient::RunAndConnect</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_client_1_1_managed_server_options" kindref="compound">ManagedServerOptions</ref></type>
+          <declname>serverOpts</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>connectTimeout</declname>
+          <defval>std::chrono::seconds{30}</defval>
+        </param>
+        <briefdescription>
+<para>Spawn a local server and connect to it — recommended for single-process deployments where the client owns the server lifecycle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Equivalent to calling <ref refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" kindref="member">ManagedServer::Start</ref> followed by <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" kindref="member">Connect</ref>, with correct cleanup if <computeroutput>Connect</computeroutput> throws. The returned <ref refid="class_tryll_1_1_client_1_1_connected_session" kindref="compound">ConnectedSession</ref> owns both the server process and the TCP session; on destruction it shuts the client down first, then terminates the server.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serverOpts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server launch options. <computeroutput>serverOpts.exe</computeroutput> is required. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>connectTimeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for <computeroutput>SessionReady</computeroutput> after the server&apos;s TCP port becomes reachable.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="class_tryll_1_1_client_1_1_connected_session" kindref="compound">ConnectedSession</ref> ready to use.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the server cannot be started, the TCP ready-probe times out, or the session handshake fails. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="132" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a5b5ea25d2cc954c9766624fba0ca5c67" prot="public" static="yes" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_connected_session" kindref="compound">ConnectedSession</ref> &gt;</type>
+        <definition>static std::future&lt; ConnectedSession &gt; Tryll::Client::TryllClient::RunAndConnectAsync</definition>
+        <argsstring>(Client::ManagedServerOptions serverOpts)</argsstring>
+        <name>RunAndConnectAsync</name>
+        <qualifiedname>Tryll::Client::TryllClient::RunAndConnectAsync</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_client_1_1_managed_server_options" kindref="compound">Client::ManagedServerOptions</ref></type>
+          <declname>serverOpts</declname>
+        </param>
+        <briefdescription>
+<para>Asynchronous variant of <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" kindref="member">RunAndConnect</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Spawns a <computeroutput>std::async</computeroutput> task that calls <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" kindref="member">RunAndConnect</ref> internally. Useful when the calling thread must not block during startup.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serverOpts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server launch options.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Future yielding a <ref refid="class_tryll_1_1_client_1_1_connected_session" kindref="compound">ConnectedSession</ref>. Calling <computeroutput>future::get()</computeroutput> propagates any <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> from the launch or handshake. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="147" column="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1ac80d6d2bc5baa199b523871c8984b68b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::ConfigureSession</definition>
+        <argsstring>(const SessionConfig &amp;cfg)</argsstring>
+        <name>ConfigureSession</name>
+        <qualifiedname>Tryll::Client::TryllClient::ConfigureSession</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kindref="compound">SessionConfig</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+<para>Configure session-level engines and options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Must be called after <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" kindref="member">Connect</ref> and before <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a8f84f0c4a65157becd4c332ea5acbd60" kindref="member">CreateAgent</ref> or any model-management call.</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="189" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a26734a3cfcaf44b76fe7a53ba4e454a4" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref> &gt;</type>
+        <definition>std::future&lt; AgentProxy &gt; Tryll::Client::TryllClient::CreateAgentAsync</definition>
+        <argsstring>(const GraphDescription &amp;graph, bool enableDiagnostics=false)</argsstring>
+        <name>CreateAgentAsync</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateAgentAsync</qualifiedname>
+        <param>
+          <type>const <ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+          <declname>graph</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enableDiagnostics</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Asynchronously create an agent with the given graph description. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>graph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fully-built graph description. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enableDiagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When <computeroutput>true</computeroutput>, the server serialises per-node execution data into <computeroutput>TurnComplete.debug_info</computeroutput> for every turn. Off by default for zero overhead in production; enable for QA/eval pipelines.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>When <ref refid="class_tryll_1_1_client_1_1_tryll_client_1ac80d6d2bc5baa199b523871c8984b68b" kindref="member">ConfigureSession</ref> was called with <computeroutput>allowAutoModelDownloading=true</computeroutput>, this call may block internally while models are being downloaded. The returned future completes when creation succeeds or fails definitively. <computeroutput>DownloadProgress</computeroutput> frames are emitted during the download (observable via the <computeroutput>DownloadModel</computeroutput> progress callback path).</para>
+</simplesect>
+<simplesect kind="return"><para>Future yielding an <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref> bound to the new agent. Calling <computeroutput>future::get()</computeroutput> propagates any <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> raised during validation or creation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="211" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a8f84f0c4a65157becd4c332ea5acbd60" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref></type>
+        <definition>AgentProxy Tryll::Client::TryllClient::CreateAgent</definition>
+        <argsstring>(const GraphDescription &amp;graph, bool enableDiagnostics=false, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt)</argsstring>
+        <name>CreateAgent</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateAgent</qualifiedname>
+        <param>
+          <type>const <ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> &amp;</type>
+          <declname>graph</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enableDiagnostics</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; std::chrono::milliseconds &gt;</type>
+          <declname>timeout</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a26734a3cfcaf44b76fe7a53ba4e454a4" kindref="member">CreateAgentAsync</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>graph</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fully-built graph description. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enableDiagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>When <computeroutput>true</computeroutput>, the server serialises per-node execution data into <computeroutput>TurnComplete.debug_info</computeroutput> for every turn. Off by default; enable for QA/eval pipelines. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for <computeroutput>CreateAgentResponse</computeroutput>. Defaults to 30 seconds normally, or to 30 minutes when <ref refid="class_tryll_1_1_client_1_1_tryll_client_1ac80d6d2bc5baa199b523871c8984b68b" kindref="member">ConfigureSession</ref> was called with <computeroutput>allowAutoModelDownloading=true</computeroutput> (to accommodate model downloads).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref> bound to the new server-side agent.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On validation failures, server-reported errors (including <computeroutput>ModelAutoDownloadFailed</computeroutput> when <computeroutput>allowAutoModelDownloading=true</computeroutput> and a model cannot be downloaded), or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="236" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a62f8662758e19115efb6b9873ae5fc92" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref> &gt;</type>
+        <definition>std::future&lt; VoiceInput &gt; Tryll::Client::TryllClient::CreateVoiceInputAsync</definition>
+        <argsstring>(VoiceInputConfig cfg)</argsstring>
+        <name>CreateVoiceInputAsync</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateVoiceInputAsync</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_client_1_1_voice_input_config" kindref="compound">VoiceInputConfig</ref></type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+<para>Asynchronously create a <ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref> handle backed by the named STT model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cfg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration including model name, input audio format, and VAD params.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Future yielding a move-only <ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref> handle. Calling <computeroutput>future::get()</computeroutput> propagates any <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="251" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1af7a7f76f8a1105229c566745495b19d2" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref></type>
+        <definition>VoiceInput Tryll::Client::TryllClient::CreateVoiceInput</definition>
+        <argsstring>(VoiceInputConfig cfg, std::chrono::milliseconds timeout=std::chrono::seconds{30})</argsstring>
+        <name>CreateVoiceInput</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateVoiceInput</qualifiedname>
+        <param>
+          <type><ref refid="struct_tryll_1_1_client_1_1_voice_input_config" kindref="compound">VoiceInputConfig</ref></type>
+          <declname>cfg</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{30}</defval>
+        </param>
+        <briefdescription>
+<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a62f8662758e19115efb6b9873ae5fc92" kindref="member">CreateVoiceInputAsync</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cfg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration (see <ref refid="struct_tryll_1_1_client_1_1_voice_input_config" kindref="compound">VoiceInputConfig</ref>). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the server&apos;s response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A move-only <ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref> handle.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors (e.g. SttModelLoadFailed) or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="263" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a15812c061055f71008bb46eb92b4c2f3" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::future&lt; void &gt;</type>
+        <definition>std::future&lt; void &gt; Tryll::Client::TryllClient::ShutdownAsync</definition>
+        <argsstring>()</argsstring>
+        <name>ShutdownAsync</name>
+        <qualifiedname>Tryll::Client::TryllClient::ShutdownAsync</qualifiedname>
+        <briefdescription>
+<para>Asynchronously shut down the connection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Pending requests are cancelled with <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref>. Idempotent.</para>
+<para><simplesect kind="return"><para>Future completing when the socket is closed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="274" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::Shutdown</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{30})</argsstring>
+        <name>Shutdown</name>
+        <qualifiedname>Tryll::Client::TryllClient::Shutdown</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{30}</defval>
+        </param>
+        <briefdescription>
+<para>Blocking convenience wrapper over <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a15812c061055f71008bb46eb92b4c2f3" kindref="member">ShutdownAsync</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for a graceful close.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On timeout; socket errors during shutdown are suppressed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="284" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a444d861b0a5bd0c8e3a6f4ea03df82aa" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t Tryll::Client::TryllClient::GetSessionId</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetSessionId</name>
+        <qualifiedname>Tryll::Client::TryllClient::GetSessionId</qualifiedname>
+        <briefdescription>
+<para>Server-assigned session identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The <computeroutput>session_id</computeroutput> field received in <computeroutput>SessionReady</computeroutput>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="291" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a7a178fb21b7c89e419b65eb37046eee3" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt;::Tryll::ModelInfoT &gt;</type>
+        <definition>std::vector&lt;::Tryll::ModelInfoT &gt; Tryll::Client::TryllClient::ListModels</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>ListModels</name>
+        <qualifiedname>Tryll::Client::TryllClient::ListModels</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Request the list of models known to the server for the session&apos;s engine. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for <computeroutput>ListModelsResponse</computeroutput>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Catalog entries, one per known model.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="302" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a9ab77ba202dd636de012c9981067f646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::DownloadModel</definition>
+        <argsstring>(std::string_view modelName, DownloadProgressCallback onProgress=nullptr, std::chrono::milliseconds timeout=std::chrono::minutes{30})</argsstring>
+        <name>DownloadModel</name>
+        <qualifiedname>Tryll::Client::TryllClient::DownloadModel</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type><ref refid="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" kindref="member">DownloadProgressCallback</ref></type>
+          <declname>onProgress</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::minutes{30}</defval>
+        </param>
+        <briefdescription>
+<para>Start downloading a model on the server and block until complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Progress frames are delivered via <computeroutput>onProgress</computeroutput> on the reader thread (invoked synchronously, so keep the callback fast and non-blocking).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Catalog model name from <computeroutput>models.json</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>onProgress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional per-chunk progress callback. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for <computeroutput>DownloadComplete</computeroutput>.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors, a <computeroutput>DownloadComplete</computeroutput> reporting failure, or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="320" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a10af939ea84d80f3e9a1c23cec76dcc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::LoadModel</definition>
+        <argsstring>(std::string_view modelName, std::chrono::milliseconds timeout=std::chrono::minutes{5})</argsstring>
+        <name>LoadModel</name>
+        <qualifiedname>Tryll::Client::TryllClient::LoadModel</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::minutes{5}</defval>
+        </param>
+        <briefdescription>
+<para>Explicitly load and pin a model into memory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The model stays in memory until <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a030b7da8f33425074d6539cdab625a8a" kindref="member">UnloadModel</ref> is called, regardless of whether any agents are using it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Catalog model name from <computeroutput>models.json</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait; loading is slow for large GGUFs.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the model cannot be resolved or loaded, or on timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="337" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a5b991e59159bf6026fca4c6cb5cf722f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result" kindref="compound">DebugCommandResult</ref></type>
+        <definition>DebugCommandResult Tryll::Client::TryllClient::SendDebugCommand</definition>
+        <argsstring>(std::string_view command, std::string_view payload={}, std::chrono::milliseconds timeout=std::chrono::seconds{5})</argsstring>
+        <name>SendDebugCommand</name>
+        <qualifiedname>Tryll::Client::TryllClient::SendDebugCommand</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>payload</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{5}</defval>
+        </param>
+        <briefdescription>
+<para>Send a dev-only debug command to the server and report the outcome. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The server handles this only in non-Production builds with <computeroutput>debug_commands.enabled</computeroutput>. <computeroutput>command</computeroutput> is a verb (e.g. <computeroutput>&quot;crash&quot;</computeroutput>); for <computeroutput>crash</computeroutput>, <computeroutput>payload</computeroutput> is the mode token (<computeroutput>nullderef</computeroutput> / <computeroutput>abort</computeroutput> / <computeroutput>throw</computeroutput> / <computeroutput>stackoverflow</computeroutput> / <computeroutput>fastfail</computeroutput>; empty defaults to <computeroutput>nullderef</computeroutput>).</para>
+<para>Waits up to <computeroutput>timeout</computeroutput> for one of: the connection dropping (a fatal verb succeeded → <computeroutput>disconnected</computeroutput>), an <computeroutput>ErrorResponse</computeroutput> (e.g. the channel is disabled → <computeroutput>errorCode</computeroutput> set), or a <computeroutput>DebugCommandResponse</computeroutput> (<computeroutput>acknowledged</computeroutput>). Does not throw on a server error — inspect the returned struct instead. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="365" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a030b7da8f33425074d6539cdab625a8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::UnloadModel</definition>
+        <argsstring>(std::string_view modelName, std::chrono::milliseconds timeout=std::chrono::seconds{30})</argsstring>
+        <name>UnloadModel</name>
+        <qualifiedname>Tryll::Client::TryllClient::UnloadModel</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>modelName</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{30}</defval>
+        </param>
+        <briefdescription>
+<para>Unpin a previously pinned model. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Freed immediately if no active contexts reference it; freed lazily when the last one is destroyed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>modelName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Catalog model name previously pinned with <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a10af939ea84d80f3e9a1c23cec76dcc7" kindref="member">LoadModel</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the ack.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="381" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1ac5f2dbd7fa519965ea6aac493bc23809" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::CreateStringStorage</definition>
+        <argsstring>(std::string_view name, const std::vector&lt; std::string &gt; &amp;strings, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>CreateStringStorage</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateStringStorage</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Create a named <computeroutput>StringStorage</computeroutput> on the server from an inline list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The storage may then be referenced by name in node params via <computeroutput>string_storage</computeroutput> (e.g. on <computeroutput>CannedResponseNode</computeroutput> or <computeroutput>HumanMessageGuardrailNode</computeroutput>). Must be called before <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a8f84f0c4a65157becd4c332ea5acbd60" kindref="member">CreateAgent</ref> on any graph that references this storage name.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session-unique storage name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inline list of strings to store. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="399" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a096d520899fd4fa01c58715b0e92d228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::CreateStringStorageFromFile</definition>
+        <argsstring>(std::string_view name, std::string_view filePath, ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind_List, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>CreateStringStorageFromFile</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateStringStorageFromFile</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>filePath</declname>
+        </param>
+        <param>
+          <type>::Tryll::StringStorageKind</type>
+          <declname>kind</declname>
+          <defval>::Tryll::StringStorageKind_List</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Create a named <computeroutput>StringStorage</computeroutput> on the server from a server-side file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When <computeroutput>kind</computeroutput> is <computeroutput>List</computeroutput> (default), <computeroutput>filePath</computeroutput> must point to a newline-delimited <computeroutput>*</computeroutput>.txt file. When <computeroutput>kind</computeroutput> is <computeroutput>Map</computeroutput> or <computeroutput>Multimap</computeroutput>, <computeroutput>filePath</computeroutput> must point to a <computeroutput>*</computeroutput>.json array of <computeroutput>{id</computeroutput>, text} objects (where <computeroutput>id</computeroutput> is the key and <computeroutput>text</computeroutput> is the value).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session-unique storage name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filePath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server-side path to the source file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kind</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage kind; defaults to <computeroutput>List</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors, missing file, or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="419" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a5bf03107b025e4457c2fbe737f038b03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::CreateStringStorageKeyed</definition>
+        <argsstring>(std::string_view name, const std::vector&lt; std::string &gt; &amp;keys, const std::vector&lt; std::string &gt; &amp;values, ::Tryll::StringStorageKind kind=::Tryll::StringStorageKind_Map, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>CreateStringStorageKeyed</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateStringStorageKeyed</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>::Tryll::StringStorageKind</type>
+          <declname>kind</declname>
+          <defval>::Tryll::StringStorageKind_Map</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Create a named <computeroutput>StringStorage</computeroutput> on the server from inline key/value pairs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><computeroutput>kind</computeroutput> must be <computeroutput>Map</computeroutput> or <computeroutput>Multimap</computeroutput>. For <computeroutput>Map</computeroutput>, all keys must be unique. For <computeroutput>Multimap</computeroutput>, duplicate keys are allowed. Both <computeroutput>keys</computeroutput> and <computeroutput>values</computeroutput> must be non-empty and the same length.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session-unique storage name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>keys</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ordered list of keys. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ordered list of values (one per key). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kind</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><computeroutput>Map</computeroutput> (default) or <computeroutput>Multimap</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="440" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2c03202a3236c96965b053d85a124a47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::DestroyStringStorage</definition>
+        <argsstring>(std::string_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>DestroyStringStorage</name>
+        <qualifiedname>Tryll::Client::TryllClient::DestroyStringStorage</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Destroy a named <computeroutput>StringStorage</computeroutput> on the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Nodes that already hold the storage via <computeroutput>shared_ptr</computeroutput> keep it alive; this call only drops the session-level name mapping.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name passed to <ref refid="class_tryll_1_1_client_1_1_tryll_client_1ac5f2dbd7fa519965ea6aac493bc23809" kindref="member">CreateStringStorage</ref> or <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a096d520899fd4fa01c58715b0e92d228" kindref="member">CreateStringStorageFromFile</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="459" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a700d5bff3858ecb8a9952e48e9441021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref></type>
+        <definition>EmbeddedStorageInfo Tryll::Client::TryllClient::CreateEmbeddedStringStorage</definition>
+        <argsstring>(std::string_view name, std::string_view configPath, std::string_view embeddingModel={}, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt)</argsstring>
+        <name>CreateEmbeddedStringStorage</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateEmbeddedStringStorage</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>configPath</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>embeddingModel</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; std::chrono::milliseconds &gt;</type>
+          <declname>timeout</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Create an <computeroutput>EmbeddedStringStorage</computeroutput> from a server-side config. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Path A: the server loads records and (optionally) an on-disk HNSW index described by a <computeroutput>*</computeroutput>.json config referencing a <computeroutput>*</computeroutput>.kb.json records file.</para>
+<para>If <computeroutput>allow_auto_model_downloading</computeroutput> was set in <computeroutput>ConfigureSession</computeroutput> and the required embedding model is absent, it will be downloaded before the storage is built. In that case the default timeout is automatically raised to 30 minutes; pass an explicit value to override.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session-unique storage name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>configPath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Server-side <computeroutput>*</computeroutput>.json path. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>embeddingModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional catalog embedding-model name for cross-check; when non-empty must match the config&apos;s <computeroutput>embedding_model</computeroutput>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response; embedding large corpora is slow.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref> with name, record count, and dimension.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors (including <computeroutput>InvalidStringStorageData</computeroutput> when <computeroutput>embeddingModel</computeroutput> mismatches the config) or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="501" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2748b1f2ba24f1a4ad91930d56907ebe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref></type>
+        <definition>EmbeddedStorageInfo Tryll::Client::TryllClient::CreateEmbeddedStringStorageFromStrings</definition>
+        <argsstring>(std::string_view name, const std::vector&lt; std::string &gt; &amp;strings, std::string_view embeddingModel, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt)</argsstring>
+        <name>CreateEmbeddedStringStorageFromStrings</name>
+        <qualifiedname>Tryll::Client::TryllClient::CreateEmbeddedStringStorageFromStrings</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>embeddingModel</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::chrono::milliseconds &gt;</type>
+          <declname>timeout</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Create an <computeroutput>EmbeddedStringStorage</computeroutput> from inline strings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Path B: the server embeds <computeroutput>strings</computeroutput> in memory with the named embedding model; no on-disk index is written.</para>
+<para>If <computeroutput>allow_auto_model_downloading</computeroutput> was set in <computeroutput>ConfigureSession</computeroutput> and the required embedding model is absent, it will be downloaded before embedding begins. In that case the default timeout is automatically raised to 30 minutes; pass an explicit value to override.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Session-unique storage name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inline records to embed. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>embeddingModel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Catalog embedding-model name (required). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait; embedding is slow.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref> with name, record count, and dimension.</para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="527" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a87ccc6664db85fc404513cad78d5c774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::DestroyEmbeddedStringStorage</definition>
+        <argsstring>(std::string_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>DestroyEmbeddedStringStorage</name>
+        <qualifiedname>Tryll::Client::TryllClient::DestroyEmbeddedStringStorage</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+<para>Destroy a named <computeroutput>EmbeddedStringStorage</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Nodes that already hold the storage via <computeroutput>shared_ptr</computeroutput> keep it alive; this call only drops the session-level name mapping.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name passed to one of the <computeroutput>Create</computeroutput> variants. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum time to wait for the response.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server-reported errors or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="544" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2c9c2cf5ad38ede133be4f7666545918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::TryllClient::~TryllClient</definition>
+        <argsstring>()</argsstring>
+        <name>~TryllClient</name>
+        <qualifiedname>Tryll::Client::TryllClient::~TryllClient</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="548" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a3bd032ae0c04ab82423c51869e5d2387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::TryllClient::TryllClient</definition>
+        <argsstring>(const TryllClient &amp;)=default</argsstring>
+        <name>TryllClient</name>
+        <qualifiedname>Tryll::Client::TryllClient::TryllClient</qualifiedname>
+        <param>
+          <type>const TryllClient &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="549" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a126f6d3238c0eff1183e4ee7a51b006d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TryllClient &amp;</type>
+        <definition>TryllClient &amp; Tryll::Client::TryllClient::operator=</definition>
+        <argsstring>(const TryllClient &amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::Client::TryllClient::operator=</qualifiedname>
+        <param>
+          <type>const TryllClient &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="550" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a60e2d45d21bf1cdeaad0591417a63a02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::TryllClient::TryllClient</definition>
+        <argsstring>(TryllClient &amp;&amp;) noexcept=default</argsstring>
+        <name>TryllClient</name>
+        <qualifiedname>Tryll::Client::TryllClient::TryllClient</qualifiedname>
+        <param>
+          <type>TryllClient &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="551" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1abf89a84be5bcc601c8c559c996b57a58" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>TryllClient &amp;</type>
+        <definition>TryllClient &amp; Tryll::Client::TryllClient::operator=</definition>
+        <argsstring>(TryllClient &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>Tryll::Client::TryllClient::operator=</qualifiedname>
+        <param>
+          <type>TryllClient &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="552" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a20480cca5a134c372e54cf2a15df641c" prot="private" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::TryllClient::TryllClient</definition>
+        <argsstring>(std::shared_ptr&lt; Internal::TryllClientImpl &gt; impl)</argsstring>
+        <name>TryllClient</name>
+        <qualifiedname>Tryll::Client::TryllClient::TryllClient</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; Internal::TryllClientImpl &gt;</type>
+          <declname>impl</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="555" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>TCP session to the Tryll server. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyable — all copies share the same underlying connection via <computeroutput>shared_ptr</computeroutput>. The connection stays open until the last copy goes out of scope or <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" kindref="member">Shutdown</ref> is called. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="81" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="82" bodyend="558"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a192e750dabd33099354ea6110a73d8ee" prot="private" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>_impl</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1ac80d6d2bc5baa199b523871c8984b68b" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>ConfigureSession</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>Connect</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4c21d6b294b8ab6cbca7b26e9644f010" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>ConnectAsync</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a8f84f0c4a65157becd4c332ea5acbd60" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateAgent</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a26734a3cfcaf44b76fe7a53ba4e454a4" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateAgentAsync</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a700d5bff3858ecb8a9952e48e9441021" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateEmbeddedStringStorage</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a2748b1f2ba24f1a4ad91930d56907ebe" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateEmbeddedStringStorageFromStrings</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1ac5f2dbd7fa519965ea6aac493bc23809" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateStringStorage</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a096d520899fd4fa01c58715b0e92d228" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateStringStorageFromFile</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5bf03107b025e4457c2fbe737f038b03" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateStringStorageKeyed</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1af7a7f76f8a1105229c566745495b19d2" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateVoiceInput</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a62f8662758e19115efb6b9873ae5fc92" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>CreateVoiceInputAsync</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a87ccc6664db85fc404513cad78d5c774" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>DestroyEmbeddedStringStorage</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a2c03202a3236c96965b053d85a124a47" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>DestroyStringStorage</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a9ab77ba202dd636de012c9981067f646" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>DownloadModel</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a444d861b0a5bd0c8e3a6f4ea03df82aa" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>GetSessionId</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a7a178fb21b7c89e419b65eb37046eee3" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>ListModels</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a10af939ea84d80f3e9a1c23cec76dcc7" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>LoadModel</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a126f6d3238c0eff1183e4ee7a51b006d" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1abf89a84be5bcc601c8c559c996b57a58" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>operator=</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>RunAndConnect</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5b5ea25d2cc954c9766624fba0ca5c67" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>RunAndConnectAsync</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5b991e59159bf6026fca4c6cb5cf722f" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>SendDebugCommand</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>Shutdown</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a15812c061055f71008bb46eb92b4c2f3" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>ShutdownAsync</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a3bd032ae0c04ab82423c51869e5d2387" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>TryllClient</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a60e2d45d21bf1cdeaad0591417a63a02" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>TryllClient</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a20480cca5a134c372e54cf2a15df641c" prot="private" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>TryllClient</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a030b7da8f33425074d6539cdab625a8a" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>UnloadModel</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1a2c9c2cf5ad38ede133be4f7666545918" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>~TryllClient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

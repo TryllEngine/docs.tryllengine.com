@@ -240,5 +240,5 @@ Working directory for the child process. Empty (default) means the executable's 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h`
 

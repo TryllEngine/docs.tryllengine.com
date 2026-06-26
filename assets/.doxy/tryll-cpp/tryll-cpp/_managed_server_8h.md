@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**client-cpp**](dir_609af48e6c91725f4b3bc7ea6c8d260d.md) **>** [**include**](dir_e007c6614a1ec85f1d1448223783a2c8.md) **>** [**tryll**](dir_8463b878364fc27e5e1890816f6531c6.md) **>** [**ManagedServer.h**](_managed_server_8h.md)
+[**FileList**](files.md) **>** [**clients**](dir_ae1e47b40792601544f85532b4958859.md) **>** [**cpp**](dir_bfb9b1426fa54ff893373dfbed66c670.md) **>** [**include**](dir_3428be636e548afd883ca44bef078c76.md) **>** [**tryll**](dir_3ee824def4798d48f3bfea3e4f65c1f8.md) **>** [**ManagedServer.h**](_managed_server_8h.md)
 
 
 
@@ -107,7 +107,7 @@ opts.exe  = "C:/tryll/tryll_server.exe";
 opts.port = 9100;
 
 auto server = Tryll::Client::ManagedServer::Start(opts);
-auto client = Tryll::TryllClient::Connect(server.Host(), server.Port());
+auto client = Tryll::Client::TryllClient::Connect(server.Host(), server.Port());
 // … use client …
 client.Shutdown();
 server.Stop();   // or just let the destructor run
@@ -128,5 +128,5 @@ Windows-only. A `#error` guards non-Windows builds.
     
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h`
 

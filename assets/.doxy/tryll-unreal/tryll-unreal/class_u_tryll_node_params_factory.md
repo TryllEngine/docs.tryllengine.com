@@ -33,43 +33,40 @@ Inherits the following classes: UBlueprintFunctionLibrary
 
 
 
-## Public Attributes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Public Static Functions
 
 | Type | Name |
 | ---: | :--- |
-|  UObject \* | [**WorldContextObject**](#variable-worldcontextobject)  <br> |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-|   | [**UFUNCTION**](#function-ufunction-110) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-210) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-310) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-410) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-510) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-610) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-710) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-810) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-910) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-|   | [**UFUNCTION**](#function-ufunction-1010) (BlueprintCallable, Category="Tryll\|Params", meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")) <br> |
-
-
+|  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**CloneParams**](#function-cloneparams) ([**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Source, UObject \* WorldContextObject) <br> |
+|  [**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md) \* | [**MakeCannedResponseParams**](#function-makecannedresponseparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md) \* | [**MakeClassifyIntentLLMParams**](#function-makeclassifyintentllmparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md) \* | [**MakeClassifyIntentParams**](#function-makeclassifyintentparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md) \* | [**MakeGenerateAndSpeakParams**](#function-makegenerateandspeakparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllGenerateParams**](class_u_tryll_generate_params.md) \* | [**MakeGenerateParams**](#function-makegenerateparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllHumanMessageGuardrailParams**](class_u_tryll_human_message_guardrail_params.md) \* | [**MakeHumanMessageGuardrailParams**](#function-makehumanmessageguardrailparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllInstructionParams**](class_u_tryll_instruction_params.md) \* | [**MakeInstructionParams**](#function-makeinstructionparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md) \* | [**MakeIntentToInstructionParams**](#function-makeintenttoinstructionparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md) \* | [**MakeRetrieveParams**](#function-makeretrieveparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllSpeakParams**](class_u_tryll_speak_params.md) \* | [**MakeSpeakParams**](#function-makespeakparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md) \* | [**MakeToolCallParams**](#function-maketoolcallparams) (UObject \* WorldContextObject) <br> |
 
 
 
@@ -109,39 +106,23 @@ Usage (Blueprint): MakeGenerateParams → set fields → Agent.ChangeParams(Node
 
 
     
-## Public Attributes Documentation
+## Public Static Functions Documentation
 
 
 
 
-### variable WorldContextObject 
-
-```C++
-UObject* UTryllNodeParamsFactory::WorldContextObject;
-```
-
-
-
-
-<hr>
-## Public Functions Documentation
-
-
-
-
-### function UFUNCTION [1/10]
+### function CloneParams 
 
 ```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
+static UTryllNodeParamsBase * UTryllNodeParamsFactory::CloneParams (
+    UTryllNodeParamsBase * Source,
+    UObject * WorldContextObject
 ) 
 ```
 
 
 
-Construct an authored GenerateParams with schema-default field values. 
+Deep-clone any [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) subclass. Typical mutation idiom: Clone = CloneParams(Agent-&gt;GetNodeParamsBaseline(NodeName)) // set fields on Clone Agent-&gt;ChangeParams(NodeName, Clone) 
 
 
         
@@ -150,34 +131,11 @@ Construct an authored GenerateParams with schema-default field values.
 
 
 
-### function UFUNCTION [2/10]
+### function MakeCannedResponseParams 
 
 ```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
-) 
-```
-
-
-
-Construct an authored HumanMessageGuardrailParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
-### function UFUNCTION [3/10]
-
-```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
+static UTryllCannedResponseParams * UTryllNodeParamsFactory::MakeCannedResponseParams (
+    UObject * WorldContextObject
 ) 
 ```
 
@@ -192,97 +150,11 @@ Construct an authored CannedResponseParams with schema-default field values.
 
 
 
-### function UFUNCTION [4/10]
+### function MakeClassifyIntentLLMParams 
 
 ```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
-) 
-```
-
-
-
-Construct an authored ToolCallParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
-### function UFUNCTION [5/10]
-
-```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
-) 
-```
-
-
-
-Construct an authored RetrieveParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
-### function UFUNCTION [6/10]
-
-```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
-) 
-```
-
-
-
-Construct an authored InstructionParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
-### function UFUNCTION [7/10]
-
-```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
-) 
-```
-
-
-
-Construct an authored ClassifyIntentParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
-### function UFUNCTION [8/10]
-
-```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
+static UTryllClassifyIntentLLMParams * UTryllNodeParamsFactory::MakeClassifyIntentLLMParams (
+    UObject * WorldContextObject
 ) 
 ```
 
@@ -297,13 +169,106 @@ Construct an authored ClassifyIntentLLMParams with schema-default field values.
 
 
 
-### function UFUNCTION [9/10]
+### function MakeClassifyIntentParams 
 
 ```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
+static UTryllClassifyIntentParams * UTryllNodeParamsFactory::MakeClassifyIntentParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored ClassifyIntentParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeGenerateAndSpeakParams 
+
+```C++
+static UTryllGenerateAndSpeakParams * UTryllNodeParamsFactory::MakeGenerateAndSpeakParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored GenerateAndSpeakParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeGenerateParams 
+
+```C++
+static UTryllGenerateParams * UTryllNodeParamsFactory::MakeGenerateParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored GenerateParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeHumanMessageGuardrailParams 
+
+```C++
+static UTryllHumanMessageGuardrailParams * UTryllNodeParamsFactory::MakeHumanMessageGuardrailParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored HumanMessageGuardrailParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeInstructionParams 
+
+```C++
+static UTryllInstructionParams * UTryllNodeParamsFactory::MakeInstructionParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored InstructionParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeIntentToInstructionParams 
+
+```C++
+static UTryllIntentToInstructionParams * UTryllNodeParamsFactory::MakeIntentToInstructionParams (
+    UObject * WorldContextObject
 ) 
 ```
 
@@ -318,19 +283,55 @@ Construct an authored IntentToInstructionParams with schema-default field values
 
 
 
-### function UFUNCTION [10/10]
+### function MakeRetrieveParams 
 
 ```C++
-UTryllNodeParamsFactory::UFUNCTION (
-    BlueprintCallable,
-    Category="Tryll|Params",
-    meta=(WorldContext="WorldContextObject", DefaultToSelf="WorldContextObject")
+static UTryllRetrieveParams * UTryllNodeParamsFactory::MakeRetrieveParams (
+    UObject * WorldContextObject
 ) 
 ```
 
 
 
-Deep-clone any [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) subclass. Typical mutation idiom: Clone = CloneParams(Agent-&gt;GetNodeParamsBaseline(NodeName)) // set fields on Clone Agent-&gt;ChangeParams(NodeName, Clone) 
+Construct an authored RetrieveParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeSpeakParams 
+
+```C++
+static UTryllSpeakParams * UTryllNodeParamsFactory::MakeSpeakParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored SpeakParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeToolCallParams 
+
+```C++
+static UTryllToolCallParams * UTryllNodeParamsFactory::MakeToolCallParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored ToolCallParams with schema-default field values. 
 
 
         
@@ -338,5 +339,5 @@ Deep-clone any [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) sub
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h`
 

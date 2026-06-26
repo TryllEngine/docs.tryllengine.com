@@ -5,14 +5,16 @@
     <includes local="yes">CoreMinimal.h</includes>
     <includes refid="_tryll_node_params_base_8h" local="yes">Generated/Nodes/TryllNodeParamsBase.h</includes>
     <includes refid="_tryll_graph_description_8h" local="yes">TryllGraphDescription.h</includes>
+    <includes refid="_tryll_model_name_8h" local="yes">TryllModelName.h</includes>
     <includes refid="_tryll_tool_definition_8h" local="yes">Generated/Nodes/TryllToolDefinition.h</includes>
     <includes refid="_tryll_sampling_overrides_8h" local="yes">Generated/Nodes/TryllSamplingOverrides.h</includes>
     <includes refid="_codegen_fingerprint_8gen_8h" local="yes">CodegenFingerprint.gen.h</includes>
+    <includes local="no">string_view</includes>
     <includes local="yes">TryllToolCallParams.generated.h</includes>
-    <includedby refid="_tryll_graph_builder_8_nodes_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</includedby>
-    <includedby refid="_tryll_node_params_factory_8h" local="yes">C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h</includedby>
+    <includedby refid="_tryll_graph_builder_8_nodes_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</includedby>
+    <includedby refid="_tryll_node_params_factory_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h</includedby>
     <incdepgraph>
-      <node id="11">
+      <node id="13">
         <label>CodegenFingerprint.gen.h</label>
         <link refid="_codegen_fingerprint_8gen_8h_source"/>
       </node>
@@ -28,18 +30,20 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="17">
         <label>Generated/Nodes/TryllSamplingOverrides.h</label>
         <link refid="_tryll_sampling_overrides_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</label>
         <link refid="_tryll_tool_call_params_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -47,35 +51,43 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="11">
         <label>Generated/Nodes/TryllToolDefinition.h</label>
         <link refid="_tryll_tool_definition_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="12">
         <label>Generated/Nodes/TryllToolParamDefinition.h</label>
         <link refid="_tryll_tool_param_definition_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -85,26 +97,39 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>TryllModelName.h</label>
+        <link refid="_tryll_model_name_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>CoreMinimal.h</label>
       </node>
-      <node id="8">
+      <node id="10">
         <label>TryllGraphDescription.generated.h</label>
+      </node>
+      <node id="9">
+        <label>TryllModelName.generated.h</label>
       </node>
       <node id="6">
         <label>TryllNodeParamsBase.generated.h</label>
       </node>
-      <node id="15">
+      <node id="18">
         <label>TryllSamplingOverrides.generated.h</label>
       </node>
-      <node id="16">
+      <node id="19">
         <label>TryllToolCallParams.generated.h</label>
       </node>
-      <node id="13">
+      <node id="16">
         <label>TryllToolDefinition.generated.h</label>
       </node>
-      <node id="12">
+      <node id="15">
         <label>TryllToolParamDefinition.generated.h</label>
       </node>
       <node id="4">
@@ -113,10 +138,13 @@
       <node id="5">
         <label>flatbuffers/flatbuffers.h</label>
       </node>
+      <node id="14">
+        <label>string_view</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h</label>
         <link refid="_tryll_tool_call_params_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -124,11 +152,11 @@
         </childnode>
       </node>
       <node id="2">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</label>
         <link refid="_tryll_graph_builder_8_nodes_8h_source"/>
       </node>
       <node id="3">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h</label>
         <link refid="_tryll_node_params_factory_8h_source"/>
       </node>
     </invincdepgraph>
@@ -137,6 +165,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllToolCallParams.h"/>
   </compounddef>
 </doxygen>

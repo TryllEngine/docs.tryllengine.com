@@ -15,42 +15,123 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>When true, <ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> spawns tryll_server.exe automatically on Initialize. </para>
+<para>Spawn the bundled tryll_server.exe on Initialize. Set false to run a server yourself. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="25" column="6" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="25" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="34" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a8001a8f979fc378714981cab3cabb1c1" prot="public" static="no" mutable="no">
-        <type>FString</type>
-        <definition>FString UTryllRuntimeSettings::EditorServerExePath</definition>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a58d069088a51bfdbc79dc2f2d0e2f6b6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllRuntimeSettings::bAutoConnect</definition>
         <argsstring></argsstring>
-        <name>EditorServerExePath</name>
-        <qualifiedname>UTryllRuntimeSettings::EditorServerExePath</qualifiedname>
+        <name>bAutoConnect</name>
+        <qualifiedname>UTryllRuntimeSettings::bAutoConnect</qualifiedname>
+        <initializer>= true</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Path to the server exe used in editor builds. Empty disables auto-launch in editor — developers run the server manually. Relative paths resolve against the project dir. </para>
+<para>Connect to the server automatically once the subsystem initializes. The built-in connect-retry (ConnectMaxAttempts / ConnectRetryDelaySeconds) covers the brief window while the launched server comes up. Turn off to call Connect() yourself (e.g. from a loading screen). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="32" column="9" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="32" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="43" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a2c1ec90658e21249ccc60d4f70cf06f9" prot="public" static="no" mutable="no">
-        <type>FString</type>
-        <definition>FString UTryllRuntimeSettings::BuildServerExePath</definition>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a9267044b675b52b21f93a13223d82879" prot="public" static="no" mutable="no">
+        <type>EServerBuildVariant</type>
+        <definition>EServerBuildVariant UTryllRuntimeSettings::ServerBuildVariant</definition>
         <argsstring></argsstring>
-        <name>BuildServerExePath</name>
-        <qualifiedname>UTryllRuntimeSettings::BuildServerExePath</qualifiedname>
-        <initializer>= TEXT(&quot;tryll_server.exe&quot;)</initializer>
+        <name>ServerBuildVariant</name>
+        <qualifiedname>UTryllRuntimeSettings::ServerBuildVariant</qualifiedname>
+        <initializer>= EServerBuildVariant::Default</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Path to the server exe used in packaged builds. Resolves relative to the game .exe&apos;s directory (FPlatformProcess::BaseDir()). </para>
+<para>Which bundled server build to launch. Only honored when both Default and Release variants are present; otherwise the single present variant is always used. The editor hides this unless both resolve. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="39" column="9" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="39" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="51" column="21" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1aad8bf9d117c7331b525aeb4a5a00f6dd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllRuntimeSettings::bAutoConfigureSession</definition>
+        <argsstring></argsstring>
+        <name>bAutoConfigureSession</name>
+        <qualifiedname>UTryllRuntimeSettings::bAutoConfigureSession</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configure the session automatically once connected, using the engine fields below. Mirrors bAutoLaunchServer, but for session setup: leave on for the simple &quot;it just works&quot; path; turn off to configure the session yourself (e.g. during a loading screen, or to run multiple sessions with different engines). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="61" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1adccb2ddbe3f365f4dbaac0df2ae7cbd9" prot="public" static="no" mutable="no">
+        <type>ETryllInferenceEngine</type>
+        <definition>ETryllInferenceEngine UTryllRuntimeSettings::Engine</definition>
+        <argsstring></argsstring>
+        <name>Engine</name>
+        <qualifiedname>UTryllRuntimeSettings::Engine</qualifiedname>
+        <initializer>= ETryllInferenceEngine::LlamaCpp</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>LLM inference backend for generate / tool-call nodes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="65" column="23" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1ae1b638a8450eeaceb15b1e651ca69890" prot="public" static="no" mutable="no">
+        <type>ETryllInferenceEngine</type>
+        <definition>ETryllInferenceEngine UTryllRuntimeSettings::SttEngine</definition>
+        <argsstring></argsstring>
+        <name>SttEngine</name>
+        <qualifiedname>UTryllRuntimeSettings::SttEngine</qualifiedname>
+        <initializer>= ETryllInferenceEngine::Mock</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Speech-to-text backend. Set to SherpaOnnx to use voice input. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="69" column="23" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a698909e45fa06757b6a362848941995c" prot="public" static="no" mutable="no">
+        <type>ETryllInferenceEngine</type>
+        <definition>ETryllInferenceEngine UTryllRuntimeSettings::TtsEngine</definition>
+        <argsstring></argsstring>
+        <name>TtsEngine</name>
+        <qualifiedname>UTryllRuntimeSettings::TtsEngine</qualifiedname>
+        <initializer>= ETryllInferenceEngine::Mock</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Text-to-speech backend. Set to SherpaOnnx to use spoken replies. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="73" column="23" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a8b6abfe4706880ebad5ae62a56633990" prot="public" static="no" mutable="no">
+        <type>ETryllInferenceEngine</type>
+        <definition>ETryllInferenceEngine UTryllRuntimeSettings::EmbeddingEngine</definition>
+        <argsstring></argsstring>
+        <name>EmbeddingEngine</name>
+        <qualifiedname>UTryllRuntimeSettings::EmbeddingEngine</qualifiedname>
+        <initializer>= ETryllInferenceEngine::Mock</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Embedding backend for string-storage / RAG nodes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="77" column="23" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a87925e5ae105bf6538fe5e44d42c9fbf" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -65,7 +146,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="47" column="9" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="47" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="85" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a75f836e326435d571aa6600b81a29ae3" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllRuntimeSettings::StorageDataFolder</definition>
+        <argsstring></argsstring>
+        <name>StorageDataFolder</name>
+        <qualifiedname>UTryllRuntimeSettings::StorageDataFolder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Project-relative folder that node storage paths (string / embedded string storages, voice hotwords) resolve against for this session.</para>
+<para>Stored relative to the Unreal project directory in editor builds (e.g. &quot;Content/TryllStringStorages&quot;) and relative to the packaged game directory in shipping builds. <ref refid="class_u_tryll_runtime_settings_1ad24e6fc9811c134de92dc39fd4f86597" kindref="member">ResolveStorageDataFolderForServer()</ref> converts this to an absolute path before ConfigureSession sends it on the wire.</para>
+<para>Leave empty to use the server&apos;s configured storage root. Relative paths in node params resolve against the resolved folder; paths that escape it are rejected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="100" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1adbc33f6f57e305909e2a45f8cdb68ec9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -82,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="58" column="6" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="58" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="135" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" static="no" mutable="no">
         <type>int32</type>
@@ -98,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="65" column="7" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="65" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="142" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -114,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="69" column="7" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="69" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="146" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="146" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -130,7 +228,115 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="21" column="15" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="21" bodyend="21"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="30" column="15" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1ad24e6fc9811c134de92dc39fd4f86597" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>FString</type>
+        <definition>FString UTryllRuntimeSettings::ResolveStorageDataFolderForServer</definition>
+        <argsstring>() const</argsstring>
+        <name>ResolveStorageDataFolderForServer</name>
+        <qualifiedname>UTryllRuntimeSettings::ResolveStorageDataFolderForServer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Absolute storage root for ConfigureSession, or empty when StorageDataFolder is unset. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="103" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1a53cd18ae744680a5e11875f72423f47b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllRuntimeSettings::ResolveStorageDataFolderForServer</definition>
+        <argsstring>(const FString &amp;ConfiguredFolder)</argsstring>
+        <name>ResolveStorageDataFolderForServer</name>
+        <qualifiedname>UTryllRuntimeSettings::ResolveStorageDataFolderForServer</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ConfiguredFolder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Project/game-relative configured folder → absolute path for the server. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="109" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1a306088cf3f475400d9babf317b106160" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllRuntimeSettings::GetConfiguredStorageDataFolder</definition>
+        <argsstring>()</argsstring>
+        <name>GetConfiguredStorageDataFolder</name>
+        <qualifiedname>UTryllRuntimeSettings::GetConfiguredStorageDataFolder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Configured StorageDataFolder from DefaultGame.ini (preferred) or the settings CDO. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="112" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1a7a45d5b89861ee8f2ac09b5afb2a68d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllRuntimeSettings::GetStorageRootAbsolute</definition>
+        <argsstring>()</argsstring>
+        <name>GetStorageRootAbsolute</name>
+        <qualifiedname>UTryllRuntimeSettings::GetStorageRootAbsolute</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Absolute storage root for editor file picking; project dir when unset. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="115" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1af468d217cb6e946a0aa636d2d6561079" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool UTryllRuntimeSettings::MakePathRelativeToStorageRoot</definition>
+        <argsstring>(const FString &amp;AbsoluteFilePath, FString &amp;OutRelativePath)</argsstring>
+        <name>MakePathRelativeToStorageRoot</name>
+        <qualifiedname>UTryllRuntimeSettings::MakePathRelativeToStorageRoot</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>AbsoluteFilePath</declname>
+        </param>
+        <param>
+          <type>FString &amp;</type>
+          <declname>OutRelativePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Picked absolute file → path relative to the resolved storage root (forward slashes). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="118" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_runtime_settings_1aa534f29deafcd98ad9312d43134b6120" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllRuntimeSettings::NormalizeStorageRelativePath</definition>
+        <argsstring>(const FString &amp;RelativePath)</argsstring>
+        <name>NormalizeStorageRelativePath</name>
+        <qualifiedname>UTryllRuntimeSettings::NormalizeStorageRelativePath</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>RelativePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Strips accidental parent-folder prefixes (e.g. &quot;StringStorages/RAG/x&quot; when the storage root is already Content/StringStorages). Paths are relative to storage_root. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="124" column="16"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -160,16 +366,28 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="16" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="17" bodyend="70"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="25" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="26" bodyend="147"/>
     <listofallmembers>
       <member refid="class_u_tryll_runtime_settings_1adbc33f6f57e305909e2a45f8cdb68ec9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAllowAutoModelDownloading</name></member>
+      <member refid="class_u_tryll_runtime_settings_1aad8bf9d117c7331b525aeb4a5a00f6dd" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoConfigureSession</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a58d069088a51bfdbc79dc2f2d0e2f6b6" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoConnect</name></member>
       <member refid="class_u_tryll_runtime_settings_1ab893222f143c04383df16552034a5fdb" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoLaunchServer</name></member>
-      <member refid="class_u_tryll_runtime_settings_1a2c1ec90658e21249ccc60d4f70cf06f9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>BuildServerExePath</name></member>
       <member refid="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectMaxAttempts</name></member>
       <member refid="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectRetryDelaySeconds</name></member>
-      <member refid="class_u_tryll_runtime_settings_1a8001a8f979fc378714981cab3cabb1c1" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>EditorServerExePath</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a8b6abfe4706880ebad5ae62a56633990" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>EmbeddingEngine</name></member>
+      <member refid="class_u_tryll_runtime_settings_1adccb2ddbe3f365f4dbaac0df2ae7cbd9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>Engine</name></member>
       <member refid="class_u_tryll_runtime_settings_1a87925e5ae105bf6538fe5e44d42c9fbf" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>GameName</name></member>
       <member refid="class_u_tryll_runtime_settings_1a4e04734f0d1b9c2a2988b1f2ce6f8861" prot="public" virt="virtual"><scope>UTryllRuntimeSettings</scope><name>GetCategoryName</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a306088cf3f475400d9babf317b106160" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>GetConfiguredStorageDataFolder</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a7a45d5b89861ee8f2ac09b5afb2a68d0" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>GetStorageRootAbsolute</name></member>
+      <member refid="class_u_tryll_runtime_settings_1af468d217cb6e946a0aa636d2d6561079" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>MakePathRelativeToStorageRoot</name></member>
+      <member refid="class_u_tryll_runtime_settings_1aa534f29deafcd98ad9312d43134b6120" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>NormalizeStorageRelativePath</name></member>
+      <member refid="class_u_tryll_runtime_settings_1ad24e6fc9811c134de92dc39fd4f86597" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ResolveStorageDataFolderForServer</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a53cd18ae744680a5e11875f72423f47b" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ResolveStorageDataFolderForServer</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a9267044b675b52b21f93a13223d82879" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ServerBuildVariant</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a75f836e326435d571aa6600b81a29ae3" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>StorageDataFolder</name></member>
+      <member refid="class_u_tryll_runtime_settings_1ae1b638a8450eeaceb15b1e651ca69890" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>SttEngine</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a698909e45fa06757b6a362848941995c" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>TtsEngine</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -41,9 +41,10 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**StringStorage**](#variable-stringstorage)  <br> |
-|  bool | [**bOverrideInlineStrings**](#variable-boverrideinlinestrings)   = `false`<br> |
-|  bool | [**bOverrideStringStorage**](#variable-boverridestringstorage)   = `false`<br> |
+|  TArray&lt; FString &gt; | [**InlineStrings**](#variable-inlinestrings)  <br> |
+|  FString | [**NotTriggeredExit**](#variable-nottriggeredexit)  <br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**StringStorage**](#variable-stringstorage)  <br> |
+|  FString | [**TriggeredExit**](#variable-triggeredexit)  <br> |
 
 
 
@@ -82,9 +83,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|HumanMessageGuardrail", meta=(EditCondition="bOverrideInlineStrings")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -163,23 +161,10 @@ Guardrail node backed by session string storage. Blocks turns whose human messag
 
 
 
-### variable StringStorage 
+### variable InlineStrings 
 
 ```C++
-FString UTryllHumanMessageGuardrailParams::StringStorage;
-```
-
-
-
-
-<hr>
-
-
-
-### variable bOverrideInlineStrings 
-
-```C++
-bool UTryllHumanMessageGuardrailParams::bOverrideInlineStrings;
+TArray<FString> UTryllHumanMessageGuardrailParams::InlineStrings;
 ```
 
 
@@ -193,15 +178,49 @@ Inline pattern list. Structural because it materialises the underlying StringSto
 
 
 
-### variable bOverrideStringStorage 
+### variable NotTriggeredExit 
 
 ```C++
-bool UTryllHumanMessageGuardrailParams::bOverrideStringStorage;
+FString UTryllHumanMessageGuardrailParams::NotTriggeredExit;
 ```
 
 
 
-Named session string storage. Mutable — rebinds the underlying storage. Set to true to override the inherited StringStorage value. 
+Exit taken when no pattern matches. Empty string = END. Graph exit "not\_triggered" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable StringStorage 
+
+```C++
+FTryllStoragePath UTryllHumanMessageGuardrailParams::StringStorage;
+```
+
+
+
+Named session string storage. Mutable — rebinds the underlying storage. 
+
+
+        
+
+<hr>
+
+
+
+### variable TriggeredExit 
+
+```C++
+FString UTryllHumanMessageGuardrailParams::TriggeredExit;
+```
+
+
+
+Exit taken when the human message matches a guardrail pattern. Empty string = END. Graph exit "triggered" — target node name; empty = END. 
 
 
         
@@ -243,68 +262,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/3]
-
-```C++
-UTryllHumanMessageGuardrailParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|HumanMessageGuardrail",
-    meta=(EditCondition="bOverrideInlineStrings")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/3]
-
-```C++
-UTryllHumanMessageGuardrailParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when the human message matches a guardrail pattern. Empty string = END. Graph exit "triggered" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [3/3]
-
-```C++
-UTryllHumanMessageGuardrailParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when no pattern matches. Empty string = END. Graph exit "not\_triggered" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h`
 

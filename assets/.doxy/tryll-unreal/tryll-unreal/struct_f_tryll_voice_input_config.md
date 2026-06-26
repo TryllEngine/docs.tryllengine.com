@@ -37,7 +37,7 @@
 | Type | Name |
 | ---: | :--- |
 |  float | [**HotwordsScore**](#variable-hotwordsscore)   = `1.5f`<br> |
-|  FString | [**HotwordsStorageName**](#variable-hotwordsstoragename)  <br> |
+|  FString | [**HotwordsStoragePath**](#variable-hotwordsstoragepath)  <br> |
 |  [**FTryllAudioFormat**](struct_f_tryll_audio_format.md) | [**InputFormat**](#variable-inputformat)  <br> |
 |  FString | [**ModelName**](#variable-modelname)  <br> |
 |  uint32 | [**VadMinSilenceMs**](#variable-vadminsilencems)   = `500`<br> |
@@ -116,15 +116,15 @@ Per-token bias strength applied to every phrase (default 1.5). 1.5 = gentle; 2.5
 
 
 
-### variable HotwordsStorageName 
+### variable HotwordsStoragePath 
 
 ```C++
-FString FTryllVoiceInputConfig::HotwordsStorageName;
+FString FTryllVoiceInputConfig::HotwordsStoragePath;
 ```
 
 
 
-Name of a StringStorage (kind=List) whose phrases the STT decoder biases toward. Empty (default) disables hotword biasing. 
+Relative path (resolved against the session storage folder) to a StringStorage (kind=List) config whose phrases the STT decoder biases toward. Loaded on demand. Empty (default) disables hotword biasing. 
 
 
         
@@ -197,5 +197,5 @@ float FTryllVoiceInputConfig::VadThreshold;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h`
 

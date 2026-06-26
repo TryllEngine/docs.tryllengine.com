@@ -12,6 +12,8 @@
 * **ETryllPlacement** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
 * **ETryllTurnStatus** ([**TryllGraphDescription.h**](_tryll_graph_description_8h.md))
 * **ETryllModelStatus** ([**TryllModelInfo.h**](_tryll_model_info_8h.md))
+* **ETryllModelRegistration** ([**TryllModelManifest.h**](_tryll_model_manifest_8h.md))
+* **EServerBuildVariant** ([**TryllRuntimeSettings.h**](_tryll_runtime_settings_8h.md))
 * **ETryllTranscriptUpdateKind** ([**TryllVoiceInput.h**](_tryll_voice_input_8h.md))
 
 

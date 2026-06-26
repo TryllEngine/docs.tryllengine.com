@@ -32,30 +32,39 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions
+## Public Attributes
 
 | Type | Name |
 | ---: | :--- |
-|   | [**UPROPERTY**](#function-uproperty-14) (BlueprintReadOnly, Category="Tryll\|Models", meta=(ToolTip="Catalog name of the model as registered in models.json.")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-24) (BlueprintReadOnly, Category="Tryll\|Models", meta=(ToolTip="Current status of the model on the server.")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-34) (BlueprintReadOnly, Category="Tryll\|Models", meta=(ToolTip="HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.")) <br> |
-| virtual  | [**UPROPERTY**](#function-uproperty-44) (BlueprintReadOnly, Category="Tryll\|Models", meta=(ToolTip="On-disk size in bytes of the downloaded model; zero when the model is not on disk.")) = 0<br> |
+|  FString | [**Audience**](#variable-audience)  <br> |
+|  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
+|  [**FTryllSamplingParams**](struct_f_tryll_sampling_params.md) | [**DefaultSampling**](#variable-defaultsampling)  <br> |
+|  FString | [**Engine**](#variable-engine)  <br> |
+|  TArray&lt; FString &gt; | [**Files**](#variable-files)  <br> |
+|  FString | [**HuggingFaceRepo**](#variable-huggingfacerepo)  <br> |
+|  FString | [**LocalPath**](#variable-localpath)  <br> |
+|  FString | [**ModelType**](#variable-modeltype)  <br> |
+|  FString | [**Name**](#variable-name)  <br> |
+|  int64 | [**SizeBytes**](#variable-sizebytes)   = `0`<br> |
+|  ETryllModelStatus | [**Status**](#variable-status)   = `ETryllModelStatus::Absent`<br> |
+|  FString | [**ToolCallFormat**](#variable-toolcallformat)  <br> |
+|  bool | [**bHasDefaultSampling**](#variable-bhasdefaultsampling)   = `false`<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -91,24 +100,20 @@ Summary information for one model returned by ListModels.
 
 
     
-## Public Functions Documentation
+## Public Attributes Documentation
 
 
 
 
-### function UPROPERTY [1/4]
+### variable Audience 
 
 ```C++
-FTryllModelInfo::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll|Models",
-    meta=(ToolTip="Catalog name of the model as registered in models.json.")
-) 
+FString FTryllModelInfo::Audience;
 ```
 
 
 
-Catalog name of the model (matches the name in models.json). 
+Intended audience tier: "public" \| "experimental" \| "internal" \| "". 
 
 
         
@@ -117,19 +122,15 @@ Catalog name of the model (matches the name in models.json).
 
 
 
-### function UPROPERTY [2/4]
+### variable ContextSize 
 
 ```C++
-FTryllModelInfo::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll|Models",
-    meta=(ToolTip="Current status of the model on the server.")
-) 
+int32 FTryllModelInfo::ContextSize;
 ```
 
 
 
-Current status on the server (absent / local / downloading / downloaded / loaded). 
+Variant context window in tokens; 0 means the engine default. 
 
 
         
@@ -138,14 +139,61 @@ Current status on the server (absent / local / downloading / downloaded / loaded
 
 
 
-### function UPROPERTY [3/4]
+### variable DefaultSampling 
 
 ```C++
-FTryllModelInfo::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll|Models",
-    meta=(ToolTip="HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.")
-) 
+FTryllSamplingParams FTryllModelInfo::DefaultSampling;
+```
+
+
+
+Recommended sampling parameters; valid only when bHasDefaultSampling. 
+
+
+        
+
+<hr>
+
+
+
+### variable Engine 
+
+```C++
+FString FTryllModelInfo::Engine;
+```
+
+
+
+Resolved inference engine, e.g. "llama-cpp" \| "sherpa-onnx". 
+
+
+        
+
+<hr>
+
+
+
+### variable Files 
+
+```C++
+TArray<FString> FTryllModelInfo::Files;
+```
+
+
+
+Files downloaded/resolved for the configured engine's variant. 
+
+
+        
+
+<hr>
+
+
+
+### variable HuggingFaceRepo 
+
+```C++
+FString FTryllModelInfo::HuggingFaceRepo;
 ```
 
 
@@ -159,14 +207,61 @@ HuggingFace repo id (e.g. "Qwen/Qwen2.5-0.5B-Instruct-GGUF") or empty for local-
 
 
 
-### function UPROPERTY [4/4]
+### variable LocalPath 
 
 ```C++
-virtual FTryllModelInfo::UPROPERTY (
-    BlueprintReadOnly,
-    Category="Tryll|Models",
-    meta=(ToolTip="On-disk size in bytes of the downloaded model; zero when the model is not on disk.")
-) = 0
+FString FTryllModelInfo::LocalPath;
+```
+
+
+
+Resolved on-disk directory for the model; empty when not on disk. 
+
+
+        
+
+<hr>
+
+
+
+### variable ModelType 
+
+```C++
+FString FTryllModelInfo::ModelType;
+```
+
+
+
+Model type: "language" \| "embedding" \| "stt" \| "tts" \| "vad". 
+
+
+        
+
+<hr>
+
+
+
+### variable Name 
+
+```C++
+FString FTryllModelInfo::Name;
+```
+
+
+
+Catalog name of the model (matches the name in models.json). 
+
+
+        
+
+<hr>
+
+
+
+### variable SizeBytes 
+
+```C++
+int64 FTryllModelInfo::SizeBytes;
 ```
 
 
@@ -178,6 +273,57 @@ On-disk size in bytes when the model has been downloaded. Zero if Status == Abse
 
 <hr>
 
+
+
+### variable Status 
+
+```C++
+ETryllModelStatus FTryllModelInfo::Status;
+```
+
+
+
+Current status on the server (absent / local / downloading / downloaded / loaded). 
+
+
+        
+
+<hr>
+
+
+
+### variable ToolCallFormat 
+
+```C++
+FString FTryllModelInfo::ToolCallFormat;
+```
+
+
+
+Tool-call prompt/parse format: "chatml" \| "llama3" \| "mistral" \| "generic" \| "". 
+
+
+        
+
+<hr>
+
+
+
+### variable bHasDefaultSampling 
+
+```C++
+bool FTryllModelInfo::bHasDefaultSampling;
+```
+
+
+
+True when the catalog supplies explicit default sampling parameters. 
+
+
+        
+
+<hr>
+
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h`
 

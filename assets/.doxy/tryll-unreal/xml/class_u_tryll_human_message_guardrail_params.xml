@@ -5,43 +5,27 @@
     <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
     <includes refid="_tryll_human_message_guardrail_params_8h" local="no">TryllHumanMessageGuardrailParams.h</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a7f64e99ea868e50998ae983a626d9ce3" prot="public" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool UTryllHumanMessageGuardrailParams::bOverrideStringStorage</definition>
-        <argsstring></argsstring>
-        <name>bOverrideStringStorage</name>
-        <qualifiedname>UTryllHumanMessageGuardrailParams::bOverrideStringStorage</qualifiedname>
-        <initializer>= false</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Named session string storage. Mutable — rebinds the underlying storage. Set to true to override the inherited StringStorage value. </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="27" column="10" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="27" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1ad3f313f240d5f0c1048b4ead35ab79c6" prot="public" static="no" mutable="no">
-        <type>FString</type>
-        <definition>FString UTryllHumanMessageGuardrailParams::StringStorage</definition>
+      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a3fb293a01b2eda42e31403f37e733c2b" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_storage_path" kindref="compound">FTryllStoragePath</ref></type>
+        <definition>FTryllStoragePath UTryllHumanMessageGuardrailParams::StringStorage</definition>
         <argsstring></argsstring>
         <name>StringStorage</name>
         <qualifiedname>UTryllHumanMessageGuardrailParams::StringStorage</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para>Named session string storage. Mutable — rebinds the underlying storage. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="29" column="13" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="29" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="36" column="23" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a30bda4e0fd38837709cbabf1a4f2af34" prot="public" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool UTryllHumanMessageGuardrailParams::bOverrideInlineStrings</definition>
+      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a78c99d80af65a4da649f49d0d2f111e0" prot="public" static="no" mutable="no">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt;FString&gt; UTryllHumanMessageGuardrailParams::InlineStrings</definition>
         <argsstring></argsstring>
-        <name>bOverrideInlineStrings</name>
-        <qualifiedname>UTryllHumanMessageGuardrailParams::bOverrideInlineStrings</qualifiedname>
-        <initializer>= false</initializer>
+        <name>InlineStrings</name>
+        <qualifiedname>UTryllHumanMessageGuardrailParams::InlineStrings</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -49,58 +33,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="33" column="10" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="33" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="40" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="40" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_u_tryll_human_message_guardrail_params_1a8cabcffeeecd1b4578148c5748e655c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>UTryllHumanMessageGuardrailParams::UPROPERTY</definition>
-        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|HumanMessageGuardrail&quot;, meta=(EditCondition=&quot;bOverrideInlineStrings&quot;)) TArray&lt; FString &gt; InlineStrings</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>UTryllHumanMessageGuardrailParams::UPROPERTY</qualifiedname>
-        <param>
-          <type>EditAnywhere</type>
-        </param>
-        <param>
-          <type>BlueprintReadWrite</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|HumanMessageGuardrail&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(EditCondition=&quot;bOverrideInlineStrings&quot;)</defval>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="34" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="class_u_tryll_human_message_guardrail_params_1a0d3cd7ef6857cf3b710f06aaabc178a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>UTryllHumanMessageGuardrailParams::UPROPERTY</definition>
-        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|Exits&quot;, meta=(GetOptions=&quot;GetExitTargetOptions&quot;)) FString TriggeredExit</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>UTryllHumanMessageGuardrailParams::UPROPERTY</qualifiedname>
-        <param>
-          <type>EditAnywhere</type>
-        </param>
-        <param>
-          <type>BlueprintReadWrite</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Exits&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(GetOptions=&quot;GetExitTargetOptions&quot;)</defval>
-        </param>
+      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a5d71d124457a078df8e081bb2afb8f18" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllHumanMessageGuardrailParams::TriggeredExit</definition>
+        <argsstring></argsstring>
+        <name>TriggeredExit</name>
+        <qualifiedname>UTryllHumanMessageGuardrailParams::TriggeredExit</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -108,28 +48,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="39" column="5"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="46" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_u_tryll_human_message_guardrail_params_1a18b2295fbd1e3ea211ef7d506d3ea5f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>UTryllHumanMessageGuardrailParams::UPROPERTY</definition>
-        <argsstring>(EditAnywhere, BlueprintReadWrite, Category=&quot;Tryll|Exits&quot;, meta=(GetOptions=&quot;GetExitTargetOptions&quot;)) FString NotTriggeredExit</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>UTryllHumanMessageGuardrailParams::UPROPERTY</qualifiedname>
-        <param>
-          <type>EditAnywhere</type>
-        </param>
-        <param>
-          <type>BlueprintReadWrite</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Exits&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(GetOptions=&quot;GetExitTargetOptions&quot;)</defval>
-        </param>
+      <memberdef kind="variable" id="class_u_tryll_human_message_guardrail_params_1a53f72519db7e2b64a08f8da3c830f3f9" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllHumanMessageGuardrailParams::NotTriggeredExit</definition>
+        <argsstring></argsstring>
+        <name>NotTriggeredExit</name>
+        <qualifiedname>UTryllHumanMessageGuardrailParams::NotTriggeredExit</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -137,8 +63,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="45" column="5"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="52" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="52" bodyend="-1"/>
       </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="class_u_tryll_human_message_guardrail_params_1a7ac3f791f8008fd80d28adee266c184e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>ETryllNodeType</type>
         <definition>virtual ETryllNodeType UTryllHumanMessageGuardrailParams::GetNodeType</definition>
@@ -152,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="50" column="28" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="50" bodyend="50"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="55" column="28" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="55" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_human_message_guardrail_params_1ad4f3f74ef6381fefd5ab2fed637aa068" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>flatbuffers::Offset&lt; void &gt;</type>
@@ -175,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="51" column="33"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="56" column="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -201,6 +129,10 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="4">
+        <label>FTryllStoragePath</label>
+        <link refid="struct_f_tryll_storage_path"/>
+      </node>
       <node id="3">
         <label>UObject</label>
       </node>
@@ -208,6 +140,9 @@
         <label>UTryllHumanMessageGuardrailParams</label>
         <link refid="class_u_tryll_human_message_guardrail_params"/>
         <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>StringStorage</edgelabel>
         </childnode>
       </node>
       <node id="2">
@@ -217,18 +152,16 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="20" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="21" bodyend="53"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllHumanMessageGuardrailParams.h" bodystart="30" bodyend="58"/>
     <listofallmembers>
-      <member refid="class_u_tryll_human_message_guardrail_params_1a30bda4e0fd38837709cbabf1a4f2af34" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>bOverrideInlineStrings</name></member>
-      <member refid="class_u_tryll_human_message_guardrail_params_1a7f64e99ea868e50998ae983a626d9ce3" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>bOverrideStringStorage</name></member>
       <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>GetExitTargetOptions</name></member>
       <member refid="class_u_tryll_human_message_guardrail_params_1a7ac3f791f8008fd80d28adee266c184e" prot="public" virt="virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_human_message_guardrail_params_1a78c99d80af65a4da649f49d0d2f111e0" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>InlineStrings</name></member>
+      <member refid="class_u_tryll_human_message_guardrail_params_1a53f72519db7e2b64a08f8da3c830f3f9" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>NotTriggeredExit</name></member>
       <member refid="class_u_tryll_human_message_guardrail_params_1ad4f3f74ef6381fefd5ab2fed637aa068" prot="public" virt="virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>Pack</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>static_cast</name></member>
-      <member refid="class_u_tryll_human_message_guardrail_params_1ad3f313f240d5f0c1048b4ead35ab79c6" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>StringStorage</name></member>
-      <member refid="class_u_tryll_human_message_guardrail_params_1a8cabcffeeecd1b4578148c5748e655c3" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>UPROPERTY</name></member>
-      <member refid="class_u_tryll_human_message_guardrail_params_1a0d3cd7ef6857cf3b710f06aaabc178a3" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>UPROPERTY</name></member>
-      <member refid="class_u_tryll_human_message_guardrail_params_1a18b2295fbd1e3ea211ef7d506d3ea5f8" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>UPROPERTY</name></member>
+      <member refid="class_u_tryll_human_message_guardrail_params_1a3fb293a01b2eda42e31403f37e733c2b" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>StringStorage</name></member>
+      <member refid="class_u_tryll_human_message_guardrail_params_1a5d71d124457a078df8e081bb2afb8f18" prot="public" virt="non-virtual"><scope>UTryllHumanMessageGuardrailParams</scope><name>TriggeredExit</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

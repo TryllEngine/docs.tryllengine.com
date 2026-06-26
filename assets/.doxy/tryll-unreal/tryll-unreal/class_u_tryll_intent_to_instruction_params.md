@@ -41,12 +41,12 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  TArray&lt; FString &gt; | [**InlineKeys**](#variable-inlinekeys)  <br> |
+|  TArray&lt; FString &gt; | [**InlineStrings**](#variable-inlinestrings)  <br> |
 |  FString | [**InstructionName**](#variable-instructionname)  <br> |
-|  FString | [**StringStorage**](#variable-stringstorage)  <br> |
-|  bool | [**bOverrideInlineKeys**](#variable-boverrideinlinekeys)   = `false`<br> |
-|  bool | [**bOverrideInlineStrings**](#variable-boverrideinlinestrings)   = `false`<br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**StringStorage**](#variable-stringstorage)  <br> |
 |  bool | [**bOverrideInstructionName**](#variable-boverrideinstructionname)   = `false`<br> |
-|  bool | [**bOverrideStringStorage**](#variable-boverridestringstorage)   = `false`<br> |
 
 
 
@@ -85,9 +85,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-13) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|IntentToInstruction", meta=(EditCondition="bOverrideInlineKeys")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-23) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|IntentToInstruction", meta=(EditCondition="bOverrideInlineStrings")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-33) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -166,6 +163,57 @@ Maps an intent label to an instruction text from a Map-kind string storage. Reso
 
 
 
+### variable DefaultExit 
+
+```C++
+FString UTryllIntentToInstructionParams::DefaultExit;
+```
+
+
+
+Default exit target after mapping an intent to an instruction. Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable InlineKeys 
+
+```C++
+TArray<FString> UTryllIntentToInstructionParams::InlineKeys;
+```
+
+
+
+Inline map keys (equal-length with inline\_strings). Structural because they materialise the in-memory Map storage at construction. 
+
+
+        
+
+<hr>
+
+
+
+### variable InlineStrings 
+
+```C++
+TArray<FString> UTryllIntentToInstructionParams::InlineStrings;
+```
+
+
+
+Inline map values (equal-length with inline\_keys). Structural. 
+
+
+        
+
+<hr>
+
+
+
 ### variable InstructionName 
 
 ```C++
@@ -182,42 +230,12 @@ FString UTryllIntentToInstructionParams::InstructionName;
 ### variable StringStorage 
 
 ```C++
-FString UTryllIntentToInstructionParams::StringStorage;
+FTryllStoragePath UTryllIntentToInstructionParams::StringStorage;
 ```
 
 
 
-
-<hr>
-
-
-
-### variable bOverrideInlineKeys 
-
-```C++
-bool UTryllIntentToInstructionParams::bOverrideInlineKeys;
-```
-
-
-
-Inline map keys (equal-length with inline\_strings). Structural because they materialise the in-memory Map storage at construction. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideInlineStrings 
-
-```C++
-bool UTryllIntentToInstructionParams::bOverrideInlineStrings;
-```
-
-
-
-Inline map values (equal-length with inline\_keys). Structural. 
+Named session Map-kind string storage. Mutable — rebinds the storage. 
 
 
         
@@ -235,23 +253,6 @@ bool UTryllIntentToInstructionParams::bOverrideInstructionName;
 
 
 Name used as the Mustache variable suffix (instruction\_&lt;instruction\_name&gt;) on the attached InstructionComponent. Set to true to override the inherited InstructionName value. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideStringStorage 
-
-```C++
-bool UTryllIntentToInstructionParams::bOverrideStringStorage;
-```
-
-
-
-Named session Map-kind string storage. Mutable — rebinds the storage. Set to true to override the inherited StringStorage value. 
 
 
         
@@ -293,64 +294,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/3]
-
-```C++
-UTryllIntentToInstructionParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|IntentToInstruction",
-    meta=(EditCondition="bOverrideInlineKeys")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [2/3]
-
-```C++
-UTryllIntentToInstructionParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|IntentToInstruction",
-    meta=(EditCondition="bOverrideInlineStrings")
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function UPROPERTY [3/3]
-
-```C++
-UTryllIntentToInstructionParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Default exit target after mapping an intent to an instruction. Empty string = END. Graph exit "default" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h`
 

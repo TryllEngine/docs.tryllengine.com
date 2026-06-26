@@ -1,0 +1,759 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_voice_input_component" kind="class" language="C++" prot="public">
+    <compoundname>UTryllVoiceInputComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UActorComponent</basecompoundref>
+    <includes refid="_tryll_voice_input_component_8h" local="no">TryllVoiceInputComponent.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1adfae88a9f3490cb99d6ac729f5a1bf3a" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllVoiceInputComponent::ModelName</definition>
+        <argsstring></argsstring>
+        <name>ModelName</name>
+        <qualifiedname>UTryllVoiceInputComponent::ModelName</qualifiedname>
+        <initializer>= TEXT(&quot;Whisper Tiny EN (int8)&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>STT model — picked from the project&apos;s registered models (Model Manager). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="49" column="17" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ad7528692344374da09ce90f5b4bf8900" prot="public" static="no" mutable="no">
+        <type><ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> *</type>
+        <definition>UTryllAgentComponent* UTryllVoiceInputComponent::TargetAgent</definition>
+        <argsstring></argsstring>
+        <name>TargetAgent</name>
+        <qualifiedname>UTryllVoiceInputComponent::TargetAgent</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Agent that receives the final transcript. Leave unset to auto-use the <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> on the same actor (the common case — the details panel can&apos;t pick sibling components, so this resolves in BeginPlay). Put the Voice component on an actor with no agent for transcribe-only mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="58" column="22" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ac30693d866cd2d4a589891a816934248" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::bAutoFinishOnSilence</definition>
+        <argsstring></argsstring>
+        <name>bAutoFinishOnSilence</name>
+        <qualifiedname>UTryllVoiceInputComponent::bAutoFinishOnSilence</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Let server VAD close the utterance on silence (stop-on-silence mode). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="62" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1aaf1ecc81e0e67d0b2334e2520c3b9e53" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllVoiceInputComponent::MaxUtteranceMs</definition>
+        <argsstring></argsstring>
+        <name>MaxUtteranceMs</name>
+        <qualifiedname>UTryllVoiceInputComponent::MaxUtteranceMs</qualifiedname>
+        <initializer>= 60000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hard timeout (ms) per utterance. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="66" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a19e8802353d498e28f9d7f8053089d91" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllVoiceInputComponent::VadThreshold</definition>
+        <argsstring></argsstring>
+        <name>VadThreshold</name>
+        <qualifiedname>UTryllVoiceInputComponent::VadThreshold</qualifiedname>
+        <initializer>= 0.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Silero VAD speech-probability threshold. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="71" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ac7ca5bfe709a3883cad5b55658fca8e4" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllVoiceInputComponent::VadMinSilenceMs</definition>
+        <argsstring></argsstring>
+        <name>VadMinSilenceMs</name>
+        <qualifiedname>UTryllVoiceInputComponent::VadMinSilenceMs</qualifiedname>
+        <initializer>= 500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Silence duration (ms) that closes a speech segment. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="75" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a00c85065275109818dac3246f0fc4e6e" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllVoiceInputComponent::VadSpeechPadMs</definition>
+        <argsstring></argsstring>
+        <name>VadSpeechPadMs</name>
+        <qualifiedname>UTryllVoiceInputComponent::VadSpeechPadMs</qualifiedname>
+        <initializer>= 250</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Padding (ms) added around detected speech. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="79" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a070938841c9e3db2082874297dc3e8ab" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_storage_path" kindref="compound">FTryllStoragePath</ref></type>
+        <definition>FTryllStoragePath UTryllVoiceInputComponent::HotwordsStoragePath</definition>
+        <argsstring></argsstring>
+        <name>HotwordsStoragePath</name>
+        <qualifiedname>UTryllVoiceInputComponent::HotwordsStoragePath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Plain string storage containing hotword / wake-word phrases (one per line). Relative to TryllRuntimeSettings::StorageDataFolder, e.g. &quot;hotwords.txt&quot;. Leave empty to disable hotword boosting. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="88" column="19" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ab2bb9fddd8fd0d07b97ec11d1ed6523c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllVoiceInputComponent::HotwordsScore</definition>
+        <argsstring></argsstring>
+        <name>HotwordsScore</name>
+        <qualifiedname>UTryllVoiceInputComponent::HotwordsScore</qualifiedname>
+        <initializer>= 1.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Logit-bias score applied to hotword tokens during decoding. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="93" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ab4eca1ffd0051320ad46afdf4668d92c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::bCreateOnConnect</definition>
+        <argsstring></argsstring>
+        <name>bCreateOnConnect</name>
+        <qualifiedname>UTryllVoiceInputComponent::bCreateOnConnect</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create the VoiceInput handle automatically once the session is ready (connected + configured); queues until OnConfigureSessionComplete if it spawns earlier. (Name kept for compatibility; it fires on session-ready, not raw connect.) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="101" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a2e760f3b03f43846b97b710bc31a834a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::bWaitForAgentReady</definition>
+        <argsstring></argsstring>
+        <name>bWaitForAgentReady</name>
+        <qualifiedname>UTryllVoiceInputComponent::bWaitForAgentReady</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sequence VoiceInput creation behind the sibling agent: wait for the agent&apos;s OnAgentReady before creating the VoiceInput, instead of creating as soon as the session is ready. This serialises first-run model auto-downloads so the STT/VAD fetch never overlaps the agent&apos;s LLM/TTS fetch — concurrent downloads deadlock the server&apos;s shared HuggingFace connection. Ignored when there is no TargetAgent (transcribe-only). Set false to restore the old concurrent behaviour. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="112" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1aed70ee9f1c6714c10e7b4f5441826ee8" prot="public" static="no" mutable="no">
+        <type>FOnTryllTranscriptUpdate</type>
+        <definition>FOnTryllTranscriptUpdate UTryllVoiceInputComponent::OnTranscriptUpdate</definition>
+        <argsstring></argsstring>
+        <name>OnTranscriptUpdate</name>
+        <qualifiedname>UTryllVoiceInputComponent::OnTranscriptUpdate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired for each transcript update (partial and final). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="154" column="26" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a544b4735db5c0a110b425e731f5b3f27" prot="public" static="no" mutable="no">
+        <type>FOnTryllVoiceError</type>
+        <definition>FOnTryllVoiceError UTryllVoiceInputComponent::OnError</definition>
+        <argsstring></argsstring>
+        <name>OnError</name>
+        <qualifiedname>UTryllVoiceInputComponent::OnError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired on protocol-level errors. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="158" column="20" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1aba78a4de93358e500977653c19a90e9c" prot="public" static="no" mutable="no">
+        <type>FOnTryllVoiceInputCreated</type>
+        <definition>FOnTryllVoiceInputCreated UTryllVoiceInputComponent::OnVoiceInputCreated</definition>
+        <argsstring></argsstring>
+        <name>OnVoiceInputCreated</name>
+        <qualifiedname>UTryllVoiceInputComponent::OnVoiceInputCreated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when the VoiceInput handle has been created. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="162" column="27" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1ac25e5c88f9c237c0044acb31cf9f692f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> *</type>
+        <definition>UTryllSubsystem* UTryllVoiceInputComponent::TryllSubsystem</definition>
+        <argsstring></argsstring>
+        <name>TryllSubsystem</name>
+        <qualifiedname>UTryllVoiceInputComponent::TryllSubsystem</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="196" column="29" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a9b534ffef3ebef4bde14de73893a3a8c" prot="private" static="no" mutable="no">
+        <type>TSharedPtr&lt; <ref refid="class_f_tryll_voice_input" kindref="compound">FTryllVoiceInput</ref> &gt;</type>
+        <definition>TSharedPtr&lt;FTryllVoiceInput&gt; UTryllVoiceInputComponent::Voice</definition>
+        <argsstring></argsstring>
+        <name>Voice</name>
+        <qualifiedname>UTryllVoiceInputComponent::Voice</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="197" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a9e15316df927332c6d233c0c81575aed" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::bCreatingVoiceInput</definition>
+        <argsstring></argsstring>
+        <name>bCreatingVoiceInput</name>
+        <qualifiedname>UTryllVoiceInputComponent::bCreatingVoiceInput</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="198" column="30" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a988a608bb7a7a77b7e2f464faad3dcd0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::bCreateQueued</definition>
+        <argsstring></argsstring>
+        <name>bCreateQueued</name>
+        <qualifiedname>UTryllVoiceInputComponent::bCreateQueued</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>CreateVoiceInput was requested before the session was ready; create on configure-complete. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="200" column="30" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_voice_input_component_1a660fad5467b7945ae780f7450aabe7d3" prot="private" static="no" mutable="no">
+        <type>FTryllMicCapture *</type>
+        <definition>FTryllMicCapture* UTryllVoiceInputComponent::MicCapture</definition>
+        <argsstring></argsstring>
+        <name>MicCapture</name>
+        <qualifiedname>UTryllVoiceInputComponent::MicCapture</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="203" column="18" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a4e9bd50378fe6aadeb18068fb1795df6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllVoiceInputComponent::UTryllVoiceInputComponent</definition>
+        <argsstring>()</argsstring>
+        <name>UTryllVoiceInputComponent</name>
+        <qualifiedname>UTryllVoiceInputComponent::UTryllVoiceInputComponent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1aa8c81ab7c54479444a572ae8c6d6bd12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::CreateVoiceInput</definition>
+        <argsstring>()</argsstring>
+        <name>CreateVoiceInput</name>
+        <qualifiedname>UTryllVoiceInputComponent::CreateVoiceInput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create the server-side VoiceInput handle. Ignored when one already exists. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="118" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a077970757895866defb7dec1765de7b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::DestroyVoiceInput</definition>
+        <argsstring>()</argsstring>
+        <name>DestroyVoiceInput</name>
+        <qualifiedname>UTryllVoiceInputComponent::DestroyVoiceInput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroy the handle and release the server-side session. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="122" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a27a8eb1f3673b9107c088f9d99854260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::BeginUtterance</definition>
+        <argsstring>(UTryllAgentComponent *AgentOverride=nullptr)</argsstring>
+        <name>BeginUtterance</name>
+        <qualifiedname>UTryllVoiceInputComponent::BeginUtterance</qualifiedname>
+        <param>
+          <type><ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> *</type>
+          <declname>AgentOverride</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open a new utterance and start microphone capture. The final transcript is routed to AgentOverride when given, otherwise to TargetAgent; transcribe-only when both are null. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="130" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a5197313ff214dc48280757a5cdba6312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::EndUtterance</definition>
+        <argsstring>()</argsstring>
+        <name>EndUtterance</name>
+        <qualifiedname>UTryllVoiceInputComponent::EndUtterance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Commit the current utterance (push-to-talk release). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="134" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1afc52681a59fa955a1ba64988b2eae0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::CancelUtterance</definition>
+        <argsstring>()</argsstring>
+        <name>CancelUtterance</name>
+        <qualifiedname>UTryllVoiceInputComponent::CancelUtterance</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cancel the current utterance without producing a transcript. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="138" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1aebbe78dc2ffda84000546cdc1597e31d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::HasVoiceInput</definition>
+        <argsstring>() const</argsstring>
+        <name>HasVoiceInput</name>
+        <qualifiedname>UTryllVoiceInputComponent::HasVoiceInput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True once the server-side VoiceInput handle exists. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="144" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1aaaa14fef672a7f60bb4a6a79c8b59bcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::IsUtteranceActive</definition>
+        <argsstring>() const</argsstring>
+        <name>IsUtteranceActive</name>
+        <qualifiedname>UTryllVoiceInputComponent::IsUtteranceActive</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True while an utterance is open. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="148" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a371eab7da1b00ae6101dfd17c8457ce3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TSharedPtr&lt; <ref refid="class_f_tryll_voice_input" kindref="compound">FTryllVoiceInput</ref> &gt;</type>
+        <definition>TSharedPtr&lt; FTryllVoiceInput &gt; UTryllVoiceInputComponent::GetVoiceInput</definition>
+        <argsstring>() const</argsstring>
+        <name>GetVoiceInput</name>
+        <qualifiedname>UTryllVoiceInputComponent::GetVoiceInput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Live handle. Null until CreateVoiceInput completes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="165" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1af196d9137e48042ba3abbe24a6aef92b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllVoiceInputComponent::BeginPlay</definition>
+        <argsstring>() override</argsstring>
+        <name>BeginPlay</name>
+        <qualifiedname>UTryllVoiceInputComponent::BeginPlay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="168" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a396e9239cdc024aa2cec5fc1d0a5aad1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllVoiceInputComponent::EndPlay</definition>
+        <argsstring>(const EEndPlayReason::Type EndPlayReason) override</argsstring>
+        <name>EndPlay</name>
+        <qualifiedname>UTryllVoiceInputComponent::EndPlay</qualifiedname>
+        <param>
+          <type>const EEndPlayReason::Type</type>
+          <declname>EndPlayReason</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="169" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a35f74c777500be3eed5151882260c233" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllVoiceInputComponent::TickComponent</definition>
+        <argsstring>(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override</argsstring>
+        <name>TickComponent</name>
+        <qualifiedname>UTryllVoiceInputComponent::TickComponent</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>DeltaTime</declname>
+        </param>
+        <param>
+          <type>ELevelTick</type>
+          <declname>TickType</declname>
+        </param>
+        <param>
+          <type>FActorComponentTickFunction *</type>
+          <declname>ThisTickFunction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="170" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1ac11c52fc591b09f135e1d0f2cce85c59" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::HandleConnectionChanged</definition>
+        <argsstring>(bool bConnected)</argsstring>
+        <name>HandleConnectionChanged</name>
+        <qualifiedname>UTryllVoiceInputComponent::HandleConnectionChanged</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>bConnected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="177" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a8fcd79020d7bfb72e4aee8a5a91e363e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::HandleConfigureSessionComplete</definition>
+        <argsstring>(bool bSuccess)</argsstring>
+        <name>HandleConfigureSessionComplete</name>
+        <qualifiedname>UTryllVoiceInputComponent::HandleConfigureSessionComplete</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>bSuccess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="180" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a959a8a578fbff12d02b8eabc5637154b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::HandleAgentReady</definition>
+        <argsstring>()</argsstring>
+        <name>HandleAgentReady</name>
+        <qualifiedname>UTryllVoiceInputComponent::HandleAgentReady</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="183" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1ab6cc6ab8fbf1a369f24220252d1bbba5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::TryAutoCreate</definition>
+        <argsstring>()</argsstring>
+        <name>TryAutoCreate</name>
+        <qualifiedname>UTryllVoiceInputComponent::TryAutoCreate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Auto-create the VoiceInput when conditions are met (session ready, and the sibling agent ready when bWaitForAgentReady). No-op otherwise; re-driven by HandleConfigureSessionComplete and HandleAgentReady. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="188" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a3b600d8e4c16b0198b51f9f7daf32526" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::HandleTranscriptUpdate</definition>
+        <argsstring>(const FTryllTranscriptUpdate &amp;Update)</argsstring>
+        <name>HandleTranscriptUpdate</name>
+        <qualifiedname>UTryllVoiceInputComponent::HandleTranscriptUpdate</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_transcript_update" kindref="compound">FTryllTranscriptUpdate</ref> &amp;</type>
+          <declname>Update</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="190" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a4cb7837b152519103aaeb26ac2fa44ec" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::HandleVoiceError</definition>
+        <argsstring>(const FTryllError &amp;Error)</argsstring>
+        <name>HandleVoiceError</name>
+        <qualifiedname>UTryllVoiceInputComponent::HandleVoiceError</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+          <declname>Error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="191" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1aaf8faefb028f7ca1ea206d361368ee28" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllVoiceInputComponent::StartCapture</definition>
+        <argsstring>()</argsstring>
+        <name>StartCapture</name>
+        <qualifiedname>UTryllVoiceInputComponent::StartCapture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="193" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_voice_input_component_1a180c05966aa269bcccb2a0010bd9fabf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllVoiceInputComponent::StopCapture</definition>
+        <argsstring>()</argsstring>
+        <name>StopCapture</name>
+        <qualifiedname>UTryllVoiceInputComponent::StopCapture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="194" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Actor component: owns one <ref refid="class_f_tryll_voice_input" kindref="compound">FTryllVoiceInput</ref> (STT) handle and drives it from the system microphone. The Unreal counterpart to the Unity TryllVoiceInputComponent.</para>
+<para>Capture model: on-demand. The microphone opens on <ref refid="class_u_tryll_voice_input_component_1a27a8eb1f3673b9107c088f9d99854260" kindref="member">BeginUtterance()</ref> and closes when the final transcript arrives (or on End / Cancel). The component ticks to drain captured PCM and forward it to the server.</para>
+<para>Audio: the device-native sample rate is declared to the server, which resamples to the STT model&apos;s expected rate. Multi-channel input is downmixed to mono.</para>
+<para>All delegates fire on the game thread. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllVoiceInputComponent</label>
+        <link refid="class_u_tryll_voice_input_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>FTryllGraphDescription</label>
+        <link refid="struct_f_tryll_graph_description"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>DefaultModelName</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="8">
+        <label>FTryllStoragePath</label>
+        <link refid="struct_f_tryll_storage_path"/>
+      </node>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="6">
+        <label>UPrimaryDataAsset</label>
+      </node>
+      <node id="4">
+        <label>UTryllAgentComponent</label>
+        <link refid="class_u_tryll_agent_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>WorkflowAsset</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>InlineGraphDescription</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UTryllVoiceInputComponent</label>
+        <link refid="class_u_tryll_voice_input_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ModelName</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>TargetAgent</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>HotwordsStoragePath</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>UTryllWorkflowAsset</label>
+        <link refid="class_u_tryll_workflow_asset"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>Graph</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="38" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" bodystart="39" bodyend="204"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_voice_input_component_1ac30693d866cd2d4a589891a816934248" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>bAutoFinishOnSilence</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ab4eca1ffd0051320ad46afdf4668d92c" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>bCreateOnConnect</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a988a608bb7a7a77b7e2f464faad3dcd0" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>bCreateQueued</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a9e15316df927332c6d233c0c81575aed" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>bCreatingVoiceInput</name></member>
+      <member refid="class_u_tryll_voice_input_component_1af196d9137e48042ba3abbe24a6aef92b" prot="protected" virt="virtual"><scope>UTryllVoiceInputComponent</scope><name>BeginPlay</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a27a8eb1f3673b9107c088f9d99854260" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>BeginUtterance</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a2e760f3b03f43846b97b710bc31a834a" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>bWaitForAgentReady</name></member>
+      <member refid="class_u_tryll_voice_input_component_1afc52681a59fa955a1ba64988b2eae0e1" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>CancelUtterance</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aa8c81ab7c54479444a572ae8c6d6bd12" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>CreateVoiceInput</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a077970757895866defb7dec1765de7b3" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>DestroyVoiceInput</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a396e9239cdc024aa2cec5fc1d0a5aad1" prot="protected" virt="virtual"><scope>UTryllVoiceInputComponent</scope><name>EndPlay</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a5197313ff214dc48280757a5cdba6312" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>EndUtterance</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a371eab7da1b00ae6101dfd17c8457ce3" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>GetVoiceInput</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a959a8a578fbff12d02b8eabc5637154b" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HandleAgentReady</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a8fcd79020d7bfb72e4aee8a5a91e363e" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HandleConfigureSessionComplete</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ac11c52fc591b09f135e1d0f2cce85c59" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HandleConnectionChanged</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a3b600d8e4c16b0198b51f9f7daf32526" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HandleTranscriptUpdate</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a4cb7837b152519103aaeb26ac2fa44ec" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HandleVoiceError</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aebbe78dc2ffda84000546cdc1597e31d" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HasVoiceInput</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ab2bb9fddd8fd0d07b97ec11d1ed6523c" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HotwordsScore</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a070938841c9e3db2082874297dc3e8ab" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>HotwordsStoragePath</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aaaa14fef672a7f60bb4a6a79c8b59bcc" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>IsUtteranceActive</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aaf1ecc81e0e67d0b2334e2520c3b9e53" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>MaxUtteranceMs</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a660fad5467b7945ae780f7450aabe7d3" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>MicCapture</name></member>
+      <member refid="class_u_tryll_voice_input_component_1adfae88a9f3490cb99d6ac729f5a1bf3a" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>ModelName</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a544b4735db5c0a110b425e731f5b3f27" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>OnError</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aed70ee9f1c6714c10e7b4f5441826ee8" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>OnTranscriptUpdate</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aba78a4de93358e500977653c19a90e9c" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>OnVoiceInputCreated</name></member>
+      <member refid="class_u_tryll_voice_input_component_1aaf8faefb028f7ca1ea206d361368ee28" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>StartCapture</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a180c05966aa269bcccb2a0010bd9fabf" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>StopCapture</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ad7528692344374da09ce90f5b4bf8900" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>TargetAgent</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a35f74c777500be3eed5151882260c233" prot="protected" virt="virtual"><scope>UTryllVoiceInputComponent</scope><name>TickComponent</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ab6cc6ab8fbf1a369f24220252d1bbba5" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>TryAutoCreate</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ac25e5c88f9c237c0044acb31cf9f692f" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>TryllSubsystem</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a4e9bd50378fe6aadeb18068fb1795df6" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>UTryllVoiceInputComponent</name></member>
+      <member refid="class_u_tryll_voice_input_component_1ac7ca5bfe709a3883cad5b55658fca8e4" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>VadMinSilenceMs</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a00c85065275109818dac3246f0fc4e6e" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>VadSpeechPadMs</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a19e8802353d498e28f9d7f8053089d91" prot="public" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>VadThreshold</name></member>
+      <member refid="class_u_tryll_voice_input_component_1a9b534ffef3ebef4bde14de73893a3a8c" prot="private" virt="non-virtual"><scope>UTryllVoiceInputComponent</scope><name>Voice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

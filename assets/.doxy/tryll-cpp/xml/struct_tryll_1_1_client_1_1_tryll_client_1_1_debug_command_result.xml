@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result" kind="struct" language="C++" prot="public">
+    <compoundname>Tryll::Client::TryllClient::DebugCommandResult</compoundname>
+    <includes refid="_tryll_client_8h" local="no">TryllClient.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a7cfef6f407d9cf29ab9f1f06030799dc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tryll::Client::TryllClient::DebugCommandResult::disconnected</definition>
+        <argsstring></argsstring>
+        <name>disconnected</name>
+        <qualifiedname>Tryll::Client::TryllClient::DebugCommandResult::disconnected</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Server dropped the connection (a fatal verb like <computeroutput>crash</computeroutput> succeeded). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="346" column="15" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a2d732eee06482398fae5b930c31467ce" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tryll::Client::TryllClient::DebugCommandResult::acknowledged</definition>
+        <argsstring></argsstring>
+        <name>acknowledged</name>
+        <qualifiedname>Tryll::Client::TryllClient::DebugCommandResult::acknowledged</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Server replied with DebugCommandResponse (non-fatal verb). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="347" column="15" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a5a4fe1aacb270c870b995f27b1112a7b" prot="public" static="no" mutable="no">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t Tryll::Client::TryllClient::DebugCommandResult::errorCode</definition>
+        <argsstring></argsstring>
+        <name>errorCode</name>
+        <qualifiedname>Tryll::Client::TryllClient::DebugCommandResult::errorCode</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Non-zero → server returned an ErrorResponse (e.g. 5005 = debug commands unavailable). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="348" column="15" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a3aa84140dbbbd61053b36447d78f4f78" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tryll::Client::TryllClient::DebugCommandResult::message</definition>
+        <argsstring></argsstring>
+        <name>message</name>
+        <qualifiedname>Tryll::Client::TryllClient::DebugCommandResult::message</qualifiedname>
+        <briefdescription>
+<para>Error message, or the response <computeroutput>result</computeroutput> string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="349" column="15" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Outcome of <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a5b991e59159bf6026fca4c6cb5cf722f" kindref="member">SendDebugCommand</ref>. Exactly one of the first three flags is set on a definite result; all false means the call timed out (no reply, no disconnect — the server is presumably still alive). </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="344" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="345" bodyend="350"/>
+    <listofallmembers>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a2d732eee06482398fae5b930c31467ce" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::DebugCommandResult</scope><name>acknowledged</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a7cfef6f407d9cf29ab9f1f06030799dc" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::DebugCommandResult</scope><name>disconnected</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a5a4fe1aacb270c870b995f27b1112a7b" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::DebugCommandResult</scope><name>errorCode</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result_1a3aa84140dbbbd61053b36447d78f4f78" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::DebugCommandResult</scope><name>message</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

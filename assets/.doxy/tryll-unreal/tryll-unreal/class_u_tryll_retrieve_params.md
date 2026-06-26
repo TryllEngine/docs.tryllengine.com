@@ -41,14 +41,13 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
-|  FString | [**EmbeddedStringStorage**](#variable-embeddedstringstorage)  <br> |
-|  FString | [**EmbeddingModel**](#variable-embeddingmodel)  <br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**EmbeddedStringStorage**](#variable-embeddedstringstorage)  <br> |
 |  FString | [**Filter**](#variable-filter)  <br> |
+|  FString | [**FoundExit**](#variable-foundexit)  <br> |
+|  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
 |  FString | [**Source**](#variable-source)  <br> |
-|  float | [**Threshold**](#variable-threshold)   = `0.0f`<br> |
+|  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
 |  int32 | [**TopK**](#variable-topk)   = `2`<br> |
-|  bool | [**bOverrideEmbeddedStringStorage**](#variable-boverrideembeddedstringstorage)   = `false`<br> |
-|  bool | [**bOverrideEmbeddingModel**](#variable-boverrideembeddingmodel)   = `false`<br> |
 |  bool | [**bOverrideFilter**](#variable-boverridefilter)   = `false`<br> |
 |  bool | [**bOverrideSource**](#variable-boverridesource)   = `false`<br> |
 
@@ -89,8 +88,6 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 | virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
-|   | [**UPROPERTY**](#function-uproperty-12) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
-|   | [**UPROPERTY**](#function-uproperty-22) (EditAnywhere, BlueprintReadWrite, Category="Tryll\|Exits", meta=(GetOptions="GetExitTargetOptions")) <br> |
 
 
 ## Public Functions inherited from UTryllNodeParamsBase
@@ -172,24 +169,15 @@ RAG retrieval node. Embeds the HumanMessage, searches an embedded storage, and a
 ### variable EmbeddedStringStorage 
 
 ```C++
-FString UTryllRetrieveParams::EmbeddedStringStorage;
+FTryllStoragePath UTryllRetrieveParams::EmbeddedStringStorage;
 ```
 
 
 
-
-<hr>
-
+Named embedded string storage (EmbeddedStringStorageManager). Structural because the storage is resolved and referenced at construction. 
 
 
-### variable EmbeddingModel 
-
-```C++
-FString UTryllRetrieveParams::EmbeddingModel;
-```
-
-
-
+        
 
 <hr>
 
@@ -203,6 +191,40 @@ FString UTryllRetrieveParams::Filter;
 
 
 
+
+<hr>
+
+
+
+### variable FoundExit 
+
+```C++
+FString UTryllRetrieveParams::FoundExit;
+```
+
+
+
+Exit taken when retrieval returned at least one chunk above threshold. Empty string = END. Graph exit "found" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable NotFoundExit 
+
+```C++
+FString UTryllRetrieveParams::NotFoundExit;
+```
+
+
+
+Exit taken when retrieval produced no results. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
+
+
+        
 
 <hr>
 
@@ -247,40 +269,6 @@ int32 UTryllRetrieveParams::TopK;
 
 
 Number of chunks to retrieve. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideEmbeddedStringStorage 
-
-```C++
-bool UTryllRetrieveParams::bOverrideEmbeddedStringStorage;
-```
-
-
-
-Named embedded string storage (EmbeddedStringStorageManager). Structural because the storage is resolved and referenced at construction. Set to true to override the inherited EmbeddedStringStorage value. 
-
-
-        
-
-<hr>
-
-
-
-### variable bOverrideEmbeddingModel 
-
-```C++
-bool UTryllRetrieveParams::bOverrideEmbeddingModel;
-```
-
-
-
-Embedding model catalog name. Structural because the model context is allocated at construction. Set to true to override the inherited EmbeddingModel value. 
 
 
         
@@ -356,50 +344,6 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 
 <hr>
 
-
-
-### function UPROPERTY [1/2]
-
-```C++
-UTryllRetrieveParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when retrieval returned at least one chunk above threshold. Empty string = END. Graph exit "found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
-
-
-### function UPROPERTY [2/2]
-
-```C++
-UTryllRetrieveParams::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadWrite,
-    Category="Tryll|Exits",
-    meta=(GetOptions="GetExitTargetOptions")
-) 
-```
-
-
-
-Exit taken when retrieval produced no results. Empty string = END. Graph exit "not\_found" — target node name; empty = END. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/Generated/Nodes/TryllRetrieveParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllRetrieveParams.h`
 

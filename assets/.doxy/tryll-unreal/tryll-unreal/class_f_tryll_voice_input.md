@@ -103,7 +103,7 @@ Inherits the following classes: TSharedFromThis< FTryllVoiceInput >
 Plain C++ handle for a server-side VoiceInput (STT) session. Created by [**UTryllSubsystem**](class_u_tryll_subsystem.md) after a successful CreateVoiceInputResponse. The Unreal counterpart to the C++ Tryll::VoiceInput and the Unity TryllVoiceInput.
 
 
-Ownership: typically held as TSharedPtr&lt;FTryllVoiceInput&gt; by UTryllVoiceInputComponent. Lifetime: deterministic — the owning component releases the shared\_ptr; this triggers [**UTryllSubsystem::RequestDestroyVoiceInput()**](class_u_tryll_subsystem.md#function-requestdestroyvoiceinput).
+Ownership: typically held as TSharedPtr&lt;FTryllVoiceInput&gt; by [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md). Lifetime: deterministic — the owning component releases the shared\_ptr; this triggers [**UTryllSubsystem::RequestDestroyVoiceInput()**](class_u_tryll_subsystem.md#function-requestdestroyvoiceinput).
 
 
 All callbacks are invoked on the game thread (from UTryllSubsystem::Tick). 
@@ -378,5 +378,5 @@ FTryllVoiceInput::~FTryllVoiceInput ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInput.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h`
 

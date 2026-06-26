@@ -5,30 +5,32 @@
 
 ## a
 
-* **AnswerTextCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **AnswerTextCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## e
 
-* **ErrorCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **ErrorCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## i
 
-* **IntentClassifiedCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **IntentClassifiedCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## n
 
-* **NodeEventCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
-* **NodeEventKeyValue** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
+* **NodeEventCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **NodeEventKeyValue** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## t
 
-* **ToolCallCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
-* **TurnCompleteCallback** ([**Tryll::AgentProxy**](class_tryll_1_1_agent_proxy.md))
-* **TranscriptCallback** ([**Tryll::VoiceInput**](class_tryll_1_1_voice_input.md))
+* **ToolCallCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **TtsAudioCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **TtsAudioFormatCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **TurnCompleteCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **TranscriptCallback** ([**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md))
 
 
 

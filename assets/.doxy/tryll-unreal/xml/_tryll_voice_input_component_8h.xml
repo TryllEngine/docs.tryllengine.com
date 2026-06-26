@@ -5,6 +5,8 @@
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">Components/ActorComponent.h</includes>
     <includes refid="_tryll_error_8h" local="yes">TryllError.h</includes>
+    <includes refid="_tryll_model_name_8h" local="yes">TryllModelName.h</includes>
+    <includes refid="_tryll_storage_path_8h" local="yes">TryllStoragePath.h</includes>
     <includes refid="_tryll_voice_input_8h" local="yes">TryllVoiceInput.h</includes>
     <includes local="yes">TryllVoiceInputComponent.generated.h</includes>
     <incdepgraph>
@@ -17,17 +19,33 @@
         </childnode>
       </node>
       <node id="6">
+        <label>TryllModelName.h</label>
+        <link refid="_tryll_model_name_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>TryllStoragePath.h</label>
+        <link refid="_tryll_storage_path_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
         <label>TryllVoiceInput.h</label>
         <link refid="_tryll_voice_input_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
         <link refid="_tryll_voice_input_component_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -38,6 +56,10 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -50,78 +72,23 @@
         <label>TryllError.generated.h</label>
       </node>
       <node id="7">
+        <label>TryllModelName.generated.h</label>
+      </node>
+      <node id="9">
+        <label>TryllStoragePath.generated.h</label>
+      </node>
+      <node id="11">
         <label>TryllVoiceInput.generated.h</label>
       </node>
-      <node id="8">
+      <node id="12">
         <label>TryllVoiceInputComponent.generated.h</label>
       </node>
     </incdepgraph>
-    <sectiondef kind="func">
-      <memberdef kind="function" id="_tryll_voice_input_component_8h_1aabc2a08d19492532f5d5d88a9666c21d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</definition>
-        <argsstring>(FOnTryllTranscriptUpdate, const FTryllTranscriptUpdate &amp;, Update)</argsstring>
-        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</name>
-        <param>
-          <type>FOnTryllTranscriptUpdate</type>
-        </param>
-        <param>
-          <type>const <ref refid="struct_f_tryll_transcript_update" kindref="compound">FTryllTranscriptUpdate</ref> &amp;</type>
-        </param>
-        <param>
-          <type>Update</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="18" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" declline="18" declcolumn="1"/>
-      </memberdef>
-      <memberdef kind="function" id="_tryll_voice_input_component_8h_1a135e6025dce55d484a609c4fd498ac29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</definition>
-        <argsstring>(FOnTryllVoiceError, const FString &amp;, ErrorMessage)</argsstring>
-        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</name>
-        <param>
-          <type>FOnTryllVoiceError</type>
-        </param>
-        <param>
-          <type>const FString &amp;</type>
-        </param>
-        <param>
-          <type>ErrorMessage</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="19" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" declline="19" declcolumn="1"/>
-      </memberdef>
-      <memberdef kind="function" id="_tryll_voice_input_component_8h_1aa1a43876befe2ec97325cc6b4f3cc3c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>DECLARE_DYNAMIC_MULTICAST_DELEGATE</definition>
-        <argsstring>(FOnTryllVoiceInputCreated)</argsstring>
-        <name>DECLARE_DYNAMIC_MULTICAST_DELEGATE</name>
-        <param>
-          <type>FOnTryllVoiceInputCreated</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" line="20" column="1" declfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h" declline="20" declcolumn="1"/>
-      </memberdef>
-    </sectiondef>
+    <innerclass refid="class_u_tryll_voice_input_component" prot="public">UTryllVoiceInputComponent</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h"/>
   </compounddef>
 </doxygen>

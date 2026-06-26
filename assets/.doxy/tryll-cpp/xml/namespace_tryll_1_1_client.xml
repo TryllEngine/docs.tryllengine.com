@@ -2,13 +2,24 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
   <compounddef id="namespace_tryll_1_1_client" kind="namespace" language="C++">
     <compoundname>Tryll::Client</compoundname>
+    <innerclass refid="class_tryll_1_1_client_1_1_agent_proxy" prot="public">Tryll::Client::AgentProxy</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_audio_format" prot="public">Tryll::Client::AudioFormat</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_connected_session" prot="public">Tryll::Client::ConnectedSession</innerclass>
     <innerclass refid="class_tryll_1_1_client_1_1_graph_description" prot="public">Tryll::Client::GraphDescription</innerclass>
     <innerclass refid="class_tryll_1_1_client_1_1_graph_description_node_methods" prot="public">Tryll::Client::GraphDescriptionNodeMethods</innerclass>
     <innerclass refid="class_tryll_1_1_client_1_1_managed_server" prot="public">Tryll::Client::ManagedServer</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_managed_server_options" prot="public">Tryll::Client::ManagedServerOptions</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_message_result" prot="public">Tryll::Client::MessageResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_transcript_update" prot="public">Tryll::Client::TranscriptUpdate</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_tryll_client" prot="public">Tryll::Client::TryllClient</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_tryll_error" prot="public">Tryll::Client::TryllError</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_utterance_options" prot="public">Tryll::Client::UtteranceOptions</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_voice_input" prot="public">Tryll::Client::VoiceInput</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_voice_input_config" prot="public">Tryll::Client::VoiceInputConfig</innerclass>
+    <innernamespace refid="namespace_tryll_1_1_client_1_1_internal">Tryll::Client::Internal</innernamespace>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" prot="public" static="no">
-        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::HumanMessageGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT &gt;</type>
+      <memberdef kind="typedef" id="_graph_description_8h_1aa504804ffbd0e661325c844ecc21a27d" prot="public" static="no">
+        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::HumanMessageGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT &gt;</type>
         <definition>using Tryll::Client::NodeParamsVariant =  std::variant&lt;
     ::Tryll::NodeParams::GenerateParamsT,
     ::Tryll::NodeParams::HumanMessageGuardrailParamsT,
@@ -18,7 +29,9 @@
     ::Tryll::NodeParams::InstructionParamsT,
     ::Tryll::NodeParams::ClassifyIntentParamsT,
     ::Tryll::NodeParams::ClassifyIntentLLMParamsT,
-    ::Tryll::NodeParams::IntentToInstructionParamsT
+    ::Tryll::NodeParams::IntentToInstructionParamsT,
+    ::Tryll::NodeParams::GenerateAndSpeakParamsT,
+    ::Tryll::NodeParams::SpeakParamsT
 &gt;</definition>
         <argsstring></argsstring>
         <name>NodeParamsVariant</name>
@@ -27,11 +40,11 @@
 <para>Typed variant discriminating all concrete node-parameter PODs. </para>
         </briefdescription>
         <detaileddescription>
-<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1afae8c6c5d2a480fa03c23dbcb2cd15aa" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
+<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1aa504804ffbd0e661325c844ecc21a27d" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/GraphDescription.h" bodystart="28" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/GraphDescription.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/GraphDescription.h" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" prot="public" static="no">
         <type>std::function&lt; void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;</type>
@@ -41,7 +54,7 @@ std::function&lt;void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;
         <name>DownloadProgressCallback</name>
         <qualifiedname>Tryll::Client::DownloadProgressCallback</qualifiedname>
         <briefdescription>
-<para>Callback invoked during <ref refid="class_tryll_1_1_tryll_client_1a187411719ee23ba1e25f4b84ab6d7ca8" kindref="member">Tryll::TryllClient::DownloadModel</ref> as data arrives. </para>
+<para>Callback invoked during <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a9ab77ba202dd636de012c9981067f646" kindref="member">TryllClient::DownloadModel</ref> as data arrives. </para>
         </briefdescription>
         <detaileddescription>
 <para>Invoked synchronously on the reader thread — keep the callback short and non-blocking.</para>
@@ -49,13 +62,13 @@ std::function&lt;void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h" line="70" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h" bodystart="70" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" line="71" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="71" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="16" column="1"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h" line="55" column="1"/>
   </compounddef>
 </doxygen>

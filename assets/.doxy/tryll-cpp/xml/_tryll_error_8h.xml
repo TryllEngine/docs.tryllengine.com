@@ -5,12 +5,12 @@
     <includes local="no">stdexcept</includes>
     <includes local="no">cstdint</includes>
     <includes local="no">string</includes>
-    <includedby refid="_agent_proxy_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</includedby>
-    <includedby refid="_managed_server_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h</includedby>
-    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</includedby>
+    <includedby refid="_agent_proxy_8h" local="no">C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h</includedby>
+    <includedby refid="_managed_server_8h" local="no">C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h</includedby>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllError.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -31,23 +31,23 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/AgentProxy.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h</label>
         <link refid="_agent_proxy_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="4">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/ManagedServer.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h</label>
         <link refid="_managed_server_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="3">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllError.h</label>
+        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -57,14 +57,15 @@
         </childnode>
       </node>
     </invincdepgraph>
-    <innerclass refid="class_tryll_1_1_tryll_error" prot="public">Tryll::TryllError</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_tryll_error" prot="public">Tryll::Client::TryllError</innerclass>
     <innernamespace refid="namespace_tryll">Tryll</innernamespace>
+    <innernamespace refid="namespace_tryll_1_1_client">Tryll::Client</innernamespace>
     <briefdescription>
 <para>Exception type raised by the Tryll C++ client library. </para>
     </briefdescription>
     <detaileddescription>
-<para>All failures surfaced by <ref refid="class_tryll_1_1_tryll_client" kindref="compound">Tryll::TryllClient</ref> and <ref refid="class_tryll_1_1_agent_proxy" kindref="compound">Tryll::AgentProxy</ref> — server-reported errors, protocol decode failures, and connection-level problems — are raised as <ref refid="class_tryll_1_1_tryll_error" kindref="compound">Tryll::TryllError</ref>. Server-reported errors carry a numeric code that matches the ranges defined in <computeroutput>server/common/include/tryll/ErrorCodes.h</computeroutput>; client-side errors (timeouts, closed socket) carry code 0. </para>
+<para>All failures surfaced by <ref refid="class_tryll_1_1_client_1_1_tryll_client" kindref="compound">Tryll::Client::TryllClient</ref> and <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">Tryll::Client::AgentProxy</ref> — server-reported errors, protocol decode failures, and connection-level problems — are raised as <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">Tryll::Client::TryllError</ref>. Server-reported errors carry a numeric code that matches the ranges defined in <computeroutput>server/common/include/tryll/ErrorCodes.h</computeroutput>; client-side errors (timeouts, closed socket) carry code 0. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-cpp/include/tryll/TryllError.h"/>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllError.h"/>
   </compounddef>
 </doxygen>

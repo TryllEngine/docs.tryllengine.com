@@ -1,26 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
-  <compounddef id="struct_f_tryll_model_info" kind="struct" language="C++" prot="public" abstract="yes">
+  <compounddef id="struct_f_tryll_model_info" kind="struct" language="C++" prot="public">
     <compoundname>FTryllModelInfo</compoundname>
     <includes refid="_tryll_model_info_8h" local="no">TryllModelInfo.h</includes>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_f_tryll_model_info_1ac3e2ca4eec86a9451f327047bb225938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>FTryllModelInfo::UPROPERTY</definition>
-        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;Catalog name of the model as registered in models.json.&quot;)) FString Name</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
-        <param>
-          <type>BlueprintReadOnly</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Models&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(ToolTip=&quot;Catalog name of the model as registered in models.json.&quot;)</defval>
-        </param>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a15d9bdde06ca73963af498ec345e06cc" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>FTryllModelInfo::Name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -28,25 +17,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="34" column="1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="53" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="53" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="struct_f_tryll_model_info_1aa660df36edb8495c7ef590149d1cd7ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>FTryllModelInfo::UPROPERTY</definition>
-        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;Current status of the model on the server.&quot;)) ETryllModelStatus Status</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
-        <param>
-          <type>BlueprintReadOnly</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Models&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(ToolTip=&quot;Current status of the model on the server.&quot;)</defval>
-        </param>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1ac4f420cf06ac2166ff09866ac83e94c7" prot="public" static="no" mutable="no">
+        <type>ETryllModelStatus</type>
+        <definition>ETryllModelStatus FTryllModelInfo::Status</definition>
+        <argsstring></argsstring>
+        <name>Status</name>
+        <qualifiedname>FTryllModelInfo::Status</qualifiedname>
+        <initializer>= ETryllModelStatus::Absent</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -54,25 +33,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="39" column="1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="58" column="19" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="struct_f_tryll_model_info_1aa6f2c48bd3dc48830a7c0838b9923fa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>FTryllModelInfo::UPROPERTY</definition>
-        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.&quot;)) FString HuggingFaceRepo</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
-        <param>
-          <type>BlueprintReadOnly</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Models&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(ToolTip=&quot;HuggingFace repository id the model can be downloaded from; empty for local-only catalog entries.&quot;)</defval>
-        </param>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a9ea4118048f8540cc028366c737eadbf" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::HuggingFaceRepo</definition>
+        <argsstring></argsstring>
+        <name>HuggingFaceRepo</name>
+        <qualifiedname>FTryllModelInfo::HuggingFaceRepo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -80,25 +48,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="44" column="1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="63" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="struct_f_tryll_model_info_1afe521b68f3ada1b3753d8299ccf78f98" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type></type>
-        <definition>FTryllModelInfo::UPROPERTY</definition>
-        <argsstring>(BlueprintReadOnly, Category=&quot;Tryll|Models&quot;, meta=(ToolTip=&quot;On-disk size in bytes of the downloaded model; zero when the model is not on disk.&quot;)) int64 SizeBytes=0</argsstring>
-        <name>UPROPERTY</name>
-        <qualifiedname>FTryllModelInfo::UPROPERTY</qualifiedname>
-        <param>
-          <type>BlueprintReadOnly</type>
-        </param>
-        <param>
-          <type>Category</type>
-          <defval>&quot;Tryll|Models&quot;</defval>
-        </param>
-        <param>
-          <type>meta</type>
-          <defval>(ToolTip=&quot;On-disk size in bytes of the downloaded model; zero when the model is not on disk.&quot;)</defval>
-        </param>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a29e3241b5aa396fac73be472e07a0431" prot="public" static="no" mutable="no">
+        <type>int64</type>
+        <definition>int64 FTryllModelInfo::SizeBytes</definition>
+        <argsstring></argsstring>
+        <name>SizeBytes</name>
+        <qualifiedname>FTryllModelInfo::SizeBytes</qualifiedname>
+        <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -106,7 +64,144 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="49" column="1"/>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="68" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a30d7a86b1b9109332e1511d55d178a04" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::ModelType</definition>
+        <argsstring></argsstring>
+        <name>ModelType</name>
+        <qualifiedname>FTryllModelInfo::ModelType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Model type: &quot;language&quot; | &quot;embedding&quot; | &quot;stt&quot; | &quot;tts&quot; | &quot;vad&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="72" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a0c03b86607daaa670d2801ed2c2e2639" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::Engine</definition>
+        <argsstring></argsstring>
+        <name>Engine</name>
+        <qualifiedname>FTryllModelInfo::Engine</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resolved inference engine, e.g. &quot;llama-cpp&quot; | &quot;sherpa-onnx&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="76" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1adadbcafd2171128c266fab83fd2a7826" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::Audience</definition>
+        <argsstring></argsstring>
+        <name>Audience</name>
+        <qualifiedname>FTryllModelInfo::Audience</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Intended audience tier: &quot;public&quot; | &quot;experimental&quot; | &quot;internal&quot; | &quot;&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="80" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a230e97f42cf65e891b875b9f28b482e8" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::ToolCallFormat</definition>
+        <argsstring></argsstring>
+        <name>ToolCallFormat</name>
+        <qualifiedname>FTryllModelInfo::ToolCallFormat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tool-call prompt/parse format: &quot;chatml&quot; | &quot;llama3&quot; | &quot;mistral&quot; | &quot;generic&quot; | &quot;&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="84" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a4bc91c8ee5cf41d64727d7a4f185b175" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 FTryllModelInfo::ContextSize</definition>
+        <argsstring></argsstring>
+        <name>ContextSize</name>
+        <qualifiedname>FTryllModelInfo::ContextSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Variant context window in tokens; 0 means the engine default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="88" column="7" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1a930c861412e3006262006e31a9155c8d" prot="public" static="no" mutable="no">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt;FString&gt; FTryllModelInfo::Files</definition>
+        <argsstring></argsstring>
+        <name>Files</name>
+        <qualifiedname>FTryllModelInfo::Files</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Files downloaded/resolved for the configured engine&apos;s variant. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="92" column="8" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1aaf45f4f862cb4e369a7e99a23c16c4a7" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllModelInfo::LocalPath</definition>
+        <argsstring></argsstring>
+        <name>LocalPath</name>
+        <qualifiedname>FTryllModelInfo::LocalPath</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resolved on-disk directory for the model; empty when not on disk. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="96" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1aede2681ad6facae5384c87234a767092" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool FTryllModelInfo::bHasDefaultSampling</definition>
+        <argsstring></argsstring>
+        <name>bHasDefaultSampling</name>
+        <qualifiedname>FTryllModelInfo::bHasDefaultSampling</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when the catalog supplies explicit default sampling parameters. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="100" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_info_1af0f98ab63918016504868ad3f0793370" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_sampling_params" kindref="compound">FTryllSamplingParams</ref></type>
+        <definition>FTryllSamplingParams FTryllModelInfo::DefaultSampling</definition>
+        <argsstring></argsstring>
+        <name>DefaultSampling</name>
+        <qualifiedname>FTryllModelInfo::DefaultSampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recommended sampling parameters; valid only when bHasDefaultSampling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="104" column="22" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="104" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -114,12 +209,34 @@
     <detaileddescription>
 <para>Summary information for one model returned by ListModels. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="30" bodyend="52"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>FTryllModelInfo</label>
+        <link refid="struct_f_tryll_model_info"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>DefaultSampling</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>FTryllSamplingParams</label>
+        <link refid="struct_f_tryll_sampling_params"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" line="46" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllModelInfo.h" bodystart="47" bodyend="105"/>
     <listofallmembers>
-      <member refid="struct_f_tryll_model_info_1ac3e2ca4eec86a9451f327047bb225938" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
-      <member refid="struct_f_tryll_model_info_1aa660df36edb8495c7ef590149d1cd7ee" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
-      <member refid="struct_f_tryll_model_info_1aa6f2c48bd3dc48830a7c0838b9923fa5" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
-      <member refid="struct_f_tryll_model_info_1afe521b68f3ada1b3753d8299ccf78f98" prot="public" virt="pure-virtual"><scope>FTryllModelInfo</scope><name>UPROPERTY</name></member>
+      <member refid="struct_f_tryll_model_info_1adadbcafd2171128c266fab83fd2a7826" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>Audience</name></member>
+      <member refid="struct_f_tryll_model_info_1aede2681ad6facae5384c87234a767092" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>bHasDefaultSampling</name></member>
+      <member refid="struct_f_tryll_model_info_1a4bc91c8ee5cf41d64727d7a4f185b175" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>ContextSize</name></member>
+      <member refid="struct_f_tryll_model_info_1af0f98ab63918016504868ad3f0793370" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>DefaultSampling</name></member>
+      <member refid="struct_f_tryll_model_info_1a0c03b86607daaa670d2801ed2c2e2639" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>Engine</name></member>
+      <member refid="struct_f_tryll_model_info_1a930c861412e3006262006e31a9155c8d" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>Files</name></member>
+      <member refid="struct_f_tryll_model_info_1a9ea4118048f8540cc028366c737eadbf" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>HuggingFaceRepo</name></member>
+      <member refid="struct_f_tryll_model_info_1aaf45f4f862cb4e369a7e99a23c16c4a7" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>LocalPath</name></member>
+      <member refid="struct_f_tryll_model_info_1a30d7a86b1b9109332e1511d55d178a04" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>ModelType</name></member>
+      <member refid="struct_f_tryll_model_info_1a15d9bdde06ca73963af498ec345e06cc" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>Name</name></member>
+      <member refid="struct_f_tryll_model_info_1a29e3241b5aa396fac73be472e07a0431" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>SizeBytes</name></member>
+      <member refid="struct_f_tryll_model_info_1ac4f420cf06ac2166ff09866ac83e94c7" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>Status</name></member>
+      <member refid="struct_f_tryll_model_info_1a230e97f42cf65e891b875b9f28b482e8" prot="public" virt="non-virtual"><scope>FTryllModelInfo</scope><name>ToolCallFormat</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

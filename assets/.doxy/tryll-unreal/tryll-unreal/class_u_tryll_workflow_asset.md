@@ -33,6 +33,11 @@ Inherits the following classes: UPrimaryDataAsset
 
 
 
+## Public Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**Graph**](#variable-graph)  <br> |
 
 
 
@@ -55,7 +60,6 @@ Inherits the following classes: UPrimaryDataAsset
 | ---: | :--- |
 | virtual FPrimaryAssetId | [**GetPrimaryAssetId**](#function-getprimaryassetid) () override const<br> |
 |  TArray&lt; FString &gt; | [**GetStartNodeOptions**](#function-getstartnodeoptions) () const<br> |
-|   | [**UPROPERTY**](#function-uproperty) (EditAnywhere, BlueprintReadOnly, Category="Tryll\|Workflow", meta=(ToolTip="Workflow graph stored by this asset. Edit nodes, routes, start node and default model here.")) <br> |
 
 
 
@@ -93,15 +97,34 @@ Data asset that stores a Tryll workflow graph description. Equivalent to a Unity
 Usage:
 * In the Content Browser: right-click → Miscellaneous → Data Asset → TryllWorkflowAsset.
 * Edit nodes and routes in the Details panel.
-* Assign this asset to a UTryllAgentComponent's WorkflowAsset property.
+* Assign this asset to a [**UTryllAgentComponent**](class_u_tryll_agent_component.md)'s WorkflowAsset property.
 
 
 
 
-Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md), or assign it to UTryllAgentComponent::InlineGraphDescription. 
+Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md), or assign it to [**UTryllAgentComponent::InlineGraphDescription**](class_u_tryll_agent_component.md#variable-inlinegraphdescription). 
 
 
     
+## Public Attributes Documentation
+
+
+
+
+### variable Graph 
+
+```C++
+FTryllGraphDescription UTryllWorkflowAsset::Graph;
+```
+
+
+
+Workflow graph stored by this asset. Assign this asset to [**UTryllAgentComponent::WorkflowAsset**](class_u_tryll_agent_component.md#variable-workflowasset) to use it. 
+
+
+        
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -135,28 +158,6 @@ Options provider for FTryllGraphDescription::StartNode dropdown in the Details p
 
 <hr>
 
-
-
-### function UPROPERTY 
-
-```C++
-UTryllWorkflowAsset::UPROPERTY (
-    EditAnywhere,
-    BlueprintReadOnly,
-    Category="Tryll|Workflow",
-    meta=(ToolTip="Workflow graph stored by this asset. Edit nodes, routes, start node and default model here.")
-) 
-```
-
-
-
-Workflow graph stored by this asset. Assign this asset to UTryllAgentComponent::WorkflowAsset to use it. 
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/server/client-unreal/Source/TryllClient/Public/TryllWorkflowAsset.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h`
 
