@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3324,6 +3435,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3465,6 +3582,41 @@
   
   
     <li class="md-nav__item">
+      <a href="nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="nodes/instruction.html" class="md-nav__link">
         
   
@@ -3508,6 +3660,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3718,6 +3905,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -5443,7 +5665,7 @@ numeric <code>agent_id</code>. Created via <code>CreateAgentRequest</code>, reti
 <code>DestroyAgentRequest</code>.</p>
 <h3 id="session">Session<a class="headerlink" href="#session" title="Permanent link">&para;</a></h3>
 <p>A single configured connection between a client and the Tryll server.
-The client opens a TCP socket, sends a <code>ConfigureSessionRequest</code>, and
+The client opens a TCP socket, sends a <code>CreateSessionRequest</code>, and
 receives a <code>session_id</code>. All subsequent requests from that socket are
 scoped to the session; closing the socket ends the session and destroys
 every <a href="#agent">agent</a> it owns.</p>
@@ -5634,7 +5856,7 @@ consumer GPU). Tryll is designed around SLMs: on-device inference,
 no cloud round-trip, and aggressive KV-cache management.</p>
 <h3 id="inference-engine">Inference engine<a class="headerlink" href="#inference-engine" title="Permanent link">&para;</a></h3>
 <p>The backend runtime that executes a <a href="#language-model">model</a>. Chosen
-per-session on <code>ConfigureSessionRequest</code> as a value of the
+per-session on <code>CreateSessionRequest</code> as a value of the
 <code>InferenceEngine</code> enum. <code>LlamaCpp</code> is shipped today; <code>OnnxGenAI</code>,
 <code>WindowsML</code>, <code>OpenVino</code>, and <code>TensorRtLlm</code> are enum slots reserved
 for future engines. Each <a href="#model-variant">model variant</a> targets

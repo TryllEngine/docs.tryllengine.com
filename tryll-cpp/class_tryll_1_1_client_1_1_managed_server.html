@@ -691,6 +691,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -767,6 +773,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1039,6 +1080,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1284,14 +1360,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1319,14 +1395,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1397,6 +1473,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3310,6 +3421,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3448,6 +3565,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3491,6 +3643,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3701,6 +3888,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4223,6 +4445,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-terminate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        function Terminate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-operator" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4342,7 +4575,11 @@
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-stop"><strong>Stop</strong></a> (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br><em>Terminate the child process.</em></td>
+<td style="text-align: left;"><a href="#function-stop"><strong>Stop</strong></a> (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br><em>Release this handle without killing the server.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-terminate"><strong>Terminate</strong></a> (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br><em>Immediately hard-kill the child process.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">ManagedServer &amp;</td>
@@ -4409,42 +4646,55 @@
 <hr>
 
 <h3 id="function-stop">function Stop<a class="headerlink" href="#function-stop" title="Permanent link">&para;</a></h3>
-<p><em>Terminate the child process.</em> 
+<p><em>Release this handle without killing the server.</em> 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="n">Stop</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="w"> </span><span class="n">timeout</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">{</span><span class="mi">8</span><span class="p">}</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
-<p>Sends a termination signal and waits up to <code>timeout</code> for the process to exit. If the process does not exit in time it is force-killed. Idempotent — safe to call more than once.</p>
+<p>Does <strong>not</strong> terminate the process. A managed server launched with <code>idleShutdownTimeoutSeconds &gt; 0</code> self-exits once no session is using it; this just drops our OS handle. Idempotent — safe to call more than once. Use <a href="class_tryll_1_1_client_1_1_managed_server.html#function-terminate"><strong>Terminate</strong></a> for an immediate hard kill (e.g. the spawn succeeded but the handshake/connect afterward failed, so no session was ever created and nothing else can be relying on this process).</p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>timeout</code> Override for the stop timeout set in the options. </li>
+<li><code>timeout</code> Unused; kept for source compatibility. </li>
+</ul>
+<hr>
+
+<h3 id="function-terminate">function Terminate<a class="headerlink" href="#function-terminate" title="Permanent link">&para;</a></h3>
+<p><em>Immediately hard-kill the child process.</em> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kt">void</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="n">Terminate</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="w"> </span><span class="n">timeout</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="p">{</span><span class="mi">8</span><span class="p">}</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
+</code></pre></div></p>
+<p>Sends a termination signal and waits up to <code>timeout</code> for the process to exit; force-killed if it does not exit in time. Idempotent — safe to call more than once, including after <a href="class_tryll_1_1_client_1_1_managed_server.html#function-stop"><strong>Stop</strong></a>. Intended for failure paths where the caller knows this process is theirs and nothing else can depend on it (e.g. spawn succeeded but connect/handshake failed) — do not call this after a successful handshake, since another consumer could be relying on the server staying up until its own idle timeout.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>timeout</code> How long to wait for graceful exit before force-killing. </li>
 </ul>
 <hr>
 
 <h3 id="function-operator">function operator=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </code></pre></div>
 <hr>
 
 <h3 id="function-operator_1">function operator=<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ManagedServer</span><span class="w"> </span><span class="o">&amp;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </code></pre></div>
 <hr>
 
 <h3 id="function-managedserver">function ~ManagedServer<a class="headerlink" href="#function-managedserver" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::~</span><span class="n">ManagedServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::~</span><span class="n">ManagedServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </code></pre></div>
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-start">function Start<a class="headerlink" href="#function-start" title="Permanent link">&para;</a></h3>
 <p><em>Spawn the server and block until its TCP port accepts connections.</em> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">static</span><span class="w"> </span><span class="n">ManagedServer</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="n">Start</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ManagedServerOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">opts</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="n">ManagedServer</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">ManagedServer</span><span class="o">::</span><span class="n">Start</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">ManagedServerOptions</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">opts</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div></p>
 <p>The server is launched with <code>--port &lt;opts.port&gt;</code> so the port is authoritative from the caller's side regardless of <code>server-config.json</code>.</p>
 <p><strong>Parameters:</strong></p>
@@ -4460,7 +4710,7 @@
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h</code></p>
+<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h</code></p>
 
 
 

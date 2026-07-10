@@ -83,7 +83,7 @@
         </childnode>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -221,7 +221,7 @@
 <codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0694ac9161904e8c363fb2c284c79689" kindref="member">exe</ref><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;path/to/tryll_server.exe&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline><highlight class="normal">opts.<ref refid="struct_tryll_1_1_client_1_1_managed_server_options_1a0449d48e442091fde5f891cfd08913a7" kindref="member">port</ref><sp/>=<sp/>9100;</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>session<sp/>=<sp/><ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" kindref="member">Tryll::Client::TryllClient::RunAndConnect</ref>(opts);</highlight></codeline>
-<codeline><highlight class="normal">session.GetClient().ConfigureSession(<ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kindref="compound">Tryll::Client::TryllClient::SessionConfig</ref>{</highlight></codeline>
+<codeline><highlight class="normal">session.GetClient().CreateSession(<ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kindref="compound">Tryll::Client::TryllClient::SessionConfig</ref>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.engine<sp/>=<sp/>::Tryll::InferenceEngine_LlamaCpp<sp/>});</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>session.GetClient().CreateAgent(graph);</highlight></codeline>
 <codeline><highlight class="normal">agent.SendText(</highlight><highlight class="stringliteral">&quot;hi&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -230,7 +230,7 @@
 </programlisting></para>
 <para>Advanced / remote-server flow (no server management):</para>
 <para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>client<sp/>=<sp/><ref refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" kindref="member">Tryll::Client::TryllClient::Connect</ref>(</highlight><highlight class="stringliteral">&quot;127.0.0.1&quot;</highlight><highlight class="normal">,<sp/>9100);</highlight></codeline>
-<codeline><highlight class="normal">client.ConfigureSession(<ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kindref="compound">Tryll::Client::TryllClient::SessionConfig</ref>{</highlight></codeline>
+<codeline><highlight class="normal">client.CreateSession(<ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kindref="compound">Tryll::Client::TryllClient::SessionConfig</ref>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>.engine<sp/>=<sp/>::Tryll::InferenceEngine_LlamaCpp<sp/>});</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>agent<sp/>=<sp/>client.CreateAgent(graph);</highlight></codeline>
 <codeline><highlight class="normal">agent.SendText(</highlight><highlight class="stringliteral">&quot;hi&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -238,6 +238,6 @@
 <codeline><highlight class="normal">client.Shutdown();</highlight></codeline>
 </programlisting> </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h"/>
   </compounddef>
 </doxygen>

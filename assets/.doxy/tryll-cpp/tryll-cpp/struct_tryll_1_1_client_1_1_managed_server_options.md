@@ -39,6 +39,7 @@ _Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_
 |  std::filesystem::path | [**exe**](#variable-exe)  <br> |
 |  std::vector&lt; std::string &gt; | [**extraArgs**](#variable-extraargs)  <br>_Extra command-line arguments appended after_ `-- port < port >` _._ |
 |  std::string | [**host**](#variable-host)   = `"127.0.0.1"`<br> |
+|  int | [**idleShutdownTimeoutSeconds**](#variable-idleshutdowntimeoutseconds)   = `60`<br> |
 |  std::uint16\_t | [**port**](#variable-port)   = `9100`<br> |
 |  std::chrono::milliseconds | [**startTimeout**](#variable-starttimeout)   = `std::chrono::seconds{30}`<br>_How long to wait for the TCP port to become reachable after spawn._  |
 |  std::filesystem::path | [**stderrLog**](#variable-stderrlog)  <br> |
@@ -134,6 +135,23 @@ std::string Tryll::Client::ManagedServerOptions::host;
 
 
 Host name / IP for the TCP ready-probe after spawn. Almost always `"127.0.0.1"` (the default). 
+
+
+        
+
+<hr>
+
+
+
+### variable idleShutdownTimeoutSeconds 
+
+```C++
+int Tryll::Client::ManagedServerOptions::idleShutdownTimeoutSeconds;
+```
+
+
+
+Seconds of idle (zero sessions, no in-flight downloads) after which the launched server self-exits. Passed as `--idle-shutdown-timeout <N>` on the command line when non-zero. Default 60: an auto-launched server is disposable — this manager's Stop()/destructor no longer kill the process (see Stop()), so the server must be told to exit on its own once nothing is using it, or it leaks until the machine reboots. Pass 0 only when the caller has its own explicit reap strategy (e.g. the QA harness, which always calls a hard kill on teardown). 
 
 
         
@@ -240,5 +258,5 @@ Working directory for the child process. Empty (default) means the executable's 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h`
 

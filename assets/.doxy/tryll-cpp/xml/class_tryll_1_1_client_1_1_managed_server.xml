@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="132" column="17" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" bodystart="132" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="161" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" bodystart="161" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="100" column="23"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="111" column="23"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="103" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="114" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1af3573583a94422d449da0235b7fce3ad" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::uint16_t</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="106" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="117" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a9476c8d7890f9880cce008a4c673fc2c" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="109" column="7"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="120" column="7"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -120,16 +120,16 @@
           <defval>std::chrono::seconds{8}</defval>
         </param>
         <briefdescription>
-<para>Terminate the child process. </para>
+<para>Release this handle without killing the server. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sends a termination signal and waits up to <computeroutput>timeout</computeroutput> for the process to exit. If the process does not exit in time it is force-killed. Idempotent — safe to call more than once.</para>
+<para>Does <bold>not</bold> terminate the process. A managed server launched with <computeroutput>idleShutdownTimeoutSeconds &gt; 0</computeroutput> self-exits once no session is using it; this just drops our OS handle. Idempotent — safe to call more than once. Use <ref refid="class_tryll_1_1_client_1_1_managed_server_1a592b41cd91d4c6ed79aed6310a07a627" kindref="member">Terminate</ref> for an immediate hard kill (e.g. the spawn succeeded but the handshake/connect afterward failed, so no session was ever created and nothing else can be relying on this process).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>timeout</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Override for the stop timeout set in the options. </para>
+<para>Unused; kept for source compatibility. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -137,7 +137,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="120" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="134" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a592b41cd91d4c6ed79aed6310a07a627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::ManagedServer::Terminate</definition>
+        <argsstring>(std::chrono::milliseconds timeout=std::chrono::seconds{8})</argsstring>
+        <name>Terminate</name>
+        <qualifiedname>Tryll::Client::ManagedServer::Terminate</qualifiedname>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{8}</defval>
+        </param>
+        <briefdescription>
+<para>Immediately hard-kill the child process. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a termination signal and waits up to <computeroutput>timeout</computeroutput> for the process to exit; force-killed if it does not exit in time. Idempotent — safe to call more than once, including after <ref refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" kindref="member">Stop</ref>. Intended for failure paths where the caller knows this process is theirs and nothing else can depend on it (e.g. spawn succeeded but connect/handshake failed) — do not call this after a successful handshake, since another consumer could be relying on the server staying up until its own idle timeout.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>How long to wait for graceful exit before force-killing. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="149" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a6cfceea6385235e6684de8db098094aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -151,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="122" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="151" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1a4366bb592ce88ede725f85586f24346f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -168,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="123" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="152" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1af44572ea83498c4828820cdff58fa568" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>ManagedServer &amp;</type>
@@ -185,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="124" column="15"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="153" column="15"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1aef9448c1300d88768ebefbde1e7734fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -202,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="125" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="154" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_managed_server_1ab8994fd8aa5805c833d358c04403a206" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>ManagedServer &amp;</type>
@@ -219,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="126" column="15"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="155" column="15"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -239,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="130" column="10"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="159" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -248,7 +279,7 @@
     <detaileddescription>
 <para>Move-only. The destructor calls <ref refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" kindref="member">Stop</ref> if the process is still running. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" line="83" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h" bodystart="84" bodyend="133"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" line="94" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h" bodystart="95" bodyend="162"/>
     <listofallmembers>
       <member refid="class_tryll_1_1_client_1_1_managed_server_1ad7acb8bb9ffe35215e871b2b5453be2f" prot="private" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>_impl</name></member>
       <member refid="class_tryll_1_1_client_1_1_managed_server_1a6b8dba3f0d5c51f759cbd18575e5c09c" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Host</name></member>
@@ -261,6 +292,7 @@
       <member refid="class_tryll_1_1_client_1_1_managed_server_1af3573583a94422d449da0235b7fce3ad" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Port</name></member>
       <member refid="class_tryll_1_1_client_1_1_managed_server_1a949d054533cba073a34f82c19254fb62" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Start</name></member>
       <member refid="class_tryll_1_1_client_1_1_managed_server_1a50f60b005d401e76f5596e6c3ffeffda" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Stop</name></member>
+      <member refid="class_tryll_1_1_client_1_1_managed_server_1a592b41cd91d4c6ed79aed6310a07a627" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>Terminate</name></member>
       <member refid="class_tryll_1_1_client_1_1_managed_server_1a6cfceea6385235e6684de8db098094aa" prot="public" virt="non-virtual"><scope>Tryll::Client::ManagedServer</scope><name>~ManagedServer</name></member>
     </listofallmembers>
   </compounddef>

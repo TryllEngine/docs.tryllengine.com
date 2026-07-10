@@ -45,7 +45,10 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  int32 | [**MinSentenceChars**](#variable-minsentencechars)   = `12`<br> |
 |  int32 | [**SpeakerId**](#variable-speakerid)   = `0`<br> |
 |  float | [**Speed**](#variable-speed)   = `1.0f`<br> |
+|  FString | [**TtsLang**](#variable-ttslang)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
+|  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
 |  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
 
 
@@ -205,7 +208,7 @@ int32 UTryllSpeakParams::SpeakerId;
 
 
 
-TTS speaker / voice index for multi-speaker models (default 0). 
+TTS speaker / voice index (default 0). Valid range is 0 to the model's speaker count minus 1 — the shipped Supertonic 3 bundle has 10 voice styles (0–9); Pocket TTS is single-speaker, so it must stay 0 there (pick a Pocket voice with tts\_voice instead). Agent creation fails with an out-of-range error for values the model cannot satisfy. 
 
 
         
@@ -231,6 +234,19 @@ TTS speech-rate multiplier. 1.0 = native speed.
 
 
 
+### variable TtsLang 
+
+```C++
+FString UTryllSpeakParams::TtsLang;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable TtsModelName 
 
 ```C++
@@ -239,6 +255,40 @@ FTryllModelName UTryllSpeakParams::TtsModelName;
 
 
 
+
+<hr>
+
+
+
+### variable TtsVoice 
+
+```C++
+FTryllStoragePath UTryllSpeakParams::TtsVoice;
+```
+
+
+
+Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path relative to the session storage root pointing at a 10–20 s clean mono recording of the target voice. Empty = the model's default voice. Ignored by fixed-voice families (use speaker\_id there). 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsLang 
+
+```C++
+bool UTryllSpeakParams::bOverrideTtsLang;
+```
+
+
+
+TTS language hint for multilingual models that select the language per call (e.g. Supertonic 3: "en", "de", "fr", …). Empty = the model's catalog default. Ignored by families whose language is fixed by the model itself (e.g. Pocket TTS per-language models). Set to true to override the inherited TtsLang value. 
+
+
+        
 
 <hr>
 
@@ -295,5 +345,5 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h`
 

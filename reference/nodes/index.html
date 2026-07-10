@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3326,6 +3437,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3467,6 +3584,41 @@
   
   
     <li class="md-nav__item">
+      <a href="speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="instruction.html" class="md-nav__link">
         
   
@@ -3510,6 +3662,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3720,6 +3907,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4256,6 +4478,12 @@ detection, fallback, guardrails).</p>
 <td><code>HumanMessageGuardrail</code></td>
 <td><code>triggered</code>, <code>not_triggered</code></td>
 <td>Regex-match the user message; branch the graph on pattern hits.</td>
+</tr>
+<tr>
+<td><a href="pause.html">Pause</a></td>
+<td><code>Pause</code></td>
+<td><code>default</code></td>
+<td>No-op checkpoint; the executor suspends the turn after this node until the client sends <code>ResumeAgentRequest</code>.</td>
 </tr>
 </tbody>
 </table>

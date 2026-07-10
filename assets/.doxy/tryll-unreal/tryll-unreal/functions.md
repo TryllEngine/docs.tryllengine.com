@@ -13,6 +13,7 @@
 * **AddHumanMessageGuardrailNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddInstructionNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddIntentToInstructionNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
+* **AddPauseNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddRetrieveNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddSpeakNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddToolCallNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))

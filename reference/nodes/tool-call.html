@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3326,6 +3437,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3467,6 +3584,41 @@
   
   
     <li class="md-nav__item">
+      <a href="speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="instruction.html" class="md-nav__link">
         
   
@@ -3510,6 +3662,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3873,6 +4060,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4437,6 +4659,14 @@ tool implementation.</p>
 <td>Model catalog name.  Empty = use the agent's default_model_name.</td>
 </tr>
 <tr>
+<td><code>context_size</code></td>
+<td>int</td>
+<td>0</td>
+<td>≥ 0.0</td>
+<td>✓</td>
+<td>KV-cache / context window (n_ctx) for this node in tokens. 0 = fall back  to the model variant's context_size, else the server default_n_ctx.  Validated against the model's trained maximum at agent creation.</td>
+</tr>
+<tr>
 <td><code>system_prompt</code></td>
 <td>Optional[str] (multiline)</td>
 <td>inherit model default</td>
@@ -4450,7 +4680,7 @@ tool implementation.</p>
 <td>inherit model default</td>
 <td>—</td>
 <td>✓</td>
-<td>Tool-call dialect used for both prompt construction and output parsing.  Structural because the format config is baked into the projection strategy.</td>
+<td>DEPRECATED (kept for wire/config compatibility; ignored by the server).  Tool-call prompting and parsing are now driven by the model's own chat  template via llama.cpp common/ (see LlamaCppChatTurn), so no per-dialect  format is needed. Structural so mutation is still vetoed.</td>
 </tr>
 <tr>
 <td><code>tools</code></td>
@@ -4461,12 +4691,20 @@ tool implementation.</p>
 <td>Callable tool definitions.  Structural because the tool-call prompt schema  and parser contract are materialised at construction.</td>
 </tr>
 <tr>
-<td><code>generate_on_no_tool</code></td>
+<td><code>mode</code></td>
+<td>ToolCallMode</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+<td>Tool-choice policy — see Tryll.ToolCallMode. Mutable: the grammar is  rebuilt every turn, so a client can flip a node between (for example)  RequireCall for a known-command turn and DetectOnly for free chat.</td>
+</tr>
+<tr>
+<td><code>parallel_tool_calls</code></td>
 <td>bool</td>
 <td>False</td>
 <td>—</td>
 <td>—</td>
-<td>When no tool call is detected in the response, generate a plain text reply.</td>
+<td>Allow more than one tool call per turn where the model's chat template  supports it (most formats cap at one call when false). Mutable for the  same reason as <code>mode</code>.</td>
 </tr>
 <tr>
 <td><code>notify_client</code></td>
@@ -4483,6 +4721,14 @@ tool implementation.</p>
 <td>—</td>
 <td>—</td>
 <td>Sparse sampling overrides.</td>
+</tr>
+<tr>
+<td><code>pause_after_tool_call</code></td>
+<td>bool</td>
+<td>False</td>
+<td>—</td>
+<td>—</td>
+<td>When true and one or more tool calls are parsed (the "tool_called" exit),  the executor pauses the turn after this node exits — giving the client a  chance to act on the tool call (e.g. via ChangeAgentParam) before the  graph continues. Resume with ResumeAgentRequest. Mutable.</td>
 </tr>
 </tbody>
 </table>
@@ -4505,7 +4751,7 @@ tool implementation.</p>
 <tr>
 <td><code>no_tool_called</code></td>
 <td><code>no_tool_called_exit</code></td>
-<td>Exit taken when no tool call is parsed (or when generate_on_no_tool  produced a plain text reply).  Empty string = END.</td>
+<td>Exit taken when no tool call is parsed (or, under mode=call_or_answer,  when the model's residual text was emitted as a plain-text reply  instead).  Empty string = END.</td>
 </tr>
 </tbody>
 </table>
@@ -4536,52 +4782,28 @@ tool implementation.</p>
 <li>Records <strong>every</strong> detected tool call on the current
   <a href="../glossary.html#interaction">turn</a> (one record per call; a single
   turn may produce more than one).</li>
-<li>When <code>generate_on_no_tool = true</code> <em>(experimental)</em> and no tool is
-  detected, additionally appends the model's text as the assistant's
-  reply and fires <code>AnswerText</code> chunks (as a <a href="generate.html">Generate node</a> would).</li>
+<li>When <code>mode = call_or_answer</code> and no tool is detected, additionally
+  appends the model's text as the assistant's reply and fires
+  <code>AnswerText</code> chunks (as a <a href="generate.html">Generate node</a> would).</li>
+<li>When <code>mode = require_call</code>, the model is forced to call a tool every
+  turn (no plain-text reply is possible) — see
+  <a href="../../concepts/tool-calling.html#forcing-a-tool-call">Concept: Tool calling</a>
+  for when this is (and isn't) appropriate.</li>
 <li>When <code>notify_client = true</code>, fires one <code>NodeEvent</code> (<code>event_type="tool_call"</code>)
   per detected call, out-of-band, before the turn completes.</li>
+<li>When <code>pause_after_tool_call = true</code> <strong>and</strong> the node exits <code>tool_called</code>, the
+  executor pauses the turn right after — allowing <code>ChangeAgentParam</code> (normally
+  rejected while a turn runs) before it continues via <code>ResumeAgentRequest</code>. No
+  pause on <code>no_tool_called</code>. See
+  <a href="../../how-to/pause-and-resume-turns.html">How to pause and resume a turn</a>.</li>
 </ul>
 <h2 id="tool-call-formats">Tool-call formats<a class="headerlink" href="#tool-call-formats" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Format</th>
-<th>Family</th>
-<th>Typical model</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>chatml</code></td>
-<td>OpenAI / Qwen / default</td>
-<td>Qwen2.5, OpenAI-compatible chat models.</td>
-</tr>
-<tr>
-<td><code>llama3</code></td>
-<td>Llama 3</td>
-<td>Meta Llama 3 / 3.1 / 3.2.</td>
-</tr>
-<tr>
-<td><code>mistral</code></td>
-<td>Mistral function-calling</td>
-<td>Mistral-Instruct v0.3+.</td>
-</tr>
-<tr>
-<td><code>generic</code></td>
-<td>JSON-in-text</td>
-<td>Fallback for models with no native format.</td>
-</tr>
-</tbody>
-</table>
-<p>The format controls:</p>
-<ol>
-<li>How tool definitions are rendered into the prompt.</li>
-<li>How the model's output is parsed to extract calls.</li>
-</ol>
-<p>Pick the format matching your model's training. If unsure, start with
-<code>chatml</code> and inspect <code>debug_info.tool_call_format</code> and the raw model
-output in diagnostics.</p>
+<p>Tool prompting and parsing are handled automatically by the model's own chat
+template (via llama.cpp <code>common/</code>): tool definitions are rendered the way the
+model was trained, generation is constrained by a grammar so calls are
+well-formed, and the output is parsed back into structured calls. You no longer
+choose a dialect — the legacy <code>tool_call_format</code> param is <strong>deprecated and
+ignored</strong>.</p>
 <h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
 <p>When <code>enable_diagnostics = true</code>, the node contributes these keys to
 <code>TurnComplete.debug_info</code>:</p>
@@ -4594,16 +4816,20 @@ output in diagnostics.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>tool_call_format</code></td>
-<td>The format config name that was actually used.</td>
-</tr>
-<tr>
 <td><code>tool_count</code></td>
 <td>Number of tool definitions passed to the model.</td>
 </tr>
 <tr>
-<td><code>generate_on_no_tool</code></td>
-<td>Current value of the param. <em>(Experimental.)</em></td>
+<td><code>mode</code></td>
+<td>Current value of the param (<code>detect_only</code> / <code>call_or_answer</code> / <code>require_call</code>).</td>
+</tr>
+<tr>
+<td><code>parallel_tool_calls</code></td>
+<td>Current value of the param.</td>
+</tr>
+<tr>
+<td><code>reasoning_content</code></td>
+<td>Extracted chain-of-thought, when the model emitted any.</td>
 </tr>
 <tr>
 <td>(plus sampling / prompt diagnostics shared with other inference nodes)</td>
@@ -4762,6 +4988,8 @@ result back) in
 <ul>
 <li><a href="../../concepts/tool-calling.html">Concept: Tool calling</a></li>
 <li><a href="../../how-to/define-and-handle-tool-calls.html">How to define and handle tool calls</a></li>
+<li><a href="../../how-to/pause-and-resume-turns.html">How to pause and resume a turn</a></li>
+<li><a href="pause.html">Reference: Pause node</a></li>
 <li><a href="../agent-parameters.html#tooldefinition">Agent Parameters — <code>ToolDefinition</code></a></li>
 <li><a href="../glossary.html#tool-call">Glossary</a></li>
 </ul>

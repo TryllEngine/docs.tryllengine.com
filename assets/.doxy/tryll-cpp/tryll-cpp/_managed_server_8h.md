@@ -110,7 +110,8 @@ auto server = Tryll::Client::ManagedServer::Start(opts);
 auto client = Tryll::Client::TryllClient::Connect(server.Host(), server.Port());
 // … use client …
 client.Shutdown();
-server.Stop();   // or just let the destructor run
+server.Stop();   // releases our handle; the server self-exits on its own
+                  // idle timer (see ManagedServerOptions::idleShutdownTimeoutSeconds)
 ```
 
 
@@ -128,5 +129,5 @@ Windows-only. A `#error` guards non-Windows builds.
     
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h`
 

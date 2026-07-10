@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**FoundExit**](#variable-foundexit)  <br> |
 |  int32 | [**HistoryTurns**](#variable-historyturns)   = `2`<br> |
 |  FString | [**IntentsIds**](#variable-intentsids)  <br> |
@@ -170,6 +171,23 @@ Intent classification node (LLM first-token logprob over letter candidates). Sco
     
 ## Public Attributes Documentation
 
+
+
+
+### variable ContextSize 
+
+```C++
+int32 UTryllClassifyIntentLLMParams::ContextSize;
+```
+
+
+
+KV-cache / context window (n\_ctx) for this node in tokens. 0 = fall back to the model variant's context\_size, else the server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
+
+
+        
+
+<hr>
 
 
 
@@ -459,5 +477,5 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h`
 

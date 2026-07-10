@@ -65,6 +65,7 @@ _Fluent builder for a workflow graph description sent to the server._ [More...](
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddHumanMessageGuardrail**](#function-addhumanmessageguardrail) (std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddPause**](#function-addpause) (std::string name, ::Tryll::NodeParams::PauseParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
@@ -249,6 +250,22 @@ GraphDescription & Tryll::Client::GraphDescription::AddIntentToInstruction (
 
 
 
+### function AddPause 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddPause (
+    std::string name,
+    ::Tryll::NodeParams::PauseParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
 ### function AddRetrieve 
 
 ```C++
@@ -366,5 +383,5 @@ GraphDescription & Tryll::Client::GraphDescription::SetStartNode (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/GraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/GraphDescription.h`
 

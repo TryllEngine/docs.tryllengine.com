@@ -691,6 +691,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -767,6 +773,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1039,6 +1080,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1284,14 +1360,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1319,14 +1395,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1397,6 +1473,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3310,6 +3421,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3448,6 +3565,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3491,6 +3643,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3701,6 +3888,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4157,10 +4379,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#typedef-ftryllonconfiguresession" class="md-nav__link">
+  <a href="#typedef-ftrylloncreatesession" class="md-nav__link">
     <span class="md-ellipsis">
       
-        typedef FTryllOnConfigureSession
+        typedef FTryllOnCreateSession
       
     </span>
   </a>
@@ -4223,6 +4445,7 @@
 <li><code>#include "TryllModelInfo.h"</code></li>
 <li><code>#include "TryllVoiceInput.h"</code></li>
 <li><code>#include "TryllRuntimeSettings.h"</code></li>
+<li><code>#include "TryllManagedServerProcess.h"</code></li>
 <li><code>#include "TryllSubsystem.generated.h"</code></li>
 </ul>
 <h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
@@ -4263,7 +4486,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">typedef void(<a href="struct_f_tryll_error.html"><strong>FTryllError</strong></a>)</td>
-<td style="text-align: left;"><a href="#typedef-ftryllonconfiguresession"><strong>FTryllOnConfigureSession</strong></a>  <br></td>
+<td style="text-align: left;"><a href="#typedef-ftrylloncreatesession"><strong>FTryllOnCreateSession</strong></a>  <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">typedef void(TArray&lt; <a href="struct_f_tryll_model_info.html"><strong>FTryllModelInfo</strong></a> &gt;, <a href="struct_f_tryll_error.html"><strong>FTryllError</strong></a>)</td>
@@ -4281,8 +4504,8 @@
 </code></pre></div>
 <hr>
 
-<h3 id="typedef-ftryllonconfiguresession">typedef FTryllOnConfigureSession<a class="headerlink" href="#typedef-ftryllonconfiguresession" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="n">FTryllOnConfigureSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">FTryllError</span><span class="p">);</span>
+<h3 id="typedef-ftrylloncreatesession">typedef FTryllOnCreateSession<a class="headerlink" href="#typedef-ftrylloncreatesession" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="n">FTryllOnCreateSession</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="n">FTryllError</span><span class="p">);</span>
 </code></pre></div>
 <hr>
 
@@ -4297,7 +4520,7 @@
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</code></p>
+<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</code></p>
 
 
 

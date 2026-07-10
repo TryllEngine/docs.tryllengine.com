@@ -11,6 +11,7 @@
 
 
 * `#include "CoreMinimal.h"`
+* `#include "UObject/GCObject.h"`
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
@@ -86,5 +87,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h`
 

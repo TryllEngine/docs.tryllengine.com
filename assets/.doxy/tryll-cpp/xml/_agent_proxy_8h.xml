@@ -15,10 +15,10 @@
     <includes local="no">string_view</includes>
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
-    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</includedby>
+    <includedby refid="_tryll_client_8h" local="no">C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentProxy.h</label>
         <link refid="_agent_proxy_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -118,13 +118,13 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentProxy.h</label>
         <link refid="_agent_proxy_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
-        <label>C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h</label>
         <link refid="_tryll_client_8h"/>
       </node>
     </invincdepgraph>
@@ -136,7 +136,7 @@
 <para>Client-side handle for a server-hosted Tryll agent. </para>
     </briefdescription>
     <detaileddescription>
-<para>An <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">Tryll::Client::AgentProxy</ref> is returned by <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a8f84f0c4a65157becd4c332ea5acbd60" kindref="member">Tryll::Client::TryllClient::CreateAgent</ref> (or its async twin) and represents one agent running a workflow graph on the server. All turn-driving APIs live on the proxy; the owning <ref refid="class_tryll_1_1_client_1_1_tryll_client" kindref="compound">Tryll::Client::TryllClient</ref> handles the underlying session.</para>
+<para>An <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">Tryll::Client::AgentProxy</ref> is returned by <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a0ca312e91ef367fe840a888d161cc13c" kindref="member">Tryll::Client::TryllClient::CreateAgent</ref> (or its async twin) and represents one agent running a workflow graph on the server. All turn-driving APIs live on the proxy; the owning <ref refid="class_tryll_1_1_client_1_1_tryll_client" kindref="compound">Tryll::Client::TryllClient</ref> handles the underlying session.</para>
 <sect1 id="_agent_proxy_8h_1autotoc_md0_1s1"><sect2 id="_agent_proxy_8h_1autotoc_md0">
 <title>Callback-first model</title><para>All streaming output and turn lifecycle events are delivered through three persistent per-agent callbacks:</para>
 <para><itemizedlist>
@@ -145,6 +145,7 @@
 </listitem><listitem><para>SetOnError — server-reported or disconnect errors.</para>
 </listitem><listitem><para>SetOnToolCall — tool-call notifications from the graph (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;tool_call&quot;</computeroutput>).</para>
 </listitem><listitem><para>SetOnIntentClassified — intent-classification notifications (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput>).</para>
+</listitem><listitem><para>SetOnPaused — the executor paused the turn between nodes (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;paused&quot;</computeroutput>).</para>
 </listitem><listitem><para>SetOnNodeEvent — fallback for any other <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type</computeroutput> or for events whose typed callback is not set.</para>
 </listitem></itemizedlist>
 </para>
@@ -152,6 +153,6 @@
 <para>This model also covers server-initiated turns (e.g. voice autosend after VoiceInput::EndUtterance): those turns carry <computeroutput>agent_id</computeroutput> but no client-side <computeroutput>request_id</computeroutput>, and are delivered through the same persistent callbacks. </para>
 </sect2></sect1>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentProxy.h"/>
   </compounddef>
 </doxygen>

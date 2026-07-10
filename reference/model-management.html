@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3324,6 +3435,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3465,6 +3582,41 @@
   
   
     <li class="md-nav__item">
+      <a href="nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="nodes/instruction.html" class="md-nav__link">
         
   
@@ -3508,6 +3660,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3718,6 +3905,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4672,12 +4894,12 @@ loading.</p>
 </ul>
 <p>Server-wide model settings (download directory, catalog path) live in
 <a href="server-configuration.html"><code>server-config.json</code></a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Development shortcut</p>
-<p>During prototyping you can skip the explicit <code>ListModels</code> →
-<code>DownloadModel</code> steps by enabling <code>allow_auto_model_downloading</code> on
-the session — <code>CreateAgent</code> then downloads missing models automatically.
-See <a href="../how-to/enable-auto-model-downloading.html">Enable Auto Model Downloading</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Models must be acquired explicitly</p>
+<p><code>CreateAgent</code>, <code>CreateEmbeddedStringStorage</code>, and <code>CreateVoiceInput</code> fail
+fast if a referenced model is not already on disk — the server does not
+download it for you. Run <code>ListModels</code> → <code>DownloadModel</code> yourself, or
+acquire the model from the editor Model Manager, before referencing it.</p>
 </div>
 <hr />
 <h2 id="modelsjson"><code>models.json</code><a class="headerlink" href="#modelsjson" title="Permanent link">&para;</a></h2>
@@ -4843,6 +5065,12 @@ file once at startup.</p>
 <td>string</td>
 <td>No</td>
 <td><code>llama.cpp</code> KV-cache dtype: <code>"f16"</code>, <code>"q8_0"</code>, or <code>"q4_0"</code>. Default <code>"q8_0"</code> (≈half the KV VRAM vs F16). Ignored by other engines.</td>
+</tr>
+<tr>
+<td><code>chat_template_file</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>llama.cpp</code> only. Path to a Jinja chat-template file that replaces the GGUF's own embedded template. Relative paths resolve against the directory containing <code>models.json</code>. Use this when a model's own GGUF conversion ships a template that doesn't render tool definitions — see <a href="../concepts/tool-calling.html#not-every-model-can-call-tools">Tool Calling</a> — even though the model itself may support tool calling.</td>
 </tr>
 </tbody>
 </table>
@@ -5039,7 +5267,7 @@ Unreal client.</p>
 for <strong>its specific kind</strong>. A language model and an STT model are tracked
 independently — a voice-input session that pins an STT model will show it
 as <code>Loaded</code> regardless of which language engine was selected.
-<code>ConfigureSession</code> carries separate engine fields for language, STT, TTS,
+<code>CreateSession</code> carries separate engine fields for language, STT, TTS,
 and embedding; <code>ListModels</code> uses the matching engine per entry to determine
 status.</p>
 </div>

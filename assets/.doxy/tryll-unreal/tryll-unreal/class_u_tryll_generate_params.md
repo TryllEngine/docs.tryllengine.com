@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
 |  ETryllPlacement | [**Placement**](#variable-placement)   = `ETryllPlacement::BeforeUserAsSystem`<br> |
@@ -164,6 +165,23 @@ LLM-driven text generation node. Renders a Mustache template, runs sampling, pro
     
 ## Public Attributes Documentation
 
+
+
+
+### variable ContextSize 
+
+```C++
+int32 UTryllGenerateParams::ContextSize;
+```
+
+
+
+KV-cache / context window (n\_ctx) for this node in tokens. 0 = fall back to the model variant's context\_size, else the server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
+
+
+        
+
+<hr>
 
 
 
@@ -359,5 +377,5 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateParams.h`
 

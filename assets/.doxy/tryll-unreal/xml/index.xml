@@ -5,11 +5,16 @@
     <member refid="struct_u_tryll_subsystem_1_1_f_embedded_storage_info_1a4a46b1d8f8d6dcdcc2af1a0f0fddf6a1" kind="variable"><name>RecordCount</name></member>
     <member refid="struct_u_tryll_subsystem_1_1_f_embedded_storage_info_1a60e287b8625b6c9b9ac2cb1da4581c76" kind="variable"><name>EmbeddingDim</name></member>
   </compound>
-  <compound refid="struct_tryll_1_1_generated_1_1_v__88c2c81422c1_1_1_fingerprint" kind="struct"><name>Tryll::Generated::V_88c2c81422c1::Fingerprint</name>
+  <compound refid="struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint" kind="struct"><name>Tryll::Generated::V_5fe355a174fd::Fingerprint</name>
   </compound>
   <compound refid="struct_f_tryll_voice_input_1_1_f_pending_ack" kind="struct"><name>FTryllVoiceInput::FPendingAck</name>
     <member refid="struct_f_tryll_voice_input_1_1_f_pending_ack_1a2a525fdeee7713ac9973c6caeec17c4f" kind="variable"><name>Callback</name></member>
     <member refid="struct_f_tryll_voice_input_1_1_f_pending_ack_1a0fb5ec37585437496410060108895e1d" kind="variable"><name>bIsBegin</name></member>
+  </compound>
+  <compound refid="struct_f_tryll_agent_1_1_f_pending_change_param" kind="struct"><name>FTryllAgent::FPendingChangeParam</name>
+    <member refid="struct_f_tryll_agent_1_1_f_pending_change_param_1aa7bc34ddfeb18679ce7b91716401dd9e" kind="variable"><name>Callback</name></member>
+    <member refid="struct_f_tryll_agent_1_1_f_pending_change_param_1a9455c76b5a4486276c71c8d49f844733" kind="variable"><name>NodeName</name></member>
+    <member refid="struct_f_tryll_agent_1_1_f_pending_change_param_1a23c3b59b0e79154abecf6ea28f5844b5" kind="variable"><name>Params</name></member>
   </compound>
   <compound refid="struct_u_tryll_subsystem_1_1_f_pending_create" kind="struct"><name>UTryllSubsystem::FPendingCreate</name>
     <member refid="struct_u_tryll_subsystem_1_1_f_pending_create_1a909deb4657b24a4509beee23b0dd9219" kind="variable"><name>RequestId</name></member>
@@ -44,13 +49,18 @@
     <member refid="class_f_tryll_agent_1af3ae10aa60be302c19604a8d41818d06" kind="variable"><name>OnError</name></member>
     <member refid="class_f_tryll_agent_1a09df26eb94b8e8d3336fe2bd53e27403" kind="variable"><name>OnTtsAudioFormat</name></member>
     <member refid="class_f_tryll_agent_1a93f4dbb40663c30bf662e42b9d35de62" kind="variable"><name>OnTtsAudio</name></member>
-    <member refid="class_f_tryll_agent_1a6da1e658a76840694fcd44c4e106be3f" kind="variable"><name>PendingChangeParams</name></member>
+    <member refid="class_f_tryll_agent_1a43d824f104ce1c251d3f54a3ca241a7c" kind="variable"><name>PendingChangeParams</name></member>
+    <member refid="class_f_tryll_agent_1afd4d51c67c0836ae6bc6261894278f9f" kind="variable"><name>PendingResumes</name></member>
     <member refid="class_f_tryll_agent_1af9458a9af79c62a93e67658213763970" kind="variable"><name>ParamsBaseline</name></member>
     <member refid="class_f_tryll_agent_1a604f5060fea53e4250ea466d12077afe" kind="function"><name>FTryllAgent</name></member>
     <member refid="class_f_tryll_agent_1a0a42ca5b1892508edf5584fe695df522" kind="function"><name>~FTryllAgent</name></member>
+    <member refid="class_f_tryll_agent_1a8be26ef307a1f922322145eb4d0afcfe" kind="function"><name>AddReferencedObjects</name></member>
+    <member refid="class_f_tryll_agent_1a50d6f7c8c773f21a2009864b1b0e512a" kind="function"><name>GetReferencerName</name></member>
     <member refid="class_f_tryll_agent_1a75b7a060d7c303a40477543fb3055712" kind="function"><name>GetAgentId</name></member>
     <member refid="class_f_tryll_agent_1a87a6e73f7c652996a72c3119aa9a6290" kind="function"><name>IsValid</name></member>
     <member refid="class_f_tryll_agent_1a64957405d4f07552440502df56034ed9" kind="function"><name>SendMessage</name></member>
+    <member refid="class_f_tryll_agent_1a91370e75b04832a569fb274439c49b4b" kind="function"><name>Cancel</name></member>
+    <member refid="class_f_tryll_agent_1aadac9cb669a893f0bc525924ac386b5a" kind="function"><name>Resume</name></member>
     <member refid="class_f_tryll_agent_1a0f8a43ab3dfecf109cf835a4479915ed" kind="function"><name>ChangeParams</name></member>
     <member refid="class_f_tryll_agent_1a6087157d7270bb2d0dd149b3b93b7356" kind="function"><name>GetNodeParamsBaseline</name></member>
     <member refid="class_f_tryll_agent_1a5ac63728b61399dd0ae4dc1743ad6871" kind="function"><name>SetNodeParamsBaseline</name></member>
@@ -66,6 +76,7 @@
     <member refid="class_f_tryll_agent_1a45de9e7f5eccbcb31bd944eae821cfd2" kind="function"><name>HandleTtsAudioFormat</name></member>
     <member refid="class_f_tryll_agent_1a077312a84dbbb0d8e158cfa5ab3ea36f" kind="function"><name>HandleTtsAudio</name></member>
     <member refid="class_f_tryll_agent_1ac3a03a0917e3c4b375aaa82591b6d885" kind="function"><name>HandleChangeParamResult</name></member>
+    <member refid="class_f_tryll_agent_1a788fea54c47450e1ab8e7819dfa7ed97" kind="function"><name>HandleResumeResult</name></member>
   </compound>
   <compound refid="struct_f_tryll_audio_format" kind="struct"><name>FTryllAudioFormat</name>
     <member refid="struct_f_tryll_audio_format_1ac86d18bd1dda5c722f0730ee7dfd23e7" kind="variable"><name>SampleRate</name></member>
@@ -98,6 +109,22 @@
   </compound>
   <compound refid="struct_f_tryll_graph_options" kind="struct"><name>FTryllGraphOptions</name>
     <member refid="struct_f_tryll_graph_options_1af696702eb8a68a638ed5767e53329516" kind="function"><name>GetNodeNameOptions</name></member>
+  </compound>
+  <compound refid="class_f_tryll_managed_server_process" kind="class"><name>FTryllManagedServerProcess</name>
+    <member refid="class_f_tryll_managed_server_process_1ac2d931f9b5f33ef45e26df34c1e11043" kind="variable"><name>ServerProcess</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a0edac0906ee724c2665806211aab8d42" kind="variable"><name>StdoutRead</name></member>
+    <member refid="class_f_tryll_managed_server_process_1acb63cc251f40a0aefdee55114ef82eea" kind="variable"><name>StdoutWrite</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a6ce9eccbf8291683a41562a8d620044f" kind="variable"><name>DrainTickerHandle</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a4a77f5f5e6f202270f79679f1112e477" kind="variable"><name>LogLineBuffer</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a29c9b0aa5c1772671fe6f69417f36712" kind="function"><name>FTryllManagedServerProcess</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a6ec9136940fc8dddf4eac4e47e598f2a" kind="function"><name>~FTryllManagedServerProcess</name></member>
+    <member refid="class_f_tryll_managed_server_process_1ab965206ef280974c38f5f525d3dc1426" kind="function"><name>FTryllManagedServerProcess</name></member>
+    <member refid="class_f_tryll_managed_server_process_1aae881ade8891bcf1eb3173d142126b70" kind="function"><name>operator=</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a03d14cf8bb9ff4bd4c16be2f0f0fbb4e" kind="function"><name>IsRunning</name></member>
+    <member refid="class_f_tryll_managed_server_process_1adb8625906bb159c31dbd4a5975a7bc12" kind="function"><name>Spawn</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a5f79240b041bce63bd02834c83ee253a" kind="function"><name>ReleaseHandle</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a65e3aca6d21a129920fe13aa7c37abe1" kind="function"><name>TerminateAndRelease</name></member>
+    <member refid="class_f_tryll_managed_server_process_1a4399764434f356eb8fa36c3147c57c41" kind="function"><name>DrainOutput</name></member>
   </compound>
   <compound refid="struct_f_tryll_model_info" kind="struct"><name>FTryllModelInfo</name>
     <member refid="struct_f_tryll_model_info_1a15d9bdde06ca73963af498ec345e06cc" kind="variable"><name>Name</name></member>
@@ -247,6 +274,7 @@
     <member refid="class_u_tryll_agent_component_1ad86b3d51d9b167a0532f44a929ab5472" kind="variable"><name>InlineGraphDescription</name></member>
     <member refid="class_u_tryll_agent_component_1aeeceabf9349cc44504656a2ecc6ed6e2" kind="variable"><name>bAutoCreateOnConnect</name></member>
     <member refid="class_u_tryll_agent_component_1a64f2c849e3b2d4fe236a97d79f766040" kind="variable"><name>bEnableDiagnostics</name></member>
+    <member refid="class_u_tryll_agent_component_1ac69d50227fe29259ef9064f48098891d" kind="variable"><name>bMaintainDialogueHistory</name></member>
     <member refid="class_u_tryll_agent_component_1adfdef767461b7802bcc14956600e8a4f" kind="variable"><name>Speaker</name></member>
     <member refid="class_u_tryll_agent_component_1a78605148242728951408cc53ef141d57" kind="variable"><name>OnAgentReady</name></member>
     <member refid="class_u_tryll_agent_component_1ac1b52a0b1011a0df7aad65f3fb54c55a" kind="variable"><name>OnAnswerText</name></member>
@@ -254,6 +282,7 @@
     <member refid="class_u_tryll_agent_component_1ab57dd47b5bda98b4c63d79974b8a7696" kind="variable"><name>OnTurnComplete</name></member>
     <member refid="class_u_tryll_agent_component_1aab970ed488da81746d6a5c8ce9ec8512" kind="variable"><name>OnError</name></member>
     <member refid="class_u_tryll_agent_component_1a209f7c4f0ae6b26130fec5ea1ae2b98e" kind="variable"><name>OnParamChanged</name></member>
+    <member refid="class_u_tryll_agent_component_1ad9943f7bdc77578e71e7501a13f1b1dc" kind="variable"><name>OnResumed</name></member>
     <member refid="class_u_tryll_agent_component_1aefd2f2ffe85ee990874b5d3ace9fdcfa" kind="variable"><name>TryllSubsystem</name></member>
     <member refid="class_u_tryll_agent_component_1a489b90d32875c2fc0cc368622bf373c4" kind="variable"><name>Agent</name></member>
     <member refid="class_u_tryll_agent_component_1abd0294dd85a19700b8947391c9bb9982" kind="variable"><name>AgentIdNumeric</name></member>
@@ -265,6 +294,7 @@
     <member refid="class_u_tryll_agent_component_1a8d302e7424294cd225f82cba28197ad0" kind="function"><name>DestroyAgent</name></member>
     <member refid="class_u_tryll_agent_component_1ad8c21935bebe0e779cde76a8931b5aff" kind="function"><name>SendMessage</name></member>
     <member refid="class_u_tryll_agent_component_1a9d10631d9b024cbe87f43ff3293fd863" kind="function"><name>ChangeParams</name></member>
+    <member refid="class_u_tryll_agent_component_1a10ef1068f1855d1e8876e4340bbf4dd3" kind="function"><name>Resume</name></member>
     <member refid="class_u_tryll_agent_component_1aca37eae83fb3a298c20876616809e7ad" kind="function"><name>GetNodeParamsBaseline</name></member>
     <member refid="class_u_tryll_agent_component_1a561f838a9b48eba8e80d1fbee7a0f6b3" kind="function"><name>IsAgentReady</name></member>
     <member refid="class_u_tryll_agent_component_1aeda94201d1c7865f0c71a6bfac53a3e8" kind="function"><name>GetAgentId</name></member>
@@ -272,7 +302,7 @@
     <member refid="class_u_tryll_agent_component_1a99586b555ca6cae23d273e8a1b731aa4" kind="function"><name>BeginPlay</name></member>
     <member refid="class_u_tryll_agent_component_1a165784345ecf661007d1accf2fc47780" kind="function"><name>EndPlay</name></member>
     <member refid="class_u_tryll_agent_component_1a7aba2701ce9a5ff9ff4704993cb01042" kind="function"><name>HandleConnectionChanged</name></member>
-    <member refid="class_u_tryll_agent_component_1a4606cd39cc7c05d27d80474c4dbb0398" kind="function"><name>HandleConfigureSessionComplete</name></member>
+    <member refid="class_u_tryll_agent_component_1ac4df650266a4995cfdf64031bcb25219" kind="function"><name>HandleCreateSessionComplete</name></member>
     <member refid="class_u_tryll_agent_component_1af9c716232d7b58558b87698d8f35cd7b" kind="function"><name>BindAgentCallbacks</name></member>
   </compound>
   <compound refid="class_u_tryll_canned_response_params" kind="class"><name>UTryllCannedResponseParams</name>
@@ -286,6 +316,7 @@
   <compound refid="class_u_tryll_classify_intent_l_l_m_params" kind="class"><name>UTryllClassifyIntentLLMParams</name>
     <member refid="class_u_tryll_classify_intent_l_l_m_params_1ad97cf84b8cf929018fd0826eef4ae6ab" kind="variable"><name>bOverrideModelName</name></member>
     <member refid="class_u_tryll_classify_intent_l_l_m_params_1aa051ccb4936c92ba5de59828c240b6b8" kind="variable"><name>ModelName</name></member>
+    <member refid="class_u_tryll_classify_intent_l_l_m_params_1a797a007c7585abd2b9721c451d5f2554" kind="variable"><name>ContextSize</name></member>
     <member refid="class_u_tryll_classify_intent_l_l_m_params_1aa82a669da9c3acc3c9e271a3ef89ae69" kind="variable"><name>bOverrideIntentsIds</name></member>
     <member refid="class_u_tryll_classify_intent_l_l_m_params_1ae88ba35e376271ea95727f2a9357303a" kind="variable"><name>IntentsIds</name></member>
     <member refid="class_u_tryll_classify_intent_l_l_m_params_1ad5b246f43bbad269db36fb64df15fe5c" kind="variable"><name>bOverrideIntentsPrompt</name></member>
@@ -320,6 +351,7 @@
   <compound refid="class_u_tryll_generate_and_speak_params" kind="class"><name>UTryllGenerateAndSpeakParams</name>
     <member refid="class_u_tryll_generate_and_speak_params_1a781b447ecf28b91f35e052d5790362af" kind="variable"><name>bOverrideModelName</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1add8f988a0496c09f92a95f36cca8a761" kind="variable"><name>ModelName</name></member>
+    <member refid="class_u_tryll_generate_and_speak_params_1a2588d3ccd055bfc4d13bb54884920dbd" kind="variable"><name>ContextSize</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1a8c48e0163dfac675a2aca5666e88ac13" kind="variable"><name>bOverrideTtsModelName</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1aff6d6bc16c3b7cf40ab8139c038ba738" kind="variable"><name>TtsModelName</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1ad7fa67237214d56ea6a4c4e953f752ec" kind="variable"><name>bOverrideSystemPrompt</name></member>
@@ -330,6 +362,9 @@
     <member refid="class_u_tryll_generate_and_speak_params_1a3d37e148c6cecd89aa726a3de59bb299" kind="variable"><name>Sampling</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1a1b6b1c2d67691202ece9dc5b560ef8ad" kind="variable"><name>SpeakerId</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1a5c8778929d69345047c36066d972d7c1" kind="variable"><name>Speed</name></member>
+    <member refid="class_u_tryll_generate_and_speak_params_1a3c43ff9d9cdcc85a15555baa16263ed5" kind="variable"><name>bOverrideTtsLang</name></member>
+    <member refid="class_u_tryll_generate_and_speak_params_1a7c2fe7c1a163d42f91df3e04cca7c561" kind="variable"><name>TtsLang</name></member>
+    <member refid="class_u_tryll_generate_and_speak_params_1aefa8cd5f30eda1718554302cf8d40586" kind="variable"><name>TtsVoice</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1ad14b273082daf73bf32a5024d3ce8c60" kind="variable"><name>MinSentenceChars</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1a97b49657e8110b536b4165922450d9b0" kind="variable"><name>DefaultExit</name></member>
     <member refid="class_u_tryll_generate_and_speak_params_1a03e8a848d80bbbef812d7543dbeae98f" kind="function"><name>GetNodeType</name></member>
@@ -338,6 +373,7 @@
   <compound refid="class_u_tryll_generate_params" kind="class"><name>UTryllGenerateParams</name>
     <member refid="class_u_tryll_generate_params_1aca3a11e7fee454a366375fe88d3f2bef" kind="variable"><name>bOverrideModelName</name></member>
     <member refid="class_u_tryll_generate_params_1a3dae3399b112e798fb267783d360a749" kind="variable"><name>ModelName</name></member>
+    <member refid="class_u_tryll_generate_params_1aa717cc7fd75f4292d691f14b091819b3" kind="variable"><name>ContextSize</name></member>
     <member refid="class_u_tryll_generate_params_1af55b6b794460e1ae4a1ce1ba78e50780" kind="variable"><name>bOverrideSystemPrompt</name></member>
     <member refid="class_u_tryll_generate_params_1ae425372268d137fcb4c54dca6f300b14" kind="variable"><name>SystemPrompt</name></member>
     <member refid="class_u_tryll_generate_params_1a5a084ddee5ff16b840b9a10237a57592" kind="variable"><name>bOverrideTemplate</name></member>
@@ -401,7 +437,13 @@
     <member refid="class_u_tryll_node_params_factory_1ad8344abb14e430fdd8e8579990837389" kind="function"><name>MakeIntentToInstructionParams</name></member>
     <member refid="class_u_tryll_node_params_factory_1ab9203294f8e29e3ecdaa0a97dee54325" kind="function"><name>MakeGenerateAndSpeakParams</name></member>
     <member refid="class_u_tryll_node_params_factory_1a4634e498a0b2f14be053fad988ecac92" kind="function"><name>MakeSpeakParams</name></member>
+    <member refid="class_u_tryll_node_params_factory_1a8ba630b2da95ba2c51444fd4590ba6b8" kind="function"><name>MakePauseParams</name></member>
     <member refid="class_u_tryll_node_params_factory_1a0793b42f8164d5f4e9f0b8c268df0484" kind="function"><name>CloneParams</name></member>
+  </compound>
+  <compound refid="class_u_tryll_pause_params" kind="class"><name>UTryllPauseParams</name>
+    <member refid="class_u_tryll_pause_params_1abb141c775559696f9bbfe23e292d2dd1" kind="variable"><name>DefaultExit</name></member>
+    <member refid="class_u_tryll_pause_params_1a100cd50c259bba473add831b62efe52e" kind="function"><name>GetNodeType</name></member>
+    <member refid="class_u_tryll_pause_params_1a3bba6695e1d16f6bdeca683e66dc6a52" kind="function"><name>Pack</name></member>
   </compound>
   <compound refid="class_u_tryll_retrieve_params" kind="class"><name>UTryllRetrieveParams</name>
     <member refid="class_u_tryll_retrieve_params_1a8bdecd7c483d9333e97bc1dfae2f6634" kind="variable"><name>EmbeddedStringStorage</name></member>
@@ -420,14 +462,14 @@
     <member refid="class_u_tryll_runtime_settings_1ab893222f143c04383df16552034a5fdb" kind="variable"><name>bAutoLaunchServer</name></member>
     <member refid="class_u_tryll_runtime_settings_1a58d069088a51bfdbc79dc2f2d0e2f6b6" kind="variable"><name>bAutoConnect</name></member>
     <member refid="class_u_tryll_runtime_settings_1a9267044b675b52b21f93a13223d82879" kind="variable"><name>ServerBuildVariant</name></member>
-    <member refid="class_u_tryll_runtime_settings_1aad8bf9d117c7331b525aeb4a5a00f6dd" kind="variable"><name>bAutoConfigureSession</name></member>
+    <member refid="class_u_tryll_runtime_settings_1a3ae1906dd87ff47955c3aac3bf66c7c9" kind="variable"><name>ServerPort</name></member>
+    <member refid="class_u_tryll_runtime_settings_1ae29efb8dfd1f158422dd6d3c2811e513" kind="variable"><name>bAutoCreateSession</name></member>
     <member refid="class_u_tryll_runtime_settings_1adccb2ddbe3f365f4dbaac0df2ae7cbd9" kind="variable"><name>Engine</name></member>
     <member refid="class_u_tryll_runtime_settings_1ae1b638a8450eeaceb15b1e651ca69890" kind="variable"><name>SttEngine</name></member>
     <member refid="class_u_tryll_runtime_settings_1a698909e45fa06757b6a362848941995c" kind="variable"><name>TtsEngine</name></member>
     <member refid="class_u_tryll_runtime_settings_1a8b6abfe4706880ebad5ae62a56633990" kind="variable"><name>EmbeddingEngine</name></member>
     <member refid="class_u_tryll_runtime_settings_1a87925e5ae105bf6538fe5e44d42c9fbf" kind="variable"><name>GameName</name></member>
     <member refid="class_u_tryll_runtime_settings_1a75f836e326435d571aa6600b81a29ae3" kind="variable"><name>StorageDataFolder</name></member>
-    <member refid="class_u_tryll_runtime_settings_1adbc33f6f57e305909e2a45f8cdb68ec9" kind="variable"><name>bAllowAutoModelDownloading</name></member>
     <member refid="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" kind="variable"><name>ConnectMaxAttempts</name></member>
     <member refid="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" kind="variable"><name>ConnectRetryDelaySeconds</name></member>
     <member refid="class_u_tryll_runtime_settings_1a4e04734f0d1b9c2a2988b1f2ce6f8861" kind="function"><name>GetCategoryName</name></member>
@@ -457,6 +499,9 @@
     <member refid="class_u_tryll_speak_params_1ac715f2d73611b8b41989f30ce8f30083" kind="variable"><name>TtsModelName</name></member>
     <member refid="class_u_tryll_speak_params_1a3793d2b114b2e6998bb909a2fbd333c7" kind="variable"><name>SpeakerId</name></member>
     <member refid="class_u_tryll_speak_params_1ae2dc17ee6dd85ae103cfa78fc4701332" kind="variable"><name>Speed</name></member>
+    <member refid="class_u_tryll_speak_params_1af68685530930782a910c71ab4f099d20" kind="variable"><name>bOverrideTtsLang</name></member>
+    <member refid="class_u_tryll_speak_params_1add51371289eb206bff522e6e2d24f8b5" kind="variable"><name>TtsLang</name></member>
+    <member refid="class_u_tryll_speak_params_1a1a357d357405f60c72589ac6c624a5d0" kind="variable"><name>TtsVoice</name></member>
     <member refid="class_u_tryll_speak_params_1ae754ebe4ccead6e738f0a33e7cfea5ff" kind="variable"><name>MinSentenceChars</name></member>
     <member refid="class_u_tryll_speak_params_1a2a42ceb49892e8c2b76b84f3bc467421" kind="variable"><name>DefaultExit</name></member>
     <member refid="class_u_tryll_speak_params_1a105f0fa674932669706b3683b6d9370e" kind="function"><name>GetNodeType</name></member>
@@ -471,6 +516,12 @@
     <member refid="class_u_tryll_subsystem_1a37d52ce1163a703f0468c8b07b67a3ba" kind="typedef"><name>FTryllOnEmbeddedStorageDestroyed</name></member>
     <member refid="class_u_tryll_subsystem_1a0f8b27b78cfa54b474a97553b88e4dc4" kind="variable"><name>ServerHost</name></member>
     <member refid="class_u_tryll_subsystem_1a1530cf147677f4f68a164176824e1695" kind="variable"><name>ServerPort</name></member>
+    <member refid="class_u_tryll_subsystem_1a9228d2c6b5986d5e2a19e1a4a9c6d09c" kind="variable"><name>ServerExePath</name></member>
+    <member refid="class_u_tryll_subsystem_1a10881fb6d580f944cb3691c06a7241e3" kind="variable"><name>ServerBuildConfig</name></member>
+    <member refid="class_u_tryll_subsystem_1a460cea92c8c26306dcefd045724cad0c" kind="variable"><name>ServerVersion</name></member>
+    <member refid="class_u_tryll_subsystem_1ad651052a4467ce85fcba5c4f47a3b234" kind="variable"><name>ServerRunId</name></member>
+    <member refid="class_u_tryll_subsystem_1a2a2fdc49ff594e7921362af61772d69e" kind="variable"><name>bServerManaged</name></member>
+    <member refid="class_u_tryll_subsystem_1a68704772ec290610354c602ea06b671b" kind="variable"><name>ServerIdleTimeoutSeconds</name></member>
     <member refid="class_u_tryll_subsystem_1aa407ccb39cc9f77d1d54866cefde09e2" kind="variable"><name>OnCreateStringStorageComplete</name></member>
     <member refid="class_u_tryll_subsystem_1a4fe2f357b50c061e0c4bcd699f4de426" kind="variable"><name>OnDestroyStringStorageComplete</name></member>
     <member refid="class_u_tryll_subsystem_1aff25d6026b320bfb05ce352fd7ec9b1b" kind="variable"><name>OnCreateEmbeddedStringStorageComplete</name></member>
@@ -478,7 +529,7 @@
     <member refid="class_u_tryll_subsystem_1aedf5ef36252388c9a851b87925056379" kind="variable"><name>OnConnectionChanged</name></member>
     <member refid="class_u_tryll_subsystem_1a78e1fc027e00d67193feda5d7d813c45" kind="variable"><name>OnError</name></member>
     <member refid="class_u_tryll_subsystem_1a70f54bd128ac415633ac222bb4343389" kind="variable"><name>OnAgentDestroyed</name></member>
-    <member refid="class_u_tryll_subsystem_1a5e2c2fef45c52ce8a0443e9fc14fe447" kind="variable"><name>OnConfigureSessionComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1aba6f509af5bbf3136d363cf8aee08b26" kind="variable"><name>OnCreateSessionComplete</name></member>
     <member refid="class_u_tryll_subsystem_1a2239073db8f7db2460a1afc001d76916" kind="variable"><name>OnListModelsComplete</name></member>
     <member refid="class_u_tryll_subsystem_1ae25913b4f3b891f7b8c7085255174b5a" kind="variable"><name>OnDownloadProgress</name></member>
     <member refid="class_u_tryll_subsystem_1a1a2cf5bb9a393fc9aad33ff01069cb32" kind="variable"><name>OnDownloadComplete</name></member>
@@ -487,18 +538,16 @@
     <member refid="class_u_tryll_subsystem_1abcd9281798727291b7397d31a5db9b1a" kind="variable"><name>OnModelReady</name></member>
     <member refid="class_u_tryll_subsystem_1aa6a209dea61d99c9e35a56a00553a53c" kind="variable"><name>OnToolCall</name></member>
     <member refid="class_u_tryll_subsystem_1a203d6e76fc670ccb8d0d41bf13382455" kind="variable"><name>OnIntentClassified</name></member>
+    <member refid="class_u_tryll_subsystem_1ab4f9591d561a55a6c695b526b8d29a44" kind="variable"><name>OnPaused</name></member>
     <member refid="class_u_tryll_subsystem_1ab7fd60016ccd276d082575c6b3253682" kind="variable"><name>OnNodeEvent</name></member>
+    <member refid="class_u_tryll_subsystem_1aed0e6dc296e96ff25bfd66053afe376a" kind="variable"><name>bAcquiredSharedConnection</name></member>
     <member refid="class_u_tryll_subsystem_1aa10ae91cab980412aa913a74b8af929a" kind="variable"><name>PendingRequestModel</name></member>
     <member refid="class_u_tryll_subsystem_1a64ff8b3ae0f4b06af793aeb09198028d" kind="variable"><name>RemainingConnectAttempts</name></member>
     <member refid="class_u_tryll_subsystem_1a097dcdc437d18b105a4883658dac8fa0" kind="variable"><name>ConnectRetryTickerHandle</name></member>
     <member refid="class_u_tryll_subsystem_1a0bdda326374c373aa59e52fd49f55205" kind="variable"><name>Connection</name></member>
-    <member refid="class_u_tryll_subsystem_1ae42334d3a5c2895ea1ce93e469195e2a" kind="variable"><name>bAllowAutoModelDownloadingActive</name></member>
     <member refid="class_u_tryll_subsystem_1ae483f7db662b3bdb5c718e18b40eb720" kind="variable"><name>bSessionConfigured</name></member>
-    <member refid="class_u_tryll_subsystem_1abb06d554389efc4df2259e380d380a80" kind="variable"><name>ServerProcess</name></member>
-    <member refid="class_u_tryll_subsystem_1aed6ebbc3e992b1f18e6ae9de89e8bce3" kind="variable"><name>ServerStdoutRead</name></member>
-    <member refid="class_u_tryll_subsystem_1a315afad7e55b516d123d967e4370ef0a" kind="variable"><name>ServerStdoutWrite</name></member>
-    <member refid="class_u_tryll_subsystem_1a380e10afc53e3781b78f3180bd34558d" kind="variable"><name>ServerLogTickerHandle</name></member>
-    <member refid="class_u_tryll_subsystem_1a51177f90c48434c237af55c6e4907288" kind="variable"><name>ServerLogLineBuffer</name></member>
+    <member refid="class_u_tryll_subsystem_1a4a2b2d071dd79af9f910e7423569d4dd" kind="variable"><name>bCreateSessionInFlight</name></member>
+    <member refid="class_u_tryll_subsystem_1a6f7f32c29818624aacd299e7b0d380c8" kind="variable"><name>Server</name></member>
     <member refid="class_u_tryll_subsystem_1a1ecca3ebcfba3d8306c72456157375eb" kind="variable"><name>PendingCreates</name></member>
     <member refid="class_u_tryll_subsystem_1a0b51f81a2af2e74464844484822c823e" kind="variable"><name>PendingListModels</name></member>
     <member refid="class_u_tryll_subsystem_1a464413ec2962d6dacf8ec027a991731f" kind="variable"><name>PendingDestroyRequestToAgentId</name></member>
@@ -520,10 +569,10 @@
     <member refid="class_u_tryll_subsystem_1a65f974a51cfe50a9c573c814383bc9e6" kind="function"><name>Disconnect</name></member>
     <member refid="class_u_tryll_subsystem_1a29d63ac1bca5dcf879a354679541e41a" kind="function"><name>IsConnected</name></member>
     <member refid="class_u_tryll_subsystem_1a300fb98f626592bca830eac468c11cf1" kind="function"><name>GetSessionId</name></member>
-    <member refid="class_u_tryll_subsystem_1ad2b2537089f0f7e02a27eb0367c9e6bd" kind="function"><name>ConfigureSession</name></member>
-    <member refid="class_u_tryll_subsystem_1a09804e7cf7fc210b314350a084fbf261" kind="function"><name>ConfigureSessionFromSettings</name></member>
+    <member refid="class_u_tryll_subsystem_1a2c892e911c9e12dc518b036968b81e01" kind="function"><name>CreateSession</name></member>
+    <member refid="class_u_tryll_subsystem_1acb22396afc2d84db539cd2f80bb35d35" kind="function"><name>CreateSessionFromSettings</name></member>
     <member refid="class_u_tryll_subsystem_1acbd6890e98db68be0e43d8d6086315f8" kind="function"><name>IsSessionReady</name></member>
-    <member refid="class_u_tryll_subsystem_1a60bf828b346c44f954d550839e082a57" kind="function"><name>RequestCreateAgent</name></member>
+    <member refid="class_u_tryll_subsystem_1aea1b7a34488b80e0745e2c0544fa7d06" kind="function"><name>RequestCreateAgent</name></member>
     <member refid="class_u_tryll_subsystem_1ab7bf69c7f5cb840d72e6b5967ccf62ec" kind="function"><name>RequestDestroyAgent</name></member>
     <member refid="class_u_tryll_subsystem_1a34c92721d5282e8efd7ccdf75fa0b48d" kind="function"><name>RequestListModels</name></member>
     <member refid="class_u_tryll_subsystem_1a6cbe12d9dac1c58dbc9ba11413b50480" kind="function"><name>RequestDownloadModel</name></member>
@@ -547,7 +596,25 @@
     <member refid="class_u_tryll_subsystem_1ab50caf3fad33bb1e4eaeaf6949e76c70" kind="function"><name>ProcessEvents</name></member>
     <member refid="class_u_tryll_subsystem_1a60c5801f435a5975c12f2ca63ecf1b1a" kind="function"><name>LaunchServerProcess</name></member>
     <member refid="class_u_tryll_subsystem_1aaa5e59fef5eca59504a20a68e65ece68" kind="function"><name>TerminateServerProcess</name></member>
-    <member refid="class_u_tryll_subsystem_1ae4449ace1e24de14c7087e8e31cdf79d" kind="function"><name>DrainServerOutput</name></member>
+    <member refid="class_u_tryll_subsystem_1ae12f1517b9202225a9df34bf9ae7aa28" kind="function"><name>ReleaseServerHandle</name></member>
+    <member refid="class_u_tryll_subsystem_1a18b6a5058370e764bb8f4f7883a80f62" kind="function"><name>CaptureAndVerifyServerIdentity</name></member>
+    <member refid="class_u_tryll_subsystem_1ad1054ee5dd680fbc3a9b15ad142e19da" kind="function"><name>IsDelegating</name></member>
+    <member refid="class_u_tryll_subsystem_1a64a538c165986eb2015dcaaa1d00a514" kind="function"><name>HandleSharedConnectionChanged</name></member>
+    <member refid="class_u_tryll_subsystem_1ab9a921a79a334aa991b6d436635475c5" kind="function"><name>HandleSharedError</name></member>
+    <member refid="class_u_tryll_subsystem_1ad2251f8437ca536a1445a43495ce6720" kind="function"><name>HandleSharedAgentDestroyed</name></member>
+    <member refid="class_u_tryll_subsystem_1a37d6fb54b60cf1cd7a18703fddf7b711" kind="function"><name>HandleSharedCreateSessionComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a32f3b522916863a446810171213b1808" kind="function"><name>HandleSharedListModelsComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1ac6a06d00a0130bf455faf6ac08368675" kind="function"><name>HandleSharedDownloadProgress</name></member>
+    <member refid="class_u_tryll_subsystem_1a2cf6eb17ec0806be77e3c88e2fa28e96" kind="function"><name>HandleSharedDownloadComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a437f9cd65626c9268a55959ceaacd5ff" kind="function"><name>HandleSharedLoadModelComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a0e820e56c3702a1c140de3c19c4782f9" kind="function"><name>HandleSharedUnloadModelComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a48f04b115b6f0607169f829f8c138e2a" kind="function"><name>HandleSharedToolCall</name></member>
+    <member refid="class_u_tryll_subsystem_1a0e8250d1cc59e5908cbdcbc2ad1dba76" kind="function"><name>HandleSharedIntentClassified</name></member>
+    <member refid="class_u_tryll_subsystem_1a68abc1c037adf8b4ebff11bc8c56fc3f" kind="function"><name>HandleSharedNodeEvent</name></member>
+    <member refid="class_u_tryll_subsystem_1a40b333fd1efe3e97e17664e42a577799" kind="function"><name>HandleSharedCreateStringStorageComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a89cfcaa3628336b13054f740b47c440a" kind="function"><name>HandleSharedDestroyStringStorageComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a26ece411d51f3a25c8e856dd9f77ae62" kind="function"><name>HandleSharedCreateEmbeddedStringStorageComplete</name></member>
+    <member refid="class_u_tryll_subsystem_1a339141649c5f9e0445c194d4a3cfcaf2" kind="function"><name>HandleSharedDestroyEmbeddedStringStorageComplete</name></member>
     <member refid="class_u_tryll_subsystem_1a6d358b79d7d57c9c17b0e31ad538d15e" kind="function"><name>OnRequestModelLoadCompleted</name></member>
     <member refid="class_u_tryll_subsystem_1a82eb7fc484df7ce5d5f061421844d6c5" kind="function"><name>OnRequestModelDownloadCompleted</name></member>
     <member refid="class_u_tryll_subsystem_1af45b3f57ae5ecc3a44898d2a7782f9f4" kind="function"><name>OnConnectRetryStateChanged</name></member>
@@ -555,16 +622,19 @@
   <compound refid="class_u_tryll_tool_call_params" kind="class"><name>UTryllToolCallParams</name>
     <member refid="class_u_tryll_tool_call_params_1a5a8893ff1c399d87ffbb7339ce327144" kind="variable"><name>bOverrideModelName</name></member>
     <member refid="class_u_tryll_tool_call_params_1a310feefdbef3e717a0d7b4075e93335b" kind="variable"><name>ModelName</name></member>
+    <member refid="class_u_tryll_tool_call_params_1aab9709b099f4b20cc150abc571823171" kind="variable"><name>ContextSize</name></member>
     <member refid="class_u_tryll_tool_call_params_1aa987eaaae4dde5872276666582f46355" kind="variable"><name>bOverrideSystemPrompt</name></member>
     <member refid="class_u_tryll_tool_call_params_1a4a39b252cee23fcdfb1c1d956b3ec71b" kind="variable"><name>SystemPrompt</name></member>
     <member refid="class_u_tryll_tool_call_params_1ac38e16194ec8ef1f26d068b8ee618837" kind="variable"><name>bOverrideToolCallFormat</name></member>
     <member refid="class_u_tryll_tool_call_params_1ac3fd9105657b277c4aa4933618f6a90b" kind="variable"><name>ToolCallFormat</name></member>
     <member refid="class_u_tryll_tool_call_params_1aa4848ef967e4c05d9b76d6332d394db2" kind="variable"><name>Tools</name></member>
-    <member refid="class_u_tryll_tool_call_params_1a63d3d623539a88b94e5715beb488a3e1" kind="variable"><name>bGenerateOnNoTool</name></member>
+    <member refid="class_u_tryll_tool_call_params_1ab2c0251564487244e5e0d95b5f1a1290" kind="variable"><name>Mode</name></member>
+    <member refid="class_u_tryll_tool_call_params_1abe6f5f46e4c7536f045f148952d2c67d" kind="variable"><name>bParallelToolCalls</name></member>
     <member refid="class_u_tryll_tool_call_params_1ad169d4da909b0683e11e08966803224b" kind="variable"><name>bNotifyClient</name></member>
     <member refid="class_u_tryll_tool_call_params_1abf7a80df7ea3088e0136a2d5bae82a5b" kind="variable"><name>Sampling</name></member>
     <member refid="class_u_tryll_tool_call_params_1ab2a0263bd17b510c47a24bac00d0d29c" kind="variable"><name>ToolCalledExit</name></member>
     <member refid="class_u_tryll_tool_call_params_1a5ce3bc866322b57c63bcad28e7fb6a7f" kind="variable"><name>NoToolCalledExit</name></member>
+    <member refid="class_u_tryll_tool_call_params_1a635a726902c23780a6ed1308bcaa4fd9" kind="variable"><name>bPauseAfterToolCall</name></member>
     <member refid="class_u_tryll_tool_call_params_1a41825610ed363aa387728ecba9830b29" kind="function"><name>GetNodeType</name></member>
     <member refid="class_u_tryll_tool_call_params_1a7d73b27dcf97471af24777c4dba5ff20" kind="function"><name>Pack</name></member>
   </compound>
@@ -601,7 +671,7 @@
     <member refid="class_u_tryll_voice_input_component_1a396e9239cdc024aa2cec5fc1d0a5aad1" kind="function"><name>EndPlay</name></member>
     <member refid="class_u_tryll_voice_input_component_1a35f74c777500be3eed5151882260c233" kind="function"><name>TickComponent</name></member>
     <member refid="class_u_tryll_voice_input_component_1ac11c52fc591b09f135e1d0f2cce85c59" kind="function"><name>HandleConnectionChanged</name></member>
-    <member refid="class_u_tryll_voice_input_component_1a8fcd79020d7bfb72e4aee8a5a91e363e" kind="function"><name>HandleConfigureSessionComplete</name></member>
+    <member refid="class_u_tryll_voice_input_component_1a40b539c0436dfc6de4883edaed2cb542" kind="function"><name>HandleCreateSessionComplete</name></member>
     <member refid="class_u_tryll_voice_input_component_1a959a8a578fbff12d02b8eabc5637154b" kind="function"><name>HandleAgentReady</name></member>
     <member refid="class_u_tryll_voice_input_component_1ab6cc6ab8fbf1a369f24220252d1bbba5" kind="function"><name>TryAutoCreate</name></member>
     <member refid="class_u_tryll_voice_input_component_1a3b600d8e4c16b0198b51f9f7daf32526" kind="function"><name>HandleTranscriptUpdate</name></member>
@@ -614,44 +684,46 @@
     <member refid="class_u_tryll_workflow_asset_1a34b11a89f70038d7faa8e09ed0a8766d" kind="function"><name>GetPrimaryAssetId</name></member>
     <member refid="class_u_tryll_workflow_asset_1a67922a196c87569b0dd7af34f1e2d8ba" kind="function"><name>GetStartNodeOptions</name></member>
   </compound>
-  <compound refid="namespace_0d000005267141102314303147150236170015264005157246" kind="namespace"><name>@000005267141102314303147150236170015264005157246</name>
+  <compound refid="namespace_0d023031373007141250246061345265360341362125130254" kind="namespace"><name>@023031373007141250246061345265360341362125130254</name>
   </compound>
-  <compound refid="namespace_0d001052101041213200377175176267330026265006045355" kind="namespace"><name>@001052101041213200377175176267330026265006045355</name>
+  <compound refid="namespace_0d047346112203146317205223120152164367244060170104" kind="namespace"><name>@047346112203146317205223120152164367244060170104</name>
   </compound>
-  <compound refid="namespace_0d012075005344376045305147117161142233003010015005" kind="namespace"><name>@012075005344376045305147117161142233003010015005</name>
+  <compound refid="namespace_0d053167326306204075204022201042001220206125372242" kind="namespace"><name>@053167326306204075204022201042001220206125372242</name>
   </compound>
-  <compound refid="namespace_0d027040316243257122347003342223042177171211044104" kind="namespace"><name>@027040316243257122347003342223042177171211044104</name>
+  <compound refid="namespace_0d066351311270062005054127147027004346000027213066" kind="namespace"><name>@066351311270062005054127147027004346000027213066</name>
   </compound>
-  <compound refid="namespace_0d051377356334041116166211104042336256120263200364" kind="namespace"><name>@051377356334041116166211104042336256120263200364</name>
+  <compound refid="namespace_0d070137041125305367107025213111262223261142306343" kind="namespace"><name>@070137041125305367107025213111262223261142306343</name>
   </compound>
-  <compound refid="namespace_0d054060151254143115134245123173245370072213344271" kind="namespace"><name>@054060151254143115134245123173245370072213344271</name>
+  <compound refid="namespace_0d070206153031166030206336274146315060373336365363" kind="namespace"><name>@070206153031166030206336274146315060373336365363</name>
   </compound>
-  <compound refid="namespace_0d056133012272270301161011350162125333002016064062" kind="namespace"><name>@056133012272270301161011350162125333002016064062</name>
+  <compound refid="namespace_0d070305106303130152145111051105320255352272217367" kind="namespace"><name>@070305106303130152145111051105320255352272217367</name>
   </compound>
-  <compound refid="namespace_0d057203335156374043202216126010035205334126135034" kind="namespace"><name>@057203335156374043202216126010035205334126135034</name>
+  <compound refid="namespace_0d110375375233005116330334024360363270064313271172" kind="namespace"><name>@110375375233005116330334024360363270064313271172</name>
   </compound>
-  <compound refid="namespace_0d073110065065341241155322147017170070303312362110" kind="namespace"><name>@073110065065341241155322147017170070303312362110</name>
+  <compound refid="namespace_0d171000210156002145247031154055136017067127274041" kind="namespace"><name>@171000210156002145247031154055136017067127274041</name>
   </compound>
-  <compound refid="namespace_0d152107113247033071007211202271320021270243354257" kind="namespace"><name>@152107113247033071007211202271320021270243354257</name>
+  <compound refid="namespace_0d222167203352370131251346265176221306073036072326" kind="namespace"><name>@222167203352370131251346265176221306073036072326</name>
   </compound>
-  <compound refid="namespace_0d153301044073146012123253043170110362347151260017" kind="namespace"><name>@153301044073146012123253043170110362347151260017</name>
+  <compound refid="namespace_0d241126033161171347020264002003111317057200053314" kind="namespace"><name>@241126033161171347020264002003111317057200053314</name>
   </compound>
-  <compound refid="namespace_0d162122145074200367357161174270202336360042235300" kind="namespace"><name>@162122145074200367357161174270202336360042235300</name>
+  <compound refid="namespace_0d275201161246365006220356347211034260171213225072" kind="namespace"><name>@275201161246365006220356347211034260171213225072</name>
   </compound>
-  <compound refid="namespace_0d171124021173376024074142014144277301025272310262" kind="namespace"><name>@171124021173376024074142014144277301025272310262</name>
+  <compound refid="namespace_0d320155045057163016055000055112237157242061065316" kind="namespace"><name>@320155045057163016055000055112237157242061065316</name>
   </compound>
-  <compound refid="namespace_0d240316031333354277157004365045243167153340356022" kind="namespace"><name>@240316031333354277157004365045243167153340356022</name>
+  <compound refid="namespace_0d324365374122313324365152260372142010052002353140" kind="namespace"><name>@324365374122313324365152260372142010052002353140</name>
   </compound>
-  <compound refid="namespace_0d266020275305120057145243222274344044036120251350" kind="namespace"><name>@266020275305120057145243222274344044036120251350</name>
+  <compound refid="namespace_0d370021236376100046057266172312335321002357017361" kind="namespace"><name>@370021236376100046057266172312335321002357017361</name>
   </compound>
-  <compound refid="namespace_0d317003363006317060127105301034357343011102312002" kind="namespace"><name>@317003363006317060127105301034357343011102312002</name>
+  <compound refid="namespace_0d374052353324300107155306225277253176377005306261" kind="namespace"><name>@374052353324300107155306225277253176377005306261</name>
+  </compound>
+  <compound refid="namespace_0d376166014104156242151375045174055064174341110121" kind="namespace"><name>@376166014104156242151375045174055064174341110121</name>
   </compound>
   <compound refid="namespace_tryll" kind="namespace"><name>Tryll</name>
   </compound>
   <compound refid="namespace_tryll_1_1_generated" kind="namespace"><name>Tryll::Generated</name>
     <member refid="_codegen_fingerprint_8gen_8h_1aeaf4fe655113ab76cfa3f6a8e15f46fa" kind="variable"><name>kCodegenFingerprint</name></member>
   </compound>
-  <compound refid="namespace_tryll_1_1_generated_1_1_v__88c2c81422c1" kind="namespace"><name>Tryll::Generated::V_88c2c81422c1</name>
+  <compound refid="namespace_tryll_1_1_generated_1_1_v__5fe355a174fd" kind="namespace"><name>Tryll::Generated::V_5fe355a174fd</name>
   </compound>
   <compound refid="namespace_tryll_1_1_node_params" kind="namespace"><name>Tryll::NodeParams</name>
   </compound>
@@ -675,6 +747,8 @@
   <compound refid="_tryll_intent_to_instruction_params_8h" kind="file"><name>TryllIntentToInstructionParams.h</name>
   </compound>
   <compound refid="_tryll_node_params_base_8h" kind="file"><name>TryllNodeParamsBase.h</name>
+  </compound>
+  <compound refid="_tryll_pause_params_8h" kind="file"><name>TryllPauseParams.h</name>
   </compound>
   <compound refid="_tryll_retrieve_params_8h" kind="file"><name>TryllRetrieveParams.h</name>
   </compound>
@@ -700,6 +774,7 @@
     <member refid="_tryll_graph_builder_8_nodes_8h_1a2d37166d74be52a8b4b8ae285f6153c1" kind="function"><name>AddIntentToInstructionNode</name></member>
     <member refid="_tryll_graph_builder_8_nodes_8h_1a45e0ab2e34a761c0275fc98c7760ddab" kind="function"><name>AddGenerateAndSpeakNode</name></member>
     <member refid="_tryll_graph_builder_8_nodes_8h_1a42b6844d23722fed2e4dc345ac84db36" kind="function"><name>AddSpeakNode</name></member>
+    <member refid="_tryll_graph_builder_8_nodes_8h_1afc52fff898bb06b2234ffbc91f0503b8" kind="function"><name>AddPauseNode</name></member>
   </compound>
   <compound refid="_tryll_node_params_factory_8h" kind="file"><name>TryllNodeParamsFactory.h</name>
   </compound>
@@ -710,6 +785,8 @@
   <compound refid="_tryll_client_module_8h" kind="file"><name>TryllClientModule.h</name>
     <member refid="_tryll_client_module_8h_1a99838a878a7edc21441144aa731c24aa" kind="function"><name>DECLARE_LOG_CATEGORY_EXTERN</name></member>
   </compound>
+  <compound refid="_tryll_editor_subsystem_8h" kind="file"><name>TryllEditorSubsystem.h</name>
+  </compound>
   <compound refid="_tryll_error_8h" kind="file"><name>TryllError.h</name>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944d" kind="enum"><name>ETryllErrorCode</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daa60852f204ed8028c1c58808b746d115" kind="enumvalue"><name>Ok</name></member>
@@ -718,10 +795,12 @@
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dac85a251cc457840f1e032f1b733e9398" kind="enumvalue"><name>Timeout</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da0e29610e7c8be800f4fbb53ea785afb0" kind="enumvalue"><name>ServerShuttingDown</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da6106a2fb8efa35b8c3053113c9e20595" kind="enumvalue"><name>SessionNotReady</name></member>
+    <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da06a7bffd7a6eecf957b889c311a10282" kind="enumvalue"><name>SessionAlreadyExists</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da22ab3ef06934a2bdad77f3b96ac9c2b7" kind="enumvalue"><name>InvalidAgentId</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3594330042030625e094e1ee40dec1b1" kind="enumvalue"><name>AgentAlreadyDestroyed</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da7ac0537b2e34f2ac65c231e4f3187521" kind="enumvalue"><name>GraphCompilationFailed</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3945ed447cdfbefd74ad77ab2b577871" kind="enumvalue"><name>AgentBusy</name></member>
+    <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da182b5b7eaadc9f5b1b23df4668b55f6d" kind="enumvalue"><name>AgentNotPaused</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae30d06929b59cd217b7e1f476f5aac3f" kind="enumvalue"><name>InferenceFailed</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da3266f1126da3465261453928f9865716" kind="enumvalue"><name>InferenceTimeout</name></member>
     <member refid="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da08e68aafadb44dce2269d49976d66461" kind="enumvalue"><name>MaxStepsExceeded</name></member>
@@ -764,6 +843,7 @@
     <member refid="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8faf73a98aa329740f9054807ac7fcce882" kind="enumvalue"><name>ClassifyIntentLLM</name></member>
     <member refid="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa1262a964318d69a2ae1ae529d8454617" kind="enumvalue"><name>GenerateAndSpeak</name></member>
     <member refid="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa8b1e2b9b342dd37344c6343dc23a6733" kind="enumvalue"><name>Speak</name></member>
+    <member refid="_tryll_graph_description_8h_1a41be0e810ce287993ddb505511cd4e8fa105b296a83f9c105355403f3332af50f" kind="enumvalue"><name>Pause</name></member>
     <member refid="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7" kind="enum"><name>ETryllPlacement</name></member>
     <member refid="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a84176a99f554d911653e280c9270426e" kind="enumvalue"><name>InPlaceOfUser</name></member>
     <member refid="_tryll_graph_description_8h_1a818f5ee1a0842b87f59ed5bebc7277a7a1cb2898b369c491dd824f0edd16c0b7e" kind="enumvalue"><name>BeforeUserAsUser</name></member>
@@ -774,10 +854,19 @@
     <member refid="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a64663f4646781c9c0110838b905daa23" kind="enumvalue"><name>Random</name></member>
     <member refid="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a7fb55ed0b7a30342ba6da306428cae04" kind="enumvalue"><name>First</name></member>
     <member refid="_tryll_graph_description_8h_1a7e589c4a10c506410f41cdb3c55b8271a91a63281bd2e647fe3b92d1d22cd3380" kind="enumvalue"><name>RoundRobin</name></member>
+    <member refid="_tryll_graph_description_8h_1a15488ba9f966e5db9c04cc4d6bde69de" kind="enum"><name>ETryllToolCallMode</name></member>
+    <member refid="_tryll_graph_description_8h_1a15488ba9f966e5db9c04cc4d6bde69dea8f6063e88b21a04a1885c7da46d538f6" kind="enumvalue"><name>DetectOnly</name></member>
+    <member refid="_tryll_graph_description_8h_1a15488ba9f966e5db9c04cc4d6bde69dea273644db5d4ed96487e544fab6841235" kind="enumvalue"><name>CallOrAnswer</name></member>
+    <member refid="_tryll_graph_description_8h_1a15488ba9f966e5db9c04cc4d6bde69dea625644bbedd186dd5e87ea7cd6228fa0" kind="enumvalue"><name>RequireCall</name></member>
     <member refid="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1" kind="enum"><name>ETryllTurnStatus</name></member>
     <member refid="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1a505a83f220c02df2f85c3810cd9ceb38" kind="enumvalue"><name>Success</name></member>
     <member refid="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1a902b0d55fddef6f8d651fe1035b7d4bd" kind="enumvalue"><name>Error</name></member>
     <member refid="_tryll_graph_description_8h_1a39e7b6d32e09d25e2bf65188bb74dfb1aa149e85a44aeec9140e92733d9ed694e" kind="enumvalue"><name>Cancelled</name></member>
+    <member refid="_tryll_graph_description_8h_1ada9892d5ae6f1096031c81c7f50076c1" kind="enum"><name>ETryllCancelMode</name></member>
+    <member refid="_tryll_graph_description_8h_1ada9892d5ae6f1096031c81c7f50076c1adbf311296df3376417089a7fb1da6ffd" kind="enumvalue"><name>StopAndKeep</name></member>
+    <member refid="_tryll_graph_description_8h_1ada9892d5ae6f1096031c81c7f50076c1a5b863790770971d7d2cf75aaa1bd5a2c" kind="enumvalue"><name>StopAndDiscard</name></member>
+  </compound>
+  <compound refid="_tryll_managed_server_process_8h" kind="file"><name>TryllManagedServerProcess.h</name>
   </compound>
   <compound refid="_tryll_model_info_8h" kind="file"><name>TryllModelInfo.h</name>
     <member refid="_tryll_model_info_8h_1a315fd0d6a1925c66ce8e10cc962c3924" kind="enum"><name>ETryllModelStatus</name></member>
@@ -807,7 +896,7 @@
   <compound refid="_tryll_subsystem_8h" kind="file"><name>TryllSubsystem.h</name>
     <member refid="_tryll_subsystem_8h_1a91b1518e91c57e1b3e34927ff3ec3cea" kind="typedef"><name>FTryllOnAgentCreated</name></member>
     <member refid="_tryll_subsystem_8h_1acdaf5a952937c7cf005a107a5556d9c9" kind="typedef"><name>FTryllOnListModels</name></member>
-    <member refid="_tryll_subsystem_8h_1a7bd50ad9244c680aaa33d84919305e28" kind="typedef"><name>FTryllOnConfigureSession</name></member>
+    <member refid="_tryll_subsystem_8h_1aebfebe71ae746dff915eca81272c7921" kind="typedef"><name>FTryllOnCreateSession</name></member>
     <member refid="_tryll_subsystem_8h_1a4d78411eb0f5701dcbe60937ea919f80" kind="typedef"><name>FTryllOnVoiceInputCreated</name></member>
   </compound>
   <compound refid="_tryll_voice_input_8h" kind="file"><name>TryllVoiceInput.h</name>
@@ -823,20 +912,20 @@
   </compound>
   <compound refid="_tryll_workflow_validator_8h" kind="file"><name>TryllWorkflowValidator.h</name>
   </compound>
-  <compound refid="dir_ae1e47b40792601544f85532b4958859" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients</name>
+  <compound refid="dir_ae1e47b40792601544f85532b4958859" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients</name>
   </compound>
-  <compound refid="dir_2ea38e7786b58b4326da8aed9160f931" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated</name>
+  <compound refid="dir_2ea38e7786b58b4326da8aed9160f931" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated</name>
   </compound>
-  <compound refid="dir_63e7036ce3a11d323558fe9bf441282e" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes</name>
+  <compound refid="dir_63e7036ce3a11d323558fe9bf441282e" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes</name>
   </compound>
-  <compound refid="dir_ce990ac36c6f0b3bdd019ac68edf26a8" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public</name>
+  <compound refid="dir_ce990ac36c6f0b3bdd019ac68edf26a8" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public</name>
   </compound>
-  <compound refid="dir_2d515141515bf2e74d881ba79f9137e4" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal/Source</name>
+  <compound refid="dir_2d515141515bf2e74d881ba79f9137e4" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal/Source</name>
   </compound>
-  <compound refid="dir_ec16bb6e80dec0a2ea7d5fa0a916aafb" kind="dir"><name>C:/_tryll/_monorepo2/tryll</name>
+  <compound refid="dir_ec16bb6e80dec0a2ea7d5fa0a916aafb" kind="dir"><name>C:/_tryll/_monorepo3/tryll</name>
   </compound>
-  <compound refid="dir_86e4d1eacb47bf47a46b7a1cbe7617d1" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient</name>
+  <compound refid="dir_86e4d1eacb47bf47a46b7a1cbe7617d1" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient</name>
   </compound>
-  <compound refid="dir_b8761365e93ebda0e5697455672eef41" kind="dir"><name>C:/_tryll/_monorepo2/tryll/clients/unreal</name>
+  <compound refid="dir_b8761365e93ebda0e5697455672eef41" kind="dir"><name>C:/_tryll/_monorepo3/tryll/clients/unreal</name>
   </compound>
 </doxygenindex>

@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://docs.tryllengine.com/how-to/ship-storage-folders-for-builds.html">
       
       
-        <link rel="prev" href="enable-auto-model-downloading.html">
+        <link rel="prev" href="change-agent-parameters.html">
       
       
         <link rel="next" href="add-voice-to-an-agent.html">
@@ -699,6 +699,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -778,6 +784,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1050,6 +1091,41 @@
   
   
     <li class="md-nav__item">
+      <a href="verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1295,14 +1371,14 @@
   
   
     <li class="md-nav__item">
-      <a href="change-agent-parameters.html" class="md-nav__link">
+      <a href="pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1330,14 +1406,14 @@
   
   
     <li class="md-nav__item">
-      <a href="enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1573,6 +1649,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3486,6 +3597,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3624,6 +3741,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3667,6 +3819,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3877,6 +4064,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4487,19 +4709,19 @@ alongside (or pointing at) the server:</p>
 </table>
 <h2 id="setting-storage_data_folder">Setting <code>storage_data_folder</code><a class="headerlink" href="#setting-storage_data_folder" title="Permanent link">&para;</a></h2>
 <p>Tell each session where the storage folder is by sending a non-empty
-<code>storage_data_folder</code> in <code>ConfigureSessionRequest</code>. Every client platform
+<code>storage_data_folder</code> in <code>CreateSessionRequest</code>. Every client platform
 has a convenience setting:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C++</label><label for="__tabbed_1_3">Unity</label><label for="__tabbed_1_4">Unreal</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">client</span><span class="o">.</span><span class="n">configure_session</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">client</span><span class="o">.</span><span class="n">create_session</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">inference_engine</span><span class="o">=</span><span class="s2">&quot;LlamaCpp&quot;</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">storage_data_folder</span><span class="o">=</span><span class="s2">&quot;/absolute/path/to/StorageData&quot;</span><span class="p">,</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">client</span><span class="p">.</span><span class="n">ConfigureSession</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">client</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">(</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Tryll</span><span class="o">::</span><span class="n">InferenceEngine_LlamaCpp</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="cm">/*allowAutoDownload=*/</span><span class="nb">false</span><span class="p">,</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="s">&quot;MyGame&quot;</span><span class="p">,</span>
@@ -4511,14 +4733,14 @@ has a convenience setting:</p>
 </div>
 <div class="tabbed-block">
 <p>Set <strong>TryllRuntimeSettings → StorageDataFolder</strong> in the Project
-Settings panel. The value is passed to <code>ConfigureSession</code> automatically
+Settings panel. The value is passed to <code>CreateSession</code> automatically
 when the session starts. In the Unity editor the path can be relative
 to the project root; in a build it should be an absolute path or use
 <code>Application.streamingAssetsPath</code>.</p>
 </div>
 <div class="tabbed-block">
 <p>Set <strong>Project Settings → Tryll → StorageDataFolder</strong>. The value is
-passed to <code>ConfigureSession</code> automatically. In packaged builds, point
+passed to <code>CreateSession</code> automatically. In packaged builds, point
 this at a directory included via <em>Additional Non-Asset Directories to
 Copy</em> so the server executable can find the files at runtime (see
 <a href="#unreal-packaging">Unreal: packaging</a> below).</p>
@@ -4540,7 +4762,7 @@ Copy</em> so the server executable can find the files at runtime (see
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Application</span><span class="p">.</span><span class="n">streamingAssetsPath</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;StorageData&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Pass this to <code>TryllRuntimeSettings.StorageDataFolder</code> (or directly to
-<code>ConfigureSession</code>) at startup. On all desktop Unity platforms
+<code>CreateSession</code>) at startup. On all desktop Unity platforms
 <code>streamingAssetsPath</code> is a real filesystem directory that the server
 process can read.</p>
 <div class="admonition warning">
@@ -4655,7 +4877,7 @@ resolved from the config file's directory):</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="enable-auto-model-downloading.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Enable auto model downloading">
+          <a href="change-agent-parameters.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Change agent parameters at runtime">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4665,7 +4887,7 @@ resolved from the config file's directory):</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Enable auto model downloading
+                Change agent parameters at runtime
               </div>
             </div>
           </a>

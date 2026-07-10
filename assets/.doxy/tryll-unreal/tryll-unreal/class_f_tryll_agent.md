@@ -14,7 +14,7 @@
 
 
 
-Inherits the following classes: TSharedFromThis< FTryllAgent >
+Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 
 
 
@@ -53,18 +53,23 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >
 
 | Type | Name |
 | ---: | :--- |
+| virtual void | [**AddReferencedObjects**](#function-addreferencedobjects) (FReferenceCollector & Collector) override<br> |
+|  void | [**Cancel**](#function-cancel) (ETryllCancelMode Mode=ETryllCancelMode::StopAndKeep) <br> |
 |  void | [**ChangeParams**](#function-changeparams) (const FString & NodeName, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**ClearAfterDestroyRequest**](#function-clearafterdestroyrequest) () <br> |
 |   | [**FTryllAgent**](#function-ftryllagent) (TSharedPtr&lt; FTryllConnection &gt; InConnection, std::uint64\_t InAgentId) <br> |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br> |
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
+| virtual FString | [**GetReferencerName**](#function-getreferencername) () override const<br> |
 |  void | [**HandleAnswerText**](#function-handleanswertext) (const FString & Text, bool bIsDelta, bool bIsFinal) <br> |
 |  void | [**HandleChangeParamResult**](#function-handlechangeparamresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleError**](#function-handleerror) (const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
+|  void | [**HandleResumeResult**](#function-handleresumeresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleTtsAudio**](#function-handlettsaudio) (TArrayView&lt; const int16 &gt; Pcm) <br> |
 |  void | [**HandleTtsAudioFormat**](#function-handlettsaudioformat) (uint32 SampleRate, uint16 Channels, uint16 BitsPerSample) <br> |
 |  void | [**HandleTurnComplete**](#function-handleturncomplete) (ETryllTurnStatus Status, const FString & DebugInfo, int32 TokensGenerated) <br> |
 |  bool | [**IsValid**](#function-isvalid) () noexcept const<br> |
+|  void | [**Resume**](#function-resume) (const FString & ResumeNode=FString{}, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**SendMessage**](#function-sendmessage) (const FString & Text) <br> |
 |  void | [**SetNodeParamsBaseline**](#function-setnodeparamsbaseline) (const FString & NodeName, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params) <br> |
 |  void | [**SetOnAnswerText**](#function-setonanswertext) (TFunction&lt; void(const FString &Text, bool bIsDelta, bool bIsFinal)&gt; Callback) <br> |
@@ -116,6 +121,40 @@ All callbacks are invoked on the game thread (from UTryllSubsystem::Tick).
     
 ## Public Functions Documentation
 
+
+
+
+### function AddReferencedObjects 
+
+```C++
+virtual void FTryllAgent::AddReferencedObjects (
+    FReferenceCollector & Collector
+) override
+```
+
+
+
+
+<hr>
+
+
+
+### function Cancel 
+
+```C++
+void FTryllAgent::Cancel (
+    ETryllCancelMode Mode=ETryllCancelMode::StopAndKeep
+) 
+```
+
+
+
+Cooperatively cancel the agent's in-flight turn. The turn ends with ETryllTurnStatus::Cancelled via the OnTurnComplete callback. No-op if idle. Mode selects whether the partial interaction is kept (default) or discarded. 
+
+
+        
+
+<hr>
 
 
 
@@ -208,6 +247,19 @@ Return a deep copy of the last authored params for the named node. Use this as t
 
 
 
+### function GetReferencerName 
+
+```C++
+inline virtual FString FTryllAgent::GetReferencerName () override const
+```
+
+
+
+
+<hr>
+
+
+
 ### function HandleAnswerText 
 
 ```C++
@@ -255,6 +307,26 @@ void FTryllAgent::HandleError (
 
 
 
+
+<hr>
+
+
+
+### function HandleResumeResult 
+
+```C++
+void FTryllAgent::HandleResumeResult (
+    std::uint64_t RequestId,
+    const FTryllError & Error
+) 
+```
+
+
+
+Invoked by [**UTryllSubsystem**](class_u_tryll_subsystem.md) when a ResumeOk or ResumeErr arrives. 
+
+
+        
 
 <hr>
 
@@ -317,6 +389,26 @@ inline bool FTryllAgent::IsValid () noexcept const
 
 
 
+
+<hr>
+
+
+
+### function Resume 
+
+```C++
+void FTryllAgent::Resume (
+    const FString & ResumeNode=FString{},
+    TFunction< void(const FTryllError &)> OnComplete=nullptr
+) 
+```
+
+
+
+Resume a turn that is currently paused (see the Pause node / typed OnNodeEvent event\_type="paused" wiring on [**UTryllSubsystem**](class_u_tryll_subsystem.md)). ResumeNode empty continues via the paused node's pending exit route; non-empty jumps to that node by name. Completion is invoked on the game thread: nullopt-equivalent (Error.IsOk()) on success, AgentNotPaused (3012) if the agent is not currently paused, or UnknownNode (3005) if ResumeNode does not name a node in the graph. 
+
+
+        
 
 <hr>
 
@@ -473,5 +565,5 @@ FTryllAgent::~FTryllAgent ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h`
 

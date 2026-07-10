@@ -102,7 +102,7 @@ Obtain a [**ConnectedSession**](class_tryll_1_1_client_1_1_connected_session.md)
 
 ```C++
 auto session = Tryll::Client::TryllClient::RunAndConnect(opts);
-session.GetClient().ConfigureSession(Tryll::Client::TryllClient::SessionConfig{
+session.GetClient().CreateSession(Tryll::Client::TryllClient::SessionConfig{
     .engine = ::Tryll::InferenceEngine_LlamaCpp });
 // …
 ```
@@ -268,5 +268,5 @@ Tryll::Client::ConnectedSession::~ConnectedSession ()
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h`
 

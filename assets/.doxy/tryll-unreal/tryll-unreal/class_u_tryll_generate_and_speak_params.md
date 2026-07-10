@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  int32 | [**MinSentenceChars**](#variable-minsentencechars)   = `12`<br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
@@ -50,10 +51,13 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  float | [**Speed**](#variable-speed)   = `1.0f`<br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  FString | [**Template**](#variable-template)  <br> |
+|  FString | [**TtsLang**](#variable-ttslang)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
 |  bool | [**bOverrideModelName**](#variable-boverridemodelname)   = `false`<br> |
 |  bool | [**bOverrideSystemPrompt**](#variable-boverridesystemprompt)   = `false`<br> |
 |  bool | [**bOverrideTemplate**](#variable-boverridetemplate)   = `false`<br> |
+|  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
 |  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
 
 
@@ -171,6 +175,23 @@ LLM-driven text generation + streaming TTS synthesis in a single fused node. Str
 
 
 
+### variable ContextSize 
+
+```C++
+int32 UTryllGenerateAndSpeakParams::ContextSize;
+```
+
+
+
+KV-cache / context window (n\_ctx) for the LLM in tokens. 0 = fall back to the model variant's context\_size, else the server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
+
+
+        
+
+<hr>
+
+
+
 ### variable DefaultExit 
 
 ```C++
@@ -260,7 +281,7 @@ int32 UTryllGenerateAndSpeakParams::SpeakerId;
 
 
 
-TTS speaker / voice index for multi-speaker models (default 0). 
+TTS speaker / voice index (default 0). Valid range is 0 to the model's speaker count minus 1 — the shipped Supertonic 3 bundle has 10 voice styles (0–9); Pocket TTS is single-speaker, so it must stay 0 there (pick a Pocket voice with tts\_voice instead). Agent creation fails with an out-of-range error for values the model cannot satisfy. 
 
 
         
@@ -312,6 +333,19 @@ FString UTryllGenerateAndSpeakParams::Template;
 
 
 
+### variable TtsLang 
+
+```C++
+FString UTryllGenerateAndSpeakParams::TtsLang;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable TtsModelName 
 
 ```C++
@@ -320,6 +354,23 @@ FTryllModelName UTryllGenerateAndSpeakParams::TtsModelName;
 
 
 
+
+<hr>
+
+
+
+### variable TtsVoice 
+
+```C++
+FTryllStoragePath UTryllGenerateAndSpeakParams::TtsVoice;
+```
+
+
+
+Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path relative to the session storage root pointing at a 10–20 s clean mono recording of the target voice. Empty = the model's default voice. Ignored by fixed-voice families (use speaker\_id there). 
+
+
+        
 
 <hr>
 
@@ -368,6 +419,23 @@ bool UTryllGenerateAndSpeakParams::bOverrideTemplate;
 
 
 Mustache template applied to the user-area message at projection time. Set to true to override the inherited Template value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsLang 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideTtsLang;
+```
+
+
+
+TTS language hint for multilingual models that select the language per call (e.g. Supertonic 3: "en", "de", "fr", …). Empty = the model's catalog default. Ignored by families whose language is fixed by the model itself (e.g. Pocket TTS per-language models). Set to true to override the inherited TtsLang value. 
 
 
         
@@ -427,5 +495,5 @@ Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#func
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h`
 

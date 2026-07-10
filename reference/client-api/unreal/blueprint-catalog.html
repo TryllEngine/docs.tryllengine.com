@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../../../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../../../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3523,6 +3634,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3664,6 +3781,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../../nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../nodes/instruction.html" class="md-nav__link">
         
   
@@ -3707,6 +3859,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3917,6 +4104,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4568,7 +4790,7 @@ or event to place; use the
 <td>Callable</td>
 <td><code>Engine</code> (<code>ETryllInferenceEngine</code>)</td>
 <td>—</td>
-<td>Sends <code>ConfigureSessionRequest</code>. Fires <code>OnConfigureSessionComplete(bSuccess)</code>. Only valid once, immediately after <code>OnConnectionChanged(true)</code>. See <a href="../../agent-parameters.html">Agent Parameters</a> and <a href="../../server-configuration.html">Server Configuration</a>.</td>
+<td>Sends <code>CreateSessionRequest</code>. Fires <code>OnCreateSessionComplete(bSuccess)</code>. Only valid once, immediately after <code>OnConnectionChanged(true)</code>. See <a href="../../agent-parameters.html">Agent Parameters</a> and <a href="../../server-configuration.html">Server Configuration</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -4787,6 +5009,11 @@ property list.</p>
 <td><code>bSuccess</code> (<code>bool</code>), <code>ErrorMessage</code> (<code>FString</code>)</td>
 <td>A <code>ChangeParams</code> request completed; <code>ErrorMessage</code> is empty on success.</td>
 </tr>
+<tr>
+<td><strong>On Resumed</strong></td>
+<td><code>bSuccess</code> (<code>bool</code>), <code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>A <code>Resume</code> request completed; <code>ErrorMessage</code> is empty on success, otherwise describes <code>AgentNotPaused</code> (3012) or <code>UnknownNode</code> (3005).</td>
+</tr>
 </tbody>
 </table>
 <h2 id="events-trylltts-on-utryllspeakercomponent">Events — <code>Tryll|TTS</code> (on <code>UTryllSpeakerComponent</code>)<a class="headerlink" href="#events-trylltts-on-utryllspeakercomponent" title="Permanent link">&para;</a></h2>
@@ -4873,7 +5100,7 @@ react to the audio lifecycle.</p>
 <tr>
 <td><strong>On Configure Session Complete</strong></td>
 <td><code>bSuccess</code> (<code>bool</code>)</td>
-<td>Response to <code>ConfigureSession</code>.</td>
+<td>Response to <code>CreateSession</code>.</td>
 </tr>
 <tr>
 <td><strong>On List Models Complete</strong></td>
@@ -4904,6 +5131,11 @@ react to the audio lifecycle.</p>
 <td><strong>On Tool Call</strong></td>
 <td><code>AgentId</code> (<code>int64</code>), <code>ToolName</code> (<code>FString</code>), <code>ArgumentsJson</code> (<code>FString</code>)</td>
 <td>A <a href="../../nodes/tool-call.html">ToolCall node</a> with <code>notify_client=true</code> detected a call. See <a href="../../../how-to/define-and-handle-tool-calls.html">Define and Handle Tool Calls</a>.</td>
+</tr>
+<tr>
+<td><strong>On Paused</strong></td>
+<td><code>AgentId</code> (<code>int64</code>), <code>NodeName</code> (<code>FString</code>), <code>PendingExit</code> (<code>FString</code>)</td>
+<td>The executor paused a turn between nodes (<a href="../../nodes/pause.html">Pause node</a>, or ToolCall's <code>PauseAfterToolCall</code>). See <a href="../../../how-to/pause-and-resume-turns.html">How to pause and resume a turn</a>.</td>
 </tr>
 <tr>
 <td><strong>On Create String Storage Complete</strong></td>
@@ -4990,7 +5222,7 @@ them on the <code>UTryllAgentComponent</code>'s Details panel or inside a
 <tr>
 <td><strong><code>ETryllInferenceEngine</code></strong></td>
 <td><code>UENUM(BlueprintType)</code></td>
-<td>Inference backend selector passed to <code>ConfigureSession</code>.</td>
+<td>Inference backend selector passed to <code>CreateSession</code>.</td>
 </tr>
 <tr>
 <td><strong><code>ETryllNodeType</code></strong></td>
@@ -5039,7 +5271,7 @@ with no code.</p>
 <td>Connect once the subsystem initializes.</td>
 </tr>
 <tr>
-<td><code>bAutoConfigureSession</code></td>
+<td><code>bAutoCreateSession</code></td>
 <td><code>true</code></td>
 <td>Configure the session from the engine fields once connected.</td>
 </tr>
@@ -5059,11 +5291,6 @@ with no code.</p>
 <td>Project-relative root for storage / hotword paths.</td>
 </tr>
 <tr>
-<td><code>bAllowAutoModelDownloading</code></td>
-<td><code>false</code></td>
-<td>Auto-download missing models during <code>CreateAgent</code> (development only).</td>
-</tr>
-<tr>
 <td><code>ConnectMaxAttempts</code> / <code>ConnectRetryDelaySeconds</code></td>
 <td><code>5</code> / <code>1.0</code></td>
 <td>Connect-retry policy.</td>
@@ -5073,8 +5300,8 @@ with no code.</p>
 <p>Full per-field detail: <a href="../../../tryll-unreal/class_u_tryll_runtime_settings.html"><code>UTryllRuntimeSettings</code></a>.</p>
 <h2 id="typical-blueprint-flows">Typical Blueprint flows<a class="headerlink" href="#typical-blueprint-flows" title="Permanent link">&para;</a></h2>
 <p><strong>First inference</strong> — bind <code>OnConnectionChanged</code> on the subsystem,
-call <code>ConfigureSession</code> on <code>bConnected=true</code>, wait for
-<code>OnConfigureSessionComplete</code>, then call <code>CreateAgent</code> on the
+call <code>CreateSession</code> on <code>bConnected=true</code>, wait for
+<code>OnCreateSessionComplete</code>, then call <code>CreateAgent</code> on the
 component. See <a href="../../../getting-started/first-inference-unreal.html">First Inference in Unreal</a>.</p>
 <p><strong>Streaming a reply</strong> — bind <code>OnAnswerText</code> on the agent component,
 append <code>Text</code> to your UI widget on each event, show the "done" state

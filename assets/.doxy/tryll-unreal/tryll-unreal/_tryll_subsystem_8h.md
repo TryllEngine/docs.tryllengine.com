@@ -19,6 +19,7 @@
 * `#include "TryllModelInfo.h"`
 * `#include "TryllVoiceInput.h"`
 * `#include "TryllRuntimeSettings.h"`
+* `#include "TryllManagedServerProcess.h"`
 * `#include "TryllSubsystem.generated.h"`
 
 
@@ -49,7 +50,7 @@
 | Type | Name |
 | ---: | :--- |
 | typedef void(TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnAgentCreated**](#typedef-ftryllonagentcreated)  <br> |
-| typedef void([**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnConfigureSession**](#typedef-ftryllonconfiguresession)  <br> |
+| typedef void([**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnCreateSession**](#typedef-ftrylloncreatesession)  <br> |
 | typedef void(TArray&lt; [**FTryllModelInfo**](struct_f_tryll_model_info.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnListModels**](#typedef-ftryllonlistmodels)  <br> |
 | typedef void(TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnVoiceInputCreated**](#typedef-ftryllonvoiceinputcreated)  <br> |
 
@@ -118,10 +119,10 @@ using FTryllOnAgentCreated = void(TSharedPtr<FTryllAgent>, FTryllError);
 
 
 
-### typedef FTryllOnConfigureSession 
+### typedef FTryllOnCreateSession 
 
 ```C++
-using FTryllOnConfigureSession = void(FTryllError);
+using FTryllOnCreateSession = void(FTryllError);
 ```
 
 
@@ -156,5 +157,5 @@ using FTryllOnVoiceInputCreated = void(TSharedPtr<FTryllVoiceInput>, FTryllError
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

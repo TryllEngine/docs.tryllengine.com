@@ -699,6 +699,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -778,6 +784,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1023,6 +1064,41 @@
     
   
     Manage models in the editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
   
 
     
@@ -1476,14 +1552,14 @@
   
   
     <li class="md-nav__item">
-      <a href="change-agent-parameters.html" class="md-nav__link">
+      <a href="pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1511,14 +1587,14 @@
   
   
     <li class="md-nav__item">
-      <a href="enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1589,6 +1665,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3502,6 +3613,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3640,6 +3757,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3683,6 +3835,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3893,6 +4080,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4759,10 +4981,10 @@ unrelated to anything in <code>my-docs.kb.json</code>.</p>
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Missing embedding model.</strong> The KB config must declare
-  <code>embedding_model</code>. Preload that model (or call
-  <code>CreateEmbeddedStringStorage</code> with Path A and auto-download enabled)
-  before <code>CreateAgent</code> — graph creation does not auto-download
-  embedding models for file-backed storages.</li>
+  <code>embedding_model</code>, and that model must already be downloaded — neither
+  <code>CreateEmbeddedStringStorage</code> nor <code>CreateAgent</code> downloads embedding
+  models for file-backed storages automatically. Preload it via the
+  editor Model Manager or <code>DownloadModelRequest</code> before <code>CreateAgent</code>.</li>
 <li><strong>Stale index.</strong> If you edited <code>my-docs.kb.json</code>, Tryll notices the
   newer mtime and rebuilds <code>.usearch</code>. Expect a one-time delay.</li>
 <li><strong>Answer ignores context.</strong> Usually the <code>placement</code> is wrong for

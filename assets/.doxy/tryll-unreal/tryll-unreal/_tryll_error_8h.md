@@ -102,10 +102,12 @@ enum ETryllErrorCode {
     Timeout = 1003,
     ServerShuttingDown = 2001,
     SessionNotReady = 2002,
+    SessionAlreadyExists = 2003,
     InvalidAgentId = 3001,
     AgentAlreadyDestroyed = 3002,
     GraphCompilationFailed = 3003,
     AgentBusy = 3004,
+    AgentNotPaused = 3012,
     InferenceFailed = 4001,
     InferenceTimeout = 4002,
     MaxStepsExceeded = 4003,
@@ -142,5 +144,5 @@ Ranges: 1xxx connection-level 2xxx session-level 3xxx agent-level 4xxx inference
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h`
 

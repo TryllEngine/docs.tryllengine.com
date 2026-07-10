@@ -691,6 +691,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -767,6 +773,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1039,6 +1080,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1284,14 +1360,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1319,14 +1395,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1397,6 +1473,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3310,6 +3421,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3448,6 +3565,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3491,6 +3643,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3701,6 +3888,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4168,6 +4390,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#variable-contextsize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        variable ContextSize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#variable-foundexit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4421,6 +4654,10 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">int32</td>
+<td style="text-align: left;"><a href="#variable-contextsize"><strong>ContextSize</strong></a>   = <code>0</code><br></td>
+</tr>
+<tr>
 <td style="text-align: right;">FString</td>
 <td style="text-align: left;"><a href="#variable-foundexit"><strong>FoundExit</strong></a>  <br></td>
 </tr>
@@ -4536,114 +4773,120 @@
 <h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
 <p>Intent classification node (LLM first-token logprob over letter candidates). Scores labels via a dedicated LLM and attaches an IntentionComponent. </p>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="variable-contextsize">variable ContextSize<a class="headerlink" href="#variable-contextsize" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">int32</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">ContextSize</span><span class="p">;</span>
+</code></pre></div>
+<p>KV-cache / context window (n_ctx) for this node in tokens. 0 = fall back to the model variant's context_size, else the server default_n_ctx. Validated against the model's trained maximum at agent creation. </p>
+<hr>
+
 <h3 id="variable-foundexit">variable FoundExit<a class="headerlink" href="#variable-foundexit" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">FoundExit</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">FoundExit</span><span class="p">;</span>
 </code></pre></div>
 <p>Exit taken when classification produced a label above threshold/margin. Empty string = END. Graph exit "found" — target node name; empty = END. </p>
 <hr>
 
 <h3 id="variable-historyturns">variable HistoryTurns<a class="headerlink" href="#variable-historyturns" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">int32</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">HistoryTurns</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">int32</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">HistoryTurns</span><span class="p">;</span>
 </code></pre></div>
 <p>Number of dialog history turns included in the classification context. </p>
 <hr>
 
 <h3 id="variable-intentsids">variable IntentsIds<a class="headerlink" href="#variable-intentsids" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">IntentsIds</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">IntentsIds</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
 <h3 id="variable-intentsprompt">variable IntentsPrompt<a class="headerlink" href="#variable-intentsprompt" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">IntentsPrompt</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">IntentsPrompt</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
 <h3 id="variable-margin">variable Margin<a class="headerlink" href="#variable-margin" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Margin</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Margin</span><span class="p">;</span>
 </code></pre></div>
 <p>Minimum margin between top and second label probabilities. </p>
 <hr>
 
 <h3 id="variable-modelname">variable ModelName<a class="headerlink" href="#variable-modelname" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">FTryllModelName</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">ModelName</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">FTryllModelName</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">ModelName</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
 <h3 id="variable-notfoundexit">variable NotFoundExit<a class="headerlink" href="#variable-notfoundexit" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">NotFoundExit</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">NotFoundExit</span><span class="p">;</span>
 </code></pre></div>
 <p>Exit taken when no label cleared the threshold/margin. Empty string = END. Graph exit "not_found" — target node name; empty = END. </p>
 <hr>
 
 <h3 id="variable-notfoundintent">variable NotFoundIntent<a class="headerlink" href="#variable-notfoundintent" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">NotFoundIntent</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">NotFoundIntent</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
 <h3 id="variable-systemprompt">variable SystemPrompt<a class="headerlink" href="#variable-systemprompt" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">SystemPrompt</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">FString</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">SystemPrompt</span><span class="p">;</span>
 </code></pre></div>
 <hr>
 
 <h3 id="variable-threshold">variable Threshold<a class="headerlink" href="#variable-threshold" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Threshold</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Threshold</span><span class="p">;</span>
 </code></pre></div>
 <p>First-token probability threshold for the winning label. </p>
 <hr>
 
 <h3 id="variable-bnotifyclient">variable bNotifyClient<a class="headerlink" href="#variable-bnotifyclient" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bNotifyClient</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bNotifyClient</span><span class="p">;</span>
 </code></pre></div>
 <p>When true, fire OnNodeEvent("intent_classified", …) on the found path. </p>
 <hr>
 
 <h3 id="variable-boverrideintentsids">variable bOverrideIntentsIds<a class="headerlink" href="#variable-boverrideintentsids" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideIntentsIds</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideIntentsIds</span><span class="p">;</span>
 </code></pre></div>
 <p>Comma-separated intent IDs (e.g. "greet,farewell,other"). Structural because label-to-token-ID mapping is built at construction. Set to true to override the inherited IntentsIds value. </p>
 <hr>
 
 <h3 id="variable-boverrideintentsprompt">variable bOverrideIntentsPrompt<a class="headerlink" href="#variable-boverrideintentsprompt" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideIntentsPrompt</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideIntentsPrompt</span><span class="p">;</span>
 </code></pre></div>
 <p>Comma-separated intent prompt labels / descriptions. Structural because the projection scaffolding and label-token mapping are built at construction. Set to true to override the inherited IntentsPrompt value. </p>
 <hr>
 
 <h3 id="variable-boverridemodelname">variable bOverrideModelName<a class="headerlink" href="#variable-boverridemodelname" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideModelName</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideModelName</span><span class="p">;</span>
 </code></pre></div>
 <p>Model catalog name. Structural because the token-ID mapping is built from the model's vocabulary at construction. Set to true to override the inherited ModelName value. </p>
 <hr>
 
 <h3 id="variable-boverridenotfoundintent">variable bOverrideNotFoundIntent<a class="headerlink" href="#variable-boverridenotfoundintent" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideNotFoundIntent</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideNotFoundIntent</span><span class="p">;</span>
 </code></pre></div>
 <p>Intent ID returned when no label clears the threshold/margin. Set to true to override the inherited NotFoundIntent value. </p>
 <hr>
 
 <h3 id="variable-boverridesystemprompt">variable bOverrideSystemPrompt<a class="headerlink" href="#variable-boverridesystemprompt" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideSystemPrompt</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">bOverrideSystemPrompt</span><span class="p">;</span>
 </code></pre></div>
 <p>Prepended before the user turn during classification projection. Set to true to override the inherited SystemPrompt value. </p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getnodetype">function GetNodeType<a class="headerlink" href="#function-getnodetype" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ETryllNodeType</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">GetNodeType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ETryllNodeType</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">GetNodeType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
 <p>Implements <a href="class_u_tryll_node_params_base.html#function-getnodetype"><em>UTryllNodeParamsBase::GetNodeType</em></a></p>
 <hr>
 
 <h3 id="function-pack">function Pack<a class="headerlink" href="#function-pack" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">flatbuffers</span><span class="o">::</span><span class="n">Offset</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Pack</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">flatbuffers</span><span class="o">::</span><span class="n">FlatBufferBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Fbb</span><span class="p">,</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">Tryll</span><span class="o">::</span><span class="n">NodeParams</span><span class="o">::</span><span class="n">NodeParams</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">OutType</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">flatbuffers</span><span class="o">::</span><span class="n">Offset</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">UTryllClassifyIntentLLMParams</span><span class="o">::</span><span class="n">Pack</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">flatbuffers</span><span class="o">::</span><span class="n">FlatBufferBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Fbb</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="n">Tryll</span><span class="o">::</span><span class="n">NodeParams</span><span class="o">::</span><span class="n">NodeParams</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">OutType</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </code></pre></div>
 <p>Implements <a href="class_u_tryll_node_params_base.html#function-pack"><em>UTryllNodeParamsBase::Pack</em></a></p>
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h</code></p>
+<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h</code></p>
 
 
 

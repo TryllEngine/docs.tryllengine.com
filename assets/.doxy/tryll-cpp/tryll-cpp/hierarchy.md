@@ -21,7 +21,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) _Per-model-kind session configuration._ 
 * **struct** [**Tryll::Client::UtteranceOptions**](struct_tryll_1_1_client_1_1_utterance_options.md) _Per-utterance options passed to BeginUtterance._ 
 * **struct** [**Tryll::Client::VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md) _Parameters for creating a_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _handle._
-* **struct** [**Tryll::Generated::V\_88c2c81422c1::Fingerprint**](struct_tryll_1_1_generated_1_1_v__88c2c81422c1_1_1_fingerprint.md) 
+* **struct** [**Tryll::Generated::V\_5fe355a174fd::Fingerprint**](struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint.md) 
 * **class** **std::runtime_error**    
     * **class** [**Tryll::Client::TryllError**](class_tryll_1_1_client_1_1_tryll_error.md) _Exception thrown by_ [_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _and_[_**AgentProxy**_](class_tryll_1_1_client_1_1_agent_proxy.md) _on server errors or disconnects._
 

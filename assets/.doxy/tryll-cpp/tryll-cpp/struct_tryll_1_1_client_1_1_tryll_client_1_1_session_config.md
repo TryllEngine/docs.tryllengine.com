@@ -36,7 +36,6 @@ _Per-model-kind session configuration._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  bool | [**allowAutoModelDownloading**](#variable-allowautomodeldownloading)   = `false`<br> |
 |  ::Tryll::InferenceEngine | [**embeddingEngine**](#variable-embeddingengine)   = `::Tryll::InferenceEngine\_Mock`<br> |
 |  ::Tryll::InferenceEngine | [**engine**](#variable-engine)   = `::Tryll::InferenceEngine\_Mock`<br> |
 |  std::string | [**gameName**](#variable-gamename)  <br> |
@@ -97,23 +96,6 @@ Each model kind dispatches against its own engine: language models use engine, S
     
 ## Public Attributes Documentation
 
-
-
-
-### variable allowAutoModelDownloading 
-
-```C++
-bool Tryll::Client::TryllClient::SessionConfig::allowAutoModelDownloading;
-```
-
-
-
-When `true`, the server automatically downloads any missing models referenced by a graph during [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent). Intended for development and prototyping — not for production use. When this flag is set, [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent) and [**CreateAgentAsync**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync) use a 30-minute default timeout unless the caller overrides it explicitly. 
-
-
-        
-
-<hr>
 
 
 
@@ -215,5 +197,5 @@ std::chrono::milliseconds Tryll::Client::TryllClient::SessionConfig::timeout;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h`
 

@@ -43,11 +43,13 @@ Inherits the following classes: UActorComponent
 |  FOnTryllAgentAnswerText | [**OnAnswerText**](#variable-onanswertext)  <br> |
 |  FOnTryllAgentError | [**OnError**](#variable-onerror)  <br> |
 |  FOnTryllParamChanged | [**OnParamChanged**](#variable-onparamchanged)  <br> |
+|  FOnTryllResumed | [**OnResumed**](#variable-onresumed)  <br> |
 |  FOnTryllAgentTurnComplete | [**OnTurnComplete**](#variable-onturncomplete)  <br> |
 |  TObjectPtr&lt; [**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md) &gt; | [**Speaker**](#variable-speaker)   = `nullptr`<br> |
 |  [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) \* | [**WorkflowAsset**](#variable-workflowasset)   = `nullptr`<br> |
 |  bool | [**bAutoCreateOnConnect**](#variable-bautocreateonconnect)   = `true`<br> |
 |  bool | [**bEnableDiagnostics**](#variable-benablediagnostics)   = `false`<br> |
+|  bool | [**bMaintainDialogueHistory**](#variable-bmaintaindialoguehistory)   = `true`<br> |
 
 
 
@@ -75,6 +77,7 @@ Inherits the following classes: UActorComponent
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
 |  TArray&lt; FString &gt; | [**GetStartNodeOptions**](#function-getstartnodeoptions) () const<br> |
 |  bool | [**IsAgentReady**](#function-isagentready) () const<br> |
+|  void | [**Resume**](#function-resume) (const FString & ResumeNode=TEXT("")) <br> |
 |  void | [**SendMessage**](#function-sendmessage) (const FString & Message) <br> |
 |   | [**UTryllAgentComponent**](#function-utryllagentcomponent) () <br> |
 
@@ -124,7 +127,7 @@ Graph resolution order:
 
 
 
-The component auto-creates an agent once the session is ready (if bAutoCreateOnConnect) — it queues until OnConfigureSessionComplete if it spawns before the session is configured. It auto-destroys the agent on EndPlay. 
+The component auto-creates an agent once the session is ready (if bAutoCreateOnConnect) — it queues until OnCreateSessionComplete if it spawns before the session is configured. It auto-destroys the agent on EndPlay. 
 
 
     
@@ -243,6 +246,27 @@ Fired when a ChangeParam request completes.
 
 
 
+### variable OnResumed 
+
+```C++
+FOnTryllResumed UTryllAgentComponent::OnResumed;
+```
+
+
+
+Fired when a Resume request completes.
+* bSuccess = true on Ack; false on any server error (e.g. AgentNotPaused, UnknownNode).
+* ErrorMessage = empty on success; human-readable description on failure. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### variable OnTurnComplete 
 
 ```C++
@@ -326,6 +350,23 @@ bool UTryllAgentComponent::bEnableDiagnostics;
 
 
 Request the server to populate TurnComplete.debug\_info with workflow execution data. Intended for development and QA; off by default for zero overhead in production. 
+
+
+        
+
+<hr>
+
+
+
+### variable bMaintainDialogueHistory 
+
+```C++
+bool UTryllAgentComponent::bMaintainDialogueHistory;
+```
+
+
+
+When true (default) the agent keeps its full dialogue history across turns. When false the history is discarded after each turn — a stateless agent, useful for technical/classification agents that should not store or project prior turns. 
 
 
         
@@ -474,6 +515,35 @@ True after the server has confirmed agent creation (OnAgentReady has fired).
 
 
 
+### function Resume 
+
+```C++
+void UTryllAgentComponent::Resume (
+    const FString & ResumeNode=TEXT("")
+) 
+```
+
+
+
+Resume a turn that is currently paused (see the subsystem's OnPaused event, fired for the Pause node / ToolCall's PauseAfterToolCall). On completion (success or error), OnResumed fires.
+
+
+
+
+**Parameters:**
+
+
+* `ResumeNode` Empty continues via the paused node's pending exit route; non-empty jumps to that node by name. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function SendMessage 
 
 ```C++
@@ -535,5 +605,5 @@ virtual void UTryllAgentComponent::EndPlay (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h`
 

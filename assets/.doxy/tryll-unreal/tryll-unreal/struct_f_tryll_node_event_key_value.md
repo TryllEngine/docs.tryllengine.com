@@ -85,7 +85,7 @@ _Intent classification typed event — fired for NodeEvent event\_type="intent\_
 ## Detailed Description
 
 
-Generic NodeEvent fallback — fired for any event\_type without a typed delegate (or when the typed delegate has no subscribers). KvPairs preserves wire order. 
+Pause typed event — fired for NodeEvent event\_type="paused" (the executor paused the turn between nodes; ChangeAgentParam is allowed while paused). Generic NodeEvent fallback — fired for any event\_type without a typed delegate (or when the typed delegate has no subscribers). KvPairs preserves wire order. 
 
 
     
@@ -119,5 +119,5 @@ FString FTryllNodeEventKeyValue::Value;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h`
 

@@ -121,7 +121,7 @@ Tryll::Client::ManagedServerOptions opts;
 opts.exe  = "path/to/tryll_server.exe";
 opts.port = 9100;
 auto session = Tryll::Client::TryllClient::RunAndConnect(opts);
-session.GetClient().ConfigureSession(Tryll::Client::TryllClient::SessionConfig{
+session.GetClient().CreateSession(Tryll::Client::TryllClient::SessionConfig{
     .engine = ::Tryll::InferenceEngine_LlamaCpp });
 auto agent = session.GetClient().CreateAgent(graph);
 agent.SendText("hi");
@@ -137,7 +137,7 @@ Advanced / remote-server flow (no server management):
 
 ```C++
 auto client = Tryll::Client::TryllClient::Connect("127.0.0.1", 9100);
-client.ConfigureSession(Tryll::Client::TryllClient::SessionConfig{
+client.CreateSession(Tryll::Client::TryllClient::SessionConfig{
     .engine = ::Tryll::InferenceEngine_LlamaCpp });
 auto agent = client.CreateAgent(graph);
 agent.SendText("hi");
@@ -150,5 +150,5 @@ client.Shutdown();
     
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/TryllClient.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h`
 

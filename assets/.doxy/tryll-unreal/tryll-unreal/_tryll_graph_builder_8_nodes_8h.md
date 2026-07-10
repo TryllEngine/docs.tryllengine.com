@@ -23,6 +23,7 @@
 * `#include "Generated/Nodes/TryllIntentToInstructionParams.h"`
 * `#include "Generated/Nodes/TryllGenerateAndSpeakParams.h"`
 * `#include "Generated/Nodes/TryllSpeakParams.h"`
+* `#include "Generated/Nodes/TryllPauseParams.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 
@@ -74,6 +75,7 @@
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddHumanMessageGuardrailNode**](#function-addhumanmessageguardrailnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllHumanMessageGuardrailParams**](class_u_tryll_human_message_guardrail_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddInstructionNode**](#function-addinstructionnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllInstructionParams**](class_u_tryll_instruction_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddIntentToInstructionNode**](#function-addintenttoinstructionnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md) \* Params) <br> |
+|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddPauseNode**](#function-addpausenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllPauseParams**](class_u_tryll_pause_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddRetrieveNode**](#function-addretrievenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddSpeakNode**](#function-addspeaknode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllSpeakParams**](class_u_tryll_speak_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddToolCallNode**](#function-addtoolcallnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md) \* Params) <br> |
@@ -278,6 +280,27 @@ Add a IntentToInstruction node to the graph.
 
 
 
+### function AddPauseNode 
+
+```C++
+FTryllGraphBuilder & AddPauseNode (
+    FTryllGraphBuilder & Builder,
+    FString Name,
+    UTryllPauseParams * Params
+) 
+```
+
+
+
+Add a Pause node to the graph. 
+
+
+        
+
+<hr>
+
+
+
 ### function AddRetrieveNode 
 
 ```C++
@@ -340,5 +363,5 @@ Add a ToolCall node to the graph.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h`
 

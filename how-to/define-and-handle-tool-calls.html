@@ -16,7 +16,7 @@
         <link rel="prev" href="use-canned-responses-and-guardrails.html">
       
       
-        <link rel="next" href="change-agent-parameters.html">
+        <link rel="next" href="pause-and-resume-turns.html">
       
       
         
@@ -699,6 +699,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -778,6 +784,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1023,6 +1064,41 @@
     
   
     Manage models in the editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
   
 
     
@@ -1437,14 +1513,14 @@
   
   
     <li class="md-nav__item">
-      <a href="change-agent-parameters.html" class="md-nav__link">
+      <a href="pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1472,14 +1548,14 @@
   
   
     <li class="md-nav__item">
-      <a href="enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1550,6 +1626,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3463,6 +3574,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3601,6 +3718,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3644,6 +3796,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3854,6 +4041,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4454,20 +4676,19 @@ graph. Or build them at runtime in C++ and assign to the
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="p">.</span><span class="n">AddToolCall</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TryllToolCallParams</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">{</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">Tools</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TryllToolDefinition</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">setLight</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">ToolCallFormat</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;llama3&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">NotifyClient</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">GenerateOnNoTool</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">,</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">SystemPrompt</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;You are a smart-home controller.&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">ToolCalledExit</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// &quot;&quot; (END) — turn ends after a tool call</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">NoToolCalledExit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;answer&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="p">.</span><span class="n">AddGenerate</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TryllGenerateParams</span><span class="p">())</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="c1">// answer.DefaultExit is &quot;&quot; (END) by default</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">agent</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">RequestCreateAgentAsync</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">NotifyClient</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">Mode</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">TryllToolCallMode</span><span class="p">.</span><span class="n">DetectOnly</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">SystemPrompt</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;You are a smart-home controller.&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">ToolCalledExit</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// &quot;&quot; (END) — turn ends after a tool call</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">NoToolCalledExit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;answer&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="p">})</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">.</span><span class="n">AddGenerate</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TryllGenerateParams</span><span class="p">())</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="c1">// answer.DefaultExit is &quot;&quot; (END) by default</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p">.</span><span class="n">Build</span><span class="p">();</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">agent</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">RequestCreateAgentAsync</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4476,44 +4697,42 @@ graph. Or build them at runtime in C++ and assign to the
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">ToolCallParamsT</span><span class="w"> </span><span class="n">detectParams</span><span class="p">;</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">tools</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">setLight</span><span class="p">};</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">tool_call_format</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;llama3&quot;</span><span class="p">;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">notify_client</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">generate_on_no_tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">system_prompt</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;You are a smart-home controller.&quot;</span><span class="p">;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">tool_called_exit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">        </span><span class="c1">// &quot;&quot; (END) — turn ends after a tool call</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">no_tool_called_exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;answer&quot;</span><span class="p">;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">GraphDescription</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="n">graph</span><span class="p">.</span><span class="n">AddToolCall</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">detectParams</span><span class="p">))</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">     </span><span class="p">.</span><span class="n">AddGenerate</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GenerateParamsT</span><span class="p">{})</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">     </span><span class="c1">// answer.default_exit is &quot;&quot; (END) by default</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">     </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">)</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">     </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="k">auto</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">CreateAgent</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">notify_client</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">mode</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">Tryll</span><span class="o">::</span><span class="n">ToolCallMode_DetectOnly</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">system_prompt</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;You are a smart-home controller.&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">tool_called_exit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">        </span><span class="c1">// &quot;&quot; (END) — turn ends after a tool call</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">detectParams</span><span class="p">.</span><span class="n">no_tool_called_exit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;answer&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">GraphDescription</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">graph</span><span class="p">.</span><span class="n">AddToolCall</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">detectParams</span><span class="p">))</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">     </span><span class="p">.</span><span class="n">AddGenerate</span><span class="p">(</span><span class="s">&quot;answer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">GenerateParamsT</span><span class="p">{})</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">     </span><span class="c1">// answer.default_exit is &quot;&quot; (END) by default</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">     </span><span class="p">.</span><span class="n">SetStartNode</span><span class="p">(</span><span class="s">&quot;detect&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">     </span><span class="p">.</span><span class="n">SetDefaultModelName</span><span class="p">(</span><span class="s">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">auto</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">CreateAgent</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphDescription</span><span class="p">,</span> <span class="n">ToolCallParams</span><span class="p">,</span> <span class="n">GenerateParams</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">GraphDescription</span><span class="p">,</span> <span class="n">ToolCallParams</span><span class="p">,</span> <span class="n">ToolCallMode</span><span class="p">,</span> <span class="n">GenerateParams</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">(</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">GraphDescription</span><span class="p">()</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;detect&quot;</span><span class="p">,</span> <span class="n">ToolCallParams</span><span class="p">(</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">set_light</span><span class="p">],</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">tool_call_format</span><span class="o">=</span><span class="s2">&quot;llama3&quot;</span><span class="p">,</span>    <span class="c1"># match the model family</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">notify_client</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">generate_on_no_tool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;You are a smart-home controller.&quot;</span><span class="p">,</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="n">tool_called_exit</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>          <span class="c1"># &quot;&quot; (END) — turn ends after a tool call</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>        <span class="n">no_tool_called_exit</span><span class="o">=</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="p">))</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">GenerateParams</span><span class="p">())</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="c1"># answer.default_exit is &quot;&quot; (END) by default</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;detect&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">)</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">notify_client</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="n">mode</span><span class="o">=</span><span class="n">ToolCallMode</span><span class="o">.</span><span class="n">DetectOnly</span><span class="p">,</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">system_prompt</span><span class="o">=</span><span class="s2">&quot;You are a smart-home controller.&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">tool_called_exit</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>          <span class="c1"># &quot;&quot; (END) — turn ends after a tool call</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="n">no_tool_called_exit</span><span class="o">=</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="p">))</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span> <span class="n">GenerateParams</span><span class="p">())</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="c1"># answer.default_exit is &quot;&quot; (END) by default</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="o">.</span><span class="n">set_start_node</span><span class="p">(</span><span class="s2">&quot;detect&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="o">.</span><span class="n">set_default_model_name</span><span class="p">(</span><span class="s2">&quot;Llama-3.2-3B-Instruct&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="p">)</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -4674,6 +4893,16 @@ call another tool" chain in a single turn — put a second
 <code>ToolCall</code> node downstream of the first. Most apps find the
 one-shot client-side handler + <code>change_param</code> feedback simpler.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Alternative: pause instead of ending the turn</p>
+<p>Setting <code>pause_after_tool_call = true</code> on the <code>ToolCall</code> node suspends the
+turn right after a detected call — instead of ending it — and, unlike a
+normal in-flight turn, allows <code>ChangeAgentParam</code> while parked. Your
+handler mutates <code>answer</code>'s <code>system_prompt</code> with the tool result, then
+calls <code>Resume()</code> to continue <strong>the same turn</strong> straight into <code>answer</code>
+(no round-trip through a new <code>SendMessage</code>). See
+<a href="pause-and-resume-turns.html">How to pause and resume a turn</a>.</p>
+</div>
 <h2 id="verify-it-worked">Verify it worked<a class="headerlink" href="#verify-it-worked" title="Permanent link">&para;</a></h2>
 <p>Send a message that should trigger the tool:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Unity</label><label for="__tabbed_5_2">Unreal</label><label for="__tabbed_5_3">C++</label><label for="__tabbed_5_4">Python</label></div>
@@ -4730,9 +4959,10 @@ streamed reply arrives through <strong>On Answer Text</strong>.</p>
 answer.</p>
 <h2 id="common-pitfalls">Common pitfalls<a class="headerlink" href="#common-pitfalls" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Format mismatch.</strong> The biggest reliability lever. Set
-  <code>tool_call_format</code> to match the model family or the per-model
-  default in <a href="../reference/model-management.html"><code>models.json</code></a>.</li>
+<li><strong>Tool format is automatic.</strong> Tool prompting and parsing are driven by
+  the model's own chat template (via llama.cpp <code>common/</code>), so there is no
+  format to configure. The legacy <code>tool_call_format</code> param is deprecated and
+  ignored. Use a model whose chat template supports tool calling.</li>
 <li><strong>Argument values are strings.</strong> <code>arguments_json</code> stores all
   values as JSON strings, even booleans and numbers. Coerce in your
   client.</li>
@@ -4744,13 +4974,17 @@ answer.</p>
   never fire. Useful if you only need the call recorded on the turn
   for diagnostics without a client event. Set <code>"true"</code> for all three
   clients when you need to act on the call.</li>
-<li><strong><code>generate_on_no_tool=true</code></strong> <em>(experimental)</em> emits the model's
-  text as a normal answer when no tool was detected. Pick <code>true</code> if
-  your <code>ToolCall</code> node stands in for a <code>Generate</code> node; pick <code>false</code>
-  if a separate <code>Generate</code> node runs on <code>no_tool_called</code>.</li>
+<li><strong><code>mode=call_or_answer</code></strong> emits the model's text as a normal answer
+  when no tool was detected. Pick <code>call_or_answer</code> if your <code>ToolCall</code>
+  node stands in for a <code>Generate</code> node; pick <code>detect_only</code> (the
+  default) if a separate <code>Generate</code> node runs on <code>no_tool_called</code>.
+  <code>mode=require_call</code> forces a tool call every turn instead — see
+  <a href="../concepts/tool-calling.html#forcing-a-tool-call">Concept: Tool calling</a>
+  for when that's appropriate.</li>
 </ul>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="pause-and-resume-turns.html">How to pause and resume a turn</a></li>
 <li><a href="../reference/nodes/tool-call.html">Reference: ToolCall node</a></li>
 <li><a href="../reference/wire-protocol.html">Reference: Wire Protocol — <code>ToolCallNotification</code></a></li>
 <li><a href="../concepts/tool-calling.html">Concept: Tool Calling</a></li>
@@ -4813,13 +5047,13 @@ answer.</p>
         
         
           
-          <a href="change-agent-parameters.html" class="md-footer__link md-footer__link--next" aria-label="Next: Change agent parameters at runtime">
+          <a href="pause-and-resume-turns.html" class="md-footer__link md-footer__link--next" aria-label="Next: Pause and resume a turn">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Change agent parameters at runtime
+                Pause and resume a turn
               </div>
             </div>
             <div class="md-footer__button md-icon">

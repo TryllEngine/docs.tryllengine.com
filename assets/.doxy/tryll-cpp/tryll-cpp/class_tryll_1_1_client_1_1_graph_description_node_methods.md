@@ -60,6 +60,7 @@
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddHumanMessageGuardrail**](#function-addhumanmessageguardrail) (std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddPause**](#function-addpause) (std::string name, ::Tryll::NodeParams::PauseParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
@@ -263,6 +264,26 @@ Add a IntentToInstruction node. Maps an intent label to an instruction text from
 
 
 
+### function AddPause 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddPause (
+    std::string name,
+    ::Tryll::NodeParams::PauseParamsT params
+) 
+```
+
+
+
+Add a Pause node. No-op node. The executor pauses the turn after this node exits, giving the client a chance to inspect/mutate agent state (via ChangeAgentParam) before the graph continues. Resume with ResumeAgentRequest. 
+
+
+        
+
+<hr>
+
+
+
 ### function AddRetrieve 
 
 ```C++
@@ -322,5 +343,5 @@ Add a ToolCall node. LLM-driven tool-call node. Constructs a tool-call prompt, r
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h`
 

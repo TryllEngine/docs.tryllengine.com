@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3324,6 +3435,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3465,6 +3582,41 @@
   
   
     <li class="md-nav__item">
+      <a href="nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="nodes/instruction.html" class="md-nav__link">
         
   
@@ -3508,6 +3660,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3718,6 +3905,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4468,7 +4690,7 @@ the message verbatim.</p>
 <tr>
 <td><strong>2xxx</strong></td>
 <td>Session</td>
-<td>Re-send <code>ConfigureSessionRequest</code>; stop issuing requests if the server is shutting down.</td>
+<td>Re-send <code>CreateSessionRequest</code>; stop issuing requests if the server is shutting down.</td>
 </tr>
 <tr>
 <td><strong>3xxx</strong></td>
@@ -4561,7 +4783,12 @@ state to accept it, or because the server is shutting down.</p>
 <tr>
 <td style="text-align: right;"><code>2002</code></td>
 <td><code>SessionNotReady</code></td>
-<td>The client issued a request that requires a configured session before sending <code>ConfigureSessionRequest</code>.</td>
+<td>The client issued a request (agent, model, storage, or voice) before sending <code>CreateSessionRequest</code>. <code>CreateSession</code> is mandatory and must come first.</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>2003</code></td>
+<td><code>SessionAlreadyExists</code></td>
+<td>The client sent a second <code>CreateSessionRequest</code> on a connection that already has a session. <code>CreateSession</code> is one-shot.</td>
 </tr>
 </tbody>
 </table>
@@ -4569,8 +4796,11 @@ state to accept it, or because the server is shutting down.</p>
 <ul>
 <li><code>ServerShuttingDown</code> — stop sending; close the socket; back off
   before attempting to reconnect.</li>
-<li><code>SessionNotReady</code> — send <code>ConfigureSessionRequest</code> first, then
+<li><code>SessionNotReady</code> — send <code>CreateSessionRequest</code> first, then
   retry the original request.</li>
+<li><code>SessionAlreadyExists</code> — the session is already created; do not call
+  <code>CreateSession</code> again. Reconnect if you need a fresh session with
+  different engine settings.</li>
 </ul>
 <hr />
 <h2 id="3xxx-agent">3xxx — Agent<a class="headerlink" href="#3xxx-agent" title="Permanent link">&para;</a></h2>
@@ -4772,13 +5002,16 @@ and retry.</p>
 <td><code>DownloadAlreadyActive</code></td>
 <td>A download for this model is already in progress on the server.</td>
 </tr>
-<tr>
-<td style="text-align: right;"><code>6006</code></td>
-<td><code>ModelAutoDownloadFailed</code></td>
-<td><code>CreateAgent</code> was called with <code>allow_auto_model_downloading=true</code>, but a required model either has no download source configured in the catalog, or the transfer itself failed. The <code>message</code> field names the offending model.</td>
-</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>6006</code> (<code>ModelAutoDownloadFailed</code>) is retired along with the removed
+auto-model-downloading feature and will not be reused. A missing model
+referenced by <code>CreateAgent</code> / <code>CreateEmbeddedStringStorage</code> /
+<code>CreateVoiceInput</code> now surfaces as <code>GraphCompilationFailed</code> (3003),
+<code>ModelResolutionFailed</code> (6005), or <code>SttModelLoadFailed</code> (4100) instead.</p>
+</div>
 <p><strong>Recovery:</strong></p>
 <ul>
 <li><code>6001</code> — retry after checking connectivity.</li>
@@ -4788,10 +5021,6 @@ and retry.</p>
 <li><code>6003</code> — free disk space or reconfigure <code>models_download_dir</code>.</li>
 <li><code>6004</code> — wait for the in-flight download's completion frame instead
   of re-issuing.</li>
-<li><code>6006</code> — inspect <code>message</code> for the model name; either add a
-  <code>huggingface_repo</code> entry to the catalog or download the model
-  manually before calling <code>CreateAgent</code>. See
-  <a href="../how-to/enable-auto-model-downloading.html">Enable Auto Model Downloading</a>.</li>
 </ul>
 <hr />
 <h2 id="7xxx-string-storage">7xxx — String storage<a class="headerlink" href="#7xxx-string-storage" title="Permanent link">&para;</a></h2>

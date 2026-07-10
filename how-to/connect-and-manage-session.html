@@ -699,6 +699,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -778,6 +784,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1170,6 +1211,41 @@
   
   
     <li class="md-nav__item">
+      <a href="verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1415,14 +1491,14 @@
   
   
     <li class="md-nav__item">
-      <a href="change-agent-parameters.html" class="md-nav__link">
+      <a href="pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1450,14 +1526,14 @@
   
   
     <li class="md-nav__item">
-      <a href="enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1528,6 +1604,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3441,6 +3552,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3579,6 +3696,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3622,6 +3774,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3832,6 +4019,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4344,9 +4566,9 @@ and shut down cleanly.</p>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ConnectionChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">connected</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="c1">// 2. Configure the inference engine for this session.</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ConfigureSession</span><span class="p">(</span><span class="n">TryllInferenceEngine</span><span class="p">.</span><span class="n">LlamaCpp</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">(</span><span class="n">TryllInferenceEngine</span><span class="p">.</span><span class="n">LlamaCpp</span><span class="p">);</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">};</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ConfigureSessionComplete</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">CreateSessionComplete</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">err</span><span class="p">.</span><span class="n">IsOk</span><span class="p">)</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">LogError</span><span class="p">(</span><span class="s">$&quot;configure failed: {err.Message}&quot;</span><span class="p">);</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="c1">// 3. Proceed to create storages and agents.</span>
@@ -4377,7 +4599,7 @@ and wait for <strong>On Configure Session Complete</strong>.</p>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">try</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">{</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">TryllClient</span><span class="o">::</span><span class="n">Connect</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9100</span><span class="p">);</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="n">ConfigureSession</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">InferenceEngine</span><span class="o">::</span><span class="n">LlamaCpp</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TC</span><span class="o">::</span><span class="n">InferenceEngine</span><span class="o">::</span><span class="n">LlamaCpp</span><span class="w"> </span><span class="p">});</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1">// ... create agents, send messages ...</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
@@ -4394,13 +4616,13 @@ and wait for <strong>On Configure Session Complete</strong>.</p>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">TryllClient</span><span class="p">,</span> <span class="n">TryllError</span><span class="p">,</span> <span class="n">InferenceEngine</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. Open the socket. Blocks briefly until SessionReady arrives.</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># 1. Open the socket. Blocks briefly until ConnectionReady arrives.</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">client</span> <span class="o">=</span> <span class="n">TryllClient</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">9100</span><span class="p">)</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># 2. Pick the inference engine for this session.</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">#    Affects agents you create *after* this call.</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">client</span><span class="o">.</span><span class="n">configure_session</span><span class="p">(</span><span class="n">InferenceEngine</span><span class="o">.</span><span class="n">LlamaCpp</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">client</span><span class="o">.</span><span class="n">create_session</span><span class="p">(</span><span class="n">InferenceEngine</span><span class="o">.</span><span class="n">LlamaCpp</span><span class="p">)</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">except</span> <span class="n">TryllError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;configure failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="k">raise</span>
@@ -4421,7 +4643,7 @@ libraries surface this as a connection-changed event or an async
 error:</p>
 <ul>
 <li><strong>Unity / Unreal:</strong> bind <code>ConnectionChanged</code> / <code>OnConnectionChanged(false)</code> to
-  a handler that re-calls <code>Connect</code> / <code>ConfigureSession</code> and re-creates storages
+  a handler that re-calls <code>Connect</code> / <code>CreateSession</code> and re-creates storages
   and agents.</li>
 <li><strong>Python / C++:</strong> catch the <code>TryllError</code> from the next request and
   call <code>TryllClient.connect(...)</code> / <code>Tryll::Client::TryllClient::Connect(...)</code>
@@ -4436,14 +4658,14 @@ from scratch on reconnect.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// ConnectionChanged fires false on drop, true when re-established.</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ConnectionChanged</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">connected</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">ConfigureSession</span><span class="p">(</span><span class="n">TryllInferenceEngine</span><span class="p">.</span><span class="n">LlamaCpp</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">TryllClient</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">(</span><span class="n">TryllInferenceEngine</span><span class="p">.</span><span class="n">LlamaCpp</span><span class="p">);</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="c1">// Re-create any per-session storages and agents you need.</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">};</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Bind OnConnectionChanged(false) to a handler that re-calls</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// Connect after a short delay, then re-runs your ConfigureSession</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">// Connect after a short delay, then re-runs your CreateSession</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// + graph/storage bootstrap when bConnected flips back to true.</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">subsystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetGameInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UTryllSubsystem</span><span class="o">&gt;</span><span class="p">();</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">subsystem</span><span class="o">-&gt;</span><span class="n">Connect</span><span class="p">();</span>
@@ -4453,7 +4675,7 @@ from scratch on reconnect.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">TryllClient</span><span class="w"> </span><span class="nf">reconnect</span><span class="p">()</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tryll</span><span class="o">::</span><span class="n">Client</span><span class="o">::</span><span class="n">TryllClient</span><span class="o">::</span><span class="n">Connect</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9100</span><span class="p">);</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="n">ConfigureSession</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">Tryll</span><span class="o">::</span><span class="n">InferenceEngine_LlamaCpp</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">client</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">({</span><span class="w"> </span><span class="p">.</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">Tryll</span><span class="o">::</span><span class="n">InferenceEngine_LlamaCpp</span><span class="w"> </span><span class="p">});</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1">// re-create any per-session storages and agents you need</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">client</span><span class="p">;</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
@@ -4462,7 +4684,7 @@ from scratch on reconnect.</p>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">reconnect</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">TryllClient</span><span class="p">:</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">TryllClient</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">9100</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">client</span><span class="o">.</span><span class="n">configure_session</span><span class="p">(</span><span class="n">InferenceEngine</span><span class="o">.</span><span class="n">LlamaCpp</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">client</span><span class="o">.</span><span class="n">create_session</span><span class="p">(</span><span class="n">InferenceEngine</span><span class="o">.</span><span class="n">LlamaCpp</span><span class="p">)</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="c1"># re-create any per-session storages and agents you need</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="k">return</span> <span class="n">client</span>
 </code></pre></div>
@@ -4471,9 +4693,12 @@ from scratch on reconnect.</p>
 </div>
 <h2 id="session-lifetime-rules-to-remember">Session lifetime rules to remember<a class="headerlink" href="#session-lifetime-rules-to-remember" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>ConfigureSession</code> is idempotent and can be called repeatedly. It
-  only affects <em>future</em> <code>CreateAgent</code> calls — existing agents keep
-  their engine.</li>
+<li><code>CreateSession</code> is <strong>mandatory and one-shot</strong> (protocol v4): call it
+  exactly once after connecting, before any agent/model/storage/voice
+  request. The chosen engines are fixed for the session's lifetime. A
+  request before <code>CreateSession</code> fails with <code>SessionNotReady</code>; a second
+  <code>CreateSession</code> fails with <code>SessionAlreadyExists</code>. To change engines,
+  reconnect and create a new session.</li>
 <li>String storages and embedded string storages die with the session.</li>
 <li>Model downloads and loads are <em>global</em>, not per-session. Pinning a
   model in one session keeps it warm for all sessions.</li>
@@ -4496,10 +4721,10 @@ for details.</p>
 <p>Connecting and configuring produces these server-side log lines (at
 <code>info</code> level):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>[info] Session 42 accepted 127.0.0.1:56102
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>[info] [Session 42] Configured engines: language=LlamaCpp  stt=Mock  tts=Mock  embedding=Mock  allow_auto_model_downloading: false  game_name: 
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>[info] [Session 42] Configured engines: language=LlamaCpp  stt=Mock  tts=Mock  embedding=Mock  game_name: 
 </code></pre></div>
 <p>If you do not see a configure line, check that
-<code>OnConfigureSessionComplete</code> fired with <code>bSuccess = true</code> on the
+<code>OnCreateSessionComplete</code> fired with <code>bSuccess = true</code> on the
 client. A failure is almost always a server-side inference-engine
 issue — see <a href="../reference/error-codes.html#2xxx-session">error codes 2xxx</a>.</p>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>

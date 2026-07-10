@@ -64,6 +64,7 @@ Inherits the following classes: UBlueprintFunctionLibrary
 |  [**UTryllHumanMessageGuardrailParams**](class_u_tryll_human_message_guardrail_params.md) \* | [**MakeHumanMessageGuardrailParams**](#function-makehumanmessageguardrailparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllInstructionParams**](class_u_tryll_instruction_params.md) \* | [**MakeInstructionParams**](#function-makeinstructionparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md) \* | [**MakeIntentToInstructionParams**](#function-makeintenttoinstructionparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllPauseParams**](class_u_tryll_pause_params.md) \* | [**MakePauseParams**](#function-makepauseparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md) \* | [**MakeRetrieveParams**](#function-makeretrieveparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllSpeakParams**](class_u_tryll_speak_params.md) \* | [**MakeSpeakParams**](#function-makespeakparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md) \* | [**MakeToolCallParams**](#function-maketoolcallparams) (UObject \* WorldContextObject) <br> |
@@ -283,6 +284,25 @@ Construct an authored IntentToInstructionParams with schema-default field values
 
 
 
+### function MakePauseParams 
+
+```C++
+static UTryllPauseParams * UTryllNodeParamsFactory::MakePauseParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored PauseParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
 ### function MakeRetrieveParams 
 
 ```C++
@@ -339,5 +359,5 @@ Construct an authored ToolCallParams with schema-default field values.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllNodeParamsFactory.h`
 

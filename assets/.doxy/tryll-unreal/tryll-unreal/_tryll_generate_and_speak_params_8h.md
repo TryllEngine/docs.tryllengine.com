@@ -13,6 +13,7 @@
 * `#include "CoreMinimal.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllStoragePath.h"`
 * `#include "TryllModelName.h"`
 * `#include "Generated/Nodes/TryllSamplingOverrides.h"`
 * `#include "CodegenFingerprint.gen.h"`
@@ -90,5 +91,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h`
 

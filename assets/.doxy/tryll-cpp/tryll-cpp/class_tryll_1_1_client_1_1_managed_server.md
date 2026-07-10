@@ -57,7 +57,8 @@ _RAII handle around a child_ `tryll_server` _process._[More...](#detailed-descri
 |   | [**ManagedServer**](#function-managedserver-13) (ManagedServer &&) noexcept<br> |
 |   | [**ManagedServer**](#function-managedserver-23) (const ManagedServer &) = delete<br> |
 |  std::uint16\_t | [**Port**](#function-port) () noexcept const<br>_The port from_ [_**ManagedServerOptions::port**_](struct_tryll_1_1_client_1_1_managed_server_options.md#variable-port) _._ |
-|  void | [**Stop**](#function-stop) (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br>_Terminate the child process._  |
+|  void | [**Stop**](#function-stop) (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br>_Release this handle without killing the server._  |
+|  void | [**Terminate**](#function-terminate) (std::chrono::milliseconds timeout=std::chrono::seconds{8}) <br>_Immediately hard-kill the child process._  |
 |  ManagedServer & | [**operator=**](#function-operator) (ManagedServer &&) noexcept<br> |
 |  ManagedServer & | [**operator=**](#function-operator_1) (const ManagedServer &) = delete<br> |
 |   | [**~ManagedServer**](#function-managedserver) () <br> |
@@ -180,7 +181,7 @@ std::uint16_t Tryll::Client::ManagedServer::Port () noexcept const
 
 ### function Stop 
 
-_Terminate the child process._ 
+_Release this handle without killing the server._ 
 ```C++
 void Tryll::Client::ManagedServer::Stop (
     std::chrono::milliseconds timeout=std::chrono::seconds{8}
@@ -189,7 +190,7 @@ void Tryll::Client::ManagedServer::Stop (
 
 
 
-Sends a termination signal and waits up to `timeout` for the process to exit. If the process does not exit in time it is force-killed. Idempotent — safe to call more than once.
+Does **not** terminate the process. A managed server launched with `idleShutdownTimeoutSeconds > 0` self-exits once no session is using it; this just drops our OS handle. Idempotent — safe to call more than once. Use [**Terminate**](class_tryll_1_1_client_1_1_managed_server.md#function-terminate) for an immediate hard kill (e.g. the spawn succeeded but the handshake/connect afterward failed, so no session was ever created and nothing else can be relying on this process).
 
 
 
@@ -197,7 +198,37 @@ Sends a termination signal and waits up to `timeout` for the process to exit. If
 **Parameters:**
 
 
-* `timeout` Override for the stop timeout set in the options. 
+* `timeout` Unused; kept for source compatibility. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function Terminate 
+
+_Immediately hard-kill the child process._ 
+```C++
+void Tryll::Client::ManagedServer::Terminate (
+    std::chrono::milliseconds timeout=std::chrono::seconds{8}
+) 
+```
+
+
+
+Sends a termination signal and waits up to `timeout` for the process to exit; force-killed if it does not exit in time. Idempotent — safe to call more than once, including after [**Stop**](class_tryll_1_1_client_1_1_managed_server.md#function-stop). Intended for failure paths where the caller knows this process is theirs and nothing else can depend on it (e.g. spawn succeeded but connect/handshake failed) — do not call this after a successful handshake, since another consumer could be relying on the server staying up until its own idle timeout.
+
+
+
+
+**Parameters:**
+
+
+* `timeout` How long to wait for graceful exit before force-killing. 
 
 
 
@@ -296,5 +327,5 @@ A ready-to-use [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md)
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/ManagedServer.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/ManagedServer.h`
 

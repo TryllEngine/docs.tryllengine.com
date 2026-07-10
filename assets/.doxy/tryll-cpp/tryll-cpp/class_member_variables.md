@@ -7,7 +7,6 @@
 
 * **audioMsConsumed** ([**Tryll::Client::TranscriptUpdate**](struct_tryll_1_1_client_1_1_transcript_update.md))
 * **acknowledged** ([**Tryll::Client::TryllClient::DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md))
-* **allowAutoModelDownloading** ([**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md))
 * **autoFinishOnSilence** ([**Tryll::Client::UtteranceOptions**](struct_tryll_1_1_client_1_1_utterance_options.md))
 * **autoSendTarget** ([**Tryll::Client::UtteranceOptions**](struct_tryll_1_1_client_1_1_utterance_options.md))
 
@@ -51,6 +50,7 @@
 
 ## i
 
+* **idleShutdownTimeoutSeconds** ([**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md))
 * **inputFormat** ([**Tryll::Client::VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md))
 
 

@@ -691,6 +691,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -767,6 +773,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1039,6 +1080,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1284,14 +1360,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1319,14 +1395,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1397,6 +1473,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3310,6 +3421,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3448,6 +3565,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3491,6 +3643,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3701,6 +3888,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4223,6 +4445,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-addpausenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        function AddPauseNode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-addretrievenode" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4293,6 +4526,7 @@
 <li><code>#include "Generated/Nodes/TryllIntentToInstructionParams.h"</code></li>
 <li><code>#include "Generated/Nodes/TryllGenerateAndSpeakParams.h"</code></li>
 <li><code>#include "Generated/Nodes/TryllSpeakParams.h"</code></li>
+<li><code>#include "Generated/Nodes/TryllPauseParams.h"</code></li>
 <li><code>#include "CodegenFingerprint.gen.h"</code></li>
 <li><code>#include &lt;string_view&gt;</code></li>
 </ul>
@@ -4336,6 +4570,10 @@
 <tr>
 <td style="text-align: right;"><a href="struct_f_tryll_graph_builder.html"><strong>FTryllGraphBuilder</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-addintenttoinstructionnode"><strong>AddIntentToInstructionNode</strong></a> (<a href="struct_f_tryll_graph_builder.html"><strong>FTryllGraphBuilder</strong></a> &amp; Builder, FString Name, <a href="class_u_tryll_intent_to_instruction_params.html"><strong>UTryllIntentToInstructionParams</strong></a> * Params) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="struct_f_tryll_graph_builder.html"><strong>FTryllGraphBuilder</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-addpausenode"><strong>AddPauseNode</strong></a> (<a href="struct_f_tryll_graph_builder.html"><strong>FTryllGraphBuilder</strong></a> &amp; Builder, FString Name, <a href="class_u_tryll_pause_params.html"><strong>UTryllPauseParams</strong></a> * Params) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="struct_f_tryll_graph_builder.html"><strong>FTryllGraphBuilder</strong></a> &amp;</td>
@@ -4432,38 +4670,48 @@
 <p>Add a IntentToInstruction node to the graph. </p>
 <hr>
 
-<h3 id="function-addretrievenode">function AddRetrieveNode<a class="headerlink" href="#function-addretrievenode" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddRetrieveNode</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-addpausenode">function AddPauseNode<a class="headerlink" href="#function-addpausenode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddPauseNode</span><span class="w"> </span><span class="p">(</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">UTryllRetrieveParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">UTryllPauseParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">)</span><span class="w"> </span>
+</code></pre></div>
+<p>Add a Pause node to the graph. </p>
+<hr>
+
+<h3 id="function-addretrievenode">function AddRetrieveNode<a class="headerlink" href="#function-addretrievenode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddRetrieveNode</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">UTryllRetrieveParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>Add a Retrieve node to the graph. </p>
 <hr>
 
 <h3 id="function-addspeaknode">function AddSpeakNode<a class="headerlink" href="#function-addspeaknode" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddSpeakNode</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">UTryllSpeakParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddSpeakNode</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">UTryllSpeakParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>Add a Speak node to the graph. </p>
 <hr>
 
 <h3 id="function-addtoolcallnode">function AddToolCallNode<a class="headerlink" href="#function-addtoolcallnode" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddToolCallNode</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">UTryllToolCallParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">AddToolCallNode</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">FTryllGraphBuilder</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Builder</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">FString</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">UTryllToolCallParams</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Params</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>Add a ToolCall node to the graph. </p>
 <hr>
 
 <hr />
-<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</code></p>
+<p>The documentation for this class was generated from the following file <code>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/TryllGraphBuilder.Nodes.h</code></p>
 
 
 

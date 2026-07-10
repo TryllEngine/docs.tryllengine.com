@@ -42,10 +42,12 @@
 
 | Type | Name |
 | ---: | :--- |
+| enum uint8 | [**ETryllCancelMode**](#enum-etryllcancelmode)  <br> |
 | enum uint8 | [**ETryllCannedResponseSelectionStrategy**](#enum-etryllcannedresponseselectionstrategy)  <br> |
 | enum uint8 | [**ETryllInferenceEngine**](#enum-etryllinferenceengine)  <br> |
 | enum uint8 | [**ETryllNodeType**](#enum-etryllnodetype)  <br> |
 | enum uint8 | [**ETryllPlacement**](#enum-etryllplacement)  <br> |
+| enum uint8 | [**ETryllToolCallMode**](#enum-etrylltoolcallmode)  <br> |
 | enum uint8 | [**ETryllTurnStatus**](#enum-etryllturnstatus)  <br> |
 
 
@@ -97,6 +99,26 @@
 
 ## Public Types Documentation
 
+
+
+
+### enum ETryllCancelMode 
+
+```C++
+enum ETryllCancelMode {
+    StopAndKeep = 0,
+    StopAndDiscard = 1
+};
+```
+
+
+
+How a mid-turn cancel treats the in-flight interaction. Mirrors CancelMode in messages.fbs. 
+
+
+        
+
+<hr>
 
 
 
@@ -160,7 +182,8 @@ enum ETryllNodeType {
     IntentToInstruction = 7,
     ClassifyIntentLLM = 8,
     GenerateAndSpeak = 9,
-    Speak = 10
+    Speak = 10,
+    Pause = 11
 };
 ```
 
@@ -198,6 +221,27 @@ Where the rendered Mustache body is inserted relative to the user turn. Mirrors 
 
 
 
+### enum ETryllToolCallMode 
+
+```C++
+enum ETryllToolCallMode {
+    DetectOnly = 0,
+    CallOrAnswer = 1,
+    RequireCall = 2
+};
+```
+
+
+
+Tool-choice policy for the ToolCall node. Mirrors the ToolCallMode enum in common\_enums.fbs — ordinals must stay in sync. 
+
+
+        
+
+<hr>
+
+
+
 ### enum ETryllTurnStatus 
 
 ```C++
@@ -218,5 +262,5 @@ Outcome of a workflow turn. Mirrors TurnStatus in messages.fbs.
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllGraphDescription.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllGraphDescription.h`
 

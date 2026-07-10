@@ -37,6 +37,7 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | typedef std::function&lt; void(std::string\_view intent, std::string\_view recordId, std::size\_t recordIndex, float distance)&gt; | [**IntentClassifiedCallback**](#typedef-intentclassifiedcallback)  <br>_Callback type for intent-classification notifications._  |
 | typedef std::function&lt; void(std::string\_view nodeName, std::string\_view eventType, const std::vector&lt; [**NodeEventKeyValue**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-nodeeventkeyvalue) &gt; &kvPairs)&gt; | [**NodeEventCallback**](#typedef-nodeeventcallback)  <br>_Generic_ `NodeEvent` _callback._ |
 | typedef std::pair&lt; std::string, std::string &gt; | [**NodeEventKeyValue**](#typedef-nodeeventkeyvalue)  <br>_One ordered key/value pair in a_ `NodeEvent` _payload._ |
+| typedef std::function&lt; void(std::string\_view nodeName, std::string\_view pendingExit)&gt; | [**PausedCallback**](#typedef-pausedcallback)  <br>_Callback type for pause notifications._  |
 | typedef std::function&lt; void(std::string\_view toolName, std::string\_view argumentsJson)&gt; | [**ToolCallCallback**](#typedef-toolcallcallback)  <br>_Callback type for tool-call notifications._  |
 | typedef std::function&lt; void(std::span&lt; const int16\_t &gt; pcm)&gt; | [**TtsAudioCallback**](#typedef-ttsaudiocallback)  <br>_Callback type for streaming TTS PCM chunks._  |
 | typedef std::function&lt; void(uint32\_t sampleRate, uint16\_t channels, uint16\_t bitsPerSample)&gt; | [**TtsAudioFormatCallback**](#typedef-ttsaudioformatcallback)  <br>_Callback type for the TTS audio format announcement._  |
@@ -66,16 +67,20 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**AgentProxy**](#function-agentproxy-12) () = default<br> |
+|  void | [**Cancel**](#function-cancel) (::Tryll::CancelMode mode=::Tryll::CancelMode\_StopAndKeep) <br>_Cooperatively cancel the in-flight turn (fire-and-forget)._  |
 |  void | [**ChangeParams**](#function-changeparams) (std::string\_view nodeName, [**NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) params) <br>_Blocking convenience wrapper over_ [_**ChangeParamsAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-changeparamsasync) _._ |
 |  std::future&lt; void &gt; | [**ChangeParamsAsync**](#function-changeparamsasync) (std::string\_view nodeName, [**NodeParamsVariant**](namespace_tryll_1_1_client.md#typedef-nodeparamsvariant) params) <br>_Apply typed node parameters to a named workflow node asynchronously._  |
 |  void | [**Destroy**](#function-destroy) () <br>_Blocking convenience wrapper over_ [_**DestroyAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-destroyasync) _._ |
 |  std::future&lt; void &gt; | [**DestroyAsync**](#function-destroyasync) () <br>_Request agent destruction on the server asynchronously._  |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br>_Server-assigned agent identifier._  |
+|  void | [**Resume**](#function-resume) (std::string\_view resumeNode={}) <br>_Blocking convenience wrapper over_ [_**ResumeAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-resumeasync) _._ |
+|  std::future&lt; void &gt; | [**ResumeAsync**](#function-resumeasync) (std::string\_view resumeNode={}) <br>_Resume a turn that is currently paused (see_ [_**SetOnPaused**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-setonpaused) _)._ |
 |  void | [**SendText**](#function-sendtext) (std::string\_view text) <br>_Send a text message to the agent (fire-and-forget)._  |
 |  void | [**SetOnAnswerText**](#function-setonanswertext) ([**AnswerTextCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-answertextcallback) cb) <br>_Register a callback for streaming text chunks._  |
 |  void | [**SetOnError**](#function-setonerror) ([**ErrorCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-errorcallback) cb) <br>_Register a callback for agent-level error notifications._  |
 |  void | [**SetOnIntentClassified**](#function-setonintentclassified) ([**IntentClassifiedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-intentclassifiedcallback) cb) <br>_Register a callback for intent-classification notifications._  |
 |  void | [**SetOnNodeEvent**](#function-setonnodeevent) ([**NodeEventCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-nodeeventcallback) cb) <br>_Register a generic_ `NodeEvent` _fallback callback._ |
+|  void | [**SetOnPaused**](#function-setonpaused) ([**PausedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-pausedcallback) cb) <br>_Register a callback for pause notifications._  |
 |  void | [**SetOnToolCall**](#function-setontoolcall) ([**ToolCallCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-toolcallcallback) cb) <br>_Register a callback for tool-call notifications._  |
 |  void | [**SetOnTtsAudio**](#function-setonttsaudio) ([**TtsAudioCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-ttsaudiocallback) cb) <br>_Register (or clear) the TTS audio chunk callback._  |
 |  void | [**SetOnTtsAudioFormat**](#function-setonttsaudioformat) ([**TtsAudioFormatCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-ttsaudioformatcallback) cb) <br>_Register (or clear) the TTS audio format callback._  |
@@ -248,6 +253,35 @@ using Tryll::Client::AgentProxy::NodeEventKeyValue = std::pair<std::string, std:
 
 
 
+### typedef PausedCallback 
+
+_Callback type for pause notifications._ 
+```C++
+using Tryll::Client::AgentProxy::PausedCallback = 
+std::function<void(std::string_view nodeName, std::string_view pendingExit)>;
+```
+
+
+
+Invoked on the reader thread for each `NodeEvent` with `event_type="paused"` — fired by the executor when it pauses the turn between nodes (see `PauseNode`, `ToolCallParams.pause_after_tool_call`).
+
+
+Parameters:
+* `nodeName` — the node that just exited and triggered the pause.
+* `pendingExit` — the exit route that will be taken on a plain (non-jump) [**Resume**](class_tryll_1_1_client_1_1_agent_proxy.md#function-resume).
+
+
+
+
+Must return quickly and must not call any blocking methods. 
+
+
+        
+
+<hr>
+
+
+
 ### typedef ToolCallCallback 
 
 _Callback type for tool-call notifications._ 
@@ -368,6 +402,36 @@ Tryll::Client::AgentProxy::AgentProxy () = default
 
 
 
+
+<hr>
+
+
+
+### function Cancel 
+
+_Cooperatively cancel the in-flight turn (fire-and-forget)._ 
+```C++
+void Tryll::Client::AgentProxy::Cancel (
+    ::Tryll::CancelMode mode=::Tryll::CancelMode_StopAndKeep
+) 
+```
+
+
+
+Stops generation; the active [**SendText**](class_tryll_1_1_client_1_1_agent_proxy.md#function-sendtext) turn ends with `TurnStatus::Cancelled` through [**SetOnTurnComplete**](class_tryll_1_1_client_1_1_agent_proxy.md#function-setonturncomplete). No-op if the agent is idle. `mode` selects whether the partial interaction is kept (default) or discarded as if the turn never happened.
+
+
+
+
+**Parameters:**
+
+
+* `mode` Cancel disposition (StopAndKeep / StopAndDiscard). 
+
+
+
+
+        
 
 <hr>
 
@@ -519,6 +583,67 @@ inline std::uint64_t Tryll::Client::AgentProxy::GetAgentId () noexcept const
 **Returns:**
 
 The `agent_id` field from the original `CreateAgentResponse`. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function Resume 
+
+_Blocking convenience wrapper over_ [_**ResumeAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-resumeasync) _._
+```C++
+void Tryll::Client::AgentProxy::Resume (
+    std::string_view resumeNode={}
+) 
+```
+
+
+
+
+
+**Exception:**
+
+
+* `TryllError` On server-reported errors or disconnect. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function ResumeAsync 
+
+_Resume a turn that is currently paused (see_ [_**SetOnPaused**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-setonpaused) _)._
+```C++
+std::future< void > Tryll::Client::AgentProxy::ResumeAsync (
+    std::string_view resumeNode={}
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `resumeNode` Empty continues via the paused node's pending exit route; non-empty jumps to that node by name.
+
+
+
+**Returns:**
+
+Future completing on `Ack`. Throws [**TryllError**](class_tryll_1_1_client_1_1_tryll_error.md) on server-reported errors (`AgentNotPaused` 3012 if the agent is not currently paused, `UnknownNode` 3005 if `resumeNode` does not name a node in the graph). 
 
 
 
@@ -692,6 +817,39 @@ Fires on the reader thread for every `NodeEvent` whose `event_type` is either un
 
 
 
+### function SetOnPaused 
+
+_Register a callback for pause notifications._ 
+```C++
+void Tryll::Client::AgentProxy::SetOnPaused (
+    PausedCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default- constructed) [**PausedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-pausedcallback) to unregister.
+
+
+Fires on the reader thread for every `NodeEvent` with `event_type="paused"` the server sends for this agent.
+
+
+
+
+**Parameters:**
+
+
+* `cb` Callable invoked with ``(nodeName, pendingExit), or empty to clear. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function SetOnToolCall 
 
 _Register a callback for tool-call notifications._ 
@@ -806,5 +964,5 @@ class Tryll::Client::AgentProxy::TryllClientImpl (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/AgentProxy.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentProxy.h`
 

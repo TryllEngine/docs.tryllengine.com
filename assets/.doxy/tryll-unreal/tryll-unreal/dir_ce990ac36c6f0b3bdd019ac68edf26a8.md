@@ -1,6 +1,6 @@
 
 
-# Dir C:/\_tryll/\_monorepo2/tryll/clients/unreal/Source/TryllClient/Public
+# Dir C:/\_tryll/\_monorepo3/tryll/clients/unreal/Source/TryllClient/Public
 
 
 
@@ -24,8 +24,10 @@
 | file | [**TryllAgent.h**](_tryll_agent_8h.md) <br> |
 | file | [**TryllAgentComponent.h**](_tryll_agent_component_8h.md) <br> |
 | file | [**TryllClientModule.h**](_tryll_client_module_8h.md) <br> |
+| file | [**TryllEditorSubsystem.h**](_tryll_editor_subsystem_8h.md) <br> |
 | file | [**TryllError.h**](_tryll_error_8h.md) <br> |
 | file | [**TryllGraphDescription.h**](_tryll_graph_description_8h.md) <br> |
+| file | [**TryllManagedServerProcess.h**](_tryll_managed_server_process_8h.md) <br> |
 | file | [**TryllModelInfo.h**](_tryll_model_info_8h.md) <br> |
 | file | [**TryllModelManifest.h**](_tryll_model_manifest_8h.md) <br> |
 | file | [**TryllModelName.h**](_tryll_model_name_8h.md) <br> |
@@ -102,5 +104,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/`
 

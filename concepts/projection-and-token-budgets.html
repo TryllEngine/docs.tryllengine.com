@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3463,6 +3574,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3601,6 +3718,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3644,6 +3796,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3854,6 +4041,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4409,7 +4631,7 @@ what is new. This is what makes generation feel fast.</p>
 </tr>
 <tr>
 <td><strong>Tool-call</strong></td>
-<td>Same as default, but bakes the tool schema into the system (or current user) message per <a href="tool-calling.html">tool-call format</a>, and leaves prior tool-call records out.</td>
+<td>Same as default, but bakes the tool schema into the model's chat template for the current turn, and projects any <em>prior</em> turn's tool calls as a native assistant message (see <a href="tool-calling.html#tool-call-records-come-back-as-native-history">Tool Calling</a>) rather than plain text.</td>
 <td><code>ToolCall</code> nodes.</td>
 </tr>
 </tbody>
@@ -4420,9 +4642,8 @@ trimming.</p>
 <p>Two nodes in the same graph that use the same model still see
 <em>different</em> prompts. A <code>Generate</code> node sees the full dialog
 projected plainly; a <code>ToolCall</code> node sees the same dialog with a
-bolted-on tool schema and prior tool-call records hidden. If both
-nodes shared the same KV state, they would invalidate each other's
-cache on every turn.</p>
+bolted-on tool schema for the current turn. If both nodes shared the
+same KV state, they would invalidate each other's cache on every turn.</p>
 <p>So each node keeps its own KV state for the model it uses. You pay
 a little more memory; in return, each node's cache stays warm across
 turns.</p>
@@ -4484,9 +4705,13 @@ design a graph that rewrites past turns.</p>
   <code>Retrieve</code> node that ran three turns ago does not contribute to
   this turn's prompt. If you need older knowledge, re-retrieve it or
   manually surface it.</li>
-<li><strong>Tool-call records are never projected.</strong> Even the current turn's
-  tool calls are hidden from the next turn's model input. This is
-  deliberate — see <a href="tool-calling.html">Tool Calling</a>.</li>
+<li><strong>Tool-call records are projected natively, only when the template
+  supports it.</strong> A turn's <code>ToolCallRecord</code>s come back on the next
+  turn as an assistant message rendered through the model's own chat
+  template — see <a href="tool-calling.html#tool-call-records-come-back-as-native-history">Tool Calling</a>.
+  When the template can't render historical tool calls, that turn is
+  projected as an empty assistant message instead of plain text, to
+  avoid teaching the model a synthetic format it wasn't trained on.</li>
 <li><strong>You can't change a node's model mid-agent.</strong> Each node's KV cache
   is bound to the model it was created with. Create a new agent if
   you need a different model.</li>

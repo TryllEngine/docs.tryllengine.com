@@ -910,6 +910,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -986,6 +992,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1258,6 +1299,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1503,14 +1579,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1538,14 +1614,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1616,6 +1692,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3529,6 +3640,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3667,6 +3784,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3710,6 +3862,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3920,6 +4107,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4629,11 +4851,6 @@ and downloaded GGUF weights are cached under <code>data/.app-data/models/</code>
 <td>Embedding backend for string-storage / RAG nodes.</td>
 </tr>
 <tr>
-<td><strong>Allow Auto Model Downloading</strong></td>
-<td><code>false</code> (default) — optional</td>
-<td>You download your model in Step 4, so the agent finds it on disk. Turn this on only as a fallback, to let <code>CreateAgent</code> fetch a still-missing model.</td>
-</tr>
-<tr>
 <td><strong>Connect Max Attempts</strong> / <strong>Connect Retry Delay Seconds</strong></td>
 <td>defaults</td>
 <td>Subsystem retries while the freshly-spawned server warms up.</td>
@@ -4650,12 +4867,10 @@ and downloaded GGUF weights are cached under <code>data/.app-data/models/</code>
 <div class="admonition tip">
 <p class="admonition-title">The Model Manager is the primary way to get models</p>
 <p>You download and register your model up front in the next step, so it is
-already on disk before the first turn. <strong>Allow Auto Model Downloading</strong>
-is a convenience fallback: it lets a <code>CreateAgent</code> call fetch a missing
-model on the spot — handy for a quick first run, while shipped builds rely
-on the Model Manager's registration tiers. See
-<a href="../how-to/manage-models-in-editor.html">Manage Models in the Editor</a> and
-<a href="../how-to/enable-auto-model-downloading.html">Enable Auto Model Downloading</a>.</p>
+already on disk before the first turn. <code>CreateAgent</code> fails fast if the
+model is not already there — it does not download it for you — so
+shipped builds rely on the Model Manager's registration tiers. See
+<a href="../how-to/manage-models-in-editor.html">Manage Models in the Editor</a>.</p>
 </div>
 <hr />
 <h2 id="step-4-download-and-register-a-model">Step 4 — Download and register a model<a class="headerlink" href="#step-4-download-and-register-a-model" title="Permanent link">&para;</a></h2>
@@ -4798,12 +5013,12 @@ PIE sessions.</p>
 <tr>
 <td><code>LogTryllServer</code></td>
 <td><code>tryll_server.exe</code> stdout (drained by the subsystem and re-emitted in Unreal)</td>
-<td><code>Listening on 0.0.0.0:9100</code>, <code>SessionReady</code>, model load lines, server-side errors.</td>
+<td><code>Listening on 0.0.0.0:9100</code>, <code>ConnectionReady</code>, model load lines, server-side errors.</td>
 </tr>
 <tr>
 <td><code>LogTryll</code></td>
 <td>Plugin (subsystem, agent component, connection thread)</td>
-<td>Connect attempts, <code>ConfigureSession</code> outcome, agent lifecycle, <code>DownloadProgress</code>.</td>
+<td>Connect attempts, <code>CreateSession</code> outcome, agent lifecycle, <code>DownloadProgress</code>.</td>
 </tr>
 <tr>
 <td><code>LogBlueprintUserMessages</code></td>
@@ -4840,8 +5055,8 @@ agents, models, string storages, tool calls — is listed in the
   and the <a href="../reference/client-api/unreal/blueprint-catalog.html">Blueprint Catalog</a>.</li>
 <li><strong><a href="../how-to/auto-launch-server.html">Auto-launch the Server</a></strong> —
   every Unreal-side server-launch knob explained.</li>
-<li><strong><a href="../how-to/enable-auto-model-downloading.html">Enable Auto Model Downloading</a></strong>
-  — production-friendly download flow with explicit progress.</li>
+<li><strong><a href="../how-to/manage-models-in-editor.html">Manage models in the editor</a></strong>
+  — download, register, and pin models with explicit progress.</li>
 </ul>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4854,20 +5069,17 @@ agents, models, string storages, tool calls — is listed in the
   or didn't start. Check <code>LogTryllServer</code> for the failure reason and
   <code>data/.app-data/logs/tryll.log</code> (under the bundled server's folder) as a
   fallback.</li>
-<li><strong><code>OnConfigureSessionComplete(false)</code></strong> — usually a server-side error
+<li><strong><code>OnCreateSessionComplete(false)</code></strong> — usually a server-side error
   reading <code>models.json</code> or initialising the inference engine. Check
   <code>LogTryllServer</code>.</li>
-<li><strong>First <code>CreateAgent</code> hangs for minutes</strong> — that's the model
-  downloading because <strong>Allow Auto Model Downloading</strong> is on. Watch
-  <code>LogTryll</code> for <code>DownloadProgress</code> lines, or pre-download from a
-  small UI using <code>Request Download Model</code> instead.</li>
 <li><strong><code>Default Model Name</code> dropdown is empty</strong> — register a model first. Open
   <strong>Window → Tryll → Tryll Model Manager</strong>, download one, and set its <strong>Build
   registration</strong> to <strong>Experimental</strong> or <strong>Production</strong>; it then appears in the
   dropdown.</li>
 <li><strong><code>OnError</code> fires during <code>CreateAgent</code></strong> — read <code>ErrorMessage</code>.
   Common causes: <code>Default Model Name</code> is empty or names a model that isn't
-  in <code>models.json</code>, or a route targets a node name that doesn't exist.</li>
+  yet on disk (fails fast — download it via the Model Manager first), or a
+  route targets a node name that doesn't exist.</li>
 <li><strong><code>CreateAgent</code> takes several seconds even after the model is
   downloaded</strong> — normal on the first agent using a given model in a
   session; the server is loading it from disk into RAM/VRAM.

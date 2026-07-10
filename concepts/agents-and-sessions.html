@@ -697,6 +697,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -773,6 +779,41 @@
     
   
     Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
   
 
     
@@ -1045,6 +1086,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../how-to/pin-and-unpin-models.html" class="md-nav__link">
         
   
@@ -1290,14 +1366,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
+      <a href="../how-to/pause-and-resume-turns.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Change agent parameters at runtime
+    Pause and resume a turn
   
 
     
@@ -1325,14 +1401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to/enable-auto-model-downloading.html" class="md-nav__link">
+      <a href="../how-to/change-agent-parameters.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Enable auto model downloading
+    Change agent parameters at runtime
   
 
     
@@ -1403,6 +1479,41 @@
     
   
     Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
   
 
     
@@ -3475,6 +3586,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3613,6 +3730,41 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference/nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference/nodes/instruction.html" class="md-nav__link">
         
   
@@ -3656,6 +3808,41 @@
     
   
     Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve filter grammar
   
 
     
@@ -3866,6 +4053,41 @@
     
   
     Human Message Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
   
 
     
@@ -4400,22 +4622,26 @@ how these two objects come into being, what they own, and what
 happens when they go away is the single most useful piece of
 mechanical knowledge for integrating the server.</p>
 <h2 id="session-one-tcp-connection-one-world">Session: one TCP connection, one world<a class="headerlink" href="#session-one-tcp-connection-one-world" title="Permanent link">&para;</a></h2>
-<p>A <a href="../reference/glossary.html#session">session</a> is created by the
-server the instant it accepts a TCP connection from your client.
-From the client's side, the steps are:</p>
+<p>In protocol v4 the TCP <strong>connection</strong> and the logical <strong>session</strong> are distinct.
+The connection is created when the server accepts your socket; the
+<a href="../reference/glossary.html#session">session</a> is created only when you send
+<code>CreateSession</code>. From the client's side, the steps are:</p>
 <ol>
 <li><code>Client::connect(host, port)</code> opens the socket.</li>
-<li>The server sends an unsolicited <code>SessionReady</code> frame — that is the
-   moment you can start doing things.</li>
-<li>You send <code>ConfigureSessionRequest</code> to pick an inference engine
-   (for example <code>LlamaCpp</code> or <code>Mock</code>). You can change it later; only
-   <em>future</em> <code>CreateAgent</code> calls are affected. You may also set
-   <code>allow_auto_model_downloading=true</code> here for development convenience
-   (see <a href="../how-to/enable-auto-model-downloading.html">Enable Auto Model Downloading</a>).</li>
-<li>Optionally, you create per-session helpers
+<li>The server sends an unsolicited <code>ConnectionReady</code> frame — a connection-level
+   hello (it carries the protocol version and codegen fingerprint, but <strong>no</strong>
+   <code>session_id</code>).</li>
+<li>You send <code>CreateSessionRequest</code> to create the session and pick its inference
+   engines (for example <code>LlamaCpp</code> or <code>Mock</code>). This is <strong>mandatory and one-shot</strong>:
+   it must precede every other request, and the engines/flags are <strong>fixed for the
+   life of the session</strong> (to change them, reconnect). The server replies with
+   <code>CreateSessionResponse</code>, which carries the server-allocated <code>session_id</code>.</li>
+<li>Only now can you create per-session helpers
    (<a href="../reference/string-storage.html">string storages</a>,
-   <a href="../reference/embedded-string-storage.html">embedded string storages</a>)
-   and start creating agents.</li>
+   <a href="../reference/embedded-string-storage.html">embedded string storages</a>),
+   manage models, and create agents. Any of these before <code>CreateSession</code> is
+   rejected with <code>SessionNotReady</code>; a second <code>CreateSession</code> with
+   <code>SessionAlreadyExists</code>.</li>
 </ol>
 <p>Everything in steps 3 and 4 belongs to the session. When the socket
 closes, the server:</p>
@@ -4436,18 +4662,21 @@ no server-side persistence for session state.</p>
 tiny state machine:</p>
 <pre class="mermaid"><code>stateDiagram-v2
     direction LR
-    [*]         --&gt; Connected:        TCP accept + SessionReady
-    Connected   --&gt; Connected:        ConfigureSessionRequest (repeatable)
-    Connected   --&gt; AgentActive:      CreateAgentRequest
-    AgentActive --&gt; AgentActive:      SendMessage / DownloadModel / Load / …
-    AgentActive --&gt; Connected:        last agent destroyed
-    Connected   --&gt; Closing:          socket EOF / server shutdown
-    AgentActive --&gt; Closing:          socket EOF / server shutdown
-    Closing     --&gt; [*]:              reader + writer exit</code></pre>
-<p><code>ConfigureSession</code> is valid whenever the session is not closing.
-Model management requests are valid in both <code>Connected</code> and
-<code>AgentActive</code> states — you can warm up a model before creating any
-agents.</p>
+    [*]            --&gt; Connected:        TCP accept + ConnectionReady
+    Connected      --&gt; Connected:        any non-CreateSession request → SessionNotReady
+    Connected      --&gt; SessionActive:    CreateSessionRequest (mandatory, one-shot)
+    SessionActive  --&gt; SessionActive:    second CreateSession → SessionAlreadyExists
+    SessionActive  --&gt; AgentActive:      CreateAgentRequest
+    AgentActive    --&gt; AgentActive:      SendMessage / DownloadModel / Load / …
+    AgentActive    --&gt; SessionActive:    last agent destroyed
+    Connected      --&gt; Closing:          socket EOF / server shutdown
+    SessionActive  --&gt; Closing:          socket EOF / server shutdown
+    AgentActive    --&gt; Closing:          socket EOF / server shutdown
+    Closing        --&gt; [*]:              reader + writer exit</code></pre>
+<p><code>CreateSession</code> is valid exactly once, and only on a bare connection.
+Model management, storage, voice, and agent requests are valid only <strong>after</strong>
+<code>CreateSession</code> — you can warm up a model before creating any agents, but not
+before creating the session.</p>
 <h2 id="agent-one-conversation-one-graph">Agent: one conversation, one graph<a class="headerlink" href="#agent-one-conversation-one-graph" title="Permanent link">&para;</a></h2>
 <p>An <a href="../reference/glossary.html#agent">agent</a> is a single ongoing
 conversation. You create one by sending
@@ -4463,10 +4692,10 @@ conversation. You create one by sending
 </ul>
 <p>The server responds with <code>CreateAgentResponse</code> once the graph
 compiles and the default model resolves — after that you can send
-messages. If <code>allow_auto_model_downloading</code> is set on the session and
-models are absent from disk, the server downloads them first and streams
-<code>DownloadProgress</code> frames (keyed to the CreateAgent <code>request_id</code>) before
-sending <code>CreateAgentResponse</code>.</p>
+messages. Models referenced by the graph must already be on disk;
+<code>CreateAgent</code> fails fast with <code>GraphCompilationFailed</code> if one is missing,
+rather than downloading it on the spot. Acquire models beforehand via
+the editor Model Manager or <code>DownloadModelRequest</code>.</p>
 <p>A session can own as many agents as you want. Each has its own dialog
 (the growing list of
 <a href="../reference/glossary.html#interaction">interactions</a>), its own
@@ -4526,9 +4755,9 @@ agent B's turn starts.</p>
     participant A as Agent
 
     C-&gt;&gt;S: connect
-    S--&gt;&gt;C: SessionReady
-    C-&gt;&gt;S: ConfigureSessionRequest
-    S--&gt;&gt;C: ConfigureSessionResponse
+    S--&gt;&gt;C: ConnectionReady
+    C-&gt;&gt;S: CreateSessionRequest
+    S--&gt;&gt;C: CreateSessionResponse
     C-&gt;&gt;S: CreateAgentRequest(graph, model, …)
     S-&gt;&gt;A: compile graph, resolve model
     S--&gt;&gt;C: CreateAgentResponse(agent_id)
@@ -4549,9 +4778,10 @@ agent B's turn starts.</p>
 <li><strong>Agent ids are session-scoped.</strong> An <code>agent_id</code> is only meaningful
   inside the session that created it. If you reconnect, all previous
   agent ids become invalid.</li>
-<li><strong>A new <code>ConfigureSession</code> does not change existing agents.</strong>
-  Existing agents keep the inference engine they were created with.
-  Only later <code>CreateAgent</code> calls see the new engine.</li>
+<li><strong><code>CreateSession</code> is one-shot; engines are fixed per session.</strong>
+  You cannot change the inference engine after the session is created — a second
+  <code>CreateSession</code> is rejected with <code>SessionAlreadyExists</code>. To run with a
+  different engine, open a new connection and create a new session.</li>
 <li><strong>Shared string storages need the storage alive at
   <code>CreateAgent</code> time.</strong> Destroying a
   <a href="../reference/string-storage.html">string storage</a> after creating an

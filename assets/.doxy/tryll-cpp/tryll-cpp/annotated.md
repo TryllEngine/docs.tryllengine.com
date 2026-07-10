@@ -4,7 +4,7 @@
 
 Here are the classes, structs, unions and interfaces with brief descriptions:
 
-* **namespace** [**@347312275156240164130314360330001231161026003162**](namespace_0d347312275156240164130314360330001231161026003162.md) 
+* **namespace** [**@221225266365143145043236145257124227201005334110**](namespace_0d221225266365143145043236145257124227201005334110.md) 
 * **namespace** [**Tryll**](namespace_tryll.md)     
     * **namespace** [**Client**](namespace_tryll_1_1_client.md)     
         * **class** [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) _Client-side handle for one server-side agent._     
@@ -27,7 +27,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
         * **class** [**VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md)     
         * **struct** [**VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md) _Parameters for creating a_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _handle._    
     * **namespace** [**Generated**](namespace_tryll_1_1_generated.md)     
-        * **namespace** [**V\_88c2c81422c1**](namespace_tryll_1_1_generated_1_1_v__88c2c81422c1.md)     
-            * **struct** [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__88c2c81422c1_1_1_fingerprint.md) 
+        * **namespace** [**V\_5fe355a174fd**](namespace_tryll_1_1_generated_1_1_v__5fe355a174fd.md)     
+            * **struct** [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint.md) 
 * **namespace** [**std**](namespacestd.md) 
 

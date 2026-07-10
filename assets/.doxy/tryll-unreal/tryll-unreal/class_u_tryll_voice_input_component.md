@@ -348,7 +348,7 @@ bool UTryllVoiceInputComponent::bCreateOnConnect;
 
 
 
-Create the VoiceInput handle automatically once the session is ready (connected + configured); queues until OnConfigureSessionComplete if it spawns earlier. (Name kept for compatibility; it fires on session-ready, not raw connect.) 
+Create the VoiceInput handle automatically once the session is ready (connected + configured); queues until OnCreateSessionComplete if it spawns earlier. (Name kept for compatibility; it fires on session-ready, not raw connect.) 
 
 
         
@@ -573,5 +573,5 @@ virtual void UTryllVoiceInputComponent::TickComponent (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h`
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h`
 

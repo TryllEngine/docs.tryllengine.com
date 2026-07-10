@@ -4,14 +4,14 @@
     <compoundname>TryllError.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">TryllError.generated.h</includes>
-    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
-    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
-    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
-    <includedby refid="_tryll_voice_input_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</includedby>
-    <includedby refid="_tryll_voice_input_component_8h" local="yes">C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</includedby>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_voice_input_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</includedby>
+    <includedby refid="_tryll_voice_input_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</includedby>
     <incdepgraph>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -27,15 +27,15 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</label>
         <link refid="_tryll_agent_8h_source"/>
       </node>
       <node id="3">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
         <link refid="_tryll_agent_component_8h_source"/>
       </node>
       <node id="1">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -49,11 +49,11 @@
         </childnode>
       </node>
       <node id="4">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
         <link refid="_tryll_subsystem_8h_source"/>
       </node>
       <node id="5">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
         <link refid="_tryll_voice_input_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
@@ -61,7 +61,7 @@
         </childnode>
       </node>
       <node id="6">
-        <label>C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
         <link refid="_tryll_voice_input_component_8h_source"/>
       </node>
     </invincdepgraph>
@@ -121,7 +121,16 @@
           <briefdescription>
           </briefdescription>
           <detaileddescription>
-<para>Request requires a configured session; call ConfigureSession first. </para>
+<para>Request requires a session; call CreateSession first. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da06a7bffd7a6eecf957b889c311a10282" prot="public">
+          <name>SessionAlreadyExists</name>
+          <initializer>= 2003</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A session already exists on this connection; CreateSession is one-shot. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da22ab3ef06934a2bdad77f3b96ac9c2b7" prot="public">
@@ -158,6 +167,15 @@
           </briefdescription>
           <detaileddescription>
 <para>Agent is still processing the previous turn and cannot accept a new message yet. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da182b5b7eaadc9f5b1b23df4668b55f6d" prot="public">
+          <name>AgentNotPaused</name>
+          <initializer>= 3012</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>ResumeAgent was called but the agent is not currently paused between nodes. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae30d06929b59cd217b7e1f476f5aac3f" prot="public">
@@ -348,13 +366,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="99"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="103"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h"/>
   </compounddef>
 </doxygen>
