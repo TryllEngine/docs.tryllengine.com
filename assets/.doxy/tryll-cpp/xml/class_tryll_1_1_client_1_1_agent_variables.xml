@@ -1,0 +1,939 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_tryll_1_1_client_1_1_agent_variables" kind="class" language="C++" prot="public">
+    <compoundname>Tryll::Client::AgentVariables</compoundname>
+    <includes refid="_agent_variables_8h" local="no">AgentVariables.h</includes>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update" prot="public">Tryll::Client::AgentVariables::PendingUpdate</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry" prot="private">Tryll::Client::AgentVariables::PendingEntry</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5a" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>Op</name>
+        <qualifiedname>Tryll::Client::AgentVariables::Op</qualifiedname>
+        <enumvalue id="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5aa185b7133db22230701a857c059360cc2" prot="public">
+          <name>Assign</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5aaee0e16b09230c663c7de5b7a14e0b6fc" prot="public">
+          <name>AddToSet</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5aa0dc78676302cbafbbc7b652a624dccfc" prot="public">
+          <name>RemoveFromSet</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5aa526d688f37a86d3c3f27d0c5016eb71d" prot="public">
+          <name>Reset</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>One staged mutation, in wire-op terms. Exposed (rather than kept private) only so TryllClientImpl can encode it — treat as implementation detail, not a stable public API. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="146" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="146" bodyend="146"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_tryll_1_1_client_1_1_agent_variables_1acef42e43420460443a940c4e97026f3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class Internal::TryllClientImpl</definition>
+        <argsstring></argsstring>
+        <name>Internal::TryllClientImpl</name>
+        <qualifiedname>Tryll::Client::AgentVariables::TryllClientImpl</qualifiedname>
+        <param>
+          <type>Internal::TryllClientImpl</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="166" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_tryll_1_1_client_1_1_agent_variables_1a2f54b7ef60feb4d15e9e5334d349096c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class AgentProxy</definition>
+        <argsstring></argsstring>
+        <name>AgentProxy</name>
+        <qualifiedname>Tryll::Client::AgentVariables::AgentProxy</qualifiedname>
+        <param>
+          <type>AgentProxy</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="167" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a252eea01a11bfb259d760fc5d98c8c5e" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex Tryll::Client::AgentVariables::_mutex</definition>
+        <argsstring></argsstring>
+        <name>_mutex</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_mutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="207" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a9f660e66d79fb6fdcecb08a9272e5f36" prot="private" static="no" mutable="no">
+        <type>std::weak_ptr&lt; Internal::TryllClientImpl &gt;</type>
+        <definition>std::weak_ptr&lt;Internal::TryllClientImpl&gt; Tryll::Client::AgentVariables::_impl</definition>
+        <argsstring></argsstring>
+        <name>_impl</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_impl</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="208" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1ad3f8aaceeba33ac070ab86bc7882d1c7" prot="private" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t Tryll::Client::AgentVariables::_agentId</definition>
+        <argsstring></argsstring>
+        <name>_agentId</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_agentId</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="209" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1ad18ce9d32746ca6ab9fd942ced2aa19b" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kindref="member">VariableValue</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, VariableValue&gt; Tryll::Client::AgentVariables::_values</definition>
+        <argsstring></argsstring>
+        <name>_values</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_values</qualifiedname>
+        <briefdescription>
+<para>current mirror </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="211" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a4dd1c8900f5ec4d78b445feedb5e99b3" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kindref="member">VariableValue</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, VariableValue&gt; Tryll::Client::AgentVariables::_initial</definition>
+        <argsstring></argsstring>
+        <name>_initial</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_initial</qualifiedname>
+        <briefdescription>
+<para>for Reset </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="212" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a4b89c187dab01d3c79723080303d8f5a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Tryll::Client::AgentVariables::_pendingOrder</definition>
+        <argsstring></argsstring>
+        <name>_pendingOrder</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_pendingOrder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Coalesced staged writes, not yet flushed. <computeroutput>_pendingOrder</computeroutput> gives a deterministic emit order; <computeroutput>_pendingByName</computeroutput> holds the coalesced entry. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="216" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a81d976aa382578dab3994c2598131b2e" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, PendingEntry &gt;</type>
+        <definition>std::unordered_map&lt;std::string, PendingEntry&gt; Tryll::Client::AgentVariables::_pendingByName</definition>
+        <argsstring></argsstring>
+        <name>_pendingByName</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_pendingByName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="217" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1a5312cee88e0d17f5566c74217d8c20bb" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Tryll::Client::AgentVariables::_inFlightOrder</definition>
+        <argsstring></argsstring>
+        <name>_inFlightOrder</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_inFlightOrder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The batch currently awaiting an Ack (empty when none in flight). Kept so a rejected flush can re-stage (AgentBusy) or re-sync (hard error) the affected names instead of silently dropping them. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="222" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_tryll_1_1_client_1_1_agent_variables_1ab39f584546084651f4fc3e9a59b9f9f3" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, PendingEntry &gt;</type>
+        <definition>std::unordered_map&lt;std::string, PendingEntry&gt; Tryll::Client::AgentVariables::_inFlightByName</definition>
+        <argsstring></argsstring>
+        <name>_inFlightByName</name>
+        <qualifiedname>Tryll::Client::AgentVariables::_inFlightByName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="223" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1ae8d5de2ff4778c18a95afad8e1b1627f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Tryll::Client::AgentVariables::AgentVariables</definition>
+        <argsstring>()=default</argsstring>
+        <name>AgentVariables</name>
+        <qualifiedname>Tryll::Client::AgentVariables::AgentVariables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="82" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1ab13effc88404a30260380b3c9b8993cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SetInt</definition>
+        <argsstring>(std::string_view name, std::int64_t value)</argsstring>
+        <name>SetInt</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SetInt</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::int64_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared, or its declared type is not Int. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="86" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1ad6e501092ecab56851f2fba5a0ac1453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SetFloat</definition>
+        <argsstring>(std::string_view name, double value)</argsstring>
+        <name>SetFloat</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SetFloat</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared, or its declared type is not Float. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="89" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a290acd88c6306fd11004f3e5e52177dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SetString</definition>
+        <argsstring>(std::string_view name, std::string value)</argsstring>
+        <name>SetString</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SetString</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared, or its declared type is not String. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="92" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a797925f7c61f63771f43b83644ffedbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SetBool</definition>
+        <argsstring>(std::string_view name, bool value)</argsstring>
+        <name>SetBool</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SetBool</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared, or its declared type is not Bool. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="95" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a6266d7f5fb58a222895885047c57cdff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SetStringSet</definition>
+        <argsstring>(std::string_view name, std::vector&lt; std::string &gt; value)</argsstring>
+        <name>SetStringSet</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SetStringSet</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared, or its declared type is not StringSet. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="98" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1afd23a371e1735386ee758a72b73f09fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::AddToSet</definition>
+        <argsstring>(std::string_view name, std::string_view element)</argsstring>
+        <name>AddToSet</name>
+        <qualifiedname>Tryll::Client::AgentVariables::AddToSet</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Idempotent — no-op if <computeroutput>element</computeroutput> is already present. <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared or is not a StringSet. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="101" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1ab5f61e604376bcfee5f712adafc997a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::RemoveFromSet</definition>
+        <argsstring>(std::string_view name, std::string_view element)</argsstring>
+        <name>RemoveFromSet</name>
+        <qualifiedname>Tryll::Client::AgentVariables::RemoveFromSet</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Idempotent — no-op if <computeroutput>element</computeroutput> is already absent. <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared or is not a StringSet. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="104" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1aaeee7b3de361ef89794ace0bc8dfc804" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::Reset</definition>
+        <argsstring>(std::string_view name)</argsstring>
+        <name>Reset</name>
+        <qualifiedname>Tryll::Client::AgentVariables::Reset</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Restores the CreateAgent initial value. <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If <computeroutput>name</computeroutput> is not declared. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="107" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a3d743a3cfce4b6041573a07425bb101b" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tryll::Client::AgentVariables::IsDeclared</definition>
+        <argsstring>(std::string_view name) const noexcept</argsstring>
+        <name>IsDeclared</name>
+        <qualifiedname>Tryll::Client::AgentVariables::IsDeclared</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="109" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a4455a1711f28241faf125545ad3734ff" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ad" kindref="member">VariableType</ref> &gt;</type>
+        <definition>std::optional&lt; VariableType &gt; Tryll::Client::AgentVariables::DeclaredType</definition>
+        <argsstring>(std::string_view name) const noexcept</argsstring>
+        <name>DeclaredType</name>
+        <qualifiedname>Tryll::Client::AgentVariables::DeclaredType</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="110" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1acb2c7ae6f6e9f26ce8496a185e48ef0e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; std::string, <ref refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kindref="member">VariableValue</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::pair&lt; std::string, VariableValue &gt; &gt; Tryll::Client::AgentVariables::Snapshot</definition>
+        <argsstring>() const</argsstring>
+        <name>Snapshot</name>
+        <qualifiedname>Tryll::Client::AgentVariables::Snapshot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Every declared variable and its current mirrored value, in no particular order. Mainly for diagnostics/debug UI (e.g. test-chat&apos;s <computeroutput>/var show</computeroutput>). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="115" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1aa2cbc96734c37811c15c3961aa2ef023" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::int64_t &gt;</type>
+        <definition>std::optional&lt; std::int64_t &gt; Tryll::Client::AgentVariables::GetInt</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>GetInt</name>
+        <qualifiedname>Tryll::Client::AgentVariables::GetInt</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="117" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a7c71fa7c674b6831b26775633c477815" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; double &gt;</type>
+        <definition>std::optional&lt; double &gt; Tryll::Client::AgentVariables::GetFloat</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>GetFloat</name>
+        <qualifiedname>Tryll::Client::AgentVariables::GetFloat</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="118" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1abe458e9cfd0c7575b158cfee77eb76c1" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt; std::string &gt; Tryll::Client::AgentVariables::GetString</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>GetString</name>
+        <qualifiedname>Tryll::Client::AgentVariables::GetString</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="119" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a25f29bc1f57243930875efd184bf40ea" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; bool &gt;</type>
+        <definition>std::optional&lt; bool &gt; Tryll::Client::AgentVariables::GetBool</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>GetBool</name>
+        <qualifiedname>Tryll::Client::AgentVariables::GetBool</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="120" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1aeb1dd26565f565b9728d62abe7057b90" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::vector&lt; std::string &gt; &gt;</type>
+        <definition>std::optional&lt; std::vector&lt; std::string &gt; &gt; Tryll::Client::AgentVariables::GetStringSet</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>GetStringSet</name>
+        <qualifiedname>Tryll::Client::AgentVariables::GetStringSet</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="121" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a2aebc84f63fe3441417a827d523055d0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tryll::Client::AgentVariables::IsDirty</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsDirty</name>
+        <qualifiedname>Tryll::Client::AgentVariables::IsDirty</qualifiedname>
+        <briefdescription>
+<para>True if any write is staged and not yet sent to the server. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="124" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a9fb3d9afa92c74cf36064a9a531937fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::Flush</definition>
+        <argsstring>()</argsstring>
+        <name>Flush</name>
+        <qualifiedname>Tryll::Client::AgentVariables::Flush</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send any staged writes now as one batched request, instead of waiting for the next SendText/Resume/ChangeParams call. Fire-and-forget, same as the automatic flush — errors surface via the agent&apos;s OnError callback. No-op if nothing is staged. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="130" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a06b594eb3e3ad64bca2fa0ad8be3cbb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::SyncFromServer</definition>
+        <argsstring>(std::vector&lt; std::string &gt; names={}, std::chrono::milliseconds timeout=std::chrono::seconds{10})</argsstring>
+        <name>SyncFromServer</name>
+        <qualifiedname>Tryll::Client::AgentVariables::SyncFromServer</qualifiedname>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>names</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::chrono::milliseconds</type>
+          <declname>timeout</declname>
+          <defval>std::chrono::seconds{10}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Debug/verification round-trip: fetch current values from the server and merge them into the local mirror (does not touch pending/staged writes). Normal reads never need this — only the client writes variables in v1, so the mirror is authoritative; use this only to double-check server state. <computeroutput>names</computeroutput> empty means every declared variable. Blocks until the response arrives or <computeroutput>timeout</computeroutput> elapses. <parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>TryllError</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On server error, disconnect, or timeout. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="139" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1aea7c3e8e9d12f9e6c2add99c78374653" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::HandleFlushResult</definition>
+        <argsstring>(const std::optional&lt; TryllError &gt; &amp;error)</argsstring>
+        <name>HandleFlushResult</name>
+        <qualifiedname>Tryll::Client::AgentVariables::HandleFlushResult</qualifiedname>
+        <param>
+          <type>const std::optional&lt; <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> &gt; &amp;</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Result of a flushed batch, routed back from the reader thread via TryllClientImpl::OnVariableFlushResult. <computeroutput>error</computeroutput> is nullopt on success. Exposed only so TryllClientImpl can invoke it; treat as internal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="157" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1abf799e8e038805130e5ec3b79c4e3d25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::MergeServerValues</definition>
+        <argsstring>(const std::vector&lt; std::pair&lt; std::string, VariableValue &gt; &gt; &amp;fetched)</argsstring>
+        <name>MergeServerValues</name>
+        <qualifiedname>Tryll::Client::AgentVariables::MergeServerValues</qualifiedname>
+        <param>
+          <type>const std::vector&lt; std::pair&lt; std::string, <ref refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kindref="member">VariableValue</ref> &gt; &gt; &amp;</type>
+          <declname>fetched</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Merge server-fetched values into the mirror, skipping any name with a locally newer (staged or in-flight) write. Exposed only for TryllClientImpl&apos;s async re-sync path; treat as internal. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="162" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1abb96b28a638eabfa1a8a4e3f1e236259" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::Init</definition>
+        <argsstring>(std::weak_ptr&lt; Internal::TryllClientImpl &gt; impl, std::uint64_t agentId, std::vector&lt; AgentVariableDecl &gt; decls)</argsstring>
+        <name>Init</name>
+        <qualifiedname>Tryll::Client::AgentVariables::Init</qualifiedname>
+        <param>
+          <type>std::weak_ptr&lt; Internal::TryllClientImpl &gt;</type>
+          <declname>impl</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>agentId</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_agent_variable_decl" kindref="compound">AgentVariableDecl</ref> &gt;</type>
+          <declname>decls</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called once by TryllClientImpl right after CreateAgentResponse, with the exact declaration the client sent at CreateAgent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="171" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a10056f974d228af2d09f41926a9b3cc8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::FlushIfDirty</definition>
+        <argsstring>()</argsstring>
+        <name>FlushIfDirty</name>
+        <qualifiedname>Tryll::Client::AgentVariables::FlushIfDirty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Called by <ref refid="class_tryll_1_1_client_1_1_agent_proxy_1a399a29d6e9320ca318d2798bc608f373" kindref="member">AgentProxy::SendText</ref>/Resume/ResumeAsync/ChangeParams/ ChangeParamsAsync before doing their own thing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="178" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a56c3e5cdf27d124bad28517992b7fa65" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::StageAssign</definition>
+        <argsstring>(std::string name, VariableValue value)</argsstring>
+        <name>StageAssign</name>
+        <qualifiedname>Tryll::Client::AgentVariables::StageAssign</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kindref="member">VariableValue</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="180" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a2db7857240d7e6a6d30e80419adac1a2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::ThrowIfNotDeclared</definition>
+        <argsstring>(std::string_view name) const</argsstring>
+        <name>ThrowIfNotDeclared</name>
+        <qualifiedname>Tryll::Client::AgentVariables::ThrowIfNotDeclared</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="181" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a50e7bae48be0b09523e5bb2f9db9efa6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::AgentVariables::ThrowIfTypeMismatch</definition>
+        <argsstring>(std::string_view name, VariableType actual) const</argsstring>
+        <name>ThrowIfTypeMismatch</name>
+        <qualifiedname>Tryll::Client::AgentVariables::ThrowIfTypeMismatch</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ad" kindref="member">VariableType</ref></type>
+          <declname>actual</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="182" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a7a7f3cffad3260a4e325a5b48be8f3b3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>PendingEntry &amp;</type>
+        <definition>PendingEntry &amp; Tryll::Client::AgentVariables::TouchPendingLocked</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>TouchPendingLocked</name>
+        <qualifiedname>Tryll::Client::AgentVariables::TouchPendingLocked</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Record <computeroutput>name</computeroutput> in first-touch order and return its coalesced entry. Caller holds <computeroutput>_mutex</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="198" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a8ea15b2b5c9784e54b84448c52ab9a6a" prot="private" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update" kindref="compound">PendingUpdate</ref> &gt;</type>
+        <definition>std::vector&lt; PendingUpdate &gt; Tryll::Client::AgentVariables::BuildWireBatchLocked</definition>
+        <argsstring>() const</argsstring>
+        <name>BuildWireBatchLocked</name>
+        <qualifiedname>Tryll::Client::AgentVariables::BuildWireBatchLocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Build the wire batch from the coalesced pending map, choosing the smaller of delta-ops vs whole-set assign per set. Caller holds <computeroutput>_mutex</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="202" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_agent_variables_1a658b24144a20a1e2bc5d3fe173686908" prot="private" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Tryll::Client::AgentVariables::HasPendingLocked</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>HasPendingLocked</name>
+        <qualifiedname>Tryll::Client::AgentVariables::HasPendingLocked</qualifiedname>
+        <briefdescription>
+<para>True if any write is staged. Caller holds <computeroutput>_mutex</computeroutput>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="205" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Client-side mirror + deferred-flush batcher for one agent&apos;s declared variables. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Obtained via <ref refid="class_tryll_1_1_client_1_1_agent_proxy_1af4434c104b1f28b228ab811ed0461f6a" kindref="member">Tryll::Client::AgentProxy::Variables</ref>. Reads are synchronous, served from the local mirror — only the client writes variables in v1, so no server round-trip is needed to read one back. Writes are validated locally (unknown name / type mismatch throws <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">Tryll::Client::TryllError</ref> immediately, no wire traffic) and staged; the proxy flushes any staged writes as one batched <computeroutput>UpdateAgentVariablesRequest</computeroutput> automatically, immediately before the next agent interaction (<computeroutput>SendText</computeroutput> / <computeroutput>Resume</computeroutput> / <computeroutput>ChangeParams</computeroutput> — not <computeroutput>Cancel</computeroutput>). Staged writes are coalesced per name (last value wins for scalars; a minimal add/remove delta, or a whole-set assign, whichever is smaller, for sets) so rapid repeated writes never grow the batch unboundedly.</para>
+<para>Flushed writes are non-blocking. The batch is retained in-flight until the server acknowledges it: on a transient <computeroutput>AgentBusy</computeroutput> the batch is re-staged behind any newer writes and retried on the next interaction; on a hard rejection (rare, since the mirror pre-validates unknown-name/type-mismatch locally) the affected names are re-synced from the server so the mirror never stays silently diverged. Either way the error surfaces through the agent&apos;s usual <ref refid="class_tryll_1_1_client_1_1_agent_proxy_1a93d49bfc78f6120b3a12b63110d44db3" kindref="member">Tryll::Client::AgentProxy::SetOnError</ref> callback, the same path <computeroutput>SendText</computeroutput> errors use. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="79" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="80" bodyend="224"/>
+    <listofallmembers>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ad3f8aaceeba33ac070ab86bc7882d1c7" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_agentId</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a9f660e66d79fb6fdcecb08a9272e5f36" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_impl</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ab39f584546084651f4fc3e9a59b9f9f3" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_inFlightByName</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a5312cee88e0d17f5566c74217d8c20bb" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_inFlightOrder</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a4dd1c8900f5ec4d78b445feedb5e99b3" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_initial</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a252eea01a11bfb259d760fc5d98c8c5e" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_mutex</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a81d976aa382578dab3994c2598131b2e" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_pendingByName</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a4b89c187dab01d3c79723080303d8f5a" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_pendingOrder</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ad18ce9d32746ca6ab9fd942ced2aa19b" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>_values</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1afd23a371e1735386ee758a72b73f09fe" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>AddToSet</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a2f54b7ef60feb4d15e9e5334d349096c" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>AgentProxy</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ae8d5de2ff4778c18a95afad8e1b1627f" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>AgentVariables</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a8ea15b2b5c9784e54b84448c52ab9a6a" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>BuildWireBatchLocked</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a4455a1711f28241faf125545ad3734ff" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>DeclaredType</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a9fb3d9afa92c74cf36064a9a531937fe" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Flush</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a10056f974d228af2d09f41926a9b3cc8" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>FlushIfDirty</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a25f29bc1f57243930875efd184bf40ea" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>GetBool</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a7c71fa7c674b6831b26775633c477815" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>GetFloat</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1aa2cbc96734c37811c15c3961aa2ef023" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>GetInt</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1abe458e9cfd0c7575b158cfee77eb76c1" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>GetString</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1aeb1dd26565f565b9728d62abe7057b90" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>GetStringSet</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1aea7c3e8e9d12f9e6c2add99c78374653" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>HandleFlushResult</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a658b24144a20a1e2bc5d3fe173686908" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>HasPendingLocked</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1abb96b28a638eabfa1a8a4e3f1e236259" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Init</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1acef42e43420460443a940c4e97026f3c" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Internal::TryllClientImpl</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a3d743a3cfce4b6041573a07425bb101b" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>IsDeclared</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a2aebc84f63fe3441417a827d523055d0" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>IsDirty</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1abf799e8e038805130e5ec3b79c4e3d25" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>MergeServerValues</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a9e9778e965f010dca75d0a29fc321a5a" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Op</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ab5f61e604376bcfee5f712adafc997a9" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>RemoveFromSet</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1aaeee7b3de361ef89794ace0bc8dfc804" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Reset</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a797925f7c61f63771f43b83644ffedbb" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SetBool</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ad6e501092ecab56851f2fba5a0ac1453" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SetFloat</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1ab13effc88404a30260380b3c9b8993cf" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SetInt</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a290acd88c6306fd11004f3e5e52177dd" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SetString</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a6266d7f5fb58a222895885047c57cdff" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SetStringSet</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1acb2c7ae6f6e9f26ce8496a185e48ef0e" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>Snapshot</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a56c3e5cdf27d124bad28517992b7fa65" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>StageAssign</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a06b594eb3e3ad64bca2fa0ad8be3cbb3" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>SyncFromServer</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a2db7857240d7e6a6d30e80419adac1a2" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>ThrowIfNotDeclared</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a50e7bae48be0b09523e5bb2f9db9efa6" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>ThrowIfTypeMismatch</name></member>
+      <member refid="class_tryll_1_1_client_1_1_agent_variables_1a7a7f3cffad3260a4e325a5b48be8f3b3" prot="private" virt="non-virtual"><scope>Tryll::Client::AgentVariables</scope><name>TouchPendingLocked</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

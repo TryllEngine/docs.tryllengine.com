@@ -69,6 +69,38 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="61" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="61" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a00ef5209b2e16485103288cc7f518c25" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double UTryllRuntimeSettings::ServerReadinessTimeoutSeconds</definition>
+        <argsstring></argsstring>
+        <name>ServerReadinessTimeoutSeconds</name>
+        <qualifiedname>UTryllRuntimeSettings::ServerReadinessTimeoutSeconds</qualifiedname>
+        <initializer>= 5.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Seconds the launcher waits <emphasis>synchronously</emphasis> for a freshly spawned server&apos;s port to start accepting before it stops blocking the game thread and hands off to the asynchronous connect path. Kept short deliberately: a cold start (DLL paging + first-run antivirus scan of the freshly built exe) can take much longer, and the server is <emphasis>warming</emphasis>, not dead — so on timeout the launcher no longer kills it; the connection worker keeps retrying (see ConnectMaxAttempts) until the server is ready. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="72" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1add3495238c6e8208f4e181711d747ea1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllRuntimeSettings::bEnablePlayModeModelGuard</definition>
+        <argsstring></argsstring>
+        <name>bEnablePlayModeModelGuard</name>
+        <qualifiedname>UTryllRuntimeSettings::bEnablePlayModeModelGuard</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Editor-only. When true (default), the Play-In-Editor model guard verifies that every registered required model is downloaded before Play starts — it briefly vetoes Play, connects to the server, downloads anything missing (with a progress toast), then resumes Play automatically. Turn this off to enter Play immediately with no pre-flight check (e.g. when you provision models yourself, or to bypass the guard while debugging). No effect in packaged builds, where the guard does not exist. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="83" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1ae29efb8dfd1f158422dd6d3c2811e513" prot="public" static="no" mutable="no">
         <type>bool</type>
         <definition>bool UTryllRuntimeSettings::bAutoCreateSession</definition>
@@ -83,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="71" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="71" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="93" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1adccb2ddbe3f365f4dbaac0df2ae7cbd9" prot="public" static="no" mutable="no">
         <type>ETryllInferenceEngine</type>
@@ -99,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="75" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="75" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="97" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1ae1b638a8450eeaceb15b1e651ca69890" prot="public" static="no" mutable="no">
         <type>ETryllInferenceEngine</type>
@@ -115,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="79" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="79" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="101" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a698909e45fa06757b6a362848941995c" prot="public" static="no" mutable="no">
         <type>ETryllInferenceEngine</type>
@@ -131,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="83" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="83" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="105" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a8b6abfe4706880ebad5ae62a56633990" prot="public" static="no" mutable="no">
         <type>ETryllInferenceEngine</type>
@@ -147,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="87" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="87" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="109" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a87925e5ae105bf6538fe5e44d42c9fbf" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -162,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="95" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="95" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="117" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a75f836e326435d571aa6600b81a29ae3" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -179,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="110" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="110" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="132" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" static="no" mutable="no">
         <type>int32</type>
@@ -187,15 +219,16 @@
         <argsstring></argsstring>
         <name>ConnectMaxAttempts</name>
         <qualifiedname>UTryllRuntimeSettings::ConnectMaxAttempts</qualifiedname>
-        <initializer>= 5</initializer>
+        <initializer>= 20</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Max number of attempts when establishing a session via <ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">UTryllSubsystem::Connect</ref>. 1 disables retry. The first call counts as attempt 1. </para>
+<para>Max number of attempts when establishing a session via <ref refid="class_u_tryll_subsystem_1a81e59daf749a518511bd858c6f0fabdc" kindref="member">UTryllSubsystem::Connect</ref>. 1 disables retry. The first call counts as attempt 1.</para>
+<para>Sized as a cold-start backstop: after the launcher hands off a still-warming server (see ServerReadinessTimeoutSeconds), the worker retries connect+hello until the server is ready. ConnectMaxAttempts x (ConnectionReadyTimeoutSeconds + ConnectRetryDelaySeconds) must comfortably exceed a realistic cold start; it then bounds the failure (a clear error) instead of retrying forever. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="141" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="141" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="169" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -211,7 +244,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="145" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="145" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="173" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_runtime_settings_1a9129693923975bd1c50b838ac1b29cc8" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double UTryllRuntimeSettings::ConnectionReadyTimeoutSeconds</definition>
+        <argsstring></argsstring>
+        <name>ConnectionReadyTimeoutSeconds</name>
+        <qualifiedname>UTryllRuntimeSettings::ConnectionReadyTimeoutSeconds</qualifiedname>
+        <initializer>= 10.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Per-attempt bound on how long the connection worker waits for the server&apos;s ConnectionReady hello after the TCP connect succeeds. Without this the read was unbounded: a server that accepts the socket but has not finished starting (cold-start &quot;ConnectionReady-late&quot;) would hang the worker forever. On timeout the worker reports ConnectFailed, which consumes one attempt and re-drives the connect via the retry budget above. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="184" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="184" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -242,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="113" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="113" bodyend="116"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="135" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="135" bodyend="138"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -263,7 +312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="119" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="141" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_runtime_settings_1a306088cf3f475400d9babf317b106160" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>FString</type>
@@ -278,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="122" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="144" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_runtime_settings_1a7a45d5b89861ee8f2ac09b5afb2a68d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>FString</type>
@@ -293,7 +342,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="125" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="147" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_runtime_settings_1af468d217cb6e946a0aa636d2d6561079" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -316,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="128" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="150" column="13"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_runtime_settings_1aa534f29deafcd98ad9312d43134b6120" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>FString</type>
@@ -335,7 +384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="134" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="156" column="16"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -365,11 +414,13 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="25" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="26" bodyend="146"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" line="25" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllRuntimeSettings.h" bodystart="26" bodyend="185"/>
     <listofallmembers>
       <member refid="class_u_tryll_runtime_settings_1a58d069088a51bfdbc79dc2f2d0e2f6b6" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoConnect</name></member>
       <member refid="class_u_tryll_runtime_settings_1ae29efb8dfd1f158422dd6d3c2811e513" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoCreateSession</name></member>
       <member refid="class_u_tryll_runtime_settings_1ab893222f143c04383df16552034a5fdb" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bAutoLaunchServer</name></member>
+      <member refid="class_u_tryll_runtime_settings_1add3495238c6e8208f4e181711d747ea1" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>bEnablePlayModeModelGuard</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a9129693923975bd1c50b838ac1b29cc8" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectionReadyTimeoutSeconds</name></member>
       <member refid="class_u_tryll_runtime_settings_1a45cb1e0562f41d55911d2d7afa4e6774" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectMaxAttempts</name></member>
       <member refid="class_u_tryll_runtime_settings_1af482e6081aa3d72db97632adca650611" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ConnectRetryDelaySeconds</name></member>
       <member refid="class_u_tryll_runtime_settings_1a8b6abfe4706880ebad5ae62a56633990" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>EmbeddingEngine</name></member>
@@ -384,6 +435,7 @@
       <member refid="class_u_tryll_runtime_settings_1a53cd18ae744680a5e11875f72423f47b" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ResolveStorageDataFolderForServer</name></member>
       <member refid="class_u_tryll_runtime_settings_1a9267044b675b52b21f93a13223d82879" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ServerBuildVariant</name></member>
       <member refid="class_u_tryll_runtime_settings_1a3ae1906dd87ff47955c3aac3bf66c7c9" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ServerPort</name></member>
+      <member refid="class_u_tryll_runtime_settings_1a00ef5209b2e16485103288cc7f518c25" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>ServerReadinessTimeoutSeconds</name></member>
       <member refid="class_u_tryll_runtime_settings_1a75f836e326435d571aa6600b81a29ae3" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>StorageDataFolder</name></member>
       <member refid="class_u_tryll_runtime_settings_1ae1b638a8450eeaceb15b1e651ca69890" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>SttEngine</name></member>
       <member refid="class_u_tryll_runtime_settings_1a698909e45fa06757b6a362848941995c" prot="public" virt="non-virtual"><scope>UTryllRuntimeSettings</scope><name>TtsEngine</name></member>

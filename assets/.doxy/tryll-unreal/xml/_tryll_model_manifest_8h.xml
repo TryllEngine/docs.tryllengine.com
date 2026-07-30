@@ -5,6 +5,7 @@
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">Engine/DeveloperSettings.h</includes>
     <includes local="yes">TryllModelManifest.generated.h</includes>
+    <includedby refid="_tryll_workflow_model_refs_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowModelRefs.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h</label>
@@ -26,6 +27,18 @@
         <label>TryllModelManifest.generated.h</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h</label>
+        <link refid="_tryll_model_manifest_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowModelRefs.h</label>
+        <link refid="_tryll_workflow_model_refs_8h_source"/>
+      </node>
+    </invincdepgraph>
     <innerclass refid="struct_f_tryll_model_manifest_entry" prot="public">FTryllModelManifestEntry</innerclass>
     <innerclass refid="class_u_tryll_model_manifest" prot="public">UTryllModelManifest</innerclass>
     <sectiondef kind="enum">

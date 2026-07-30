@@ -13,5 +13,10 @@
 * **NodeParamsVariant** ([**Tryll::Client**](namespace_tryll_1_1_client.md))
 
 
+## v
+
+* **VariableValue** ([**Tryll::Client**](namespace_tryll_1_1_client.md))
+
+
 
 

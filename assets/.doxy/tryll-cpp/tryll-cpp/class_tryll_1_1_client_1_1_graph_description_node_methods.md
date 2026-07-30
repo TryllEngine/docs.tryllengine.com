@@ -57,13 +57,14 @@
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddGenerate**](#function-addgenerate) (std::string name, ::Tryll::NodeParams::GenerateParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddGenerateAndSpeak**](#function-addgenerateandspeak) (std::string name, ::Tryll::NodeParams::GenerateAndSpeakParamsT params) <br> |
-|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddHumanMessageGuardrail**](#function-addhumanmessageguardrail) (std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddPause**](#function-addpause) (std::string name, ::Tryll::NodeParams::PauseParamsT params) <br> |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddRegexGuardrail**](#function-addregexguardrail) (std::string name, ::Tryll::NodeParams::RegexGuardrailParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddTransform**](#function-addtransform) (std::string name, ::Tryll::NodeParams::TransformParamsT params) <br> |
 
 
 
@@ -204,26 +205,6 @@ Add a GenerateAndSpeak node. LLM-driven text generation + streaming TTS synthesi
 
 
 
-### function AddHumanMessageGuardrail 
-
-```C++
-GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddHumanMessageGuardrail (
-    std::string name,
-    ::Tryll::NodeParams::HumanMessageGuardrailParamsT params
-) 
-```
-
-
-
-Add a HumanMessageGuardrail node. Guardrail node backed by session string storage. Blocks turns whose human message matches a pattern in the storage. Resolution priority (factory): named string\_storage → inline\_strings → server-wide default (default-guardrail-patterns.txt from server-config). 
-
-
-        
-
-<hr>
-
-
-
 ### function AddInstruction 
 
 ```C++
@@ -235,7 +216,7 @@ GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddIns
 
 
 
-Add a Instruction node. Plain instruction node. Attaches an InstructionComponent to the current interaction so downstream Mustache templates can reference it. 
+Add a Instruction node. Plain instruction node. Attaches a kind=Instruction SlotComponent to the current interaction so downstream Mustache templates can reference it. 
 
 
         
@@ -284,6 +265,26 @@ Add a Pause node. No-op node. The executor pauses the turn after this node exits
 
 
 
+### function AddRegexGuardrail 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddRegexGuardrail (
+    std::string name,
+    ::Tryll::NodeParams::RegexGuardrailParamsT params
+) 
+```
+
+
+
+Add a RegexGuardrail node. Regex guardrail node backed by session string storage. Branches on whether the node's input slot text matches a pattern in the storage. Resolution priority (factory): named string\_storage → inline\_strings → server-wide default (default-guardrail-patterns.txt from server-config). 
+
+
+        
+
+<hr>
+
+
+
 ### function AddRetrieve 
 
 ```C++
@@ -315,7 +316,7 @@ GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddSpe
 
 
 
-Add a Speak node. Standalone TTS-only node. Voices the latest assistant text produced upstream on the current interaction (whatever node wrote it — Generate, CannedResponse, etc.), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
+Add a Speak node. Standalone TTS-only node. Voices its `input`-resolved slot (any upstream node's output — Generate, CannedResponse, etc. — or `user_message` itself), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
 
 
         
@@ -336,6 +337,26 @@ GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddToo
 
 
 Add a ToolCall node. LLM-driven tool-call node. Constructs a tool-call prompt, runs sampling, parses the result. 
+
+
+        
+
+<hr>
+
+
+
+### function AddTransform 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddTransform (
+    std::string name,
+    ::Tryll::NodeParams::TransformParamsT params
+) 
+```
+
+
+
+Add a Transform node. Model-free input-composition node. Renders a Mustache template over `user_message` and the current turn's slots into its own slot; performs no inference and never emits on the wire (`send = None`, `history_role = none`, fixed). Typical use: query rewriting, fan-out composition feeding a downstream Retrieve/Generate `input`. 
 
 
         

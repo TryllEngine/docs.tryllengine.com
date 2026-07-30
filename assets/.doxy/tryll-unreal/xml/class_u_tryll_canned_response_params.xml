@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="36" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="37" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_canned_response_params_1ae59cbbf4e1ae55109ddbc6b18cb54b46" prot="public" static="no" mutable="no">
         <type>TArray&lt; FString &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="40" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="41" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_canned_response_params_1a7a71903964872477de0365e9407de715" prot="public" static="no" mutable="no">
         <type>ETryllCannedResponseSelectionStrategy</type>
@@ -49,7 +49,70 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="44" column="43" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="45" column="43" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_canned_response_params_1a7365fed585268e715898647a5450f012" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllCannedResponseParams::bOverrideOutputName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideOutputName</name>
+        <qualifiedname>UTryllCannedResponseParams::bOverrideOutputName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name this node&apos;s output slot is stored under. Empty = the node&apos;s own name. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="50" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_canned_response_params_1ad59f79aa71086add30ca2cae8776076e" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_name" kindref="compound">FTryllSlotName</ref></type>
+        <definition>FTryllSlotName UTryllCannedResponseParams::OutputName</definition>
+        <argsstring></argsstring>
+        <name>OutputName</name>
+        <qualifiedname>UTryllCannedResponseParams::OutputName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effective output slot name for this node. Empty = the node&apos;s own name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="54" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_canned_response_params_1abe3d70712f8ac3cbb4e1ca15e96cb3b4" prot="public" static="no" mutable="no">
+        <type>ETryllSendAnswer</type>
+        <definition>ETryllSendAnswer UTryllCannedResponseParams::Send</definition>
+        <argsstring></argsstring>
+        <name>Send</name>
+        <qualifiedname>UTryllCannedResponseParams::Send</qualifiedname>
+        <initializer>= ETryllSendAnswer::Whole</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Controls answer-text delivery to the client. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="58" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_canned_response_params_1a0de93a4a35e242dd65db0714d04b9a2c" prot="public" static="no" mutable="no">
+        <type>ETryllHistoryRole</type>
+        <definition>ETryllHistoryRole UTryllCannedResponseParams::HistoryRole</definition>
+        <argsstring></argsstring>
+        <name>HistoryRole</name>
+        <qualifiedname>UTryllCannedResponseParams::HistoryRole</qualifiedname>
+        <initializer>= ETryllHistoryRole::Assistant</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Controls whether/how this node&apos;s slot replays in later turns&apos; projected transcript. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="62" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_canned_response_params_1a5ddcd5dd51d1fd239217c4d038533a88" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -64,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="50" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="50" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="68" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="68" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -81,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="53" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="53" bodyend="53"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="71" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_canned_response_params_1a366307ae478616cf9e6300f8e81bcc24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>flatbuffers::Offset&lt; void &gt;</type>
@@ -104,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="54" column="33"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="72" column="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -130,6 +193,10 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="5">
+        <label>FTryllSlotName</label>
+        <link refid="struct_f_tryll_slot_name"/>
+      </node>
       <node id="4">
         <label>FTryllStoragePath</label>
         <link refid="struct_f_tryll_storage_path"/>
@@ -145,6 +212,9 @@
         <childnode refid="4" relation="usage">
           <edgelabel>StringStorage</edgelabel>
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>OutputName</edgelabel>
+        </childnode>
       </node>
       <node id="2">
         <label>UTryllNodeParamsBase</label>
@@ -153,14 +223,20 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="30" bodyend="56"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" line="30" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllCannedResponseParams.h" bodystart="31" bodyend="74"/>
     <listofallmembers>
+      <member refid="class_u_tryll_canned_response_params_1a7365fed585268e715898647a5450f012" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>bOverrideOutputName</name></member>
       <member refid="class_u_tryll_canned_response_params_1a5ddcd5dd51d1fd239217c4d038533a88" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>FindEnclosingGraph</name></member>
       <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllCannedResponseParams</scope><name>GetExitTargetOptions</name></member>
       <member refid="class_u_tryll_canned_response_params_1aab81b4c80398835b24f36eb6ad36ac83" prot="public" virt="virtual"><scope>UTryllCannedResponseParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>GetOwnerNodeName</name></member>
+      <member refid="class_u_tryll_canned_response_params_1a0de93a4a35e242dd65db0714d04b9a2c" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>HistoryRole</name></member>
       <member refid="class_u_tryll_canned_response_params_1ae59cbbf4e1ae55109ddbc6b18cb54b46" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>InlineStrings</name></member>
+      <member refid="class_u_tryll_canned_response_params_1ad59f79aa71086add30ca2cae8776076e" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>OutputName</name></member>
       <member refid="class_u_tryll_canned_response_params_1a366307ae478616cf9e6300f8e81bcc24" prot="public" virt="virtual"><scope>UTryllCannedResponseParams</scope><name>Pack</name></member>
       <member refid="class_u_tryll_canned_response_params_1a7a71903964872477de0365e9407de715" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>SelectionStrategy</name></member>
+      <member refid="class_u_tryll_canned_response_params_1abe3d70712f8ac3cbb4e1ca15e96cb3b4" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>Send</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>static_cast</name></member>
       <member refid="class_u_tryll_canned_response_params_1a95ac8b1178a94b5a0a9c284f043e7304" prot="public" virt="non-virtual"><scope>UTryllCannedResponseParams</scope><name>StringStorage</name></member>
     </listofallmembers>

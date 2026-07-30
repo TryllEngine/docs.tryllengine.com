@@ -66,6 +66,8 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  FOnTryllNodeEvent | [**OnNodeEvent**](#variable-onnodeevent)  <br> |
 |  FOnTryllPaused | [**OnPaused**](#variable-onpaused)  <br> |
 |  FOnTryllToolCall | [**OnToolCall**](#variable-ontoolcall)  <br> |
+|  FOnTryllToolCallDetailed | [**OnToolCallDetailed**](#variable-ontoolcalldetailed)  <br> |
+|  FOnTryllToolCallWithId | [**OnToolCallWithId**](#variable-ontoolcallwithid)  <br> |
 |  FOnTryllUnloadModel | [**OnUnloadModelComplete**](#variable-onunloadmodelcomplete)  <br> |
 |  FString | [**ServerBuildConfig**](#variable-serverbuildconfig)  <br> |
 |  FString | [**ServerExePath**](#variable-serverexepath)  <br> |
@@ -110,7 +112,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 | virtual bool | [**IsTickableInEditor**](#function-istickableineditor) () override const<br> |
 | virtual bool | [**IsTickableWhenPaused**](#function-istickablewhenpaused) () override const<br> |
 |  void | [**RegisterAgent**](#function-registeragent) (std::uint64\_t AgentId, TWeakPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; Agent) <br> |
-|  void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true) <br> |
+|  void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly) <br> |
 |  void | [**RequestCreateEmbeddedStringStorage**](#function-requestcreateembeddedstringstorage) (const FString & Name, const FString & ConfigPath, const FString & EmbeddingModel=FString{}, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateEmbeddedStringStorageFromStrings**](#function-requestcreateembeddedstringstoragefromstrings) (const FString & Name, const TArray&lt; FString &gt; & Strings, const FString & EmbeddingModel, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateStringStorage**](#function-requestcreatestringstorage) (const FString & Name, const TArray&lt; FString &gt; & Strings, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
@@ -453,7 +455,7 @@ FOnTryllPaused UTryllSubsystem::OnPaused;
 
 
 
-Broadcast when the executor pauses a turn between nodes (Pause node, or ToolCall's PauseAfterToolCall). 
+Broadcast when the executor pauses a turn between nodes (Pause node, or pausing ToolCall dispositions). 
 
 
         
@@ -470,7 +472,41 @@ FOnTryllToolCall UTryllSubsystem::OnToolCall;
 
 
 
-Broadcast when a ToolCallNode detects a tool call with notify\_client enabled. 
+Broadcast when a ToolCallNode emits a tool\_call NodeEvent (notifying dispositions). 
+
+
+        
+
+<hr>
+
+
+
+### variable OnToolCallDetailed 
+
+```C++
+FOnTryllToolCallDetailed UTryllSubsystem::OnToolCallDetailed;
+```
+
+
+
+Detailed tool-call event carrying the full owning [**FTryllToolCall**](struct_f_tryll_tool_call.md) (node + disposition). 
+
+
+        
+
+<hr>
+
+
+
+### variable OnToolCallWithId 
+
+```C++
+FOnTryllToolCallWithId UTryllSubsystem::OnToolCallWithId;
+```
+
+
+
+Call-ID-aware tool-call event used to correlate Resume tool results. 
 
 
         
@@ -887,7 +923,9 @@ void UTryllSubsystem::RequestCreateAgent (
     const FTryllGraphDescription & Graph,
     TFunction< FTryllOnAgentCreated > OnComplete,
     bool bEnableDiagnostics=false,
-    bool bMaintainDialogueHistory=true
+    bool bMaintainDialogueHistory=true,
+    const TArray< FTryllVariableDecl > & Variables={},
+    ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly
 ) 
 ```
 
@@ -1143,7 +1181,7 @@ void UTryllSubsystem::RequestDownloadModel (
 
 
 
-Start downloading a model. Progress is broadcast via OnDownloadProgress; completion via OnDownloadComplete. 
+Start downloading a model. Progress is broadcast via OnDownloadProgress (name, bytesDownloaded, totalBytes, percent 0–100); completion via OnDownloadComplete (name, bSuccess, errorMessage — empty on success). 
 
 
         

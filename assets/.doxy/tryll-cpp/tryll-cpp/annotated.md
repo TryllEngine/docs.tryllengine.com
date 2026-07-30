@@ -7,7 +7,17 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 * **namespace** [**@221225266365143145043236145257124227201005334110**](namespace_0d221225266365143145043236145257124227201005334110.md) 
 * **namespace** [**Tryll**](namespace_tryll.md)     
     * **namespace** [**Client**](namespace_tryll_1_1_client.md)     
+        * **struct** [**AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md)     
+        * **struct** [**AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md)     
+        * **struct** [**AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md)     
+        * **struct** [**AgentKvCacheStatus**](struct_tryll_1_1_client_1_1_agent_kv_cache_status.md)     
         * **class** [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) _Client-side handle for one server-side agent._     
+            * **struct** [**DialogInteraction**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction.md)     
+            * **struct** [**ToolCallEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event.md) _Owning tool-call event for deferred / async handling._     
+            * **struct** [**ToolResult**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result.md) _One model-visible result correlated to a tool\_call event's call\_id._     
+        * **struct** [**AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md)     
+        * **class** [**AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md) _Client-side mirror + deferred-flush batcher for one agent's declared variables._     
+            * **struct** [**PendingUpdate**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update.md)     
         * **struct** [**AudioFormat**](struct_tryll_1_1_client_1_1_audio_format.md)     
         * **class** [**ConnectedSession**](class_tryll_1_1_client_1_1_connected_session.md) _RAII pair: owns a_ [_**ManagedServer**_](class_tryll_1_1_client_1_1_managed_server.md) _child process and a connected_[_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _._    
         * **class** [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) _Fluent builder for a workflow graph description sent to the server._     
@@ -27,7 +37,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
         * **class** [**VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md)     
         * **struct** [**VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md) _Parameters for creating a_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _handle._    
     * **namespace** [**Generated**](namespace_tryll_1_1_generated.md)     
-        * **namespace** [**V\_5fe355a174fd**](namespace_tryll_1_1_generated_1_1_v__5fe355a174fd.md)     
-            * **struct** [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint.md) 
+        * **namespace** [**V\_2a9853a7acdd**](namespace_tryll_1_1_generated_1_1_v__2a9853a7acdd.md)     
+            * **struct** [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__2a9853a7acdd_1_1_fingerprint.md) 
+* **struct** [**PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md)     
 * **namespace** [**std**](namespacestd.md) 
 

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="36" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="36" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="37" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1aadddbac9f5d2db5df5e08a058abf083e" prot="public" static="no" mutable="no">
         <type>TArray&lt; FString &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="40" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="41" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1af67cfb774d99152355edf560bd64b582" prot="public" static="no" mutable="no">
         <type>TArray&lt; FString &gt;</type>
@@ -48,37 +48,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="44" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="44" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="45" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="45" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1aa7dcfa3540d29ac66ab1cc14bacf1591" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1acc6b9564ec7a4df81b7345b387363eb0" prot="public" static="no" mutable="no">
         <type>bool</type>
-        <definition>bool UTryllIntentToInstructionParams::bOverrideInstructionName</definition>
+        <definition>bool UTryllIntentToInstructionParams::bOverrideOutputName</definition>
         <argsstring></argsstring>
-        <name>bOverrideInstructionName</name>
-        <qualifiedname>UTryllIntentToInstructionParams::bOverrideInstructionName</qualifiedname>
+        <name>bOverrideOutputName</name>
+        <qualifiedname>UTryllIntentToInstructionParams::bOverrideOutputName</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Name used as the Mustache variable suffix (instruction_&lt;instruction_name&gt;) on the attached InstructionComponent. Set to true to override the inherited InstructionName value. </para>
+<para>Name this node&apos;s output slot is stored under. Empty = the node&apos;s own name. Downstream templates look it up via slot.&lt;name&gt;. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="49" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="49" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="50" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="50" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1a5f4c3d7828da85e23998dedfad0db7bf" prot="public" static="no" mutable="no">
-        <type>FString</type>
-        <definition>FString UTryllIntentToInstructionParams::InstructionName</definition>
+      <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1aa18dde36fa1e16ced9fed574b7b35c4f" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_name" kindref="compound">FTryllSlotName</ref></type>
+        <definition>FTryllSlotName UTryllIntentToInstructionParams::OutputName</definition>
         <argsstring></argsstring>
-        <name>InstructionName</name>
-        <qualifiedname>UTryllIntentToInstructionParams::InstructionName</qualifiedname>
+        <name>OutputName</name>
+        <qualifiedname>UTryllIntentToInstructionParams::OutputName</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para>Effective output slot name for this node. Empty = the node&apos;s own name. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="51" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="54" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_intent_to_instruction_params_1aeaa8abc0cc40370173001e898f06c291" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -93,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="57" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="57" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="60" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="60" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -110,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="60" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="60" bodyend="60"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="63" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_intent_to_instruction_params_1ac6adbc75bb38f3cf80baa3aae250d453" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>flatbuffers::Offset&lt; void &gt;</type>
@@ -133,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="61" column="33"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="64" column="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -159,6 +160,10 @@
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="5">
+        <label>FTryllSlotName</label>
+        <link refid="struct_f_tryll_slot_name"/>
+      </node>
       <node id="4">
         <label>FTryllStoragePath</label>
         <link refid="struct_f_tryll_storage_path"/>
@@ -174,6 +179,9 @@
         <childnode refid="4" relation="usage">
           <edgelabel>StringStorage</edgelabel>
         </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>OutputName</edgelabel>
+        </childnode>
       </node>
       <node id="2">
         <label>UTryllNodeParamsBase</label>
@@ -182,15 +190,17 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="30" bodyend="63"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" line="30" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllIntentToInstructionParams.h" bodystart="31" bodyend="66"/>
     <listofallmembers>
-      <member refid="class_u_tryll_intent_to_instruction_params_1aa7dcfa3540d29ac66ab1cc14bacf1591" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>bOverrideInstructionName</name></member>
+      <member refid="class_u_tryll_intent_to_instruction_params_1acc6b9564ec7a4df81b7345b387363eb0" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>bOverrideOutputName</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1aeaa8abc0cc40370173001e898f06c291" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>FindEnclosingGraph</name></member>
       <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllIntentToInstructionParams</scope><name>GetExitTargetOptions</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1ae24f1909e57583c97a22b6a6dc792d4c" prot="public" virt="virtual"><scope>UTryllIntentToInstructionParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>GetOwnerNodeName</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1aadddbac9f5d2db5df5e08a058abf083e" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>InlineKeys</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1af67cfb774d99152355edf560bd64b582" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>InlineStrings</name></member>
-      <member refid="class_u_tryll_intent_to_instruction_params_1a5f4c3d7828da85e23998dedfad0db7bf" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>InstructionName</name></member>
+      <member refid="class_u_tryll_intent_to_instruction_params_1aa18dde36fa1e16ced9fed574b7b35c4f" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>OutputName</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1ac6adbc75bb38f3cf80baa3aae250d453" prot="public" virt="virtual"><scope>UTryllIntentToInstructionParams</scope><name>Pack</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>static_cast</name></member>
       <member refid="class_u_tryll_intent_to_instruction_params_1a8c198d04fa38a50554d5b4e8e5c60e1d" prot="public" virt="non-virtual"><scope>UTryllIntentToInstructionParams</scope><name>StringStorage</name></member>

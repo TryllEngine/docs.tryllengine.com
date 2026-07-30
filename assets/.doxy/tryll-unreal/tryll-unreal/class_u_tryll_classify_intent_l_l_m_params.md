@@ -44,6 +44,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**FoundExit**](#variable-foundexit)  <br> |
 |  int32 | [**HistoryTurns**](#variable-historyturns)   = `2`<br> |
+|  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  FString | [**IntentsIds**](#variable-intentsids)  <br> |
 |  FString | [**IntentsPrompt**](#variable-intentsprompt)  <br> |
 |  float | [**Margin**](#variable-margin)   = `0.15f`<br> |
@@ -53,6 +54,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
 |  bool | [**bNotifyClient**](#variable-bnotifyclient)   = `false`<br> |
+|  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideIntentsIds**](#variable-boverrideintentsids)   = `false`<br> |
 |  bool | [**bOverrideIntentsPrompt**](#variable-boverrideintentsprompt)   = `false`<br> |
 |  bool | [**bOverrideModelName**](#variable-boverridemodelname)   = `false`<br> |
@@ -106,12 +108,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -217,6 +227,23 @@ int32 UTryllClassifyIntentLLMParams::HistoryTurns;
 
 
 Number of dialog history turns included in the classification context. 
+
+
+        
+
+<hr>
+
+
+
+### variable Input 
+
+```C++
+FTryllSlotInput UTryllClassifyIntentLLMParams::Input;
+```
+
+
+
+Upstream inter-node slot this field consumes. Empty = context default. 
 
 
         
@@ -350,6 +377,23 @@ bool UTryllClassifyIntentLLMParams::bNotifyClient;
 
 
 When true, fire OnNodeEvent("intent\_classified", …) on the found path. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideInput 
+
+```C++
+bool UTryllClassifyIntentLLMParams::bOverrideInput;
+```
+
+
+
+Slot name this node consumes as its primary text for the current turn. Empty = "user\_message". Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. 
 
 
         

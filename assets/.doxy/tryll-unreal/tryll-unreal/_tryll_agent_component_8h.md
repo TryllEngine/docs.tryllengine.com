@@ -14,6 +14,10 @@
 * `#include "Components/ActorComponent.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllError.h"`
+* `#include "TryllKvCache.h"`
+* `#include "TryllDialogInteraction.h"`
+* `#include "TryllVariableDecl.h"`
+* `#include "TryllToolCall.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "TryllAgentComponent.generated.h"`
 

@@ -4,7 +4,19 @@
 
 ## a
 
+* [**AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**AgentKvCacheStatus**](struct_tryll_1_1_client_1_1_agent_kv_cache_status.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
 * [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md)
+([**Tryll::Client**](namespace_tryll_1_1_client.md))
+* [**AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md)
 ([**Tryll::Client**](namespace_tryll_1_1_client.md))
 * [**AudioFormat**](struct_tryll_1_1_client_1_1_audio_format.md)
 ([**Tryll::Client**](namespace_tryll_1_1_client.md))
@@ -20,6 +32,8 @@
 
 * [**DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md)
 ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
+* [**DialogInteraction**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction.md)
+([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## e
@@ -30,8 +44,8 @@
 
 ## f
 
-* [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint.md)
-([**Tryll::Generated::V\_5fe355a174fd**](namespace_tryll_1_1_generated_1_1_v__5fe355a174fd.md))
+* [**Fingerprint**](struct_tryll_1_1_generated_1_1_v__2a9853a7acdd_1_1_fingerprint.md)
+([**Tryll::Generated::V\_2a9853a7acdd**](namespace_tryll_1_1_generated_1_1_v__2a9853a7acdd.md))
 
 
 ## g
@@ -58,6 +72,13 @@
 ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 
 
+## p
+
+* [**PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md)
+* [**PendingUpdate**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update.md)
+([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
+
+
 ## s
 
 * [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md)
@@ -66,6 +87,10 @@
 
 ## t
 
+* [**ToolCallEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event.md)
+([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* [**ToolResult**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result.md)
+([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * [**TranscriptUpdate**](struct_tryll_1_1_client_1_1_transcript_update.md)
 ([**Tryll::Client**](namespace_tryll_1_1_client.md))
 * [**TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md)

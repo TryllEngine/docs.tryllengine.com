@@ -10,6 +10,7 @@
 
 _TCP session to the Tryll server and its supporting value types._ [More...](#detailed-description)
 
+* `#include <tryll/AgentCreateOptions.h>`
 * `#include <tryll/AgentProxy.h>`
 * `#include <tryll/GraphDescription.h>`
 * `#include <tryll/ManagedServer.h>`

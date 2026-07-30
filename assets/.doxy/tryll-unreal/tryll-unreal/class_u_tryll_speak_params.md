@@ -42,12 +42,14 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | Type | Name |
 | ---: | :--- |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  int32 | [**MinSentenceChars**](#variable-minsentencechars)   = `12`<br> |
 |  int32 | [**SpeakerId**](#variable-speakerid)   = `0`<br> |
 |  float | [**Speed**](#variable-speed)   = `1.0f`<br> |
 |  FString | [**TtsLang**](#variable-ttslang)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
 |  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
+|  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
 |  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
 
@@ -98,12 +100,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -157,7 +167,7 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 ## Detailed Description
 
 
-Standalone TTS-only node. Voices the latest assistant text produced upstream on the current interaction (whatever node wrote it — Generate, CannedResponse, etc.), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
+Standalone TTS-only node. Voices its `input`-resolved slot (any upstream node's output — Generate, CannedResponse, etc. — or `user_message` itself), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
 
 
     
@@ -175,6 +185,23 @@ FString UTryllSpeakParams::DefaultExit;
 
 
 Default exit target — routes here after synthesis completes. Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable Input 
+
+```C++
+FTryllSlotInput UTryllSpeakParams::Input;
+```
+
+
+
+Upstream inter-node slot this field consumes. Empty = context default. 
 
 
         
@@ -269,6 +296,23 @@ FTryllStoragePath UTryllSpeakParams::TtsVoice;
 
 
 Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path relative to the session storage root pointing at a 10–20 s clean mono recording of the target voice. Empty = the model's default voice. Ignored by fixed-voice families (use speaker\_id there). 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideInput 
+
+```C++
+bool UTryllSpeakParams::bOverrideInput;
+```
+
+
+
+Slot name this node voices. Empty = "user\_message" (same default as every other input-bearing node). Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. 
 
 
         

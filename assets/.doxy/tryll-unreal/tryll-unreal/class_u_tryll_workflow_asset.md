@@ -38,6 +38,7 @@ Inherits the following classes: UPrimaryDataAsset
 | Type | Name |
 | ---: | :--- |
 |  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**Graph**](#variable-graph)  <br> |
+|  TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; | [**Variables**](#variable-variables)  <br> |
 
 
 
@@ -95,14 +96,17 @@ Data asset that stores a Tryll workflow graph description. Equivalent to a Unity
 
 
 Usage:
-* In the Content Browser: right-click → Miscellaneous → Data Asset → TryllWorkflowAsset.
+* In the Content Browser: right-click → Tryll → Workflow Asset.
 * Edit nodes and routes in the Details panel.
 * Assign this asset to a [**UTryllAgentComponent**](class_u_tryll_agent_component.md)'s WorkflowAsset property.
 
 
 
 
-Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md), or assign it to [**UTryllAgentComponent::InlineGraphDescription**](class_u_tryll_agent_component.md#variable-inlinegraphdescription). 
+Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md), or assign it to [**UTryllAgentComponent::InlineGraphDescription**](class_u_tryll_agent_component.md#variable-inlinegraphdescription).
+
+
+Editor / cook: IsDataValid + PreSave(IsCooking) fail when the graph references a model that is not marked Production in the Tryll Model Manifest (so packaging cannot silently omit it). 
 
 
     
@@ -120,6 +124,23 @@ FTryllGraphDescription UTryllWorkflowAsset::Graph;
 
 
 Workflow graph stored by this asset. Assign this asset to [**UTryllAgentComponent::WorkflowAsset**](class_u_tryll_agent_component.md#variable-workflowasset) to use it. 
+
+
+        
+
+<hr>
+
+
+
+### variable Variables 
+
+```C++
+TArray<FTryllVariableDecl> UTryllWorkflowAsset::Variables;
+```
+
+
+
+Declared per-agent Variables for agents created from this asset — the complete declaration (name, type, initial value) sent once in CreateAgentRequest. Consumable from Mustache templates as {{var.&lt;name&gt;}} and the Retrieve/ ClassifyIntent filter grammar as {"var": "&lt;name&gt;"}. A [**UTryllAgentComponent**](class_u_tryll_agent_component.md) may override initial values (not name/type) via its own VariableOverrides (Material-Instance pattern). 
 
 
         

@@ -16,9 +16,12 @@
 * `#include "Tickable.h"`
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllKvCache.h"`
+* `#include "TryllVariableDecl.h"`
 * `#include "TryllModelInfo.h"`
 * `#include "TryllVoiceInput.h"`
 * `#include "TryllRuntimeSettings.h"`
+* `#include "TryllToolCall.h"`
 * `#include "TryllManagedServerProcess.h"`
 * `#include "TryllSubsystem.generated.h"`
 

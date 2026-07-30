@@ -14,7 +14,7 @@
 * `#include "Kismet/BlueprintFunctionLibrary.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "Generated/Nodes/TryllGenerateParams.h"`
-* `#include "Generated/Nodes/TryllHumanMessageGuardrailParams.h"`
+* `#include "Generated/Nodes/TryllRegexGuardrailParams.h"`
 * `#include "Generated/Nodes/TryllCannedResponseParams.h"`
 * `#include "Generated/Nodes/TryllToolCallParams.h"`
 * `#include "Generated/Nodes/TryllRetrieveParams.h"`
@@ -25,6 +25,7 @@
 * `#include "Generated/Nodes/TryllGenerateAndSpeakParams.h"`
 * `#include "Generated/Nodes/TryllSpeakParams.h"`
 * `#include "Generated/Nodes/TryllPauseParams.h"`
+* `#include "Generated/Nodes/TryllTransformParams.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 * `#include "TryllNodeParamsFactory.generated.h"`

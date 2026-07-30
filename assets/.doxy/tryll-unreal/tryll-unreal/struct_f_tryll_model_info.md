@@ -48,6 +48,7 @@
 |  int64 | [**SizeBytes**](#variable-sizebytes)   = `0`<br> |
 |  ETryllModelStatus | [**Status**](#variable-status)   = `ETryllModelStatus::Absent`<br> |
 |  FString | [**ToolCallFormat**](#variable-toolcallformat)  <br> |
+|  FString | [**ToolCallSupport**](#variable-toolcallsupport)  <br> |
 |  bool | [**bHasDefaultSampling**](#variable-bhasdefaultsampling)   = `false`<br> |
 
 
@@ -301,6 +302,23 @@ FString FTryllModelInfo::ToolCallFormat;
 
 
 Tool-call prompt/parse format: "chatml" \| "llama3" \| "mistral" \| "generic" \| "". 
+
+
+        
+
+<hr>
+
+
+
+### variable ToolCallSupport 
+
+```C++
+FString FTryllModelInfo::ToolCallSupport;
+```
+
+
+
+Advisory catalog-declared tool-calling capability for language models: "supported" \| "unsupported". Empty for non-language models (and when talking to older servers). The authoritative check happens server-side at agent creation from the model's own chat template. 
 
 
         

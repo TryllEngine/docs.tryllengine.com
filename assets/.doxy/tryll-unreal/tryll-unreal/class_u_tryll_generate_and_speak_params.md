@@ -43,8 +43,12 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  FString | [**Grammar**](#variable-grammar)  <br> |
+|  ETryllHistoryRole | [**HistoryRole**](#variable-historyrole)   = `ETryllHistoryRole::Assistant`<br> |
+|  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  int32 | [**MinSentenceChars**](#variable-minsentencechars)   = `12`<br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
+|  [**FTryllSlotName**](struct_f_tryll_slot_name.md) | [**OutputName**](#variable-outputname)  <br> |
 |  ETryllPlacement | [**Placement**](#variable-placement)   = `ETryllPlacement::BeforeUserAsSystem`<br> |
 |  [**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md) | [**Sampling**](#variable-sampling)  <br> |
 |  int32 | [**SpeakerId**](#variable-speakerid)   = `0`<br> |
@@ -54,11 +58,15 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  FString | [**TtsLang**](#variable-ttslang)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
 |  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
+|  bool | [**bOverrideGrammar**](#variable-boverridegrammar)   = `false`<br> |
+|  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideModelName**](#variable-boverridemodelname)   = `false`<br> |
+|  bool | [**bOverrideOutputName**](#variable-boverrideoutputname)   = `false`<br> |
 |  bool | [**bOverrideSystemPrompt**](#variable-boverridesystemprompt)   = `false`<br> |
 |  bool | [**bOverrideTemplate**](#variable-boverridetemplate)   = `false`<br> |
 |  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
 |  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
+|  bool | [**bSubstituteAgentVariables**](#variable-bsubstituteagentvariables)   = `false`<br> |
 
 
 
@@ -107,12 +115,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -209,6 +225,53 @@ Default exit target — routes here after generation + synthesis complete. Empty
 
 
 
+### variable Grammar 
+
+```C++
+FString UTryllGenerateAndSpeakParams::Grammar;
+```
+
+
+
+
+<hr>
+
+
+
+### variable HistoryRole 
+
+```C++
+ETryllHistoryRole UTryllGenerateAndSpeakParams::HistoryRole;
+```
+
+
+
+Controls whether/how this node's slot replays in later turns' projected transcript. No `send` field — GenerateAndSpeak always streams text (streaming and non-streaming delivery would need incompatible projection-replay handling, so only the streamed mode is supported). 
+
+
+        
+
+<hr>
+
+
+
+### variable Input 
+
+```C++
+FTryllSlotInput UTryllGenerateAndSpeakParams::Input;
+```
+
+
+
+Upstream inter-node slot this field consumes. Empty = context default. 
+
+
+        
+
+<hr>
+
+
+
 ### variable MinSentenceChars 
 
 ```C++
@@ -239,6 +302,23 @@ FTryllModelName UTryllGenerateAndSpeakParams::ModelName;
 
 
 
+### variable OutputName 
+
+```C++
+FTryllSlotName UTryllGenerateAndSpeakParams::OutputName;
+```
+
+
+
+Effective output slot name for this node. Empty = the node's own name. 
+
+
+        
+
+<hr>
+
+
+
 ### variable Placement 
 
 ```C++
@@ -247,7 +327,7 @@ ETryllPlacement UTryllGenerateAndSpeakParams::Placement;
 
 
 
-Where the rendered template body is placed in the projected message stream. 
+Where the rendered template body is placed relative to the resolved `input`. 
 
 
         
@@ -376,6 +456,40 @@ Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path re
 
 
 
+### variable bOverrideGrammar 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideGrammar;
+```
+
+
+
+Optional GBNF grammar. When non-empty, the generated (and spoken) output is constrained to this grammar at every decode step. Empty = unconstrained. Must contain a `root` rule. Mutable — rebuilt per turn. Narrower fit than on Generate: use it to constrain spoken output to a fixed set of barks / canned lines. Validated at agent creation and on mutation (3007). Set to true to override the inherited Grammar value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideInput 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideInput;
+```
+
+
+
+Slot name this node consumes as its primary text. Empty = "user\_message". Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. 
+
+
+        
+
+<hr>
+
+
+
 ### variable bOverrideModelName 
 
 ```C++
@@ -385,6 +499,23 @@ bool UTryllGenerateAndSpeakParams::bOverrideModelName;
 
 
 LLM model catalog name. Empty = use the agent's default\_model\_name. Set to true to override the inherited ModelName value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideOutputName 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideOutputName;
+```
+
+
+
+Name this node's output slot is stored under. Empty = the node's own name. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. 
 
 
         
@@ -453,6 +584,23 @@ bool UTryllGenerateAndSpeakParams::bOverrideTtsModelName;
 
 
 TTS model catalog name. Optional — when empty the server uses the first available TTS voice in the model catalog. Set it to pick a specific voice. Set to true to override the inherited TtsModelName value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bSubstituteAgentVariables 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bSubstituteAgentVariables;
+```
+
+
+
+When true, replace `__VARIABLE__` markers in streamed LLM output with the rendered values of agent variables that declared `allow_output_substitution`. Matching is ASCII case-insensitive. Default false. Transformed text is authoritative for the slot, wire answer, history, and TTS input (substitution runs before synthesis). Appended after default\_exit to keep FlatBuffers field ids additive. 
 
 
         

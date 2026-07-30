@@ -21,7 +21,10 @@
 
 | Type | Name |
 | ---: | :--- |
+| file | [**AgentCreateOptions.h**](_agent_create_options_8h.md) <br> |
+| file | [**AgentKvCache.h**](_agent_kv_cache_8h.md) <br> |
 | file | [**AgentProxy.h**](_agent_proxy_8h.md) <br>_Client-side handle for a server-hosted Tryll agent._  |
+| file | [**AgentVariables.h**](_agent_variables_8h.md) <br>_Client-side mirror for one agent's declared per-agent variables._  |
 | file | [**GraphDescription.h**](_graph_description_8h.md) <br>_Workflow graph builder and associated value types for the C++ client._  |
 | file | [**ManagedServer.h**](_managed_server_8h.md) <br>_RAII wrapper that spawns a_ `tryll_server` _child process and waits for it to become reachable on its TCP port._ |
 | file | [**MessageResult.h**](_message_result_8h.md) <br>_Placeholder return type for per-turn metadata._  |

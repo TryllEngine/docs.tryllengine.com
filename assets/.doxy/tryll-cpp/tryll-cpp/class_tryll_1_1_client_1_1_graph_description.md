@@ -62,13 +62,14 @@ _Fluent builder for a workflow graph description sent to the server._ [More...](
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddGenerate**](#function-addgenerate) (std::string name, ::Tryll::NodeParams::GenerateParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddGenerateAndSpeak**](#function-addgenerateandspeak) (std::string name, ::Tryll::NodeParams::GenerateAndSpeakParamsT params) <br> |
-|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddHumanMessageGuardrail**](#function-addhumanmessageguardrail) (std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddPause**](#function-addpause) (std::string name, ::Tryll::NodeParams::PauseParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddRegexGuardrail**](#function-addregexguardrail) (std::string name, ::Tryll::NodeParams::RegexGuardrailParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddTransform**](#function-addtransform) (std::string name, ::Tryll::NodeParams::TransformParamsT params) <br> |
 |  const std::string & | [**GetDefaultModelName**](#function-getdefaultmodelname) () noexcept const<br> |
 |  const std::vector&lt; [**NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) &gt; & | [**GetNodes**](#function-getnodes) () noexcept const<br> |
 |  const std::string & | [**GetStartNode**](#function-getstartnode) () noexcept const<br> |
@@ -202,22 +203,6 @@ GraphDescription & Tryll::Client::GraphDescription::AddGenerateAndSpeak (
 
 
 
-### function AddHumanMessageGuardrail 
-
-```C++
-GraphDescription & Tryll::Client::GraphDescription::AddHumanMessageGuardrail (
-    std::string name,
-    ::Tryll::NodeParams::HumanMessageGuardrailParamsT params
-) 
-```
-
-
-
-
-<hr>
-
-
-
 ### function AddInstruction 
 
 ```C++
@@ -266,6 +251,22 @@ GraphDescription & Tryll::Client::GraphDescription::AddPause (
 
 
 
+### function AddRegexGuardrail 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddRegexGuardrail (
+    std::string name,
+    ::Tryll::NodeParams::RegexGuardrailParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
 ### function AddRetrieve 
 
 ```C++
@@ -304,6 +305,22 @@ GraphDescription & Tryll::Client::GraphDescription::AddSpeak (
 GraphDescription & Tryll::Client::GraphDescription::AddToolCall (
     std::string name,
     ::Tryll::NodeParams::ToolCallParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddTransform 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddTransform (
+    std::string name,
+    ::Tryll::NodeParams::TransformParamsT params
 ) 
 ```
 

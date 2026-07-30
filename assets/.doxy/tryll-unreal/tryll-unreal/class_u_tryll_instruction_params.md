@@ -43,9 +43,9 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | ---: | :--- |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  FString | [**Instruction**](#variable-instruction)  <br> |
-|  FString | [**InstructionName**](#variable-instructionname)  <br> |
+|  [**FTryllSlotName**](struct_f_tryll_slot_name.md) | [**OutputName**](#variable-outputname)  <br> |
 |  bool | [**bOverrideInstruction**](#variable-boverrideinstruction)   = `false`<br> |
-|  bool | [**bOverrideInstructionName**](#variable-boverrideinstructionname)   = `false`<br> |
+|  bool | [**bOverrideOutputName**](#variable-boverrideoutputname)   = `false`<br> |
 
 
 
@@ -94,12 +94,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -153,7 +161,7 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 ## Detailed Description
 
 
-Plain instruction node. Attaches an InstructionComponent to the current interaction so downstream Mustache templates can reference it. 
+Plain instruction node. Attaches a kind=Instruction SlotComponent to the current interaction so downstream Mustache templates can reference it. 
 
 
     
@@ -192,14 +200,18 @@ FString UTryllInstructionParams::Instruction;
 
 
 
-### variable InstructionName 
+### variable OutputName 
 
 ```C++
-FString UTryllInstructionParams::InstructionName;
+FTryllSlotName UTryllInstructionParams::OutputName;
 ```
 
 
 
+Effective output slot name for this node. Empty = the node's own name. 
+
+
+        
 
 <hr>
 
@@ -222,15 +234,15 @@ The instruction text. Mutable. Set to true to override the inherited Instruction
 
 
 
-### variable bOverrideInstructionName 
+### variable bOverrideOutputName 
 
 ```C++
-bool UTryllInstructionParams::bOverrideInstructionName;
+bool UTryllInstructionParams::bOverrideOutputName;
 ```
 
 
 
-Name used as the Mustache variable suffix (instruction\_&lt;name&gt;). Set to true to override the inherited InstructionName value. 
+Name this node's output slot is stored under. Empty = the node's own name. Downstream templates look it up via slot.&lt;name&gt;. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. 
 
 
         

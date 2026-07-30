@@ -59,8 +59,10 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) | [**CreateAgent**](#function-createagent) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt, bool maintainDialogueHistory=true) <br>_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync) _._ |
-|  std::future&lt; [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) &gt; | [**CreateAgentAsync**](#function-createagentasync) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, bool maintainDialogueHistory=true) <br>_Asynchronously create an agent with the given graph description._  |
+|  [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) | [**CreateAgent**](#function-createagent-12) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt, bool maintainDialogueHistory=true, std::vector&lt; [**AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md) &gt; variables={}) <br>_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync-12) _._ |
+|  [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) | [**CreateAgent**](#function-createagent-22) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, [**AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md) options, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Blocking CreateAgent overload using named options._  |
+|  std::future&lt; [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) &gt; | [**CreateAgentAsync**](#function-createagentasync-12) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, bool enableDiagnostics=false, bool maintainDialogueHistory=true, std::vector&lt; [**AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md) &gt; variables={}) <br>_Asynchronously create an agent with the given graph description._  |
+|  std::future&lt; [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) &gt; | [**CreateAgentAsync**](#function-createagentasync-22) (const [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & graph, [**AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md) options) <br>_Asynchronous CreateAgent overload using named options._  |
 |  [**EmbeddedStorageInfo**](struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.md) | [**CreateEmbeddedStringStorage**](#function-createembeddedstringstorage) (std::string\_view name, std::string\_view configPath, std::string\_view embeddingModel={}, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Create an_ `EmbeddedStringStorage` _from a server-side config._ |
 |  [**EmbeddedStorageInfo**](struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.md) | [**CreateEmbeddedStringStorageFromStrings**](#function-createembeddedstringstoragefromstrings) (std::string\_view name, const std::vector&lt; std::string &gt; & strings, std::string\_view embeddingModel, std::optional&lt; std::chrono::milliseconds &gt; timeout=std::nullopt) <br>_Create an_ `EmbeddedStringStorage` _from inline strings._ |
 |  void | [**CreateSession**](#function-createsession) (const [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) & cfg) <br>_Create the logical session for this connection (mandatory, one-shot)._  |
@@ -138,15 +140,16 @@ Copyable — all copies share the same underlying connection via `shared_ptr`. T
 
 
 
-### function CreateAgent 
+### function CreateAgent [1/2]
 
-_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync) _._
+_Blocking convenience wrapper over_ [_**CreateAgentAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync-12) _._
 ```C++
 AgentProxy Tryll::Client::TryllClient::CreateAgent (
     const GraphDescription & graph,
     bool enableDiagnostics=false,
     std::optional< std::chrono::milliseconds > timeout=std::nullopt,
-    bool maintainDialogueHistory=true
+    bool maintainDialogueHistory=true,
+    std::vector< AgentVariableDecl > variables={}
 ) 
 ```
 
@@ -160,7 +163,8 @@ AgentProxy Tryll::Client::TryllClient::CreateAgent (
 * `graph` Fully-built graph description. 
 * `enableDiagnostics` When `true`, the server serialises per-node execution data into `TurnComplete.debug_info` for every turn. Off by default; enable for QA/eval pipelines. 
 * `timeout` Maximum time to wait for `CreateAgentResponse`. Defaults to 30 seconds. 
-* `maintainDialogueHistory` When `true` (default), the agent keeps its full dialogue history. When `false`, the history is discarded after each turn — a stateless agent, useful for technical/classification agents that should not store or project prior turns.
+* `maintainDialogueHistory` When `true` (default), the agent keeps its full dialogue history. When `false`, the history is discarded after each turn — a stateless agent, useful for technical/classification agents that should not store or project prior turns. 
+* `variables` The agent's complete variable declaration. See [**CreateAgentAsync**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagentasync-12). Empty by default.
 
 
 
@@ -185,14 +189,33 @@ AgentProxy Tryll::Client::TryllClient::CreateAgent (
 
 
 
-### function CreateAgentAsync 
+### function CreateAgent [2/2]
+
+_Blocking CreateAgent overload using named options._ 
+```C++
+AgentProxy Tryll::Client::TryllClient::CreateAgent (
+    const GraphDescription & graph,
+    AgentCreateOptions options,
+    std::optional< std::chrono::milliseconds > timeout=std::nullopt
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function CreateAgentAsync [1/2]
 
 _Asynchronously create an agent with the given graph description._ 
 ```C++
 std::future< AgentProxy > Tryll::Client::TryllClient::CreateAgentAsync (
     const GraphDescription & graph,
     bool enableDiagnostics=false,
-    bool maintainDialogueHistory=true
+    bool maintainDialogueHistory=true,
+    std::vector< AgentVariableDecl > variables={}
 ) 
 ```
 
@@ -204,7 +227,9 @@ std::future< AgentProxy > Tryll::Client::TryllClient::CreateAgentAsync (
 
 
 * `graph` Fully-built graph description. 
-* `enableDiagnostics` When `true`, the server serialises per-node execution data into `TurnComplete.debug_info` for every turn. Off by default for zero overhead in production; enable for QA/eval pipelines.
+* `enableDiagnostics` When `true`, the server serialises per-node execution data into `TurnComplete.debug_info` for every turn. Off by default for zero overhead in production; enable for QA/eval pipelines. 
+* `maintainDialogueHistory` See [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent-12). 
+* `variables` The agent's complete variable declaration — every variable it will ever have, with its initial value (the value's active alternative fixes the type for the agent's lifetime). Post-create writes to an undeclared name are rejected locally by [**AgentProxy::Variables**](class_tryll_1_1_client_1_1_agent_proxy.md#function-variables) without a wire round-trip. Empty by default.
 
 
 
@@ -224,6 +249,23 @@ Future yielding an [**AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) b
 
 
         
+
+<hr>
+
+
+
+### function CreateAgentAsync [2/2]
+
+_Asynchronous CreateAgent overload using named options._ 
+```C++
+std::future< AgentProxy > Tryll::Client::TryllClient::CreateAgentAsync (
+    const GraphDescription & graph,
+    AgentCreateOptions options
+) 
+```
+
+
+
 
 <hr>
 
@@ -340,7 +382,7 @@ void Tryll::Client::TryllClient::CreateSession (
 
 
 
-Must be called exactly once after [**Connect**](class_tryll_1_1_client_1_1_tryll_client.md#function-connect) and before [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent) or any model-management/storage/voice call — those are rejected with `SessionNotReady` until the session exists. A second call is rejected by the server with `SessionAlreadyExists`. On success the server-allocated session id becomes available via [**GetSessionId**](class_tryll_1_1_client_1_1_tryll_client.md#function-getsessionid).
+Must be called exactly once after [**Connect**](class_tryll_1_1_client_1_1_tryll_client.md#function-connect) and before [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent-12) or any model-management/storage/voice call — those are rejected with `SessionNotReady` until the session exists. A second call is rejected by the server with `SessionAlreadyExists`. On success the server-allocated session id becomes available via [**GetSessionId**](class_tryll_1_1_client_1_1_tryll_client.md#function-getsessionid).
 
 
 
@@ -372,7 +414,7 @@ void Tryll::Client::TryllClient::CreateStringStorage (
 
 
 
-The storage may then be referenced by name in node params via `string_storage` (e.g. on `CannedResponseNode` or `HumanMessageGuardrailNode`). Must be called before [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent) on any graph that references this storage name.
+The storage may then be referenced by name in node params via `string_storage` (e.g. on `CannedResponseNode` or `RegexGuardrailNode`). Must be called before [**CreateAgent**](class_tryll_1_1_client_1_1_tryll_client.md#function-createagent-12) on any graph that references this storage name.
 
 
 

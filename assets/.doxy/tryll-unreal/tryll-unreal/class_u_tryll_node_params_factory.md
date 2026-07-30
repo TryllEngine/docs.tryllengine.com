@@ -61,13 +61,14 @@ Inherits the following classes: UBlueprintFunctionLibrary
 |  [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md) \* | [**MakeClassifyIntentParams**](#function-makeclassifyintentparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md) \* | [**MakeGenerateAndSpeakParams**](#function-makegenerateandspeakparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllGenerateParams**](class_u_tryll_generate_params.md) \* | [**MakeGenerateParams**](#function-makegenerateparams) (UObject \* WorldContextObject) <br> |
-|  [**UTryllHumanMessageGuardrailParams**](class_u_tryll_human_message_guardrail_params.md) \* | [**MakeHumanMessageGuardrailParams**](#function-makehumanmessageguardrailparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllInstructionParams**](class_u_tryll_instruction_params.md) \* | [**MakeInstructionParams**](#function-makeinstructionparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md) \* | [**MakeIntentToInstructionParams**](#function-makeintenttoinstructionparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllPauseParams**](class_u_tryll_pause_params.md) \* | [**MakePauseParams**](#function-makepauseparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md) \* | [**MakeRegexGuardrailParams**](#function-makeregexguardrailparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md) \* | [**MakeRetrieveParams**](#function-makeretrieveparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllSpeakParams**](class_u_tryll_speak_params.md) \* | [**MakeSpeakParams**](#function-makespeakparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md) \* | [**MakeToolCallParams**](#function-maketoolcallparams) (UObject \* WorldContextObject) <br> |
+|  [**UTryllTransformParams**](class_u_tryll_transform_params.md) \* | [**MakeTransformParams**](#function-maketransformparams) (UObject \* WorldContextObject) <br> |
 
 
 
@@ -227,25 +228,6 @@ Construct an authored GenerateParams with schema-default field values.
 
 
 
-### function MakeHumanMessageGuardrailParams 
-
-```C++
-static UTryllHumanMessageGuardrailParams * UTryllNodeParamsFactory::MakeHumanMessageGuardrailParams (
-    UObject * WorldContextObject
-) 
-```
-
-
-
-Construct an authored HumanMessageGuardrailParams with schema-default field values. 
-
-
-        
-
-<hr>
-
-
-
 ### function MakeInstructionParams 
 
 ```C++
@@ -303,6 +285,25 @@ Construct an authored PauseParams with schema-default field values.
 
 
 
+### function MakeRegexGuardrailParams 
+
+```C++
+static UTryllRegexGuardrailParams * UTryllNodeParamsFactory::MakeRegexGuardrailParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored RegexGuardrailParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
 ### function MakeRetrieveParams 
 
 ```C++
@@ -352,6 +353,25 @@ static UTryllToolCallParams * UTryllNodeParamsFactory::MakeToolCallParams (
 
 
 Construct an authored ToolCallParams with schema-default field values. 
+
+
+        
+
+<hr>
+
+
+
+### function MakeTransformParams 
+
+```C++
+static UTryllTransformParams * UTryllNodeParamsFactory::MakeTransformParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored TransformParams with schema-default field values. 
 
 
         

@@ -59,8 +59,8 @@ Inherits the following classes: UActorComponent
 
 | Type | Name |
 | ---: | :--- |
-|  void | [**HandleAudio**](#function-handleaudio) (TArrayView&lt; const int16 &gt; Pcm) <br> |
-|  void | [**HandleFormat**](#function-handleformat) (uint32 SampleRate, uint16 Channels, uint16 BitsPerSample) <br> |
+|  void | [**HandleAudio**](#function-handleaudio) (const FString & NodeName, TArrayView&lt; const int16 &gt; Pcm) <br> |
+|  void | [**HandleFormat**](#function-handleformat) (const FString & NodeName, uint32 SampleRate, uint16 Channels, uint16 BitsPerSample) <br> |
 |   | [**UTryllSpeakerComponent**](#function-utryllspeakercomponent) () <br> |
 
 
@@ -144,13 +144,14 @@ Fired once when the first PCM chunk of a turn is queued for playback.
 
 ```C++
 void UTryllSpeakerComponent::HandleAudio (
+    const FString & NodeName,
     TArrayView< const int16 > Pcm
 ) 
 ```
 
 
 
-Called by [**UTryllAgentComponent**](class_u_tryll_agent_component.md) for each PCM chunk in the current turn. The view references caller-owned memory and is consumed synchronously. 
+Called by [**UTryllAgentComponent**](class_u_tryll_agent_component.md) for each PCM chunk in the current turn. The view references caller-owned memory and is consumed synchronously. NodeName is accepted for signature compatibility (see HandleFormat) but unused. 
 
 
         
@@ -163,6 +164,7 @@ Called by [**UTryllAgentComponent**](class_u_tryll_agent_component.md) for each 
 
 ```C++
 void UTryllSpeakerComponent::HandleFormat (
+    const FString & NodeName,
     uint32 SampleRate,
     uint16 Channels,
     uint16 BitsPerSample
@@ -171,7 +173,7 @@ void UTryllSpeakerComponent::HandleFormat (
 
 
 
-Called by [**UTryllAgentComponent**](class_u_tryll_agent_component.md) when the server announces the audio format for the current turn. (Re)creates the procedural sound if the sample rate differs from the previous turn's. 
+Called by [**UTryllAgentComponent**](class_u_tryll_agent_component.md) when the server announces the audio format for the current turn. (Re)creates the procedural sound if the sample rate differs from the previous turn's. NodeName (the producing node's name — multi-sender attribution) is accepted for signature compatibility with FTryllAgent::OnTtsAudioFormat but otherwise unused: this component mixes all producers into one procedural sound. 
 
 
         

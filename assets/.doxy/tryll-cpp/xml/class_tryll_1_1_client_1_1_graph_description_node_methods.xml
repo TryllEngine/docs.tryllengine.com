@@ -27,24 +27,24 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="33" column="33"/>
       </memberdef>
-      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1a97a5af7e53d1382e76c0ba03e321216f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1ab499779a9f7f42112cd4517fdcf2f5a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
-        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddHumanMessageGuardrail</definition>
-        <argsstring>(std::string name, ::Tryll::NodeParams::HumanMessageGuardrailParamsT params)</argsstring>
-        <name>AddHumanMessageGuardrail</name>
-        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddHumanMessageGuardrail</qualifiedname>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddRegexGuardrail</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::RegexGuardrailParamsT params)</argsstring>
+        <name>AddRegexGuardrail</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddRegexGuardrail</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>name</declname>
         </param>
         <param>
-          <type>::Tryll::NodeParams::HumanMessageGuardrailParamsT</type>
+          <type>::Tryll::NodeParams::RegexGuardrailParamsT</type>
           <declname>params</declname>
         </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Add a HumanMessageGuardrail node. Guardrail node backed by session string storage. Blocks turns whose human message matches a pattern in the storage. Resolution priority (factory): named string_storage → inline_strings → server-wide default (default-guardrail-patterns.txt from server-config). </para>
+<para>Add a RegexGuardrail node. Regex guardrail node backed by session string storage. Branches on whether the node&apos;s input slot text matches a pattern in the storage. Resolution priority (factory): named string_storage → inline_strings → server-wide default (default-guardrail-patterns.txt from server-config). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -136,7 +136,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Add a Instruction node. Plain instruction node. Attaches an InstructionComponent to the current interaction so downstream Mustache templates can reference it. </para>
+<para>Add a Instruction node. Plain instruction node. Attaches a kind=Instruction SlotComponent to the current interaction so downstream Mustache templates can reference it. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -251,7 +251,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Add a Speak node. Standalone TTS-only node. Voices the latest assistant text produced upstream on the current interaction (whatever node wrote it — Generate, CannedResponse, etc.), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. </para>
+<para>Add a Speak node. Standalone TTS-only node. Voices its <computeroutput>input</computeroutput>-resolved slot (any upstream node&apos;s output — Generate, CannedResponse, etc. — or <computeroutput>user_message</computeroutput> itself), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -280,26 +280,50 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="99" column="33"/>
       </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_graph_description_node_methods_1ae82a7139d02fd06aa815342eef7ab53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_tryll_1_1_client_1_1_graph_description_node_methods" kindref="compound">GraphDescriptionNodeMethods</ref> &amp;</type>
+        <definition>GraphDescriptionNodeMethods &amp; Tryll::Client::GraphDescriptionNodeMethods::AddTransform</definition>
+        <argsstring>(std::string name, ::Tryll::NodeParams::TransformParamsT params)</argsstring>
+        <name>AddTransform</name>
+        <qualifiedname>Tryll::Client::GraphDescriptionNodeMethods::AddTransform</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>::Tryll::NodeParams::TransformParamsT</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Add a Transform node. Model-free input-composition node. Renders a Mustache template over <computeroutput>user_message</computeroutput> and the current turn&apos;s slots into its own slot; performs no inference and never emits on the wire (<computeroutput>send = None</computeroutput>, <computeroutput>history_role = none</computeroutput>, fixed). Typical use: query rewriting, fan-out composition feeding a downstream Retrieve/Generate <computeroutput>input</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="105" column="33"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
 <para>Typed AddX methods generated from the NodeParams union. Mixed into <ref refid="class_tryll_1_1_client_1_1_graph_description" kindref="compound">GraphDescription</ref> via inheritance or friend-include. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" bodystart="29" bodyend="103"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/Generated/GraphDescription.Nodes.gen.h" bodystart="29" bodyend="109"/>
     <listofallmembers>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad0dff7e3cdae73521ec27dcd8c3b0261" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddCannedResponse</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1aac3b4e8e3c08a7eb12536a24ea79e708" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddClassifyIntent</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1aa142caefe61d224670696936d7b25e0a" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddClassifyIntentLLM</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a70aa9634fbb9abda3aa59ef64dfc9341" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddGenerate</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a04bd4e86ac9080dd8c619d87ed906cbc" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddGenerateAndSpeak</name></member>
-      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a97a5af7e53d1382e76c0ba03e321216f" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddHumanMessageGuardrail</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ad6657d3cba6a01552e2b666ea677b5c0" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddInstruction</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a66b44d9a01120b407486e63af95c10d1" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddIntentToInstruction</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a027548d66138932acacdf1c00a88b920" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddPause</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ab499779a9f7f42112cd4517fdcf2f5a7" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddRegexGuardrail</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a867ad16c188c17642d0f4aa66a02e5b2" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddRetrieve</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a2622ce4e1a15556505a01d9f692085d9" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddSpeak</name></member>
       <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1af221d439a6f3e74b2a5889ca4e1b246d" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddToolCall</name></member>
+      <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ae82a7139d02fd06aa815342eef7ab53c" prot="public" virt="non-virtual"><scope>Tryll::Client::GraphDescriptionNodeMethods</scope><name>AddTransform</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

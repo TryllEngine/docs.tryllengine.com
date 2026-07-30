@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry" kind="struct" language="C++" prot="private">
+    <compoundname>Tryll::Client::AgentVariables::PendingEntry</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a8466eaa5ebaad2c9eb0b23337d28ab13" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Tryll::Client::AgentVariables::PendingEntry::wholesale</definition>
+        <argsstring></argsstring>
+        <name>wholesale</name>
+        <qualifiedname>Tryll::Client::AgentVariables::PendingEntry::wholesale</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="191" column="26" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a6dc2edc776d3f217bebcbafb6cf246c7" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Tryll::Client::AgentVariables::PendingEntry::adds</definition>
+        <argsstring></argsstring>
+        <name>adds</name>
+        <qualifiedname>Tryll::Client::AgentVariables::PendingEntry::adds</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="192" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a697b3cc0e9cfd2ee782527001a1fd11b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; Tryll::Client::AgentVariables::PendingEntry::removes</definition>
+        <argsstring></argsstring>
+        <name>removes</name>
+        <qualifiedname>Tryll::Client::AgentVariables::PendingEntry::removes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="193" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Per-name coalesced staging entry (see class doc). When <computeroutput>wholesale</computeroutput> is true the net effect is &quot;assign the current mirror value&quot; (a scalar set, a whole-set SetStringSet, or a Reset, possibly followed by set edits); <computeroutput>adds</computeroutput>/<computeroutput>removes</computeroutput> are ignored. Otherwise the entry is a pure set delta against the server&apos;s current set (sorted-unique, mutually exclusive). </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="189" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="190" bodyend="194"/>
+    <listofallmembers>
+      <member refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a6dc2edc776d3f217bebcbafb6cf246c7" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables::PendingEntry</scope><name>adds</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a697b3cc0e9cfd2ee782527001a1fd11b" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables::PendingEntry</scope><name>removes</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry_1a8466eaa5ebaad2c9eb0b23337d28ab13" prot="public" virt="non-virtual"><scope>Tryll::Client::AgentVariables::PendingEntry</scope><name>wholesale</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

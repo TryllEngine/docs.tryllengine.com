@@ -14,6 +14,7 @@
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllModelName.h"`
+* `#include "TryllSlotInput.h"`
 * `#include "Generated/Nodes/TryllToolDefinition.h"`
 * `#include "Generated/Nodes/TryllSamplingOverrides.h"`
 * `#include "CodegenFingerprint.gen.h"`

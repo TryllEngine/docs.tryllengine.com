@@ -13,6 +13,7 @@
 * `#include "CoreMinimal.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllSlotName.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 * `#include "TryllInstructionParams.generated.h"`

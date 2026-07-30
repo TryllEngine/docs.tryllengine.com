@@ -13,7 +13,7 @@
 * `#include "CoreMinimal.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "Generated/Nodes/TryllGenerateParams.h"`
-* `#include "Generated/Nodes/TryllHumanMessageGuardrailParams.h"`
+* `#include "Generated/Nodes/TryllRegexGuardrailParams.h"`
 * `#include "Generated/Nodes/TryllCannedResponseParams.h"`
 * `#include "Generated/Nodes/TryllToolCallParams.h"`
 * `#include "Generated/Nodes/TryllRetrieveParams.h"`
@@ -24,6 +24,7 @@
 * `#include "Generated/Nodes/TryllGenerateAndSpeakParams.h"`
 * `#include "Generated/Nodes/TryllSpeakParams.h"`
 * `#include "Generated/Nodes/TryllPauseParams.h"`
+* `#include "Generated/Nodes/TryllTransformParams.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 
@@ -72,13 +73,14 @@
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddClassifyIntentNode**](#function-addclassifyintentnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddGenerateAndSpeakNode**](#function-addgenerateandspeaknode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddGenerateNode**](#function-addgeneratenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllGenerateParams**](class_u_tryll_generate_params.md) \* Params) <br> |
-|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddHumanMessageGuardrailNode**](#function-addhumanmessageguardrailnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllHumanMessageGuardrailParams**](class_u_tryll_human_message_guardrail_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddInstructionNode**](#function-addinstructionnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllInstructionParams**](class_u_tryll_instruction_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddIntentToInstructionNode**](#function-addintenttoinstructionnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddPauseNode**](#function-addpausenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllPauseParams**](class_u_tryll_pause_params.md) \* Params) <br> |
+|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddRegexGuardrailNode**](#function-addregexguardrailnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddRetrieveNode**](#function-addretrievenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddSpeakNode**](#function-addspeaknode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllSpeakParams**](class_u_tryll_speak_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddToolCallNode**](#function-addtoolcallnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md) \* Params) <br> |
+|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddTransformNode**](#function-addtransformnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllTransformParams**](class_u_tryll_transform_params.md) \* Params) <br> |
 
 
 
@@ -217,27 +219,6 @@ Generated typed AddX builder methods mixed into [**FTryllGraphBuilder**](struct_
 
 
 
-### function AddHumanMessageGuardrailNode 
-
-```C++
-FTryllGraphBuilder & AddHumanMessageGuardrailNode (
-    FTryllGraphBuilder & Builder,
-    FString Name,
-    UTryllHumanMessageGuardrailParams * Params
-) 
-```
-
-
-
-Add a HumanMessageGuardrail node to the graph. 
-
-
-        
-
-<hr>
-
-
-
 ### function AddInstructionNode 
 
 ```C++
@@ -301,6 +282,27 @@ Add a Pause node to the graph.
 
 
 
+### function AddRegexGuardrailNode 
+
+```C++
+FTryllGraphBuilder & AddRegexGuardrailNode (
+    FTryllGraphBuilder & Builder,
+    FString Name,
+    UTryllRegexGuardrailParams * Params
+) 
+```
+
+
+
+Add a RegexGuardrail node to the graph. 
+
+
+        
+
+<hr>
+
+
+
 ### function AddRetrieveNode 
 
 ```C++
@@ -356,6 +358,27 @@ FTryllGraphBuilder & AddToolCallNode (
 
 
 Add a ToolCall node to the graph. 
+
+
+        
+
+<hr>
+
+
+
+### function AddTransformNode 
+
+```C++
+FTryllGraphBuilder & AddTransformNode (
+    FTryllGraphBuilder & Builder,
+    FString Name,
+    UTryllTransformParams * Params
+) 
+```
+
+
+
+Add a Transform node to the graph. 
 
 
         

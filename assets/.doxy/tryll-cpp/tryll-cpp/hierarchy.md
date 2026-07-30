@@ -5,12 +5,22 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 
 
 * **class** [**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md) _Client-side handle for one server-side agent._ 
+* **class** [**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md) _Client-side mirror + deferred-flush batcher for one agent's declared variables._ 
 * **class** [**Tryll::Client::ConnectedSession**](class_tryll_1_1_client_1_1_connected_session.md) _RAII pair: owns a_ [_**ManagedServer**_](class_tryll_1_1_client_1_1_managed_server.md) _child process and a connected_[_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _._
 * **class** [**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) _Fluent builder for a workflow graph description sent to the server._ 
 * **class** [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) 
 * **class** [**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md) _RAII handle around a child_ `tryll_server` _process._
 * **class** [**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md) _TCP session to the Tryll server._ 
 * **class** [**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md) 
+* **struct** [**Tryll::Client::AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md) 
+* **struct** [**Tryll::Client::AgentKvCacheStatus**](struct_tryll_1_1_client_1_1_agent_kv_cache_status.md)     
+    * **struct** [**Tryll::Client::AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md) 
+    * **struct** [**Tryll::Client::AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md) 
+* **struct** [**Tryll::Client::AgentProxy::DialogInteraction**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction.md) 
+* **struct** [**Tryll::Client::AgentProxy::ToolCallEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event.md) _Owning tool-call event for deferred / async handling._ 
+* **struct** [**Tryll::Client::AgentProxy::ToolResult**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result.md) _One model-visible result correlated to a tool\_call event's call\_id._ 
+* **struct** [**Tryll::Client::AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md) 
+* **struct** [**Tryll::Client::AgentVariables::PendingUpdate**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update.md) 
 * **struct** [**Tryll::Client::AudioFormat**](struct_tryll_1_1_client_1_1_audio_format.md) 
 * **struct** [**Tryll::Client::GraphDescription::NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) _Internal serialisable description of one node._ 
 * **struct** [**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md) _Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_1_managed_server.md#function-start) _._
@@ -21,7 +31,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) _Per-model-kind session configuration._ 
 * **struct** [**Tryll::Client::UtteranceOptions**](struct_tryll_1_1_client_1_1_utterance_options.md) _Per-utterance options passed to BeginUtterance._ 
 * **struct** [**Tryll::Client::VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md) _Parameters for creating a_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _handle._
-* **struct** [**Tryll::Generated::V\_5fe355a174fd::Fingerprint**](struct_tryll_1_1_generated_1_1_v__5fe355a174fd_1_1_fingerprint.md) 
+* **struct** [**Tryll::Generated::V\_2a9853a7acdd::Fingerprint**](struct_tryll_1_1_generated_1_1_v__2a9853a7acdd_1_1_fingerprint.md) 
+* **struct** [**Tryll::Client::AgentVariables::PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md) 
 * **class** **std::runtime_error**    
     * **class** [**Tryll::Client::TryllError**](class_tryll_1_1_client_1_1_tryll_error.md) _Exception thrown by_ [_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _and_[_**AgentProxy**_](class_tryll_1_1_client_1_1_agent_proxy.md) _on server errors or disconnects._
 

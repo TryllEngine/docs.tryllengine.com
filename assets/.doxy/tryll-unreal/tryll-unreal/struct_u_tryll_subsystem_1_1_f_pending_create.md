@@ -37,6 +37,7 @@
 | ---: | :--- |
 |  TFunction&lt; FTryllOnAgentCreated &gt; | [**OnComplete**](#variable-oncomplete)  <br> |
 |  std::uint64\_t | [**RequestId**](#variable-requestid)   = `0`<br> |
+|  TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; | [**Variables**](#variable-variables)  <br> |
 
 
 
@@ -103,6 +104,19 @@ TFunction<FTryllOnAgentCreated> UTryllSubsystem::FPendingCreate::OnComplete;
 
 ```C++
 std::uint64_t UTryllSubsystem::FPendingCreate::RequestId;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Variables 
+
+```C++
+TArray<FTryllVariableDecl> UTryllSubsystem::FPendingCreate::Variables;
 ```
 
 

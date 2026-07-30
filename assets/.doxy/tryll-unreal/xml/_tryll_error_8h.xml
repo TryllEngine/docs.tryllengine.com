@@ -6,7 +6,9 @@
     <includes local="yes">TryllError.generated.h</includes>
     <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
     <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_agent_variables_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h</includedby>
     <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <includedby refid="_tryll_variable_override_utils_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVariableOverrideUtils.h</includedby>
     <includedby refid="_tryll_voice_input_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</includedby>
     <includedby refid="_tryll_voice_input_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</includedby>
     <incdepgraph>
@@ -34,6 +36,16 @@
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
         <link refid="_tryll_agent_component_8h_source"/>
       </node>
+      <node id="4">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h</label>
+        <link refid="_tryll_agent_variables_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h</label>
+        <link refid="_tryll_editor_bridge_8h_source"/>
+      </node>
       <node id="1">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h</label>
         <link refid="_tryll_error_8h"/>
@@ -45,22 +57,34 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
-        <link refid="_tryll_subsystem_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="5">
-        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
-        <link refid="_tryll_voice_input_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVariableOverrideUtils.h</label>
+        <link refid="_tryll_variable_override_utils_8h_source"/>
+      </node>
+      <node id="8">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
+        <link refid="_tryll_voice_input_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
         <link refid="_tryll_voice_input_component_8h_source"/>
       </node>
@@ -178,6 +202,42 @@
 <para>ResumeAgent was called but the agent is not currently paused between nodes. </para>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da037e140dee6e80f5c2c82512a039198b" prot="public">
+          <name>UnknownVariable</name>
+          <initializer>= 3013</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>UpdateAgentVariables targets a name not declared at CreateAgent. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dafb11c5075dc8f9989a6d35e11796fdc4" prot="public">
+          <name>VariableTypeMismatch</name>
+          <initializer>= 3014</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Assign/AddToSet/RemoveFromSet value type does not match the declared variable type. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae0bbe1e3cc12b4473547de1b270ff9b0" prot="public">
+          <name>InvalidVariableValue</name>
+          <initializer>= 3015</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Declaration name/limit violation (CreateAgent.variables). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae2a017caecf1acfa2480ce652e56d924" prot="public">
+          <name>InvalidToolResults</name>
+          <initializer>= 3016</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Resume tool_results are invalid for the current paused tool-call batch. </para>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae30d06929b59cd217b7e1f476f5aac3f" prot="public">
           <name>InferenceFailed</name>
           <initializer>= 4001</initializer>
@@ -203,6 +263,24 @@
           </briefdescription>
           <detaileddescription>
 <para>Workflow exceeded the maximum number of node transitions per turn. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da9b62d50d9ffbde0cc9cb0c7b759ac94d" prot="public">
+          <name>KvCacheOperationFailed</name>
+          <initializer>= 4004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Explicit PrefillKvCache / create-with-Prefill failed. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da0bdc8bea1beacee4ad549ffeb98d346a" prot="public">
+          <name>KvCacheManagementUnsupported</name>
+          <initializer>= 4005</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Selected inference backend cannot provide the requested KV-cache lifecycle op. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daa48bd31f520f361663db11715bbb3be5" prot="public">
@@ -366,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="103"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="115"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

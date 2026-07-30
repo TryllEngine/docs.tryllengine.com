@@ -44,9 +44,12 @@
 | ---: | :--- |
 | enum uint8 | [**ETryllCancelMode**](#enum-etryllcancelmode)  <br> |
 | enum uint8 | [**ETryllCannedResponseSelectionStrategy**](#enum-etryllcannedresponseselectionstrategy)  <br> |
+| enum uint8 | [**ETryllHistoryRole**](#enum-etryllhistoryrole)  <br> |
 | enum uint8 | [**ETryllInferenceEngine**](#enum-etryllinferenceengine)  <br> |
 | enum uint8 | [**ETryllNodeType**](#enum-etryllnodetype)  <br> |
 | enum uint8 | [**ETryllPlacement**](#enum-etryllplacement)  <br> |
+| enum uint8 | [**ETryllSendAnswer**](#enum-etryllsendanswer)  <br> |
+| enum uint8 | [**ETryllToolCallDisposition**](#enum-etrylltoolcalldisposition)  <br> |
 | enum uint8 | [**ETryllToolCallMode**](#enum-etrylltoolcallmode)  <br> |
 | enum uint8 | [**ETryllTurnStatus**](#enum-etryllturnstatus)  <br> |
 
@@ -143,6 +146,26 @@ Selection strategy for the CannedResponse node. Mirrors the CannedResponseSelect
 
 
 
+### enum ETryllHistoryRole 
+
+```C++
+enum ETryllHistoryRole {
+    None = 0,
+    Assistant = 1
+};
+```
+
+
+
+Controls whether/how a node's slot replays as history on later turns. Mirrors HistoryRole in common\_enums.fbs. 
+
+
+        
+
+<hr>
+
+
+
 ### enum ETryllInferenceEngine 
 
 ```C++
@@ -173,7 +196,7 @@ Inference engine the session should use for model loading. Mirrors the FlatBuffe
 ```C++
 enum ETryllNodeType {
     Generate = 0,
-    HumanMessageGuardrail = 1,
+    RegexGuardrail = 1,
     CannedResponse = 2,
     ToolCall = 3,
     Retrieve = 4,
@@ -183,7 +206,8 @@ enum ETryllNodeType {
     ClassifyIntentLLM = 8,
     GenerateAndSpeak = 9,
     Speak = 10,
-    Pause = 11
+    Pause = 11,
+    Transform = 12
 };
 ```
 
@@ -202,17 +226,62 @@ Workflow node types supported by the server. Mirrors the FlatBuffers NodeType en
 
 ```C++
 enum ETryllPlacement {
-    InPlaceOfUser = 0,
-    BeforeUserAsUser = 1,
-    BeforeUserAsSystem = 2,
-    AfterUserAsUser = 3,
-    AfterUserAsSystem = 4
+    BeforeUserAsUser = 0,
+    BeforeUserAsSystem = 1,
+    AfterUserAsUser = 2,
+    AfterUserAsSystem = 3
 };
 ```
 
 
 
-Where the rendered Mustache body is inserted relative to the user turn. Mirrors the Placement enum in common\_enums.fbs — ordinals must stay in sync. 
+Where the rendered Mustache body is inserted relative to the node's resolved Input. Mirrors the Placement enum in common\_enums.fbs — ordinals must stay in sync. There is no more InPlaceOfUser — use a Transform node + Input to fully replace what the model sees. 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllSendAnswer 
+
+```C++
+enum ETryllSendAnswer {
+    None = 0,
+    Whole = 1,
+    Streamed = 2
+};
+```
+
+
+
+Controls answer-text delivery to the client. Mirrors SendAnswer in common\_enums.fbs. 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllToolCallDisposition 
+
+```C++
+enum ETryllToolCallDisposition {
+    RouteOnly = 0,
+    Acknowledge = 1,
+    Notify = 2,
+    NotifyAndAcknowledge = 3,
+    Pause = 4,
+    PauseAndAcknowledge = 5,
+    AwaitResult = 6
+};
+```
+
+
+
+End-to-end ToolCall notify / pause / history policy. Mirrors ToolCallDisposition in common\_enums.fbs — ordinals must stay in sync. 
 
 
         

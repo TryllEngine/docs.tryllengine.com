@@ -44,11 +44,13 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**EmbeddedStringStorage**](#variable-embeddedstringstorage)  <br> |
 |  FString | [**Filter**](#variable-filter)  <br> |
 |  FString | [**FoundExit**](#variable-foundexit)  <br> |
+|  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
 |  FString | [**Source**](#variable-source)  <br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
 |  int32 | [**TopK**](#variable-topk)   = `2`<br> |
 |  bool | [**bOverrideFilter**](#variable-boverridefilter)   = `false`<br> |
+|  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideSource**](#variable-boverridesource)   = `false`<br> |
 
 
@@ -98,12 +100,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -213,6 +223,23 @@ Exit taken when retrieval returned at least one chunk above threshold. Empty str
 
 
 
+### variable Input 
+
+```C++
+FTryllSlotInput UTryllRetrieveParams::Input;
+```
+
+
+
+Upstream inter-node slot this field consumes. Empty = context default. 
+
+
+        
+
+<hr>
+
+
+
 ### variable NotFoundExit 
 
 ```C++
@@ -286,6 +313,23 @@ bool UTryllRetrieveParams::bOverrideFilter;
 
 
 JSON filter compiled against the storage's metadata schema. Empty string = no filter. Mutable — recompiles the filter on change. Set to true to override the inherited Filter value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideInput 
+
+```C++
+bool UTryllRetrieveParams::bOverrideInput;
+```
+
+
+
+Slot name this node embeds and searches with. Empty = "user\_message". Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. 
 
 
         

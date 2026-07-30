@@ -15,6 +15,7 @@
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllStoragePath.h"`
 * `#include "TryllModelName.h"`
+* `#include "TryllSlotInput.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 * `#include "TryllSpeakParams.generated.h"`

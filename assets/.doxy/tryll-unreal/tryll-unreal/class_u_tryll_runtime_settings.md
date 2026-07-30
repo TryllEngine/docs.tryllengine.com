@@ -37,19 +37,22 @@ Inherits the following classes: UDeveloperSettings
 
 | Type | Name |
 | ---: | :--- |
-|  int32 | [**ConnectMaxAttempts**](#variable-connectmaxattempts)   = `5`<br> |
+|  int32 | [**ConnectMaxAttempts**](#variable-connectmaxattempts)   = `20`<br> |
 |  float | [**ConnectRetryDelaySeconds**](#variable-connectretrydelayseconds)   = `1.0f`<br> |
+|  double | [**ConnectionReadyTimeoutSeconds**](#variable-connectionreadytimeoutseconds)   = `10.0`<br> |
 |  ETryllInferenceEngine | [**EmbeddingEngine**](#variable-embeddingengine)   = `ETryllInferenceEngine::Mock`<br> |
 |  ETryllInferenceEngine | [**Engine**](#variable-engine)   = `ETryllInferenceEngine::LlamaCpp`<br> |
 |  FString | [**GameName**](#variable-gamename)  <br> |
 |  EServerBuildVariant | [**ServerBuildVariant**](#variable-serverbuildvariant)   = `EServerBuildVariant::Default`<br> |
 |  int32 | [**ServerPort**](#variable-serverport)   = `9100`<br> |
+|  double | [**ServerReadinessTimeoutSeconds**](#variable-serverreadinesstimeoutseconds)   = `5.0`<br> |
 |  FString | [**StorageDataFolder**](#variable-storagedatafolder)  <br> |
 |  ETryllInferenceEngine | [**SttEngine**](#variable-sttengine)   = `ETryllInferenceEngine::Mock`<br> |
 |  ETryllInferenceEngine | [**TtsEngine**](#variable-ttsengine)   = `ETryllInferenceEngine::Mock`<br> |
 |  bool | [**bAutoConnect**](#variable-bautoconnect)   = `true`<br> |
 |  bool | [**bAutoCreateSession**](#variable-bautocreatesession)   = `true`<br> |
 |  bool | [**bAutoLaunchServer**](#variable-bautolaunchserver)   = `true`<br> |
+|  bool | [**bEnablePlayModeModelGuard**](#variable-benableplaymodemodelguard)   = `true`<br> |
 
 
 
@@ -129,7 +132,10 @@ int32 UTryllRuntimeSettings::ConnectMaxAttempts;
 
 
 
-Max number of attempts when establishing a session via [**UTryllSubsystem::Connect**](class_u_tryll_subsystem.md#function-connect). 1 disables retry. The first call counts as attempt 1. 
+Max number of attempts when establishing a session via [**UTryllSubsystem::Connect**](class_u_tryll_subsystem.md#function-connect). 1 disables retry. The first call counts as attempt 1.
+
+
+Sized as a cold-start backstop: after the launcher hands off a still-warming server (see ServerReadinessTimeoutSeconds), the worker retries connect+hello until the server is ready. ConnectMaxAttempts x (ConnectionReadyTimeoutSeconds + ConnectRetryDelaySeconds) must comfortably exceed a realistic cold start; it then bounds the failure (a clear error) instead of retrying forever. 
 
 
         
@@ -147,6 +153,23 @@ float UTryllRuntimeSettings::ConnectRetryDelaySeconds;
 
 
 Constant delay between connect attempts. 
+
+
+        
+
+<hr>
+
+
+
+### variable ConnectionReadyTimeoutSeconds 
+
+```C++
+double UTryllRuntimeSettings::ConnectionReadyTimeoutSeconds;
+```
+
+
+
+Per-attempt bound on how long the connection worker waits for the server's ConnectionReady hello after the TCP connect succeeds. Without this the read was unbounded: a server that accepts the socket but has not finished starting (cold-start "ConnectionReady-late") would hang the worker forever. On timeout the worker reports ConnectFailed, which consumes one attempt and re-drives the connect via the retry budget above. 
 
 
         
@@ -232,6 +255,23 @@ int32 UTryllRuntimeSettings::ServerPort;
 
 
 Known port for the shared editor server. Every in-editor launcher (PIE, the chat panel, the model manager panel) probes this port before spawning and reuses whatever it finds there, so one warm server survives across PIE sessions and multiple open tool windows instead of each spawning its own. Packaged/player builds ignore this and always pick a free ephemeral port. 
+
+
+        
+
+<hr>
+
+
+
+### variable ServerReadinessTimeoutSeconds 
+
+```C++
+double UTryllRuntimeSettings::ServerReadinessTimeoutSeconds;
+```
+
+
+
+Seconds the launcher waits _synchronously_ for a freshly spawned server's port to start accepting before it stops blocking the game thread and hands off to the asynchronous connect path. Kept short deliberately: a cold start (DLL paging + first-run antivirus scan of the freshly built exe) can take much longer, and the server is _warming_, not dead — so on timeout the launcher no longer kills it; the connection worker keeps retrying (see ConnectMaxAttempts) until the server is ready. 
 
 
         
@@ -340,6 +380,23 @@ bool UTryllRuntimeSettings::bAutoLaunchServer;
 
 
 Spawn the bundled tryll\_server.exe on Initialize. Set false to run a server yourself. 
+
+
+        
+
+<hr>
+
+
+
+### variable bEnablePlayModeModelGuard 
+
+```C++
+bool UTryllRuntimeSettings::bEnablePlayModeModelGuard;
+```
+
+
+
+Editor-only. When true (default), the Play-In-Editor model guard verifies that every registered required model is downloaded before Play starts — it briefly vetoes Play, connects to the server, downloads anything missing (with a progress toast), then resumes Play automatically. Turn this off to enter Play immediately with no pre-flight check (e.g. when you provision models yourself, or to bypass the guard while debugging). No effect in packaged builds, where the guard does not exist. 
 
 
         

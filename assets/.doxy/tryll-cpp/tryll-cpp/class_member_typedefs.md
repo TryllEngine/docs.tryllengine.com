@@ -32,6 +32,8 @@
 ## t
 
 * **ToolCallCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **ToolCallEventCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **ToolCallWithIdCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **TtsAudioCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **TtsAudioFormatCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **TurnCompleteCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))

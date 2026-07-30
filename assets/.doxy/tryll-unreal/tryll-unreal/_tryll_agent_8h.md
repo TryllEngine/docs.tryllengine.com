@@ -14,6 +14,11 @@
 * `#include "UObject/GCObject.h"`
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllDialogInteraction.h"`
+* `#include "TryllKvCache.h"`
+* `#include "TryllVariableDecl.h"`
+* `#include "TryllAgentVariables.h"`
+* `#include "TryllToolCall.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 
 

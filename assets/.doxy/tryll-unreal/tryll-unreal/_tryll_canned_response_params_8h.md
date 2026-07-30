@@ -14,6 +14,7 @@
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllStoragePath.h"`
+* `#include "TryllSlotName.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 * `#include "TryllCannedResponseParams.generated.h"`

@@ -13,6 +13,7 @@
 * `#include "CoreMinimal.h"`
 * `#include "Engine/DataAsset.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllVariableDecl.h"`
 * `#include "TryllWorkflowAsset.generated.h"`
 
 

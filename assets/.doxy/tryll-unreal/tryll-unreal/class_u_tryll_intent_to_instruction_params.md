@@ -44,9 +44,9 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  TArray&lt; FString &gt; | [**InlineKeys**](#variable-inlinekeys)  <br> |
 |  TArray&lt; FString &gt; | [**InlineStrings**](#variable-inlinestrings)  <br> |
-|  FString | [**InstructionName**](#variable-instructionname)  <br> |
+|  [**FTryllSlotName**](struct_f_tryll_slot_name.md) | [**OutputName**](#variable-outputname)  <br> |
 |  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**StringStorage**](#variable-stringstorage)  <br> |
-|  bool | [**bOverrideInstructionName**](#variable-boverrideinstructionname)   = `false`<br> |
+|  bool | [**bOverrideOutputName**](#variable-boverrideoutputname)   = `false`<br> |
 
 
 
@@ -95,12 +95,20 @@ See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
 | ---: | :--- |
 | virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
 | virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
 | virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
 |  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
 
 
 
 
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
 
 
 
@@ -214,14 +222,18 @@ Inline map values (equal-length with inline\_keys). Structural.
 
 
 
-### variable InstructionName 
+### variable OutputName 
 
 ```C++
-FString UTryllIntentToInstructionParams::InstructionName;
+FTryllSlotName UTryllIntentToInstructionParams::OutputName;
 ```
 
 
 
+Effective output slot name for this node. Empty = the node's own name. 
+
+
+        
 
 <hr>
 
@@ -244,15 +256,15 @@ Named session Map-kind string storage. Mutable — rebinds the storage.
 
 
 
-### variable bOverrideInstructionName 
+### variable bOverrideOutputName 
 
 ```C++
-bool UTryllIntentToInstructionParams::bOverrideInstructionName;
+bool UTryllIntentToInstructionParams::bOverrideOutputName;
 ```
 
 
 
-Name used as the Mustache variable suffix (instruction\_&lt;instruction\_name&gt;) on the attached InstructionComponent. Set to true to override the inherited InstructionName value. 
+Name this node's output slot is stored under. Empty = the node's own name. Downstream templates look it up via slot.&lt;name&gt;. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. 
 
 
         

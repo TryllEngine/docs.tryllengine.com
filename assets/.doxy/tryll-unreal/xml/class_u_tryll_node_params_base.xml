@@ -8,13 +8,14 @@
     <derivedcompoundref refid="class_u_tryll_classify_intent_params" prot="public" virt="non-virtual">UTryllClassifyIntentParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_generate_and_speak_params" prot="public" virt="non-virtual">UTryllGenerateAndSpeakParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_generate_params" prot="public" virt="non-virtual">UTryllGenerateParams</derivedcompoundref>
-    <derivedcompoundref refid="class_u_tryll_human_message_guardrail_params" prot="public" virt="non-virtual">UTryllHumanMessageGuardrailParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_instruction_params" prot="public" virt="non-virtual">UTryllInstructionParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_intent_to_instruction_params" prot="public" virt="non-virtual">UTryllIntentToInstructionParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_pause_params" prot="public" virt="non-virtual">UTryllPauseParams</derivedcompoundref>
+    <derivedcompoundref refid="class_u_tryll_regex_guardrail_params" prot="public" virt="non-virtual">UTryllRegexGuardrailParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_retrieve_params" prot="public" virt="non-virtual">UTryllRetrieveParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_speak_params" prot="public" virt="non-virtual">UTryllSpeakParams</derivedcompoundref>
     <derivedcompoundref refid="class_u_tryll_tool_call_params" prot="public" virt="non-virtual">UTryllToolCallParams</derivedcompoundref>
+    <derivedcompoundref refid="class_u_tryll_transform_params" prot="public" virt="non-virtual">UTryllTransformParams</derivedcompoundref>
     <includes refid="_tryll_node_params_base_8h" local="no">TryllNodeParamsBase.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
@@ -28,20 +29,21 @@
         <reimplementedby refid="class_u_tryll_classify_intent_params_1a633863f1437111cc9a70e0996c820e50">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_generate_and_speak_params_1a03e8a848d80bbbef812d7543dbeae98f">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_generate_params_1a2a2375264a8d915a8fff89a18d0862ca">GetNodeType</reimplementedby>
-        <reimplementedby refid="class_u_tryll_human_message_guardrail_params_1a7ac3f791f8008fd80d28adee266c184e">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_instruction_params_1a4c059613633937cd198f874a563c50aa">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_intent_to_instruction_params_1ae24f1909e57583c97a22b6a6dc792d4c">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_pause_params_1a100cd50c259bba473add831b62efe52e">GetNodeType</reimplementedby>
+        <reimplementedby refid="class_u_tryll_regex_guardrail_params_1a4e63fcffdc056dd2c6f86318b30e9ded">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_retrieve_params_1a3dcb99666888eeefb67adadd66c96d35">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_speak_params_1a105f0fa674932669706b3683b6d9370e">GetNodeType</reimplementedby>
         <reimplementedby refid="class_u_tryll_tool_call_params_1a41825610ed363aa387728ecba9830b29">GetNodeType</reimplementedby>
+        <reimplementedby refid="class_u_tryll_transform_params_1af5c80e51e5f84ce4ca83729cfb672e59">GetNodeType</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="20" column="24"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="21" column="24"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>ETryllNodeType return</type>
@@ -58,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="20" column="43"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="21" column="43"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>flatbuffers::Offset&lt; void &gt;</type>
@@ -71,13 +73,14 @@
         <reimplementedby refid="class_u_tryll_classify_intent_params_1a8c8b2b43a37b36837a25684b838ded57">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_generate_and_speak_params_1a7a9ec73f7764b4c6f62925f07d0a9e55">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_generate_params_1a2493d705fa7b5e929e40ff27ac3e28f8">Pack</reimplementedby>
-        <reimplementedby refid="class_u_tryll_human_message_guardrail_params_1ad4f3f74ef6381fefd5ab2fed637aa068">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_instruction_params_1a8d5713b479eac85d2e773344a53a7943">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_intent_to_instruction_params_1ac6adbc75bb38f3cf80baa3aae250d453">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_pause_params_1a3bba6695e1d16f6bdeca683e66dc6a52">Pack</reimplementedby>
+        <reimplementedby refid="class_u_tryll_regex_guardrail_params_1a10bc62478335369dbd8d698e822d07bf">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_retrieve_params_1a73e7f8bd3c774ec21d8600e3b7f6db36">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_speak_params_1a9d2c898158f91f9b34d8ab2926d99cf2">Pack</reimplementedby>
         <reimplementedby refid="class_u_tryll_tool_call_params_1a7d73b27dcf97471af24777c4dba5ff20">Pack</reimplementedby>
+        <reimplementedby refid="class_u_tryll_transform_params_1a823f16ca04e4f1b1293ab098960f43c6">Pack</reimplementedby>
         <param>
           <type>flatbuffers::FlatBufferBuilder &amp;</type>
           <declname>Fbb</declname>
@@ -92,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="22" column="29"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="23" column="29"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>TArray&lt; FString &gt;</type>
@@ -109,7 +112,43 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="41" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="42" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>FString UTryllNodeParamsBase::GetOwnerNodeName</definition>
+        <argsstring>() const</argsstring>
+        <name>GetOwnerNodeName</name>
+        <qualifiedname>UTryllNodeParamsBase::GetOwnerNodeName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The node name that owns this Params instance within FindEnclosingGraph(this) — i.e. the <ref refid="struct_f_tryll_node_description" kindref="compound">FTryllNodeDescription</ref> whose Params pointer equals <computeroutput>this</computeroutput> — or the empty string when not found. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="58" column="9"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> *</type>
+        <definition>static const FTryllGraphDescription * UTryllNodeParamsBase::FindEnclosingGraph</definition>
+        <argsstring>(const UObject *Obj)</argsstring>
+        <name>FindEnclosingGraph</name>
+        <qualifiedname>UTryllNodeParamsBase::FindEnclosingGraph</qualifiedname>
+        <param>
+          <type>const UObject *</type>
+          <declname>Obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Walks the Outer chain from <computeroutput>Obj</computeroutput> to locate the enclosing <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> (a <ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref>&apos;s Graph or a <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref>&apos;s InlineGraphDescription). Returns nullptr when <computeroutput>Obj</computeroutput> is not part of an editable graph (orphaned / runtime- constructed). Shared by GetExitTargetOptions and the editor-only slot-input dropdown / rename-propagation tooling (TryllClientEditor). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="51" column="37"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -152,18 +191,12 @@
         </childnode>
       </node>
       <node id="8">
-        <label>UTryllHumanMessageGuardrailParams</label>
-        <link refid="class_u_tryll_human_message_guardrail_params"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9">
         <label>UTryllInstructionParams</label>
         <link refid="class_u_tryll_instruction_params"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>UTryllIntentToInstructionParams</label>
         <link refid="class_u_tryll_intent_to_instruction_params"/>
         <childnode refid="1" relation="public-inheritance">
@@ -175,9 +208,15 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="11">
+      <node id="10">
         <label>UTryllPauseParams</label>
         <link refid="class_u_tryll_pause_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>UTryllRegexGuardrailParams</label>
+        <link refid="class_u_tryll_regex_guardrail_params"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
@@ -199,6 +238,12 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="15">
+        <label>UTryllTransformParams</label>
+        <link refid="class_u_tryll_transform_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
@@ -211,10 +256,12 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="15" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" bodystart="16" bodyend="42"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" line="16" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllNodeParamsBase.h" bodystart="17" bodyend="59"/>
     <listofallmembers>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllNodeParamsBase</scope><name>FindEnclosingGraph</name></member>
       <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllNodeParamsBase</scope><name>GetExitTargetOptions</name></member>
       <member refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6" prot="public" virt="virtual"><scope>UTryllNodeParamsBase</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllNodeParamsBase</scope><name>GetOwnerNodeName</name></member>
       <member refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d" prot="public" virt="virtual"><scope>UTryllNodeParamsBase</scope><name>Pack</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllNodeParamsBase</scope><name>static_cast</name></member>
     </listofallmembers>
