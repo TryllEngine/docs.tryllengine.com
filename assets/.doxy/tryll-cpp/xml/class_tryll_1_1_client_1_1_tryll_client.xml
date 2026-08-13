@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="601" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="601" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="614" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="614" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -250,6 +250,36 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="194" column="6"/>
       </memberdef>
+      <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1aae45289ba1384cab7b07c03398c8d558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Tryll::Client::TryllClient::SetInferenceThrottle</definition>
+        <argsstring>(float level)</argsstring>
+        <name>SetInferenceThrottle</name>
+        <qualifiedname>Tryll::Client::TryllClient::SetInferenceThrottle</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Report how hard the server should yield the GPU back to the game (the manual inference throttle knob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Fire-and-forget: no response, no error surfaced locally. Never sent automatically — a session that never calls this runs unthrottled, identically to a client on an older protocol version.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 = full speed (default), 1 = maximum yielding. Clamped server-side; out-of-range values do not throw here. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="207" column="6"/>
+      </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a33595df4b53e58e155b0e6ec4c45f14a" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref> &gt;</type>
         <definition>std::future&lt; AgentProxy &gt; Tryll::Client::TryllClient::CreateAgentAsync</definition>
@@ -320,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="222" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="235" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a13da626eb22a5b88520cb03dc8de3cd4" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref> &gt;</type>
@@ -343,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="229" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="242" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1ae0a0b475651b88a605a53d9e10e855af" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref></type>
@@ -435,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="258" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="271" column="13"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a249ba48e49078e06b0702ed1703c4f23" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_agent_proxy" kindref="compound">AgentProxy</ref></type>
@@ -463,7 +493,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="266" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="279" column="13"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a62f8662758e19115efb6b9873ae5fc92" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; <ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref> &gt;</type>
@@ -494,7 +524,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="281" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="294" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1af7a7f76f8a1105229c566745495b19d2" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_tryll_1_1_client_1_1_voice_input" kindref="compound">VoiceInput</ref></type>
@@ -547,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="293" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="306" column="13"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a15812c061055f71008bb46eb92b4c2f3" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::future&lt; void &gt;</type>
@@ -566,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="304" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="317" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -605,7 +635,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="314" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="327" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a444d861b0a5bd0c8e3a6f4ea03df82aa" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::uint64_t</type>
@@ -623,7 +653,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="322" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="335" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a8e3200f990e62d28d0e7b04312493e41" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -639,7 +669,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="330" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="343" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1aa3a013dc661ae90b0e8dc33e0150c069" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -654,7 +684,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="333" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="346" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1ac913cf1053bda7d8900cb35f42747779" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -669,7 +699,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="336" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="349" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a50b33427d9f2b83f2d59d9269f82a5ba" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -684,7 +714,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="339" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="352" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a6f8f46e14ecd05d946bcfe5e0a5bf839" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -699,7 +729,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="342" column="7"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="355" column="7"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a22f512cefd122a37b65146c1e866ce10" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -714,7 +744,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="345" column="16"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="358" column="16"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a7a178fb21b7c89e419b65eb37046eee3" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt;::Tryll::ModelInfoT &gt;</type>
@@ -755,7 +785,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="356" column="14"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="369" column="14"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a9ab77ba202dd636de012c9981067f646" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -820,7 +850,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="374" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="387" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a10af939ea84d80f3e9a1c23cec76dcc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -872,7 +902,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="391" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="404" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a5b991e59159bf6026fca4c6cb5cf722f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result" kindref="compound">DebugCommandResult</ref></type>
@@ -903,7 +933,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="419" column="20"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="432" column="20"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a030b7da8f33425074d6539cdab625a8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -955,7 +985,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="435" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="448" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1ac5f2dbd7fa519965ea6aac493bc23809" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1019,7 +1049,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="453" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="466" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a096d520899fd4fa01c58715b0e92d228" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1096,7 +1126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="473" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="486" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a5bf03107b025e4457c2fbe737f038b03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1185,7 +1215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="494" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="507" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2c03202a3236c96965b053d85a124a47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1237,7 +1267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="513" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="526" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a700d5bff3858ecb8a9952e48e9441021" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref></type>
@@ -1316,7 +1346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="550" column="21"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="563" column="21"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2748b1f2ba24f1a4ad91930d56907ebe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info" kindref="compound">EmbeddedStorageInfo</ref></type>
@@ -1394,7 +1424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="571" column="21"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="584" column="21"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a87ccc6664db85fc404513cad78d5c774" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1446,7 +1476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="588" column="6"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="601" column="6"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a2c9c2cf5ad38ede133be4f7666545918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1460,7 +1490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="592" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="605" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a3bd032ae0c04ab82423c51869e5d2387" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1477,7 +1507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="593" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="606" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a126f6d3238c0eff1183e4ee7a51b006d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>TryllClient &amp;</type>
@@ -1494,7 +1524,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="594" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="607" column="13"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1a60e2d45d21bf1cdeaad0591417a63a02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -1511,7 +1541,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="595" column="1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="608" column="1"/>
       </memberdef>
       <memberdef kind="function" id="class_tryll_1_1_client_1_1_tryll_client_1abf89a84be5bcc601c8c559c996b57a58" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>TryllClient &amp;</type>
@@ -1528,7 +1558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="596" column="13"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="609" column="13"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1548,7 +1578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="599" column="10"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="612" column="10"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1557,7 +1587,7 @@
     <detaileddescription>
 <para>Copyable — all copies share the same underlying connection via <computeroutput>shared_ptr</computeroutput>. The connection stays open until the last copy goes out of scope or <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" kindref="member">Shutdown</ref> is called. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="82" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="83" bodyend="602"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="82" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="83" bodyend="615"/>
     <listofallmembers>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a192e750dabd33099354ea6110a73d8ee" prot="private" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>_impl</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a64cf96f594c65b737d6677ee6a82d775" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>Connect</name></member>
@@ -1591,6 +1621,7 @@
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>RunAndConnect</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5b5ea25d2cc954c9766624fba0ca5c67" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>RunAndConnectAsync</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5b991e59159bf6026fca4c6cb5cf722f" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>SendDebugCommand</name></member>
+      <member refid="class_tryll_1_1_client_1_1_tryll_client_1aae45289ba1384cab7b07c03398c8d558" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>SetInferenceThrottle</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4a9f95c5241510d5daecc3a6dad1fceb" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>Shutdown</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a15812c061055f71008bb46eb92b4c2f3" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>ShutdownAsync</name></member>
       <member refid="class_tryll_1_1_client_1_1_tryll_client_1a3bd032ae0c04ab82423c51869e5d2387" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient</scope><name>TryllClient</name></member>

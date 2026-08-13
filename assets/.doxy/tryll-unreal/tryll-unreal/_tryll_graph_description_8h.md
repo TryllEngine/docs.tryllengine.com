@@ -42,12 +42,14 @@
 
 | Type | Name |
 | ---: | :--- |
+| enum uint8 | [**ETryllBranchTest**](#enum-etryllbranchtest)  <br> |
 | enum uint8 | [**ETryllCancelMode**](#enum-etryllcancelmode)  <br> |
 | enum uint8 | [**ETryllCannedResponseSelectionStrategy**](#enum-etryllcannedresponseselectionstrategy)  <br> |
 | enum uint8 | [**ETryllHistoryRole**](#enum-etryllhistoryrole)  <br> |
 | enum uint8 | [**ETryllInferenceEngine**](#enum-etryllinferenceengine)  <br> |
 | enum uint8 | [**ETryllNodeType**](#enum-etryllnodetype)  <br> |
 | enum uint8 | [**ETryllPlacement**](#enum-etryllplacement)  <br> |
+| enum uint8 | [**ETryllRetrievalMode**](#enum-etryllretrievalmode)  <br> |
 | enum uint8 | [**ETryllSendAnswer**](#enum-etryllsendanswer)  <br> |
 | enum uint8 | [**ETryllToolCallDisposition**](#enum-etrylltoolcalldisposition)  <br> |
 | enum uint8 | [**ETryllToolCallMode**](#enum-etrylltoolcallmode)  <br> |
@@ -102,6 +104,31 @@
 
 ## Public Types Documentation
 
+
+
+
+### enum ETryllBranchTest 
+
+```C++
+enum ETryllBranchTest {
+    NonEmpty = 0,
+    IsTrue = 1,
+    Equals = 2,
+    EqualsIgnoreCase = 3,
+    Contains = 4,
+    Regex = 5,
+    Expression = 6
+};
+```
+
+
+
+Predicate policy for the Branch node. Mirrors the BranchTest enum in common\_enums.fbs — ordinals must stay in sync. 
+
+
+        
+
+<hr>
 
 
 
@@ -207,13 +234,14 @@ enum ETryllNodeType {
     GenerateAndSpeak = 9,
     Speak = 10,
     Pause = 11,
-    Transform = 12
+    Transform = 12,
+    Branch = 13
 };
 ```
 
 
 
-Workflow node types supported by the server. Mirrors the FlatBuffers NodeType enum in messages.fbs — ordinal values must stay in sync. 
+Workflow node types supported by the server. Mirrors the NodeParams union order in nodes.fbs (0-based; wire discriminator is +1). 
 
 
         
@@ -236,6 +264,27 @@ enum ETryllPlacement {
 
 
 Where the rendered Mustache body is inserted relative to the node's resolved Input. Mirrors the Placement enum in common\_enums.fbs — ordinals must stay in sync. There is no more InPlaceOfUser — use a Transform node + Input to fully replace what the model sees. 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllRetrievalMode 
+
+```C++
+enum ETryllRetrievalMode {
+    Dense = 0,
+    Lexical = 1,
+    Hybrid = 2
+};
+```
+
+
+
+RetrieveNode search path. Mirrors the RetrievalMode enum in common\_enums.fbs — ordinals must stay in sync. 
 
 
         

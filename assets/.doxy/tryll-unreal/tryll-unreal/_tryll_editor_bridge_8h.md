@@ -15,6 +15,7 @@
 * `#include "TryllKvCache.h"`
 * `#include "TryllModelInfo.h"`
 * `#include "TryllRuntimeSettings.h"`
+* `#include "TryllThrottle.h"`
 * `#include "TryllToolCall.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllVoiceInput.h"`

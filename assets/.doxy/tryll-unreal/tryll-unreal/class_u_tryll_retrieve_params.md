@@ -46,6 +46,8 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  FString | [**FoundExit**](#variable-foundexit)  <br> |
 |  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
+|  ETryllRetrievalMode | [**RetrievalMode**](#variable-retrievalmode)   = `ETryllRetrievalMode::Dense`<br> |
+|  int32 | [**RrfK**](#variable-rrfk)   = `60`<br> |
 |  FString | [**Source**](#variable-source)  <br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
 |  int32 | [**TopK**](#variable-topk)   = `2`<br> |
@@ -257,6 +259,40 @@ Exit taken when retrieval produced no results. Empty string = END. Graph exit "n
 
 
 
+### variable RetrievalMode 
+
+```C++
+ETryllRetrievalMode UTryllRetrieveParams::RetrievalMode;
+```
+
+
+
+Which retrieval path to use. Default Dense preserves historical behaviour. Mutable so a single agent can A/B modes without recreation. 
+
+
+        
+
+<hr>
+
+
+
+### variable RrfK 
+
+```C++
+int32 UTryllRetrieveParams::RrfK;
+```
+
+
+
+RRF constant k in score(d) = Σ 1/(k + rank). Only used in Hybrid mode. Mutable. Default 60 (Cormack et al.). 
+
+
+        
+
+<hr>
+
+
+
 ### variable Source 
 
 ```C++
@@ -278,7 +314,7 @@ float UTryllRetrieveParams::Threshold;
 
 
 
-Maximum cosine distance; results above this threshold are dropped. Zero disables filtering (no threshold). 
+Maximum cosine distance applied to the dense leg. Dense mode: results above this threshold are dropped (unchanged historical behaviour). Hybrid mode: gates the dense candidate list before RRF fusion; BM25-only hits are not gated. Lexical mode: inert (ignored). Zero disables dense-leg filtering. 
 
 
         

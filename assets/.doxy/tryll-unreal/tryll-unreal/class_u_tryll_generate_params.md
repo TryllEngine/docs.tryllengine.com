@@ -47,6 +47,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  ETryllHistoryRole | [**HistoryRole**](#variable-historyrole)   = `ETryllHistoryRole::Assistant`<br> |
 |  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
+|  [**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md) | [**OutputFilter**](#variable-outputfilter)  <br> |
 |  [**FTryllSlotName**](struct_f_tryll_slot_name.md) | [**OutputName**](#variable-outputname)  <br> |
 |  ETryllPlacement | [**Placement**](#variable-placement)   = `ETryllPlacement::BeforeUserAsSystem`<br> |
 |  [**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md) | [**Sampling**](#variable-sampling)  <br> |
@@ -273,6 +274,23 @@ FTryllModelName UTryllGenerateParams::ModelName;
 
 
 
+
+<hr>
+
+
+
+### variable OutputFilter 
+
+```C++
+FTryllOutputFilterOverrides UTryllGenerateParams::OutputFilter;
+```
+
+
+
+Opt-in bounded artifact cleanup applied to streamed LLM output before variable substitution, slot/history write, wire delivery, and any downstream consumers. Missing/null = all flags off (defaults). Appended after substitute\_agent\_variables for additive field ids. 
+
+
+        
 
 <hr>
 

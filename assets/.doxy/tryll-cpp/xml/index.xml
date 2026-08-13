@@ -5,6 +5,7 @@
     <member refid="struct_tryll_1_1_client_1_1_agent_create_options_1a93a25f1980903d2009a426f0774c14a3" kind="variable"><name>maintainDialogueHistory</name></member>
     <member refid="struct_tryll_1_1_client_1_1_agent_create_options_1afe45ef26dea2fbbd83371c7072baa85d" kind="variable"><name>variables</name></member>
     <member refid="struct_tryll_1_1_client_1_1_agent_create_options_1a936cdd3aa7a1b711d2eca30c8ebae4a8" kind="variable"><name>kvCacheInitialization</name></member>
+    <member refid="struct_tryll_1_1_client_1_1_agent_create_options_1a7a64043a053531c242aaccdfdc01a024" kind="variable"><name>workload</name></member>
   </compound>
   <compound refid="struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result" kind="struct"><name>Tryll::Client::AgentKvCacheEvictResult</name>
     <member refid="struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result_1ae7416543df40406fd3247e9460fafffe" kind="variable"><name>contextsEvicted</name></member>
@@ -166,7 +167,7 @@
     <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info_1a1b880653d32bc3e90edc8eb341dc85d0" kind="variable"><name>recordCount</name></member>
     <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info_1aadbc1084f54dd1a1c1722d112b607c67" kind="variable"><name>embeddingDim</name></member>
   </compound>
-  <compound refid="struct_tryll_1_1_generated_1_1_v__2a9853a7acdd_1_1_fingerprint" kind="struct"><name>Tryll::Generated::V_2a9853a7acdd::Fingerprint</name>
+  <compound refid="struct_tryll_1_1_generated_1_1_v__da5b39a96d7b_1_1_fingerprint" kind="struct"><name>Tryll::Generated::V_da5b39a96d7b::Fingerprint</name>
   </compound>
   <compound refid="class_tryll_1_1_client_1_1_graph_description" kind="class"><name>Tryll::Client::GraphDescription</name>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1a3b5a58ae02adb06b2f94f2f9b263041e" kind="variable"><name>_nodes</name></member>
@@ -185,6 +186,7 @@
     <member refid="class_tryll_1_1_client_1_1_graph_description_1a45ae7f3f0e55200295919ee7fc6323b4" kind="function"><name>AddSpeak</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1aa16f76890ed2db584085b9cc031ce393" kind="function"><name>AddPause</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1a04dd6f8a4b6b46126d1df8cc3307b006" kind="function"><name>AddTransform</name></member>
+    <member refid="class_tryll_1_1_client_1_1_graph_description_1a6f7185bb9fb346918e99b26ed92b74a5" kind="function"><name>AddBranch</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1af64e07f8349884fb4e841b86338e6596" kind="function"><name>SetStartNode</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1ab4b895beebfc117a32f9fd88b8982887" kind="function"><name>SetDefaultModelName</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_1afcee8035990b84985d10090a6652dd74" kind="function"><name>GetNodes</name></member>
@@ -205,6 +207,7 @@
     <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a2622ce4e1a15556505a01d9f692085d9" kind="function"><name>AddSpeak</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a027548d66138932acacdf1c00a88b920" kind="function"><name>AddPause</name></member>
     <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1ae82a7139d02fd06aa815342eef7ab53c" kind="function"><name>AddTransform</name></member>
+    <member refid="class_tryll_1_1_client_1_1_graph_description_node_methods_1a5cdc80d9c79e68c4a9ce8c6e82ebb0f7" kind="function"><name>AddBranch</name></member>
   </compound>
   <compound refid="class_tryll_1_1_client_1_1_managed_server" kind="class"><name>Tryll::Client::ManagedServer</name>
     <member refid="class_tryll_1_1_client_1_1_managed_server_1ad7acb8bb9ffe35215e871b2b5453be2f" kind="variable"><name>_impl</name></member>
@@ -281,6 +284,7 @@
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1a4676b6d1cb2100c57d8a73d30cc2a33a" kind="function"><name>RunAndConnect</name></member>
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1a5b5ea25d2cc954c9766624fba0ca5c67" kind="function"><name>RunAndConnectAsync</name></member>
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1a43a58515327b7b0f79acf294075cb8db" kind="function"><name>CreateSession</name></member>
+    <member refid="class_tryll_1_1_client_1_1_tryll_client_1aae45289ba1384cab7b07c03398c8d558" kind="function"><name>SetInferenceThrottle</name></member>
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1a33595df4b53e58e155b0e6ec4c45f14a" kind="function"><name>CreateAgentAsync</name></member>
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1a13da626eb22a5b88520cb03dc8de3cd4" kind="function"><name>CreateAgentAsync</name></member>
     <member refid="class_tryll_1_1_client_1_1_tryll_client_1ae0a0b475651b88a605a53d9e10e855af" kind="function"><name>CreateAgent</name></member>
@@ -380,7 +384,7 @@
     <member refid="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7adac26f15e86e3de4c398a8273272aba034" kind="enumvalue"><name>Bool</name></member>
     <member refid="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ada5337bd52d98d5795311f0632ba5488b0" kind="enumvalue"><name>StringSet</name></member>
     <member refid="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" kind="typedef"><name>VariableValue</name></member>
-    <member refid="_graph_description_8h_1a895bcceb37f7a35cf76e753fabc0cd5a" kind="typedef"><name>NodeParamsVariant</name></member>
+    <member refid="_graph_description_8h_1a6f667102fe22e368fc869e02ff2a27af" kind="typedef"><name>NodeParamsVariant</name></member>
     <member refid="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" kind="typedef"><name>DownloadProgressCallback</name></member>
   </compound>
   <compound refid="namespace_tryll_1_1_client_1_1_internal" kind="namespace"><name>Tryll::Client::Internal</name>
@@ -388,7 +392,7 @@
   <compound refid="namespace_tryll_1_1_generated" kind="namespace"><name>Tryll::Generated</name>
     <member refid="_codegen_fingerprint_8gen_8h_1aeaf4fe655113ab76cfa3f6a8e15f46fa" kind="variable"><name>kCodegenFingerprint</name></member>
   </compound>
-  <compound refid="namespace_tryll_1_1_generated_1_1_v__2a9853a7acdd" kind="namespace"><name>Tryll::Generated::V_2a9853a7acdd</name>
+  <compound refid="namespace_tryll_1_1_generated_1_1_v__da5b39a96d7b" kind="namespace"><name>Tryll::Generated::V_da5b39a96d7b</name>
   </compound>
   <compound refid="_agent_create_options_8h" kind="file"><name>AgentCreateOptions.h</name>
   </compound>

@@ -56,6 +56,7 @@ Inherits the following classes: UBlueprintFunctionLibrary
 | Type | Name |
 | ---: | :--- |
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**CloneParams**](#function-cloneparams) ([**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Source, UObject \* WorldContextObject) <br> |
+|  [**UTryllBranchParams**](class_u_tryll_branch_params.md) \* | [**MakeBranchParams**](#function-makebranchparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md) \* | [**MakeCannedResponseParams**](#function-makecannedresponseparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md) \* | [**MakeClassifyIntentLLMParams**](#function-makeclassifyintentllmparams) (UObject \* WorldContextObject) <br> |
 |  [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md) \* | [**MakeClassifyIntentParams**](#function-makeclassifyintentparams) (UObject \* WorldContextObject) <br> |
@@ -125,6 +126,25 @@ static UTryllNodeParamsBase * UTryllNodeParamsFactory::CloneParams (
 
 
 Deep-clone any [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) subclass. Typical mutation idiom: Clone = CloneParams(Agent-&gt;GetNodeParamsBaseline(NodeName)) // set fields on Clone Agent-&gt;ChangeParams(NodeName, Clone) 
+
+
+        
+
+<hr>
+
+
+
+### function MakeBranchParams 
+
+```C++
+static UTryllBranchParams * UTryllNodeParamsFactory::MakeBranchParams (
+    UObject * WorldContextObject
+) 
+```
+
+
+
+Construct an authored BranchParams with schema-default field values. 
 
 
         

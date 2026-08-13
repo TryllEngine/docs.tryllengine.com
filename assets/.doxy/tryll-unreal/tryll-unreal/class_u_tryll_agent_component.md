@@ -60,6 +60,7 @@ Inherits the following classes: UActorComponent
 |  TObjectPtr&lt; [**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md) &gt; | [**Speaker**](#variable-speaker)   = `nullptr`<br> |
 |  TArray&lt; [**FTryllVariableOverride**](struct_f_tryll_variable_override.md) &gt; | [**VariableOverrides**](#variable-variableoverrides)  <br> |
 |  [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) \* | [**WorkflowAsset**](#variable-workflowasset)   = `nullptr`<br> |
+|  ETryllWorkload | [**Workload**](#variable-workload)   = `ETryllWorkload::Interactive`<br> |
 |  bool | [**bAutoCreateOnConnect**](#variable-bautocreateonconnect)   = `true`<br> |
 |  bool | [**bEnableDiagnostics**](#variable-benablediagnostics)   = `false`<br> |
 |  bool | [**bMaintainDialogueHistory**](#variable-bmaintaindialoguehistory)   = `true`<br> |
@@ -150,8 +151,8 @@ Actor component: manages one Tryll server-side agent. Attach to any Actor; Bluep
 
 
 Graph resolution order:
-* WorkflowAsset (if set) — designer-authored data asset in the Content Browser.
-* InlineGraphDescription — set programmatically in C++ or edited in the Details panel.
+* WorkflowAsset (if set) — designer-authored data asset in the Content Browser. This is the supported way to give the component a graph.
+* InlineGraphDescription — set programmatically in C++ or edited in the Details panel. Temporary: this fallback will be removed in a future release.
 
 
 
@@ -173,7 +174,10 @@ FTryllGraphDescription UTryllAgentComponent::InlineGraphDescription;
 
 
 
-Fallback graph description used when WorkflowAsset is not set. Can be populated programmatically via FTryllGraphBuilder::Build(). 
+Fallback graph description used when WorkflowAsset is not set. Can be populated programmatically via FTryllGraphBuilder::Build().
+
+
+Temporary: inline graphs will be removed in a future release — author the graph as a Workflow Asset instead. 
 
 
         
@@ -534,6 +538,23 @@ Designer-authored workflow asset. When set, its Graph takes precedence over Inli
 
 
 
+### variable Workload 
+
+```C++
+ETryllWorkload UTryllAgentComponent::Workload;
+```
+
+
+
+Whether a human ever waits on this agent's turns. Set Background for world-logic/evaluator agents so the inference scheduler paces or defers their work first under GPU pressure. Purely a scheduling hint. 
+
+
+        
+
+<hr>
+
+
+
 ### variable bAutoCreateOnConnect 
 
 ```C++
@@ -559,7 +580,7 @@ bool UTryllAgentComponent::bEnableDiagnostics;
 
 
 
-Request the server to populate TurnComplete.debug\_info with workflow execution data. Intended for development and QA; off by default for zero overhead in production. 
+Request the server to populate TurnComplete.debug\_info with workflow execution data. Authoring UI retired (Package 2): Chat and Agent Log OR this on via transient override / diagnostics-demand lease. Kept for runtime/Blueprint API and asset compatibility; default remains false (zero overhead in production). 
 
 
         

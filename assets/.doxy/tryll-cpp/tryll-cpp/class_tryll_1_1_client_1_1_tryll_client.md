@@ -84,6 +84,7 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 |  std::vector&lt;::Tryll::ModelInfoT &gt; | [**ListModels**](#function-listmodels) (std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Request the list of models known to the server for the session's engine._  |
 |  void | [**LoadModel**](#function-loadmodel) (std::string\_view modelName, std::chrono::milliseconds timeout=std::chrono::minutes{5}) <br>_Explicitly load and pin a model into memory._  |
 |  [**DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md) | [**SendDebugCommand**](#function-senddebugcommand) (std::string\_view command, std::string\_view payload={}, std::chrono::milliseconds timeout=std::chrono::seconds{5}) <br>_Send a dev-only debug command to the server and report the outcome._  |
+|  void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float level) <br>_Report how hard the server should yield the GPU back to the game (the manual inference throttle knob)._  |
 |  void | [**Shutdown**](#function-shutdown) (std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Blocking convenience wrapper over_ [_**ShutdownAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-shutdownasync) _._ |
 |  std::future&lt; void &gt; | [**ShutdownAsync**](#function-shutdownasync) () <br>_Asynchronously shut down the connection._  |
 |   | [**TryllClient**](#function-tryllclient-13) (const TryllClient &) = default<br> |
@@ -936,6 +937,36 @@ The server handles this only in non-Production builds with `debug_commands.enabl
 
 
 Waits up to `timeout` for one of: the connection dropping (a fatal verb succeeded → `disconnected`), an `ErrorResponse` (e.g. the channel is disabled → `errorCode` set), or a `DebugCommandResponse` (`acknowledged`). Does not throw on a server error — inspect the returned struct instead. 
+
+
+        
+
+<hr>
+
+
+
+### function SetInferenceThrottle 
+
+_Report how hard the server should yield the GPU back to the game (the manual inference throttle knob)._ 
+```C++
+void Tryll::Client::TryllClient::SetInferenceThrottle (
+    float level
+) 
+```
+
+
+
+Fire-and-forget: no response, no error surfaced locally. Never sent automatically — a session that never calls this runs unthrottled, identically to a client on an older protocol version.
+
+
+
+
+**Parameters:**
+
+
+* `level` 0 = full speed (default), 1 = maximum yielding. Clamped server-side; out-of-range values do not throw here. 
+
+
 
 
         

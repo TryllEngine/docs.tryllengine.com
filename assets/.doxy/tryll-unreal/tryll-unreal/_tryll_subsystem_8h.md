@@ -17,6 +17,7 @@
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllKvCache.h"`
+* `#include "TryllThrottle.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllModelInfo.h"`
 * `#include "TryllVoiceInput.h"`
@@ -44,6 +45,7 @@
 | Type | Name |
 | ---: | :--- |
 | struct | [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) <br>_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._  |
+| struct | [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md) <br> |
 | class | [**UTryllSubsystem**](class_u_tryll_subsystem.md) <br> |
 | struct | [**FEmbeddedStorageInfo**](struct_u_tryll_subsystem_1_1_f_embedded_storage_info.md) <br> |
 

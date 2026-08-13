@@ -64,6 +64,7 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**EvictKvCache**](#function-evictkvcache) (TFunction&lt; void(const [**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |   | [**FTryllAgent**](#function-ftryllagent) (TSharedPtr&lt; FTryllConnection &gt; InConnection, std::uint64\_t InAgentId, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & InDeclaredVariables={}) <br> |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br> |
+|  const FString & | [**GetDisplayName**](#function-getdisplayname) () const<br> |
 |  void | [**GetKvCacheStatus**](#function-getkvcachestatus) (TFunction&lt; void(const [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
 | virtual FString | [**GetReferencerName**](#function-getreferencername) () override const<br> |
@@ -96,7 +97,9 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**RetryPausedToolBatch**](#function-retrypausedtoolbatch) () <br> |
 |  void | [**SendGetVariables**](#function-sendgetvariables) (TArray&lt; FString &gt; Names, TFunction&lt; void(const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete) <br> |
 |  void | [**SendMessage**](#function-sendmessage) (const FString & Text) <br> |
-|  void | [**SendUpdateVariables**](#function-sendupdatevariables) (TArray&lt; [**FTryllVariableUpdate**](struct_f_tryll_variable_update.md) &gt; Updates, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete) <br> |
+|  void | [**SendUpdateVariables**](#function-sendupdatevariables) (TArray&lt; [**FTryllVariableUpdate**](struct_f_tryll_variable_update.md) &gt; Updates, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete, uint64 CarrierRequestId=0) <br> |
+|  void | [**SetCreatedWithDiagnostics**](#function-setcreatedwithdiagnostics) (bool bValue) <br> |
+|  void | [**SetDisplayName**](#function-setdisplayname) (FString InName) <br> |
 |  void | [**SetNodeParamsBaseline**](#function-setnodeparamsbaseline) (const FString & NodeName, [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* Params) <br> |
 |  void | [**SetOnAnswerText**](#function-setonanswertext) (TFunction&lt; void(const FString &NodeName, const FString &Text, bool bIsDelta, bool bIsFinal)&gt; Callback) <br> |
 |  void | [**SetOnError**](#function-setonerror) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &Error)&gt; Callback) <br> |
@@ -105,6 +108,7 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**SetOnTtsAudioFormat**](#function-setonttsaudioformat) (TFunction&lt; void(const FString &NodeName, uint32 SampleRate, uint16 Channels, uint16 BitsPerSample)&gt; Callback) <br> |
 |  void | [**SetOnTurnComplete**](#function-setonturncomplete) (TFunction&lt; void(ETryllTurnStatus Status, const FString &DebugInfo, int32 TokensGenerated)&gt; Callback) <br> |
 |  bool | [**UnregisterTool**](#function-unregistertool) (const FString & ToolName) <br> |
+|  bool | [**WasCreatedWithDiagnostics**](#function-wascreatedwithdiagnostics) () noexcept const<br> |
 |   | [**~FTryllAgent**](#function-ftryllagent) () <br> |
 
 
@@ -342,6 +346,19 @@ FTryllAgent::FTryllAgent (
 
 ```C++
 inline std::uint64_t FTryllAgent::GetAgentId () noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function GetDisplayName 
+
+```C++
+inline const FString & FTryllAgent::GetDisplayName () const
 ```
 
 
@@ -935,13 +952,48 @@ Send a text message to the agent. Response arrives via the OnAnswerText / OnTurn
 ```C++
 void FTryllAgent::SendUpdateVariables (
     TArray< FTryllVariableUpdate > Updates,
-    TFunction< void(const FTryllError &)> OnComplete
+    TFunction< void(const FTryllError &)> OnComplete,
+    uint64 CarrierRequestId=0
 ) 
 ```
 
 
 
 Send a batched UpdateAgentVariablesRequest (deferred-flush from [**FTryllAgentVariables::FlushIfDirty**](class_f_tryll_agent_variables.md#function-flushifdirty)). 
+
+
+        
+
+<hr>
+
+
+
+### function SetCreatedWithDiagnostics 
+
+```C++
+inline void FTryllAgent::SetCreatedWithDiagnostics (
+    bool bValue
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function SetDisplayName 
+
+```C++
+inline void FTryllAgent::SetDisplayName (
+    FString InName
+) 
+```
+
+
+
+Optional editor/display label (e.g. owning actor name). Not on the wire. 
 
 
         
@@ -1104,6 +1156,19 @@ Remove a previously registered tool handler.
 
 
         
+
+<hr>
+
+
+
+### function WasCreatedWithDiagnostics 
+
+```C++
+inline bool FTryllAgent::WasCreatedWithDiagnostics () noexcept const
+```
+
+
+
 
 <hr>
 

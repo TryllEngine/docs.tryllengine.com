@@ -97,11 +97,13 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 
 | Type | Name |
 | ---: | :--- |
+|  void | [**BindVoiceInputClient**](#function-bindvoiceinputclient) (const TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; & Voice) const<br> |
 |  void | [**Connect**](#function-connect) () <br> |
 |  void | [**CreateSession**](#function-createsession) (ETryllInferenceEngine Engine, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock, FString StorageDataFolder=TEXT("")) <br> |
 |  void | [**CreateSessionFromSettings**](#function-createsessionfromsettings) () <br> |
 | virtual void | [**Deinitialize**](#function-deinitialize) () override<br> |
 |  void | [**Disconnect**](#function-disconnect) () <br> |
+|  TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; | [**FindAgent**](#function-findagent) (uint64 AgentId) const<br> |
 |  int64 | [**GetSessionId**](#function-getsessionid) () const<br> |
 | virtual TStatId | [**GetStatId**](#function-getstatid) () override const<br> |
 | virtual ETickableTickType | [**GetTickableTickType**](#function-gettickableticktype) () override const<br> |
@@ -112,7 +114,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 | virtual bool | [**IsTickableInEditor**](#function-istickableineditor) () override const<br> |
 | virtual bool | [**IsTickableWhenPaused**](#function-istickablewhenpaused) () override const<br> |
 |  void | [**RegisterAgent**](#function-registeragent) (std::uint64\_t AgentId, TWeakPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; Agent) <br> |
-|  void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly) <br> |
+|  void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly, ETryllWorkload Workload=ETryllWorkload::Interactive) <br> |
 |  void | [**RequestCreateEmbeddedStringStorage**](#function-requestcreateembeddedstringstorage) (const FString & Name, const FString & ConfigPath, const FString & EmbeddingModel=FString{}, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateEmbeddedStringStorageFromStrings**](#function-requestcreateembeddedstringstoragefromstrings) (const FString & Name, const TArray&lt; FString &gt; & Strings, const FString & EmbeddingModel, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateStringStorage**](#function-requestcreatestringstorage) (const FString & Name, const TArray&lt; FString &gt; & Strings, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
@@ -128,6 +130,8 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) <br> |
 |  void | [**RequestModel**](#function-requestmodel) (const FString & ModelName) <br> |
 |  void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) <br> |
+|  void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float Level) <br> |
+|  TArray&lt; [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md) &gt; | [**SnapshotRegisteredAgents**](#function-snapshotregisteredagents) () const<br> |
 | virtual void | [**Tick**](#function-tick) (float DeltaTime) override<br> |
 |  void | [**UnregisterAgent**](#function-unregisteragent) (std::uint64\_t AgentId) <br> |
 
@@ -666,6 +670,21 @@ True when the server runs in managed (idle-self-exit) mode.
 
 
 
+### function BindVoiceInputClient 
+
+```C++
+void UTryllSubsystem::BindVoiceInputClient (
+    const TSharedPtr< FTryllVoiceInput > & Voice
+) const
+```
+
+
+
+
+<hr>
+
+
+
 ### function Connect 
 
 ```C++
@@ -764,6 +783,21 @@ Close the active session. OnConnectionChanged(bConnected=false) fires once the s
 
 
         
+
+<hr>
+
+
+
+### function FindAgent 
+
+```C++
+TSharedPtr< FTryllAgent > UTryllSubsystem::FindAgent (
+    uint64 AgentId
+) const
+```
+
+
+
 
 <hr>
 
@@ -925,7 +959,8 @@ void UTryllSubsystem::RequestCreateAgent (
     bool bEnableDiagnostics=false,
     bool bMaintainDialogueHistory=true,
     const TArray< FTryllVariableDecl > & Variables={},
-    ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly
+    ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly,
+    ETryllWorkload Workload=ETryllWorkload::Interactive
 ) 
 ```
 
@@ -1261,6 +1296,45 @@ Demote a pinned model to on-demand and evict it if no contexts hold it. Completi
 
 
         
+
+<hr>
+
+
+
+### function SetInferenceThrottle 
+
+```C++
+void UTryllSubsystem::SetInferenceThrottle (
+    float Level
+) 
+```
+
+
+
+Report how hard the server should yield the GPU back to the game (the manual inference throttle knob). Fire-and-forget: no response, no error surfaced locally. Never sent automatically — a session that never calls this runs unthrottled. 
+
+**Parameters:**
+
+
+* `Level` 0 = full speed (default), 1 = maximum yielding. Clamped server-side; out-of-range values do not fail here. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function SnapshotRegisteredAgents 
+
+```C++
+TArray< FTryllRegisteredAgentSnapshot > UTryllSubsystem::SnapshotRegisteredAgents () const
+```
+
+
+
 
 <hr>
 

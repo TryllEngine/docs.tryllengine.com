@@ -57,6 +57,7 @@ _Fluent builder for a workflow graph description sent to the server._ [More...](
 
 | Type | Name |
 | ---: | :--- |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddBranch**](#function-addbranch) (std::string name, ::Tryll::NodeParams::BranchParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddCannedResponse**](#function-addcannedresponse) (std::string name, ::Tryll::NodeParams::CannedResponseParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddClassifyIntent**](#function-addclassifyintent) (std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params) <br> |
 |  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
@@ -120,6 +121,22 @@ auto graph = Tryll::Client::GraphDescription{}
     
 ## Public Functions Documentation
 
+
+
+
+### function AddBranch 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddBranch (
+    std::string name,
+    ::Tryll::NodeParams::BranchParamsT params
+) 
+```
+
+
+
+
+<hr>
 
 
 

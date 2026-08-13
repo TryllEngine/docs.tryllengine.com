@@ -5,6 +5,7 @@
 
 ## a
 
+* **AddBranchNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddCannedResponseNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddClassifyIntentLLMNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))
 * **AddClassifyIntentNode** ([**TryllGraphBuilder.Nodes.h**](_tryll_graph_builder_8_nodes_8h.md))

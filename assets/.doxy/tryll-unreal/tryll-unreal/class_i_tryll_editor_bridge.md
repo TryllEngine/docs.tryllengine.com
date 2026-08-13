@@ -78,7 +78,7 @@
 | virtual bool | [**IsConnected**](#function-isconnected) () const = 0<br> |
 | virtual bool | [**IsSessionReady**](#function-issessionready) () const = 0<br> |
 | virtual void | [**ReleaseConnection**](#function-releaseconnection) () = 0<br> |
-| virtual void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly) = 0<br> |
+| virtual void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly, ETryllWorkload Workload=ETryllWorkload::Interactive) = 0<br> |
 | virtual void | [**RequestCreateEmbeddedStringStorage**](#function-requestcreateembeddedstringstorage) (const FString & Name, const FString & ConfigPath, const FString & EmbeddingModel=FString{}, TFunction&lt; UTryllSubsystem::FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) = 0<br> |
 | virtual void | [**RequestCreateEmbeddedStringStorageFromStrings**](#function-requestcreateembeddedstringstoragefromstrings) (const FString & Name, const TArray&lt; FString &gt; & Strings, const FString & EmbeddingModel, TFunction&lt; UTryllSubsystem::FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) = 0<br> |
 | virtual void | [**RequestCreateStringStorage**](#function-requestcreatestringstorage) (const FString & Name, const TArray&lt; FString &gt; & Strings, TFunction&lt; UTryllSubsystem::FTryllOnStringStorage &gt; OnComplete=nullptr) = 0<br> |
@@ -93,6 +93,7 @@
 | virtual void | [**RequestListModels**](#function-requestlistmodels) (TFunction&lt; FTryllOnListModels &gt; OnComplete) = 0<br> |
 | virtual void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) = 0<br> |
 | virtual void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) = 0<br> |
+| virtual void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float Level) = 0<br> |
 | virtual bool | [**TryLaunch**](#function-trylaunch) (EServerBuildVariant Variant, int32 KnownPort, int32 IdleShutdownTimeoutSeconds, FString & OutError) = 0<br> |
 | virtual  | [**~ITryllEditorBridge**](#function-itrylleditorbridge) () = default<br> |
 
@@ -489,7 +490,8 @@ virtual void ITryllEditorBridge::RequestCreateAgent (
     bool bEnableDiagnostics=false,
     bool bMaintainDialogueHistory=true,
     const TArray< FTryllVariableDecl > & Variables={},
-    ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly
+    ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly,
+    ETryllWorkload Workload=ETryllWorkload::Interactive
 ) = 0
 ```
 
@@ -723,6 +725,25 @@ virtual void ITryllEditorBridge::RequestUnloadModel (
 
 
 
+
+<hr>
+
+
+
+### function SetInferenceThrottle 
+
+```C++
+virtual void ITryllEditorBridge::SetInferenceThrottle (
+    float Level
+) = 0
+```
+
+
+
+Fire-and-forget — see [**UTryllSubsystem::SetInferenceThrottle**](class_u_tryll_subsystem.md#function-setinferencethrottle). 
+
+
+        
 
 <hr>
 

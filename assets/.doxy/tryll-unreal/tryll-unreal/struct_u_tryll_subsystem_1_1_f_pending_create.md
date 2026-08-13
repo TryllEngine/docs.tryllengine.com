@@ -35,9 +35,11 @@
 
 | Type | Name |
 | ---: | :--- |
+|  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**Graph**](#variable-graph)  <br> |
 |  TFunction&lt; FTryllOnAgentCreated &gt; | [**OnComplete**](#variable-oncomplete)  <br> |
 |  std::uint64\_t | [**RequestId**](#variable-requestid)   = `0`<br> |
 |  TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; | [**Variables**](#variable-variables)  <br> |
+|  bool | [**bEnableDiagnostics**](#variable-benablediagnostics)   = `false`<br> |
 
 
 
@@ -87,6 +89,19 @@
 
 
 
+### variable Graph 
+
+```C++
+FTryllGraphDescription UTryllSubsystem::FPendingCreate::Graph;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable OnComplete 
 
 ```C++
@@ -117,6 +132,19 @@ std::uint64_t UTryllSubsystem::FPendingCreate::RequestId;
 
 ```C++
 TArray<FTryllVariableDecl> UTryllSubsystem::FPendingCreate::Variables;
+```
+
+
+
+
+<hr>
+
+
+
+### variable bEnableDiagnostics 
+
+```C++
+bool UTryllSubsystem::FPendingCreate::bEnableDiagnostics;
 ```
 
 

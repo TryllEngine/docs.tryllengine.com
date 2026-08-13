@@ -16,6 +16,7 @@
 * **allowOutputSubstitution** ([**Tryll::Client::AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md))
 * **AddToSet** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **AgentVariables** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
+* **AddBranch** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md), [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md))
 * **AddCannedResponse** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md), [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md))
 * **AddClassifyIntent** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md), [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md))
 * **AddClassifyIntentLLM** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md), [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md))
@@ -258,6 +259,7 @@
 * **stdoutLog** ([**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md))
 * **stopTimeout** ([**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md))
 * **SendDebugCommand** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
+* **SetInferenceThrottle** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **ShutdownAsync** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **storageDataFolder** ([**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md))
 * **sttEngine** ([**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md))
@@ -307,6 +309,7 @@
 
 ## w
 
+* **workload** ([**Tryll::Client::AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md))
 * **workingDirectory** ([**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md))
 * **wholesale** ([**Tryll::Client::AgentVariables::PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md))
 

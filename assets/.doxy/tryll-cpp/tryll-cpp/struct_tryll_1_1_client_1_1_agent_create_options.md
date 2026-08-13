@@ -40,6 +40,7 @@
 |  ::Tryll::AgentKvCacheInitialization | [**kvCacheInitialization**](#variable-kvcacheinitialization)   = `/* multi line expression */`<br> |
 |  bool | [**maintainDialogueHistory**](#variable-maintaindialoguehistory)   = `true`<br> |
 |  std::vector&lt; [**AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md) &gt; | [**variables**](#variable-variables)  <br> |
+|  ::Tryll::AgentWorkload | [**workload**](#variable-workload)   = `::Tryll::AgentWorkload\_Interactive`<br> |
 
 
 
@@ -143,6 +144,23 @@ std::vector<AgentVariableDecl> Tryll::Client::AgentCreateOptions::variables;
 
 
 
+
+<hr>
+
+
+
+### variable workload 
+
+```C++
+::Tryll::AgentWorkload Tryll::Client::AgentCreateOptions::workload;
+```
+
+
+
+Whether a human ever waits on this agent's turns. Set Background for world-logic/evaluator agents so the inference scheduler paces or defers their work first under GPU pressure. Purely a scheduling hint. 
+
+
+        
 
 <hr>
 

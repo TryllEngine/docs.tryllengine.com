@@ -1,0 +1,158 @@
+# Tryll Engine
+
+> On-device SLM inference for games and tools — C++, Python, Unity, Unreal.
+
+Tryll runs small language models **on the player's own machine**. A C++ TCP server hosts
+the models; game code drives it through a client library (Unity C#, Unreal C++, C++, or
+Python) over a binary FlatBuffers protocol. There is no cloud API and no per-token cost.
+
+A Tryll **agent** is not a prompt — it is a **workflow graph** of typed nodes that
+communicate through named **slots** on a per-turn blackboard. Read
+`concepts/workflows-graphs-nodes.md` and `concepts/slots-and-inter-node-value-passing.md`
+before writing any graph.
+
+Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
+
+- Models are **never** auto-downloaded. Acquire a model first (editor Model Manager, or
+  `DownloadModel` over the wire); otherwise `CreateAgent` fails with
+  `GraphCompilationFailed`.
+- `CreateSession` is **mandatory and one-shot**. Every other request before it is
+  rejected with `SessionNotReady`.
+- Graph wiring lives on each node's own params as `<exit_name>_exit` string fields
+  (`default_exit`, `then_exit`, …); an empty string means END. There is no `routes` array.
+- Wire delivery is `send: SendAnswer {None, Whole, Streamed}` and cross-turn history
+  replay is `history_role`. There is no `stream: bool`.
+- Client node enums (`NodeType`, `TryllNodeType`) and the wire `NodeParams` union use
+  **two different numbering schemes**. Never translate between them by hand.
+- Some node params are **structural** and fixed for the agent's lifetime;
+  `ChangeAgentParam` rejects them with `ParamNotMutable`.
+
+## Getting Started
+
+- [Home](https://docs.tryllengine.com/index.md): What Tryll is, who it is for, and where to start.
+- [Getting Started](https://docs.tryllengine.com/getting-started/index.md): Pick a platform, check the hardware requirements, and run your first on-device inference in ~15 minutes.
+- [First inference in Unity](https://docs.tryllengine.com/getting-started/first-inference-unity.md): End-to-end Unity setup — install the UPM package, bundled server, first streamed answer.
+- [First inference in Unreal](https://docs.tryllengine.com/getting-started/first-inference-unreal.md): End-to-end Unreal setup — install the plugin, bundled server, first streamed answer.
+- [First inference in C++](https://docs.tryllengine.com/getting-started/first-inference-cpp.md): Build the C++ client library from source and run the bundled console demo.
+- [First inference in Python](https://docs.tryllengine.com/getting-started/first-inference-python.md): Install the `tryll-client` pip package, connect, and drive a turn from Python.
+
+## Concepts
+
+- [Concepts](https://docs.tryllengine.com/concepts/index.md): Map of the mental models behind Tryll's API.
+- [Architecture at a glance](https://docs.tryllengine.com/concepts/architecture-at-a-glance.md): Server, session, agent, node, model — the 10-minute orientation. Read this first.
+- [Workflows, graphs, nodes](https://docs.tryllengine.com/concepts/workflows-graphs-nodes.md): How a graph executes, how nodes are wired via `<exit>_exit` params, and why an agent is not a prompt.
+- [Agents and sessions](https://docs.tryllengine.com/concepts/agents-and-sessions.md): Session and agent lifecycle, and the mandatory one-shot `CreateSession` step.
+- [Lifetime and ownership](https://docs.tryllengine.com/concepts/lifetime-and-ownership.md): Which resources outlive a single request (models, storages, agents) and who releases them.
+- [Models and inference engines](https://docs.tryllengine.com/concepts/models-and-inference-engines.md): Language vs. embedding vs. STT/TTS models, engines, variants, and the model catalog.
+- [TTS and voice output](https://docs.tryllengine.com/concepts/tts-and-voice-output.md): Server-side streaming text-to-speech, voice families, and voice cloning.
+- [STT and voice input](https://docs.tryllengine.com/concepts/stt-and-voice-input.md): Streaming speech-to-text — push-to-talk vs. hands-free, VAD, and partial results.
+- [Retrieval-augmented generation](https://docs.tryllengine.com/concepts/rag.md): Retrieval-augmented generation on-device — embeddings, vector storage, and grounding answers in your own data.
+- [Tool calling](https://docs.tryllengine.com/concepts/tool-calling.md): Letting a model invoke game functions, and how results project back into the dialogue.
+- [Agent Variables](https://docs.tryllengine.com/concepts/agent-variables.md): The typed per-agent key→value store — `{{var.<name>}}`, filter operands, output substitution.
+- [Slots and inter-node value passing](https://docs.tryllengine.com/concepts/slots-and-inter-node-value-passing.md): The per-turn slot blackboard — `input`/`output_name`, `send`, `history_role`, `{{slot.<name>}}`.
+- [Constrained output (GBNF)](https://docs.tryllengine.com/concepts/constrained-output.md): GBNF grammars — forcing structured output (JSON, enums) instead of prose.
+- [Projection and token budgets](https://docs.tryllengine.com/concepts/projection-and-token-budgets.md): How dialogue history is rendered into a prompt and trimmed to fit the context window.
+
+## How-to Guides
+
+- [How-to Guides](https://docs.tryllengine.com/how-to/index.md): Index of task recipes, each solving one concrete problem.
+- [Run the Tryll server](https://docs.tryllengine.com/how-to/run-the-tryll-server.md): Start a server so clients can connect.
+- [Auto-launch the server](https://docs.tryllengine.com/how-to/auto-launch-server.md): Have your game spawn and manage the server process itself.
+- [Connect and manage a session](https://docs.tryllengine.com/how-to/connect-and-manage-session.md): Connection lifecycle, reconnection, and clean shutdown.
+- [Test an agent in the editor](https://docs.tryllengine.com/how-to/test-agent-in-editor.md): The in-editor Chat Window — talk to an agent without entering Play mode.
+- [Edit workflows in the Unity graph editor](https://docs.tryllengine.com/how-to/edit-workflows-in-graph-editor.md): Author graphs visually in the Unity Workflow Graph window.
+- [Edit workflows in the Unreal graph editor](https://docs.tryllengine.com/how-to/edit-workflows-in-unreal-graph-editor.md): Author graphs visually in the Unreal workflow graph editor.
+- [Manage models in the editor](https://docs.tryllengine.com/how-to/manage-models-in-editor.md): The Unity/Unreal Model Manager window — download and register models per project.
+- [Use the Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.md): Agent Log — per-agent client send/receive narrative in the editor.
+- [Compare dialog variants in the Lab](https://docs.tryllengine.com/how-to/compare-dialog-variants.md): Dialog Lab — run one scripted dialog across parameter variants and seeds, and read the spread.
+- [Build a chat agent with a graph](https://docs.tryllengine.com/how-to/build-chat-agent-with-graph.md): The minimal working graph — start here when writing your first agent.
+- [Design an NPC prompt](https://docs.tryllengine.com/how-to/design-an-npc-prompt.md): Measurement-backed recipes for a role-play `system_prompt` — what improves character dialogue and what provably does not.
+- [Use Mustache templates](https://docs.tryllengine.com/how-to/use-mustache-templates.md): Control prompt layout — `{{slot.<name>}}`, `{{var.<name>}}`, `{{#instructions}}`, knowledge blocks.
+- [Stream answers to your UI](https://docs.tryllengine.com/how-to/stream-answers-to-ui.md): Consume `AnswerText` chunks and render them incrementally, per language.
+- [Send multiple answers in one turn](https://docs.tryllengine.com/how-to/send-multiple-answers-in-a-turn.md): Multiple sending nodes in one turn, and attributing chunks to their producer.
+- [Change agent parameters at runtime](https://docs.tryllengine.com/how-to/change-agent-parameters.md): Mutate a node parameter at runtime, and which params are structural and cannot change.
+- [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.md): Append scripted user/assistant turns, write an opener, or retry by removing the last turn.
+- [Cancel a turn](https://docs.tryllengine.com/how-to/cancel-a-turn.md): Stop an in-flight turn — Stop button, barge-in, keep-or-discard semantics.
+- [Pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.md): Suspend a turn between nodes and resume it, optionally jumping to another node.
+- [Manage an agent's KV cache](https://docs.tryllengine.com/how-to/manage-agent-kv-cache.md): Prefill, evict, and inspect an agent's KV cache to trade RAM/VRAM against latency.
+- [Create a simple RAG assistant](https://docs.tryllengine.com/how-to/create-simple-rag-assistant.md): Build a knowledge base, index it, and answer from it with `Retrieve → Generate`.
+- [Query rewriting for RAG](https://docs.tryllengine.com/how-to/query-rewriting-for-rag.md): Improve retrieval by rewriting the player's raw utterance before searching.
+- [Build an intent-driven NPC](https://docs.tryllengine.com/how-to/build-intent-driven-npc.md): Classify player intent, then switch instructions on the result.
+- [Drive prompts and retrieval from game state](https://docs.tryllengine.com/how-to/drive-prompts-and-retrieval-from-game-state.md): Feed live game state (level, mood, quest) into prompts and retrieval filters.
+- [Branch on a slot](https://docs.tryllengine.com/how-to/branch-on-a-slot.md): Conditional routing with the `Branch` node, including reacting to a model's own verdict.
+- [Add a hidden reasoning or draft step](https://docs.tryllengine.com/how-to/add-a-hidden-reasoning-step.md): Produce intermediate text the conversation never remembers.
+- [Substitute agent variables in LLM output](https://docs.tryllengine.com/how-to/substitute-agent-variables-in-output.md): Replace `__PLACEHOLDER__` markers in streamed model output with computed values.
+- [Filter LLM output artifacts](https://docs.tryllengine.com/how-to/filter-llm-output-artifacts.md): Strip speaker prefixes and roleplay markup spans from streamed Generate / GenerateAndSpeak output.
+- [Keep merchant prices deterministic](https://docs.tryllengine.com/how-to/keep-merchant-prices-deterministic.md): Worked example — game code owns the number, the model owns the wording.
+- [Define and handle tool calls](https://docs.tryllengine.com/how-to/define-and-handle-tool-calls.md): Declare tools, receive calls, and return results to a paused turn.
+- [Constrain output with a grammar](https://docs.tryllengine.com/how-to/constrain-output-with-a-grammar.md): Attach a GBNF grammar to a `Generate` node for exact output shape.
+- [Use canned responses and guardrails](https://docs.tryllengine.com/how-to/use-canned-responses-and-guardrails.md): Short-circuit jailbreaks and off-topic prompts before the model runs.
+- [Build an immersion guard](https://docs.tryllengine.com/how-to/build-an-immersion-guard.md): Gate out-of-character and out-of-world player lines before they reach the NPC, and drop the rejected turn from history.
+- [Add voice output to an agent](https://docs.tryllengine.com/how-to/add-voice-to-an-agent.md): Give an NPC a voice with `GenerateAndSpeak` or `Speak`, end to end.
+- [Clone a voice from an audio sample](https://docs.tryllengine.com/how-to/clone-a-voice.md): Zero-shot voice cloning from a short reference recording.
+- [Use voice input](https://docs.tryllengine.com/how-to/use-voice-input.md): Stream microphone PCM to the server for speech-to-text.
+- [Bias voice input with hotwords](https://docs.tryllengine.com/how-to/use-voice-input-hotwords.md): Bias recognition toward proper nouns and game-specific vocabulary.
+- [Use your own local model](https://docs.tryllengine.com/how-to/use-your-own-local-model.md): Register a GGUF file already on disk, with no Hugging Face download.
+- [Pin and unpin models](https://docs.tryllengine.com/how-to/pin-and-unpin-models.md): Keep a model warm in memory, or release it explicitly.
+- [Verify required models before Play](https://docs.tryllengine.com/how-to/verify-models-before-play.md): Fail the build early when a workflow references a model that will not ship.
+- [Estimate memory footprint](https://docs.tryllengine.com/how-to/estimate-memory-footprint.md): Work out RAM and VRAM cost before shipping.
+- [Ship storage folders for builds](https://docs.tryllengine.com/how-to/ship-storage-folders-for-builds.md): Get relative-path storage files into a packaged build so they resolve at runtime.
+
+## Workflow Nodes
+
+- [Workflow Nodes](https://docs.tryllengine.com/reference/nodes/index.md): Every node type, its exits, and which ones need a model. Start here when choosing a node.
+- [Generate](https://docs.tryllengine.com/reference/nodes/generate.md): Run a language model on the projected dialogue and emit its answer.
+- [Branch](https://docs.tryllengine.com/reference/nodes/branch.md): Model-free conditional routing on a slot or agent variable (`then_exit`/`else_exit`).
+- [Canned Response](https://docs.tryllengine.com/reference/nodes/canned-response.md): Emit a fixed reply chosen from a string storage — no model involved.
+- [Classify Intent (LLM)](https://docs.tryllengine.com/reference/nodes/classify-intent-llm.md): Label the user message by first-token logprob on a small model.
+- [Classify Intent](https://docs.tryllengine.com/reference/nodes/classify-intent.md): Label the user message by top-1 embedding similarity; exits `found`/`not_found`.
+- [Generate and Speak](https://docs.tryllengine.com/reference/nodes/generate-and-speak.md): Generate and synthesize speech in one fused streaming step.
+- [Instruction](https://docs.tryllengine.com/reference/nodes/instruction.md): Inject a static instruction into the prompt via the `{{#instructions}}` block.
+- [Intent to Instruction](https://docs.tryllengine.com/reference/nodes/intent-to-instruction.md): Map an intent label to an instruction through a `Map`-kind string storage.
+- [Pause](https://docs.tryllengine.com/reference/nodes/pause.md): Suspend the turn between nodes and hand control back to the client.
+- [Regex Guardrail](https://docs.tryllengine.com/reference/nodes/regex-guardrail.md): Match input against patterns and route away before spending a model call.
+- [Filter grammar](https://docs.tryllengine.com/reference/nodes/retrieve-filter-grammar.md): The JSON predicate grammar for metadata-filtered retrieval, shared with intent nodes.
+- [Retrieve](https://docs.tryllengine.com/reference/nodes/retrieve.md): Embed the input, search an embedded string storage, attach the hits as knowledge.
+- [Speak](https://docs.tryllengine.com/reference/nodes/speak.md): TTS-only — voice text another node already produced.
+- [Tool Call](https://docs.tryllengine.com/reference/nodes/tool-call.md): Advertise tools, let the model call them, and control notify/pause/result projection.
+- [Transform](https://docs.tryllengine.com/reference/nodes/transform.md): Model-free Mustache rendering into a slot; emits nothing on the wire.
+
+## Reference
+
+- [Reference](https://docs.tryllengine.com/reference/index.md): Map of every declarative reference surface.
+- [Glossary](https://docs.tryllengine.com/reference/glossary.md): Canonical definition of every Tryll term. Check here before guessing what a word means.
+- [Agent Parameters](https://docs.tryllengine.com/reference/agent-parameters.md): Every field on `CreateAgentRequest`, grouped by what it controls.
+- [Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.md): The shared per-turn diagnostics panel — every block, when it appears, and why one is missing. Hosted by Chat, Agent Log, and Dialog Lab.
+- [Wire Protocol](https://docs.tryllengine.com/reference/wire-protocol.md): Byte-level contract — framing, message types, and flows for writing a third-party client.
+- [Error Codes](https://docs.tryllengine.com/reference/error-codes.md): Every error code, what causes it, and how a client should react.
+- [Model Management](https://docs.tryllengine.com/reference/model-management.md): The model catalog, variants, download/load/unload, and model status.
+- [TTS Models](https://docs.tryllengine.com/reference/tts-models.md): Which Sherpa-ONNX TTS families Tryll supports (Supertonic, Pocket) and why the rest — Kokoro, Kitten, Piper/VITS, Matcha, ZipVoice — cannot be loaded. Check before adding any voice.
+- [String Storage](https://docs.tryllengine.com/reference/string-storage.md): Named string containers — `List`/`Map`/`Multimap`, inline vs. relative file path.
+- [Embedded String Storage](https://docs.tryllengine.com/reference/embedded-string-storage.md): Vector-indexed storage for RAG — config-file (Path A) vs. inline (Path B), metadata schema.
+- [Server Configuration](https://docs.tryllengine.com/reference/server-configuration.md): Every field in `server-config.json` and `models.json`.
+- [Telemetry](https://docs.tryllengine.com/reference/telemetry.md): What usage telemetry collects and how to turn it off.
+
+## Release Notes
+
+- [Release Notes](https://docs.tryllengine.com/release-notes/index.md): Index of every released version, newest first. Start here to find the version you shipped.
+- [Unreleased](https://docs.tryllengine.com/release-notes/unreleased.md): Changes merged but not yet released. Do not rely on these when integrating against a released build.
+- [v0.3.0](https://docs.tryllengine.com/release-notes/v0.3.0.md): Voice output (TTS), Unity graph editor and Model Manager, bundled server, file-path storage.
+- [v0.4.0](https://docs.tryllengine.com/release-notes/v0.4.0.md): Mandatory one-shot `CreateSession`, cancel/pause/resume, chat-template tool calling, voice cloning.
+- [v0.5.0](https://docs.tryllengine.com/release-notes/v0.5.0.md): Slots, agent variables, model-visible tool results, GBNF grammars, dialog-history editing, KV-cache control.
+- [v0.6.0](https://docs.tryllengine.com/release-notes/v0.6.0.md): Turn inspector, Agent Log, Dialog Lab, manual GPU throttle, background agents, hybrid retrieval, Branch node, output artifact filtering.
+
+## Client API
+
+- [Client API](https://docs.tryllengine.com/reference/client-api/index.md): Pick a platform to reach its full API reference.
+- [Unity Client API](https://docs.tryllengine.com/reference/client-api/unity/index.md): Unity `com.tryll.client` package surface — components, assets, and settings.
+- [TryllClient](https://docs.tryllengine.com/reference/client-api/unity/tryll-client.md): `TryllClient` — the singleton MonoBehaviour that owns the connection and session.
+- [TryllAgentComponent](https://docs.tryllengine.com/reference/client-api/unity/tryll-agent-component.md): `TryllAgentComponent` — per-GameObject agent lifecycle and turn events.
+- [TryllWorkflowAsset](https://docs.tryllengine.com/reference/client-api/unity/tryll-workflow-asset.md): `TryllWorkflowAsset` — the authored graph as a ScriptableObject.
+- [TryllRuntimeSettings](https://docs.tryllengine.com/reference/client-api/unity/tryll-runtime-settings.md): `TryllRuntimeSettings` — auto-launch, storage root, and connection settings.
+- [TryllSpeaker](https://docs.tryllengine.com/reference/client-api/unity/tryll-speaker.md): `TryllSpeaker` — streaming TTS playback into an AudioSource.
+- [TryllVoiceInputComponent](https://docs.tryllengine.com/reference/client-api/unity/tryll-voice-input-component.md): `TryllVoiceInputComponent` — microphone capture and streaming STT.
+- [Unreal C++ API Reference](https://docs.tryllengine.com/reference/client-api/unreal/cpp/index.md): Unreal C++ API reference (Doxygen) — `UTryllSubsystem`, `FTryllAgent`, and friends.
+- [Unreal (Blueprint)](https://docs.tryllengine.com/reference/client-api/unreal/blueprint-catalog.md): Every Blueprint-visible node in the Unreal plugin.
+- [C++ Client API Reference](https://docs.tryllengine.com/reference/client-api/cpp/index.md): C++ client library reference (Doxygen) — `TryllClient`, `AgentProxy`.
+- [Python](https://docs.tryllengine.com/reference/client-api/python/index.md): Python `tryll_client` reference (mkdocstrings).
+

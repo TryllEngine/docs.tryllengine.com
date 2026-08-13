@@ -141,8 +141,8 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="39" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="_graph_description_8h_1a895bcceb37f7a35cf76e753fabc0cd5a" prot="public" static="no">
-        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT &gt;</type>
+      <memberdef kind="typedef" id="_graph_description_8h_1a6f667102fe22e368fc869e02ff2a27af" prot="public" static="no">
+        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT, ::Tryll::NodeParams::BranchParamsT &gt;</type>
         <definition>using Tryll::Client::NodeParamsVariant =  std::variant&lt;
     ::Tryll::NodeParams::GenerateParamsT,
     ::Tryll::NodeParams::RegexGuardrailParamsT,
@@ -156,7 +156,8 @@
     ::Tryll::NodeParams::GenerateAndSpeakParamsT,
     ::Tryll::NodeParams::SpeakParamsT,
     ::Tryll::NodeParams::PauseParamsT,
-    ::Tryll::NodeParams::TransformParamsT
+    ::Tryll::NodeParams::TransformParamsT,
+    ::Tryll::NodeParams::BranchParamsT
 &gt;</definition>
         <argsstring></argsstring>
         <name>NodeParamsVariant</name>
@@ -165,7 +166,7 @@
 <para>Typed variant discriminating all concrete node-parameter PODs. </para>
         </briefdescription>
         <detaileddescription>
-<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1a895bcceb37f7a35cf76e753fabc0cd5a" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
+<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1a6f667102fe22e368fc869e02ff2a27af" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

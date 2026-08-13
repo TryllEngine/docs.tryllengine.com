@@ -52,6 +52,7 @@
 
 | Type | Name |
 | ---: | :--- |
+|  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddBranch**](#function-addbranch) (std::string name, ::Tryll::NodeParams::BranchParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddCannedResponse**](#function-addcannedresponse) (std::string name, ::Tryll::NodeParams::CannedResponseParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddClassifyIntent**](#function-addclassifyintent) (std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params) <br> |
 |  [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
@@ -102,6 +103,26 @@ Typed AddX methods generated from the NodeParams union. Mixed into [**GraphDescr
     
 ## Public Functions Documentation
 
+
+
+
+### function AddBranch 
+
+```C++
+GraphDescriptionNodeMethods & Tryll::Client::GraphDescriptionNodeMethods::AddBranch (
+    std::string name,
+    ::Tryll::NodeParams::BranchParamsT params
+) 
+```
+
+
+
+Add a Branch node. Conditional routing node. Evaluates a test against a turn-local slot or an agent variable and takes then\_exit or else\_exit. Reader-only: no model, no slot write, no wire emission. 
+
+
+        
+
+<hr>
 
 
 

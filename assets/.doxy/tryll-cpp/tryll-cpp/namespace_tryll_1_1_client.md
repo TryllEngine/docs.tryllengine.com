@@ -63,7 +63,7 @@
 | enum std::uint8\_t | [**AgentKvCachePrefixStatus**](#enum-agentkvcacheprefixstatus)  <br> |
 | enum std::uint8\_t | [**AgentKvCacheResidency**](#enum-agentkvcacheresidency)  <br> |
 | typedef std::function&lt; void(std::string\_view, std::uint64\_t, std::uint64\_t, float)&gt; | [**DownloadProgressCallback**](#typedef-downloadprogresscallback)  <br>_Callback invoked during_ [_**TryllClient::DownloadModel**_](class_tryll_1_1_client_1_1_tryll_client.md#function-downloadmodel) _as data arrives._ |
-| typedef std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT &gt; | [**NodeParamsVariant**](#typedef-nodeparamsvariant)  <br>_Typed variant discriminating all concrete node-parameter PODs._  |
+| typedef std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT, ::Tryll::NodeParams::BranchParamsT &gt; | [**NodeParamsVariant**](#typedef-nodeparamsvariant)  <br>_Typed variant discriminating all concrete node-parameter PODs._  |
 | enum std::uint8\_t | [**VariableType**](#enum-variabletype)  <br>_Type tag for a declared agent variable._  |
 | typedef std::variant&lt; std::int64\_t, double, std::string, bool, std::vector&lt; std::string &gt; &gt; | [**VariableValue**](#typedef-variablevalue)  <br> |
 
@@ -190,7 +190,8 @@ using Tryll::Client::NodeParamsVariant =  std::variant<
     ::Tryll::NodeParams::GenerateAndSpeakParamsT,
     ::Tryll::NodeParams::SpeakParamsT,
     ::Tryll::NodeParams::PauseParamsT,
-    ::Tryll::NodeParams::TransformParamsT
+    ::Tryll::NodeParams::TransformParamsT,
+    ::Tryll::NodeParams::BranchParamsT
 >;
 ```
 

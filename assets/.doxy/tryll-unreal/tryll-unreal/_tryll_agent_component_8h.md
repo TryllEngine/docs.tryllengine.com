@@ -15,6 +15,7 @@
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllError.h"`
 * `#include "TryllKvCache.h"`
+* `#include "TryllThrottle.h"`
 * `#include "TryllDialogInteraction.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllToolCall.h"`

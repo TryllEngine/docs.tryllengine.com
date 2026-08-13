@@ -26,6 +26,7 @@
 * `#include "Generated/Nodes/TryllSpeakParams.h"`
 * `#include "Generated/Nodes/TryllPauseParams.h"`
 * `#include "Generated/Nodes/TryllTransformParams.h"`
+* `#include "Generated/Nodes/TryllBranchParams.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 * `#include "TryllNodeParamsFactory.generated.h"`

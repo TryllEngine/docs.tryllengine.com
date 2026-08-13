@@ -6,7 +6,7 @@
 ## a
 
 * **AddReferencedObjects** ([**FTryllAgent**](class_f_tryll_agent.md))
-* **AgentId** ([**FTryllAgent**](class_f_tryll_agent.md), [**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md), [**FTryllKvCachePrefillResult**](struct_f_tryll_kv_cache_prefill_result.md), [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md))
+* **AgentId** ([**FTryllAgent**](class_f_tryll_agent.md), [**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md), [**FTryllKvCachePrefillResult**](struct_f_tryll_kv_cache_prefill_result.md), [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md), [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md))
 * **AppendInteractions** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **AddToSet** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md))
 * **Agent** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md), [**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
@@ -17,6 +17,7 @@
 * **ArgumentsJson** ([**FTryllToolCall**](struct_f_tryll_tool_call.md))
 * **AudioMsConsumed** ([**FTryllTranscriptUpdate**](struct_f_tryll_transcript_update.md))
 * **AutoSendAgentId** ([**FTryllUtteranceOptions**](struct_f_tryll_utterance_options.md))
+* **AgentLookup** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
 * **AcquireConnection** ([**ITryllEditorBridge**](class_i_tryll_editor_bridge.md))
 * **AccumulatedText** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **AgentIdNumeric** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
@@ -28,11 +29,16 @@
 
 ## b
 
+* **bCreatedWithDiagnostics** ([**FTryllAgent**](class_f_tryll_agent.md), [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md))
 * **BuildWireBatch** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md))
 * **BitsPerSample** ([**FTryllAudioFormat**](struct_f_tryll_audio_format.md))
 * **Build** ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md))
 * **bApplicable** ([**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md), [**FTryllKvCachePrefillResult**](struct_f_tryll_kv_cache_prefill_result.md), [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md))
 * **bHasDefaultSampling** ([**FTryllModelInfo**](struct_f_tryll_model_info.md))
+* **bStripAsteriskSpans** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
+* **bStripBracketSpans** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
+* **bStripParenSpans** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
+* **bStripSpeakerPrefix** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
 * **bOverrideFrequencyPenalty** ([**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md))
 * **bOverrideMaxTokens** ([**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md))
 * **bOverrideMinP** ([**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md))
@@ -58,11 +64,13 @@
 * **bAgentReady** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **bAutoCreateOnConnect** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **bCreateQueued** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md), [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
-* **bEnableDiagnostics** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **bEnableDiagnostics** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md), [**UTryllSubsystem::FPendingCreate**](struct_u_tryll_subsystem_1_1_f_pending_create.md))
 * **bMaintainDialogueHistory** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **bNotifyClient** ([**UTryllBranchParams**](class_u_tryll_branch_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md))
+* **bOverrideCondition** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
+* **bOverrideInput** ([**UTryllBranchParams**](class_u_tryll_branch_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
+* **bOverrideVariable** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **bOverrideOutputName** ([**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
-* **bNotifyClient** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md))
-* **bOverrideInput** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
 * **bOverrideIntentsIds** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md))
 * **bOverrideIntentsPrompt** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md))
 * **bOverrideModelName** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
@@ -82,6 +90,7 @@
 * **bAutoLaunchServer** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **bEnablePlayModeModelGuard** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **bStartedNotified** ([**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md))
+* **BindVoiceInputClient** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **bAcquiredSharedConnection** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **bCreateSessionInFlight** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **bServerManaged** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -113,6 +122,7 @@
 * **Collect** ([**FTryllWorkflowModelRefs**](struct_f_tryll_workflow_model_refs.md))
 * **CreateSession** ([**ITryllEditorBridge**](class_i_tryll_editor_bridge.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **CreateAgent** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **Condition** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **CloneParams** ([**UTryllNodeParamsFactory**](class_u_tryll_node_params_factory.md))
 * **ConnectMaxAttempts** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **ConnectRetryDelaySeconds** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
@@ -128,6 +138,7 @@
 ## d
 
 * **DispatchError** ([**FTryllAgent**](class_f_tryll_agent.md))
+* **DisplayName** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **DrainPendingLifecycleCallbacks** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **DeclaredType** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md))
 * **DeclaredTypes** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md))
@@ -155,6 +166,7 @@
 * **EndUtterance** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md), [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
 * **ESeverity** ([**FTryllWorkflowIssue**](struct_f_tryll_workflow_issue.md))
 * **EndPlay** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md), [**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md), [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
+* **ElseExit** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **EmbeddedStringStorage** ([**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md))
 * **Entries** ([**UTryllModelManifest**](class_u_tryll_model_manifest.md))
 * **EmbeddingEngine** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
@@ -185,11 +197,13 @@
 * **FTryllOnEmbeddedStorageCreated** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **FTryllOnEmbeddedStorageDestroyed** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **FTryllOnStringStorage** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **FindAgent** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
 ## g
 
 * **GetAgentId** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **GetDisplayName** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **GetKvCacheStatus** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **GetNodeParamsBaseline** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **GetReferencerName** ([**FTryllAgent**](class_f_tryll_agent.md))
@@ -230,7 +244,7 @@
 * **GetIntVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
 * **GetStringSetVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
 * **GetStringVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
-* **GetNodeType** ([**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md), [**UTryllPauseParams**](class_u_tryll_pause_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
+* **GetNodeType** ([**UTryllBranchParams**](class_u_tryll_branch_params.md), [**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md), [**UTryllPauseParams**](class_u_tryll_pause_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
 * **Grammar** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md))
 * **GetCategoryName** ([**UTryllModelManifest**](class_u_tryll_model_manifest.md), [**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **GetExitTargetOptions** ([**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md))
@@ -242,9 +256,9 @@
 * **GetServerRootDir** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **GetStatId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **GetTickableTickType** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **Graph** ([**UTryllSubsystem::FPendingCreate**](struct_u_tryll_subsystem_1_1_f_pending_create.md), [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
 * **GetVoiceInput** ([**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
 * **GetPrimaryAssetId** ([**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
-* **Graph** ([**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
 
 
 ## h
@@ -324,8 +338,8 @@
 * **InlineVariables** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **IsAgentReady** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **Initialize** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **Input** ([**UTryllBranchParams**](class_u_tryll_branch_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
 * **InlineStrings** ([**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md))
-* **Input** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
 * **IntentsIds** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md))
 * **IntentsPrompt** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md))
 * **Instruction** ([**UTryllInstructionParams**](class_u_tryll_instruction_params.md))
@@ -347,6 +361,7 @@
 
 * **LogLineBuffer** ([**FTryllManagedServerProcess**](class_f_tryll_managed_server_process.md))
 * **LocalPath** ([**FTryllModelInfo**](struct_f_tryll_model_info.md))
+* **LabelHint** ([**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md))
 * **LaunchServerProcess** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 
 
@@ -357,6 +372,8 @@
 * **Mode** ([**FTryllAgentVariables::FPendingEntry**](struct_f_tryll_agent_variables_1_1_f_pending_entry.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md))
 * **Message** ([**FTryllError**](struct_f_tryll_error.md), [**FTryllWorkflowIssue**](struct_f_tryll_workflow_issue.md))
 * **ModelType** ([**FTryllModelInfo**](struct_f_tryll_model_info.md), [**FTryllModelManifestEntry**](struct_f_tryll_model_manifest_entry.md), [**FTryllWorkflowModelRef**](struct_f_tryll_workflow_model_ref.md))
+* **MaxPrefixBytes** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
+* **MaxSpanBytes** ([**FTryllOutputFilterOverrides**](struct_f_tryll_output_filter_overrides.md))
 * **MaxTokens** ([**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md), [**FTryllSamplingParams**](struct_f_tryll_sampling_params.md))
 * **MinP** ([**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md), [**FTryllSamplingParams**](struct_f_tryll_sampling_params.md))
 * **MaxUtteranceMs** ([**FTryllUtteranceOptions**](struct_f_tryll_utterance_options.md), [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
@@ -366,6 +383,7 @@
 * **MetadataField** ([**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md))
 * **MinSentenceChars** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md))
 * **ModelsOfType** ([**UTryllModelManifest**](class_u_tryll_model_manifest.md))
+* **MakeBranchParams** ([**UTryllNodeParamsFactory**](class_u_tryll_node_params_factory.md))
 * **MakeCannedResponseParams** ([**UTryllNodeParamsFactory**](class_u_tryll_node_params_factory.md))
 * **MakeClassifyIntentLLMParams** ([**UTryllNodeParamsFactory**](class_u_tryll_node_params_factory.md))
 * **MakeClassifyIntentParams** ([**UTryllNodeParamsFactory**](class_u_tryll_node_params_factory.md))
@@ -426,6 +444,7 @@
 * **OnRemoveInteractionsError** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **OnResumed** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **OutputName** ([**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
+* **OutputFilter** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md))
 * **OnTtsAudioFinished** ([**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md))
 * **OnTtsAudioStarted** ([**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md))
 * **OnAgentDestroyed** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -480,7 +499,7 @@
 * **Path** ([**FTryllStoragePath**](struct_f_tryll_storage_path.md))
 * **Parameters** ([**FTryllToolDefinition**](struct_f_tryll_tool_definition.md))
 * **PendingAcks** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
-* **Pack** ([**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md), [**UTryllPauseParams**](class_u_tryll_pause_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
+* **Pack** ([**UTryllBranchParams**](class_u_tryll_branch_params.md), [**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md), [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllInstructionParams**](class_u_tryll_instruction_params.md), [**UTryllIntentToInstructionParams**](class_u_tryll_intent_to_instruction_params.md), [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md), [**UTryllPauseParams**](class_u_tryll_pause_params.md), [**UTryllRegexGuardrailParams**](class_u_tryll_regex_guardrail_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md), [**UTryllToolCallParams**](class_u_tryll_tool_call_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
 * **Placement** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md))
 * **ProceduralSound** ([**UTryllSpeakerComponent**](class_u_tryll_speaker_component.md))
 * **PendingCreateVoiceInputs** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -535,6 +554,8 @@
 * **RequestUnloadModel** ([**ITryllEditorBridge**](class_i_tryll_editor_bridge.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **RemoveFromSetVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
 * **ResetVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
+* **RetrievalMode** ([**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md))
+* **RrfK** ([**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md))
 * **ResolveStorageDataFolderForServer** ([**UTryllRuntimeSettings**](class_u_tryll_runtime_settings.md))
 * **RegisterAgent** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **ReleaseServerHandle** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
@@ -550,6 +571,8 @@
 * **SendGetVariables** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **SendMessage** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **SendUpdateVariables** ([**FTryllAgent**](class_f_tryll_agent.md))
+* **SetCreatedWithDiagnostics** ([**FTryllAgent**](class_f_tryll_agent.md))
+* **SetDisplayName** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **SetNodeParamsBaseline** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **SetOnAnswerText** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **SetOnError** ([**FTryllAgent**](class_f_tryll_agent.md), [**FTryllVoiceInput**](class_f_tryll_voice_input.md))
@@ -581,8 +604,10 @@
 * **StringSetValue** ([**FTryllVariableDecl**](struct_f_tryll_variable_decl.md), [**FTryllVariableUpdate**](struct_f_tryll_variable_update.md))
 * **StringValue** ([**FTryllVariableDecl**](struct_f_tryll_variable_decl.md), [**FTryllVariableUpdate**](struct_f_tryll_variable_update.md))
 * **SendAudioBuffer** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
+* **SetAgentLookup** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
 * **SetOnTranscriptUpdate** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
 * **Severity** ([**FTryllWorkflowIssue**](struct_f_tryll_workflow_issue.md))
+* **SetInferenceThrottle** ([**ITryllEditorBridge**](class_i_tryll_editor_bridge.md), [**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **Speaker** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **SetBoolVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
 * **SetFloatVariable** ([**UTryllAgentVariables**](class_u_tryll_agent_variables.md))
@@ -611,6 +636,7 @@
 * **ServerIdleTimeoutSeconds** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **ServerRunId** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **ServerVersion** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
+* **SnapshotRegisteredAgents** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **StartCapture** ([**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
 * **StopCapture** ([**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
 
@@ -634,6 +660,8 @@
 * **Text** ([**FTryllTranscriptUpdate**](struct_f_tryll_transcript_update.md))
 * **TryLaunch** ([**ITryllEditorBridge**](class_i_tryll_editor_bridge.md))
 * **TryllSubsystem** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md), [**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
+* **Test** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
+* **ThenExit** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **Threshold** ([**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md), [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md), [**UTryllRetrieveParams**](class_u_tryll_retrieve_params.md))
 * **Template** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllGenerateParams**](class_u_tryll_generate_params.md), [**UTryllTransformParams**](class_u_tryll_transform_params.md))
 * **TtsLang** ([**UTryllGenerateAndSpeakParams**](class_u_tryll_generate_and_speak_params.md), [**UTryllSpeakParams**](class_u_tryll_speak_params.md))
@@ -665,7 +693,7 @@
 ## v
 
 * **Variables** ([**FTryllAgent**](class_f_tryll_agent.md), [**UTryllSubsystem::FPendingCreate**](struct_u_tryll_subsystem_1_1_f_pending_create.md), [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md))
-* **Values** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md))
+* **Values** ([**FTryllAgentVariables**](class_f_tryll_agent_variables.md), [**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **Value** ([**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md), [**FTryllSlotInput**](struct_f_tryll_slot_input.md), [**FTryllSlotName**](struct_f_tryll_slot_name.md), [**FTryllVariableOverride**](struct_f_tryll_variable_override.md))
 * **ValueType** ([**FTryllVariableUpdate**](struct_f_tryll_variable_update.md))
 * **VoiceInputId** ([**FTryllVoiceInput**](class_f_tryll_voice_input.md))
@@ -676,13 +704,16 @@
 * **ValidateAndLog** ([**FTryllWorkflowValidator**](struct_f_tryll_workflow_validator.md))
 * **VariableOverrides** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 * **VariablesObject** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **Variable** ([**UTryllBranchParams**](class_u_tryll_branch_params.md))
 * **VoiceInputsById** ([**UTryllSubsystem**](class_u_tryll_subsystem.md))
 * **Voice** ([**UTryllVoiceInputComponent**](class_u_tryll_voice_input_component.md))
 
 
 ## w
 
+* **WasCreatedWithDiagnostics** ([**FTryllAgent**](class_f_tryll_agent.md))
 * **WorkflowAsset** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
+* **Workload** ([**UTryllAgentComponent**](class_u_tryll_agent_component.md))
 
 
 ## ~

@@ -66,6 +66,7 @@ Inherits the following classes: TSharedFromThis< FTryllVoiceInput >
 |  bool | [**IsValid**](#function-isvalid) () noexcept const<br> |
 |  void | [**SendAudioBuffer**](#function-sendaudiobuffer-12) (const int16 \* Samples, int32 NumSamples) <br> |
 |  void | [**SendAudioBuffer**](#function-sendaudiobuffer-22) (const TArray&lt; int16 &gt; & Samples) <br> |
+|  void | [**SetAgentLookup**](#function-setagentlookup) (TFunction&lt; TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt;(std::uint64\_t AgentId)&gt; Lookup) <br> |
 |  void | [**SetOnError**](#function-setonerror) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; Callback) <br> |
 |  void | [**SetOnTranscriptUpdate**](#function-setontranscriptupdate) (TFunction&lt; void(const [**FTryllTranscriptUpdate**](struct_f_tryll_transcript_update.md) &)&gt; Callback) <br> |
 |   | [**~FTryllVoiceInput**](#function-ftryllvoiceinput) () <br> |
@@ -323,6 +324,25 @@ inline void FTryllVoiceInput::SendAudioBuffer (
 
 
 
+
+<hr>
+
+
+
+### function SetAgentLookup 
+
+```C++
+void FTryllVoiceInput::SetAgentLookup (
+    TFunction< TSharedPtr< FTryllAgent >(std::uint64_t AgentId)> Lookup
+) 
+```
+
+
+
+Resolve an agent by id from the owning client (subsystem / editor bridge). 
+
+
+        
 
 <hr>
 

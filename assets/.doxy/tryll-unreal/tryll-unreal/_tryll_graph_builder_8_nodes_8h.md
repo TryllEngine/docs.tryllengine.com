@@ -25,6 +25,7 @@
 * `#include "Generated/Nodes/TryllSpeakParams.h"`
 * `#include "Generated/Nodes/TryllPauseParams.h"`
 * `#include "Generated/Nodes/TryllTransformParams.h"`
+* `#include "Generated/Nodes/TryllBranchParams.h"`
 * `#include "CodegenFingerprint.gen.h"`
 * `#include <string_view>`
 
@@ -68,6 +69,7 @@
 
 | Type | Name |
 | ---: | :--- |
+|  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddBranchNode**](#function-addbranchnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllBranchParams**](class_u_tryll_branch_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddCannedResponseNode**](#function-addcannedresponsenode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllCannedResponseParams**](class_u_tryll_canned_response_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddClassifyIntentLLMNode**](#function-addclassifyintentllmnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllClassifyIntentLLMParams**](class_u_tryll_classify_intent_l_l_m_params.md) \* Params) <br> |
 |  [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & | [**AddClassifyIntentNode**](#function-addclassifyintentnode) ([**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) & Builder, FString Name, [**UTryllClassifyIntentParams**](class_u_tryll_classify_intent_params.md) \* Params) <br> |
@@ -111,6 +113,27 @@
 
 ## Public Functions Documentation
 
+
+
+
+### function AddBranchNode 
+
+```C++
+FTryllGraphBuilder & AddBranchNode (
+    FTryllGraphBuilder & Builder,
+    FString Name,
+    UTryllBranchParams * Params
+) 
+```
+
+
+
+Add a Branch node to the graph. 
+
+
+        
+
+<hr>
 
 
 

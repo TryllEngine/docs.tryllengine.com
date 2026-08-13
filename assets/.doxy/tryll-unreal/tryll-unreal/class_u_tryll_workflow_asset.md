@@ -103,7 +103,7 @@ Usage:
 
 
 
-Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md), or assign it to [**UTryllAgentComponent::InlineGraphDescription**](class_u_tryll_agent_component.md#variable-inlinegraphdescription).
+Programmatic alternative: populate [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) directly in C++ using [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) and pass it to [**UTryllSubsystem::RequestCreateAgent**](class_u_tryll_subsystem.md#function-requestcreateagent). ([**UTryllAgentComponent::InlineGraphDescription**](class_u_tryll_agent_component.md#variable-inlinegraphdescription) also accepts a graph, but it is temporary and will be removed in a future release.)
 
 
 Editor / cook: IsDataValid + PreSave(IsCooking) fail when the graph references a model that is not marked Production in the Tryll Model Manifest (so packaging cannot silently omit it). 

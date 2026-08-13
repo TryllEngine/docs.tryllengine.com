@@ -60,7 +60,7 @@
 |  [**FTryllError**](struct_f_tryll_error.md) | [**AddToSet**](#function-addtoset) (const FString & Name, const FString & Element) <br> |
 |  TOptional&lt; ETryllVariableType &gt; | [**DeclaredType**](#function-declaredtype) (const FString & Name) const<br> |
 |   | [**FTryllAgentVariables**](#function-ftryllagentvariables) ([**FTryllAgent**](class_f_tryll_agent.md) \* InAgent, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Declared) <br> |
-|  void | [**FlushIfDirty**](#function-flushifdirty) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
+|  void | [**FlushIfDirty**](#function-flushifdirty) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr, uint64 CarrierRequestId=0) <br> |
 |  bool | [**GetBool**](#function-getbool) (const FString & Name) const<br> |
 |  double | [**GetFloat**](#function-getfloat) (const FString & Name) const<br> |
 |  int64 | [**GetInt**](#function-getint) (const FString & Name) const<br> |
@@ -191,7 +191,8 @@ FTryllAgentVariables::FTryllAgentVariables (
 
 ```C++
 void FTryllAgentVariables::FlushIfDirty (
-    TFunction< void(const FTryllError &)> OnComplete=nullptr
+    TFunction< void(const FTryllError &)> OnComplete=nullptr,
+    uint64 CarrierRequestId=0
 ) 
 ```
 

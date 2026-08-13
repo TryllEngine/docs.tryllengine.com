@@ -40,6 +40,7 @@
 | file | [**TryllSpeakerComponent.h**](_tryll_speaker_component_8h.md) <br> |
 | file | [**TryllStoragePath.h**](_tryll_storage_path_8h.md) <br> |
 | file | [**TryllSubsystem.h**](_tryll_subsystem_8h.md) <br> |
+| file | [**TryllThrottle.h**](_tryll_throttle_8h.md) <br> |
 | file | [**TryllToolCall.h**](_tryll_tool_call_8h.md) <br> |
 | file | [**TryllVariableDecl.h**](_tryll_variable_decl_8h.md) <br> |
 | file | [**TryllVariableOverrideUtils.h**](_tryll_variable_override_utils_8h.md) <br> |

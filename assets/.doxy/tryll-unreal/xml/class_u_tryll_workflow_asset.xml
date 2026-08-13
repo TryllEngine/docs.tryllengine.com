@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="40" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="40" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="42" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_workflow_asset_1a5abe5406718b15eb9e6e00bcdfeb080b" prot="public" static="no" mutable="no">
         <type>TArray&lt; <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="51" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="51" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="53" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="53" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="53" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="53" bodyend="56"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="55" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="55" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_workflow_asset_1a67922a196c87569b0dd7af34f1e2d8ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>TArray&lt; FString &gt;</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="60" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="60" bodyend="63"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="62" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="62" bodyend="65"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -77,7 +77,7 @@
 </listitem><listitem><para>Assign this asset to a <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref>&apos;s WorkflowAsset property.</para>
 </listitem></orderedlist>
 </para>
-<para>Programmatic alternative: populate <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> directly in C++ using <ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref>, or assign it to <ref refid="class_u_tryll_agent_component_1ad86b3d51d9b167a0532f44a929ab5472" kindref="member">UTryllAgentComponent::InlineGraphDescription</ref>.</para>
+<para>Programmatic alternative: populate <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> directly in C++ using <ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> and pass it to <ref refid="class_u_tryll_subsystem_1a2b60ca708df64b9232dd664e3aa03da7" kindref="member">UTryllSubsystem::RequestCreateAgent</ref>. (<ref refid="class_u_tryll_agent_component_1ad86b3d51d9b167a0532f44a929ab5472" kindref="member">UTryllAgentComponent::InlineGraphDescription</ref> also accepts a graph, but it is temporary and will be removed in a future release.)</para>
 <para>Editor / cook: IsDataValid + PreSave(IsCooking) fail when the graph references a model that is not marked Production in the Tryll Model Manifest (so packaging cannot silently omit it). </para>
     </detaileddescription>
     <inheritancegraph>
@@ -116,7 +116,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="32" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="33" bodyend="69"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" line="34" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowAsset.h" bodystart="35" bodyend="71"/>
     <listofallmembers>
       <member refid="class_u_tryll_workflow_asset_1a34b11a89f70038d7faa8e09ed0a8766d" prot="public" virt="virtual"><scope>UTryllWorkflowAsset</scope><name>GetPrimaryAssetId</name></member>
       <member refid="class_u_tryll_workflow_asset_1a67922a196c87569b0dd7af34f1e2d8ba" prot="public" virt="non-virtual"><scope>UTryllWorkflowAsset</scope><name>GetStartNodeOptions</name></member>

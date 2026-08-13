@@ -145,6 +145,7 @@
 
 ## w
 
+* **workload** ([**Tryll::Client::AgentCreateOptions**](struct_tryll_1_1_client_1_1_agent_create_options.md))
 * **workingDirectory** ([**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md))
 * **wholesale** ([**Tryll::Client::AgentVariables::PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md))
 
