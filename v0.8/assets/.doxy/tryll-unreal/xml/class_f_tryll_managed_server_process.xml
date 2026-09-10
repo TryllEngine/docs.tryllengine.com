@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_f_tryll_managed_server_process" kind="class" language="C++" prot="public">
+    <compoundname>FTryllManagedServerProcess</compoundname>
+    <includes refid="_tryll_managed_server_process_8h" local="no">TryllManagedServerProcess.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_f_tryll_managed_server_process_1a2852feb057593e9647c48169247e3ace" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class UTryllEditorSubsystem</definition>
+        <argsstring></argsstring>
+        <name>UTryllEditorSubsystem</name>
+        <qualifiedname>FTryllManagedServerProcess::UTryllEditorSubsystem</qualifiedname>
+        <param>
+          <type>UTryllEditorSubsystem</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="56" column="14" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1aedb7e69e2a34e3bea2095f0b9bf29533" prot="private" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllManagedServerProcess::DebugExtraCliArgs</definition>
+        <argsstring></argsstring>
+        <name>DebugExtraCliArgs</name>
+        <qualifiedname>FTryllManagedServerProcess::DebugExtraCliArgs</qualifiedname>
+        <briefdescription>
+<para>Editor-test-only extra CLI args (fault injection). Not a public Spawn parameter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="61" column="9" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1ac2d931f9b5f33ef45e26df34c1e11043" prot="private" static="no" mutable="no">
+        <type>FProcHandle</type>
+        <definition>FProcHandle FTryllManagedServerProcess::ServerProcess</definition>
+        <argsstring></argsstring>
+        <name>ServerProcess</name>
+        <qualifiedname>FTryllManagedServerProcess::ServerProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="63" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1a806496e64b8a7d8ac4ef9cbc7b515060" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool FTryllManagedServerProcess::bObservedReady</definition>
+        <argsstring></argsstring>
+        <name>bObservedReady</name>
+        <qualifiedname>FTryllManagedServerProcess::bObservedReady</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="64" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1a0edac0906ee724c2665806211aab8d42" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* FTryllManagedServerProcess::StdoutRead</definition>
+        <argsstring></argsstring>
+        <name>StdoutRead</name>
+        <qualifiedname>FTryllManagedServerProcess::StdoutRead</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="65" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1acb63cc251f40a0aefdee55114ef82eea" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* FTryllManagedServerProcess::StdoutWrite</definition>
+        <argsstring></argsstring>
+        <name>StdoutWrite</name>
+        <qualifiedname>FTryllManagedServerProcess::StdoutWrite</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="66" column="12" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1a6ce9eccbf8291683a41562a8d620044f" prot="private" static="no" mutable="no">
+        <type>FTSTicker::FDelegateHandle</type>
+        <definition>FTSTicker::FDelegateHandle FTryllManagedServerProcess::DrainTickerHandle</definition>
+        <argsstring></argsstring>
+        <name>DrainTickerHandle</name>
+        <qualifiedname>FTryllManagedServerProcess::DrainTickerHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="67" column="28" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_managed_server_process_1a4a77f5f5e6f202270f79679f1112e477" prot="private" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllManagedServerProcess::LogLineBuffer</definition>
+        <argsstring></argsstring>
+        <name>LogLineBuffer</name>
+        <qualifiedname>FTryllManagedServerProcess::LogLineBuffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="68" column="13" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a29c9b0aa5c1772671fe6f69417f36712" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllManagedServerProcess::FTryllManagedServerProcess</definition>
+        <argsstring>()=default</argsstring>
+        <name>FTryllManagedServerProcess</name>
+        <qualifiedname>FTryllManagedServerProcess::FTryllManagedServerProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="17" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a6ec9136940fc8dddf4eac4e47e598f2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllManagedServerProcess::~FTryllManagedServerProcess</definition>
+        <argsstring>()</argsstring>
+        <name>~FTryllManagedServerProcess</name>
+        <qualifiedname>FTryllManagedServerProcess::~FTryllManagedServerProcess</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="18" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1ab965206ef280974c38f5f525d3dc1426" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllManagedServerProcess::FTryllManagedServerProcess</definition>
+        <argsstring>(const FTryllManagedServerProcess &amp;)=delete</argsstring>
+        <name>FTryllManagedServerProcess</name>
+        <qualifiedname>FTryllManagedServerProcess::FTryllManagedServerProcess</qualifiedname>
+        <param>
+          <type>const <ref refid="class_f_tryll_managed_server_process" kindref="compound">FTryllManagedServerProcess</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1aae881ade8891bcf1eb3173d142126b70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_f_tryll_managed_server_process" kindref="compound">FTryllManagedServerProcess</ref> &amp;</type>
+        <definition>FTryllManagedServerProcess &amp; FTryllManagedServerProcess::operator=</definition>
+        <argsstring>(const FTryllManagedServerProcess &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>FTryllManagedServerProcess::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="class_f_tryll_managed_server_process" kindref="compound">FTryllManagedServerProcess</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="21" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a03d14cf8bb9ff4bd4c16be2f0f0fbb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllManagedServerProcess::IsRunning</definition>
+        <argsstring>()</argsstring>
+        <name>IsRunning</name>
+        <qualifiedname>FTryllManagedServerProcess::IsRunning</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="23" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a8087b6934a40329590149cc56985762a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllManagedServerProcess::IsObservedReady</definition>
+        <argsstring>() const</argsstring>
+        <name>IsObservedReady</name>
+        <qualifiedname>FTryllManagedServerProcess::IsObservedReady</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True after Spawn saw the child accept TCP. False while still warming. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="26" column="6" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1ad3a8563646ffba94753cc03fa0fece3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllManagedServerProcess::Spawn</definition>
+        <argsstring>(const FString &amp;ExePath, int32 Port, int32 IdleShutdownTimeoutSeconds, double ReadinessTimeoutSeconds, const FString &amp;LlamaCppBackend, FString &amp;OutError, bool &amp;bOutPortConflict)</argsstring>
+        <name>Spawn</name>
+        <qualifiedname>FTryllManagedServerProcess::Spawn</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ExePath</declname>
+        </param>
+        <param>
+          <type>int32</type>
+          <declname>Port</declname>
+        </param>
+        <param>
+          <type>int32</type>
+          <declname>IdleShutdownTimeoutSeconds</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ReadinessTimeoutSeconds</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>LlamaCppBackend</declname>
+        </param>
+        <param>
+          <type>FString &amp;</type>
+          <declname>OutError</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>bOutPortConflict</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Spawns ExePath with &quot;--port Port --idle-shutdown-timeout Seconds
+--llama-backend LlamaCppBackend&quot; and waits up to ReadinessTimeoutSeconds for its TCP port to start accepting.</para>
+<para>Returns true when the launch should proceed to connecting — either the port is already accepting, OR the readiness wait elapsed but the process is <emphasis>still alive</emphasis> (a cold start still warming up). In the latter case the server is deliberately left running, not killed: killing an almost-ready server discards the warmup and forces a cold re-spawn — the root cause of &quot;first launch hangs, relaunch works&quot;. The caller connects anyway and the connection worker retries until the server is ready.</para>
+<para>Returns false only for a genuine launch failure: the process could not be spawned, or it exited on its own before the port opened. OutError is then populated with a clear reason, and bOutPortConflict is set to true iff the process exited with Tryll::ServerExitPortInUse (3), so callers can special-case a bind collision (retry on a different port). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="45" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a5f79240b041bce63bd02834c83ee253a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllManagedServerProcess::ReleaseHandle</definition>
+        <argsstring>()</argsstring>
+        <name>ReleaseHandle</name>
+        <qualifiedname>FTryllManagedServerProcess::ReleaseHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Releases the handle without killing the process (normal teardown). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="50" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a65e3aca6d21a129920fe13aa7c37abe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllManagedServerProcess::TerminateAndRelease</definition>
+        <argsstring>()</argsstring>
+        <name>TerminateAndRelease</name>
+        <qualifiedname>FTryllManagedServerProcess::TerminateAndRelease</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Force-terminate then release (test/CI cleanup only). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="53" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_f_tryll_managed_server_process_1a4399764434f356eb8fa36c3147c57c41" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllManagedServerProcess::DrainOutput</definition>
+        <argsstring>(float DeltaTime)</argsstring>
+        <name>DrainOutput</name>
+        <qualifiedname>FTryllManagedServerProcess::DrainOutput</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>DeltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="58" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Plain (non-UObject) helper that spawns tryll_server.exe as a managed child, draining its stdout to the log until released. Shared by UTryllEditorSubsystem and <ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref>&apos;s packaged-build path — those differ in when/which port to spawn on, not in how. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" line="14" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllManagedServerProcess.h" bodystart="15" bodyend="69"/>
+    <listofallmembers>
+      <member refid="class_f_tryll_managed_server_process_1a806496e64b8a7d8ac4ef9cbc7b515060" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>bObservedReady</name></member>
+      <member refid="class_f_tryll_managed_server_process_1aedb7e69e2a34e3bea2095f0b9bf29533" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>DebugExtraCliArgs</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a4399764434f356eb8fa36c3147c57c41" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>DrainOutput</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a6ce9eccbf8291683a41562a8d620044f" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>DrainTickerHandle</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a29c9b0aa5c1772671fe6f69417f36712" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>FTryllManagedServerProcess</name></member>
+      <member refid="class_f_tryll_managed_server_process_1ab965206ef280974c38f5f525d3dc1426" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>FTryllManagedServerProcess</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a8087b6934a40329590149cc56985762a" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>IsObservedReady</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a03d14cf8bb9ff4bd4c16be2f0f0fbb4e" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>IsRunning</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a4a77f5f5e6f202270f79679f1112e477" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>LogLineBuffer</name></member>
+      <member refid="class_f_tryll_managed_server_process_1aae881ade8891bcf1eb3173d142126b70" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>operator=</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a5f79240b041bce63bd02834c83ee253a" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>ReleaseHandle</name></member>
+      <member refid="class_f_tryll_managed_server_process_1ac2d931f9b5f33ef45e26df34c1e11043" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>ServerProcess</name></member>
+      <member refid="class_f_tryll_managed_server_process_1ad3a8563646ffba94753cc03fa0fece3c" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>Spawn</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a0edac0906ee724c2665806211aab8d42" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>StdoutRead</name></member>
+      <member refid="class_f_tryll_managed_server_process_1acb63cc251f40a0aefdee55114ef82eea" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>StdoutWrite</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a65e3aca6d21a129920fe13aa7c37abe1" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>TerminateAndRelease</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a2852feb057593e9647c48169247e3ace" prot="private" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>UTryllEditorSubsystem</name></member>
+      <member refid="class_f_tryll_managed_server_process_1a6ec9136940fc8dddf4eac4e47e598f2a" prot="public" virt="non-virtual"><scope>FTryllManagedServerProcess</scope><name>~FTryllManagedServerProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

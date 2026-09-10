@@ -1,0 +1,421 @@
+
+
+# Class Tryll::Client::GraphDescription
+
+
+
+[**ClassList**](annotated.md) **>** [**Tryll**](namespace_tryll.md) **>** [**Client**](namespace_tryll_1_1_client.md) **>** [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md)
+
+
+
+_Fluent builder for a workflow graph description sent to the server._ [More...](#detailed-description)
+
+* `#include <GraphDescription.h>`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| struct | [**NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) <br>_Internal serialisable description of one node._  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddBranch**](#function-addbranch) (std::string name, ::Tryll::NodeParams::BranchParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddCannedResponse**](#function-addcannedresponse) (std::string name, ::Tryll::NodeParams::CannedResponseParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddClassifyIntent**](#function-addclassifyintent) (std::string name, ::Tryll::NodeParams::ClassifyIntentParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddClassifyIntentLLM**](#function-addclassifyintentllm) (std::string name, ::Tryll::NodeParams::ClassifyIntentLLMParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddGenerate**](#function-addgenerate) (std::string name, ::Tryll::NodeParams::GenerateParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddGenerateAndSpeak**](#function-addgenerateandspeak) (std::string name, ::Tryll::NodeParams::GenerateAndSpeakParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddInstruction**](#function-addinstruction) (std::string name, ::Tryll::NodeParams::InstructionParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddIntentToInstruction**](#function-addintenttoinstruction) (std::string name, ::Tryll::NodeParams::IntentToInstructionParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddPause**](#function-addpause) (std::string name, ::Tryll::NodeParams::PauseParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddRegexGuardrail**](#function-addregexguardrail) (std::string name, ::Tryll::NodeParams::RegexGuardrailParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddRetrieve**](#function-addretrieve) (std::string name, ::Tryll::NodeParams::RetrieveParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddSpeak**](#function-addspeak) (std::string name, ::Tryll::NodeParams::SpeakParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddToolCall**](#function-addtoolcall) (std::string name, ::Tryll::NodeParams::ToolCallParamsT params) <br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**AddTransform**](#function-addtransform) (std::string name, ::Tryll::NodeParams::TransformParamsT params) <br> |
+|  const std::string & | [**GetDefaultModelName**](#function-getdefaultmodelname) () noexcept const<br> |
+|  const std::vector&lt; [**NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) &gt; & | [**GetNodes**](#function-getnodes) () noexcept const<br> |
+|  const std::string & | [**GetStartNode**](#function-getstartnode) () noexcept const<br> |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**SetDefaultModelName**](#function-setdefaultmodelname) (std::string name) <br>_Set the fallback model name for nodes that do not specify model\_name._  |
+|  [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) & | [**SetStartNode**](#function-setstartnode) (std::string name) <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Detailed Description
+
+
+Typical usage: 
+```C++
+using namespace Tryll::NodeParams;
+auto graph = Tryll::Client::GraphDescription{}
+    .AddGenerate("gen", GenerateParamsT{.model_name="qwen2.5-0.5b-instruct",
+                                       .system_prompt="You are helpful."})
+    .SetStartNode("gen");
+```
+ 
+
+
+    
+## Public Functions Documentation
+
+
+
+
+### function AddBranch 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddBranch (
+    std::string name,
+    ::Tryll::NodeParams::BranchParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddCannedResponse 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddCannedResponse (
+    std::string name,
+    ::Tryll::NodeParams::CannedResponseParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddClassifyIntent 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddClassifyIntent (
+    std::string name,
+    ::Tryll::NodeParams::ClassifyIntentParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddClassifyIntentLLM 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddClassifyIntentLLM (
+    std::string name,
+    ::Tryll::NodeParams::ClassifyIntentLLMParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddGenerate 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddGenerate (
+    std::string name,
+    ::Tryll::NodeParams::GenerateParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddGenerateAndSpeak 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddGenerateAndSpeak (
+    std::string name,
+    ::Tryll::NodeParams::GenerateAndSpeakParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddInstruction 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddInstruction (
+    std::string name,
+    ::Tryll::NodeParams::InstructionParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddIntentToInstruction 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddIntentToInstruction (
+    std::string name,
+    ::Tryll::NodeParams::IntentToInstructionParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddPause 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddPause (
+    std::string name,
+    ::Tryll::NodeParams::PauseParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddRegexGuardrail 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddRegexGuardrail (
+    std::string name,
+    ::Tryll::NodeParams::RegexGuardrailParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddRetrieve 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddRetrieve (
+    std::string name,
+    ::Tryll::NodeParams::RetrieveParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddSpeak 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddSpeak (
+    std::string name,
+    ::Tryll::NodeParams::SpeakParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddToolCall 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddToolCall (
+    std::string name,
+    ::Tryll::NodeParams::ToolCallParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function AddTransform 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::AddTransform (
+    std::string name,
+    ::Tryll::NodeParams::TransformParamsT params
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function GetDefaultModelName 
+
+```C++
+inline const std::string & Tryll::Client::GraphDescription::GetDefaultModelName () noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function GetNodes 
+
+```C++
+inline const std::vector< NodeDesc > & Tryll::Client::GraphDescription::GetNodes () noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function GetStartNode 
+
+```C++
+inline const std::string & Tryll::Client::GraphDescription::GetStartNode () noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function SetDefaultModelName 
+
+_Set the fallback model name for nodes that do not specify model\_name._ 
+```C++
+GraphDescription & Tryll::Client::GraphDescription::SetDefaultModelName (
+    std::string name
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function SetStartNode 
+
+```C++
+GraphDescription & Tryll::Client::GraphDescription::SetStartNode (
+    std::string name
+) 
+```
+
+
+
+
+<hr>
+
+------------------------------
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo2/tryll/clients/cpp/include/tryll/GraphDescription.h`
+

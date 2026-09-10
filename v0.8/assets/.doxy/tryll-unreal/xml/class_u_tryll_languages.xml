@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_languages" kind="class" language="C++" prot="public">
+    <compoundname>UTryllLanguages</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UBlueprintFunctionLibrary</basecompoundref>
+    <includes refid="_tryll_languages_8h" local="no">TryllLanguages.h</includes>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_u_tryll_languages_1a389d597417708b968c63a11afa764dae" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>static TArray&lt; FString &gt; UTryllLanguages::OfferableLanguages</definition>
+        <argsstring>(const TArray&lt; FTryllModelInfo &gt; &amp;Models)</argsstring>
+        <name>OfferableLanguages</name>
+        <qualifiedname>UTryllLanguages::OfferableLanguages</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> &gt; &amp;</type>
+          <declname>Models</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Languages every model in Models declares, sorted.</para>
+<para>A model that declares nothing is <bold>skipped, not treated as restrictive</bold> - an empty list means &quot;the catalog didn&apos;t say&quot;, and letting unknown shrink the result would hide languages that work.</para>
+<para>An empty return therefore means one of two things: the declared sets genuinely do not overlap, or nothing declared anything. Call HasLanguageInfo to tell those apart before telling a player there are no languages available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="42" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_languages_1a68a7e73445ec51d5584d6ac8f525816d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>static TArray&lt; FString &gt; UTryllLanguages::OfferableLanguagesForModels</definition>
+        <argsstring>(const TArray&lt; FTryllModelInfo &gt; &amp;AllModels, const TArray&lt; FString &gt; &amp;ModelNames)</argsstring>
+        <name>OfferableLanguagesForModels</name>
+        <qualifiedname>UTryllLanguages::OfferableLanguagesForModels</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> &gt; &amp;</type>
+          <declname>AllModels</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>ModelNames</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Same, but picks the models out of a ListModels result by name - the usual shape, since you know your TTS/STT/language model names. Names that are not present are ignored, so a model the player has not downloaded yet does not silently empty the menu. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="51" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_languages_1a2246a4470d1fc44c5d606fc346421d64" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool UTryllLanguages::HasLanguageInfo</definition>
+        <argsstring>(const TArray&lt; FTryllModelInfo &gt; &amp;Models)</argsstring>
+        <name>HasLanguageInfo</name>
+        <qualifiedname>UTryllLanguages::HasLanguageInfo</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> &gt; &amp;</type>
+          <declname>Models</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when at least one model declared its languages. Distinguishes &quot;these
+models share no language&quot; from &quot;we have no idea&quot;, which are very different things to show a player. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="61" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_languages_1a33818d96050ecef03ba62393394cad1b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool UTryllLanguages::ModelSupportsLanguage</definition>
+        <argsstring>(const FTryllModelInfo &amp;Model, const FString &amp;Locale)</argsstring>
+        <name>ModelSupportsLanguage</name>
+        <qualifiedname>UTryllLanguages::ModelSupportsLanguage</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> &amp;</type>
+          <declname>Model</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Locale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether Model covers Locale (a tag like &quot;de-DE&quot; or a bare code like &quot;de&quot;).</para>
+<para>Returns true for a model that declares nothing: without a catalog claim we have no evidence either way, and the server applies the same rule - it withholds the language hint rather than refusing to load the model. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="71" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_languages_1a8fc0dc5082926f7a35d7eeae99dda0e5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllLanguages::LanguageOf</definition>
+        <argsstring>(const FString &amp;Locale)</argsstring>
+        <name>LanguageOf</name>
+        <qualifiedname>UTryllLanguages::LanguageOf</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Locale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Primary language subtag of a locale, lowercase: &quot;pt-BR&quot; -&gt; &quot;pt&quot;. This is the granularity models work at - none of the shipped voice or speech models distinguish pt-BR from pt-PT. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="79" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_languages_1a0d49c1f5f13dddd1412561d2b3f7221e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>static FString UTryllLanguages::LanguageDisplayName</definition>
+        <argsstring>(const FString &amp;Code)</argsstring>
+        <name>LanguageDisplayName</name>
+        <qualifiedname>UTryllLanguages::LanguageDisplayName</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>English name for a language code - &quot;de&quot; -&gt; &quot;German&quot; - for labelling a menu. Unknown codes come back unchanged, so an entry is never blank.</para>
+<para>Deliberately a fixed table rather than FInternationalization: it must match what the server renders into the {{language}} prompt key exactly (see SessionLocale.cpp). Keep the two lists in sync when adding a language. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="90" column="16"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Works out which languages your game can actually offer, from the models it actually uses.</para>
+<para>The rule is an intersection: a language is offerable only if <emphasis>every</emphasis> model in the pipeline covers it. A game with a 31-language voice but an English-only recognizer can offer exactly one language for hands-free play - and the point of this library is that you find that out from the catalog instead of from a bug report.</para>
+<para>Blueprint-callable, so a settings menu can populate itself without C++. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UBlueprintFunctionLibrary</label>
+      </node>
+      <node id="1">
+        <label>UTryllLanguages</label>
+        <link refid="class_u_tryll_languages"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>UBlueprintFunctionLibrary</label>
+      </node>
+      <node id="1">
+        <label>UTryllLanguages</label>
+        <link refid="class_u_tryll_languages"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" line="24" column="1" bodyfile="C:/_tryll/_monorepo2/tryll/clients/unreal/Source/TryllClient/Public/TryllLanguages.h" bodystart="25" bodyend="91"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_languages_1a2246a4470d1fc44c5d606fc346421d64" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>HasLanguageInfo</name></member>
+      <member refid="class_u_tryll_languages_1a0d49c1f5f13dddd1412561d2b3f7221e" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>LanguageDisplayName</name></member>
+      <member refid="class_u_tryll_languages_1a8fc0dc5082926f7a35d7eeae99dda0e5" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>LanguageOf</name></member>
+      <member refid="class_u_tryll_languages_1a33818d96050ecef03ba62393394cad1b" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>ModelSupportsLanguage</name></member>
+      <member refid="class_u_tryll_languages_1a389d597417708b968c63a11afa764dae" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>OfferableLanguages</name></member>
+      <member refid="class_u_tryll_languages_1a68a7e73445ec51d5584d6ac8f525816d" prot="public" virt="non-virtual"><scope>UTryllLanguages</scope><name>OfferableLanguagesForModels</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

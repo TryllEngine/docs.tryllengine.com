@@ -1,0 +1,8120 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="On-device SLM inference for games and tools — C++, Python, Unity, Unreal.">
+      
+      
+      
+        <link rel="canonical" href="https://docs.tryllengine.com/v0.8/reference/client-api/unreal/blueprint-catalog.html">
+      
+      
+        <link rel="prev" href="../../../tryll-unreal/class_u_tryll_runtime_settings.html">
+      
+      
+        <link rel="next" href="../cpp/index.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/logo/tryll-logo-mark.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Blueprint Catalog - Tryll Engine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"DM Sans";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#blueprint-catalog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="Tryll Engine" class="md-header__button md-logo" aria-label="Tryll Engine" data-md-component="logo">
+      
+  <img src="../../../assets/logo/tryll-logo-light-text.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tryll Engine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Blueprint Catalog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../how-to/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  How-to Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Concepts
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../release-notes/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Release Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Tryll Engine" class="md-nav__button md-logo" aria-label="Tryll Engine" data-md-component="logo">
+      
+  <img src="../../../assets/logo/tryll-logo-light-text.svg" alt="logo">
+
+    </a>
+    Tryll Engine
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../getting-started/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-inference-unity.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First inference in Unity
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-inference-unreal.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First inference in Unreal
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-inference-python.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First inference in Python
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/first-inference-cpp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First inference in C++
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../how-to/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How-to Guides
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How-to Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup and connection
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Setup and connection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/run-the-tryll-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run the Tryll server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/auto-launch-server.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-launch the server
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/connect-and-manage-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connect and manage a session
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editor tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editor tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/test-agent-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test an agent in the editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/edit-workflows-in-graph-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edit workflows in the Unity graph editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/edit-workflows-in-unreal-graph-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Edit workflows in the Unreal graph editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/manage-models-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage models in the editor
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/choose-where-models-run.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Choose where models run
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-agent-log.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use the Agent Log
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/inspect-server-memory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/compare-dialog-variants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compare dialog variants in the Lab
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/test-tool-calls-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test tool calls in Chat and the Lab
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build an agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build an agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/build-chat-agent-with-graph.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build a chat agent with a graph
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/design-an-npc-prompt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design an NPC prompt
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/design-an-intent-classifier-prompt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design an intent-classifier prompt
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-mustache-templates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Mustache templates
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/stream-answers-to-ui.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stream answers to your UI
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/send-multiple-answers-in-a-turn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Send multiple answers in one turn
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dialogue and turn control
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dialogue and turn control
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/change-agent-parameters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Change agent parameters at runtime
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/seed-and-edit-dialog-history.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seed and edit dialog history
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/export-and-import-dialog.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Export and import dialog
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/save-and-load-agent-state.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Save and load agent state
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/cancel-a-turn.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cancel a turn
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/pause-and-resume-turns.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause and resume a turn
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/manage-agent-kv-cache.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage an agent's KV cache
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/run-many-agents-on-a-small-gpu.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run many agents on a small GPU
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Knowledge and retrieval
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Knowledge and retrieval
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/create-simple-rag-assistant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create a simple RAG assistant
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/query-rewriting-for-rag.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query rewriting and HyDE for RAG
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/build-intent-driven-npc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build an intent-driven NPC
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/classify-intent-without-a-knowledge-base.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classify intent without a knowledge base
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Game state and control flow
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Game state and control flow
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/drive-prompts-and-retrieval-from-game-state.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drive prompts and retrieval from game state
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/branch-on-a-slot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branch on a slot
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/add-a-hidden-reasoning-step.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a hidden reasoning or draft step
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/substitute-agent-variables-in-output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Substitute agent variables in LLM output
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/filter-llm-output-artifacts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter LLM output artifacts
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/keep-merchant-prices-deterministic.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Keep merchant prices deterministic
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured output and tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Structured output and tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/define-and-handle-tool-calls.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define and handle tool calls
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/test-tool-calls-in-editor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test tool calls in Chat and the Lab
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/compare-tool-call-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compare tool-call models
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/design-a-tool-call-prompt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a tool-call prompt
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/constrain-output-with-a-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constrain output with a grammar
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guardrails and safety
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guardrails and safety
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-canned-responses-and-guardrails.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use canned responses and guardrails
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/build-an-immersion-guard.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build an immersion guard
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Voice
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Voice
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/add-voice-to-an-agent.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add voice output to an agent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/clone-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clone a voice from an audio sample
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-voice-input.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use voice input
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-voice-input-hotwords.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bias voice input with hotwords
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models and shipping
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Models and shipping
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/use-your-own-local-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/pin-and-unpin-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pin and unpin models
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/verify-models-before-play.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify required models before Play
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/estimate-memory-footprint.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estimate memory footprint
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/ship-storage-folders-for-builds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ship storage folders for builds
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/ship-in-another-language.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ship an agent in another language
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../concepts/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/architecture-at-a-glance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture at a glance
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/workflows-graphs-nodes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows, graphs, nodes
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/agents-and-sessions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents and sessions
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/lifetime-and-ownership.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lifetime and ownership
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/models-and-inference-engines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Models and inference engines
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/tts-and-voice-output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS and voice output
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/stt-and-voice-input.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STT and voice input
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/rag.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieval-augmented generation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/tool-calling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool calling
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/agent-variables.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Variables
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/slots-and-inter-node-value-passing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Slots and inter-node value passing
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/constrained-output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constrained output (GBNF)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/projection-and-token-budgets.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projection and token budgets
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client API
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Client API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../unity/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unity
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unity
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-client.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllClient
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-agent-component.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllAgentComponent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-voice-input-component.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllVoiceInputComponent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-workflow-asset.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllWorkflowAsset
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-runtime-settings.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllRuntimeSettings
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../unity/tryll-speaker.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllSpeaker
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cpp/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unreal (C++)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Unreal (C++)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/annotated.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_subsystem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllSubsystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_workflow_asset.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllWorkflowAsset
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_f_tryll_agent.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllAgent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_graph_description.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllGraphDescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_graph_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllGraphBuilder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllError
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_model_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllModelInfo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_node_description.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllNodeDescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_tool_definition.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllToolDefinition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_f_tryll_tool_param_definition.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FTryllToolParamDefinition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/struct_u_tryll_subsystem_1_1_f_embedded_storage_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEmbeddedStorageInfo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_agent_component.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllAgentComponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_speaker_component.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllSpeakerComponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_voice_input_component.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllVoiceInputComponent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-unreal/class_u_tryll_runtime_settings.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UTryllRuntimeSettings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unreal (Blueprint)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="blueprint-catalog.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Unreal (Blueprint)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connection-tryllconnection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection — Tryll|Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-tryllsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session — Tryll|Session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-tryllmodels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models — Tryll|Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-tryllagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent — Tryll|Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-tryllvariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables — Tryll|Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-input-tryllvoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Input — Tryll|Voice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllagentcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllAgentComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-trylltts-on-utryllspeakercomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|TTS (on UTryllSpeakerComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllvoiceinputcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllVoiceInputComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllsubsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllSubsystem)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets-and-structs-editable-in-details-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assets and structs (editable in Details panel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-settings-tryll-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Settings — Tryll Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typical-blueprint-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical Blueprint flows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../cpp/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/annotated.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/class_tryll_1_1_client_1_1_tryll_client.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllClient
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/class_tryll_1_1_client_1_1_agent_proxy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentProxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/class_tryll_1_1_client_1_1_graph_description.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphDescription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NodeDesc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/class_tryll_1_1_client_1_1_tryll_error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TryllError
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/struct_tryll_1_1_client_1_1_message_result.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MessageResult
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tryll-cpp/struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EmbeddedStorageInfo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agent-parameters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Parameters
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../turn-inspector.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turn Inspector
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../turn-diagnostics-json.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Turn Diagnostics JSON
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../error-codes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Codes
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows and data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflows and data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../nodes/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Nodes
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Nodes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/generate.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generate
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/generate-and-speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generate and Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/speak.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Speak
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/instruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instruction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/transform.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transform
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/branch.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Branch
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/pause.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pause
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/retrieve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Retrieve
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/retrieve-filter-grammar.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filter grammar
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/classify-intent.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classify Intent
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/classify-intent-llm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classify Intent (LLM)
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/intent-to-instruction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intent to Instruction
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/tool-call.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tool Call
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/canned-response.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canned Response
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nodes/regex-guardrail.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex Guardrail
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../string-storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    String Storage
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../embedded-string-storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded String Storage
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Management
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tts-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TTS Models
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../server-configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server Configuration
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../telemetry.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wire-protocol.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wire Protocol
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../release-notes/index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Release Notes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/v0.7.0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.7.0
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/v0.6.0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.6.0
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/v0.5.0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.5.0
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/v0.4.0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.4.0
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/v0.3.0.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.3.0
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connection-tryllconnection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection — Tryll|Connection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#session-tryllsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Session — Tryll|Session
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#models-tryllmodels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Models — Tryll|Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-tryllagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent — Tryll|Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables-tryllvariables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variables — Tryll|Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voice-input-tryllvoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voice Input — Tryll|Voice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllagentcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllAgentComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-trylltts-on-utryllspeakercomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|TTS (on UTryllSpeakerComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllvoiceinputcomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllVoiceInputComponent)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events-tryllevents-on-utryllsubsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Events — Tryll|Events (on UTryllSubsystem)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets-and-structs-editable-in-details-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assets and structs (editable in Details panel)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-settings-tryll-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Settings — Tryll Client
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typical-blueprint-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typical Blueprint flows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="blueprint-catalog">Blueprint Catalog<a class="headerlink" href="#blueprint-catalog" title="Permanent link">&para;</a></h1>
+<p>Every Blueprint-visible node exposed by the Tryll Unreal plugin,
+grouped by category. Use this page to find <em>which</em> Blueprint function
+or event to place; use the
+<a href="cpp/index.html">Unreal C++ API Reference</a> and the
+<a href="../../index.html">feature reference pages</a> for parameter-level detail.</p>
+<p>All nodes live under two UObjects:</p>
+<ul>
+<li><strong><code>UTryllSubsystem</code></strong> — a <code>UGameInstanceSubsystem</code>. Access from any
+  Blueprint with the <code>Get Tryll Subsystem</code> node
+  (<code>GameplayStatics → GetGameInstance → GetSubsystem&lt;TryllSubsystem&gt;</code>).</li>
+<li><strong><code>UTryllAgentComponent</code></strong> — an <code>UActorComponent</code>. Add one to any
+  actor; when <code>bAutoCreateOnConnect</code> is <code>true</code> (the default), it
+  auto-creates its agent once the session is ready (connected <strong>and</strong>
+  the session created), queuing if it spawns earlier. (The property name
+  predates the session-ready semantics.)</li>
+</ul>
+<p>Categories use the pipe convention (<code>Tryll|Connection</code>,
+<code>Tryll|Models</code>, …) so everything appears grouped under a single
+<strong>Tryll</strong> folder in the Blueprint context menu.</p>
+<h2 id="connection-tryllconnection">Connection — <code>Tryll|Connection</code><a class="headerlink" href="#connection-tryllconnection" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllSubsystem</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connect</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Starts the background connect. Fires <code>OnConnectionChanged(true)</code> when ready. Uses the host/port from project settings; see <a href="../../../how-to/run-the-tryll-server.html">Run the Tryll Server</a>.</td>
+</tr>
+<tr>
+<td><strong>Disconnect</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Closes the socket. Fires <code>OnConnectionChanged(false)</code> once torn down.</td>
+</tr>
+<tr>
+<td><strong>Is Connected</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True while the background state is <code>Connected</code>.</td>
+</tr>
+<tr>
+<td><strong>Get Session Id</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>int64</code></td>
+<td>Server-assigned <a href="../../glossary.html#session">session</a> id; <code>0</code> when disconnected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="session-tryllsession">Session — <code>Tryll|Session</code><a class="headerlink" href="#session-tryllsession" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllSubsystem</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Create Session</strong></td>
+<td>Callable</td>
+<td><code>Engine</code> (<code>ETryllInferenceEngine</code>), <code>Game Name</code> (<code>FString</code>, default empty), <code>Stt Engine</code> / <code>Tts Engine</code> / <code>Embedding Engine</code> (<code>ETryllInferenceEngine</code>, default <code>Mock</code>), <code>Storage Data Folder</code> (<code>FString</code>, default empty)</td>
+<td>—</td>
+<td>Sends <code>CreateSessionRequest</code>. Fires <code>OnCreateSessionComplete(bSuccess)</code>. Mandatory and one-shot: only valid once, immediately after <code>OnConnectionChanged(true)</code>. See <a href="../../agent-parameters.html">Agent Parameters</a> and <a href="../../server-configuration.html">Server Configuration</a>.</td>
+</tr>
+<tr>
+<td><strong>Create Session From Settings</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Same as <strong>Create Session</strong> but reads every engine field, <code>Game Name</code>, and <code>Storage Data Folder</code> from <strong>Project Settings → Tryll Client</strong>. This is what <strong>Auto Create Session</strong> calls for you.</td>
+</tr>
+<tr>
+<td><strong>Is Session Ready</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True once the session has been created (connected <strong>and</strong> <code>CreateSession</code> succeeded).</td>
+</tr>
+<tr>
+<td><strong>Set Inference Throttle</strong></td>
+<td>Callable</td>
+<td><code>Level</code> (<code>float</code>, <code>0</code>–<code>1</code>)</td>
+<td>—</td>
+<td>Reports how hard the server should yield the GPU back to your game. <code>0</code> = full speed (the default for a session that never calls it), <code>1</code> = maximum yielding. Fire-and-forget — no response, no completion event, nothing to await — so calling it every tick is fine. Never changes what is generated, only how fast. See <a href="../../wire-protocol.html#inference-throttle-and-agent-workload">Wire Protocol</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="models-tryllmodels">Models — <code>Tryll|Models</code><a class="headerlink" href="#models-tryllmodels" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllSubsystem</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Request Download Model</strong></td>
+<td>Callable</td>
+<td><code>Model Name</code> (<code>FString</code>)</td>
+<td>—</td>
+<td>Kicks off a download. Progress arrives via <code>OnDownloadProgress</code>; completion via <code>OnDownloadComplete</code>.</td>
+</tr>
+<tr>
+<td><strong>Request Load Model</strong></td>
+<td>Callable</td>
+<td><code>Model Name</code> (<code>FString</code>)</td>
+<td>—</td>
+<td>Loads a locally-available model into the active inference engine. Fires <code>OnLoadModelComplete(ModelName, bSuccess)</code>.</td>
+</tr>
+<tr>
+<td><strong>Request Unload Model</strong></td>
+<td>Callable</td>
+<td><code>Model Name</code> (<code>FString</code>)</td>
+<td>—</td>
+<td>Unloads a loaded model. Fires <code>OnUnloadModelComplete(ModelName, bSuccess)</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Model listing is request/response driven — call the C++
+<code>UTryllSubsystem::ListModels</code> (exposed as a blueprint-friendly
+callback shape) or bind <code>OnListModelsComplete</code>. See
+<a href="../../model-management.html">Model Management</a> for lifecycle rules.</p>
+<h2 id="agent-tryllagent">Agent — <code>Tryll|Agent</code><a class="headerlink" href="#agent-tryllagent" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllAgentComponent</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Create Agent</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Creates a server-side <a href="../../glossary.html#agent">agent</a> using the component's configured graph / model / knowledge presentation. Fires <code>OnAgentReady</code>. Normally called automatically when the subsystem connects.</td>
+</tr>
+<tr>
+<td><strong>Destroy Agent</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Destroys the server-side agent. Fires the subsystem's <code>OnAgentDestroyed(AgentId)</code>.</td>
+</tr>
+<tr>
+<td><strong>Send Message</strong></td>
+<td>Callable</td>
+<td><code>Message</code> (<code>FString</code>)</td>
+<td>—</td>
+<td>Sends a user turn. Streams back via <code>OnAnswerText</code>; ends with <code>OnTurnComplete</code>. See <a href="../../../how-to/stream-answers-to-ui.html">Stream Answers to UI</a>.</td>
+</tr>
+<tr>
+<td><strong>Cancel</strong></td>
+<td>Callable</td>
+<td><code>Mode</code> (<code>ETryllCancelMode</code>, default <code>StopAndKeep</code>)</td>
+<td>—</td>
+<td>Cooperatively stop the in-flight turn. Ends with <code>OnTurnComplete(Cancelled)</code>. Idle cancel is a no-op. See <a href="../../wire-protocol.html#cancelling-a-turn">Cancelling a turn</a>.</td>
+</tr>
+<tr>
+<td><strong>Resume</strong></td>
+<td>Callable</td>
+<td><code>Resume Node</code> (<code>FString</code>, default empty)</td>
+<td>—</td>
+<td>Resume a paused turn. Empty continues via the pending exit; non-empty jumps to that node. Fires <code>OnResumed</code>. See <a href="../../../how-to/pause-and-resume-turns.html">How to pause and resume a turn</a>.</td>
+</tr>
+<tr>
+<td><strong>Get Node Params Baseline</strong></td>
+<td>Callable</td>
+<td><code>Node Name</code> (<code>FString</code>)</td>
+<td><code>UTryllNodeParamsBase</code></td>
+<td>The authored params for a node. Clone it, edit fields, then pass to <strong>Change Params</strong>. Call after <code>OnAgentReady</code>; returns null for an unknown node.</td>
+</tr>
+<tr>
+<td><strong>Change Params</strong></td>
+<td>Callable</td>
+<td><code>Node Name</code> (<code>FString</code>), <code>Params</code> (<code>UTryllNodeParamsBase</code>)</td>
+<td>—</td>
+<td>Mutate a node parameter at runtime (the agent must be idle or paused). Fires <code>OnParamChanged</code>. See <a href="../../../how-to/change-agent-parameters.html">Change Agent Parameters</a>.</td>
+</tr>
+<tr>
+<td><strong>Prefill KV Cache</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Synchronises every eligible language-model context to its reusable prefix. Fires <code>OnKvCachePrefilled</code> or <code>OnKvCachePrefillError</code>.</td>
+</tr>
+<tr>
+<td><strong>Evict KV Cache</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Releases every eligible raw language-model context while retaining the agent. Idempotent. Fires <code>OnKvCacheEvicted</code> or <code>OnKvCacheEvictError</code>.</td>
+</tr>
+<tr>
+<td><strong>Get KV Cache Status</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Reads aggregate residency and prefix status. Fires <code>OnKvCacheStatus</code> or <code>OnKvCacheStatusError</code>.</td>
+</tr>
+<tr>
+<td><strong>Is Agent Ready</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True after <code>OnAgentReady</code> has fired.</td>
+</tr>
+<tr>
+<td><strong>Get Agent Id</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>int64</code></td>
+<td>Server-assigned agent id; <code>0</code> before ready.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../../../tryll-unreal/class_u_tryll_agent_component.html"><code>UTryllAgentComponent</code></a> for the full property and
+method reference.</p>
+<h2 id="variables-tryllvariables">Variables — <code>Tryll|Variables</code><a class="headerlink" href="#variables-tryllvariables" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllAgentComponent</code>, via <code>Get Variables</code>. See
+<a href="../../../concepts/agent-variables.html">Agent Variables</a> for the full model. Setters validate
+locally and return an <code>FTryllError</code> immediately for an unknown name or type mismatch — no
+wire round-trip. Writes are batched and flushed automatically immediately before the next
+<strong>Send Message</strong> / <strong>Resume</strong> / <strong>Change Params</strong> call.</p>
+<p>The component Details panel also exposes declaration-driven <strong>Variable Overrides</strong> and a
+<em>Live Agent — Variables</em> section (dirty status + <strong>Flush Now</strong>) when a PIE agent or Tryll
+Chat preview agent is attached. Unchecking an override assigns the workflow declaration
+default on the live mirror.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Get Variables</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>UTryllAgentVariables</code></td>
+<td>The agent's variables mirror. Call after <code>OnAgentReady</code>.</td>
+</tr>
+<tr>
+<td><strong>Set Int Variable</strong></td>
+<td>Callable (on <code>UTryllAgentVariables</code>)</td>
+<td><code>Name</code> (<code>FString</code>), <code>Value</code> (<code>int64</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Assigns a declared <code>Int</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Set Float Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Value</code> (<code>float</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Assigns a declared <code>Float</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Set String Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Value</code> (<code>FString</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Assigns a declared <code>String</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Set Bool Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Value</code> (<code>bool</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Assigns a declared <code>Bool</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Set String Set Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Value</code> (<code>TArray&lt;FString&gt;</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Replaces a declared <code>StringSet</code> variable wholesale.</td>
+</tr>
+<tr>
+<td><strong>Add To Set Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Element</code> (<code>FString</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Idempotent insert into a <code>StringSet</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Remove From Set Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>), <code>Element</code> (<code>FString</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Idempotent removal from a <code>StringSet</code> variable.</td>
+</tr>
+<tr>
+<td><strong>Reset Variable</strong></td>
+<td>Callable</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>FTryllError</code></td>
+<td>Restores the <code>CreateAgent</code>-time initial value.</td>
+</tr>
+<tr>
+<td><strong>Is Dirty</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True when staged mutations have not been flushed yet.</td>
+</tr>
+<tr>
+<td><strong>Flush If Dirty</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Eager wire flush (same as Details <strong>Flush Now</strong>). No-op when clean.</td>
+</tr>
+<tr>
+<td><strong>Get Int Variable</strong></td>
+<td>Pure</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>int64</code>, <code>bFound</code> (<code>bool</code>)</td>
+<td>Current value; <code>bFound</code> is false if the name isn't declared.</td>
+</tr>
+<tr>
+<td><strong>Get Float Variable</strong></td>
+<td>Pure</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>float</code>, <code>bFound</code> (<code>bool</code>)</td>
+<td>Current value; <code>bFound</code> false if undeclared.</td>
+</tr>
+<tr>
+<td><strong>Get String Variable</strong></td>
+<td>Pure</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>FString</code>, <code>bFound</code> (<code>bool</code>)</td>
+<td>Current value; <code>bFound</code> false if undeclared.</td>
+</tr>
+<tr>
+<td><strong>Get Bool Variable</strong></td>
+<td>Pure</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>bool</code>, <code>bFound</code> (<code>bool</code>)</td>
+<td>Current value; <code>bFound</code> false if undeclared.</td>
+</tr>
+<tr>
+<td><strong>Get String Set Variable</strong></td>
+<td>Pure</td>
+<td><code>Name</code> (<code>FString</code>)</td>
+<td><code>TArray&lt;FString&gt;</code>, <code>bFound</code> (<code>bool</code>)</td>
+<td>Current value; <code>bFound</code> false if undeclared.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="voice-input-tryllvoice">Voice Input — <code>Tryll|Voice</code><a class="headerlink" href="#voice-input-tryllvoice" title="Permanent link">&para;</a></h2>
+<p>On <code>UTryllVoiceInputComponent</code>. Add one to an actor (optionally alongside a
+<code>UTryllAgentComponent</code>) and set <code>SttEngine = SherpaOnnx</code> in project settings.
+See <a href="../../../tryll-unreal/class_u_tryll_voice_input_component.html"><code>UTryllVoiceInputComponent</code></a> for the full
+property list.</p>
+<table>
+<thead>
+<tr>
+<th>Node</th>
+<th>Kind</th>
+<th>Inputs</th>
+<th>Outputs</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Create Voice Input</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Creates the server-side STT handle. Fires <code>OnVoiceInputCreated</code>. Normally automatic when <code>bCreateOnConnect</code> is true.</td>
+</tr>
+<tr>
+<td><strong>Destroy Voice Input</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Releases the server-side STT handle.</td>
+</tr>
+<tr>
+<td><strong>Begin Utterance</strong></td>
+<td>Callable</td>
+<td><code>Agent Override</code> (<code>UTryllAgentComponent</code>, optional)</td>
+<td>—</td>
+<td>Opens an utterance and starts mic capture. The final transcript routes to the override, else <code>TargetAgent</code>, else transcribe-only.</td>
+</tr>
+<tr>
+<td><strong>End Utterance</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Commits the utterance (push-to-talk release).</td>
+</tr>
+<tr>
+<td><strong>Cancel Utterance</strong></td>
+<td>Callable</td>
+<td>—</td>
+<td>—</td>
+<td>Drops the utterance without producing a transcript.</td>
+</tr>
+<tr>
+<td><strong>Has Voice Input</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True once the handle exists.</td>
+</tr>
+<tr>
+<td><strong>Is Utterance Active</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True while an utterance is open.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="events-tryllevents-on-utryllagentcomponent">Events — <code>Tryll|Events</code> (on <code>UTryllAgentComponent</code>)<a class="headerlink" href="#events-tryllevents-on-utryllagentcomponent" title="Permanent link">&para;</a></h2>
+<p>Bind these on each agent component instance. All are
+<code>BlueprintAssignable</code>, so <code>Bind Event to …</code> nodes work directly.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Fires when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On Agent Ready</strong></td>
+<td>—</td>
+<td>Server confirms agent creation.</td>
+</tr>
+<tr>
+<td><strong>On Answer Text</strong></td>
+<td><code>NodeName</code> (<code>FString</code>), <code>Text</code> (<code>FString</code>), <code>bIsFinal</code> (<code>bool</code>)</td>
+<td>Streaming token chunk. <code>NodeName</code> names the producing node (multi-sender graphs). <code>bIsFinal</code> is true on the last chunk before <code>OnTurnComplete</code>. (No <code>bIsDelta</code> pin — the Blueprint delegate is 3-param; the C++ agent handle carries <code>bIsDelta</code> separately.)</td>
+</tr>
+<tr>
+<td><strong>On Answer Full</strong></td>
+<td><code>FullText</code> (<code>FString</code>)</td>
+<td>After <code>OnTurnComplete</code>, with the full accumulated response.</td>
+</tr>
+<tr>
+<td><strong>On Turn Complete</strong></td>
+<td><code>Status</code> (<code>ETryllTurnStatus</code>), <code>DebugInfo</code> (<code>FString</code>), <code>TokensGenerated</code> (<code>int32</code>)</td>
+<td>Turn ended. <code>DebugInfo</code> is populated only when <code>bEnableDiagnostics</code> is set.</td>
+</tr>
+<tr>
+<td><strong>On Error</strong></td>
+<td><code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>Any agent-level error (send failure, server error response).</td>
+</tr>
+<tr>
+<td><strong>On Param Changed</strong></td>
+<td><code>bSuccess</code> (<code>bool</code>), <code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>A <code>ChangeParams</code> request completed; <code>ErrorMessage</code> is empty on success.</td>
+</tr>
+<tr>
+<td><strong>On Resumed</strong></td>
+<td><code>bSuccess</code> (<code>bool</code>), <code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>A <code>Resume</code> request completed; <code>ErrorMessage</code> is empty on success, otherwise describes <code>AgentNotPaused</code> (3012) or <code>UnknownNode</code> (3005).</td>
+</tr>
+<tr>
+<td><strong>On KV Cache Prefilled</strong></td>
+<td><code>FTryllKvCachePrefillResult</code></td>
+<td>A prefill request completed with aggregate counts and status.</td>
+</tr>
+<tr>
+<td><strong>On KV Cache Evicted</strong></td>
+<td><code>FTryllKvCacheEvictResult</code></td>
+<td>An eviction request completed with aggregate counts and status.</td>
+</tr>
+<tr>
+<td><strong>On KV Cache Status</strong></td>
+<td><code>FTryllKvCacheStatus</code></td>
+<td>A status request completed.</td>
+</tr>
+<tr>
+<td><strong>On KV Cache Prefill/Evict/Status Error</strong></td>
+<td><code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>The corresponding lifecycle operation failed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="events-trylltts-on-utryllspeakercomponent">Events — <code>Tryll|TTS</code> (on <code>UTryllSpeakerComponent</code>)<a class="headerlink" href="#events-trylltts-on-utryllspeakercomponent" title="Permanent link">&para;</a></h2>
+<p>Add a <code>UTryllSpeakerComponent</code> to an actor alongside
+<code>UTryllAgentComponent</code> to enable TTS audio playback. Bind these events to
+react to the audio lifecycle.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Fires when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On Tts Audio Started</strong></td>
+<td>—</td>
+<td>The first PCM chunk of a turn is queued — speech is about to begin.</td>
+</tr>
+<tr>
+<td><strong>On Tts Audio Finished</strong></td>
+<td>—</td>
+<td>The audio component has drained — speech has finished playing.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../../../how-to/add-voice-to-an-agent.html">Add Voice Output to an Agent</a> for the full setup workflow.</p>
+<h2 id="events-tryllevents-on-utryllvoiceinputcomponent">Events — <code>Tryll|Events</code> (on <code>UTryllVoiceInputComponent</code>)<a class="headerlink" href="#events-tryllevents-on-utryllvoiceinputcomponent" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Fires when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On Transcript Update</strong></td>
+<td><code>Update</code> (<code>FTryllTranscriptUpdate</code>)</td>
+<td>Each transcript update — partial and final. Read <code>Update.Kind</code> (<code>SpeechStart</code> / <code>Partial</code> / <code>SegmentFinal</code> / <code>UtteranceFinal</code>) and <code>Update.Text</code>.</td>
+</tr>
+<tr>
+<td><strong>On Error</strong></td>
+<td><code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>A protocol-level voice error.</td>
+</tr>
+<tr>
+<td><strong>On Voice Input Created</strong></td>
+<td>—</td>
+<td>The STT handle has been created.</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../../../how-to/use-voice-input.html">Use Voice Input</a> and
+<a href="../../../tryll-unreal/class_u_tryll_voice_input_component.html"><code>UTryllVoiceInputComponent</code></a>.</p>
+<h2 id="events-tryllevents-on-utryllsubsystem">Events — <code>Tryll|Events</code> (on <code>UTryllSubsystem</code>)<a class="headerlink" href="#events-tryllevents-on-utryllsubsystem" title="Permanent link">&para;</a></h2>
+<p>Bind these once per connection, typically in <code>Event BeginPlay</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Payload</th>
+<th>Fires when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On Connection Changed</strong></td>
+<td><code>bConnected</code> (<code>bool</code>)</td>
+<td>Transport state flipped. <code>true</code> means the session is ready to configure.</td>
+</tr>
+<tr>
+<td><strong>On Error</strong></td>
+<td><code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>Subsystem-level error (transport, protocol, model).</td>
+</tr>
+<tr>
+<td><strong>On Agent Destroyed</strong></td>
+<td><code>AgentId</code> (<code>int64</code>)</td>
+<td>A server-side agent was destroyed (by <code>DestroyAgent</code> or session tear-down).</td>
+</tr>
+<tr>
+<td><strong>On Create Session Complete</strong></td>
+<td><code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>CreateSession</code>.</td>
+</tr>
+<tr>
+<td><strong>On List Models Complete</strong></td>
+<td><code>Models</code> (<code>TArray&lt;FTryllModelInfo&gt;</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>ListModels</code>.</td>
+</tr>
+<tr>
+<td><strong>On Get Memory Consumption Complete</strong></td>
+<td><code>Snapshot</code> (<code>FTryllMemorySnapshot</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>RequestGetMemoryConsumption</code>. Session-scoped, server-wide; never <code>AgentBusy</code>. Bind after a C++ call — the request itself is not a Blueprint node. See <a href="../../../how-to/inspect-server-memory.html">Inspect Server Memory</a>.</td>
+</tr>
+<tr>
+<td><strong>On Download Progress</strong></td>
+<td><code>ModelName</code> (<code>FString</code>), <code>BytesDownloaded</code> (<code>int64</code>), <code>TotalBytes</code> (<code>int64</code>), <code>Percent</code> (<code>float</code>)</td>
+<td>Periodic download update. <code>Percent</code> is 0–100. <code>TotalBytes</code> may be <code>0</code> when the server does not know the content length — fall back to <code>Percent</code>.</td>
+</tr>
+<tr>
+<td><strong>On Download Complete</strong></td>
+<td><code>ModelName</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>), <code>ErrorMessage</code> (<code>FString</code>)</td>
+<td>Download finished or failed. <code>ErrorMessage</code> is empty on success.</td>
+</tr>
+<tr>
+<td><strong>On Load Model Complete</strong></td>
+<td><code>ModelName</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>RequestLoadModel</code>.</td>
+</tr>
+<tr>
+<td><strong>On Unload Model Complete</strong></td>
+<td><code>ModelName</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>RequestUnloadModel</code>.</td>
+</tr>
+<tr>
+<td><strong>On Tool Call</strong></td>
+<td><code>AgentId</code> (<code>int64</code>), <code>ToolName</code> (<code>FString</code>), <code>ArgumentsJson</code> (<code>FString</code>)</td>
+<td>A <a href="../../nodes/tool-call.html">ToolCall node</a> with a non-<code>RouteOnly</code> <code>disposition</code> detected a call. See <a href="../../../how-to/define-and-handle-tool-calls.html">Define and Handle Tool Calls</a>.</td>
+</tr>
+<tr>
+<td><strong>On Intent Classified</strong></td>
+<td><code>AgentId</code> (<code>int64</code>), <code>Classification</code> (<code>FTryllIntentClassification</code>)</td>
+<td>Embedding <a href="../../nodes/classify-intent.html">ClassifyIntent</a> with <code>notify_client</code> <code>OnFound</code>/<code>Always</code>. See <a href="../../../how-to/build-intent-driven-npc.html">Build an Intent-Driven NPC</a>.</td>
+</tr>
+<tr>
+<td><strong>On Intent LLM Classified</strong></td>
+<td><code>AgentId</code> (<code>int64</code>), <code>Classification</code> (<code>FTryllIntentLlmClassification</code>)</td>
+<td><a href="../../nodes/classify-intent-llm.html">ClassifyIntentLLM</a> with <code>notify_client</code> <code>OnFound</code>/<code>Always</code>.</td>
+</tr>
+<tr>
+<td><strong>On Paused</strong></td>
+<td><code>AgentId</code> (<code>int64</code>), <code>NodeName</code> (<code>FString</code>), <code>PendingExit</code> (<code>FString</code>)</td>
+<td>The executor paused a turn between nodes (<a href="../../nodes/pause.html">Pause node</a>, or a ToolCall with a pausing <code>disposition</code>). See <a href="../../../how-to/pause-and-resume-turns.html">How to pause and resume a turn</a>.</td>
+</tr>
+<tr>
+<td><strong>On Create String Storage Complete</strong></td>
+<td><code>Name</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>CreateStringStorage</code>.</td>
+</tr>
+<tr>
+<td><strong>On Destroy String Storage Complete</strong></td>
+<td><code>Name</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>DestroyStringStorage</code>.</td>
+</tr>
+<tr>
+<td><strong>On Create Embedded String Storage Complete</strong></td>
+<td><code>Name</code> (<code>FString</code>), <code>RecordCount</code> (<code>int32</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>CreateEmbeddedStringStorage</code>.</td>
+</tr>
+<tr>
+<td><strong>On Destroy Embedded String Storage Complete</strong></td>
+<td><code>Name</code> (<code>FString</code>), <code>bSuccess</code> (<code>bool</code>)</td>
+<td>Response to <code>DestroyEmbeddedStringStorage</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">String-storage requests are C++-only</p>
+<p>The four completion events above are Blueprint-assignable, but the
+matching <em>request</em> calls (<code>RequestCreateStringStorage</code> and its
+<code>…FromFile</code> / <code>…Keyed</code> variants, <code>RequestCreateEmbeddedStringStorage</code>
+and its <code>…FromStrings</code> variant, and the two destroy calls) take C++
+callbacks and are <strong>not</strong> exposed as Blueprint nodes — initiate them
+from C++. For most graphs you don't need them at all: pin a storage by
+relative path in the node's params and the server loads it at
+agent-creation time. See <a href="../../string-storage.html">String Storage</a> and
+<a href="../../embedded-string-storage.html">Embedded String Storage</a>.</p>
+</div>
+<h2 id="assets-and-structs-editable-in-details-panel">Assets and structs (editable in Details panel)<a class="headerlink" href="#assets-and-structs-editable-in-details-panel" title="Permanent link">&para;</a></h2>
+<p>These are Blueprint-visible types, not callable nodes. You configure
+them on the <code>UTryllAgentComponent</code>'s Details panel or inside a
+<code>UTryllWorkflowAsset</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Kind</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="../../../tryll-unreal/class_u_tryll_workflow_asset.html"><code>UTryllWorkflowAsset</code></a></strong></td>
+<td><code>UDataAsset</code></td>
+<td>Content-Browser asset wrapping an <code>FTryllGraphDescription</code>. Assign one to the component to avoid authoring the graph in C++.</td>
+</tr>
+<tr>
+<td><strong><a href="../../../tryll-unreal/class_u_tryll_speaker_component.html"><code>UTryllSpeakerComponent</code></a></strong></td>
+<td><code>UActorComponent</code></td>
+<td>Plays streaming TTS audio from an agent. Add to the same actor as <code>UTryllAgentComponent</code>; auto-discovered at <code>BeginPlay</code>. See <a href="../../../how-to/add-voice-to-an-agent.html">Add Voice Output to an Agent</a>.</td>
+</tr>
+<tr>
+<td><strong><a href="../../../tryll-unreal/class_u_tryll_voice_input_component.html"><code>UTryllVoiceInputComponent</code></a></strong></td>
+<td><code>UActorComponent</code></td>
+<td>Captures the microphone and streams STT. Add to an actor; routes the final transcript to a sibling <code>UTryllAgentComponent</code>. Requires <code>SttEngine = SherpaOnnx</code>.</td>
+</tr>
+<tr>
+<td><strong><code>UTryllGenerateAndSpeakParams</code></strong></td>
+<td><code>UObject (EditInlineNew)</code></td>
+<td>Node params for the <a href="../../nodes/generate-and-speak.html">GenerateAndSpeak</a> node. Set <code>bOverrideTtsModelName = true</code> and fill <code>TtsModelName</code>; <code>SpeakerId</code> and <code>Speed</code> are runtime-mutable.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllGraphDescription</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>The full <a href="../../glossary.html#graph">graph</a>: nodes, routes, start id.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllVariableDecl</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Declares one <a href="../../../concepts/agent-variables.html">Agent Variable</a>: name, type, initial value. Editable in the <code>UTryllWorkflowAsset</code>'s <code>Variables</code> array.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllVariableOverride</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Per-instance override of a declared variable's initial value, editable in <code>UTryllAgentComponent::VariableOverrides</code> (Material-Instance pattern).</td>
+</tr>
+<tr>
+<td><strong><code>FTryllModelInfo</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Row returned by <code>ListModels</code>; fields mirror <a href="../../model-management.html">Model Management</a>.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllMemorySnapshot</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Server-wide RAM/VRAM snapshot from <code>RequestGetMemoryConsumption</code>.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllMemoryTier</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Confidence of a memory figure: <code>Measured</code>, <code>Derived</code>, <code>Estimated</code>.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllError</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Error envelope used in some event payloads. Code matches <a href="../../error-codes.html">ETryllErrorCode</a>.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllInferenceEngine</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Inference backend selector passed to <code>CreateSession</code>.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllNodeType</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td><a href="../../nodes/index.html">Node type</a> selector used inside <code>FTryllGraphDescription</code>.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllTurnStatus</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Turn outcome carried by <code>OnTurnComplete</code> (<code>Success</code>, <code>Error</code>, <code>Cancelled</code>).</td>
+</tr>
+<tr>
+<td><strong><code>ETryllCancelMode</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Cancel mode for <strong>Cancel</strong>: <code>StopAndKeep</code> (chat Stop) or <code>StopAndDiscard</code> (rollback the interaction).</td>
+</tr>
+<tr>
+<td><strong><code>ETryllKvCacheInitialization</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Agent-creation choice: <code>AllocateOnly</code>, <code>Prefill</code>, or <code>DeferAllocation</code>.</td>
+</tr>
+<tr>
+<td><strong><code>FTryllKvCacheStatus</code></strong></td>
+<td><code>USTRUCT(BlueprintType)</code></td>
+<td>Aggregate KV-cache applicability, residency, reusable-prefix status, eligible-node count, and optional diagnostics.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllModelStatus</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Model lifecycle state returned inside <code>FTryllModelInfo</code>.</td>
+</tr>
+<tr>
+<td><strong><code>ETryllErrorCode</code></strong></td>
+<td><code>UENUM(BlueprintType)</code></td>
+<td>Mirrors the server <a href="../../error-codes.html">error codes</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="project-settings-tryll-client">Project Settings — Tryll Client<a class="headerlink" href="#project-settings-tryll-client" title="Permanent link">&para;</a></h2>
+<p>Set under <strong>Project Settings → Plugins → Tryll Client</strong> (<code>UTryllRuntimeSettings</code>,
+persisted to <code>Config/DefaultGame.ini</code>). These drive the auto-launch /
+auto-connect / auto-create-session flow, so the components above create
+themselves with no code.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bAutoLaunchServer</code></td>
+<td><code>true</code></td>
+<td>Spawn the bundled server on startup.</td>
+</tr>
+<tr>
+<td><code>LlamaCppBackend</code></td>
+<td><code>Vulkan</code></td>
+<td>llama.cpp GPU plugin (<code>Vulkan</code> / <code>Auto</code>). Passed as <code>--llama-backend</code>. <code>Auto</code> prefers CUDA on NVIDIA and ships CUDA DLLs; <code>Vulkan</code> skips them. Ignored when auto-launch is off.</td>
+</tr>
+<tr>
+<td><code>bAutoConnect</code></td>
+<td><code>true</code></td>
+<td>Connect once the subsystem initializes.</td>
+</tr>
+<tr>
+<td><code>bAutoCreateSession</code></td>
+<td><code>true</code></td>
+<td>Create the session from registered models once connected.</td>
+</tr>
+<tr>
+<td><code>GameName</code></td>
+<td>empty</td>
+<td>Telemetry grouping slug.</td>
+</tr>
+<tr>
+<td><code>StorageDataFolder</code></td>
+<td>empty</td>
+<td>Project-relative root for storage / hotword paths.</td>
+</tr>
+<tr>
+<td><code>ConnectMaxAttempts</code> / <code>ConnectRetryDelaySeconds</code></td>
+<td><code>5</code> / <code>1.0</code></td>
+<td>Connect-retry policy.</td>
+</tr>
+</tbody>
+</table>
+<p>Full per-field detail: <a href="../../../tryll-unreal/class_u_tryll_runtime_settings.html"><code>UTryllRuntimeSettings</code></a>.</p>
+<h2 id="typical-blueprint-flows">Typical Blueprint flows<a class="headerlink" href="#typical-blueprint-flows" title="Permanent link">&para;</a></h2>
+<p><strong>First inference</strong> — bind <code>OnConnectionChanged</code> on the subsystem,
+call <code>CreateSession</code> on <code>bConnected=true</code>, wait for
+<code>OnCreateSessionComplete</code>, then call <code>CreateAgent</code> on the
+component. See <a href="../../../getting-started/first-inference-unreal.html">First Inference in Unreal</a>.</p>
+<p><strong>Streaming a reply</strong> — bind <code>OnAnswerText</code> on the agent component,
+append <code>Text</code> to your UI widget on each event, show the "done" state
+on <code>OnTurnComplete</code>. See <a href="../../../how-to/stream-answers-to-ui.html">Stream Answers to UI</a>.</p>
+<p><strong>Handling a tool call</strong> — bind <code>OnToolCall</code> on the subsystem, parse
+<code>ArgumentsJson</code>, run your game-side logic. See
+<a href="../../../how-to/define-and-handle-tool-calls.html">Define and Handle Tool Calls</a>.</p>
+<p><strong>Speaking NPC</strong> — add <code>UTryllSpeakerComponent</code> to the actor alongside
+<code>UTryllAgentComponent</code>. Create the session with <code>TtsEngine =
+SherpaOnnx</code>. Use a <code>UTryllWorkflowAsset</code> with a <strong>GenerateAndSpeak</strong> node
+(fill in <code>TtsModelName</code>). Bind <strong>On Tts Audio Started</strong> / <strong>On Tts Audio
+Finished</strong> on the speaker component to drive mouth animations. See
+<a href="../../../how-to/add-voice-to-an-agent.html">Add Voice Output to an Agent</a>.</p>
+<p><strong>Prepare an NPC during loading</strong> — set the component's <strong>KV Cache
+Initialization</strong> to <code>Prefill</code>, or call <strong>Prefill KV Cache</strong> while the agent is
+idle. <strong>Evict KV Cache</strong> later to release only LLM context memory; the next
+<strong>Send Message</strong> restores it automatically. See <a href="../../../how-to/manage-agent-kv-cache.html">Manage an Agent's KV
+Cache</a>.</p>
+<p><strong>Save and load</strong> — <code>ExportDialog</code> / <code>ImportDialog</code> are C++ only (the snapshot
+is not Blueprint-exposed). Store the canonical <code>TDLG</code> bytes in your own save
+file next to variables and game state. See
+<a href="../../../how-to/save-and-load-agent-state.html">Save and Load Agent State</a>.</p>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="cpp/index.html">Unreal C++ API Reference</a> — every header and class
+  summarised.</li>
+<li>Component class pages: <a href="../../../tryll-unreal/class_u_tryll_agent_component.html">UTryllAgentComponent</a>,
+  <a href="../../../tryll-unreal/class_u_tryll_speaker_component.html">UTryllSpeakerComponent</a>,
+  <a href="../../../tryll-unreal/class_u_tryll_voice_input_component.html">UTryllVoiceInputComponent</a>,
+  <a href="../../../tryll-unreal/class_u_tryll_workflow_asset.html">UTryllWorkflowAsset</a>,
+  <a href="../../../tryll-unreal/class_u_tryll_runtime_settings.html">UTryllRuntimeSettings</a>.</li>
+<li><a href="../../agent-parameters.html">Agent Parameters</a></li>
+<li><a href="../../nodes/index.html">Workflow Nodes</a></li>
+<li><a href="../../model-management.html">Model Management</a></li>
+<li><a href="../../error-codes.html">Error Codes</a></li>
+<li><a href="../../../getting-started/first-inference-unreal.html">First Inference in Unreal</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../tryll-unreal/class_u_tryll_runtime_settings.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: UTryllRuntimeSettings">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                UTryllRuntimeSettings
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cpp/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: C++ Client API Reference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                C++ Client API Reference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "search.suggest", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+    
+  </body>
+</html>
