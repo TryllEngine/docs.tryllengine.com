@@ -8,6 +8,7 @@
 * **AgentProxy** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **AppendInteractions** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **AppendInteractionsAsync** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **Accepted** ([**Tryll::Client::AgentProxy::IntentClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event.md), [**Tryll::Client::AgentProxy::IntentLlmClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_classified_event.md))
 * **AddToSet** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **AgentVariables** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **AddBranch** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md), [**Tryll::Client::GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md))
@@ -69,6 +70,8 @@
 
 * **EvictKvCache** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **EvictKvCacheAsync** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **ExportDialog** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **ExportDialogAsync** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **EndUtterance** ([**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md))
 * **EndUtteranceAsync** ([**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md))
 
@@ -84,6 +87,7 @@
 * **GetAgentId** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **GetKvCacheStatus** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **GetKvCacheStatusAsync** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **GetPausedNode** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **GetBool** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **GetFloat** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **GetInt** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
@@ -94,6 +98,7 @@
 * **GetDefaultModelName** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **GetNodes** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
 * **GetStartNode** ([**Tryll::Client::GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md))
+* **GetMemoryConsumption** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **GetServerBuildConfig** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **GetServerExePath** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **GetServerIdleTimeoutSeconds** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
@@ -114,6 +119,8 @@
 
 ## i
 
+* **ImportDialog** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **ImportDialogAsync** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **Init** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **IsDeclared** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
 * **IsDirty** ([**Tryll::Client::AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md))
@@ -168,6 +175,7 @@
 * **SetOnAnswerText** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **SetOnError** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **SetOnIntentClassified** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **SetOnIntentLlmClassified** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **SetOnNodeEvent** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **SetOnPaused** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 * **SetOnToolCall** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
@@ -191,6 +199,7 @@
 * **Stop** ([**Tryll::Client::ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md))
 * **SendDebugCommand** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **SetInferenceThrottle** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
+* **SetSessionLocale** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **ShutdownAsync** ([**Tryll::Client::TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md))
 * **SendAudioBuffer** ([**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md))
 * **SetOnTranscriptUpdate** ([**Tryll::Client::VoiceInput**](class_tryll_1_1_client_1_1_voice_input.md))

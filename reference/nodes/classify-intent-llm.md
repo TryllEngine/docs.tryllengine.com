@@ -7,7 +7,7 @@ The Classify Intent (LLM) node maps a user message to a discrete **intent label*
 ## How it works
 
 1. Projects the dialog via `ClassifyIntentLLMProjectionStrategy`:
-1. Stable **system** message (Mustache template + pre-rendered label list).
+1. Stable **system** message — `system_prompt` rendered as a Mustache template against the pre-built label list; see [The system prompt](#the-system-prompt).
 1. Up to `history_turns` past **user** / **assistant** pairs for coreference (history turns always replay the `user_message` slot).
 1. Current turn's `input`-resolved slot as the **user** message (empty = `user_message`).
 1. Prefills the classifier model (`Sync()`); reuses KV-cache prefix across turns when the prompt tail is append-only.
@@ -16,21 +16,71 @@ The Classify Intent (LLM) node maps a user message to a discrete **intent label*
 
 No text is generated; no sampling.
 
+## The system prompt
+
+`system_prompt` is a [Mustache](https://mustache.github.io/) template rendered against a context with **exactly two variables**:
+
+| Variable            | Renders to                                                                      |
+| ------------------- | ------------------------------------------------------------------------------- |
+| `{{intents_block}}` | The label list, one line per `intents_prompt` entry: `A. <first>\nB. <second>…` |
+| `{{letters}}`       | The candidate letters, comma-joined: `A, B, C`                                  |
+
+There is no default — an empty `system_prompt` shows the model no labels
+
+The node passes `system_prompt` through verbatim. An empty value produces an **empty system message**: the model is asked to pick a letter having never been shown what the letters mean, and nothing fails loudly. Every client leaves this field empty by default, so it is always yours to author.
+
+A template that fails to parse also fails quietly — the node sends the **raw template text**, literal `{{intents_block}}` included. Verify substitution in `input.prompt[]` after any edit.
+
+This is **not** the [`Generate`](https://docs.tryllengine.com/reference/nodes/generate.html) / [`Transform`](https://docs.tryllengine.com/reference/nodes/transform.html) Mustache context: `user_message`, `slot.<name>`, `var.<name>`, `instructions` and `knowledge` do not resolve here. The classified text arrives as its own user turn, added by the projection.
+
+A minimal working template:
+
+```
+You are an intent classifier. Pick the best label for the user's LATEST message,
+using the conversation as context for pronouns and references.
+
+Labels:
+{{intents_block}}
+
+Respond with a single letter (one of {{letters}}). No other text.
+```
+
+With `intents_prompt = "asks the price,wants to haggle,anything else"`, the model receives:
+
+```
+You are an intent classifier. Pick the best label for the user's LATEST message,
+using the conversation as context for pronouns and references.
+
+Labels:
+A. asks the price
+B. wants to haggle
+C. anything else
+
+Respond with a single letter (one of A, B, C). No other text.
+```
+
+`intents_ids` is never rendered — it supplies the label attached on a win, for downstream routing only. For what to write in the template and how to order the labels, see [Design an intent-classifier prompt](https://docs.tryllengine.com/how-to/design-an-intent-classifier-prompt.html).
+
+## Context window
+
+Leave `context_size` at `0` to use this node's **2048-token** default (then the model variant, then the server `default_n_ctx`). That is enough for typical classifier prompts with a few history turns and is far cheaper than the 8192 Generate default. The `context` table is an advanced structural override (`kv_cache_type`, veto-only `offload_kqv`, escape-hatch batch sizes). Do not set `q4_0` KV expecting a VRAM win at a right-sized window — measured savings show up only at large `n_ctx` (around 8192).
+
 ## Parameters
 
-| Param              | Type                      | Default               | Range      | Structural | Description                                                                                                                                                                                                               |
-| ------------------ | ------------------------- | --------------------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model_name`       | Optional[str]             | inherit model default | —          | ✓          | Model catalog name. Structural because the token-ID mapping is built from the model's vocabulary at construction.                                                                                                         |
-| `context_size`     | int                       | 0                     | ≥ 0.0      | ✓          | KV-cache / context window (n_ctx) for this node in tokens. 0 = fall back to the model variant's context_size, else the server default_n_ctx. Validated against the model's trained maximum at agent creation.             |
-| `intents_ids`      | Optional[str]             | inherit model default | —          | ✓          | Comma-separated intent IDs (e.g. "greet,farewell,other"). Structural because label-to-token-ID mapping is built at construction.                                                                                          |
-| `intents_prompt`   | Optional[str]             | inherit model default | —          | ✓          | Comma-separated intent prompt labels / descriptions. Structural because the projection scaffolding and label-token mapping are built at construction.                                                                     |
-| `system_prompt`    | Optional[str] (multiline) | inherit model default | —          | —          | Prepended before the user turn during classification projection.                                                                                                                                                          |
-| `input`            | Optional[str]             | inherit model default | —          | ✓          | Slot name this node consumes as its primary text for the current turn. Empty = "user_message". Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. |
-| `history_turns`    | int                       | 2                     | 0.0 – 64.0 | —          | Number of dialog history turns included in the classification context.                                                                                                                                                    |
-| `threshold`        | float                     | 0.5                   | 0.0 – 1.0  | —          | First-token probability threshold for the winning label.                                                                                                                                                                  |
-| `margin`           | float                     | 0.15                  | 0.0 – 1.0  | —          | Minimum margin between top and second label probabilities.                                                                                                                                                                |
-| `notify_client`    | bool                      | False                 | —          | —          | When true, fire OnNodeEvent("intent_classified", …) on the found path.                                                                                                                                                    |
-| `not_found_intent` | Optional[str]             | inherit model default | —          | —          | Intent ID returned when no label clears the threshold/margin.                                                                                                                                                             |
+| Param              | Type                      | Default               | Range      | Structural | Description                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------------ | ------------------------- | --------------------- | ---------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model_name`       | Optional[str]             | inherit model default | —          | ✓          | Model catalog name. Structural because the token-ID mapping is built from the model's vocabulary at construction.                                                                                                                                                                                                                                                                                               |
+| `context_size`     | int                       | 0 -> 2048             | ≥ 0.0      | ✓          | KV-cache / context window (n_ctx) for this node in tokens. 0 = node default 2048, else the model variant's context_size, else server default_n_ctx. Validated against the model's trained maximum at agent creation.                                                                                                                                                                                            |
+| `intents_ids`      | Optional[str]             | inherit model default | —          | ✓          | Comma-separated intent IDs (e.g. "greet,farewell,other"). Never shown to the model — this is the label attached on a win, for downstream routing. Paired positionally with intents_prompt: entry 0 is letter A, entry 1 is B. 2-26 unique entries. Structural because label-to-token-ID mapping is built at construction.                                                                                       |
+| `intents_prompt`   | Optional[str]             | inherit model default | —          | ✓          | Comma-separated intent descriptions — the text the model actually reads, rendered into the system prompt as "A. ", "B. ", … Must have the same entry count as intents_ids. Commas cannot be escaped: use dashes or semicolons inside a description. Structural because the projection scaffolding and label-token mapping are built at construction.                                                            |
+| `system_prompt`    | Optional[str] (multiline) | inherit model default | —          | —          | Mustache template for the classifier's system message. Two variables are available: intents_block (the letter-prefixed list built from intents_prompt) and letters (e.g. "A, B, C"). There is NO built-in default: an empty value sends an empty system message, so the model is asked for a letter without ever seeing the labels. Always author a template that includes the intents_block Mustache variable. |
+| `input`            | Optional[str]             | inherit model default | —          | ✓          | Slot name this node consumes as its primary text for the current turn. Empty = "user_message". Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation.                                                                                                                                                                                       |
+| `history_turns`    | int                       | 2                     | 0.0 – 64.0 | —          | Number of dialog history turns included in the classification context.                                                                                                                                                                                                                                                                                                                                          |
+| `threshold`        | float                     | 0.5                   | 0.0 – 1.0  | —          | First-token probability threshold for the winning label.                                                                                                                                                                                                                                                                                                                                                        |
+| `margin`           | float                     | 0.15                  | 0.0 – 1.0  | —          | Minimum margin between top and second label probabilities.                                                                                                                                                                                                                                                                                                                                                      |
+| `notify_client`    | NotifyClient              | NotifyClient.Disabled | —          | —          | When to fire OnNodeEvent("intent_llm_classified", …).                                                                                                                                                                                                                                                                                                                                                           |
+| `not_found_intent` | Optional[str]             | inherit model default | —          | —          | Intent ID returned when no label clears the threshold/margin.                                                                                                                                                                                                                                                                                                                                                   |
+| `context`          | Optional[Any]             | inherit model default | —          | ✓          | Backend context construction. Null table inherits, except CreateContext still defaults `n_outputs_max` to 1. Structural. Appended after not_found_exit so existing field IDs do not move.                                                                                                                                                                                                                       |
 
 ## Exits
 
@@ -48,27 +98,50 @@ Each exit is a structural string field on the node's params; its value names the
 | `found`     | Valid message, top probability passes `threshold` and `margin`, and winning intent is not the sink.                    |
 | `not_found` | Empty message, failed thresholds, internal scoring error, or winning intent equals `not_found_intent` (`sink_intent`). |
 
+`notify_client`: `OnFound` emits `event_type="intent_llm_classified"` on the found path; `Always` also emits on every `not_found` path. KV: `intent`, `top_prob`, `second_prob`, `not_found_reason`, plus one `<label>.prob` per `intents_ids` entry. Subscribe via `set_on_intent_llm_classified` / `SetOnIntentLlmClassified` / `IntentLlmClassified` / `OnIntentLlmClassified`. A typed subscriber swallows generic `OnNodeEvent`.
+
 ## Diagnostics
 
-When diagnostics are enabled on the agent, `TurnComplete.debug_info` includes these keys from the classify node:
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope, the shared `input.prompt[]` shape, and the `engine` counters.
 
-| Key                | Description                                                                                                                                           |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `input`            | The configured `input` slot name, when set (absent when using the `user_message` default).                                                            |
-| `query`            | The `input`-resolved text classified.                                                                                                                 |
-| `top_prob`         | Softmax probability of the winning letter.                                                                                                            |
-| `second_prob`      | Softmax probability of the runner-up letter.                                                                                                          |
-| `margin_result`    | `top_prob − second_prob`.                                                                                                                             |
-| `result.intent`    | Attached intent label (empty on `not_found`).                                                                                                         |
-| `probs_json`       | Full probability vector over labels.                                                                                                                  |
-| `intents_ids_json` | JSON array of `intents_ids` in label order.                                                                                                           |
-| `predicted_letter` | Winning letter (`A`, `B`, …).                                                                                                                         |
-| `not_found_reason` | Why `not_found` fired: `empty_message`, `score_size_mismatch`, `score_failed`, `below_threshold`, `below_margin`, or `sink_intent`. Empty on `found`. |
+The shared [turn inspector](https://docs.tryllengine.com/reference/turn-inspector.html#intent) renders this payload as the **Intent** block. Dialog Lab can also assert the accepted label with an **Intent is** / **Intent not found** check — see [Compare dialog variants](https://docs.tryllengine.com/how-to/compare-dialog-variants.html). Raw JSON remains the escape hatch for every field below.
+
+| Key                                      | Meaning                                                                                                                                                                                | Absent when                                                                             |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `parameters.model_name`                  | The model that actually ran, after fallback.                                                                                                                                           | The name could not be resolved.                                                         |
+| `parameters.input`                       | The configured input slot name.                                                                                                                                                        | Using the `user_message` default.                                                       |
+| `parameters.threshold`                   | Minimum `top_prob` required to accept a label.                                                                                                                                         | —                                                                                       |
+| `parameters.margin`                      | Minimum `top_prob − second_prob` required.                                                                                                                                             | —                                                                                       |
+| `parameters.notify_client`               | `Disabled`, `OnFound` or `Always`.                                                                                                                                                     | —                                                                                       |
+| `parameters.history_turns`               | How many prior turns were included in the classification prompt.                                                                                                                       | —                                                                                       |
+| `parameters.intents_ids[]`               | The label ids **in letter order** — element 0 is `A`, element 1 is `B`, and so on.                                                                                                     | —                                                                                       |
+| `input.query`                            | The `input`-resolved text classified. Same string as `output.classification.query` (kept for one release).                                                                             | The resolved text was empty.                                                            |
+| `input.prompt[]`                         | The classification prompt as the model received it.                                                                                                                                    | —                                                                                       |
+| `output.classification.query`            | The `input`-resolved text classified. Prefer `input.query`.                                                                                                                            | The resolved text was empty.                                                            |
+| `output.classification.probs[]`          | Full first-token probability vector. **`probs[i]` is the probability of `parameters.intents_ids[i]`** (letter A = 0). Equal length on `found`; `score_size_mismatch` when they differ. | Scoring did not run.                                                                    |
+| `output.classification.top_prob`         | Probability of the winning letter.                                                                                                                                                     | Scoring did not run.                                                                    |
+| `output.classification.second_prob`      | Probability of the runner-up letter.                                                                                                                                                   | Scoring did not run.                                                                    |
+| `output.classification.margin_result`    | `top_prob − second_prob`, to compare against `parameters.margin`.                                                                                                                      | Scoring did not run.                                                                    |
+| `output.classification.predicted_letter` | The winning letter (`A`, `B`, …).                                                                                                                                                      | Nothing was predicted.                                                                  |
+| `output.classification.intent`           | The intent label attached.                                                                                                                                                             | The node exited `not_found`.                                                            |
+| `output.classification.rejected_intent`  | The label the scorer picked, when routing rejected it.                                                                                                                                 | `found`, or there was no pick (`empty_message`, `score_failed`, `score_size_mismatch`). |
+| `output.classification.not_found_reason` | `empty_message`, `score_size_mismatch`, `score_failed`, `below_threshold`, `below_margin` or `sink_intent`.                                                                            | The node found a match.                                                                 |
+| `engine.*`                               | Scheduler counters for the scoring pass — `last_job.kind` is `score`, not `decode`.                                                                                                    | Server config `include_engine_diagnostics` is off.                                      |
+
+To read a `not_found`: `not_found_reason` names the gate that rejected it, and `top_prob` / `margin_result` against `parameters.threshold` / `parameters.margin` show by how much. Pair `probs[]` with `intents_ids[]` positionally to see the full ranking.
 
 ## Example
 
 ```
-from tryll_client.graph import GraphDescription, ClassifyIntentLLMParams
+from tryll_client.graph import GraphDescription, ClassifyIntentLLMParams, NotifyClient
+
+CLASSIFIER_SYSTEM = (
+    "You are an intent classifier for a murder-mystery interrogation.\n"
+    "The inspector (user) questions Mr Rixman, the butler (assistant).\n"
+    "Pick the single best label for the inspector's LATEST message only.\n\n"
+    "Labels:\n{{intents_block}}\n\n"
+    "Respond with a single letter (one of {{letters}}). No other text."
+)
 
 graph = (
     GraphDescription()
@@ -80,9 +153,10 @@ graph = (
             "inspector asks when butler first saw the body,"
             "anything else"
         ),
+        system_prompt=CLASSIFIER_SYSTEM,   # required — there is no default
         history_turns=4,
         threshold=0.5,
-        notify_client=True,
+        notify_client=NotifyClient.OnFound,
         found_exit="pick_instruction",
         not_found_exit="retrieve_world",
     ))
@@ -96,6 +170,13 @@ graph = (
 using namespace Tryll::Client;
 using namespace Tryll::NodeParams;
 
+constexpr const char* kClassifierSystem =
+    "You are an intent classifier for a murder-mystery interrogation.\n"
+    "The inspector (user) questions Mr Rixman, the butler (assistant).\n"
+    "Pick the single best label for the inspector's LATEST message only.\n\n"
+    "Labels:\n{{intents_block}}\n\n"
+    "Respond with a single letter (one of {{letters}}). No other text.";
+
 ClassifyIntentLLMParamsT cp;
 cp.model_name     = "Llama 3.2 1B Instruct (Q4_K_M)";
 cp.intents_ids    = "confess_margaret_saw,when_saw_body,other";
@@ -103,9 +184,10 @@ cp.intents_prompt =
     "inspector confronts butler with Mrs Hollis witness statement,"
     "inspector asks when butler first saw the body,"
     "anything else";
+cp.system_prompt  = kClassifierSystem;  // required — there is no default
 cp.history_turns  = 4;
 cp.threshold      = 0.5f;
-cp.notify_client  = true;
+cp.notify_client  = Tryll::NotifyClient_OnFound;
 cp.found_exit     = "pick_instruction";
 cp.not_found_exit = "retrieve_world";
 
@@ -127,6 +209,9 @@ See `tryll_test_chat` agent `butler2` (`IntentLLMWorkflow`) for a full graph alo
 
 ## Related
 
+- [How-to: Design an intent-classifier prompt](https://docs.tryllengine.com/how-to/design-an-intent-classifier-prompt.html) — the template contract, writing and ordering labels, tuning `threshold`/`margin`
+- [How-to: Classify intent without a knowledge base](https://docs.tryllengine.com/how-to/classify-intent-without-a-knowledge-base.html) — the end-to-end graph in all four clients
+- [How-to: Build an immersion guard](https://docs.tryllengine.com/how-to/build-an-immersion-guard.html) — two measured classifiers in front of an NPC
 - [Classify Intent](https://docs.tryllengine.com/reference/nodes/classify-intent.html) — embedding retrieval alternative
 - [Intent to Instruction](https://docs.tryllengine.com/reference/nodes/intent-to-instruction.html)
 - Research: `docs/research/workflow/intent-classification-slm-logprob.md` (engine design)

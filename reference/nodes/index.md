@@ -44,7 +44,7 @@ Every node carries a list of `(key, value)` string pairs (`NodeParam`). Each nod
 
 ## Diagnostics
 
-When the agent is created with `enable_diagnostics = true`, every node contributes to `TurnComplete.debug_info`. See [agent parameters — diagnostics](https://docs.tryllengine.com/reference/agent-parameters.html#diagnostics).
+When the agent is created with `enable_diagnostics = true`, every node contributes to `TurnComplete.debug_info`. Each node's reference page has a **Diagnostics** section listing the keys it records; the payload that holds them — the envelope, the shared prompt and engine sections, and the rules for when a key is omitted — is documented in [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html). See also [agent parameters — diagnostics](https://docs.tryllengine.com/reference/agent-parameters.html#diagnostics).
 
 ## Related
 

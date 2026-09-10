@@ -19,12 +19,12 @@ Each kind has its own engine selection. `CreateSession` carries four independent
 
 An **inference engine** is the runtime that executes the model against your CPU or GPU. Tryll currently ships three real engines:
 
-| Engine                                              | Backend                                              | Status                                                                                                                                 |
-| --------------------------------------------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Mock`                                              | In-process stub                                      | Used for tests; no real inference.                                                                                                     |
-| `LlamaCpp`                                          | [llama.cpp](https://github.com/ggerganov/llama.cpp)  | Default for language + embedding. GGUF files; CPU + Vulkan / CUDA / ROCm GPU.                                                          |
-| `SherpaOnnx`                                        | [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) | STT, TTS, and VAD. TTS families: Supertonic and Pocket TTS — see [TTS Models](https://docs.tryllengine.com/reference/tts-models.html). |
-| `OnnxGenAI`, `WindowsML`, `OpenVino`, `TensorRtLlm` | Reserved                                             | Enum slots exist; implementations land in future releases.                                                                             |
+| Engine                                              | Backend                                              | Status                                                                                                                                        |
+| --------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Mock`                                              | In-process stub                                      | Used for tests; no real inference.                                                                                                            |
+| `LlamaCpp`                                          | [llama.cpp](https://github.com/ggerganov/llama.cpp)  | Default for language + embedding. Also hosts SNAC TTS (Orpheus, Maya1) via a shared ONNX decoder. GGUF files; CPU + Vulkan / CUDA / ROCm GPU. |
+| `SherpaOnnx`                                        | [sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) | STT, TTS, and VAD. TTS families: Supertonic and Pocket TTS — see [TTS Models](https://docs.tryllengine.com/reference/tts-models.html).        |
+| `OnnxGenAI`, `WindowsML`, `OpenVino`, `TensorRtLlm` | Reserved                                             | Enum slots exist; implementations land in future releases.                                                                                    |
 
 You pick the engine per session with `CreateSession` (see the [C++ API](https://docs.tryllengine.com/reference/client-api/cpp/index.html#tryllclientcreatesession) or [wire protocol](https://docs.tryllengine.com/reference/wire-protocol.html#session-lifecycle) for the full signature). Changing it affects only *later* `CreateAgent` calls; existing agents keep the engine they were built with.
 
@@ -68,7 +68,7 @@ Each llama.cpp variant can declare a `kv_cache_type`:
 | `q8_0` | ~1            | Tryll's default for configured variants. Indistinguishable quality for most chat use. |
 | `q4_0` | ~0.5          | Halves memory vs. q8_0; small quality hit. Useful on memory-constrained GPUs.         |
 
-The cache size dominates VRAM / RAM for long conversations. Moving from `f16` to `q8_0` roughly halves it; from `q8_0` to `q4_0` halves it again.
+The cache size dominates VRAM / RAM for long conversations. Moving from `f16` to `q8_0` roughly halves it; from `q8_0` to `q4_0` halves it again. Catalog `kv_cache_type` is the model-load default. A node's structural `context` table can override it per context (`Inherit` keeps the catalog value). At a right-sized window (Classify / ToolCall 2048) a `q4_0` override is usually not a measurable VRAM win; the dtype delta shows up at large `n_ctx` (around 8192).
 
 ## Context size and why 4k is not 4k
 

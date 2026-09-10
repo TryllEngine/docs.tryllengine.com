@@ -53,6 +53,18 @@ Both routes must be wired.
 
 None on the dialog. The node does not modify the current [interaction](https://docs.tryllengine.com/reference/glossary.html#interaction), does not emit `AnswerText` frames, and does not touch the KV cache. It is pure routing.
 
+## Diagnostics
+
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
+
+| Key                         | Meaning                                                                                  | Absent when |
+| --------------------------- | ---------------------------------------------------------------------------------------- | ----------- |
+| `parameters.string_storage` | Name of the pattern storage that was matched against.                                    | —           |
+| `parameters.pattern_count`  | How many patterns compiled and ran. A count of `0` means the guardrail could never fire. | —           |
+| `output.triggered`          | Whether any pattern matched.                                                             | —           |
+
+The node deliberately records **which** storage and **how many** patterns, but never the pattern that matched or the text it matched against. Use the node entry's `exit_route` (`triggered` / `not_triggered`) together with the input slot in the turn's `interaction` snapshot when you need to reconstruct a decision.
+
 ## Minimum working example
 
 ```

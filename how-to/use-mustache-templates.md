@@ -39,6 +39,10 @@ No HTML escaping
 
 All variable values are inserted verbatim — apostrophes, quotation marks, and ampersands are **never** HTML-encoded. You do not need triple-brace syntax (`{{{variable}}}`).
 
+Classifier system prompts are a different context
+
+[`ClassifyIntentLLM`](https://docs.tryllengine.com/reference/nodes/classify-intent-llm.html) also renders its `system_prompt` as Mustache, but against its **own** two-variable context — `{{intents_block}}` and `{{letters}}`. None of the variables in the table above resolve there, and none of the classifier variables resolve here. See [Design an intent-classifier prompt](https://docs.tryllengine.com/how-to/design-an-intent-classifier-prompt.html).
+
 ______________________________________________________________________
 
 ## Placement values

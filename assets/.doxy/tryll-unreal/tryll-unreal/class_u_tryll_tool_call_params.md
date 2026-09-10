@@ -42,12 +42,14 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | Type | Name |
 | ---: | :--- |
 |  FString | [**AcknowledgeText**](#variable-acknowledgetext)  <br> |
+|  [**FTryllContextOverrides**](struct_f_tryll_context_overrides.md) | [**Context**](#variable-context)  <br> |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  ETryllToolCallDisposition | [**Disposition**](#variable-disposition)   = `ETryllToolCallDisposition::Acknowledge`<br> |
 |  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  ETryllToolCallMode | [**Mode**](#variable-mode)   = `ETryllToolCallMode::CallOrAnswer`<br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
 |  FString | [**NoToolCalledExit**](#variable-notoolcalledexit)  <br> |
+|  int32 | [**PauseTimeoutMs**](#variable-pausetimeoutms)   = `0`<br> |
 |  [**FTryllSamplingOverrides**](struct_f_tryll_sampling_overrides.md) | [**Sampling**](#variable-sampling)  <br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  FString | [**ToolCallFormat**](#variable-toolcallformat)  <br> |
@@ -196,6 +198,23 @@ FString UTryllToolCallParams::AcknowledgeText;
 
 
 
+### variable Context 
+
+```C++
+FTryllContextOverrides UTryllToolCallParams::Context;
+```
+
+
+
+Backend context construction. Null table inherits, except CreateContext still defaults `n_outputs_max` to 1. Structural. Appended after pause\_timeout\_ms so existing field IDs do not move. 
+
+
+        
+
+<hr>
+
+
+
 ### variable ContextSize 
 
 ```C++
@@ -204,7 +223,7 @@ int32 UTryllToolCallParams::ContextSize;
 
 
 
-KV-cache / context window (n\_ctx) for this node in tokens. 0 = fall back to the model variant's context\_size, else the server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
+KV-cache / context window (n\_ctx) for this node in tokens. 0 = node default 2048, else the model variant's context\_size, else server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
 
 
         
@@ -286,6 +305,23 @@ FString UTryllToolCallParams::NoToolCalledExit;
 
 
 Exit taken when no tool call is parsed (or, under mode=call\_or\_answer, when the model's residual text was emitted as a plain-text reply instead). Empty string = END. Graph exit "no\_tool\_called" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable PauseTimeoutMs 
+
+```C++
+int32 UTryllToolCallParams::PauseTimeoutMs;
+```
+
+
+
+Wall-clock budget for a pause this node triggers (pausing dispositions only), in milliseconds. 0 = inherit the server's `workflow.tool_call_pause_timeout_ms`, which is itself 0 = infinite. On expiry the turn ends with TurnStatus.PauseTimedOut; there is no timeout exit on this node. Structural: resolved once against the server default at agent creation. 
 
 
         

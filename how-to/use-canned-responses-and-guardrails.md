@@ -63,7 +63,7 @@ var (agent, error) = await TryllClient.Instance.RequestCreateAgentAsync(graph);
 ```
 
 1. Call `UTryllSubsystem::CreateStringStorage` twice — once for patterns, once for refusal lines. Bind **On Create String Storage Complete** for each and wait for `bSuccess`.
-1. In a `UTryllWorkflowAsset` (or directly on the component's **Graph** details panel), build the three-node graph with the `string_storage` parameter set on the guardrail and the canned-response nodes.
+1. In a `UTryllWorkflowAsset`, build the three-node graph with the `string_storage` parameter set on the guardrail and the canned-response nodes.
 
 ```
 namespace TC = Tryll::Client;

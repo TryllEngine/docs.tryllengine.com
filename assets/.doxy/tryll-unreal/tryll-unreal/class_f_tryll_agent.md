@@ -62,11 +62,13 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**DispatchError**](#function-dispatcherror) (const [**FTryllError**](struct_f_tryll_error.md) & Error) const<br> |
 |  void | [**DrainPendingLifecycleCallbacks**](#function-drainpendinglifecyclecallbacks) (const [**FTryllError**](struct_f_tryll_error.md) & TerminalError) <br> |
 |  void | [**EvictKvCache**](#function-evictkvcache) (TFunction&lt; void(const [**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
+|  void | [**ExportDialog**](#function-exportdialog) (TFunction&lt; void(const [**FTryllDialogSnapshot**](struct_f_tryll_dialog_snapshot.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |   | [**FTryllAgent**](#function-ftryllagent) (TSharedPtr&lt; FTryllConnection &gt; InConnection, std::uint64\_t InAgentId, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & InDeclaredVariables={}) <br> |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br> |
 |  const FString & | [**GetDisplayName**](#function-getdisplayname) () const<br> |
 |  void | [**GetKvCacheStatus**](#function-getkvcachestatus) (TFunction&lt; void(const [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
+|  const FString & | [**GetPausedNode**](#function-getpausednode) () const<br> |
 | virtual FString | [**GetReferencerName**](#function-getreferencername) () override const<br> |
 |  [**FTryllAgentVariables**](class_f_tryll_agent_variables.md) & | [**GetVariables**](#function-getvariables) () const<br> |
 |  void | [**HandleAnswerText**](#function-handleanswertext) (const FString & NodeName, const FString & Text, bool bIsDelta, bool bIsFinal) <br> |
@@ -74,9 +76,11 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**HandleChangeParamResult**](#function-handlechangeparamresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleError**](#function-handleerror) (const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleEvictKvCacheResult**](#function-handleevictkvcacheresult) (std::uint64\_t RequestId, const [**FTryllKvCacheEvictResult**](struct_f_tryll_kv_cache_evict_result.md) & Result, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
+|  void | [**HandleExportDialogResult**](#function-handleexportdialogresult) (std::uint64\_t RequestId, const [**FTryllDialogSnapshot**](struct_f_tryll_dialog_snapshot.md) & Snapshot, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleGetVariablesResult**](#function-handlegetvariablesresult) (std::uint64\_t RequestId, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
+|  void | [**HandleImportDialogResult**](#function-handleimportdialogresult) (std::uint64\_t RequestId, const [**FTryllDialogImportResult**](struct_f_tryll_dialog_import_result.md) & Result, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleKvCacheStatusResult**](#function-handlekvcachestatusresult) (std::uint64\_t RequestId, const [**FTryllKvCacheStatus**](struct_f_tryll_kv_cache_status.md) & Result, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
-|  void | [**HandlePaused**](#function-handlepaused) (const FString & NodeName) <br> |
+|  void | [**HandlePaused**](#function-handlepaused) (const FString & NodeName, bool bExternalListenerBound) <br> |
 |  void | [**HandlePrefillKvCacheResult**](#function-handleprefillkvcacheresult) (std::uint64\_t RequestId, const [**FTryllKvCachePrefillResult**](struct_f_tryll_kv_cache_prefill_result.md) & Result, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleRemoveInteractionsFromEndResult**](#function-handleremoveinteractionsfromendresult) (std::uint64\_t RequestId, uint32 Count, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  void | [**HandleResumeResult**](#function-handleresumeresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
@@ -86,6 +90,7 @@ Inherits the following classes: TSharedFromThis< FTryllAgent >,  FGCObject
 |  void | [**HandleTurnComplete**](#function-handleturncomplete) (ETryllTurnStatus Status, const FString & DebugInfo, int32 TokensGenerated) <br> |
 |  void | [**HandleUpdateVariablesResult**](#function-handleupdatevariablesresult) (std::uint64\_t RequestId, const [**FTryllError**](struct_f_tryll_error.md) & Error) <br> |
 |  bool | [**HasPausedToolBatch**](#function-haspausedtoolbatch) () const<br> |
+|  void | [**ImportDialog**](#function-importdialog) (const [**FTryllDialogSnapshot**](struct_f_tryll_dialog_snapshot.md) & Snapshot, ETryllDialogCompatibility Compatibility=ETryllDialogCompatibility::Strict, TFunction&lt; void(const [**FTryllDialogImportResult**](struct_f_tryll_dialog_import_result.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  bool | [**IsValid**](#function-isvalid) () noexcept const<br> |
 |  void | [**PrefillKvCache**](#function-prefillkvcache) (TFunction&lt; void(const [**FTryllKvCachePrefillResult**](struct_f_tryll_kv_cache_prefill_result.md) &, const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**RegisterTool**](#function-registertool-12) (const FString & ToolName, FTryllToolHandler Handler) <br> |
@@ -325,6 +330,25 @@ Release backend KV contexts for every eligible language-model node.
 
 
 
+### function ExportDialog 
+
+```C++
+void FTryllAgent::ExportDialog (
+    TFunction< void(const FTryllDialogSnapshot &, const FTryllError &)> OnComplete=nullptr
+) 
+```
+
+
+
+Export the completed dialog as an owned snapshot. Idle-only. Does not write a file. 
+
+
+        
+
+<hr>
+
+
+
 ### function FTryllAgent 
 
 ```C++
@@ -398,6 +422,23 @@ UTryllNodeParamsBase * FTryllAgent::GetNodeParamsBaseline (
 
 
 Return a deep copy of the last authored params for the named node. Use this as the starting point for a clone-set-send mutation; structural fields are automatically propagated from the baseline. 
+
+
+        
+
+<hr>
+
+
+
+### function GetPausedNode 
+
+```C++
+inline const FString & FTryllAgent::GetPausedNode () const
+```
+
+
+
+Name of the node this agent's turn is currently paused after, or an empty string when the turn is not paused. A non-empty value means the server is holding the turn open until Resume (or Cancel) — new messages are rejected with AgentBusy until then. 
 
 
         
@@ -523,6 +564,23 @@ void FTryllAgent::HandleEvictKvCacheResult (
 
 
 
+### function HandleExportDialogResult 
+
+```C++
+void FTryllAgent::HandleExportDialogResult (
+    std::uint64_t RequestId,
+    const FTryllDialogSnapshot & Snapshot,
+    const FTryllError & Error
+) 
+```
+
+
+
+
+<hr>
+
+
+
 ### function HandleGetVariablesResult 
 
 ```C++
@@ -539,6 +597,23 @@ Invoked by [**UTryllSubsystem**](class_u_tryll_subsystem.md) when a GetVariables
 
 
         
+
+<hr>
+
+
+
+### function HandleImportDialogResult 
+
+```C++
+void FTryllAgent::HandleImportDialogResult (
+    std::uint64_t RequestId,
+    const FTryllDialogImportResult & Result,
+    const FTryllError & Error
+) 
+```
+
+
+
 
 <hr>
 
@@ -565,12 +640,25 @@ void FTryllAgent::HandleKvCacheStatusResult (
 
 ```C++
 void FTryllAgent::HandlePaused (
-    const FString & NodeName
+    const FString & NodeName,
+    bool bExternalListenerBound
 ) 
 ```
 
 
 
+
+
+**Parameters:**
+
+
+* `NodeName` node the turn is parked after. 
+* `bExternalListenerBound` true when a client delegate (the subsystem's OnPaused) is listening, so a pause that this agent cannot auto-resume may still be resumed by game code. When false and no registered tool handler covers the batch, nothing can resume the turn and a warning is logged. 
+
+
+
+
+        
 
 <hr>
 
@@ -733,6 +821,27 @@ inline bool FTryllAgent::HasPausedToolBatch () const
 
 
 True while a paused tool-call batch is retained: surfaced by the current pause and not yet cleared by a successful resume Ack, turn end/cancel, destroy, or a terminal disconnect. A retained batch may already have some handlers succeeded (see RetryPausedToolBatch). 
+
+
+        
+
+<hr>
+
+
+
+### function ImportDialog 
+
+```C++
+void FTryllAgent::ImportDialog (
+    const FTryllDialogSnapshot & Snapshot,
+    ETryllDialogCompatibility Compatibility=ETryllDialogCompatibility::Strict,
+    TFunction< void(const FTryllDialogImportResult &, const FTryllError &)> OnComplete=nullptr
+) 
+```
+
+
+
+Replace the agent's dialog with Snapshot. Idle-only. Never appends. 
 
 
         

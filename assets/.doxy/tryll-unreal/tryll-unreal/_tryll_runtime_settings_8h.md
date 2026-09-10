@@ -41,6 +41,7 @@
 | Type | Name |
 | ---: | :--- |
 | enum uint8 | [**EServerBuildVariant**](#enum-eserverbuildvariant)  <br> |
+| enum uint8 | [**ETryllLlamaCppBackend**](#enum-etryllllamacppbackend)  <br> |
 
 
 
@@ -106,6 +107,26 @@ enum EServerBuildVariant {
 
 
 Bundled server build to launch — the Default / Release subfolder of TryllServer/. 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllLlamaCppBackend 
+
+```C++
+enum ETryllLlamaCppBackend {
+    Vulkan,
+    Auto
+};
+```
+
+
+
+llama.cpp GPU plugin preference passed to an auto-launched server as llama-backend. Vulkan is the portable default. Auto prefers CUDA on NVIDIA when the CUDA files were staged, otherwise Vulkan. Ignored when bAutoLaunchServer is false. 
 
 
         

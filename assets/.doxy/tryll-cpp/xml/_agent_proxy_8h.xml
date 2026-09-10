@@ -4,6 +4,7 @@
     <compoundname>AgentProxy.h</compoundname>
     <includes refid="_agent_kv_cache_8h" local="no">tryll/AgentKvCache.h</includes>
     <includes refid="_agent_variables_8h" local="no">tryll/AgentVariables.h</includes>
+    <includes refid="_dialog_snapshot_8h" local="no">tryll/DialogSnapshot.h</includes>
     <includes refid="_graph_description_8h" local="no">tryll/GraphDescription.h</includes>
     <includes refid="_tryll_error_8h" local="no">tryll/TryllError.h</includes>
     <includes local="no">messages_generated.h</includes>
@@ -36,21 +37,23 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -90,6 +93,28 @@
         </childnode>
       </node>
       <node id="17">
+        <label>tryll/DialogSnapshot.h</label>
+        <link refid="_dialog_snapshot_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
         <label>tryll/GraphDescription.h</label>
         <link refid="_graph_description_8h"/>
         <childnode refid="3" relation="include">
@@ -100,9 +125,9 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -118,34 +143,34 @@
       <node id="8">
         <label>chrono</label>
       </node>
-      <node id="20">
+      <node id="22">
         <label>cstddef</label>
       </node>
       <node id="3">
         <label>cstdint</label>
       </node>
-      <node id="21">
+      <node id="23">
         <label>functional</label>
       </node>
-      <node id="22">
+      <node id="24">
         <label>future</label>
       </node>
       <node id="9">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>messages_generated.h</label>
       </node>
       <node id="10">
         <label>mutex</label>
       </node>
-      <node id="18">
+      <node id="21">
         <label>nodes_generated.h</label>
       </node>
       <node id="11">
         <label>optional</label>
       </node>
-      <node id="23">
+      <node id="19">
         <label>span</label>
       </node>
       <node id="7">
@@ -184,6 +209,9 @@
     </invincdepgraph>
     <innerclass refid="class_tryll_1_1_client_1_1_agent_proxy" prot="public">Tryll::Client::AgentProxy</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event" prot="public">Tryll::Client::AgentProxy::ToolCallEvent</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event" prot="public">Tryll::Client::AgentProxy::IntentClassifiedEvent</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_label_prob" prot="public">Tryll::Client::AgentProxy::IntentLlmLabelProb</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_classified_event" prot="public">Tryll::Client::AgentProxy::IntentLlmClassifiedEvent</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result" prot="public">Tryll::Client::AgentProxy::ToolResult</innerclass>
     <innerclass refid="struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction" prot="public">Tryll::Client::AgentProxy::DialogInteraction</innerclass>
     <innernamespace refid="namespace_tryll">Tryll</innernamespace>
@@ -201,7 +229,8 @@
 </listitem><listitem><para>SetOnTurnComplete — turn outcome (status, diagnostics, token count).</para>
 </listitem><listitem><para>SetOnError — server-reported or disconnect errors.</para>
 </listitem><listitem><para>SetOnToolCall — tool-call notifications from the graph (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;tool_call&quot;</computeroutput>).</para>
-</listitem><listitem><para>SetOnIntentClassified — intent-classification notifications (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput>).</para>
+</listitem><listitem><para>SetOnIntentClassified — embedding ClassifyIntent notifications (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;intent_classified&quot;</computeroutput>).</para>
+</listitem><listitem><para>SetOnIntentLlmClassified — ClassifyIntentLLM notifications (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;intent_llm_classified&quot;</computeroutput>).</para>
 </listitem><listitem><para>SetOnPaused — the executor paused the turn between nodes (typed wrapper over <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type=&quot;paused&quot;</computeroutput>).</para>
 </listitem><listitem><para>SetOnNodeEvent — fallback for any other <computeroutput>NodeEvent</computeroutput> <computeroutput>event_type</computeroutput> or for events whose typed callback is not set.</para>
 </listitem></itemizedlist>

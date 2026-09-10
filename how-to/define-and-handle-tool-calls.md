@@ -269,6 +269,8 @@ arguments_json = {"name": "porch", "on": "true"}
 
 After a successful `ResumeWithToolResult(s)` / `resume(tool_results=...)`, the downstream `Generate` projects the complete pair and streams the reply.
 
+To exercise the same workflow in the editor Chat window or the Dialog Lab without Play/PIE, see [Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html).
+
 ## Common pitfalls
 
 - **Tool format is automatic.** The legacy `tool_call_format` param is deprecated and ignored. Use a model whose chat template supports tools.
@@ -280,8 +282,11 @@ After a successful `ResumeWithToolResult(s)` / `resume(tool_results=...)`, the d
 
 ## Related
 
+- [How to test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html)
 - [How to pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.html)
 - [Reference: ToolCall node](https://docs.tryllengine.com/reference/nodes/tool-call.html)
 - [Reference: Wire Protocol — Pausing and resuming](https://docs.tryllengine.com/reference/wire-protocol.html#pausing-and-resuming-a-turn)
+- [Compare tool-call models](https://docs.tryllengine.com/how-to/compare-tool-call-models.html)
+- [Design a tool-call prompt](https://docs.tryllengine.com/how-to/design-a-tool-call-prompt.html)
 - [Concept: Tool Calling](https://docs.tryllengine.com/concepts/tool-calling.html)
 - [Concept: Workflows, Graphs, and Nodes](https://docs.tryllengine.com/concepts/workflows-graphs-nodes.html)

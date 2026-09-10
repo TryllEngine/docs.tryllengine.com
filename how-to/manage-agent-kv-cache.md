@@ -58,8 +58,15 @@ Create the agent with `enable_diagnostics` to receive optional `debug_info` in c
 
 KV-cache operations apply only to `Generate`, the LLM half of `GenerateAndSpeak`, `ToolCall`, and `ClassifyIntentLLM`. They do not unload language-model weights and do not affect embeddings, `Speak`, or Sherpa-ONNX STT/TTS resources. Manage shared model weights separately through [Model Management](https://docs.tryllengine.com/reference/model-management.html).
 
+## Several agents at once
+
+This page covers the operations on one agent. Driving them across a whole cast — which agent stays warm, when to prefill, and how to avoid paying for agents the player merely scrolled past — is a policy question with its own page, and both clients ship a component for it: [Run many agents on a small GPU](https://docs.tryllengine.com/how-to/run-many-agents-on-a-small-gpu.html).
+
 ## See also
 
+- [Run many agents on a small GPU](https://docs.tryllengine.com/how-to/run-many-agents-on-a-small-gpu.html)
+- [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html)
 - [Wire Protocol](https://docs.tryllengine.com/reference/wire-protocol.html)
 - [Error Codes](https://docs.tryllengine.com/reference/error-codes.html)
 - [Estimate Memory Footprint](https://docs.tryllengine.com/how-to/estimate-memory-footprint.html)
+- [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html) — live per-agent reserved bytes and evicted / never-run state

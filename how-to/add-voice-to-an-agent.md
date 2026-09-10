@@ -238,24 +238,26 @@ Models whose language is fixed per model (e.g. Pocket TTS) ignore `TtsLang`.
 
 Which knob selects the voice depends on the model family:
 
-| Model        | Voice knob  | How it works                                                                                                  |
-| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------- |
-| Supertonic 3 | `SpeakerId` | 10 built-in voice styles — indices `0`–`9`.                                                                   |
-| Pocket TTS   | `TtsVoice`  | Zero-shot cloning from a 10–20 s reference WAV; each agent can use a different clip on the same loaded model. |
+| Model         | Voice knob            | How it works                                                                                                                                                                          |
+| ------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Supertonic 3  | `SpeakerId`           | 10 built-in voice styles — indices `0`–`9`.                                                                                                                                           |
+| Pocket TTS    | `TtsVoice`            | Zero-shot cloning from a 10–20 s reference WAV; each agent can use a different clip on the same loaded model.                                                                         |
+| Orpheus 3B FT | `SpeakerId`           | 8 named English speakers — indices `0`–`7` (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as `<laugh>` may appear in the spoken text.                                  |
+| Maya1 3B      | `TtsVoiceDescription` | Natural-language identity (age, accent, pitch, timbre). Empty falls back to `SpeakerId` `0`–`1` (male / female 30s American). Steer this-call delivery with `TtsDeliveryInstruction`. |
 
 eSpeak-based TTS models are not supported
 
-Model families that depend on eSpeak NG for text-to-phoneme conversion — **Piper/VITS (with espeak data), Kokoro, KittenTTS, ZipVoice** — cannot be used with the Tryll server. Supported TTS families are **Supertonic** and **Pocket TTS**; a catalog entry with `tts_family` set to `vits`, `piper`, or `kokoro` fails to load with an error explaining this.
+Model families that depend on eSpeak NG for text-to-phoneme conversion — **Piper/VITS (with espeak data), Kokoro, KittenTTS, ZipVoice** — cannot be used with the Tryll server. Supported Sherpa-ONNX families are **Supertonic** and **Pocket TTS**; a catalog entry with `tts_family` set to `vits`, `piper`, or `kokoro` fails to load with an error explaining this. llama.cpp SNAC families (**Orpheus**, **Maya1**) do not use eSpeak. See [TTS Models](https://docs.tryllengine.com/reference/tts-models.html).
 
 `SpeakerId` range is model-specific
 
-`SpeakerId` must be below the model's speaker count — creating an agent with a larger value fails with *"speaker_id N is out of range for TTS model … (M speaker(s); valid range 0..M-1)"*. Pocket TTS exposes exactly **one** speaker, so it must stay `0` there; change the Pocket voice with `TtsVoice`, not `SpeakerId`.
+`SpeakerId` must be below the model's speaker count — creating an agent with a larger value fails with *"speaker_id N is out of range for TTS model … (M speaker(s); valid range 0..M-1)"*. Pocket TTS exposes exactly **one** speaker, so it must stay `0` there; change the Pocket voice with `TtsVoice`, not `SpeakerId`. Orpheus accepts `0`–`7`; Maya1 accepts `0`–`1` unless you set `TtsVoiceDescription`.
 
 For `TtsVoice` — including cloning a brand-new voice from your own recording — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/how-to/clone-a-voice.html).
 
 ## 7. Adjust speed and voice at runtime
 
-`speed`, `speaker_id`, `tts_lang`, and `tts_voice` are mutable — change them between turns without recreating the agent. See [Change Agent Parameters at Runtime](https://docs.tryllengine.com/how-to/change-agent-parameters.html) for the full API; a TTS-specific example:
+`speed`, `speaker_id`, `tts_lang`, `tts_voice`, `tts_voice_description`, and `tts_delivery_instruction` are mutable — change them between turns without recreating the agent. See [Change Agent Parameters at Runtime](https://docs.tryllengine.com/how-to/change-agent-parameters.html) for the full API; a TTS-specific example:
 
 ```
 // GetNodeParamsBaseline already returns a deep copy — mutate in place, send.
@@ -315,7 +317,7 @@ The server automatically normalizes *characters* for Pocket TTS — typographic 
 
 **Random sounds, repeated sentences, or trailing babble (Pocket TTS).** The synthesized text isn't speech-like — usually markdown, stage directions, or lists from an unconstrained LLM. Add the format rules from [Write prompts for the voice](#write-prompts-for-the-voice) to the agent's system prompt. The server log's `Pocket text prepared:` lines (debug level) show exactly what text entered the model.
 
-**Agent creation fails with "speaker_id N is out of range".** The selected TTS model has fewer speakers than the `SpeakerId` you set. The shipped Supertonic 3 bundle accepts `0`–`9`; Pocket TTS only `0` (select its voice with `TtsVoice` instead). The error message states the model's valid range.
+**Agent creation fails with "speaker_id N is out of range".** The selected TTS model has fewer speakers than the `SpeakerId` you set. The shipped Supertonic 3 bundle accepts `0`–`9`; Pocket TTS only `0` (select its voice with `TtsVoice` instead); Orpheus `0`–`7`; Maya1 `0`–`1` (or set `TtsVoiceDescription`). The error message states the model's valid range.
 
 **Error 4002 "TTS model not found".** The `TtsModelName` does not match any entry in `models.json`. Leave it empty to use the first available catalog voice, run `client.ListModels()` to see valid names, or acquire the model via the editor Model Manager.
 

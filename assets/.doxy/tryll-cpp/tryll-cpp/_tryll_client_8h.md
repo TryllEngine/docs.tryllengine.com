@@ -56,7 +56,10 @@ _TCP session to the Tryll server and its supporting value types._ [More...](#det
 | class | [**TryllClient**](class_tryll_1_1_client_1_1_tryll_client.md) <br>_TCP session to the Tryll server._  |
 | struct | [**DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md) <br> |
 | struct | [**EmbeddedStorageInfo**](struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.md) <br>_Result returned by_ `CreateEmbeddedStringStorage` _variants._ |
-| struct | [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) <br>_Per-model-kind session configuration._  |
+| struct | [**EngineSelection**](struct_tryll_1_1_client_1_1_tryll_client_1_1_engine_selection.md) <br> |
+| struct | [**LoadModelResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_load_model_result.md) <br>_Explicitly load and pin a model into memory._  |
+| struct | [**ModelPlacementHint**](struct_tryll_1_1_client_1_1_tryll_client_1_1_model_placement_hint.md) <br> |
+| struct | [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) <br> |
 
 
 
@@ -122,8 +125,9 @@ Tryll::Client::ManagedServerOptions opts;
 opts.exe  = "path/to/tryll_server.exe";
 opts.port = 9100;
 auto session = Tryll::Client::TryllClient::RunAndConnect(opts);
-session.GetClient().CreateSession(Tryll::Client::TryllClient::SessionConfig{
-    .engine = ::Tryll::InferenceEngine_LlamaCpp });
+// An empty config is the normal case: each model's engine comes from the
+// server's catalog. Name engines only to pre-warm them (see SessionConfig).
+session.GetClient().CreateSession({});
 auto agent = session.GetClient().CreateAgent(graph);
 agent.SendText("hi");
 agent.Destroy();
@@ -138,8 +142,7 @@ Advanced / remote-server flow (no server management):
 
 ```C++
 auto client = Tryll::Client::TryllClient::Connect("127.0.0.1", 9100);
-client.CreateSession(Tryll::Client::TryllClient::SessionConfig{
-    .engine = ::Tryll::InferenceEngine_LlamaCpp });
+client.CreateSession({});
 auto agent = client.CreateAgent(graph);
 agent.SendText("hi");
 agent.Destroy();

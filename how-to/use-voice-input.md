@@ -49,7 +49,7 @@ A `VoiceInput` is a stateful server-side object that holds the loaded STT model 
 #include <tryll/VoiceInput.h>
 
 Tryll::Client::VoiceInputConfig cfg;
-cfg.modelName        = "Parakeet TDT 0.6B v2 (int8)";
+cfg.modelName        = "Parakeet TDT 0.6B v3 (int8)";
 cfg.inputFormat      = { .sampleRate = 48000, .channels = 1, .bitsPerSample = 16 };
 cfg.vadThreshold     = 0.5f;   // Silero VAD speech-probability threshold
 cfg.vadMinSilenceMs  = 500;    // silence that ends a segment (ms)
@@ -62,7 +62,7 @@ auto vi = client.CreateVoiceInput(cfg);
 
 ```
 voice_input_id = client.create_voice_input(
-    model_name="Parakeet TDT 0.6B v2 (int8)",
+    model_name="Parakeet TDT 0.6B v3 (int8)",
     sample_rate=48000, channels=1, bits_per_sample=16,
 )
 ```
@@ -72,7 +72,7 @@ voice_input_id = client.create_voice_input(
 ```
 var cfg = new VoiceInputConfig
 {
-    ModelName       = "Parakeet TDT 0.6B v2 (int8)",
+    ModelName       = "Parakeet TDT 0.6B v3 (int8)",
     InputFormat     = new AudioFormat { SampleRate = 48000, Channels = 1, BitsPerSample = 16 },
     VadThreshold    = 0.5f,
     VadMinSilenceMs = 500,
@@ -86,7 +86,7 @@ if (!err.IsOk) { /* handle */ }
 
 ```
 FTryllVoiceInputConfig Config;
-Config.ModelName              = TEXT("Parakeet TDT 0.6B v2 (int8)");
+Config.ModelName              = TEXT("Parakeet TDT 0.6B v3 (int8)");
 Config.InputFormat.SampleRate = 48000;
 
 Subsystem->CreateVoiceInput(Config,

@@ -37,13 +37,13 @@ Inherits the following classes: UActorComponent
 
 | Type | Name |
 | ---: | :--- |
-|  [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) | [**InlineGraphDescription**](#variable-inlinegraphdescription)  <br> |
-|  TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; | [**InlineVariables**](#variable-inlinevariables)  <br> |
 |  ETryllKvCacheInitialization | [**KvCacheInitialization**](#variable-kvcacheinitialization)   = `ETryllKvCacheInitialization::AllocateOnly`<br> |
 |  FOnTryllAgentReady | [**OnAgentReady**](#variable-onagentready)  <br> |
 |  FOnTryllAgentAnswerFull | [**OnAnswerFull**](#variable-onanswerfull)  <br> |
 |  FOnTryllAgentAnswerText | [**OnAnswerText**](#variable-onanswertext)  <br> |
 |  FOnTryllAppendInteractionsError | [**OnAppendInteractionsError**](#variable-onappendinteractionserror)  <br> |
+|  FOnTryllDialogExportedNative | [**OnDialogExported**](#variable-ondialogexported)  <br> |
+|  FOnTryllDialogImportedNative | [**OnDialogImported**](#variable-ondialogimported)  <br> |
 |  FOnTryllAgentError | [**OnError**](#variable-onerror)  <br> |
 |  FOnTryllInteractionsAppended | [**OnInteractionsAppended**](#variable-oninteractionsappended)  <br> |
 |  FOnTryllInteractionsRemoved | [**OnInteractionsRemoved**](#variable-oninteractionsremoved)  <br> |
@@ -53,6 +53,7 @@ Inherits the following classes: UActorComponent
 |  FOnTryllKvCachePrefilled | [**OnKvCachePrefilled**](#variable-onkvcacheprefilled)  <br> |
 |  FOnTryllKvCacheStatus | [**OnKvCacheStatus**](#variable-onkvcachestatus)  <br> |
 |  FOnTryllKvCacheStatusError | [**OnKvCacheStatusError**](#variable-onkvcachestatuserror)  <br> |
+|  FOnTryllMessageQueued | [**OnMessageQueued**](#variable-onmessagequeued)  <br> |
 |  FOnTryllParamChanged | [**OnParamChanged**](#variable-onparamchanged)  <br> |
 |  FOnTryllRemoveInteractionsError | [**OnRemoveInteractionsError**](#variable-onremoveinteractionserror)  <br> |
 |  FOnTryllResumed | [**OnResumed**](#variable-onresumed)  <br> |
@@ -90,14 +91,20 @@ Inherits the following classes: UActorComponent
 |  void | [**CreateAgent**](#function-createagent) () <br> |
 |  void | [**DestroyAgent**](#function-destroyagent) () <br> |
 |  void | [**EvictKvCache**](#function-evictkvcache) () <br> |
+|  void | [**ExportDialog**](#function-exportdialog) () <br> |
+|  const FTryllToolHandler \* | [**FindToolHandler**](#function-findtoolhandler) (const FString & ToolName) const<br> |
+|  const TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; & | [**GetAgent**](#function-getagent) () const<br> |
 |  int64 | [**GetAgentId**](#function-getagentid) () const<br> |
 |  void | [**GetKvCacheStatus**](#function-getkvcachestatus) () <br> |
 |  [**FTryllAgentVariables**](class_f_tryll_agent_variables.md) \* | [**GetLiveVariables**](#function-getlivevariables) () <br> |
 |  [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md) \* | [**GetNodeParamsBaseline**](#function-getnodeparamsbaseline) (const FString & NodeName) const<br> |
-|  TArray&lt; FString &gt; | [**GetStartNodeOptions**](#function-getstartnodeoptions) () const<br> |
+|  FString | [**GetPausedNode**](#function-getpausednode) () const<br> |
+|  const FString & | [**GetPendingMessage**](#function-getpendingmessage) () const<br> |
 |  [**UTryllAgentVariables**](class_u_tryll_agent_variables.md) \* | [**GetVariables**](#function-getvariables) () <br> |
 |  bool | [**HasLiveAgent**](#function-hasliveagent) () const<br> |
 |  bool | [**HasPausedToolBatch**](#function-haspausedtoolbatch) () const<br> |
+|  bool | [**HasPendingMessage**](#function-haspendingmessage) () const<br> |
+|  void | [**ImportDialog**](#function-importdialog) (const [**FTryllDialogSnapshot**](struct_f_tryll_dialog_snapshot.md) & Snapshot, ETryllDialogCompatibility Compatibility=ETryllDialogCompatibility::Strict) <br> |
 |  bool | [**IsAgentReady**](#function-isagentready) () const<br> |
 |  void | [**PrefillKvCache**](#function-prefillkvcache) () <br> |
 |  void | [**RegisterTool**](#function-registertool-12) (const FString & ToolName, FTryllToolHandler Handler) <br> |
@@ -108,6 +115,7 @@ Inherits the following classes: UActorComponent
 |  void | [**ResumeWithToolResults**](#function-resumewithtoolresults) (const TArray&lt; [**FTryllToolResult**](struct_f_tryll_tool_result.md) &gt; & ToolResults, const FString & ResumeNode=TEXT("")) <br> |
 |  void | [**RetryPausedToolBatch**](#function-retrypausedtoolbatch) () <br> |
 |  void | [**SendMessage**](#function-sendmessage) (const FString & Message) <br> |
+|  bool | [**TryFlushPendingMessage**](#function-tryflushpendingmessage) () <br> |
 |   | [**UTryllAgentComponent**](#function-utryllagentcomponent) () <br> |
 |  bool | [**UnregisterTool**](#function-unregistertool) (const FString & ToolName) <br> |
 
@@ -150,11 +158,7 @@ Inherits the following classes: UActorComponent
 Actor component: manages one Tryll server-side agent. Attach to any Actor; Blueprint users bind to the delegates and call [**SendMessage()**](class_u_tryll_agent_component.md#function-sendmessage).
 
 
-Graph resolution order:
-* WorkflowAsset (if set) — designer-authored data asset in the Content Browser. This is the supported way to give the component a graph.
-* InlineGraphDescription — set programmatically in C++ or edited in the Details panel. Temporary: this fallback will be removed in a future release.
-
-
+The graph comes from WorkflowAsset — a designer-authored data asset in the Content Browser. CreateAgent fails if no asset is assigned. To build a graph in C++ without an asset, use [**FTryllGraphBuilder**](struct_f_tryll_graph_builder.md) and [**UTryllSubsystem::RequestCreateAgent**](class_u_tryll_subsystem.md#function-requestcreateagent).
 
 
 The component auto-creates an agent once the session is ready (if bAutoCreateOnConnect) — it queues until OnCreateSessionComplete if it spawns before the session is configured. It auto-destroys the agent on EndPlay. 
@@ -163,43 +167,6 @@ The component auto-creates an agent once the session is ready (if bAutoCreateOnC
     
 ## Public Attributes Documentation
 
-
-
-
-### variable InlineGraphDescription 
-
-```C++
-FTryllGraphDescription UTryllAgentComponent::InlineGraphDescription;
-```
-
-
-
-Fallback graph description used when WorkflowAsset is not set. Can be populated programmatically via FTryllGraphBuilder::Build().
-
-
-Temporary: inline graphs will be removed in a future release — author the graph as a Workflow Asset instead. 
-
-
-        
-
-<hr>
-
-
-
-### variable InlineVariables 
-
-```C++
-TArray<FTryllVariableDecl> UTryllAgentComponent::InlineVariables;
-```
-
-
-
-Declared per-agent Variables when WorkflowAsset is not set (WorkflowAsset-&gt;Variables is used instead when one is). 
-
-
-        
-
-<hr>
 
 
 
@@ -279,6 +246,32 @@ Fired for each streaming AnswerText chunk.
 
 ```C++
 FOnTryllAppendInteractionsError UTryllAgentComponent::OnAppendInteractionsError;
+```
+
+
+
+
+<hr>
+
+
+
+### variable OnDialogExported 
+
+```C++
+FOnTryllDialogExportedNative UTryllAgentComponent::OnDialogExported;
+```
+
+
+
+
+<hr>
+
+
+
+### variable OnDialogImported 
+
+```C++
+FOnTryllDialogImportedNative UTryllAgentComponent::OnDialogImported;
 ```
 
 
@@ -409,6 +402,23 @@ FOnTryllKvCacheStatusError UTryllAgentComponent::OnKvCacheStatusError;
 
 
 
+### variable OnMessageQueued 
+
+```C++
+FOnTryllMessageQueued UTryllAgentComponent::OnMessageQueued;
+```
+
+
+
+Fired when SendMessage could not hand the message over immediately and queued it instead. Carries the queued text, so a game can show that it is waiting rather than leaving the player wondering whether their line registered. 
+
+
+        
+
+<hr>
+
+
+
 ### variable OnParamChanged 
 
 ```C++
@@ -529,7 +539,7 @@ UTryllWorkflowAsset* UTryllAgentComponent::WorkflowAsset;
 
 
 
-Designer-authored workflow asset. When set, its Graph takes precedence over InlineGraphDescription for agent creation. 
+Designer-authored workflow asset. Required for agent creation. 
 
 
         
@@ -688,7 +698,7 @@ void UTryllAgentComponent::CreateAgent ()
 
 
 
-Request creation of a server-side agent from WorkflowAsset (if set) or InlineGraphDescription. Fires OnAgentReady on success; OnError on failure. Safe to call from Blueprint Begin Play. 
+Request creation of a server-side agent from WorkflowAsset. Fires OnAgentReady on success; OnError on failure (including when no WorkflowAsset is assigned). Safe to call from Blueprint Begin Play. 
 
 
         
@@ -723,6 +733,68 @@ void UTryllAgentComponent::EvictKvCache ()
 
 
 Release every eligible language-model backend KV context. 
+
+
+        
+
+<hr>
+
+
+
+### function ExportDialog 
+
+```C++
+void UTryllAgentComponent::ExportDialog () 
+```
+
+
+
+Export the completed dialog. C++ only — snapshot is not Blueprint-exposed. 
+
+
+        
+
+<hr>
+
+
+
+### function FindToolHandler 
+
+```C++
+const FTryllToolHandler * UTryllAgentComponent::FindToolHandler (
+    const FString & ToolName
+) const
+```
+
+
+
+Look up a registered tool handler without going through an agent, or nullptr when this component has none for that name. Lets an external driver that runs its own agent — the Dialog Lab — invoke the same game-side handler this component would have used, instead of simulating it with authored data.
+
+
+A handler that keeps per-conversation state must be told when the dialogue restarts, and such a driver's agent is not this component's, so none of the delegates here fire for it. The convention is a parameterless `UFUNCTION()` named `ResetToolState` on the handler's component, which the driver dispatches by name. In-game and Chat-panel callers need nothing extra: the handler binds OnAgentReady and OnInteractionsRemoved itself.
+
+
+The returned pointer is owned by this component's handler map and is invalidated by RegisterTool / UnregisterTool. Call it, do not store it. 
+
+
+        
+
+<hr>
+
+
+
+### function GetAgent 
+
+```C++
+inline const TSharedPtr< FTryllAgent > & UTryllAgentComponent::GetAgent () const
+```
+
+
+
+Native access to the underlying agent, for C++ callers that need per-call callbacks the Blueprint event surface cannot express — a KV-residency policy managing several agents, for instance, needs to know which prefill finished. Not a UFUNCTION: TSharedPtr is not a Blueprint type. Mirrors the public `Agent` property on the Unity component.
+
+
+May be null before creation completes; check [**IsAgentReady()**](class_u_tryll_agent_component.md#function-isagentready) first. 
 
 
         
@@ -801,15 +873,32 @@ Return the authored params baseline for the named node. Call after OnAgentReady 
 
 
 
-### function GetStartNodeOptions 
+### function GetPausedNode 
 
 ```C++
-inline TArray< FString > UTryllAgentComponent::GetStartNodeOptions () const
+FString UTryllAgentComponent::GetPausedNode () const
 ```
 
 
 
-Options provider for FTryllGraphDescription::StartNode dropdown in the Details panel. 
+Name of the node this agent's turn is paused after, or an empty string when it is not paused. Non-empty means the server is holding the turn open until Resume (or Cancel) — Send Message will keep failing with AgentBusy until one of those arrives. Covers Pause nodes as well as pausing tool calls, unlike Has Paused Tool Batch. 
+
+
+        
+
+<hr>
+
+
+
+### function GetPendingMessage 
+
+```C++
+inline const FString & UTryllAgentComponent::GetPendingMessage () const
+```
+
+
+
+The queued message, or empty. For a "waiting to send" indicator. 
 
 
         
@@ -861,6 +950,43 @@ bool UTryllAgentComponent::HasPausedToolBatch () const
 
 
 True while a paused tool-call batch is retained: surfaced by the current pause and not yet cleared by a successful resume Ack, turn end/cancel, destroy, or a terminal disconnect. False when no agent is ready. 
+
+
+        
+
+<hr>
+
+
+
+### function HasPendingMessage 
+
+```C++
+inline bool UTryllAgentComponent::HasPendingMessage () const
+```
+
+
+
+True while a message is waiting for the agent to become available. 
+
+
+        
+
+<hr>
+
+
+
+### function ImportDialog 
+
+```C++
+void UTryllAgentComponent::ImportDialog (
+    const FTryllDialogSnapshot & Snapshot,
+    ETryllDialogCompatibility Compatibility=ETryllDialogCompatibility::Strict
+) 
+```
+
+
+
+Replace the agent's dialog. C++ only — snapshot is not Blueprint-exposed. 
 
 
         
@@ -1054,7 +1180,33 @@ void UTryllAgentComponent::SendMessage (
 
 
 
-Send a user-turn message to the agent. Streaming tokens arrive on OnAnswerText; the turn ends with OnTurnComplete + OnAnswerFull. No-op if the agent is not yet ready ([**IsAgentReady()**](class_u_tryll_agent_component.md#function-isagentready) == false). 
+Send a user-turn message to the agent. Streaming tokens arrive on OnAnswerText; the turn ends with OnTurnComplete + OnAnswerFull. No-op if the agent is not yet ready ([**IsAgentReady()**](class_u_tryll_agent_component.md#function-isagentready) == false).
+
+
+The message is **queued, not dropped**, when the agent exists but cannot accept it yet. An agent refuses a send with AgentBusy while a turn is running or a KV-cache operation is in flight — and a cache operation is exactly what happens when a game prefills the agent the player has just selected. Without queueing, a message typed during that window is silently lost and the player must retype it, which is the worst available outcome. The queue is flushed automatically when the agent becomes ready, when a turn completes, and when a cache operation finishes.
+
+
+Only the most recent message is held: if two are sent before either reaches the agent, the newer line is the one the player meant. OnMessageQueued fires when a send is deferred. 
+
+
+        
+
+<hr>
+
+
+
+### function TryFlushPendingMessage 
+
+```C++
+bool UTryllAgentComponent::TryFlushPendingMessage () 
+```
+
+
+
+Hands the queued message to the agent if it can accept one now. Safe and cheap to call repeatedly; returns true only when a message was actually handed over.
+
+
+Called automatically on agent-ready, turn-complete and cache-operation-complete. It is public because a KV-residency policy that drives prefills through [**FTryllAgent**](class_f_tryll_agent.md) directly — rather than through this component — closes a busy window this component never observed, and should nudge the queue when it does. 
 
 
         

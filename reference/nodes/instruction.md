@@ -46,6 +46,20 @@ Multiple `Instruction` nodes in one graph each contribute one entry to the `{{#i
 
 ______________________________________________________________________
 
+## Diagnostics
+
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
+
+Instruction records a single key, and no `input`, `output` or `engine` section.
+
+| Key                      | Meaning                                         | Absent when |
+| ------------------------ | ----------------------------------------------- | ----------- |
+| `parameters.instruction` | The static instruction text this node injected. | —           |
+
+Whether that instruction reached the model is a separate question, answered by the downstream Generate node's `input.prompt[]` — an `Instruction` node that ran is not proof its text was rendered, since that depends on the consuming node's `template`.
+
+______________________________________________________________________
+
 ## Example
 
 ```

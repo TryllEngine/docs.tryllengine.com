@@ -32,7 +32,10 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 | ---: | :--- |
 | struct | [**DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md) <br> |
 | struct | [**EmbeddedStorageInfo**](struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.md) <br>_Result returned by_ `CreateEmbeddedStringStorage` _variants._ |
-| struct | [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) <br>_Per-model-kind session configuration._  |
+| struct | [**EngineSelection**](struct_tryll_1_1_client_1_1_tryll_client_1_1_engine_selection.md) <br> |
+| struct | [**LoadModelResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_load_model_result.md) <br>_Explicitly load and pin a model into memory._  |
+| struct | [**ModelPlacementHint**](struct_tryll_1_1_client_1_1_tryll_client_1_1_model_placement_hint.md) <br> |
+| struct | [**SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) <br> |
 
 
 
@@ -74,6 +77,7 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 |  void | [**DestroyEmbeddedStringStorage**](#function-destroyembeddedstringstorage) (std::string\_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Destroy a named_ `EmbeddedStringStorage` _._ |
 |  void | [**DestroyStringStorage**](#function-destroystringstorage) (std::string\_view name, std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Destroy a named_ `StringStorage` _on the server._ |
 |  void | [**DownloadModel**](#function-downloadmodel) (std::string\_view modelName, [**DownloadProgressCallback**](namespace_tryll_1_1_client.md#typedef-downloadprogresscallback) onProgress=nullptr, std::chrono::milliseconds timeout=std::chrono::minutes{30}) <br>_Start downloading a model on the server and block until complete._  |
+|  ::Tryll::MemorySnapshotT | [**GetMemoryConsumption**](#function-getmemoryconsumption) (std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Pull a server-wide RAM/VRAM snapshot._  |
 |  std::string | [**GetServerBuildConfig**](#function-getserverbuildconfig) () const<br>_Server build configuration ("Debug" \| "Release" \| "Production"), from_ `ConnectionReady` _._ |
 |  std::string | [**GetServerExePath**](#function-getserverexepath) () const<br>_Canonical path of the server executable, advertised in_ `ConnectionReady` _._ |
 |  std::uint32\_t | [**GetServerIdleTimeoutSeconds**](#function-getserveridletimeoutseconds) () noexcept const<br>_Server idle-shutdown grace period in seconds (0 when standalone), from_ `ConnectionReady` _._ |
@@ -82,9 +86,10 @@ _TCP session to the Tryll server._ [More...](#detailed-description)
 |  std::uint64\_t | [**GetSessionId**](#function-getsessionid) () noexcept const<br>_Server-assigned session identifier._  |
 |  bool | [**IsServerManaged**](#function-isservermanaged) () noexcept const<br>_True when the server runs in managed (idle-self-exit) mode, from_ `ConnectionReady` _._ |
 |  std::vector&lt;::Tryll::ModelInfoT &gt; | [**ListModels**](#function-listmodels) (std::chrono::milliseconds timeout=std::chrono::seconds{10}) <br>_Request the list of models known to the server for the session's engine._  |
-|  void | [**LoadModel**](#function-loadmodel) (std::string\_view modelName, std::chrono::milliseconds timeout=std::chrono::minutes{5}) <br>_Explicitly load and pin a model into memory._  |
+|  [**LoadModelResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_load_model_result.md) | [**LoadModel**](#function-loadmodel) (std::string\_view modelName, std::chrono::milliseconds timeout=std::chrono::minutes{5}, std::optional&lt;::Tryll::MemoryPlacement &gt; placement=std::nullopt) <br> |
 |  [**DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md) | [**SendDebugCommand**](#function-senddebugcommand) (std::string\_view command, std::string\_view payload={}, std::chrono::milliseconds timeout=std::chrono::seconds{5}) <br>_Send a dev-only debug command to the server and report the outcome._  |
 |  void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float level) <br>_Report how hard the server should yield the GPU back to the game (the manual inference throttle knob)._  |
+|  void | [**SetSessionLocale**](#function-setsessionlocale) (std::string\_view locale, std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Change the session language without tearing the session down._  |
 |  void | [**Shutdown**](#function-shutdown) (std::chrono::milliseconds timeout=std::chrono::seconds{30}) <br>_Blocking convenience wrapper over_ [_**ShutdownAsync**_](class_tryll_1_1_client_1_1_tryll_client.md#function-shutdownasync) _._ |
 |  std::future&lt; void &gt; | [**ShutdownAsync**](#function-shutdownasync) () <br>_Asynchronously shut down the connection._  |
 |   | [**TryllClient**](#function-tryllclient-13) (const TryllClient &) = default<br> |
@@ -727,6 +732,50 @@ Progress frames are delivered via `onProgress` on the reader thread (invoked syn
 
 
 
+### function GetMemoryConsumption 
+
+_Pull a server-wide RAM/VRAM snapshot._ 
+```C++
+::Tryll::MemorySnapshotT Tryll::Client::TryllClient::GetMemoryConsumption (
+    std::chrono::milliseconds timeout=std::chrono::seconds{10}
+) 
+```
+
+
+
+Session-scoped (must follow CreateSession) but the numbers cover every session on the process — the same view as the server monitor. Never fails with AgentBusy.
+
+
+
+
+**Parameters:**
+
+
+* `timeout` Maximum time to wait for `GetMemoryConsumptionResponse`.
+
+
+
+**Returns:**
+
+Packed snapshot (FlatBuffers object API). Empty `snapshot` pointer is not possible on success — the table is always present.
+
+
+
+
+**Exception:**
+
+
+* `TryllError` On server-reported errors or timeout. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function GetServerBuildConfig 
 
 _Server build configuration ("Debug" \| "Release" \| "Production"), from_ `ConnectionReady` _._
@@ -883,17 +932,14 @@ Catalog entries, one per known model.
 
 ### function LoadModel 
 
-_Explicitly load and pin a model into memory._ 
 ```C++
-void Tryll::Client::TryllClient::LoadModel (
+LoadModelResult Tryll::Client::TryllClient::LoadModel (
     std::string_view modelName,
-    std::chrono::milliseconds timeout=std::chrono::minutes{5}
+    std::chrono::milliseconds timeout=std::chrono::minutes{5},
+    std::optional<::Tryll::MemoryPlacement > placement=std::nullopt
 ) 
 ```
 
-
-
-The model stays in memory until [**UnloadModel**](class_tryll_1_1_client_1_1_tryll_client.md#function-unloadmodel) is called, regardless of whether any agents are using it.
 
 
 
@@ -901,15 +947,7 @@ The model stays in memory until [**UnloadModel**](class_tryll_1_1_client_1_1_try
 **Parameters:**
 
 
-* `modelName` Catalog model name from `models.json`. 
-* `timeout` Maximum time to wait; loading is slow for large GGUFs.
-
-
-
-**Exception:**
-
-
-* `TryllError` If the model cannot be resolved or loaded, or on timeout. 
+* `placement` Where to put this model, for this load only, overriding any per-model hint given at [**CreateSession**](class_tryll_1_1_client_1_1_tryll_client.md#function-createsession). `std::nullopt` (the default) means "no opinion" — the session's hint applies. Passing `MemoryPlacement_Auto` is therefore a real override meaning "host policy", distinct from not asking. Still a hint: an unsatisfiable value is downgraded, not an error — check the returned [**LoadModelResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_load_model_result.md). 
 
 
 
@@ -965,6 +1003,43 @@ Fire-and-forget: no response, no error surfaced locally. Never sent automaticall
 
 
 * `level` 0 = full speed (default), 1 = maximum yielding. Clamped server-side; out-of-range values do not throw here. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function SetSessionLocale 
+
+_Change the session language without tearing the session down._ 
+```C++
+void Tryll::Client::TryllClient::SetSessionLocale (
+    std::string_view locale,
+    std::chrono::milliseconds timeout=std::chrono::seconds{30}
+) 
+```
+
+
+
+Same BCP-47 grammar as [**SessionConfig::locale**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md#variable-locale); an empty string _clears_ the locale, restoring pre-locale behaviour everywhere.
+
+
+Applies to every agent, existing and future, from its next turn: TTS language and the locale template keys are read per turn, not captured. A new voice input picks up the new STT language hint; one already open keeps its recognizer. Storage paths re-resolve on the next load, but content already bound to a node (a Retrieve KB, canned lines) does NOT swap - those params are structural. Use this for the voice + template half of a language change; switching authored content still means recreating agents.
+
+
+Not turn-atomic: a turn already running may render its prompt under the old locale and synthesize under the new one. Send it between turns if that matters.
+
+
+
+
+**Exception:**
+
+
+* `TryllError` On a malformed tag (`InvalidLocale`, 2004) or timeout. 
 
 
 

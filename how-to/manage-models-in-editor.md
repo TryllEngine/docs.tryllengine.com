@@ -82,6 +82,7 @@ This is the editor side of the `(tryll_model)` schema attribute; see [Model Mana
 
 - [Reference: Model Management](https://docs.tryllengine.com/reference/model-management.html)
 - [How-to: Use Your Own Local Model](https://docs.tryllengine.com/how-to/use-your-own-local-model.html)
+- [How-to: Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html) — see load/unload change the live RAM/VRAM snapshot
 - [How-to: Pin and Unpin Models](https://docs.tryllengine.com/how-to/pin-and-unpin-models.html)
 - [How-to: Verify Required Models Before Play](https://docs.tryllengine.com/how-to/verify-models-before-play.html) — the editor guard that catches a registered-but-undownloaded model before Play/PIE or Tryll Chat.
 - [Concept: Models and inference engines](https://docs.tryllengine.com/concepts/models-and-inference-engines.html)

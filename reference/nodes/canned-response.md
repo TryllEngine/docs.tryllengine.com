@@ -51,6 +51,21 @@ Priority order:
 
 No model inference, no KV-cache work, no network I/O beyond the `AnswerText` frame itself.
 
+## Diagnostics
+
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
+
+No model runs, so the node emits a `parameters` section only.
+
+| Key                             | Meaning                                                                                                           | Absent when |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------- |
+| `parameters.string_storage`     | Name of the storage the response came from. Empty for a storage registered inline rather than by name.            | —           |
+| `parameters.string_count`       | How many responses the storage holds.                                                                             | —           |
+| `parameters.last_index`         | 0-based index of the response chosen this time. With `round_robin` this is the cursor that advances turn to turn. | —           |
+| `parameters.selection_strategy` | `first`, `round_robin` or `random`.                                                                               | —           |
+
+The text that was actually emitted is not repeated here — read it from the node's `SlotComponent` in the turn's `interaction` snapshot, or from the answer itself.
+
 ## Minimum working example
 
 ```

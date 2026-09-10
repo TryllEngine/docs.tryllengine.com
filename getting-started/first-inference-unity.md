@@ -82,10 +82,11 @@ ______________________________________________________________________
 
 Open **Edit → Project Settings → Tryll Client** and set:
 
-| Setting                | Value            | Why                                                                                      |
-| ---------------------- | ---------------- | ---------------------------------------------------------------------------------------- |
-| **Auto Launch Server** | `true` (default) | `TryllClient` spawns the bundled server automatically. Uncheck to run a server yourself. |
-| **Game Name**          | e.g. `my-game`   | Short slug sent to the server on every session for telemetry grouping.                   |
+| Setting                | Value              | Why                                                                                             |
+| ---------------------- | ------------------ | ----------------------------------------------------------------------------------------------- |
+| **Auto Launch Server** | `true` (default)   | `TryllClient` spawns the bundled server automatically. Uncheck to run a server yourself.        |
+| **Llama.cpp backend**  | `Vulkan` (default) | Portable GPU API. Set `Auto` to prefer CUDA on NVIDIA (also ships CUDA DLLs in a player build). |
+| **Game Name**          | e.g. `my-game`     | Short slug sent to the server on every session for telemetry grouping.                          |
 
 There is **no server-path setting** — the location is resolved from the package automatically, identically in the Editor and in packaged builds.
 

@@ -8,7 +8,7 @@
 
 
 
-_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._ [More...](#detailed-description)
+_Embedding ClassifyIntent — event\_type="intent\_classified". Subscribing swallows OnNodeEvent._ [More...](#detailed-description)
 
 * `#include <TryllSubsystem.h>`
 
@@ -85,7 +85,7 @@ _Intent classification typed event — fired for NodeEvent event\_type="intent\_
 ## Detailed Description
 
 
-Detailed tool-call event carrying the full owning [**FTryllToolCall**](struct_f_tryll_tool_call.md) value object (node name and disposition included) alongside the agent id. Fired in addition to — never instead of — OnToolCall / OnToolCallWithId, so a manual handler can tell whether to send results for await\_result or plain-resume for other pausing dispositions. Pause typed event — fired for NodeEvent event\_type="paused" (the executor paused the turn between nodes; ChangeAgentParam is allowed while paused). Generic NodeEvent fallback — fired for any event\_type without a typed delegate (or when the typed delegate has no subscribers). KvPairs preserves wire order. 
+Detailed tool-call event carrying the full owning [**FTryllToolCall**](struct_f_tryll_tool_call.md) value object (node name and disposition included) alongside the agent id. Fired in addition to — never instead of — OnToolCall / OnToolCallWithId, so a manual handler can tell whether to send results for await\_result or plain-resume for other pausing dispositions. ClassifyIntentLLM — event\_type="intent\_llm\_classified". Subscribing swallows OnNodeEvent. Pause typed event — fired for NodeEvent event\_type="paused" (the executor paused the turn between nodes; ChangeAgentParam is allowed while paused). Generic NodeEvent fallback — fired for any event\_type without a typed delegate (or when the typed delegate has no subscribers). KvPairs preserves wire order. 
 
 
     

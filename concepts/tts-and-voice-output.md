@@ -1,6 +1,6 @@
 # TTS and Voice Output
 
-Tryll supports server-side text-to-speech synthesis using the [Sherpa-ONNX](https://github.com/k2-fsa/sherpa-onnx) engine. Two graph nodes produce speech:
+Tryll supports server-side text-to-speech synthesis. Sherpa-ONNX hosts Supertonic 3 and Pocket TTS. llama.cpp hosts Orpheus and Maya1 plus a shared SNAC decoder. See [TTS Models](https://docs.tryllengine.com/reference/tts-models.html) for which catalog names are public and which controls each family accepts. Two graph nodes produce speech:
 
 - [GenerateAndSpeak](https://docs.tryllengine.com/reference/nodes/generate-and-speak.html) fuses LLM inference with TTS synthesis, streaming PCM audio frames alongside the text reply — lowest latency for a *generated* spoken answer.
 - [Speak](https://docs.tryllengine.com/reference/nodes/speak.html) is TTS-only: it voices the latest assistant text produced upstream (e.g. a [CannedResponse](https://docs.tryllengine.com/reference/nodes/canned-response.html)) with no LLM pass.
@@ -59,18 +59,24 @@ Subsystem->CreateSession(
     /*TtsEngine=*/ ETryllInferenceEngine::SherpaOnnx);
 ```
 
+The catalog chooses the engine for each voice — Sherpa-ONNX for Supertonic / Pocket, llama.cpp for Orpheus / Maya1. A session hint is optional; see [Choose where models run](https://docs.tryllengine.com/how-to/choose-where-models-run.html).
+
 ## Voice configuration
 
 TTS voice settings live on the `GenerateAndSpeak` and `Speak` nodes (identical fields on both):
 
-| Parameter            | Structural | Runtime-mutable | Description                                                                                                                                                                                                                                                  |
-| -------------------- | ---------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `tts_model_name`     | Yes        | No              | Catalog voice name. Optional — empty uses the first TTS voice in `models.json`.                                                                                                                                                                              |
-| `speaker_id`         | No         | Yes             | Voice index, `0` to the model's speaker count − 1 (the shipped Supertonic 3 bundle has 10 voice styles, `0`–`9`). Pocket TTS is single-speaker: must stay `0` there — pick a Pocket voice with `tts_voice` instead. Out-of-range values fail agent creation. |
-| `speed`              | No         | Yes             | Speech-rate multiplier. `1.0` = native speed, range `0.1 – 3.0`.                                                                                                                                                                                             |
-| `tts_lang`           | No         | Yes             | Synthesis language on multilingual models (Supertonic 3: 31 languages). Empty = catalog default.                                                                                                                                                             |
-| `tts_voice`          | No         | Yes             | Reference-voice WAV (storage-root-relative) for voice-cloning models (Pocket TTS). Empty = model default voice. See [Clone a Voice](https://docs.tryllengine.com/how-to/clone-a-voice.html).                                                                 |
-| `min_sentence_chars` | No         | Yes             | Minimum characters before a sentence fires to TTS. Lower = shorter first-audio latency.                                                                                                                                                                      |
+| Parameter                  | Structural | Runtime-mutable | Description                                                                                                                                                                                                                                                                                                    |
+| -------------------------- | ---------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tts_model_name`           | Yes        | No              | Catalog voice name. Optional — empty uses the first TTS voice in `models.json`.                                                                                                                                                                                                                                |
+| `speaker_id`               | No         | Yes             | Voice index, `0` to the model's speaker count − 1. Supertonic 3: `0`–`9`. Orpheus: `0`–`7` (Tara … Zoe). Maya1: `0`–`1` (or override with `tts_voice_description`). Pocket TTS is single-speaker: must stay `0` there — pick a Pocket voice with `tts_voice` instead. Out-of-range values fail agent creation. |
+| `speed`                    | No         | Yes             | Speech-rate multiplier. `1.0` = native speed, range `0.1 – 3.0`.                                                                                                                                                                                                                                               |
+| `tts_lang`                 | No         | Yes             | Synthesis language on multilingual models (Supertonic 3: 31 languages). Empty = catalog default.                                                                                                                                                                                                               |
+| `tts_voice`                | No         | Yes             | Reference-voice WAV (storage-root-relative) for voice-cloning models (Pocket TTS). Empty = model default voice. See [Clone a Voice](https://docs.tryllengine.com/how-to/clone-a-voice.html).                                                                                                                   |
+| `tts_voice_description`    | No         | Yes             | Natural-language stable voice identity (age, accent, pitch, timbre). Empty = speaker preset / catalog default. Unsupported on a model that does not advertise the capability.                                                                                                                                  |
+| `tts_delivery_instruction` | No         | Yes             | Natural-language sustained delivery for this call (angry, whisper, …). Empty = neutral. Unsupported when the loaded model does not allow it.                                                                                                                                                                   |
+| `min_sentence_chars`       | No         | Yes             | Minimum characters before a sentence fires to TTS. Lower = shorter first-audio latency.                                                                                                                                                                                                                        |
+
+These are four different knobs. Do not encode identity or delivery as a spoken `[emotion]` prefix — that syntax is not supported. Model-native `<tag>` tokens (for example Maya `<laugh>`) may appear in the text the synthesizer hears; unknown tags are stripped from the audio copy only and do not rewrite history.
 
 Structural parameters are locked at agent creation time. Mutable parameters can be changed between turns with `ChangeAgentParam` (see [Change Agent Parameters at Runtime](https://docs.tryllengine.com/how-to/change-agent-parameters.html)).
 
@@ -90,7 +96,7 @@ Both are non-spatialized (2D) by default, suitable for NPC narration. For spatia
 - [Add voice output to an agent](https://docs.tryllengine.com/how-to/add-voice-to-an-agent.html) — step-by-step guide for Unity and Unreal
 - [Filter LLM output artifacts](https://docs.tryllengine.com/how-to/filter-llm-output-artifacts.html) — strip speaker prefixes and roleplay spans before TTS hears the stream
 - [Substitute agent variables in LLM output](https://docs.tryllengine.com/how-to/substitute-agent-variables-in-output.html) — replace `__PLACEHOLDER__` markers before TTS
-- [Reference: TTS Models](https://docs.tryllengine.com/reference/tts-models.html) — which Sherpa-ONNX voice families are supported, which are not, and why
+- [Reference: TTS Models](https://docs.tryllengine.com/reference/tts-models.html) — shipped voices (Sherpa-ONNX and llama.cpp SNAC), family matrix, and licenses
 - [Reference: GenerateAndSpeak node](https://docs.tryllengine.com/reference/nodes/generate-and-speak.html)
 - [Reference: Speak node](https://docs.tryllengine.com/reference/nodes/speak.html)
 - [Reference: TryllSpeaker (Unity)](https://docs.tryllengine.com/reference/client-api/unity/tryll-speaker.html)

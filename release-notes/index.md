@@ -10,6 +10,10 @@ Tryll is in pre-release: expect breaking changes until the 1.0 API freeze. A rel
 
   In development, not yet shipped. Nothing has landed for the next release yet.
 
+- **[v0.7.0](https://docs.tryllengine.com/release-notes/v0.7.0.html)**
+
+  Dialog you can put in your save file, one session language for speech, content and prompts, per-model RAM/VRAM placement with engines taken from the catalog, pause timeouts, the Orpheus and Maya1 voices with natural-language voice direction, measured tool-call model rankings, live server RAM/VRAM in the editor, and intent classification from described labels instead of a labelled corpus.
+
 - **[v0.6.0](https://docs.tryllengine.com/release-notes/v0.6.0.html)**
 
   Seeing inside a turn: the shared turn inspector, Agent Log, and Dialog Lab. Plus the manual GPU throttle and background agents, hybrid retrieval (BM25 + RRF), the model-free `Branch` node, and output artifact filtering.

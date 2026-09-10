@@ -16,6 +16,7 @@ Here is a list of all files with brief descriptions:
                     * **dir** [**Generated**](dir_f116b38854a4105ed0bf601f8c14f26a.md)     
                         * **file** [**CodegenFingerprint.gen.h**](_codegen_fingerprint_8gen_8h.md)     
                         * **file** [**GraphDescription.Nodes.gen.h**](_graph_description_8_nodes_8gen_8h.md)     
+                    * **file** [**DialogSnapshot.h**](_dialog_snapshot_8h.md)     
                     * **file** [**GraphDescription.h**](_graph_description_8h.md) _Workflow graph builder and associated value types for the C++ client._     
                     * **file** [**ManagedServer.h**](_managed_server_8h.md) _RAII wrapper that spawns a_ `tryll_server` _child process and waits for it to become reachable on its TCP port._    
                     * **file** [**MessageResult.h**](_message_result_8h.md) _Placeholder return type for per-turn metadata._     

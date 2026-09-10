@@ -23,12 +23,11 @@
 
 ## d
 
+* **DECLARE\_MULTICAST\_DELEGATE\_TwoParams** ([**TryllAgentComponent.h**](_tryll_agent_component_8h.md), [**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
 * **DECLARE\_LOG\_CATEGORY\_EXTERN** ([**TryllClientModule.h**](_tryll_client_module_8h.md))
-* **DECLARE\_MULTICAST\_DELEGATE\_FiveParams** ([**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
 * **DECLARE\_MULTICAST\_DELEGATE\_FourParams** ([**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
 * **DECLARE\_MULTICAST\_DELEGATE\_OneParam** ([**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
 * **DECLARE\_MULTICAST\_DELEGATE\_ThreeParams** ([**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
-* **DECLARE\_MULTICAST\_DELEGATE\_TwoParams** ([**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md))
 
 
 

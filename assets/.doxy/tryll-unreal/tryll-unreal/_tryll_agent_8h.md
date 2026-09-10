@@ -15,6 +15,7 @@
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
 * `#include "TryllDialogInteraction.h"`
+* `#include "TryllDialogSnapshot.h"`
 * `#include "TryllKvCache.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllAgentVariables.h"`

@@ -91,7 +91,7 @@
 ## Detailed Description
 
 
-One declared per-agent variable — name, type, and initial value. Authored on [**UTryllWorkflowAsset::Variables**](class_u_tryll_workflow_asset.md#variable-variables) (or [**UTryllAgentComponent::InlineVariables**](class_u_tryll_agent_component.md#variable-inlinevariables) when no asset is assigned); the complete list is sent once in CreateAgentRequest and locks each variable's type for the agent's lifetime. Only one of the value fields is meaningful, selected by Type — the Details customization shows only that field. 
+One declared per-agent variable — name, type, and initial value. Authored on [**UTryllWorkflowAsset::Variables**](class_u_tryll_workflow_asset.md#variable-variables); the complete list is sent once in CreateAgentRequest and locks each variable's type for the agent's lifetime. Only one of the value fields is meaningful, selected by Type — the Details customization shows only that field. 
 
 
     

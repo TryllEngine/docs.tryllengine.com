@@ -47,7 +47,9 @@
 | enum uint8 | [**ETryllCannedResponseSelectionStrategy**](#enum-etryllcannedresponseselectionstrategy)  <br> |
 | enum uint8 | [**ETryllHistoryRole**](#enum-etryllhistoryrole)  <br> |
 | enum uint8 | [**ETryllInferenceEngine**](#enum-etryllinferenceengine)  <br> |
+| enum uint8 | [**ETryllKvCacheType**](#enum-etryllkvcachetype)  <br> |
 | enum uint8 | [**ETryllNodeType**](#enum-etryllnodetype)  <br> |
+| enum uint8 | [**ETryllNotifyClient**](#enum-etryllnotifyclient)  <br> |
 | enum uint8 | [**ETryllPlacement**](#enum-etryllplacement)  <br> |
 | enum uint8 | [**ETryllRetrievalMode**](#enum-etryllretrievalmode)  <br> |
 | enum uint8 | [**ETryllSendAnswer**](#enum-etryllsendanswer)  <br> |
@@ -203,13 +205,36 @@ enum ETryllInferenceEngine {
     WindowsML = 3,
     OpenVino = 4,
     TensorRtLlm = 5,
-    SherpaOnnx = 6
+    SherpaOnnx = 6,
+    OnnxRuntime = 7
 };
 ```
 
 
 
 Inference engine the session should use for model loading. Mirrors the FlatBuffers Engine::InferenceEngine enum in messages.fbs — ordinal values must stay in sync. 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllKvCacheType 
+
+```C++
+enum ETryllKvCacheType {
+    Inherit = 0,
+    F16 = 1,
+    Q8_0 = 2,
+    Q4_0 = 3
+};
+```
+
+
+
+llama.cpp KV cache dtype on ContextOverrides. Mirrors KvCacheType in common\_enums.fbs — ordinals must stay in sync. 
 
 
         
@@ -242,6 +267,27 @@ enum ETryllNodeType {
 
 
 Workflow node types supported by the server. Mirrors the NodeParams union order in nodes.fbs (0-based; wire discriminator is +1). 
+
+
+        
+
+<hr>
+
+
+
+### enum ETryllNotifyClient 
+
+```C++
+enum ETryllNotifyClient {
+    Disabled = 0,
+    OnFound = 1,
+    Always = 2
+};
+```
+
+
+
+When a ClassifyIntent / ClassifyIntentLLM node emits a NodeEvent. Mirrors NotifyClient in common\_enums.fbs — ordinals must stay in sync. 
 
 
         
@@ -366,7 +412,8 @@ Tool-choice policy for the ToolCall node. Mirrors the ToolCallMode enum in commo
 enum ETryllTurnStatus {
     Success = 0,
     Error = 1,
-    Cancelled = 2
+    Cancelled = 2,
+    PauseTimedOut = 3
 };
 ```
 

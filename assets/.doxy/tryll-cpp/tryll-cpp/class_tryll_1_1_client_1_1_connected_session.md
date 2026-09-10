@@ -102,8 +102,7 @@ Obtain a [**ConnectedSession**](class_tryll_1_1_client_1_1_connected_session.md)
 
 ```C++
 auto session = Tryll::Client::TryllClient::RunAndConnect(opts);
-session.GetClient().CreateSession(Tryll::Client::TryllClient::SessionConfig{
-    .engine = ::Tryll::InferenceEngine_LlamaCpp });
+session.GetClient().CreateSession({});
 // …
 ```
  

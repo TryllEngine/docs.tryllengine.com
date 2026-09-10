@@ -53,7 +53,7 @@
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**AcquireConnection**](#function-acquireconnection) () = 0<br> |
-| virtual void | [**CreateSession**](#function-createsession) (ETryllInferenceEngine Engine, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock, FString StorageDataFolder=TEXT("")) = 0<br> |
+| virtual void | [**CreateSession**](#function-createsession) (FString GameName=TEXT(""), FString StorageDataFolder=TEXT(""), FString Locale=TEXT("")) = 0<br> |
 | virtual int32 | [**GetActualPort**](#function-getactualport) () const = 0<br> |
 | virtual FTryllOnAgentDestroyedNative & | [**GetOnAgentDestroyedNative**](#function-getonagentdestroyednative) () = 0<br> |
 | virtual FTryllOnConnectionChangedNative & | [**GetOnConnectionChangedNative**](#function-getonconnectionchangednative) () = 0<br> |
@@ -65,11 +65,14 @@
 | virtual FTryllOnDownloadCompleteNative & | [**GetOnDownloadCompleteNative**](#function-getondownloadcompletenative) () = 0<br> |
 | virtual FTryllOnDownloadProgressNative & | [**GetOnDownloadProgressNative**](#function-getondownloadprogressnative) () = 0<br> |
 | virtual FTryllOnErrorNative & | [**GetOnErrorNative**](#function-getonerrornative) () = 0<br> |
+| virtual FTryllOnGetMemoryConsumptionCompleteNative & | [**GetOnGetMemoryConsumptionCompleteNative**](#function-getongetmemoryconsumptioncompletenative) () = 0<br> |
 | virtual FTryllOnIntentClassifiedNative & | [**GetOnIntentClassifiedNative**](#function-getonintentclassifiednative) () = 0<br> |
+| virtual FTryllOnIntentLlmClassifiedNative & | [**GetOnIntentLlmClassifiedNative**](#function-getonintentllmclassifiednative) () = 0<br> |
 | virtual FTryllOnListModelsCompleteNative & | [**GetOnListModelsCompleteNative**](#function-getonlistmodelscompletenative) () = 0<br> |
 | virtual FTryllOnLoadModelCompleteNative & | [**GetOnLoadModelCompleteNative**](#function-getonloadmodelcompletenative) () = 0<br> |
 | virtual FTryllOnNodeEventNative & | [**GetOnNodeEventNative**](#function-getonnodeeventnative) () = 0<br> |
 | virtual FTryllOnPausedNative & | [**GetOnPausedNative**](#function-getonpausednative) () = 0<br> |
+| virtual FTryllOnSetSessionLocaleCompleteNative & | [**GetOnSetSessionLocaleCompleteNative**](#function-getonsetsessionlocalecompletenative) () = 0<br> |
 | virtual FTryllOnToolCallDetailedNative & | [**GetOnToolCallDetailedNative**](#function-getontoolcalldetailednative) () = 0<br> |
 | virtual FTryllOnToolCallNative & | [**GetOnToolCallNative**](#function-getontoolcallnative) () = 0<br> |
 | virtual FTryllOnToolCallWithIdNative & | [**GetOnToolCallWithIdNative**](#function-getontoolcallwithidnative) () = 0<br> |
@@ -90,10 +93,12 @@
 | virtual void | [**RequestDestroyStringStorage**](#function-requestdestroystringstorage) (const FString & Name, TFunction&lt; UTryllSubsystem::FTryllOnStringStorage &gt; OnComplete=nullptr) = 0<br> |
 | virtual void | [**RequestDestroyVoiceInput**](#function-requestdestroyvoiceinput) (TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; Voice) = 0<br> |
 | virtual void | [**RequestDownloadModel**](#function-requestdownloadmodel) (const FString & ModelName) = 0<br> |
+| virtual void | [**RequestGetMemoryConsumption**](#function-requestgetmemoryconsumption) (TFunction&lt; FTryllOnGetMemoryConsumption &gt; OnComplete) = 0<br> |
 | virtual void | [**RequestListModels**](#function-requestlistmodels) (TFunction&lt; FTryllOnListModels &gt; OnComplete) = 0<br> |
-| virtual void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) = 0<br> |
+| virtual void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName, ETryllMemoryPlacement Placement=ETryllMemoryPlacement::Auto, bool bIsOverride=false) = 0<br> |
 | virtual void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) = 0<br> |
 | virtual void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float Level) = 0<br> |
+| virtual void | [**SetSessionLocale**](#function-setsessionlocale) (FString Locale) = 0<br> |
 | virtual bool | [**TryLaunch**](#function-trylaunch) (EServerBuildVariant Variant, int32 KnownPort, int32 IdleShutdownTimeoutSeconds, FString & OutError) = 0<br> |
 | virtual  | [**~ITryllEditorBridge**](#function-itrylleditorbridge) () = default<br> |
 
@@ -153,17 +158,18 @@ virtual void ITryllEditorBridge::AcquireConnection () = 0
 
 ```C++
 virtual void ITryllEditorBridge::CreateSession (
-    ETryllInferenceEngine Engine,
     FString GameName=TEXT(""),
-    ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock,
-    ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock,
-    ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock,
-    FString StorageDataFolder=TEXT("")
+    FString StorageDataFolder=TEXT(""),
+    FString Locale=TEXT("")
 ) = 0
 ```
 
 
 
+Engines are derived from [**UTryllModelManifest**](class_u_tryll_model_manifest.md), so PIE delegation no longer forwards a per-role engine choice — there is none to forward. 
+
+
+        
 
 <hr>
 
@@ -312,10 +318,36 @@ virtual FTryllOnErrorNative & ITryllEditorBridge::GetOnErrorNative () = 0
 
 
 
+### function GetOnGetMemoryConsumptionCompleteNative 
+
+```C++
+virtual FTryllOnGetMemoryConsumptionCompleteNative & ITryllEditorBridge::GetOnGetMemoryConsumptionCompleteNative () = 0
+```
+
+
+
+
+<hr>
+
+
+
 ### function GetOnIntentClassifiedNative 
 
 ```C++
 virtual FTryllOnIntentClassifiedNative & ITryllEditorBridge::GetOnIntentClassifiedNative () = 0
+```
+
+
+
+
+<hr>
+
+
+
+### function GetOnIntentLlmClassifiedNative 
+
+```C++
+virtual FTryllOnIntentLlmClassifiedNative & ITryllEditorBridge::GetOnIntentLlmClassifiedNative () = 0
 ```
 
 
@@ -368,6 +400,19 @@ virtual FTryllOnNodeEventNative & ITryllEditorBridge::GetOnNodeEventNative () = 
 
 ```C++
 virtual FTryllOnPausedNative & ITryllEditorBridge::GetOnPausedNative () = 0
+```
+
+
+
+
+<hr>
+
+
+
+### function GetOnSetSessionLocaleCompleteNative 
+
+```C++
+virtual FTryllOnSetSessionLocaleCompleteNative & ITryllEditorBridge::GetOnSetSessionLocaleCompleteNative () = 0
 ```
 
 
@@ -685,6 +730,21 @@ virtual void ITryllEditorBridge::RequestDownloadModel (
 
 
 
+### function RequestGetMemoryConsumption 
+
+```C++
+virtual void ITryllEditorBridge::RequestGetMemoryConsumption (
+    TFunction< FTryllOnGetMemoryConsumption > OnComplete
+) = 0
+```
+
+
+
+
+<hr>
+
+
+
 ### function RequestListModels 
 
 ```C++
@@ -704,12 +764,19 @@ virtual void ITryllEditorBridge::RequestListModels (
 
 ```C++
 virtual void ITryllEditorBridge::RequestLoadModel (
-    const FString & ModelName
+    const FString & ModelName,
+    ETryllMemoryPlacement Placement=ETryllMemoryPlacement::Auto,
+    bool bIsOverride=false
 ) = 0
 ```
 
 
 
+`Placement` is honoured only when `bIsOverride` is true; false means "use
+the session's per-model hint". 
+
+
+        
 
 <hr>
 
@@ -744,6 +811,21 @@ Fire-and-forget — see [**UTryllSubsystem::SetInferenceThrottle**](class_u_tryl
 
 
         
+
+<hr>
+
+
+
+### function SetSessionLocale 
+
+```C++
+virtual void ITryllEditorBridge::SetSessionLocale (
+    FString Locale
+) = 0
+```
+
+
+
 
 <hr>
 

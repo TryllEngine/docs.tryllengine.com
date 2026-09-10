@@ -41,6 +41,10 @@ hotwords_storage_path   = "hotwords/wake_words.txt"
 | `.kb.json`            | EmbeddedStringStorage records | JSON array of `{"id": "…", "text": "…", "metadata": {…}}` objects.                    |
 | `.usearch`            | HNSW index                    | Binary file produced by the server on first load; ship it to avoid rebuild overhead.  |
 
+Translations ship with the folder
+
+Localized content lives in `loc/<language>/` folders beside the files they translate, so anything that copies the storage folder already carries them. If you filter what gets staged, make sure the filter keeps `**/loc/**` — a missing translation folder degrades silently to the default language rather than failing the build. See [Ship an Agent in Another Language](https://docs.tryllengine.com/how-to/ship-in-another-language.html).
+
 ## Setting `storage_data_folder`
 
 Tell each session where the storage folder is by sending a non-empty `storage_data_folder` in `CreateSessionRequest`. Every client platform has a convenience setting:

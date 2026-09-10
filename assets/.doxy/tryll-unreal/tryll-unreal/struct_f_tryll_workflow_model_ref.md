@@ -90,7 +90,7 @@
 Collects model-name references from a workflow graph and compares them against the project's TryllModelManifest. Used by UTryllWorkflowAsset::IsDataValid / PreSave (cook) so a packaged build cannot silently omit a referenced model.
 
 
-v1 covers workflow assets only; inline graphs on components are out of scope. 
+Covers workflow assets. 
 
 
     

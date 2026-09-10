@@ -17,6 +17,7 @@
 * `#include "TryllKvCache.h"`
 * `#include "TryllThrottle.h"`
 * `#include "TryllDialogInteraction.h"`
+* `#include "TryllDialogSnapshot.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllToolCall.h"`
 * `#include "Generated/Nodes/TryllNodeParamsBase.h"`
@@ -63,6 +64,12 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FOnTryllDialogExportedNative, const [**FTryllDialogSnapshot**](struct_f_tryll_dialog_snapshot.md) &, const [**FTryllError**](struct_f_tryll_error.md) &) <br> |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FOnTryllDialogImportedNative, const [**FTryllDialogImportResult**](struct_f_tryll_dialog_import_result.md) &, const [**FTryllError**](struct_f_tryll_error.md) &) <br> |
 
 
 
@@ -91,6 +98,42 @@
 
 
 
+## Public Functions Documentation
+
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FOnTryllDialogExportedNative,
+    const FTryllDialogSnapshot &,
+    const FTryllError &
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FOnTryllDialogImportedNative,
+    const FTryllDialogImportResult &,
+    const FTryllError &
+) 
+```
+
+
+
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h`

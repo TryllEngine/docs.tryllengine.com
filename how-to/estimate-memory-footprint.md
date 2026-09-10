@@ -1,6 +1,6 @@
 # Estimate the RAM and VRAM Your Setup Needs
 
-Work out, before you ship, roughly how much **system RAM** and **GPU VRAM** a given model line-up will use — so you can pick models that fit your target hardware and avoid out-of-memory surprises on a player's machine.
+Work out, before you ship, roughly how much **system RAM** and **GPU VRAM** a given model line-up will use — so you can pick models that fit your target hardware and avoid out-of-memory surprises on a player's machine. After you load the line-up, [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html) is the live check against this recipe.
 
 Prerequisites
 
@@ -11,25 +11,27 @@ Prerequisites
 
 With GPU offload on (the default), the four things that cost memory split cleanly:
 
-| What                                | RAM (system)         | VRAM (GPU)                          | Scales with             |
-| ----------------------------------- | -------------------- | ----------------------------------- | ----------------------- |
-| **Language model weights**          | ≈ download size      | ≈ download size                     | model file size         |
-| **KV cache** (conversation context) | negligible           | **large — hundreds of MB to ~2 GB** | context length × model  |
-| **Embedding model** (for RAG)       | tens of MB           | tens of MB                          | model file size (small) |
-| **STT / TTS** (voice in/out)        | ≈ 1–2× download size | **none**                            | model file size         |
+| What                                | RAM (system)                     | VRAM (GPU)                          | Scales with                     |
+| ----------------------------------- | -------------------------------- | ----------------------------------- | ------------------------------- |
+| **Language model weights**          | ≈ download size                  | ≈ download size                     | model file size                 |
+| **KV cache** (conversation context) | negligible                       | **large — hundreds of MB to ~2 GB** | context length × model          |
+| **Embedding model** (for RAG)       | tens of MB                       | tens of MB                          | model file size (small)         |
+| **STT / Sherpa TTS** (voice in/out) | ≈ 1–2× download size             | **none**                            | model file size                 |
+| **SNAC TTS** (Orpheus, Maya1)       | ≈ download size + ~50 MB decoder | ≈ download size if offloaded        | GGUF size (llama.cpp placement) |
 
 Two facts do most of the work:
 
 - **Weights cost the same in both RAM and VRAM.** A GGUF model is memory-mapped (counts as RAM) *and* offloaded to the GPU (counts as VRAM), so a 4 GB model occupies ~4 GB of *each*. See [Models and Inference Engines](https://docs.tryllengine.com/concepts/models-and-inference-engines.html).
-- **Voice models live in RAM only.** Speech-to-text and text-to-speech run on the CPU, so they add **zero VRAM** — only system RAM.
+- **Sherpa voice models live in RAM only.** Speech-to-text and Sherpa text-to-speech (Supertonic, Pocket TTS) run on the CPU, so they add **zero VRAM** — only system RAM. llama.cpp SNAC voices (Orpheus, Maya1) are GGUF backbones: they follow the same RAM/VRAM placement as a language model, plus a ~50 MB CPU decoder.
 
 ## The recipe
 
 **VRAM** ≈ (sum of language + embedding model download sizes) + a **KV-cache allowance**.
 
-- KV allowance is the part that grows with conversation length. As a rough guide on a Q4 model: budget **~0.7 GB** for short/RAG-style turns and up to **~1.5–2 GB** for long multi-turn dialogs. Each `Generate` node with its own model pays its own KV — count them separately.
+- KV allowance is the part that grows with conversation length. As a rough guide on a Q4 model: budget **~0.7 GB** for short/RAG-style turns and up to **~1.5–2 GB** for long multi-turn dialogs. Each language-model node pays for its own window: `Generate` / `GenerateAndSpeak` default to the variant or server `default_n_ctx` (commonly 8192); `ClassifyIntentLLM` and `ToolCall` default to
+- Count those per-node windows separately — a classifier at 2048 is a small slice of an 8192 generator.
 
-**RAM** ≈ (language model download size) + (STT size + TTS size, each ×~1.5 if you use voice) + a few hundred MB of runtime overhead.
+**RAM** ≈ (language model download size) + (STT size + TTS size, each ×~1.5 if you use Sherpa voice) + a few hundred MB of runtime overhead. For Orpheus or Maya1, add the GGUF download size the same way you would a language model, plus ~50 MB for the shared SNAC decoder.
 
 - The language model's weights show up in *both* budgets (mmap); that is expected, not double-counting a leak.
 
@@ -81,18 +83,20 @@ Measured on-disk sizes of the downloaded models, taken from the `downloads.json`
 | Streaming Paraformer Bilingual zh-en | 237 MB        |
 | SenseVoice Multilingual              | 237 MB        |
 | Whisper Small EN                     | 376 MB        |
-| Parakeet TDT 0.6B v2                 | 661 MB        |
 | Parakeet TDT 0.6B v3                 | 670 MB        |
 | Whisper Medium EN                    | 946 MB        |
 | Whisper Large v3 Turbo               | 1.0 GB        |
 
 ### Text-to-speech (TTS) and VAD
 
-| Model               | Download size |
-| ------------------- | ------------- |
-| Silero VAD          | 2 MB          |
-| Supertonic 3 (int8) | 145 MB        |
-| Pocket TTS (int8)   | 200 MB        |
+| Model                        | Download size |
+| ---------------------------- | ------------- |
+| Silero VAD                   | 2 MB          |
+| Supertonic 3 (int8)          | 145 MB        |
+| Pocket TTS (int8)            | 200 MB        |
+| SNAC 24 kHz decoder (shared) | 50 MB         |
+| Orpheus 3B FT (Q4_K_M)       | ≈ 2.0 GB      |
+| Maya1 3B (i1-Q4_K_M)         | 2.2 GB        |
 
 RAM/VRAM reminder
 
@@ -128,6 +132,7 @@ Estimates get you in the ballpark; the real number depends on your GPU, driver, 
 
 - [Concept: Models and Inference Engines](https://docs.tryllengine.com/concepts/models-and-inference-engines.html)
 - [Concept: Projection and Token Budgets](https://docs.tryllengine.com/concepts/projection-and-token-budgets.html)
+- [How-to: Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html) — live RAM/VRAM after you load the line-up
 - [How-to: Pin and Unpin Models](https://docs.tryllengine.com/how-to/pin-and-unpin-models.html)
 - [How-to: Use Your Own Local Model](https://docs.tryllengine.com/how-to/use-your-own-local-model.html)
 - [Reference: Model Management](https://docs.tryllengine.com/reference/model-management.html)

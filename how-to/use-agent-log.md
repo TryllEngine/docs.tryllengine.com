@@ -97,7 +97,7 @@ Different workflow features leave different traces. When testing, these are the 
 
 ### Classification events need `notify_client`
 
-`ClassifyIntent` and `ClassifyIntentLLM` do **not** emit anything to the client by default — classification is routing, and routing is invisible on the wire. If you want the classification to appear in the Agent Log, set **`notify_client`** on the node.
+`ClassifyIntent` and `ClassifyIntentLLM` do **not** emit anything to the client by default — classification is routing, and routing is invisible on the wire. If you want the classification to appear in the Agent Log, set **`notify_client`** to `OnFound` or `Always` on the node.
 
 With it off, an intent-driven workflow produces a turn with no visible sign that classification happened at all, even though it did — the route is still visible in the [turn inspector](https://docs.tryllengine.com/reference/turn-inspector.html), and the detail in its Raw JSON block. With it on, you get a `NodeEvent` row per classification.
 
@@ -175,6 +175,7 @@ Neither supersedes the other. Contributor reference for the sidecar: `docs/dev/s
 ## Related
 
 - [Reference: Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.html) — the panel behind a selected turn
+- [How-to: Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html) — server-wide RAM/VRAM, not this connection's traffic
 - [How-to: Test an Agent in the Editor](https://docs.tryllengine.com/how-to/test-agent-in-editor.html)
 - [How-to: Compare Dialog Variants](https://docs.tryllengine.com/how-to/compare-dialog-variants.html)
 - [How-to: Use Voice Input](https://docs.tryllengine.com/how-to/use-voice-input.html)

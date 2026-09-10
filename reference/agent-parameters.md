@@ -80,17 +80,13 @@ ______________________________________________________________________
 
 ## Diagnostics
 
-When `enable_diagnostics = true`, every `TurnComplete` that ends successfully carries a JSON string in `debug_info` with:
+When `enable_diagnostics = true`, every `TurnComplete` carries a JSON string in `debug_info` describing what the turn did: the nodes it ran and the [exit route](https://docs.tryllengine.com/reference/glossary.html#exit-route) each took, the prompt every model received, what each node produced, and engine counters. **[Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) documents every field**, including why a given key may be absent.
 
-- Per-node entry / exit events, in execution order.
-- The [exit route](https://docs.tryllengine.com/reference/glossary.html#exit-route) taken at each branching node.
-- The prompt passed to each Generate node (on servers where this is enabled).
-
-When the server-side `include_interaction_in_diagnostics` flag (in [`server-config.json`](https://docs.tryllengine.com/reference/server-configuration.html)) is **also** set, `debug_info` additionally carries the [interaction](https://docs.tryllengine.com/reference/glossary.html#interaction)'s knowledge components, each as a flat JSON object with a `"_type"` discriminator.
+`enable_diagnostics` is **structural**: it is fixed for the agent's lifetime and cannot be turned on for an agent that already exists. Two server-side flags in [`server-config.json`](https://docs.tryllengine.com/reference/server-configuration.html) trim the payload further — `include_engine_diagnostics` removes the `engine` sections, and `include_interaction_in_diagnostics` removes the end-of-turn [interaction](https://docs.tryllengine.com/reference/glossary.html#interaction) snapshot.
 
 The default is `false` — no diagnostics, zero overhead. Flip it on for debug sessions only; payloads grow linearly with graph size and knowledge component count.
 
-See [How to define and handle tool calls](https://docs.tryllengine.com/how-to/define-and-handle-tool-calls.html) for a worked example that turns diagnostics on to inspect the tool-call detection path.
+The editor tooling manages this for you: the Chat Window enables it on the agent it creates, and the [Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.html) holds a lease so agents created while it is open request diagnostics too. See [How to define and handle tool calls](https://docs.tryllengine.com/how-to/define-and-handle-tool-calls.html) for a worked example that turns diagnostics on to inspect the tool-call detection path.
 
 ______________________________________________________________________
 

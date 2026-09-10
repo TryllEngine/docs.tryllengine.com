@@ -35,6 +35,21 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
+## Diagnostics
+
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
+
+Transform runs no model, so it emits a `parameters` section only.
+
+| Key                      | Meaning                                                                                                                                                                | Absent when                  |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `parameters.template`    | The Mustache template, in full — **not** truncated the way [Generate](https://docs.tryllengine.com/reference/nodes/generate.html#diagnostics)'s knowledge template is. | —                            |
+| `parameters.output_name` | The configured output slot name.                                                                                                                                       | Defaulting to the node name. |
+
+The node records the template but **not the rendered result**. To see what it produced, read that slot from the turn's `interaction` snapshot, or from the `input.prompt[]` of the node that consumed it.
+
+______________________________________________________________________
+
 ## Example
 
 ```

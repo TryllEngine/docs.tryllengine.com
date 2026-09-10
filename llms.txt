@@ -63,21 +63,29 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Edit workflows in the Unity graph editor](https://docs.tryllengine.com/how-to/edit-workflows-in-graph-editor.md): Author graphs visually in the Unity Workflow Graph window.
 - [Edit workflows in the Unreal graph editor](https://docs.tryllengine.com/how-to/edit-workflows-in-unreal-graph-editor.md): Author graphs visually in the Unreal workflow graph editor.
 - [Manage models in the editor](https://docs.tryllengine.com/how-to/manage-models-in-editor.md): The Unity/Unreal Model Manager window — download and register models per project.
+- [Choose where models run](https://docs.tryllengine.com/how-to/choose-where-models-run.md): Put each model in RAM or VRAM, and understand why placement is a hint rather than a guarantee.
 - [Use the Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.md): Agent Log — per-agent client send/receive narrative in the editor.
+- [Inspect server memory](https://docs.tryllengine.com/how-to/inspect-server-memory.md): Unity and Unreal Memory windows — live server-wide RAM/VRAM over the wire; Refresh only, no graphs.
 - [Compare dialog variants in the Lab](https://docs.tryllengine.com/how-to/compare-dialog-variants.md): Dialog Lab — run one scripted dialog across parameter variants and seeds, and read the spread.
+- [Test tool calls in Chat and the Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.md): Exercise a ToolCall workflow in Chat and the Dialog Lab without Play/PIE.
 - [Build a chat agent with a graph](https://docs.tryllengine.com/how-to/build-chat-agent-with-graph.md): The minimal working graph — start here when writing your first agent.
 - [Design an NPC prompt](https://docs.tryllengine.com/how-to/design-an-npc-prompt.md): Measurement-backed recipes for a role-play `system_prompt` — what improves character dialogue and what provably does not.
+- [Design an intent-classifier prompt](https://docs.tryllengine.com/how-to/design-an-intent-classifier-prompt.md): Write a `ClassifyIntentLLM` prompt — the `{{intents_block}}`/`{{letters}}` template contract (there is no default), label wording and order, `threshold`/`margin`.
 - [Use Mustache templates](https://docs.tryllengine.com/how-to/use-mustache-templates.md): Control prompt layout — `{{slot.<name>}}`, `{{var.<name>}}`, `{{#instructions}}`, knowledge blocks.
 - [Stream answers to your UI](https://docs.tryllengine.com/how-to/stream-answers-to-ui.md): Consume `AnswerText` chunks and render them incrementally, per language.
 - [Send multiple answers in one turn](https://docs.tryllengine.com/how-to/send-multiple-answers-in-a-turn.md): Multiple sending nodes in one turn, and attributing chunks to their producer.
 - [Change agent parameters at runtime](https://docs.tryllengine.com/how-to/change-agent-parameters.md): Mutate a node parameter at runtime, and which params are structural and cannot change.
 - [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.md): Append scripted user/assistant turns, write an opener, or retry by removing the last turn.
+- [Export and import dialog](https://docs.tryllengine.com/how-to/export-and-import-dialog.md): Capture a full-fidelity dialog snapshot and restore it from a game-owned save.
+- [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.md): Coordinate multi-agent snapshots, variables, and game state into an atomic save slot, then restore strictly in a fresh session.
 - [Cancel a turn](https://docs.tryllengine.com/how-to/cancel-a-turn.md): Stop an in-flight turn — Stop button, barge-in, keep-or-discard semantics.
 - [Pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.md): Suspend a turn between nodes and resume it, optionally jumping to another node.
 - [Manage an agent's KV cache](https://docs.tryllengine.com/how-to/manage-agent-kv-cache.md): Prefill, evict, and inspect an agent's KV cache to trade RAM/VRAM against latency.
+- [Run many agents on a small GPU](https://docs.tryllengine.com/how-to/run-many-agents-on-a-small-gpu.md): Size every LLM node's context window, then evict the agents nobody is talking to — the two levers that fit several NPC agents into limited VRAM.
 - [Create a simple RAG assistant](https://docs.tryllengine.com/how-to/create-simple-rag-assistant.md): Build a knowledge base, index it, and answer from it with `Retrieve → Generate`.
 - [Query rewriting for RAG](https://docs.tryllengine.com/how-to/query-rewriting-for-rag.md): Improve retrieval by rewriting the player's raw utterance before searching.
-- [Build an intent-driven NPC](https://docs.tryllengine.com/how-to/build-intent-driven-npc.md): Classify player intent, then switch instructions on the result.
+- [Build an intent-driven NPC](https://docs.tryllengine.com/how-to/build-intent-driven-npc.md): Classify player intent against a labelled knowledge base, then switch instructions on the result.
+- [Classify intent without a knowledge base](https://docs.tryllengine.com/how-to/classify-intent-without-a-knowledge-base.md): Route player lines with `ClassifyIntentLLM` — described labels instead of a labelled corpus, no embedding model, no files.
 - [Drive prompts and retrieval from game state](https://docs.tryllengine.com/how-to/drive-prompts-and-retrieval-from-game-state.md): Feed live game state (level, mood, quest) into prompts and retrieval filters.
 - [Branch on a slot](https://docs.tryllengine.com/how-to/branch-on-a-slot.md): Conditional routing with the `Branch` node, including reacting to a model's own verdict.
 - [Add a hidden reasoning or draft step](https://docs.tryllengine.com/how-to/add-a-hidden-reasoning-step.md): Produce intermediate text the conversation never remembers.
@@ -97,6 +105,9 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Verify required models before Play](https://docs.tryllengine.com/how-to/verify-models-before-play.md): Fail the build early when a workflow references a model that will not ship.
 - [Estimate memory footprint](https://docs.tryllengine.com/how-to/estimate-memory-footprint.md): Work out RAM and VRAM cost before shipping.
 - [Ship storage folders for builds](https://docs.tryllengine.com/how-to/ship-storage-folders-for-builds.md): Get relative-path storage files into a packaged build so they resolve at runtime.
+- [Compare tool-call models](https://docs.tryllengine.com/how-to/compare-tool-call-models.md): Catalog exact-accuracy on the Tryll-authored suites and the BFCL slice, so you pick a model by job rather than by size.
+- [Design a tool-call prompt](https://docs.tryllengine.com/how-to/design-a-tool-call-prompt.md): Shape tool schemas and the ToolCall system prompt so small models fill the right slots — name "unfiltered", keep argument count down.
+- [Ship an agent in another language](https://docs.tryllengine.com/how-to/ship-in-another-language.md): Set the session locale once — TTS language, STT hints, per-locale content files, and prompt directives follow.
 
 ## Workflow Nodes
 
@@ -123,6 +134,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Glossary](https://docs.tryllengine.com/reference/glossary.md): Canonical definition of every Tryll term. Check here before guessing what a word means.
 - [Agent Parameters](https://docs.tryllengine.com/reference/agent-parameters.md): Every field on `CreateAgentRequest`, grouped by what it controls.
 - [Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.md): The shared per-turn diagnostics panel — every block, when it appears, and why one is missing. Hosted by Chat, Agent Log, and Dialog Lab.
+- [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.md): Every field of the `TurnComplete.debug_info` payload — the envelope, per-node `parameters`/`input`/`output`/`engine` sections, and why a key is absent. Read before interpreting the inspector's Raw JSON block.
 - [Wire Protocol](https://docs.tryllengine.com/reference/wire-protocol.md): Byte-level contract — framing, message types, and flows for writing a third-party client.
 - [Error Codes](https://docs.tryllengine.com/reference/error-codes.md): Every error code, what causes it, and how a client should react.
 - [Model Management](https://docs.tryllengine.com/reference/model-management.md): The model catalog, variants, download/load/unload, and model status.
@@ -140,6 +152,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [v0.4.0](https://docs.tryllengine.com/release-notes/v0.4.0.md): Mandatory one-shot `CreateSession`, cancel/pause/resume, chat-template tool calling, voice cloning.
 - [v0.5.0](https://docs.tryllengine.com/release-notes/v0.5.0.md): Slots, agent variables, model-visible tool results, GBNF grammars, dialog-history editing, KV-cache control.
 - [v0.6.0](https://docs.tryllengine.com/release-notes/v0.6.0.md): Turn inspector, Agent Log, Dialog Lab, manual GPU throttle, background agents, hybrid retrieval, Branch node, output artifact filtering.
+- [v0.7.0](https://docs.tryllengine.com/release-notes/v0.7.0.md): Dialog export/import into your own save, one session language for TTS/STT/content/prompts, per-model RAM/VRAM placement and catalog-derived engines, pause timeouts, Orpheus and Maya1 voices with voice description and delivery, measured tool-call model comparison.
 
 ## Client API
 

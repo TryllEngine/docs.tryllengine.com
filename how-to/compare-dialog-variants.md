@@ -16,7 +16,7 @@ ______________________________________________________________________
 
 1. Assign **Tryll Settings**, an **Agent (default)**, and a **Dialog Script**. The default agent is only needed by variants that don't set one of their own, so you can leave it empty if every variant brings its own agent.
 
-1. Set **Repeats** (how many seeds per variant — default 4; a single sample per variant tells you almost nothing about reliability) and a **base seed** (must be non-zero — `0` means *random seed* on the wire, which would defeat reproducibility).
+1. Set **Repeats** (how many seeds per variant — default 4; a single sample per variant tells you almost nothing about reliability) and a **base seed** (the field clamps values below 1 up to 1 — `0` means *random seed* on the wire, which would defeat reproducibility).
 
 1. Optionally add variants. Switch the toolbar to the **Variants** tab — its label carries the current count, e.g. `Variants (3)` — and add as many as you need. Each variant is one configuration to compare, and can differ in either of two ways:
 
@@ -42,7 +42,16 @@ A stateless agent's dialog is cleared by the server after every turn, so seeded 
 
 ## Add deterministic checks
 
-A step can carry checks that are evaluated in the editor with no model involved — **Must Contain**, **Must Not Contain**, **Regex Forbid**, and **Max Words**. A cell whose checks all pass is green; any failure turns it amber and is listed in the inspector. Checks never stop a run, and they are not a score: the Lab makes no quality claim either way.
+A step can carry checks that are evaluated in the editor with no model involved — **Must Contain**, **Must Not Contain**, **Regex Forbid**, **Max Words**, and two intent checks:
+
+- **Intent is** — at least one addressed classifier on that turn accepted the exact label you named. If a node ran twice and either execution found it, the check passes.
+- **Intent not found** — every addressed classifier on that turn took `not_found`. If any one of them accepted a label, the check fails.
+
+Leave the node name empty to address every classifier that ran. Name a node to address only that node's executions. Labels compare exactly and case-sensitively — they are identifiers, not prose.
+
+A missing or mis-typed classifier **fails** (`intent unavailable`), it does not skip. A green suite that never ran a classifier is meaningless. Seeded steps refuse intent checks before Run: a seeded turn is injected without running the graph, so there is no classification to assert.
+
+A cell whose checks all pass is green; any failure turns it amber and is listed in the inspector. Checks never stop a run, and they are not a score: the Lab makes no quality claim either way.
 
 Above the step list, the script also has a **Global Regex Forbid** list. It works exactly like a step's **Regex Forbid** — the same patterns, the same pass/fail — except it applies to *every* turn in the script, seeded turns included. Use it for the constraints that hold for the whole dialog rather than repeating them on each step:
 
@@ -61,13 +70,17 @@ Word counting is language-specific
 
 - **Summary** (default) collapses each turn to one row with a coloured dot per sample — green (clean), amber (a check failed), red (error), open outline (not run, because an earlier turn in that column errored). Click a dot to expand and select that cell.
 - **Grid** shows every sample side by side per turn, full transcript style. Switch to it when you want to read several answers at once rather than scan verdicts.
-- Click any cell to open the shared **[turn inspector](https://docs.tryllengine.com/reference/turn-inspector.html)** — route, timing, the node parameters that turn actually ran with, the rendered prompt and output, retrieval hits, and tool calls. Everything is attributed to the node that produced it, and clicking a node in the Route breadcrumb narrows the whole panel to that node; see the reference page for the full block list. Drag the pane's left edge to resize it (the width is remembered), or use the **Inspector** toolbar button to collapse it.
+- Click any cell to open the shared **[turn inspector](https://docs.tryllengine.com/reference/turn-inspector.html)** — route, timing, the node parameters that turn actually ran with, the rendered prompt and output, retrieval hits, the intent decision, and tool calls. Everything is attributed to the node that produced it, and clicking a node in the Route breadcrumb narrows the whole panel to that node; see the reference page for the full block list. Drag the pane's left edge to resize it (the width is remembered), or use the **Inspector** toolbar button to collapse it.
 - The Lab adds one block the other hosts do not have: **Checks**, listing each authored check for that step with its pass/fail.
 - **⇧-click two cells** (or the ⊙ in a column header) to pin them; the inspector's prompt section becomes a two-sided line diff — `+` green for lines only in the selected cell, `−` red for lines only in the other. The red side is usually the interesting one: it shows what a variant *dropped*. Each node is compared against its own counterpart, so a change in the generate prompt shows up there and nowhere else. If a node ran in one variant and not the other, it is called out as present on one side only — often the whole explanation for why the two answers differ.
 
 Turns without diagnostics
 
 Seeded turns are injected without running the graph, and turns after an error never execute — neither produces diagnostics, so the inspector says which case it is rather than showing an empty panel.
+
+## Tool calls
+
+By default an unexpected tool call — a step with no `ToolResults` entry — fails the cell. That assertion holds even if the variant's scene agent has a live `RegisterTool` handler. Tick **Use live tools** on the variant only when the run should exercise that handler; canned results still pin a step. See [Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html).
 
 ## Export and import
 
@@ -92,3 +105,9 @@ ______________________________________________________________________
 - Saving a Dialog Lab experiment as a durable asset (promote variants to a project asset and reload later) is not wired yet — variants live in the window for now.
 - Intent-classification charts, variable replacements, and the engine/scheduler group have no dedicated inspector block yet — they remain visible in the raw-JSON escape hatch. See [Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.html#raw-json).
 - No in-editor judge and no simulated player, by design — see the reasoning in `docs/research/clients/dialog-lab-requirements.md`.
+
+## Related
+
+- [Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html)
+- [Test an agent in the editor](https://docs.tryllengine.com/how-to/test-agent-in-editor.html)
+- [Reference: Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.html)

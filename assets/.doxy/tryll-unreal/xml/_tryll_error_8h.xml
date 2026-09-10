@@ -7,6 +7,7 @@
     <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
     <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
     <includedby refid="_tryll_agent_variables_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h</includedby>
+    <includedby refid="_tryll_dialog_snapshot_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllDialogSnapshot.h</includedby>
     <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
     <includedby refid="_tryll_variable_override_utils_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVariableOverrideUtils.h</includedby>
     <includedby refid="_tryll_voice_input_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</includedby>
@@ -42,7 +43,15 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="5">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllDialogSnapshot.h</label>
+        <link refid="_tryll_dialog_snapshot_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h</label>
         <link refid="_tryll_editor_bridge_8h_source"/>
       </node>
@@ -57,34 +66,36 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
-        <link refid="_tryll_subsystem_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVariableOverrideUtils.h</label>
         <link refid="_tryll_variable_override_utils_8h_source"/>
       </node>
-      <node id="8">
+      <node id="9">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInput.h</label>
         <link refid="_tryll_voice_input_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceInputComponent.h</label>
         <link refid="_tryll_voice_input_component_8h_source"/>
       </node>
@@ -155,6 +166,15 @@
           </briefdescription>
           <detaileddescription>
 <para>A session already exists on this connection; CreateSession is one-shot. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dac4bc7401e87b528b2db08b351e5f9367" prot="public">
+          <name>InvalidLocale</name>
+          <initializer>= 2004</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>CreateSessionRequest.locale is not a well-formed BCP-47 tag. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da22ab3ef06934a2bdad77f3b96ac9c2b7" prot="public">
@@ -236,6 +256,60 @@
           </briefdescription>
           <detaileddescription>
 <para>Resume tool_results are invalid for the current paused tool-call batch. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dacb4470adc465bfbe529c51b42ffcfa21" prot="public">
+          <name>ModelLanguageUnsupported</name>
+          <initializer>= 3017</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>A node relies on the session locale but its model does not declare that language. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dabba1553ec28e4f16a7e5abaeb1fa6aaa" prot="public">
+          <name>DialogSnapshotInvalid</name>
+          <initializer>= 3018</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Export/import snapshot is malformed, missing required fields, or has inconsistent tools. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da0a23825481b87073b094bd8f62fe94a1" prot="public">
+          <name>DialogFormatUnsupported</name>
+          <initializer>= 3019</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Snapshot format_version is too new, or the file identifier is not TDLG. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944daaab8050e918694f9ce726290ef5f09cb" prot="public">
+          <name>DialogGraphMismatch</name>
+          <initializer>= 3020</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Import Strict: graph_signature does not match the agent&apos;s create-time graph. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da93246c6dc22bebf245f284a62cd1881f" prot="public">
+          <name>DialogSnapshotTooLarge</name>
+          <initializer>= 3021</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Encoded snapshot would overflow the 1 MiB frame cap. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944da8305a3b914002976600a284d7e7dad79" prot="public">
+          <name>DialogUnsupportedComponent</name>
+          <initializer>= 3022</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Unknown IComponent on export, or unknown PersistedComponent union arm on import. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="_tryll_error_8h_1a360da770ac4dbf26ed954170d352944dae30d06929b59cd217b7e1f476f5aac3f" prot="public">
@@ -444,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="115"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllError.h" bodystart="22" bodyend="129"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

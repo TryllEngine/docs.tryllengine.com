@@ -31,6 +31,9 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | struct | [**DialogInteraction**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction.md) <br> |
+| struct | [**IntentClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event.md) <br>_Owning payload for_ `event_type="intent_classified"` _(embedding classifier)._ |
+| struct | [**IntentLlmClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_classified_event.md) <br>_Owning payload for_ `event_type="intent_llm_classified"` _._ |
+| struct | [**IntentLlmLabelProb**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_label_prob.md) <br>_One label / first-token probability pair from ClassifyIntentLLM._  |
 | struct | [**ToolCallEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event.md) <br>_Owning tool-call event for deferred / async handling._  |
 | struct | [**ToolResult**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result.md) <br>_One model-visible result correlated to a tool\_call event's call\_id._  |
 
@@ -41,7 +44,8 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 | ---: | :--- |
 | typedef std::function&lt; void(std::string\_view nodeName, std::string\_view text, bool isDelta, bool isFinal)&gt; | [**AnswerTextCallback**](#typedef-answertextcallback)  <br>_Callback type for streaming text chunks._  |
 | typedef std::function&lt; void(const [**TryllError**](class_tryll_1_1_client_1_1_tryll_error.md) &error)&gt; | [**ErrorCallback**](#typedef-errorcallback)  <br>_Callback type for agent-level error notifications._  |
-| typedef std::function&lt; void(std::string\_view intent, std::string\_view recordId, std::size\_t recordIndex, float distance)&gt; | [**IntentClassifiedCallback**](#typedef-intentclassifiedcallback)  <br>_Callback type for intent-classification notifications._  |
+| typedef std::function&lt; void(const [**IntentClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event.md) &event)&gt; | [**IntentClassifiedCallback**](#typedef-intentclassifiedcallback)  <br>_Callback type for embedding intent-classification notifications._  |
+| typedef std::function&lt; void(const [**IntentLlmClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_classified_event.md) &event)&gt; | [**IntentLlmClassifiedCallback**](#typedef-intentllmclassifiedcallback)  <br>_Callback type for LLM intent-classification notifications._  |
 | typedef std::function&lt; void(std::string\_view nodeName, std::string\_view eventType, const std::vector&lt; [**NodeEventKeyValue**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-nodeeventkeyvalue) &gt; &kvPairs)&gt; | [**NodeEventCallback**](#typedef-nodeeventcallback)  <br>_Generic_ `NodeEvent` _callback._ |
 | typedef std::pair&lt; std::string, std::string &gt; | [**NodeEventKeyValue**](#typedef-nodeeventkeyvalue)  <br>_One ordered key/value pair in a_ `NodeEvent` _payload._ |
 | typedef std::function&lt; void(std::string\_view nodeName, std::string\_view pendingExit)&gt; | [**PausedCallback**](#typedef-pausedcallback)  <br>_Callback type for pause notifications._  |
@@ -85,9 +89,14 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 |  std::future&lt; void &gt; | [**DestroyAsync**](#function-destroyasync) () <br>_Request agent destruction on the server asynchronously._  |
 |  [**AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md) | [**EvictKvCache**](#function-evictkvcache) () <br>_Blocking convenience wrapper over_ [_**EvictKvCacheAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-evictkvcacheasync) _._ |
 |  std::future&lt; [**AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md) &gt; | [**EvictKvCacheAsync**](#function-evictkvcacheasync) () <br>_Release raw eligible language-model contexts while retaining agent state._  |
+|  [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) | [**ExportDialog**](#function-exportdialog) () <br> |
+|  std::future&lt; [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) &gt; | [**ExportDialogAsync**](#function-exportdialogasync) () <br>_Export the agent's completed dialog as an owned snapshot. Idle-only._  |
 |  std::uint64\_t | [**GetAgentId**](#function-getagentid) () noexcept const<br>_Server-assigned agent identifier._  |
 |  [**AgentKvCacheStatus**](struct_tryll_1_1_client_1_1_agent_kv_cache_status.md) | [**GetKvCacheStatus**](#function-getkvcachestatus) () <br>_Blocking convenience wrapper over_ [_**GetKvCacheStatusAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-getkvcachestatusasync) _._ |
 |  std::future&lt; [**AgentKvCacheStatus**](struct_tryll_1_1_client_1_1_agent_kv_cache_status.md) &gt; | [**GetKvCacheStatusAsync**](#function-getkvcachestatusasync) () <br>_Return aggregate KV-cache lifecycle state for this agent._  |
+|  std::string | [**GetPausedNode**](#function-getpausednode) () const<br>_Node this agent's turn is currently paused after._  |
+|  [**DialogImportResult**](struct_tryll_1_1_client_1_1_dialog_import_result.md) | [**ImportDialog**](#function-importdialog) (const [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) & snapshot, DialogCompatibility compatibility=DialogCompatibility::Strict) <br> |
+|  std::future&lt; [**DialogImportResult**](struct_tryll_1_1_client_1_1_dialog_import_result.md) &gt; | [**ImportDialogAsync**](#function-importdialogasync) (const [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) & snapshot, DialogCompatibility compatibility=DialogCompatibility::Strict) <br>_Replace the agent's dialog with_ `snapshot` _. Idle-only. Never appends._ |
 |  [**AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md) | [**PrefillKvCache**](#function-prefillkvcache) () <br>_Blocking convenience wrapper over_ [_**PrefillKvCacheAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-prefillkvcacheasync) _._ |
 |  std::future&lt; [**AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md) &gt; | [**PrefillKvCacheAsync**](#function-prefillkvcacheasync) () <br>_Synchronise eligible language-model contexts to the reusable prefix._  |
 |  std::uint32\_t | [**RemoveInteractionsFromEnd**](#function-removeinteractionsfromend) (std::uint32\_t count) <br>_Blocking convenience wrapper over_ [_**RemoveInteractionsFromEndAsync**_](class_tryll_1_1_client_1_1_agent_proxy.md#function-removeinteractionsfromendasync) _._ |
@@ -102,6 +111,7 @@ _Client-side handle for one server-side agent._ [More...](#detailed-description)
 |  void | [**SetOnAnswerText**](#function-setonanswertext) ([**AnswerTextCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-answertextcallback) cb) <br>_Register a callback for streaming text chunks._  |
 |  void | [**SetOnError**](#function-setonerror) ([**ErrorCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-errorcallback) cb) <br>_Register a callback for agent-level error notifications._  |
 |  void | [**SetOnIntentClassified**](#function-setonintentclassified) ([**IntentClassifiedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-intentclassifiedcallback) cb) <br>_Register a callback for intent-classification notifications._  |
+|  void | [**SetOnIntentLlmClassified**](#function-setonintentllmclassified) ([**IntentLlmClassifiedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-intentllmclassifiedcallback) cb) <br>_Register a callback for LLM intent-classification notifications._  |
 |  void | [**SetOnNodeEvent**](#function-setonnodeevent) ([**NodeEventCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-nodeeventcallback) cb) <br>_Register a generic_ `NodeEvent` _fallback callback._ |
 |  void | [**SetOnPaused**](#function-setonpaused) ([**PausedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-pausedcallback) cb) <br>_Register a callback for pause notifications._  |
 |  void | [**SetOnToolCall**](#function-setontoolcall) ([**ToolCallCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-toolcallcallback) cb) <br>_Register a callback for tool-call notifications._  |
@@ -205,30 +215,34 @@ Invoked on the reader thread when a `SendText` turn is terminated by a server-re
 
 ### typedef IntentClassifiedCallback 
 
-_Callback type for intent-classification notifications._ 
+_Callback type for embedding intent-classification notifications._ 
 ```C++
 using Tryll::Client::AgentProxy::IntentClassifiedCallback = 
-std::function<void(std::string_view intent,
-                   std::string_view recordId,
-                   std::size_t      recordIndex,
-                   float            distance)>;
+std::function<void(const IntentClassifiedEvent& event)>;
 ```
 
 
 
-Invoked on the reader thread for each `NodeEvent` with `event_type="intent_classified"` — fired by `ClassifyIntentNode` on its "found" path when `notify_client="true"`.
+Invoked on the reader thread for each `NodeEvent` with `event_type="intent_classified"`. Must return quickly. 
 
 
-Parameters:
-* `intent` — the classified intent label.
-* `recordId` — id of the top-1 matched KB record.
-* `recordIndex` — 0-based index of the matched record in storage.
-* `distance` — cosine distance of the match.
+        
 
+<hr>
 
 
 
-Must return quickly and must not call any blocking methods. 
+### typedef IntentLlmClassifiedCallback 
+
+_Callback type for LLM intent-classification notifications._ 
+```C++
+using Tryll::Client::AgentProxy::IntentLlmClassifiedCallback = 
+std::function<void(const IntentLlmClassifiedEvent& event)>;
+```
+
+
+
+Invoked on the reader thread for each `NodeEvent` with `event_type="intent_llm_classified"`. Must return quickly. 
 
 
         
@@ -713,6 +727,33 @@ std::future< AgentKvCacheEvictResult > Tryll::Client::AgentProxy::EvictKvCacheAs
 
 
 
+### function ExportDialog 
+
+```C++
+DialogSnapshot Tryll::Client::AgentProxy::ExportDialog () 
+```
+
+
+
+
+<hr>
+
+
+
+### function ExportDialogAsync 
+
+_Export the agent's completed dialog as an owned snapshot. Idle-only._ 
+```C++
+std::future< DialogSnapshot > Tryll::Client::AgentProxy::ExportDialogAsync () 
+```
+
+
+
+
+<hr>
+
+
+
 ### function GetAgentId 
 
 _Server-assigned agent identifier._ 
@@ -757,6 +798,60 @@ AgentKvCacheStatus Tryll::Client::AgentProxy::GetKvCacheStatus ()
 _Return aggregate KV-cache lifecycle state for this agent._ 
 ```C++
 std::future< AgentKvCacheStatus > Tryll::Client::AgentProxy::GetKvCacheStatusAsync () 
+```
+
+
+
+
+<hr>
+
+
+
+### function GetPausedNode 
+
+_Node this agent's turn is currently paused after._ 
+```C++
+std::string Tryll::Client::AgentProxy::GetPausedNode () const
+```
+
+
+
+Empty when the turn is not paused. A non-empty value means the server is holding the turn open until [**Resume**](class_tryll_1_1_client_1_1_agent_proxy.md#function-resume) (or [**Cancel**](class_tryll_1_1_client_1_1_agent_proxy.md#function-cancel)) — until then SendMessage keeps failing with `AgentBusy` (3004).
+
+
+Thread-safe; reflects the most recent `paused` / `TurnComplete` frame. 
+
+
+        
+
+<hr>
+
+
+
+### function ImportDialog 
+
+```C++
+DialogImportResult Tryll::Client::AgentProxy::ImportDialog (
+    const DialogSnapshot & snapshot,
+    DialogCompatibility compatibility=DialogCompatibility::Strict
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function ImportDialogAsync 
+
+_Replace the agent's dialog with_ `snapshot` _. Idle-only. Never appends._
+```C++
+std::future< DialogImportResult > Tryll::Client::AgentProxy::ImportDialogAsync (
+    const DialogSnapshot & snapshot,
+    DialogCompatibility compatibility=DialogCompatibility::Strict
+) 
 ```
 
 
@@ -1075,7 +1170,7 @@ void Tryll::Client::AgentProxy::SetOnIntentClassified (
 Replaces any previously set callback. Pass an empty (default- constructed) [**IntentClassifiedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-intentclassifiedcallback) to unregister.
 
 
-Fires on the reader thread for every `NodeEvent` with `event_type="intent_classified"` the server sends for this agent (emitted by `ClassifyIntentNode` when `notify_client="true"`).
+Fires on the reader thread for every `NodeEvent` with `event_type="intent_classified"` (embedding ClassifyIntent).
 
 
 
@@ -1083,9 +1178,32 @@ Fires on the reader thread for every `NodeEvent` with `event_type="intent_classi
 **Parameters:**
 
 
-* `cb` Callable invoked with ``(intent, recordId, recordIndex, distance), or empty to clear. 
+* `cb` Callable invoked with an [**IntentClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event.md), or empty to clear. 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function SetOnIntentLlmClassified 
+
+_Register a callback for LLM intent-classification notifications._ 
+```C++
+void Tryll::Client::AgentProxy::SetOnIntentLlmClassified (
+    IntentLlmClassifiedCallback cb
+) 
+```
+
+
+
+Replaces any previously set callback. Pass an empty (default- constructed) [**IntentLlmClassifiedCallback**](class_tryll_1_1_client_1_1_agent_proxy.md#typedef-intentllmclassifiedcallback) to unregister.
+
+
+Fires on the reader thread for every `NodeEvent` with `event_type="intent_llm_classified"`. 
 
 
         

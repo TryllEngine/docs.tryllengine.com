@@ -127,21 +127,21 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" line="68" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" bodystart="68" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_u_tryll_classify_intent_params_1ac4021662a04f570c741019ba8de02d23" prot="public" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool UTryllClassifyIntentParams::bNotifyClient</definition>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_params_1adb6bacc5da054bd60ac545f5856de00e" prot="public" static="no" mutable="no">
+        <type>ETryllNotifyClient</type>
+        <definition>ETryllNotifyClient UTryllClassifyIntentParams::NotifyClient</definition>
         <argsstring></argsstring>
-        <name>bNotifyClient</name>
-        <qualifiedname>UTryllClassifyIntentParams::bNotifyClient</qualifiedname>
-        <initializer>= false</initializer>
+        <name>NotifyClient</name>
+        <qualifiedname>UTryllClassifyIntentParams::NotifyClient</qualifiedname>
+        <initializer>= ETryllNotifyClient::Disabled</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>When true, fire OnNodeEvent(&quot;intent_classified&quot;, …) on the found path. </para>
+<para>When to fire OnNodeEvent(&quot;intent_classified&quot;, …). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" line="72" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" bodystart="72" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" line="72" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="class_u_tryll_classify_intent_params_1a21c93a3cc7a5d2137c01eb3d0f8899ed" prot="public" static="no" mutable="no">
         <type>int32</type>
@@ -285,7 +285,6 @@
     </collaborationgraph>
     <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" line="31" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentParams.h" bodystart="32" bodyend="95"/>
     <listofallmembers>
-      <member refid="class_u_tryll_classify_intent_params_1ac4021662a04f570c741019ba8de02d23" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>bNotifyClient</name></member>
       <member refid="class_u_tryll_classify_intent_params_1a0699747a5881f25ba33bfa8c25db1ab9" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>bOverrideFilter</name></member>
       <member refid="class_u_tryll_classify_intent_params_1aa9ff3ea4dd2dad494d49833c3bfc2afe" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>bOverrideInput</name></member>
       <member refid="class_u_tryll_classify_intent_params_1ae8c84ff18e49c43680806042221a2b90" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>bOverrideMetadataField</name></member>
@@ -300,6 +299,7 @@
       <member refid="class_u_tryll_classify_intent_params_1ab2500c215ba6f32c410c956fd3da95b3" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>Input</name></member>
       <member refid="class_u_tryll_classify_intent_params_1a8bf5c8224129363eb447386eb8325046" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>MetadataField</name></member>
       <member refid="class_u_tryll_classify_intent_params_1a298146a991f7aa03806f963fe80d586c" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>NotFoundExit</name></member>
+      <member refid="class_u_tryll_classify_intent_params_1adb6bacc5da054bd60ac545f5856de00e" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>NotifyClient</name></member>
       <member refid="class_u_tryll_classify_intent_params_1a8c8b2b43a37b36837a25684b838ded57" prot="public" virt="virtual"><scope>UTryllClassifyIntentParams</scope><name>Pack</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>static_cast</name></member>
       <member refid="class_u_tryll_classify_intent_params_1a6a2bc15f5c802089ad4123b85be3139b" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentParams</scope><name>Threshold</name></member>

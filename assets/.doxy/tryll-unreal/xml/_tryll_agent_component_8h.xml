@@ -9,21 +9,22 @@
     <includes refid="_tryll_kv_cache_8h" local="yes">TryllKvCache.h</includes>
     <includes refid="_tryll_throttle_8h" local="yes">TryllThrottle.h</includes>
     <includes refid="_tryll_dialog_interaction_8h" local="yes">TryllDialogInteraction.h</includes>
+    <includes refid="_tryll_dialog_snapshot_8h" local="yes">TryllDialogSnapshot.h</includes>
     <includes refid="_tryll_variable_decl_8h" local="yes">TryllVariableDecl.h</includes>
     <includes refid="_tryll_tool_call_8h" local="yes">TryllToolCall.h</includes>
     <includes refid="_tryll_node_params_base_8h" local="yes">Generated/Nodes/TryllNodeParamsBase.h</includes>
     <includes local="yes">TryllAgentComponent.generated.h</includes>
     <incdepgraph>
-      <node id="20">
+      <node id="23">
         <label>Generated/Nodes/TryllNodeParamsBase.h</label>
         <link refid="_tryll_node_params_base_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -45,11 +46,13 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -58,6 +61,18 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>TryllDialogSnapshot.h</label>
+        <link refid="_tryll_dialog_snapshot_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -102,20 +117,20 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="21">
         <label>TryllToolCall.h</label>
         <link refid="_tryll_tool_call_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="19">
         <label>TryllVariableDecl.h</label>
         <link refid="_tryll_variable_decl_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -124,7 +139,13 @@
       <node id="2">
         <label>CoreMinimal.h</label>
       </node>
-      <node id="24">
+      <node id="17">
+        <label>Misc/Optional.h</label>
+      </node>
+      <node id="18">
+        <label>Misc/TVariant.h</label>
+      </node>
+      <node id="27">
         <label>TryllAgentComponent.generated.h</label>
       </node>
       <node id="15">
@@ -142,26 +163,72 @@
       <node id="6">
         <label>TryllModelName.generated.h</label>
       </node>
-      <node id="23">
+      <node id="26">
         <label>TryllNodeParamsBase.generated.h</label>
       </node>
       <node id="13">
         <label>TryllThrottle.generated.h</label>
       </node>
-      <node id="19">
+      <node id="22">
         <label>TryllToolCall.generated.h</label>
       </node>
-      <node id="17">
+      <node id="20">
         <label>TryllVariableDecl.generated.h</label>
       </node>
-      <node id="21">
+      <node id="24">
         <label>UObject/Object.h</label>
       </node>
-      <node id="22">
+      <node id="25">
         <label>flatbuffers/flatbuffers.h</label>
       </node>
     </incdepgraph>
     <innerclass refid="class_u_tryll_agent_component" prot="public">UTryllAgentComponent</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_tryll_agent_component_8h_1a29b001977b9df1b4bd26f188b27bf518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllDialogExportedNative, const FTryllDialogSnapshot &amp;, const FTryllError &amp;)</argsstring>
+        <name>DECLARE_MULTICAST_DELEGATE_TwoParams</name>
+        <param>
+          <type>FOnTryllDialogExportedNative</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_f_tryll_dialog_snapshot" kindref="compound">FTryllDialogSnapshot</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="47" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="47" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_tryll_agent_component_8h_1acea2de7af19d0f0e416bba4dd367673e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllDialogImportedNative, const FTryllDialogImportResult &amp;, const FTryllError &amp;)</argsstring>
+        <name>DECLARE_MULTICAST_DELEGATE_TwoParams</name>
+        <param>
+          <type>FOnTryllDialogImportedNative</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_f_tryll_dialog_import_result" kindref="compound">FTryllDialogImportResult</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="48" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" declline="48" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

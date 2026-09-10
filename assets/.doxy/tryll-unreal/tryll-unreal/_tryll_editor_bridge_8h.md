@@ -12,13 +12,16 @@
 
 * `#include "CoreMinimal.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllModelManifest.h"`
 * `#include "TryllKvCache.h"`
+* `#include "TryllMemorySnapshot.h"`
 * `#include "TryllModelInfo.h"`
 * `#include "TryllRuntimeSettings.h"`
 * `#include "TryllThrottle.h"`
 * `#include "TryllToolCall.h"`
 * `#include "TryllVariableDecl.h"`
 * `#include "TryllVoiceInput.h"`
+* `#include "TryllIntentClassification.h"`
 * `#include "TryllSubsystem.h"`
 
 
@@ -67,7 +70,6 @@
 
 | Type | Name |
 | ---: | :--- |
-|   | [**DECLARE\_MULTICAST\_DELEGATE\_FiveParams**](#function-declare_multicast_delegate_fiveparams) (FTryllOnIntentClassifiedNative, uint64, const FString &, const FString &, int64, float) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_FourParams**](#function-declare_multicast_delegate_fourparams) (FTryllOnDownloadProgressNative, const FString &, uint64, uint64, float) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_FourParams**](#function-declare_multicast_delegate_fourparams) (FTryllOnToolCallWithIdNative, uint64, const FString &, const FString &, const FString &) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_FourParams**](#function-declare_multicast_delegate_fourparams) (FTryllOnNodeEventNative, uint64, const FString &, const FString &, const TArray&lt; [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) &gt; &) <br> |
@@ -79,7 +81,9 @@
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_multicast_delegate_threeparams) (FTryllOnCreateEmbeddedStringStorageCompleteNative, const FString &, int32, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_multicast_delegate_threeparams) (FTryllOnToolCallNative, uint64, const FString &, const FString &) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_ThreeParams**](#function-declare_multicast_delegate_threeparams) (FTryllOnPausedNative, uint64, const FString &, const FString &) <br> |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnSetSessionLocaleCompleteNative, const FString &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnListModelsCompleteNative, const TArray&lt; [**FTryllModelInfo**](struct_f_tryll_model_info.md) &gt; &, bool) <br> |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnGetMemoryConsumptionCompleteNative, const [**FTryllMemorySnapshot**](struct_f_tryll_memory_snapshot.md) &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnLoadModelCompleteNative, const FString &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnUnloadModelCompleteNative, const FString &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnDeleteModelCompleteNative, const FString &, bool) <br> |
@@ -87,6 +91,8 @@
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnDestroyStringStorageCompleteNative, const FString &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnDestroyEmbeddedStringStorageCompleteNative, const FString &, bool) <br> |
 |   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnToolCallDetailedNative, uint64, const [**FTryllToolCall**](struct_f_tryll_tool_call.md) &) <br> |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnIntentClassifiedNative, uint64, const [**FTryllIntentClassification**](struct_f_tryll_intent_classification.md) &) <br> |
+|   | [**DECLARE\_MULTICAST\_DELEGATE\_TwoParams**](#function-declare_multicast_delegate_twoparams) (FTryllOnIntentLlmClassifiedNative, uint64, const [**FTryllIntentLlmClassification**](struct_f_tryll_intent_llm_classification.md) &) <br> |
 
 
 
@@ -117,26 +123,6 @@
 
 ## Public Functions Documentation
 
-
-
-
-### function DECLARE\_MULTICAST\_DELEGATE\_FiveParams 
-
-```C++
-DECLARE_MULTICAST_DELEGATE_FiveParams (
-    FTryllOnIntentClassifiedNative,
-    uint64,
-    const FString &,
-    const FString &,
-    int64,
-    float
-) 
-```
-
-
-
-
-<hr>
 
 
 
@@ -337,8 +323,42 @@ DECLARE_MULTICAST_DELEGATE_ThreeParams (
 
 ```C++
 DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FTryllOnSetSessionLocaleCompleteNative,
+    const FString &,
+    bool
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
     FTryllOnListModelsCompleteNative,
     const TArray< FTryllModelInfo > &,
+    bool
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FTryllOnGetMemoryConsumptionCompleteNative,
+    const FTryllMemorySnapshot &,
     bool
 ) 
 ```
@@ -459,6 +479,40 @@ DECLARE_MULTICAST_DELEGATE_TwoParams (
     FTryllOnToolCallDetailedNative,
     uint64,
     const FTryllToolCall &
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FTryllOnIntentClassifiedNative,
+    uint64,
+    const FTryllIntentClassification &
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function DECLARE\_MULTICAST\_DELEGATE\_TwoParams 
+
+```C++
+DECLARE_MULTICAST_DELEGATE_TwoParams (
+    FTryllOnIntentLlmClassifiedNative,
+    uint64,
+    const FTryllIntentLlmClassification &
 ) 
 ```
 

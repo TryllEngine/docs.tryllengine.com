@@ -56,6 +56,7 @@ Inherits the following classes: TSharedFromThis< FTryllVoiceInput >
 |  void | [**BeginUtterance**](#function-beginutterance) (const [**FTryllUtteranceOptions**](struct_f_tryll_utterance_options.md) & Opts, TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**CancelUtterance**](#function-cancelutterance) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |  void | [**ClearAfterDestroyRequest**](#function-clearafterdestroyrequest) () <br> |
+|  void | [**DrainPendingAcks**](#function-drainpendingacks) (const [**FTryllError**](struct_f_tryll_error.md) & TerminalError) <br> |
 |  void | [**EndUtterance**](#function-endutterance) (TFunction&lt; void(const [**FTryllError**](struct_f_tryll_error.md) &)&gt; OnComplete=nullptr) <br> |
 |   | [**FTryllVoiceInput**](#function-ftryllvoiceinput) (TSharedPtr&lt; FTryllConnection &gt; InConnection, std::uint64\_t InVoiceInputId) <br> |
 |  std::uint64\_t | [**GetVoiceInputId**](#function-getvoiceinputid) () noexcept const<br> |
@@ -164,6 +165,25 @@ void FTryllVoiceInput::ClearAfterDestroyRequest ()
 
 
 Called by [**UTryllSubsystem**](class_u_tryll_subsystem.md) when the DestroyVoiceInput Ack arrives; clears the local id. 
+
+
+        
+
+<hr>
+
+
+
+### function DrainPendingAcks 
+
+```C++
+void FTryllVoiceInput::DrainPendingAcks (
+    const FTryllError & TerminalError
+) 
+```
+
+
+
+Complete outstanding Begin/End/Cancel callbacks on a drop or socket replacement. 
 
 
         

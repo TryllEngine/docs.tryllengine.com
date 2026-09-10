@@ -49,6 +49,7 @@ public Task<(TryllAgent agent, TryllError error)>
 
 // Model management
 public Task<(List<TryllModelInfo> models, TryllError error)> RequestListModelsAsync();
+public Task<(TryllMemorySnapshot snapshot, TryllError error)> RequestGetMemoryConsumptionAsync();
 public void RequestDownloadModel(string modelName);
 public void RequestLoadModel(string modelName);
 public void RequestUnloadModel(string modelName);
@@ -78,6 +79,8 @@ public void SetInferenceThrottle(float level);
 // Editor utility
 public static TryllClient EnsureEditorInstance();
 ```
+
+`RequestGetMemoryConsumptionAsync` is session-scoped (needs `CreateSession`) but the snapshot is **server-wide** — every session on that process. It never fails with `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html).
 
 ______________________________________________________________________
 
@@ -120,7 +123,8 @@ All events fire on the Unity **main thread**.
 | `UnloadModelComplete`          | `Action<string, bool>`                                                      | `(modelName, success)`                                                                                                                                                                                                                             |
 | `AgentDestroyed`               | `Action<ulong>`                                                             | `(agentId)` — server confirmed agent teardown.                                                                                                                                                                                                     |
 | `ToolCallNotification`         | `Action<ulong, string, string>`                                             | `(agentId, toolName, argumentsJson)`                                                                                                                                                                                                               |
-| `IntentClassified`             | `Action<ulong, string, string, ulong, float>`                               | `(agentId, intent, recordId, recordIndex, distance)`                                                                                                                                                                                               |
+| `IntentClassified`             | `Action<TryllIntentClassification>`                                         | Embedding `intent_classified` (swallows generic `NodeEvent`)                                                                                                                                                                                       |
+| `IntentLlmClassified`          | `Action<TryllIntentLlmClassification>`                                      | LLM `intent_llm_classified` (swallows generic `NodeEvent`)                                                                                                                                                                                         |
 | `Paused`                       | `Action<ulong, string, string>`                                             | `(agentId, nodeName, pendingExit)` — the executor paused a turn between nodes (`Pause` node, or a `ToolCall` with a pausing `disposition`). See [How to pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.html). |
 | `NodeEvent`                    | `Action<ulong, string, string, IReadOnlyList<KeyValuePair<string,string>>>` | Generic fallback for unknown or unsubscribed typed events. `(agentId, nodeName, eventType, kvPairs)`                                                                                                                                               |
 | `StringStorageChanged`         | `Action<string, bool>`                                                      | `(name, isCreate)`                                                                                                                                                                                                                                 |

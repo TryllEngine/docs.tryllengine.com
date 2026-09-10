@@ -24,10 +24,11 @@ ______________________________________________________________________
 
 ### Server process
 
-| Field                | Type          | Default   | Description                                                                                                                                                 |
-| -------------------- | ------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AutoLaunchServer`   | `bool`        | `true`    | When true, `TryllClient` spawns the bundled `tryll_server.exe` automatically on startup (Windows only). Set to `false` when you manage the server yourself. |
-| `ServerBuildVariant` | `ServerBuild` | `Default` | Which bundled server payload to launch/stage: `Default` or `Release`.                                                                                       |
+| Field                | Type                   | Default   | Description                                                                                                                                                                                                                                                  |
+| -------------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `AutoLaunchServer`   | `bool`                 | `true`    | When true, `TryllClient` spawns the bundled `tryll_server.exe` automatically on startup (Windows only). Set to `false` when you manage the server yourself.                                                                                                  |
+| `LlamaCppBackend`    | `TryllLlamaCppBackend` | `Vulkan`  | llama.cpp GPU plugin for an auto-launched server (`Vulkan` or `Auto`). Passed as `--llama-backend`. `Auto` prefers CUDA on NVIDIA when those DLLs were staged and a player build copies them; `Vulkan` skips them. Ignored when `AutoLaunchServer` is false. |
+| `ServerBuildVariant` | `ServerBuild`          | `Default` | Which bundled server payload to launch/stage: `Default` or `Release`.                                                                                                                                                                                        |
 
 The server exe is always resolved from the package payload — bundled in the package in the Editor, or the `Server/` folder copied next to the player exe at build time — so there is **no path to configure**.
 
@@ -38,16 +39,9 @@ The server exe is always resolved from the package payload — bundled in the pa
 | `ServerHost` | `string` | `"127.0.0.1"` | Host name or IP address of the Tryll server. |
 | `ServerPort` | `int`    | `9100`        | TCP port the Tryll server listens on.        |
 
-### Session engine defaults
+### Session engines
 
-Used by `TryllClient.StartSession()` / `CreateSessionFromSettings()` when you don't pass engines explicitly.
-
-| Field             | Type                   | Default    | Description                                                |
-| ----------------- | ---------------------- | ---------- | ---------------------------------------------------------- |
-| `InferenceEngine` | `TryllInferenceEngine` | `LlamaCpp` | Language-model backend.                                    |
-| `SttEngine`       | `TryllInferenceEngine` | `Mock`     | Speech-to-text backend. Set `SherpaOnnx` for voice input.  |
-| `TtsEngine`       | `TryllInferenceEngine` | `Mock`     | Text-to-speech backend. Set `SherpaOnnx` for voice output. |
-| `EmbeddingEngine` | `TryllInferenceEngine` | `Mock`     | Embedding backend for RAG / intent.                        |
+There are no engine dropdowns. The session's engine set is derived from the models registered in the Model Manager. See [Choose where models run](https://docs.tryllengine.com/how-to/choose-where-models-run.html).
 
 ### Storage
 

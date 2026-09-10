@@ -26,11 +26,16 @@
 | file | [**TryllAgentVariables.h**](_tryll_agent_variables_8h.md) <br> |
 | file | [**TryllClientModule.h**](_tryll_client_module_8h.md) <br> |
 | file | [**TryllDialogInteraction.h**](_tryll_dialog_interaction_8h.md) <br> |
+| file | [**TryllDialogSnapshot.h**](_tryll_dialog_snapshot_8h.md) <br> |
 | file | [**TryllEditorBridge.h**](_tryll_editor_bridge_8h.md) <br> |
 | file | [**TryllError.h**](_tryll_error_8h.md) <br> |
 | file | [**TryllGraphDescription.h**](_tryll_graph_description_8h.md) <br> |
+| file | [**TryllIntentClassification.h**](_tryll_intent_classification_8h.md) <br> |
 | file | [**TryllKvCache.h**](_tryll_kv_cache_8h.md) <br> |
+| file | [**TryllKvResidencyPolicy.h**](_tryll_kv_residency_policy_8h.md) <br> |
+| file | [**TryllLanguages.h**](_tryll_languages_8h.md) <br> |
 | file | [**TryllManagedServerProcess.h**](_tryll_managed_server_process_8h.md) <br> |
+| file | [**TryllMemorySnapshot.h**](_tryll_memory_snapshot_8h.md) <br> |
 | file | [**TryllModelInfo.h**](_tryll_model_info_8h.md) <br> |
 | file | [**TryllModelManifest.h**](_tryll_model_manifest_8h.md) <br> |
 | file | [**TryllModelName.h**](_tryll_model_name_8h.md) <br> |

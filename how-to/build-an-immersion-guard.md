@@ -208,7 +208,7 @@ Send a distinctive line, roll back, send a second line, and check the first does
 
 ### Knowing it deflected
 
-Set `notify_client=True` on the classifier nodes and listen for the `intent_classified` [`NodeEvent`](https://docs.tryllengine.com/reference/wire-protocol.html), which arrives before `TurnComplete`. Alternatively, read the exit route from `debug_info` when diagnostics are on, or give the deflection `CannedResponse` a recognisable `output_name` and check which node produced the answer.
+Set `notify_client=NotifyClient.OnFound` (or `Always`, to also see rejected distributions) on the classifier nodes and listen for `intent_llm_classified` ([`NodeEvent`](https://docs.tryllengine.com/reference/wire-protocol.html)), which arrives before `TurnComplete`. Alternatively, read the exit route from `debug_info` when diagnostics are on, or give the deflection `CannedResponse` a recognisable `output_name` and check which node produced the answer.
 
 ## Tuning the threshold
 
@@ -234,6 +234,10 @@ You do **not** need one run per threshold. The confidence is recorded per line, 
 Set `margin` (how far ahead the winner must be) to `0.15` and leave it; in our sweeps it never mattered as much as `threshold`.
 
 ## Performance, and how to hide it
+
+Two extra contexts per agent
+
+Both model stages own a language-model context, so a guarded cast of four NPCs carries **eight more contexts** than an unguarded one. A context costs its full `context_size` in KV the moment it is created, plus a fixed per-context overhead — so left at a server default of 8192 the guard alone can cost several GB. Size both stages explicitly, and read [Run many agents on a small GPU](https://docs.tryllengine.com/how-to/run-many-agents-on-a-small-gpu.html) before adding a guard to a project that is already close to its VRAM budget.
 
 Measured on a mid-range GPU, per player line:
 
@@ -287,6 +291,7 @@ The category that remains hard: **in-world lines that contain injection vocabula
 
 - [Regex Guardrail](https://docs.tryllengine.com/reference/nodes/regex-guardrail.html)
 - [Classify Intent LLM](https://docs.tryllengine.com/reference/nodes/classify-intent-llm.html)
+- [Design an intent-classifier prompt](https://docs.tryllengine.com/how-to/design-an-intent-classifier-prompt.html) — the `{{intents_block}}`/`{{letters}}` template contract used by the prompts above
 - [Use canned responses and guardrails](https://docs.tryllengine.com/how-to/use-canned-responses-and-guardrails.html)
 - [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html)
 - [Manage an agent's KV cache](https://docs.tryllengine.com/how-to/manage-agent-kv-cache.html)

@@ -59,12 +59,15 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  FOnTryllDownloadComplete | [**OnDownloadComplete**](#variable-ondownloadcomplete)  <br> |
 |  FOnTryllDownloadProgress | [**OnDownloadProgress**](#variable-ondownloadprogress)  <br> |
 |  FOnTryllError | [**OnError**](#variable-onerror)  <br> |
+|  FOnTryllGetMemoryConsumption | [**OnGetMemoryConsumptionComplete**](#variable-ongetmemoryconsumptioncomplete)  <br> |
 |  FOnTryllIntentClassified | [**OnIntentClassified**](#variable-onintentclassified)  <br> |
+|  FOnTryllIntentLlmClassified | [**OnIntentLlmClassified**](#variable-onintentllmclassified)  <br> |
 |  FOnTryllListModels | [**OnListModelsComplete**](#variable-onlistmodelscomplete)  <br> |
 |  FOnTryllLoadModel | [**OnLoadModelComplete**](#variable-onloadmodelcomplete)  <br> |
 |  FOnTryllModelReady | [**OnModelReady**](#variable-onmodelready)  <br> |
 |  FOnTryllNodeEvent | [**OnNodeEvent**](#variable-onnodeevent)  <br> |
 |  FOnTryllPaused | [**OnPaused**](#variable-onpaused)  <br> |
+|  FOnTryllSetSessionLocale | [**OnSetSessionLocaleComplete**](#variable-onsetsessionlocalecomplete)  <br> |
 |  FOnTryllToolCall | [**OnToolCall**](#variable-ontoolcall)  <br> |
 |  FOnTryllToolCallDetailed | [**OnToolCallDetailed**](#variable-ontoolcalldetailed)  <br> |
 |  FOnTryllToolCallWithId | [**OnToolCallWithId**](#variable-ontoolcallwithid)  <br> |
@@ -99,7 +102,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 | ---: | :--- |
 |  void | [**BindVoiceInputClient**](#function-bindvoiceinputclient) (const TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; & Voice) const<br> |
 |  void | [**Connect**](#function-connect) () <br> |
-|  void | [**CreateSession**](#function-createsession) (ETryllInferenceEngine Engine, FString GameName=TEXT(""), ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock, ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock, FString StorageDataFolder=TEXT("")) <br> |
+|  void | [**CreateSession**](#function-createsession) (FString GameName=TEXT(""), FString StorageDataFolder=TEXT(""), FString Locale=TEXT(""), bool bUseProjectLocaleWhenEmpty=true) <br> |
 |  void | [**CreateSessionFromSettings**](#function-createsessionfromsettings) () <br> |
 | virtual void | [**Deinitialize**](#function-deinitialize) () override<br> |
 |  void | [**Disconnect**](#function-disconnect) () <br> |
@@ -114,6 +117,7 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 | virtual bool | [**IsTickableInEditor**](#function-istickableineditor) () override const<br> |
 | virtual bool | [**IsTickableWhenPaused**](#function-istickablewhenpaused) () override const<br> |
 |  void | [**RegisterAgent**](#function-registeragent) (std::uint64\_t AgentId, TWeakPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt; Agent) <br> |
+|  void | [**RegisterVoiceInput**](#function-registervoiceinput) (std::uint64\_t VoiceInputId, TWeakPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; Voice) <br> |
 |  void | [**RequestCreateAgent**](#function-requestcreateagent) (const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) & Graph, TFunction&lt; FTryllOnAgentCreated &gt; OnComplete, bool bEnableDiagnostics=false, bool bMaintainDialogueHistory=true, const TArray&lt; [**FTryllVariableDecl**](struct_f_tryll_variable_decl.md) &gt; & Variables={}, ETryllKvCacheInitialization KvCacheInitialization=ETryllKvCacheInitialization::AllocateOnly, ETryllWorkload Workload=ETryllWorkload::Interactive) <br> |
 |  void | [**RequestCreateEmbeddedStringStorage**](#function-requestcreateembeddedstringstorage) (const FString & Name, const FString & ConfigPath, const FString & EmbeddingModel=FString{}, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestCreateEmbeddedStringStorageFromStrings**](#function-requestcreateembeddedstringstoragefromstrings) (const FString & Name, const TArray&lt; FString &gt; & Strings, const FString & EmbeddingModel, TFunction&lt; FTryllOnEmbeddedStorageCreated &gt; OnComplete=nullptr) <br> |
@@ -126,11 +130,13 @@ Inherits the following classes: UGameInstanceSubsystem,  FTickableGameObject
 |  void | [**RequestDestroyStringStorage**](#function-requestdestroystringstorage) (const FString & Name, TFunction&lt; FTryllOnStringStorage &gt; OnComplete=nullptr) <br> |
 |  void | [**RequestDestroyVoiceInput**](#function-requestdestroyvoiceinput) (TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt; Voice) <br> |
 |  void | [**RequestDownloadModel**](#function-requestdownloadmodel) (const FString & ModelName) <br> |
+|  void | [**RequestGetMemoryConsumption**](#function-requestgetmemoryconsumption) (TFunction&lt; FTryllOnGetMemoryConsumption &gt; OnComplete) <br> |
 |  void | [**RequestListModels**](#function-requestlistmodels) (TFunction&lt; FTryllOnListModels &gt; OnComplete) <br> |
-|  void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName) <br> |
+|  void | [**RequestLoadModel**](#function-requestloadmodel) (const FString & ModelName, ETryllMemoryPlacement Placement=ETryllMemoryPlacement::Auto, bool bIsOverride=false) <br> |
 |  void | [**RequestModel**](#function-requestmodel) (const FString & ModelName) <br> |
 |  void | [**RequestUnloadModel**](#function-requestunloadmodel) (const FString & ModelName) <br> |
 |  void | [**SetInferenceThrottle**](#function-setinferencethrottle) (float Level) <br> |
+|  void | [**SetSessionLocale**](#function-setsessionlocale) (FString Locale) <br> |
 |  TArray&lt; [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md) &gt; | [**SnapshotRegisteredAgents**](#function-snapshotregisteredagents) () const<br> |
 | virtual void | [**Tick**](#function-tick) (float DeltaTime) override<br> |
 |  void | [**UnregisterAgent**](#function-unregisteragent) (std::uint64\_t AgentId) <br> |
@@ -374,6 +380,19 @@ FOnTryllError UTryllSubsystem::OnError;
 
 
 
+### variable OnGetMemoryConsumptionComplete 
+
+```C++
+FOnTryllGetMemoryConsumption UTryllSubsystem::OnGetMemoryConsumptionComplete;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable OnIntentClassified 
 
 ```C++
@@ -382,10 +401,19 @@ FOnTryllIntentClassified UTryllSubsystem::OnIntentClassified;
 
 
 
-Broadcast when a ClassifyIntentNode emits an intent on its "found" path with notify\_client enabled. 
+
+<hr>
 
 
-        
+
+### variable OnIntentLlmClassified 
+
+```C++
+FOnTryllIntentLlmClassified UTryllSubsystem::OnIntentLlmClassified;
+```
+
+
+
 
 <hr>
 
@@ -460,6 +488,23 @@ FOnTryllPaused UTryllSubsystem::OnPaused;
 
 
 Broadcast when the executor pauses a turn between nodes (Pause node, or pausing ToolCall dispositions). 
+
+
+        
+
+<hr>
+
+
+
+### variable OnSetSessionLocaleComplete 
+
+```C++
+FOnTryllSetSessionLocale UTryllSubsystem::OnSetSessionLocaleComplete;
+```
+
+
+
+Fired when SetSessionLocale completes. Locale is the requested tag (empty when clearing); bSuccess is false only for a malformed tag, in which case the previous locale is untouched. 
 
 
         
@@ -706,12 +751,10 @@ Open a TCP session to ServerHost:ServerPort. Asynchronous — completion is repo
 
 ```C++
 void UTryllSubsystem::CreateSession (
-    ETryllInferenceEngine Engine,
     FString GameName=TEXT(""),
-    ETryllInferenceEngine SttEngine=ETryllInferenceEngine::Mock,
-    ETryllInferenceEngine TtsEngine=ETryllInferenceEngine::Mock,
-    ETryllInferenceEngine EmbeddingEngine=ETryllInferenceEngine::Mock,
-    FString StorageDataFolder=TEXT("")
+    FString StorageDataFolder=TEXT(""),
+    FString Locale=TEXT(""),
+    bool bUseProjectLocaleWhenEmpty=true
 ) 
 ```
 
@@ -728,6 +771,8 @@ Send CreateSessionRequest. Must be called after Connected and before CreateAgent
 * `Engine` Inference backend to use for this session. 
 * `GameName` Integration identifier for telemetry grouping (e.g. "tryll-roleplay-demo"). Leave empty to omit; the server defaults to "unknown" when telemetry is on. Pass [**UTryllRuntimeSettings::GameName**](class_u_tryll_runtime_settings.md#variable-gamename) to drive this from the project settings asset. 
 * `StorageDataFolder` Project-relative storage root (e.g. [**UTryllRuntimeSettings::StorageDataFolder**](class_u_tryll_runtime_settings.md#variable-storagedatafolder)) or an absolute path. Resolved to a full path on the wire. Empty = server default storage root. 
+* `Locale` Session language as a BCP-47 tag (e.g. "de", "pt-BR"). See [**UTryllRuntimeSettings::Locale**](class_u_tryll_runtime_settings.md#variable-locale) for everything it drives. Empty uses the project setting unless bUseProjectLocaleWhenEmpty is false; a malformed tag is rejected with InvalidLocale (2004). 
+* `bUseProjectLocaleWhenEmpty` When true, an empty Locale adopts [**UTryllRuntimeSettings::Locale**](class_u_tryll_runtime_settings.md#variable-locale). Set false with an empty Locale to explicitly disable session language. The four engine parameters this took through protocol v12 are gone. The engine set is derived from the models registered in [**UTryllModelManifest**](class_u_tryll_model_manifest.md) — each model's catalog entry already states which engine runs it, so there is nothing for a caller to choose, and nothing that can drift out of step with the models the project references. 
 
 
 
@@ -940,6 +985,22 @@ inline virtual bool UTryllSubsystem::IsTickableWhenPaused () override const
 void UTryllSubsystem::RegisterAgent (
     std::uint64_t AgentId,
     TWeakPtr< FTryllAgent > Agent
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function RegisterVoiceInput 
+
+```C++
+void UTryllSubsystem::RegisterVoiceInput (
+    std::uint64_t VoiceInputId,
+    TWeakPtr< FTryllVoiceInput > Voice
 ) 
 ```
 
@@ -1225,6 +1286,25 @@ Start downloading a model. Progress is broadcast via OnDownloadProgress (name, b
 
 
 
+### function RequestGetMemoryConsumption 
+
+```C++
+void UTryllSubsystem::RequestGetMemoryConsumption (
+    TFunction< FTryllOnGetMemoryConsumption > OnComplete
+) 
+```
+
+
+
+Pull a server-wide RAM/VRAM snapshot. Session-scoped (rejected with SessionNotReady before CreateSession) but the numbers cover every session on this process. Never returns AgentBusy. Not a UFUNCTION — Blueprint binds OnGetMemoryConsumptionComplete after a C++ call. 
+
+
+        
+
+<hr>
+
+
+
 ### function RequestListModels 
 
 ```C++
@@ -1248,13 +1328,15 @@ List models available for the session's inference engine.
 
 ```C++
 void UTryllSubsystem::RequestLoadModel (
-    const FString & ModelName
+    const FString & ModelName,
+    ETryllMemoryPlacement Placement=ETryllMemoryPlacement::Auto,
+    bool bIsOverride=false
 ) 
 ```
 
 
 
-Pin a model into memory on the server (LoadAndPin). Completion is broadcast via OnLoadModelComplete. 
+Pin a model into memory on the server (LoadAndPin). Completion is broadcast via OnLoadModelComplete. `Placement` applies to this load only and overrides any per-model hint the session declared; `bIsOverride = false` (the default) means "no opinion". 
 
 
         
@@ -1319,6 +1401,34 @@ Report how hard the server should yield the GPU back to the game (the manual inf
 * `Level` 0 = full speed (default), 1 = maximum yielding. Clamped server-side; out-of-range values do not fail here. 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function SetSessionLocale 
+
+```C++
+void UTryllSubsystem::SetSessionLocale (
+    FString Locale
+) 
+```
+
+
+
+Change the session language without tearing the session down. Pass an empty Locale to clear it.
+
+
+Applies to every agent, existing and future, from its next turn: TTS language and the locale template keys are read per turn, not captured at agent creation. A new voice input picks up the new STT language hint; one already open keeps its recognizer. Storage paths re-resolve on the next load, but content already bound to a node (a Retrieve KB, canned lines) does NOT swap - those params are structural, so switching authored content still means recreating agents.
+
+
+Not turn-atomic: a turn already running may render its prompt under the old locale and synthesize under the new one.
+
+
+Completion is broadcast via OnSetSessionLocaleComplete. 
 
 
         
@@ -1420,6 +1530,38 @@ Server exe to launch for Preferred; see .cpp for the editor/packaged resolution.
 
 
         
+
+<hr>## Friends Documentation
+
+
+
+
+
+### friend FTryllConnectionEpochSpec 
+
+```C++
+class UTryllSubsystem::FTryllConnectionEpochSpec (
+    FTryllConnectionEpochSpec
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### friend FTryllPendingRequestModelSpec 
+
+```C++
+class UTryllSubsystem::FTryllPendingRequestModelSpec (
+    FTryllPendingRequestModelSpec
+) 
+```
+
+
+
 
 <hr>
 

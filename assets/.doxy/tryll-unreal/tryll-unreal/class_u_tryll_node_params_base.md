@@ -112,7 +112,7 @@ virtual TArray< FString > UTryllNodeParamsBase::GetExitTargetOptions () const
 
 
 
-Dropdown options for fields tagged with FlatBuffers `(exit)`. Walks the Outer chain to find the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (typically owned by a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) or [**UTryllAgentComponent**](class_u_tryll_agent_component.md)), then returns: [""] + node names from that graph.
+Dropdown options for fields tagged with FlatBuffers `(exit)`. Walks the Outer chain to find the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (typically owned by a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md)), then returns: [""] + node names from that graph.
 
 
 The leading empty string represents END (turn finishes after this node); Unreal's Details panel renders it as a blank entry in the dropdown.
@@ -200,7 +200,7 @@ static const FTryllGraphDescription * UTryllNodeParamsBase::FindEnclosingGraph (
 
 
 
-Walks the Outer chain from `Obj` to locate the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md)'s Graph or a [**UTryllAgentComponent**](class_u_tryll_agent_component.md)'s InlineGraphDescription). Returns nullptr when `Obj` is not part of an editable graph (orphaned / runtime- constructed). Shared by GetExitTargetOptions and the editor-only slot-input dropdown / rename-propagation tooling (TryllClientEditor). 
+Walks the Outer chain from `Obj` to locate the enclosing [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) (a [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md)'s Graph). Returns nullptr when `Obj` is not part of an editable graph (orphaned / runtime-constructed). Shared by GetExitTargetOptions and the editor-only slot-input dropdown / rename-propagation tooling (TryllClientEditor). 
 
 
         

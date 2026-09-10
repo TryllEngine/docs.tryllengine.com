@@ -26,23 +26,26 @@ A Tryll turn is a graph run, not a single model call. A turn can run a classifie
 
 So every block below the Route breadcrumb reads **per node execution**, not per turn. A graph with two `Retrieve` nodes shows two hit tables. A graph with a classifier and a generator shows two prompt subsections, each with its own heading (`#2 answer (GenerateNode) [default]`).
 
-**Click a node chip in the Route breadcrumb to narrow the entire panel to that one node** — its parameters, its prompt, its retrieval hits, its raw JSON. Click the same chip again to go back to the whole turn. This is the fastest way to answer "what exactly did the classifier see?" in a multi-node graph, and it is the primary navigation control of the panel.
+**Click a node chip in the Route breadcrumb to narrow the entire panel to that one node** — its parameters, its prompt, its retrieval hits. Click the same chip again to go back to the whole turn. This is the fastest way to answer "what exactly did the classifier see?" in a multi-node graph, and it is the primary navigation control of the panel.
+
+The one block node scope does **not** narrow is Raw JSON, which always shows the whole turn.
 
 ______________________________________________________________________
 
 ## Block reference
 
-| Block               | Shown when                              | Starts    | Copy |
-| ------------------- | --------------------------------------- | --------- | ---- |
-| **Route**           | Always                                  | Expanded  | —    |
-| **Timing**          | Always                                  | Expanded  | —    |
-| **Parameters**      | Diagnostics present                     | Collapsed | —    |
-| **Checks**          | Dialog Lab only, with authored checks   | Expanded  | —    |
-| **Prompt & output** | A node produced a prompt or output      | Expanded  | ✅   |
-| **Retrieval**       | The turn ran a `Retrieve` node          | Expanded  | —    |
-| **Tool calls**      | The turn ran a `ToolCall` node          | Expanded  | —    |
-| **Errors**          | The turn ended in error or cancellation | Expanded  | —    |
-| **Raw JSON**        | Always                                  | Collapsed | ✅   |
+| Block               | Shown when                                                  | Starts    | Copy |
+| ------------------- | ----------------------------------------------------------- | --------- | ---- |
+| **Route**           | Always                                                      | Expanded  | —    |
+| **Timing**          | Always                                                      | Expanded  | —    |
+| **Parameters**      | Diagnostics present                                         | Collapsed | —    |
+| **Checks**          | Dialog Lab only, with authored checks                       | Expanded  | —    |
+| **Prompt & output** | A node produced a prompt or output                          | Expanded  | ✅   |
+| **Retrieval**       | The turn ran a `Retrieve` node                              | Expanded  | —    |
+| **Intent**          | The turn ran a `ClassifyIntent` or `ClassifyIntentLLM` node | Expanded  | —    |
+| **Tool calls**      | The turn ran a `ToolCall` node                              | Expanded  | —    |
+| **Errors**          | The turn ended in error or cancellation                     | Expanded  | —    |
+| **Raw JSON**        | Always                                                      | Collapsed | ✅   |
 
 A block with nothing to say is **hidden, not rendered empty**. If you do not see Retrieval, the turn did not retrieve.
 
@@ -98,6 +101,20 @@ The body is the hit table: each retrieved chunk with its distance, in server ord
 
 See [Retrieve](https://docs.tryllengine.com/reference/nodes/retrieve.html) and [Embedded String Storage](https://docs.tryllengine.com/reference/embedded-string-storage.html).
 
+### Intent
+
+One subsection per `ClassifyIntent` or `ClassifyIntentLLM` execution in scope. The header summarises the decision — `ask_wing · found`, or `not_found · below_threshold` — and a `found` exit is coloured as success, `not_found` as a warning. `not_found` is usually correct behaviour, not a failure.
+
+The block is **hidden when the turn ran no classifier**, including Generate-only graphs. `IntentToInstruction` is not a classifier: it is a lookup, and its result stays in Parameters. Click a Route chip to narrow the block to that one execution.
+
+**Embedding** (`ClassifyIntent`). A muted funnel line (`query → storage · metadata_field · threshold`), then either a winner card (intent, distance, id, index, record text) or a rejected pick (`rejected ask_wing @ 0.3120 (threshold 0.25)`). A top-k table lists ranked candidates; rows beyond the threshold are dimmed rather than removed. A null distance renders as `—`.
+
+**LLM** (`ClassifyIntentLLM`). A muted line (`model · threshold · margin · history_turns`), a horizontal probability bar per candidate (sorted by probability, ties keep `intents_ids` order), and the `predicted_letter` / `top_prob` / `second_prob` / `margin_result` strip. The winning or rejected label is shown in words — you do not map the letter by hand. A `probs` / `intents_ids` length mismatch draws a warning and shows only the common prefix.
+
+When the turn's interaction components are present, a footer lists the labels that were actually attached: `attached to dialog: ask_wing`. When `include_interaction_in_diagnostics` is off, that footer is omitted silently. Unlike [Tool calls](#tool-calls), this block does not depend on interaction diagnostics — the classification itself is always in `output.classification`.
+
+`notify_client` does not gate this block. A classifier with `notify_client` left at `Disabled` still appears here; it simply produces no Agent Log event. See [Classify Intent](https://docs.tryllengine.com/reference/nodes/classify-intent.html) and [Classify Intent (LLM)](https://docs.tryllengine.com/reference/nodes/classify-intent-llm.html).
+
 ### Tool calls
 
 For each `ToolCall` node execution: which function the model called, the arguments it passed, and the result that came back — as JSON. The header shows the call count and the exit taken.
@@ -115,11 +132,12 @@ Present only for turns that ended in error or cancellation, carrying the termina
 
 The escape hatch: the complete `debug_info` payload the turn carried, pretty-printed. Everything above is a purpose-built view over this — so anything the panel has no dedicated block for is still reachable here.
 
-**Copy** on the header puts the formatted JSON on the clipboard.
+The payload is shown **verbatim**: the editors add no keys, rename none, and drop none. Every field in it is documented in [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html), which is also the reference for the same payload as it arrives on the wire in `TurnComplete.debug_info`.
+
+Unlike every other block, Raw JSON ignores the Route breadcrumb's node scope — it always shows the whole turn. **Copy** on the header puts the formatted JSON on the clipboard.
 
 Two things currently live here and nowhere else:
 
-- **Intent classification.** There is no dedicated block for `ClassifyIntent` / `ClassifyIntentLLM` yet. Whether classification matched, and against what, is visible in Raw JSON. (Note this is separate from whether the *Agent Log* shows a classification event at all, which depends on the node's `notify_client` parameter — see [Use the Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.html#classification-events-need-notify_client).)
 - **Variable replacements and engine/scheduler counters**, including the KV-reuse figures that often explain why one sample was slower than another.
 
 ______________________________________________________________________
@@ -154,7 +172,7 @@ In the Agent Log, only *received turn* rows open this panel. Sent rows and syste
 
 Unity and Unreal parity
 
-Both engines implement the same nine blocks in the same order. Chrome — fonts, splitter behaviour, scrollbar feel — differs, and that is expected.
+Both engines implement the same ten blocks in the same order. Chrome — fonts, splitter behaviour, scrollbar feel — differs, and that is expected.
 
 ______________________________________________________________________
 
@@ -163,6 +181,7 @@ ______________________________________________________________________
 - [How-to: Test an Agent in the Editor](https://docs.tryllengine.com/how-to/test-agent-in-editor.html) — the Chat Window
 - [How-to: Use the Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.html) — per-agent send/receive narrative
 - [How-to: Compare Dialog Variants](https://docs.tryllengine.com/how-to/compare-dialog-variants.html) — Dialog Lab
+- [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) — every field of the payload this panel renders
 - [Concepts: Projection and token budgets](https://docs.tryllengine.com/concepts/projection-and-token-budgets.html) — why the rendered prompt looks the way it does
 - [Concepts: Slots and inter-node value passing](https://docs.tryllengine.com/concepts/slots-and-inter-node-value-passing.html) — how nodes hand values to each other
 - [Reference: Agent Parameters](https://docs.tryllengine.com/reference/agent-parameters.html) — `enable_diagnostics` and the rest of `CreateAgentRequest`

@@ -54,9 +54,10 @@
 | ---: | :--- |
 |   | [**FTryllManagedServerProcess**](#function-ftryllmanagedserverprocess-12) () = default<br> |
 |   | [**FTryllManagedServerProcess**](#function-ftryllmanagedserverprocess-22) (const [**FTryllManagedServerProcess**](class_f_tryll_managed_server_process.md) &) = delete<br> |
+|  bool | [**IsObservedReady**](#function-isobservedready) () const<br> |
 |  bool | [**IsRunning**](#function-isrunning) () <br> |
 |  void | [**ReleaseHandle**](#function-releasehandle) () <br> |
-|  bool | [**Spawn**](#function-spawn) (const FString & ExePath, int32 Port, int32 IdleShutdownTimeoutSeconds, double ReadinessTimeoutSeconds, FString & OutError, bool & bOutPortConflict) <br> |
+|  bool | [**Spawn**](#function-spawn) (const FString & ExePath, int32 Port, int32 IdleShutdownTimeoutSeconds, double ReadinessTimeoutSeconds, const FString & LlamaCppBackend, FString & OutError, bool & bOutPortConflict) <br> |
 |  void | [**TerminateAndRelease**](#function-terminateandrelease) () <br> |
 |  [**FTryllManagedServerProcess**](class_f_tryll_managed_server_process.md) & | [**operator=**](#function-operator) (const [**FTryllManagedServerProcess**](class_f_tryll_managed_server_process.md) &) = delete<br> |
 |   | [**~FTryllManagedServerProcess**](#function-ftryllmanagedserverprocess) () <br> |
@@ -128,6 +129,23 @@ FTryllManagedServerProcess::FTryllManagedServerProcess (
 
 
 
+### function IsObservedReady 
+
+```C++
+inline bool FTryllManagedServerProcess::IsObservedReady () const
+```
+
+
+
+True after Spawn saw the child accept TCP. False while still warming. 
+
+
+        
+
+<hr>
+
+
+
 ### function IsRunning 
 
 ```C++
@@ -166,6 +184,7 @@ bool FTryllManagedServerProcess::Spawn (
     int32 Port,
     int32 IdleShutdownTimeoutSeconds,
     double ReadinessTimeoutSeconds,
+    const FString & LlamaCppBackend,
     FString & OutError,
     bool & bOutPortConflict
 ) 
@@ -173,7 +192,8 @@ bool FTryllManagedServerProcess::Spawn (
 
 
 
-Spawns ExePath with "--port Port --idle-shutdown-timeout Seconds" and waits up to ReadinessTimeoutSeconds for its TCP port to start accepting.
+Spawns ExePath with "--port Port --idle-shutdown-timeout Seconds
+--llama-backend LlamaCppBackend" and waits up to ReadinessTimeoutSeconds for its TCP port to start accepting.
 
 
 Returns true when the launch should proceed to connecting — either the port is already accepting, OR the readiness wait elapsed but the process is _still alive_ (a cold start still warming up). In the latter case the server is deliberately left running, not killed: killing an almost-ready server discards the warmup and forces a cold re-spawn — the root cause of "first launch hangs, relaunch works". The caller connects anyway and the connection worker retries until the server is ready.

@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  [**FTryllContextOverrides**](struct_f_tryll_context_overrides.md) | [**Context**](#variable-context)  <br> |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**FoundExit**](#variable-foundexit)  <br> |
 |  int32 | [**HistoryTurns**](#variable-historyturns)   = `2`<br> |
@@ -51,9 +52,9 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**ModelName**](#variable-modelname)  <br> |
 |  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
 |  FString | [**NotFoundIntent**](#variable-notfoundintent)  <br> |
+|  ETryllNotifyClient | [**NotifyClient**](#variable-notifyclient)   = `ETryllNotifyClient::Disabled`<br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.5f`<br> |
-|  bool | [**bNotifyClient**](#variable-bnotifyclient)   = `false`<br> |
 |  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideIntentsIds**](#variable-boverrideintentsids)   = `false`<br> |
 |  bool | [**bOverrideIntentsPrompt**](#variable-boverrideintentsprompt)   = `false`<br> |
@@ -184,6 +185,23 @@ Intent classification node (LLM first-token logprob over letter candidates). Sco
 
 
 
+### variable Context 
+
+```C++
+FTryllContextOverrides UTryllClassifyIntentLLMParams::Context;
+```
+
+
+
+Backend context construction. Null table inherits, except CreateContext still defaults `n_outputs_max` to 1. Structural. Appended after not\_found\_exit so existing field IDs do not move. 
+
+
+        
+
+<hr>
+
+
+
 ### variable ContextSize 
 
 ```C++
@@ -192,7 +210,7 @@ int32 UTryllClassifyIntentLLMParams::ContextSize;
 
 
 
-KV-cache / context window (n\_ctx) for this node in tokens. 0 = fall back to the model variant's context\_size, else the server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
+KV-cache / context window (n\_ctx) for this node in tokens. 0 = node default 2048, else the model variant's context\_size, else server default\_n\_ctx. Validated against the model's trained maximum at agent creation. 
 
 
         
@@ -338,6 +356,23 @@ FString UTryllClassifyIntentLLMParams::NotFoundIntent;
 
 
 
+### variable NotifyClient 
+
+```C++
+ETryllNotifyClient UTryllClassifyIntentLLMParams::NotifyClient;
+```
+
+
+
+When to fire OnNodeEvent("intent\_llm\_classified", …). 
+
+
+        
+
+<hr>
+
+
+
 ### variable SystemPrompt 
 
 ```C++
@@ -360,23 +395,6 @@ float UTryllClassifyIntentLLMParams::Threshold;
 
 
 First-token probability threshold for the winning label. 
-
-
-        
-
-<hr>
-
-
-
-### variable bNotifyClient 
-
-```C++
-bool UTryllClassifyIntentLLMParams::bNotifyClient;
-```
-
-
-
-When true, fire OnNodeEvent("intent\_classified", …) on the found path. 
 
 
         
@@ -410,7 +428,7 @@ bool UTryllClassifyIntentLLMParams::bOverrideIntentsIds;
 
 
 
-Comma-separated intent IDs (e.g. "greet,farewell,other"). Structural because label-to-token-ID mapping is built at construction. Set to true to override the inherited IntentsIds value. 
+Comma-separated intent IDs (e.g. "greet,farewell,other"). Never shown to the model — this is the label attached on a win, for downstream routing. Paired positionally with intents\_prompt: entry 0 is letter A, entry 1 is B. 2-26 unique entries. Structural because label-to-token-ID mapping is built at construction. Set to true to override the inherited IntentsIds value. 
 
 
         
@@ -427,7 +445,7 @@ bool UTryllClassifyIntentLLMParams::bOverrideIntentsPrompt;
 
 
 
-Comma-separated intent prompt labels / descriptions. Structural because the projection scaffolding and label-token mapping are built at construction. Set to true to override the inherited IntentsPrompt value. 
+Comma-separated intent descriptions — the text the model actually reads, rendered into the system prompt as "A. &lt;first&gt;", "B. &lt;second&gt;", … Must have the same entry count as intents\_ids. Commas cannot be escaped: use dashes or semicolons inside a description. Structural because the projection scaffolding and label-token mapping are built at construction. Set to true to override the inherited IntentsPrompt value. 
 
 
         
@@ -478,7 +496,7 @@ bool UTryllClassifyIntentLLMParams::bOverrideSystemPrompt;
 
 
 
-Prepended before the user turn during classification projection. Set to true to override the inherited SystemPrompt value. 
+Mustache template for the classifier's system message. Two variables are available: intents\_block (the letter-prefixed list built from intents\_prompt) and letters (e.g. "A, B, C"). There is NO built-in default: an empty value sends an empty system message, so the model is asked for a letter without ever seeing the labels. Always author a template that includes the intents\_block Mustache variable. Set to true to override the inherited SystemPrompt value. 
 
 
         

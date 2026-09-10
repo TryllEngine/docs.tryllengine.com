@@ -17,21 +17,37 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**Tryll::Client::AgentKvCacheEvictResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result.md) 
     * **struct** [**Tryll::Client::AgentKvCachePrefillResult**](struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result.md) 
 * **struct** [**Tryll::Client::AgentProxy::DialogInteraction**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_dialog_interaction.md) 
+* **struct** [**Tryll::Client::AgentProxy::IntentClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_classified_event.md) _Owning payload for_ `event_type="intent_classified"` _(embedding classifier)._
+* **struct** [**Tryll::Client::AgentProxy::IntentLlmClassifiedEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_classified_event.md) _Owning payload for_ `event_type="intent_llm_classified"` _._
+* **struct** [**Tryll::Client::AgentProxy::IntentLlmLabelProb**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_intent_llm_label_prob.md) _One label / first-token probability pair from ClassifyIntentLLM._ 
 * **struct** [**Tryll::Client::AgentProxy::ToolCallEvent**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_call_event.md) _Owning tool-call event for deferred / async handling._ 
 * **struct** [**Tryll::Client::AgentProxy::ToolResult**](struct_tryll_1_1_client_1_1_agent_proxy_1_1_tool_result.md) _One model-visible result correlated to a tool\_call event's call\_id._ 
 * **struct** [**Tryll::Client::AgentVariableDecl**](struct_tryll_1_1_client_1_1_agent_variable_decl.md) 
 * **struct** [**Tryll::Client::AgentVariables::PendingUpdate**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_update.md) 
 * **struct** [**Tryll::Client::AudioFormat**](struct_tryll_1_1_client_1_1_audio_format.md) 
+* **struct** [**Tryll::Client::DialogImportResult**](struct_tryll_1_1_client_1_1_dialog_import_result.md) 
+* **struct** [**Tryll::Client::DialogIntention**](struct_tryll_1_1_client_1_1_dialog_intention.md) 
+* **struct** [**Tryll::Client::DialogInteractionSnapshot**](struct_tryll_1_1_client_1_1_dialog_interaction_snapshot.md) 
+* **struct** [**Tryll::Client::DialogKnowledge**](struct_tryll_1_1_client_1_1_dialog_knowledge.md) 
+* **struct** [**Tryll::Client::DialogKnowledgeChunk**](struct_tryll_1_1_client_1_1_dialog_knowledge_chunk.md) 
+* **struct** [**Tryll::Client::DialogProjectionWindow**](struct_tryll_1_1_client_1_1_dialog_projection_window.md) 
+* **struct** [**Tryll::Client::DialogSlot**](struct_tryll_1_1_client_1_1_dialog_slot.md) 
+* **struct** [**Tryll::Client::DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) 
+* **struct** [**Tryll::Client::DialogToolCall**](struct_tryll_1_1_client_1_1_dialog_tool_call.md) 
+* **struct** [**Tryll::Client::DialogToolResult**](struct_tryll_1_1_client_1_1_dialog_tool_result.md) 
 * **struct** [**Tryll::Client::GraphDescription::NodeDesc**](struct_tryll_1_1_client_1_1_graph_description_1_1_node_desc.md) _Internal serialisable description of one node._ 
 * **struct** [**Tryll::Client::ManagedServerOptions**](struct_tryll_1_1_client_1_1_managed_server_options.md) _Configuration passed to_ [_**ManagedServer::Start**_](class_tryll_1_1_client_1_1_managed_server.md#function-start) _._
 * **struct** [**Tryll::Client::MessageResult**](struct_tryll_1_1_client_1_1_message_result.md) _Placeholder for per-turn metadata returned from SendText._ 
 * **struct** [**Tryll::Client::TranscriptUpdate**](struct_tryll_1_1_client_1_1_transcript_update.md) _Transcript update delivered via the_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _callback._
 * **struct** [**Tryll::Client::TryllClient::DebugCommandResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_debug_command_result.md) 
 * **struct** [**Tryll::Client::TryllClient::EmbeddedStorageInfo**](struct_tryll_1_1_client_1_1_tryll_client_1_1_embedded_storage_info.md) _Result returned by_ `CreateEmbeddedStringStorage` _variants._
-* **struct** [**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) _Per-model-kind session configuration._ 
+* **struct** [**Tryll::Client::TryllClient::EngineSelection**](struct_tryll_1_1_client_1_1_tryll_client_1_1_engine_selection.md) 
+* **struct** [**Tryll::Client::TryllClient::LoadModelResult**](struct_tryll_1_1_client_1_1_tryll_client_1_1_load_model_result.md) _Explicitly load and pin a model into memory._ 
+* **struct** [**Tryll::Client::TryllClient::ModelPlacementHint**](struct_tryll_1_1_client_1_1_tryll_client_1_1_model_placement_hint.md) 
+* **struct** [**Tryll::Client::TryllClient::SessionConfig**](struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config.md) 
 * **struct** [**Tryll::Client::UtteranceOptions**](struct_tryll_1_1_client_1_1_utterance_options.md) _Per-utterance options passed to BeginUtterance._ 
 * **struct** [**Tryll::Client::VoiceInputConfig**](struct_tryll_1_1_client_1_1_voice_input_config.md) _Parameters for creating a_ [_**VoiceInput**_](class_tryll_1_1_client_1_1_voice_input.md) _handle._
-* **struct** [**Tryll::Generated::V\_da5b39a96d7b::Fingerprint**](struct_tryll_1_1_generated_1_1_v__da5b39a96d7b_1_1_fingerprint.md) 
+* **struct** [**Tryll::Generated::V\_e6680d618aa0::Fingerprint**](struct_tryll_1_1_generated_1_1_v__e6680d618aa0_1_1_fingerprint.md) 
 * **struct** [**Tryll::Client::AgentVariables::PendingEntry**](struct_tryll_1_1_client_1_1_agent_variables_1_1_pending_entry.md) 
 * **class** **std::runtime_error**    
     * **class** [**Tryll::Client::TryllError**](class_tryll_1_1_client_1_1_tryll_error.md) _Exception thrown by_ [_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _and_[_**AgentProxy**_](class_tryll_1_1_client_1_1_agent_proxy.md) _on server errors or disconnects._

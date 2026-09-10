@@ -9,7 +9,7 @@ flowchart LR
     Client -->|"Connect(host, port)"| Session
 ```
 
-The client spawns the server with `--port <N>` on the command line so the port both sides use is always in sync — no editing of `server-config.json` needed.
+The client spawns the server with `--port <N>` on the command line so the port both sides use is always in sync — no editing of `server-config.json` needed. Unity and Unreal also pass `--llama-backend vulkan|auto` from **Project Settings → Llama.cpp backend** (default Vulkan). That setting is ignored when Auto Launch Server is off: you then own the process and the config file.
 
 ______________________________________________________________________
 
@@ -20,7 +20,7 @@ The Unity plugin ships the server **inside the package** and auto-launches it �
 - **Editor Play Mode** launches `tryll_server.exe` directly from the package.
 - **Standalone builds** copy the payload into `<Build>/Server/` next to the player exe at build time (via a build post-processor), and the runtime launches it from there.
 
-The only setting is **Edit → Project Settings → Tryll Client → Auto Launch Server** (`true` by default). Uncheck it to disable auto-launch entirely and manage the server process yourself.
+Settings live under **Edit → Project Settings → Tryll Client**. **Auto Launch Server** is `true` by default — uncheck it to manage the server yourself. **Llama.cpp backend** (`Vulkan` / `Auto`, default Vulkan) is passed as `--llama-backend` and also decides whether a standalone player build copies the CUDA DLLs.
 
 `TryllClient` spawns the server before attempting to connect and terminates the process when the application quits.
 
@@ -36,9 +36,10 @@ The Unreal plugin ships the server **inside the plugin** and auto-launches it �
 
 1. Open **Edit → Project Settings → Plugins → Tryll Client**.
 1. **Auto Launch Server** is `true` by default. Uncheck it to disable auto-launch entirely and run a server yourself (e.g. a local debug build).
+1. **Llama.cpp backend** (`Vulkan` / `Auto`, default Vulkan) is passed as `--llama-backend`. `Auto` prefers CUDA on NVIDIA and ships the CUDA DLLs in a packaged build; `Vulkan` skips them.
 1. **Server Build Variant** (only shown when both a `Default` and a `Release` variant resolve — a plugin-development setup) picks which build to launch. With a single variant present it is used automatically and this option is hidden.
 
-The subsystem resolves the bundled exe at `<Plugin>/Binaries/ThirdParty/TryllServer/<variant>/tryll_server.exe` via the plugin directory, so the path is identical in the editor and in packaged builds. It spawns the server on `Initialize` and shuts it down on `Deinitialize` (when the game instance ends). The **ServerPort** setting is passed to the launched server as `--port` on the command line, so it is **authoritative** and overrides `server-config.json` — you do **not** need to keep the two in sync.
+The subsystem resolves the bundled exe at `<Plugin>/Binaries/ThirdParty/TryllServer/<variant>/tryll_server.exe` via the plugin directory, so the path is identical in the editor and in packaged builds. It spawns the server on `Initialize` and shuts it down on `Deinitialize` (when the game instance ends). **ServerPort** and **Llama.cpp backend** are passed as `--port` and `--llama-backend`, so they are **authoritative** and override `server-config.json` — you do **not** need to keep the two in sync.
 
 Where the server comes from
 

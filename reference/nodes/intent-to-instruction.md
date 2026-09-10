@@ -49,15 +49,19 @@ The `"default"` exit fires regardless of whether an instruction was found. When 
 
 ## Diagnostics
 
-When `enable_diagnostics = true`, the node contributes these keys to `TurnComplete.debug_info`:
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
 
-| Key              | Meaning                                                                                |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| `string_storage` | The name of the map storage used.                                                      |
-| `output_name`    | The name given to the emitted component.                                               |
-| `intent`         | The intent label read from `IntentionComponent` (empty if no component was present).   |
-| `found`          | `"true"` when the key was matched and the component was attached; `"false"` otherwise. |
-| `result_text`    | The instruction text that was attached (empty when `found = "false"`).                 |
+No model runs, so the node emits `parameters` and `output` only.
+
+| Key                         | Meaning                                                       | Absent when                       |
+| --------------------------- | ------------------------------------------------------------- | --------------------------------- |
+| `parameters.string_storage` | Name of the `Map`-kind storage that was looked up.            | —                                 |
+| `parameters.output_name`    | Name given to the emitted component.                          | —                                 |
+| `output.intent`             | The intent label read from the turn's `IntentionComponent`.   | No classification node wrote one. |
+| `output.found`              | `true` when the key matched and the instruction was attached. | —                                 |
+| `output.text`               | The instruction text that was attached.                       | `found` is `false`.               |
+
+`found: false` with a non-empty `output.intent` means the classifier produced a label the map has no entry for — a KB gap. An **absent** `output.intent` means no classification reached this node at all, which is an upstream routing problem instead. Check the classifier's own `output.classification` in the same payload.
 
 ## Minimum working example
 

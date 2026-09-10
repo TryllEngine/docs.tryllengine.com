@@ -39,11 +39,18 @@ ______________________________________________________________________
 
 The server rejected a request because the session is not in the right state to accept it, or because the server is shutting down.
 
-| Code   | Name                   | Meaning                                                                                                                                                |
-| ------ | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `2001` | `ServerShuttingDown`   | The server is in graceful shutdown and no longer accepts new requests on this session. In-flight turns continue until they complete or time out.       |
-| `2002` | `SessionNotReady`      | The client issued a request (agent, model, storage, or voice) before sending `CreateSessionRequest`. `CreateSession` is mandatory and must come first. |
-| `2003` | `SessionAlreadyExists` | The client sent a second `CreateSessionRequest` on a connection that already has a session. `CreateSession` is one-shot.                               |
+| Code   | Name                         | Meaning                                                                                                                                                                                                                                                  |
+| ------ | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `2001` | `ServerShuttingDown`         | The server is in graceful shutdown and no longer accepts new requests on this session. In-flight turns continue until they complete or time out.                                                                                                         |
+| `2002` | `SessionNotReady`            | The client issued a request (agent, model, storage, or voice) before sending `CreateSessionRequest`. `CreateSession` is mandatory and must come first.                                                                                                   |
+| `2003` | `SessionAlreadyExists`       | The client sent a second `CreateSessionRequest` on a connection that already has a session. `CreateSession` is one-shot.                                                                                                                                 |
+| `3017` | `ModelLanguageUnsupported`   | A node would rely on the session language but its model does not support it. Fix by picking a model that covers the language, setting the node's own `tts_lang`, or changing the session locale. Not raised when the model declares no languages at all. |
+| `3018` | `DialogSnapshotInvalid`      | Export/import snapshot is malformed, missing required fields, or has inconsistent tool call/result data. Import leaves the existing dialog unchanged.                                                                                                    |
+| `3019` | `DialogFormatUnsupported`    | Snapshot `format_version` is newer than this server, or the file identifier is not `TDLG`.                                                                                                                                                               |
+| `3020` | `DialogGraphMismatch`        | Import `Strict`: `graph_signature` does not match the agent's create-time graph.                                                                                                                                                                         |
+| `3021` | `DialogSnapshotTooLarge`     | Encoded snapshot would overflow the 1 MiB frame cap. Tryll never truncates.                                                                                                                                                                              |
+| `3022` | `DialogUnsupportedComponent` | Unknown component type on export, or unknown union arm on import.                                                                                                                                                                                        |
+| `2004` | `InvalidLocale`              | `CreateSessionRequest.locale` is not a well-formed BCP-47 tag. Expected `language[-script][-region]` — e.g. `de`, `pt-BR`, `zh-Hans-CN`. The error message names what was wrong.                                                                         |
 
 **Recovery:**
 

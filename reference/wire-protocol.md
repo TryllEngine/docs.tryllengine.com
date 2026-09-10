@@ -2,7 +2,7 @@
 
 This page specifies the byte-level contract a third-party client must implement to talk to a Tryll server without using the shipped C++, Python, or Unreal client libraries. If you are using one of those libraries, you do not need any of this — skip to the [how-to guides](https://docs.tryllengine.com/how-to/index.html).
 
-The authoritative source of truth for every structure named below is the FlatBuffers schema file `tryll/schema/messages.fbs`. The current **protocol version is 10** (sent in `ConnectionReady.protocol_version`). This reference describes the transport around that schema.
+The authoritative source of truth for every structure named below is the FlatBuffers schema file `tryll/schema/messages.fbs`. The current **protocol version is 17** (sent in `ConnectionReady.protocol_version`). This reference describes the transport around that schema.
 
 ## Transport
 
@@ -43,6 +43,8 @@ All messages are defined in `messages.fbs` under the `MessageBody` union. The fu
 | C → S     | `GetAgentKvCacheStatusRequest`         | `GetAgentKvCacheStatusResponse`                                                                       |
 | C → S     | `AppendInteractionsRequest`            | `AppendInteractionsResponse`                                                                          |
 | C → S     | `RemoveInteractionsFromEndRequest`     | `RemoveInteractionsFromEndResponse`                                                                   |
+| C → S     | `ExportDialogRequest`                  | `ExportDialogResponse`                                                                                |
+| C → S     | `ImportDialogRequest`                  | `ImportDialogResponse`                                                                                |
 | C → S     | `CancelRequest`                        | `Ack` (the in-flight turn ends with `TurnComplete`, `status = Cancelled`)                             |
 | C → S     | `ResumeAgentRequest`                   | `Ack`, or `ErrorResponse` (`AgentNotPaused` / `UnknownNode`)                                          |
 | C → S     | `UpdateAgentVariablesRequest`          | `Ack`, or `ErrorResponse` (`AgentBusy` / `UnknownVariable` / `VariableTypeMismatch`)                  |
@@ -50,6 +52,7 @@ All messages are defined in `messages.fbs` under the `MessageBody` union. The fu
 | C → S     | `ChangeAgentParamRequest`              | `Ack`, or `ErrorResponse` (`AgentBusy` / `UnknownNode` / `ParamNotMutable` / `InvalidParamValue`)     |
 | C → S     | `DestroyAgentRequest`                  | `Ack`                                                                                                 |
 | C → S     | `ListModelsRequest`                    | `ListModelsResponse`                                                                                  |
+| C → S     | `GetMemoryConsumptionRequest`          | `GetMemoryConsumptionResponse`                                                                        |
 | C → S     | `DownloadModelRequest`                 | `DownloadProgress` × N, then `DownloadComplete`                                                       |
 | C → S     | `LoadModelRequest`                     | `LoadModelResponse`                                                                                   |
 | C → S     | `UnloadModelRequest`                   | `Ack`                                                                                                 |
@@ -65,6 +68,7 @@ All messages are defined in `messages.fbs` under the `MessageBody` union. The fu
 | C → S     | `CancelUtteranceRequest`               | `Ack`                                                                                                 |
 | C → S     | `DestroyVoiceInputRequest`             | `Ack`                                                                                                 |
 | C → S     | `SetInferenceThrottle`                 | — (fire-and-forget; session-scoped, no `request_id`)                                                  |
+| C → S     | `SetSessionLocaleRequest`              | `Ack`, or `ErrorResponse` (`InvalidLocale`)                                                           |
 | S → C     | `WireTranscriptUpdate`                 | (unsolicited; `kind` = `SpeechStart` / `Partial` / `SegmentFinal` / `UtteranceFinal`)                 |
 | S → C     | `TtsAudioFormatFrame`, `TtsAudioFrame` | (unsolicited during a turn with a `Speak` / `GenerateAndSpeak` node; end signalled by `TurnComplete`) |
 | S → C     | `ErrorResponse`                        | (replaces any expected response on failure)                                                           |
@@ -84,7 +88,7 @@ sequenceDiagram
     participant S as Server
     C->>S: TCP connect
     S-->>C: ConnectionReady(protocol_version, codegen_fingerprint)
-    C->>S: CreateSessionRequest(inference_engine, stt_engine?, tts_engine?, embedding_engine?)
+    C->>S: CreateSessionRequest(model_config: engines + placement_hints)
     S-->>C: CreateSessionResponse
     C->>S: CreateAgentRequest(graph, ...)
     note over S: fails fast (GraphCompilationFailed) if a referenced model is absent
@@ -102,9 +106,18 @@ sequenceDiagram
 
 The server emits `ConnectionReady` **before** any request has been sent; a client that issues `CreateSessionRequest` without first reading `ConnectionReady` races against the schema-version check carried in that frame.
 
-`CreateSessionRequest` carries one engine per model kind: `inference_engine` for language models, plus `stt_engine`, `tts_engine`, and `embedding_engine`. Each defaults to `Mock`; set only the ones you actually use. The server dispatches model lookups by the catalog `ModelType` of the model name in question, so `ListModels`, `LoadModelRequest`, and `UnloadModelRequest` work uniformly across language / embedding / STT / TTS. VAD is catalog/download-only — `LoadModelRequest` for a VAD model returns `ModelResolutionFailed`.
+`CreateSessionRequest` carries a `model_config` describing what the session needs from the model layer:
+
+- **`engines`** — an **advisory** hint naming the `(role, engine)` pairs the session expects to touch, e.g. language = `llama-cpp`, tts = `sherpa-onnx`. The catalog already records which engine runs each model, so this gates nothing: it may be empty, incomplete, or wrong, and loading a model it never named works normally. Its one effect is to let the server initialise those engines' backends when the session is created rather than on first use, which matters when that cost is large. A model whose engine is absent from the *server build* is refused at load with `EngineNotAvailable` (6008), naming the model, its role and the engine. Only an out-of-range enum value is rejected outright, with `InvalidEngineSet` (2005).
+- **`placement_hints`** — optional per-model `MemoryPlacement` (`auto` / `ram` / `vram`). Sparse: list only the models you have an opinion about. These are hints, not guarantees — see [Choose where models run](https://docs.tryllengine.com/how-to/choose-where-models-run.html).
+
+VAD is catalog/download-only — `LoadModelRequest` for a VAD model returns `ModelResolutionFailed`. A VAD model needs no declaration of its own: it loads as a dependency of an STT model and rides that declaration.
+
+> Before protocol v13 this table carried four engine fields (`inference_engine`, `stt_engine`, `tts_engine`, `embedding_engine`), three defaulting to `Mock`. `ListModels` also filtered by them, which meant a session that left them at their defaults saw no STT, TTS or embedding models at all. `ListModels` now reports every catalog model with its own engine as data.
 
 It also carries `storage_data_folder: string` — when non-empty, this becomes the **per-session storage root** against which relative paths in node `string_storage` and `embedded_string_storage` params are resolved. Falls back to the server's `storage_root` config field, then the exe directory. See [Server Configuration](https://docs.tryllengine.com/reference/server-configuration.html#storage-root) for the full resolution chain.
+
+It also carries `locale: string` — the session language as a BCP-47 tag (`"de"`, `"pt-BR"`). One setting the whole voice + text stack derives from: the default `tts_lang` on every `GenerateAndSpeak`/`Speak` node, the language hint handed to multilingual STT models, the `loc/<language>/` folder beside a linked file that storage paths prefer when a translation exists, and the `locale` / `language` / `language_code` Mustache keys. Empty leaves every one of those at its pre-locale behaviour; a malformed tag is rejected with `InvalidLocale` (2004). `SetSessionLocaleRequest` (57) changes it later without tearing the session down — same grammar, same rejection, and an empty tag clears it. See [Ship an Agent in Another Language](https://docs.tryllengine.com/how-to/ship-in-another-language.html).
 
 `CreateVoiceInputRequest` now carries `hotwords_storage_path: string` — a relative path (resolved against the session storage root) to a plain `.txt` file listing hotwords, one per line, and `hotwords_score: float` (threshold score for keyword activation; default `1.5`). These are exposed as `HotwordsStoragePath` and `HotwordsScore` UPROPERTYs on the Unreal voice component.
 
@@ -167,6 +180,22 @@ Either mutation invalidates the agent's reusable KV prefix (`_kvCachePrefixCurre
 **vs `StopAndDiscard`.** [`Cancel`](https://docs.tryllengine.com/how-to/cancel-a-turn.html) with `StopAndDiscard` removes the **last in-flight** interaction after a cooperative cancel mid-turn. Dialog mutation edits completed or injected history on an idle agent; tail removal is explicit and count-based.
 
 The Unity (`TryllAgent.AppendInteractions` / `RemoveInteractionsFromEnd`), Unreal (`FTryllAgent::AppendInteractions` / `RemoveInteractionsFromEnd`), C++ (`AgentProxy::AppendInteractions` / `RemoveInteractionsFromEnd`), and Python (`AgentProxy.append_interactions` / `remove_interactions_from_end`) clients expose these directly. See [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html).
+
+### ExportDialog / ImportDialog
+
+Protocol v14 adds idle-only export/import of a **full-fidelity** dialog snapshot. Tryll does not write files — the game owns the outer save container.
+
+`ExportDialogRequest {request_id, agent_id}`
+
+`ExportDialogResponse {request_id, agent_id, snapshot}` where `snapshot` is a `PersistedDialogSnapshot` (also a standalone root, file identifier `TDLG`). `format_version` is independent of the wire protocol.
+
+`ImportDialogRequest {request_id, agent_id, snapshot, compatibility}`
+
+`compatibility`: `Strict` (default) or `AllowGraphMismatch`.
+
+`ImportDialogResponse {request_id, agent_id, interaction_count, warnings}`
+
+Import **replaces** the dialog. Failures are atomic. Encoded snapshots that would overflow the 1 MiB frame fail with `DialogSnapshotTooLarge` (3021). See [Export and import dialog](https://docs.tryllengine.com/how-to/export-and-import-dialog.html).
 
 ## Streaming answers
 
@@ -371,7 +400,7 @@ The server validates all exit targets when processing `CreateAgentRequest`. A no
 
 ## Versioning
 
-The current wire-protocol version is **11**. Version 11 added the manual inference throttle — `SetInferenceThrottle` (56) — and `CreateAgentRequest.workload` (see [Inference throttle and agent workload](#inference-throttle-and-agent-workload)). Both are additive, but every client compares versions with `!=`, so any bump is a hard break at `ConnectionReady`. Version 10 was required because `RetrieveParams` gained `retrieval_mode` and `rrf_k` in the middle of the shipped FlatBuffers table (before `source` / `filter` / exits). Vtable slots are positional — mixed v9/v10 peers would decode those fields into the wrong slots — so the handshake hard-rejects a version mismatch. Version 9 replaced `ToolCallParams.notify_client`, `pause_after_tool_call`, and `history_policy` with a single `disposition: ToolCallDisposition` enum; `tool_call` NodeEvents now carry a `disposition` kv (not `history_policy`). Tool-call pause/resume and `tool_results` remain as introduced in v9 under the current v10 protocol. Version 8 extended `ResumeAgentRequest` with optional `tool_results: [ToolResult {call_id, result}]` for paused `AwaitResult` tool-call batches (see [Pausing and resuming a turn](#pausing-and-resuming-a-turn)). Version 7 added dialog history mutation: `AppendInteractionsRequest` / `AppendInteractionsResponse` (52/53) and `RemoveInteractionsFromEndRequest` / `RemoveInteractionsFromEndResponse` (54/55). Version 6 added agent KV-cache lifecycle initialization and the dedicated prefill, eviction, and status request/response pairs. Version 5 added [Variables](https://docs.tryllengine.com/concepts/agent-variables.html) messages (`UpdateAgentVariablesRequest`, `GetAgentVariablesRequest`, `GetAgentVariablesResponse`) and the trailing `CreateAgentRequest.variables` field; the version was bumped so a v5 client fails an incompatible v4 server at the `ConnectionReady` handshake rather than on the first variable request. Version 4 split the TCP connection from the logical session: `ConnectionReady` is now a connection-level hello with **no** `session_id`, and `CreateSession` (renamed from `ConfigureSession`) is mandatory and one-shot — it returns the server-allocated `session_id` in `CreateSessionResponse`. Every request before `CreateSession` is rejected with `2002 SessionNotReady`; a second `CreateSession` with `2003 SessionAlreadyExists`. (Version 2 had removed the `routes: [ExitRoute]` field from `GraphDescription` in favor of typed-param wiring; version 3 reinterpreted string-storage create/destroy as pin/unpin.)
+The current wire-protocol version is **17**. Version 17 added `GetMemoryConsumptionRequest` / `GetMemoryConsumptionResponse` (union 62/63) and the `MemoryTier` / `MemoryOwnerKind` / `InferenceConsumerClass` enums. The request is session-scoped (`SessionNotReady` before `CreateSession`) but the snapshot is **server-wide** — every session on the process, the same collector as the monitor's `GET /api/memory`. It never returns `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html). Version 11 added the manual inference throttle — `SetInferenceThrottle` (56) — and `CreateAgentRequest.workload` (see [Inference throttle and agent workload](#inference-throttle-and-agent-workload)). Both are additive, but every client compares versions with `!=`, so any bump is a hard break at `ConnectionReady`. Version 10 was required because `RetrieveParams` gained `retrieval_mode` and `rrf_k` in the middle of the shipped FlatBuffers table (before `source` / `filter` / exits). Vtable slots are positional — mixed v9/v10 peers would decode those fields into the wrong slots — so the handshake hard-rejects a version mismatch. Version 9 replaced `ToolCallParams.notify_client`, `pause_after_tool_call`, and `history_policy` with a single `disposition: ToolCallDisposition` enum; `tool_call` NodeEvents now carry a `disposition` kv (not `history_policy`). Tool-call pause/resume and `tool_results` remain as introduced in v9 under the current v10 protocol. Version 8 extended `ResumeAgentRequest` with optional `tool_results: [ToolResult {call_id, result}]` for paused `AwaitResult` tool-call batches (see [Pausing and resuming a turn](#pausing-and-resuming-a-turn)). Version 7 added dialog history mutation: `AppendInteractionsRequest` / `AppendInteractionsResponse` (52/53) and `RemoveInteractionsFromEndRequest` / `RemoveInteractionsFromEndResponse` (54/55). Version 6 added agent KV-cache lifecycle initialization and the dedicated prefill, eviction, and status request/response pairs. Version 5 added [Variables](https://docs.tryllengine.com/concepts/agent-variables.html) messages (`UpdateAgentVariablesRequest`, `GetAgentVariablesRequest`, `GetAgentVariablesResponse`) and the trailing `CreateAgentRequest.variables` field; the version was bumped so a v5 client fails an incompatible v4 server at the `ConnectionReady` handshake rather than on the first variable request. Version 4 split the TCP connection from the logical session: `ConnectionReady` is now a connection-level hello with **no** `session_id`, and `CreateSession` (renamed from `ConfigureSession`) is mandatory and one-shot — it returns the server-allocated `session_id` in `CreateSessionResponse`. Every request before `CreateSession` is rejected with `2002 SessionNotReady`; a second `CreateSession` with `2003 SessionAlreadyExists`. (Version 2 had removed the `routes: [ExitRoute]` field from `GraphDescription` in favor of typed-param wiring; version 3 reinterpreted string-storage create/destroy as pin/unpin.)
 
 When a breaking change lands, the server rejects incompatible clients at `ConnectionReady` time with error `5004` `ProtocolVersionMismatch`. Clients should surface the error message verbatim and stop reconnecting.
 

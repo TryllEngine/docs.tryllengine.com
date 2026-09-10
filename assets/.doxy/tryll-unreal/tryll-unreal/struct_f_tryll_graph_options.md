@@ -84,7 +84,7 @@
 ## Detailed Description
 
 
-Shared helpers for Details-panel dropdowns that enumerate node names. Used by GetExitTargetOptions (on [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md)) and GetStartNodeOptions (on [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md) / [**UTryllAgentComponent**](class_u_tryll_agent_component.md)). 
+Shared helpers for Details-panel dropdowns that enumerate node names. Used by GetExitTargetOptions (on [**UTryllNodeParamsBase**](class_u_tryll_node_params_base.md)) and GetStartNodeOptions (on [**UTryllWorkflowAsset**](class_u_tryll_workflow_asset.md)). 
 
 
     

@@ -4,9 +4,63 @@
     <compoundname>TryllModelManifest.h</compoundname>
     <includes local="yes">CoreMinimal.h</includes>
     <includes local="yes">Engine/DeveloperSettings.h</includes>
+    <includes refid="_tryll_graph_description_8h" local="yes">TryllGraphDescription.h</includes>
     <includes local="yes">TryllModelManifest.generated.h</includes>
+    <includedby refid="_tryll_editor_bridge_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
     <includedby refid="_tryll_workflow_model_refs_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowModelRefs.h</includedby>
     <incdepgraph>
+      <node id="4">
+        <label>TryllGraphDescription.h</label>
+        <link refid="_tryll_graph_description_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h</label>
+        <link refid="_tryll_model_manifest_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>TryllModelName.h</label>
+        <link refid="_tryll_model_name_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="3">
+        <label>Engine/DeveloperSettings.h</label>
+      </node>
+      <node id="7">
+        <label>TryllGraphDescription.generated.h</label>
+      </node>
+      <node id="8">
+        <label>TryllModelManifest.generated.h</label>
+      </node>
+      <node id="6">
+        <label>TryllModelName.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h</label>
+        <link refid="_tryll_editor_bridge_8h_source"/>
+      </node>
       <node id="1">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h</label>
         <link refid="_tryll_model_manifest_8h"/>
@@ -17,24 +71,13 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>CoreMinimal.h</label>
-      </node>
       <node id="3">
-        <label>Engine/DeveloperSettings.h</label>
-      </node>
-      <node id="4">
-        <label>TryllModelManifest.generated.h</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="1">
-        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h</label>
-        <link refid="_tryll_model_manifest_8h"/>
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="2">
+      <node id="4">
         <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllWorkflowModelRefs.h</label>
         <link refid="_tryll_workflow_model_refs_8h_source"/>
       </node>
@@ -42,6 +85,47 @@
     <innerclass refid="struct_f_tryll_model_manifest_entry" prot="public">FTryllModelManifestEntry</innerclass>
     <innerclass refid="class_u_tryll_model_manifest" prot="public">UTryllModelManifest</innerclass>
     <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_model_manifest_8h_1a71f0448def7847badc8ca91ef3ac5b76" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllMemoryPlacement</name>
+        <enumvalue id="_tryll_model_manifest_8h_1a71f0448def7847badc8ca91ef3ac5b76a06b9281e396db002010bde1de57262eb" prot="public">
+          <name>Auto</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Server policy decides: device memory when the machine has a usable GPU. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_manifest_8h_1a71f0448def7847badc8ca91ef3ac5b76ae5d284b6015067eaa11e06b809fe6f13" prot="public">
+          <name>Ram</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>System memory (RAM). </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_model_manifest_8h_1a71f0448def7847badc8ca91ef3ac5b76a903fb6c788455b69d7c93e06601b03b9" prot="public">
+          <name>Vram</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Device memory (VRAM). </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Per-model build selection for this project. Ordinals match the Unity client&apos;s TryllModelRegistration so a shared manifest stays interchangeable. Where a model&apos;s weights should live. Mirrors the wire MemoryPlacement enum.</para>
+<para>Always a hint: a machine that cannot honour it loads the model the other way and reports what it did. That matters here because this value is authored on a developer&apos;s machine and shipped to players&apos; machines — a VRAM choice that suits a 24 GB card is not a promise an 8 GB card can keep.</para>
+<para>Which GPU API provides VRAM (CUDA / Vulkan) is deliberately not expressible: that is the host&apos;s decision, not the project&apos;s. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="26" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="27" bodyend="34"/>
+      </memberdef>
       <memberdef kind="enum" id="_tryll_model_manifest_8h_1a186747377f4620e8d32938b98ae3fc3f" prot="public" static="no" strong="yes">
         <type>uint8</type>
         <name>ETryllModelRegistration</name>
@@ -75,11 +159,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Per-model build selection for this project. Ordinals match the Unity client&apos;s TryllModelRegistration so a shared manifest stays interchangeable. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="14" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="15" bodyend="22"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="37" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="38" bodyend="45"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -124,7 +124,7 @@ From most to least impactful:
 
 1. **Pick a model whose chat template supports tools.** This is the biggest lever — a model trained and templated for tool calls (Qwen 3.x, Granite 4.x, Llama-3.x, …) is far more reliable than one coaxed into it. `CreateAgent` rejects a model whose template can't render tools at all.
 1. **Keep the tool list short.** Small models get overwhelmed past 5–8 tools. If you have many, put a routing / guardrail node in front to select a subset.
-1. **Write tool descriptions like prompts.** The description is what the model sees. "Turn a named light on or off" beats "light controller function".
+1. **Write tool descriptions like prompts.** The description is what the model sees. "Turn a named light on or off" beats "light controller function". Name the unfiltered state (`any`, `unspecified`) instead of hoping the model omits a slot — see [Design a tool-call prompt](https://docs.tryllengine.com/how-to/design-a-tool-call-prompt.html).
 1. **Validate on the client.** A small model will hallucinate argument names eventually. Treat `arguments_json` as untrusted input.
 1. **Use low temperature.** Tool calls are a classification / structure task, not a creative one. `temperature=0` is often the right answer.
 
@@ -143,3 +143,6 @@ From most to least impactful:
 - [Concept: Workflows, Graphs, and Nodes](https://docs.tryllengine.com/concepts/workflows-graphs-nodes.html)
 - [Concept: Constrained output (GBNF)](https://docs.tryllengine.com/concepts/constrained-output.html) — the lighter-weight cousin for a fixed `<action> <object>` shape when you don't need typed JSON args
 - [How-to: Define and handle tool calls](https://docs.tryllengine.com/how-to/define-and-handle-tool-calls.html)
+- [How-to: Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html)
+- [How-to: Compare tool-call models](https://docs.tryllengine.com/how-to/compare-tool-call-models.html)
+- [How-to: Design a tool-call prompt](https://docs.tryllengine.com/how-to/design-a-tool-call-prompt.html)

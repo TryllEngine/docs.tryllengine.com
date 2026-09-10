@@ -20,6 +20,7 @@ The surface your game code touches — one page per platform, plus the request f
 
 - [Agent Parameters](https://docs.tryllengine.com/reference/agent-parameters.html) — every field on `CreateAgentRequest`: graph, variables, diagnostics, knowledge presentation, KV-cache initialization, workload, tools.
 - [Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.html) — the shared per-turn diagnostics panel: every block, when each appears, and what to do when one is missing. Hosted by the Chat Window, Agent Log, and Dialog Lab.
+- [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) — every field of the `debug_info` payload behind that panel, and behind `TurnComplete` on the wire: the envelope, the per-node sections, and why a key is absent.
 - [Error Codes](https://docs.tryllengine.com/reference/error-codes.html) — numeric catalog, ranges, per-code recovery guidance.
 
 ## Workflows and data
@@ -56,7 +57,7 @@ What you declare, and what the server does with it.
 ### Models
 
 - [Model Management](https://docs.tryllengine.com/reference/model-management.html) — `models.json` schema, variants, download and load lifecycle, model status.
-- [TTS Models](https://docs.tryllengine.com/reference/tts-models.html) — which Sherpa-ONNX voice families Tryll supports, which it does not, and why.
+- [TTS Models](https://docs.tryllengine.com/reference/tts-models.html) — shipped voices (Sherpa-ONNX and llama.cpp SNAC), which families Tryll supports, and why the rest cannot load.
 
 ### Server
 

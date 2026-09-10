@@ -36,6 +36,7 @@ Full API reference for the `TryllClient` Unreal Engine plugin, auto-generated fr
 | -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `FTryllError`                                                                                            | Error envelope — `ETryllErrorCode` + message string                                                         |
 | `FTryllModelInfo`                                                                                        | Model catalog row returned by `ListModels`                                                                  |
+| `FTryllMemorySnapshot`                                                                                   | Server-wide RAM/VRAM snapshot returned by `RequestGetMemoryConsumption`                                     |
 | `FTryllToolDefinition`                                                                                   | Tool declaration                                                                                            |
 | `FTryllToolParamDefinition`                                                                              | Single parameter within a `FTryllToolDefinition`                                                            |
 | `FTryllVariableDecl`                                                                                     | Name + typed initial value, declared on `UTryllWorkflowAsset::Variables` / passed to `CreateAgent`          |
@@ -64,6 +65,7 @@ Full API reference for the `TryllClient` Unreal Engine plugin, auto-generated fr
 | `TryllGraphDescription.h`            | `FTryllGraphDescription`, `FTryllGraphBuilder`, `FTryllNodeDescription`, `ETryllInferenceEngine`, `ETryllNodeType` |
 | `Generated/TryllNodeParamsFactory.h` | `UTryllNodeParamsFactory`                                                                                          |
 | `TryllModelInfo.h`                   | `FTryllModelInfo`, `ETryllModelStatus`                                                                             |
+| `TryllMemorySnapshot.h`              | `FTryllMemorySnapshot`, `FTryllMemoryDevice`, `FTryllMemoryComponent`, `ETryllMemoryTier`                          |
 | `TryllError.h`                       | `FTryllError`, `ETryllErrorCode`                                                                                   |
 | `TryllThrottle.h`                    | `ETryllWorkload`                                                                                                   |
 
@@ -85,6 +87,14 @@ void CreateSession(
 `GameName` and `StorageDataFolder` map to the same-named `UTryllRuntimeSettings` fields. `CreateAgent`, `CreateEmbeddedStringStorage`, and `CreateVoiceInput` fail fast if a referenced model is not already on disk — acquire models explicitly beforehand via the editor Model Manager.
 
 To configure from the project settings asset instead of passing parameters, call `CreateSessionFromSettings()` — this runs automatically once connected when `UTryllRuntimeSettings::bAutoCreateSession` is `true`.
+
+### `UTryllSubsystem::RequestGetMemoryConsumption`
+
+```
+void RequestGetMemoryConsumption(TFunction<FTryllOnGetMemoryConsumption> OnComplete);
+```
+
+Session-scoped (needs `CreateSession`) but the numbers are **server-wide** — every session on that process. Never returns `AgentBusy`. Not a `UFUNCTION`; Blueprint binds `OnGetMemoryConsumptionComplete` after a C++ call. See [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html).
 
 ## Usage
 
@@ -112,9 +122,7 @@ Subsystem->RequestCreateAgent(Graph,
 
 The typed `AddXxx` helpers (`AddGenerate`, `AddRetrieve`, …) are generated into `TryllGraphBuilder.Nodes.h`; `AddNode(Name, Params)` accepts any node type.
 
-Inline graphs are temporary
-
-`UTryllAgentComponent::InlineGraphDescription` — assigning a code-built graph to the component instead of using a Workflow Asset — is a temporary feature and will be removed in a future release. When you drive an agent through `UTryllAgentComponent`, author the graph as a `UTryllWorkflowAsset` (Content Browser → **Tryll → Workflow Asset**) and assign it to the component's **Workflow Asset** slot.
+When you drive an agent through `UTryllAgentComponent`, author the graph as a `UTryllWorkflowAsset` (Content Browser → **Tryll → Workflow Asset**) and assign it to the component's **Workflow Asset** slot. A component cannot create an agent without one.
 
 ### Change a node parameter at runtime
 
@@ -163,6 +171,10 @@ Agent->RemoveInteractionsFromEnd(1); // drop last whole interaction
 ```
 
 See [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html).
+
+### Export and import a dialog snapshot
+
+`FTryllAgent::ExportDialog` / `ImportDialog` capture or replace the completed dialog. These are **C++ only** — `FTryllDialogSnapshot` is not Blueprint-exposed. `ToFlatBufferBytes` / `FromFlatBufferBytes` produce canonical `TDLG` bytes; the game owns storage. See [Export and import dialog](https://docs.tryllengine.com/how-to/export-and-import-dialog.html) and [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html).
 
 ### Throttle the GPU and mark background agents
 

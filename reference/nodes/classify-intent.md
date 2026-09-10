@@ -25,7 +25,7 @@ The knowledge base records must carry a **string-typed** metadata field whose va
 | `metadata_field`          | Optional[str] | inherit model default | —          | —          | Storage metadata field whose string value becomes the intent label.                                                                                                                              |
 | `threshold`               | float         | 0.25                  | 0.0 – 1.0  | —          | Maximum cosine distance; hits above this are treated as not_found.                                                                                                                               |
 | `filter`                  | Optional[str] | inherit model default | —          | —          | JSON filter applied during search. Empty = no filter. Mutable.                                                                                                                                   |
-| `notify_client`           | bool          | False                 | —          | —          | When true, fire OnNodeEvent("intent_classified", …) on the found path.                                                                                                                           |
+| `notify_client`           | NotifyClient  | NotifyClient.Disabled | —          | —          | When to fire OnNodeEvent("intent_classified", …).                                                                                                                                                |
 | `diagnostic_topk`         | int           | 5                     | 1.0 – 64.0 | —          | Hits to fetch for diagnostic purposes (routing always uses top-1).                                                                                                                               |
 
 ## Exits
@@ -51,7 +51,7 @@ Both routes **must** be wired. An unwired exit is a graph compilation failure (e
 - Embeds the `input`-resolved text (empty = `user_message`) using the embedding model recorded in the KB config file referenced by `embedded_string_storage`.
 - Attaches an `IntentionComponent{intentLabel}` to the current interaction on `found`. The component is **not** rendered into the prompt by `DefaultProjectionStrategy` — it is consumed only by `IntentToInstructionNode`.
 - On `not_found`, nothing is attached (a warning is logged if the top hit was rejected for a metadata reason rather than a distance reason).
-- When `notify_client = "true"`, fires one `NodeEvent` (`event_type="intent_classified"`) on the `found` path, out-of-band, before the turn completes. Subscribe via `agent.set_on_intent_classified(cb)` (Python), `agent.SetOnIntentClassified(cb)` (C++), `client.IntentClassified` (Unity), or `UTryllSubsystem::OnIntentClassified` (Unreal). Events for unrecognised event_types fall through to the generic `OnNodeEvent` fallback on each client.
+- When `notify_client` is `OnFound` or `Always`, fires one `NodeEvent` (`event_type="intent_classified"`) out-of-band before the turn completes. `OnFound` emits only on the `found` path; `Always` also emits on every `not_found` path (`empty_message`, `no_results`, `below_threshold`) with `not_found_reason` set and the rejected top-1 fields when a hit exists. Subscribe via `agent.set_on_intent_classified(cb)` (Python), `agent.SetOnIntentClassified(cb)` (C++), `client.IntentClassified` (Unity), or `UTryllSubsystem::OnIntentClassified` (Unreal). A typed subscriber swallows the generic `OnNodeEvent` fallback.
 
 ## KB schema requirements
 
@@ -80,20 +80,32 @@ Each record in `my_intents.kb.json` carries the label in that field:
 
 ## Diagnostics
 
-When `enable_diagnostics = true`, the node contributes these keys to `TurnComplete.debug_info`:
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
 
-| Key                   | Meaning                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------ |
-| `metadata_field`      | The configured metadata field name.                                                        |
-| `input`               | The configured `input` slot name, when set (absent when using the `user_message` default). |
-| `query`               | The `input`-resolved text that was embedded.                                               |
-| `threshold`           | Max cosine distance used (or `"inf"` when disabled).                                       |
-| `filter`              | Raw JSON of the active filter (empty when none).                                           |
-| `raw_distance`        | Cosine distance of the top hit (empty on `not_found`).                                     |
-| `result.intent`       | The intent label attached (empty on `not_found`).                                          |
-| `result.record_index` | 0-based index of the matched record (empty on `not_found`).                                |
-| `result.id`           | Record id of the matched example (empty on `not_found`).                                   |
-| `result.text`         | Text of the matched example phrase (empty on `not_found`).                                 |
+The shared [turn inspector](https://docs.tryllengine.com/reference/turn-inspector.html#intent) renders this payload as the **Intent** block. Dialog Lab can also assert the accepted label with an **Intent is** / **Intent not found** check — see [Compare dialog variants](https://docs.tryllengine.com/how-to/compare-dialog-variants.html). Raw JSON remains the escape hatch for every field below.
+
+| Key                                       | Meaning                                                                                                                                               | Absent when                                                    |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `parameters.embedded_string_storage`      | The knowledge base searched.                                                                                                                          | —                                                              |
+| `parameters.input`                        | The configured input slot name.                                                                                                                       | Using the `user_message` default.                              |
+| `parameters.metadata_field`               | The metadata field read off the winning record to produce the label.                                                                                  | —                                                              |
+| `parameters.threshold`                    | Max cosine distance accepted, or `"inf"` when disabled.                                                                                               | —                                                              |
+| `parameters.notify_client`                | `Disabled`, `OnFound` or `Always`.                                                                                                                    | —                                                              |
+| `parameters.diagnostic_topk`              | How many ranked candidates to record below.                                                                                                           | —                                                              |
+| `parameters.filter`                       | The active filter, as JSON. Empty string when none.                                                                                                   | —                                                              |
+| `input.query`                             | The `input`-resolved text that was embedded.                                                                                                          | The resolved text was empty.                                   |
+| `output.classification.topk[]`            | Ranked candidates: `rank` (**0-based**), `intent`, `distance`. Several entries can share one intent when a KB has multiple example phrases per label. | `diagnostic_topk` is 0, or nothing was retrieved.              |
+| `output.classification.winner`            | The match that was attached: `intent`, `id`, `text`, `index` (0-based record index), `distance`.                                                      | The node exited `not_found`.                                   |
+| `output.classification.rejected_intent`   | The top-1 label the search picked, when routing rejected it.                                                                                          | `found`, or there was no pick (`empty_message`, `no_results`). |
+| `output.classification.rejected_distance` | That hit's raw distance.                                                                                                                              | Same as `rejected_intent`.                                     |
+| `output.classification.runner_up`         | The best *different* intent: `intent`, `distance`, `margin` (its distance minus the winner's).                                                        | There was no second distinct intent.                           |
+| `output.classification.not_found_reason`  | Why `not_found` fired.                                                                                                                                | The node found a match, or recorded no reason.                 |
+
+`runner_up.margin` is the number to watch when a classifier is unstable: a margin near zero means the two labels were nearly tied, and small rewordings will flip the route.
+
+`notify_client` does not gate this block
+
+`notify_client` decides whether the *client* receives an `intent_classified` event. A classification missing from the Agent Log is still recorded here in full.
 
 ## Minimum working example
 

@@ -54,7 +54,7 @@ An [agent](https://docs.tryllengine.com/reference/glossary.html#agent) is a sing
 
 The server responds with `CreateAgentResponse` once the graph compiles and the default model resolves — after that you can send messages. Models referenced by the graph must already be on disk; `CreateAgent` fails fast with `GraphCompilationFailed` if one is missing, rather than downloading it on the spot. Acquire models beforehand via the editor Model Manager or `DownloadModelRequest`.
 
-A session can own as many agents as you want. Each has its own dialog (the growing list of [interactions](https://docs.tryllengine.com/reference/glossary.html#interaction)), its own per-node KV caches, and its own sampling parameters. Turns on a single session run one at a time — agent A's turn finishes before agent B's turn starts.
+A session can own as many agents as you want. Each has its own dialog (the growing list of [interactions](https://docs.tryllengine.com/reference/glossary.html#interaction)), its own per-node KV caches, and its own sampling parameters. Turns on a single session run one at a time — agent A's turn finishes before agent B's turn starts. The dialog is not a save file: to persist it across sessions, export a snapshot into **your** game save. See [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html).
 
 ### The implicit agent state machine
 

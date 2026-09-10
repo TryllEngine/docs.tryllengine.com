@@ -48,13 +48,13 @@ Chat Window after a session is running — status shows **Ready**.
 
 Click **Start**. The status label steps through:
 
-| Status               | What is happening                                                                             |
-| -------------------- | --------------------------------------------------------------------------------------------- |
-| Launching server…    | Spawning `tryll_server.exe`                                                                   |
-| Connecting…          | Opening TCP connection to `127.0.0.1:9100`                                                    |
-| Configuring session… | Sending `CreateSession` to the server                                                         |
-| Creating agent…      | Sending `CreateAgent` with the selected component's resolved graph (workflow asset or inline) |
-| **Ready**            | Agent is live — input is enabled                                                              |
+| Status               | What is happening                                                  |
+| -------------------- | ------------------------------------------------------------------ |
+| Launching server…    | Spawning `tryll_server.exe`                                        |
+| Connecting…          | Opening TCP connection to `127.0.0.1:9100`                         |
+| Configuring session… | Sending `CreateSession` to the server                              |
+| Creating agent…      | Sending `CreateAgent` with the selected component's workflow asset |
+| **Ready**            | Agent is live — input is enabled                                   |
 
 If the status turns red, see [Common problems](#common-problems) below.
 
@@ -104,6 +104,7 @@ Closing the Chat Window while a session is running calls **Stop** automatically.
 ## Related
 
 - [Reference: Turn Inspector](https://docs.tryllengine.com/reference/turn-inspector.html)
+- [How-to: Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/how-to/test-tool-calls-in-editor.html)
 - [How-to: Use the Agent Log](https://docs.tryllengine.com/how-to/use-agent-log.html)
 - [How-to: Run the Tryll Server](https://docs.tryllengine.com/how-to/run-the-tryll-server.html)
 - [How-to: Build a Chat Agent with a Graph](https://docs.tryllengine.com/how-to/build-chat-agent-with-graph.html)

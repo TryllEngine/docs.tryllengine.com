@@ -2,6 +2,10 @@
 
 Use a small labelled knowledge base and a [`ClassifyIntent`](https://docs.tryllengine.com/reference/nodes/classify-intent.html) → [`IntentToInstruction`](https://docs.tryllengine.com/reference/nodes/intent-to-instruction.html) → [`Generate`](https://docs.tryllengine.com/reference/nodes/generate.html) pipeline to give an NPC distinct, tone-appropriate replies for recognised player intents (insult, compliment, joke, …) while falling back gracefully to a general response for anything unclassified.
 
+No labelled examples to hand?
+
+[`ClassifyIntentLLM`](https://docs.tryllengine.com/reference/nodes/classify-intent-llm.html) classifies from a one-sentence *description* per intent instead of a labelled corpus, and needs no embedding model. Same NPC, no knowledge base: [Classify intent without a knowledge base](https://docs.tryllengine.com/how-to/classify-intent-without-a-knowledge-base.html).
+
 Prerequisites
 
 - A connected session, created with the `LlamaCpp` engine.
@@ -400,6 +404,7 @@ ______________________________________________________________________
 
 ## Related
 
+- [How-to: Classify intent without a knowledge base](https://docs.tryllengine.com/how-to/classify-intent-without-a-knowledge-base.html) — the `ClassifyIntentLLM` alternative to this recipe
 - [Reference: Classify Intent node](https://docs.tryllengine.com/reference/nodes/classify-intent.html)
 - [Reference: Intent to Instruction node](https://docs.tryllengine.com/reference/nodes/intent-to-instruction.html)
 - [Reference: String Storage](https://docs.tryllengine.com/reference/string-storage.html)

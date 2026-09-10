@@ -25,6 +25,7 @@ Full API reference for the `Tryll::` C++ client library, auto-generated from Dox
 | `Tryll::Client::GraphDescription::NodeDesc`       | Single node description inside a graph                                     |
 | `Tryll::Client::GraphDescription::RouteDesc`      | Single exit-route wire inside a graph                                      |
 | `Tryll::ModelInfoT`                               | Model catalog entry returned by `ListModels` (FlatBuffers object-API type) |
+| `Tryll::MemorySnapshotT`                          | Server-wide RAM/VRAM snapshot returned by `GetMemoryConsumption`           |
 | `Tryll::Client::ToolDef`                          | Tool declaration passed on `CreateAgentRequest`                            |
 | `Tryll::Client::ToolParamDef`                     | Single parameter within a `ToolDef`                                        |
 | `Tryll::Client::AgentVariableDecl`                | Name + typed initial value, passed on `CreateAgent` to declare a variable  |
@@ -64,23 +65,33 @@ client.CreateSession({
 
 `CreateAgent`, `CreateEmbeddedStringStorage`, and `CreateVoiceInput` fail fast if a referenced model is not already on disk — acquire models explicitly beforehand (e.g. via `DownloadModel` or the editor Model Manager) rather than relying on the call itself to fetch them.
 
+### `TryllClient::GetMemoryConsumption`
+
+```
+[[nodiscard]] ::Tryll::MemorySnapshotT GetMemoryConsumption(
+    std::chrono::milliseconds timeout = std::chrono::seconds{10});
+```
+
+Session-scoped (must follow `CreateSession`) but the snapshot is **server-wide**. Never throws `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html).
+
 ## `AgentProxy` callbacks
 
 All callbacks are registered on an `AgentProxy` instance before sending the first message. They fire on the **reader thread** — they must return quickly and must not call any blocking `TryllClient` or `AgentProxy` methods.
 
-**Dispatch priority:** typed callbacks (`SetOnToolCall`, `SetOnIntentClassified`, `SetOnPaused`) take precedence. If no typed callback is registered for an incoming `NodeEvent`, the `SetOnNodeEvent` fallback fires instead.
+**Dispatch priority:** typed callbacks (`SetOnToolCall`, `SetOnIntentClassified`, `SetOnIntentLlmClassified`, `SetOnPaused`) take precedence. If no typed callback is registered for an incoming `NodeEvent`, the `SetOnNodeEvent` fallback fires instead.
 
-| Method                      | Callback type                                                                                 | Fires when                                                                                                                                                                                                                                                                                             |
-| --------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SetOnAnswerText(cb)`       | `void(string_view nodeName, string_view text, bool isDelta, bool isFinal)`                    | Each `AnswerText` frame during a turn. `nodeName` identifies the producing node (multi-sender graphs).                                                                                                                                                                                                 |
-| `SetOnTurnComplete(cb)`     | `void(TurnStatus status, string_view debugInfoJson, int32_t tokensGenerated)`                 | `TurnComplete` arrives.                                                                                                                                                                                                                                                                                |
-| `SetOnError(cb)`            | `void(const TryllError& error)`                                                               | Server-reported error or disconnect mid-turn. Does not fire for `TurnStatus_Error` turns (those arrive via `SetOnTurnComplete`).                                                                                                                                                                       |
-| `SetOnToolCall(cb)`         | `void(string_view toolName, string_view argumentsJson)`                                       | `NodeEvent` with `event_type="tool_call"` (`ToolCall` node with a notifying `disposition`: `Notify`, `NotifyAndAcknowledge`, `Pause`, `PauseAndAcknowledge`, or `AwaitResult`).                                                                                                                        |
-| `SetOnToolCallWithId(cb)`   | `void(string_view callId, string_view toolName, string_view argumentsJson)`                   | Same event, call-ID-aware — echo `callId` in a `ToolResult` passed to `ResumeWithToolResult(s)(Async)`.                                                                                                                                                                                                |
-| `SetOnToolCallEvent(cb)`    | `void(const ToolCallEvent& event)`                                                            | Preferred form: an owning `{callId, toolName, argumentsJson, nodeName, disposition}` struct safe to capture beyond the callback (the `string_view`-based callbacks above alias the current frame).                                                                                                     |
-| `SetOnIntentClassified(cb)` | `void(string_view intent, string_view recordId, size_t recordIndex, float distance)`          | `NodeEvent` with `event_type="intent_classified"` (requires `notify_client="true"` on a `ClassifyIntent` node).                                                                                                                                                                                        |
-| `SetOnPaused(cb)`           | `void(string_view nodeName, string_view pendingExit)`                                         | `NodeEvent` with `event_type="paused"` — the executor paused the turn between nodes (`Pause` node, or a `ToolCall` node with `disposition` in `Pause` / `PauseAndAcknowledge` / `AwaitResult`). See [How to pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.html). |
-| `SetOnNodeEvent(cb)`        | `void(string_view nodeName, string_view eventType, const vector<NodeEventKeyValue>& kvPairs)` | Any `NodeEvent` whose `event_type` is unrecognised or whose typed callback is not set.                                                                                                                                                                                                                 |
+| Method                         | Callback type                                                                                 | Fires when                                                                                                                                                                                                                                                                                             |
+| ------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `SetOnAnswerText(cb)`          | `void(string_view nodeName, string_view text, bool isDelta, bool isFinal)`                    | Each `AnswerText` frame during a turn. `nodeName` identifies the producing node (multi-sender graphs).                                                                                                                                                                                                 |
+| `SetOnTurnComplete(cb)`        | `void(TurnStatus status, string_view debugInfoJson, int32_t tokensGenerated)`                 | `TurnComplete` arrives.                                                                                                                                                                                                                                                                                |
+| `SetOnError(cb)`               | `void(const TryllError& error)`                                                               | Server-reported error or disconnect mid-turn. Does not fire for `TurnStatus_Error` turns (those arrive via `SetOnTurnComplete`).                                                                                                                                                                       |
+| `SetOnToolCall(cb)`            | `void(string_view toolName, string_view argumentsJson)`                                       | `NodeEvent` with `event_type="tool_call"` (`ToolCall` node with a notifying `disposition`: `Notify`, `NotifyAndAcknowledge`, `Pause`, `PauseAndAcknowledge`, or `AwaitResult`).                                                                                                                        |
+| `SetOnToolCallWithId(cb)`      | `void(string_view callId, string_view toolName, string_view argumentsJson)`                   | Same event, call-ID-aware — echo `callId` in a `ToolResult` passed to `ResumeWithToolResult(s)(Async)`.                                                                                                                                                                                                |
+| `SetOnToolCallEvent(cb)`       | `void(const ToolCallEvent& event)`                                                            | Preferred form: an owning `{callId, toolName, argumentsJson, nodeName, disposition}` struct safe to capture beyond the callback (the `string_view`-based callbacks above alias the current frame).                                                                                                     |
+| `SetOnIntentClassified(cb)`    | `void(const IntentClassifiedEvent&)`                                                          | `NodeEvent` with `event_type="intent_classified"` (`ClassifyIntent`, `notify_client` `OnFound`/`Always`).                                                                                                                                                                                              |
+| `SetOnIntentLlmClassified(cb)` | `void(const IntentLlmClassifiedEvent&)`                                                       | `NodeEvent` with `event_type="intent_llm_classified"` (`ClassifyIntentLLM`).                                                                                                                                                                                                                           |
+| `SetOnPaused(cb)`              | `void(string_view nodeName, string_view pendingExit)`                                         | `NodeEvent` with `event_type="paused"` — the executor paused the turn between nodes (`Pause` node, or a `ToolCall` node with `disposition` in `Pause` / `PauseAndAcknowledge` / `AwaitResult`). See [How to pause and resume a turn](https://docs.tryllengine.com/how-to/pause-and-resume-turns.html). |
+| `SetOnNodeEvent(cb)`           | `void(string_view nodeName, string_view eventType, const vector<NodeEventKeyValue>& kvPairs)` | Any `NodeEvent` whose `event_type` is unrecognised or whose typed callback is not set.                                                                                                                                                                                                                 |
 
 Pass a default-constructed `std::function` to unregister a callback.
 
@@ -94,13 +105,10 @@ agent.SetOnAnswerText([&](std::string_view /*nodeName*/, std::string_view text,
     if (isFinal) std::cout << '\n';
 });
 
-agent.SetOnIntentClassified([&](std::string_view intent,
-                                std::string_view recordId,
-                                std::size_t      recordIndex,
-                                float            distance) {
-    std::cout << "Intent: " << intent
-              << " (record " << recordId
-              << ", dist " << distance << ")\n";
+agent.SetOnIntentClassified([&](const AgentProxy::IntentClassifiedEvent& ev) {
+    std::cout << "Intent: " << ev.intent
+              << " (record " << ev.recordId
+              << ", dist " << ev.distance << ")\n";
 });
 
 // Generic fallback for any other NodeEvent types.
@@ -154,6 +162,8 @@ std::uint32_t removed = agent.RemoveInteractionsFromEnd(1); // drop last interac
 ```
 
 Async variants: `AppendInteractionsAsync`, `RemoveInteractionsFromEndAsync`. See [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html).
+
+`ExportDialog` / `ImportDialog` capture or replace the completed dialog as a `DialogSnapshot`. `EncodeFlatBuffer` / `DecodeFlatBuffer` produce canonical `TDLG` bytes; the game owns storage. See [Export and import dialog](https://docs.tryllengine.com/how-to/export-and-import-dialog.html) and [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html) for multi-agent envelopes, variables, and restore ordering.
 
 ## GPU throttling and background agents
 

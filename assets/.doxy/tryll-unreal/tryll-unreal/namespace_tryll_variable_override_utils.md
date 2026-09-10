@@ -266,7 +266,7 @@ TArray< FTryllVariableDecl > TryllVariableOverrideUtils::ResolveDeclared (
 
 
 
-Declarations that drive override UI: WorkflowAsset-&gt;Variables when set, else InlineVariables. 
+Declarations that drive override UI: WorkflowAsset-&gt;Variables, or empty when no asset. 
 
 
         

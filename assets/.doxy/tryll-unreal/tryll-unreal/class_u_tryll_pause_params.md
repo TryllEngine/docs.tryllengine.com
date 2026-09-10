@@ -42,6 +42,8 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 | Type | Name |
 | ---: | :--- |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  int32 | [**PauseTimeoutMs**](#variable-pausetimeoutms)   = `0`<br> |
+|  FString | [**TimeoutExit**](#variable-timeoutexit)  <br> |
 
 
 
@@ -175,6 +177,40 @@ FString UTryllPauseParams::DefaultExit;
 
 
 Default exit target taken on a plain resume (empty resume\_node). Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable PauseTimeoutMs 
+
+```C++
+int32 UTryllPauseParams::PauseTimeoutMs;
+```
+
+
+
+Wall-clock budget for this pause, in milliseconds. 0 = infinite: wait for ResumeAgentRequest or CancelRequest however long that takes (the shipped default, so existing graphs are unaffected). A finite budget is the right choice whenever nothing guarantees the client will resume. Structural: resolved once at agent creation. 
+
+
+        
+
+<hr>
+
+
+
+### variable TimeoutExit 
+
+```C++
+FString UTryllPauseParams::TimeoutExit;
+```
+
+
+
+Exit taken when pause\_timeout\_ms elapses. Empty = end the turn with TurnStatus.PauseTimedOut, keeping the partial interaction. Authoring a target lets the graph answer anyway (a canned fallback line, a Branch). Ignored when pause\_timeout\_ms is 0. Graph exit "timeout" — target node name; empty = END. 
 
 
         

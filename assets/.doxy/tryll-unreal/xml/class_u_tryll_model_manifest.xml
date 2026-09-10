@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="60" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="60" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="114" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="114" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="56" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="56" bodyend="56"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="110" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="110" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_model_manifest_1ad31e5f6fdd6df033303ba17469d525f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>ETryllModelRegistration</type>
@@ -53,12 +53,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="63" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="63" bodyend="68"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="117" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="117" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="class_u_tryll_model_manifest_1a30ff8f01825efcb612d4ba6fbe849e40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void UTryllModelManifest::Set</definition>
-        <argsstring>(const FString &amp;ModelName, const FString &amp;ModelType, ETryllModelRegistration Registration)</argsstring>
+      <memberdef kind="function" id="class_u_tryll_model_manifest_1ab937a73f8f45090eb07c03390510a2e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllModelManifest::Set</definition>
+        <argsstring>(const FString &amp;ModelName, const FString &amp;ModelType, ETryllModelRegistration Registration, const TArray&lt; FString &gt; *Languages=nullptr, const ETryllInferenceEngine *Engine=nullptr, const ETryllMemoryPlacement *Placement=nullptr)</argsstring>
         <name>Set</name>
         <qualifiedname>UTryllModelManifest::Set</qualifiedname>
         <param>
@@ -73,14 +73,95 @@
           <type>ETryllModelRegistration</type>
           <declname>Registration</declname>
         </param>
+        <param>
+          <type>const TArray&lt; FString &gt; *</type>
+          <declname>Languages</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const ETryllInferenceEngine *</type>
+          <declname>Engine</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const ETryllMemoryPlacement *</type>
+          <declname>Placement</declname>
+          <defval>nullptr</defval>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Set (or clear) a model&apos;s registration. Setting None removes the entry so the manifest only holds models the project actually selects. Does not persist; callers invoke TryUpdateDefaultConfigFile() to write DefaultGame.ini. </para>
+<para>Set (or clear) a model&apos;s registration. Setting None removes the entry so the manifest only holds models the project actually selects. Does not persist; callers invoke TryUpdateDefaultConfigFile() to write DefaultGame.ini. Returns true when this call actually changed the manifest, so a caller knows whether to write DefaultGame.ini.</para>
+<para>Reported from here rather than compared by the caller, and that is the point. Callers used to decide for themselves — the Model Manager&apos;s catalog refresh skipped the whole call whenever cached <emphasis>languages</emphasis> matched the server, which meant a stale cached <emphasis>engine</emphasis> was never corrected. Every manifest written before the engine field existed therefore kept the enum default and silently pre-warmed nothing. Only this method knows what it caches, so only this method can say whether a write mattered; adding a field later cannot reintroduce the same bug. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="75" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="75" bodyend="93"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="139" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="139" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_model_manifest_1a7974b734989651bb9e665c804c5127d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt; FString &gt; UTryllModelManifest::LanguagesOf</definition>
+        <argsstring>(const FString &amp;ModelName) const</argsstring>
+        <name>LanguagesOf</name>
+        <qualifiedname>UTryllModelManifest::LanguagesOf</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ModelName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cached languages for a registered model; empty when unlisted or undeclared. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="197" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="197" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_model_manifest_1a520bd9ed5eb8c962fca73e271d87899e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt; FString &gt; UTryllModelManifest::DeclaredLanguages</definition>
+        <argsstring>(const TArray&lt; FString &gt; &amp;ModelTypes={}) const</argsstring>
+        <name>DeclaredLanguages</name>
+        <qualifiedname>UTryllModelManifest::DeclaredLanguages</qualifiedname>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>ModelTypes</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Every language any registered model declares, sorted - the source for the settings language dropdown.</para>
+<para>A <bold>union</bold>, deliberately, not an intersection: a project may register an English-only model for one character and a 31-language voice for everyone else, and intersecting would collapse the menu to English. Per-model mismatches are surfaced where they are actionable instead - on the model picker (inspector warning) and at agent creation (server error).</para>
+<para>Empty ModelTypes means &quot;all types&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="216" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="216" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_model_manifest_1a36a8d5ebfaf41081eafbcd5967171eda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt; FString &gt; UTryllModelManifest::ModelsMissingLanguage</definition>
+        <argsstring>(const FString &amp;Language, const TArray&lt; FString &gt; &amp;ModelTypes={}) const</argsstring>
+        <name>ModelsMissingLanguage</name>
+        <qualifiedname>UTryllModelManifest::ModelsMissingLanguage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Language</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>ModelTypes</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registered models of the given types that do NOT declare Language, ignoring those that declared nothing. Drives the &quot;N voice models cannot do German&quot; summary in project settings. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="235" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="235" bodyend="252"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_model_manifest_1a124d52324cf43e9135a1e033a8fd37c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>TArray&lt; FString &gt;</type>
@@ -99,13 +180,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="96" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="96" bodyend="102"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="255" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="255" bodyend="261"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para>Project-wide manifest of which models ship in the build. Stores a thin name -&gt; { type, registration } list; catalog metadata stays server-owned and is read via ListModels. The Model Manager window writes it; component pickers and a future packaging step read it.</para>
+<para>Project-wide manifest of which models ship in the build. Stores a thin name -&gt; { type, registration, languages } list; the rest of the catalog stays server-owned and is read via ListModels. The Model Manager window writes it; component pickers and a future packaging step read it.</para>
 <para>Persisted to &lt;YourProject&gt;/Config/DefaultGame.ini under [/Script/TryllClient.TryllModelManifest]. </para>
     </detaileddescription>
     <inheritancegraph>
@@ -130,13 +211,16 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="51" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="52" bodyend="103"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="105" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="106" bodyend="262"/>
     <listofallmembers>
+      <member refid="class_u_tryll_model_manifest_1a520bd9ed5eb8c962fca73e271d87899e" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>DeclaredLanguages</name></member>
       <member refid="class_u_tryll_model_manifest_1a20c70257229928b0f06041ee6eb0cc2b" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>Entries</name></member>
       <member refid="class_u_tryll_model_manifest_1ad31e5f6fdd6df033303ba17469d525f4" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>Get</name></member>
       <member refid="class_u_tryll_model_manifest_1aefd44b99e4b3b3fbda604f313c0cffb0" prot="public" virt="virtual"><scope>UTryllModelManifest</scope><name>GetCategoryName</name></member>
+      <member refid="class_u_tryll_model_manifest_1a7974b734989651bb9e665c804c5127d4" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>LanguagesOf</name></member>
+      <member refid="class_u_tryll_model_manifest_1a36a8d5ebfaf41081eafbcd5967171eda" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>ModelsMissingLanguage</name></member>
       <member refid="class_u_tryll_model_manifest_1a124d52324cf43e9135a1e033a8fd37c4" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>ModelsOfType</name></member>
-      <member refid="class_u_tryll_model_manifest_1a30ff8f01825efcb612d4ba6fbe849e40" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>Set</name></member>
+      <member refid="class_u_tryll_model_manifest_1ab937a73f8f45090eb07c03390510a2e9" prot="public" virt="non-virtual"><scope>UTryllModelManifest</scope><name>Set</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

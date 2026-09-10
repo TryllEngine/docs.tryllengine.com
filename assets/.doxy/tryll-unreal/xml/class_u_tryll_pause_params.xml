@@ -20,6 +20,37 @@
         </inbodydescription>
         <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="37" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="37" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_pause_params_1a0ce42102b990f92d0007d6e7d058a1a2" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllPauseParams::PauseTimeoutMs</definition>
+        <argsstring></argsstring>
+        <name>PauseTimeoutMs</name>
+        <qualifiedname>UTryllPauseParams::PauseTimeoutMs</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Wall-clock budget for this pause, in milliseconds. 0 = infinite: wait for ResumeAgentRequest or CancelRequest however long that takes (the shipped default, so existing graphs are unaffected). A finite budget is the right choice whenever nothing guarantees the client will resume. Structural: resolved once at agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="42" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_pause_params_1a7db14837eef7bb45599d66689c666b28" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllPauseParams::TimeoutExit</definition>
+        <argsstring></argsstring>
+        <name>TimeoutExit</name>
+        <qualifiedname>UTryllPauseParams::TimeoutExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when pause_timeout_ms elapses. Empty = end the turn with TurnStatus.PauseTimedOut, keeping the partial interaction. Authoring a target lets the graph answer anyway (a canned fallback line, a Branch). Ignored when pause_timeout_ms is 0. Graph exit &quot;timeout&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="48" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="class_u_tryll_pause_params_1a100cd50c259bba473add831b62efe52e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
@@ -35,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="40" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="40" bodyend="40"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="51" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="class_u_tryll_pause_params_1a3bba6695e1d16f6bdeca683e66dc6a52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>flatbuffers::Offset&lt; void &gt;</type>
@@ -58,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="41" column="33"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="52" column="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -100,7 +131,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="30" bodyend="43"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" line="29" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllPauseParams.h" bodystart="30" bodyend="54"/>
     <listofallmembers>
       <member refid="class_u_tryll_pause_params_1abb141c775559696f9bbfe23e292d2dd1" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>DefaultExit</name></member>
       <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>FindEnclosingGraph</name></member>
@@ -108,7 +139,9 @@
       <member refid="class_u_tryll_pause_params_1a100cd50c259bba473add831b62efe52e" prot="public" virt="virtual"><scope>UTryllPauseParams</scope><name>GetNodeType</name></member>
       <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>GetOwnerNodeName</name></member>
       <member refid="class_u_tryll_pause_params_1a3bba6695e1d16f6bdeca683e66dc6a52" prot="public" virt="virtual"><scope>UTryllPauseParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_pause_params_1a0ce42102b990f92d0007d6e7d058a1a2" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>PauseTimeoutMs</name></member>
       <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_pause_params_1a7db14837eef7bb45599d66689c666b28" prot="public" virt="non-virtual"><scope>UTryllPauseParams</scope><name>TimeoutExit</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

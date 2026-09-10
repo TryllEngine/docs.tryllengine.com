@@ -2,7 +2,7 @@
 
 Full API reference for the `tryll_client` Python package, auto-generated from Google-style docstrings. The package lives at `tryll/clients/python/tryll_client/`.
 
-The public surface — the `__all__` re-exported from `tryll_client.__init__` — is: `TryllClient`, `ConnectedSession`, `AgentProxy`, `AgentVariables`, `VariableDecl`, `TryllError`, `WavWriter`, `GraphDescription`, `InferenceEngine`, `ManagedServer`, `ModelInfo`, `ModelStatus`, `NodeType`, and the KV-cache lifecycle types `AgentKvCacheInitialization`, `AgentKvCacheResidency`, `AgentKvCachePrefixStatus`, `AgentKvCacheStatus`, `AgentKvCachePrefillResult`, and `AgentKvCacheEvictResult`. Node-param types (`GenerateParams`, `SamplingOverrides`, `SendAnswer`, …) are imported directly from `tryll_client.graph` / `tryll_client._generated.node_params`, not from the top-level package. `ConnectedSession` is the recommended entry point for local-server deployments; obtain it via `TryllClient.run_and_connect`. Internal modules (`wire`, `codec`, `_generated`) are excluded.
+The public surface — the `__all__` re-exported from `tryll_client.__init__` — is: `TryllClient`, `ConnectedSession`, `AgentProxy`, `AgentVariables`, `VariableDecl`, `TryllError`, `WavWriter`, `GraphDescription`, `InferenceEngine`, `ManagedServer`, `ModelInfo`, `ModelStatus`, `NodeType`, the memory-snapshot types `MemorySnapshot`, `MemoryTier`, `MemoryOwnerKind`, `InferenceConsumerClass`, `MemoryDevice`, and `MemoryComponent`, and the KV-cache lifecycle types `AgentKvCacheInitialization`, `AgentKvCacheResidency`, `AgentKvCachePrefixStatus`, `AgentKvCacheStatus`, `AgentKvCachePrefillResult`, and `AgentKvCacheEvictResult`. Node-param types (`GenerateParams`, `SamplingOverrides`, `SendAnswer`, …) are imported directly from `tryll_client.graph` / `tryll_client._generated.node_params`, not from the top-level package. `ConnectedSession` is the recommended entry point for local-server deployments; obtain it via `TryllClient.run_and_connect`. Internal modules (`wire`, `codec`, `_generated`) are excluded.
 
 ______________________________________________________________________
 
@@ -123,6 +123,16 @@ Server-reported generated token count for the last turn.
 
 Authoritative for both streaming and non-streaming modes. Zero if the server has not yet completed a turn.
 
+#### paused_node
+
+```
+paused_node
+```
+
+Node this agent's turn is currently paused after; `''` when not paused.
+
+A non-empty value means the server is holding the turn open until :meth:`resume` (or :meth:`cancel`) — until then :meth:`send_message` keeps failing with `AgentBusy` (3004).
+
 #### set_on_answer_text
 
 ```
@@ -209,13 +219,19 @@ Fired on the reader thread when a user callback (tool_call, paused, etc.) raises
 set_on_intent_classified(cb)
 ```
 
-Register (or clear) a callback for intent-classification notifications.
+Register (or clear) the embedding ClassifyIntent callback.
 
-Fired on the reader thread for every `NodeEvent` with `event_type == "intent_classified"` — emitted by `ClassifyIntentNode` on its `"found"` path when `notify_client = "true"`.
+Fired on the reader thread for every `NodeEvent` with `event_type == "intent_classified"`. Call with `None` to unregister.
 
-The callback signature is `(intent: str, record_id: str, record_index: int, distance: float)`.
+#### set_on_intent_llm_classified
 
-Call with `None` to unregister.
+```
+set_on_intent_llm_classified(cb)
+```
+
+Register (or clear) the ClassifyIntentLLM callback.
+
+Fired on the reader thread for every `NodeEvent` with `event_type == "intent_llm_classified"`. Call with `None` to unregister.
 
 #### set_on_paused
 
@@ -511,6 +527,22 @@ Raises:
 | `ValueError` | If count is negative.                                  |
 | `TryllError` | On server-reported errors (AgentBusy 3004) or timeout. |
 
+#### export_dialog
+
+```
+export_dialog(timeout=30.0)
+```
+
+Return the agent's completed dialog as an owned snapshot. Idle-only.
+
+#### import_dialog
+
+```
+import_dialog(snapshot, compatibility=0, timeout=30.0)
+```
+
+Replace the agent's dialog with *snapshot*. Idle-only. Never appends.
+
 ### ToolResult
 
 ```
@@ -593,7 +625,7 @@ Obtain via :meth:`TryllClient.run_and_connect`. Use as a context manager (recomm
 
 ```
 with TryllClient.run_and_connect(exe=Path("..."), port=9100) as session:
-    session.client.create_session(InferenceEngine.LlamaCpp)
+    session.client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
     agent = session.client.create_agent(graph)
     print(agent.send_message("hi"))
 ```
@@ -622,6 +654,18 @@ shutdown()
 
 Shut the client down, then stop the server. Idempotent.
 
+### LoadModelResult
+
+```
+LoadModelResult(placement, backend)
+```
+
+What a :meth:`TryllClient.load_model` call actually got.
+
+Both fields describe the load that happened, not the load that was asked for. `placement` is `Ram` when a `Vram` request could not be honoured (no GPU backend, or a CPU-only Sherpa ONNX Runtime build), and it is the *resident* value when another session already loaded the model the other way — placement is fixed at load time and deliberately is not part of the model cache key, so the first loader wins.
+
+`backend` is the device actually serving the model (`"cuda"`, `"vulkan"`, `"rocm"`, `"cpu"`, or an ONNX Runtime provider), and is empty when the load resolved no backend. A client never chooses it: which GPU API is available is a host decision, process-wide and one-shot for llama.cpp and compile-time for Sherpa.
+
 ### TryllClient
 
 ```
@@ -634,7 +678,7 @@ Usage::
 
 ```
 client = TryllClient.connect("127.0.0.1", 9100)
-client.create_session(InferenceEngine.LlamaCpp)
+client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
 graph = GraphDescription().add_node(...).set_start_node(...)
 # Exit fields (e.g. default_exit="") live on each node's typed params
 agent = client.create_agent(graph)
@@ -663,7 +707,7 @@ Starts a local server process (passing `--port <port>` and, unless *idle_shutdow
 
 ```
 with TryllClient.run_and_connect(exe=Path("..."), port=9100) as session:
-    session.client.create_session(InferenceEngine.LlamaCpp)
+    session.client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
     agent = session.client.create_agent(graph)
 ```
 
@@ -700,10 +744,46 @@ Raises:
 | `TimeoutError`      | If the port does not open within start_timeout.                                             |
 | `TryllError`        | If the session handshake fails, or identity verification keeps failing after a few retries. |
 
+#### set_session_locale
+
+```
+set_session_locale(locale, timeout=30.0)
+```
+
+Change the session language without tearing the session down.
+
+Same BCP-47 grammar as :meth:`create_session`'s `locale`; an empty string *clears* the locale, restoring pre-locale behaviour everywhere.
+
+```
+Applies to every agent, existing and future, from its next turn: TTS
+language and the locale template keys are read per turn, not captured.
+A new voice input picks up the new STT language hint; one already open
+keeps its recognizer. Storage paths re-resolve on the next load, but
+content already bound to a node (a Retrieve KB, canned lines) does NOT
+swap - those params are structural. Use this for the voice + template
+half of a language change; switching authored content still means
+recreating agents.
+```
+
+Not turn-atomic: a turn already running may render its prompt under the old locale and synthesize under the new one. Send it between turns if that matters.
+
+Parameters:
+
+| Name      | Type    | Description                                 | Default    |
+| --------- | ------- | ------------------------------------------- | ---------- |
+| `locale`  | `str`   | BCP-47 tag ("de", "pt-BR"), or '' to clear. | *required* |
+| `timeout` | `float` | Maximum seconds to wait for the server Ack. | `30.0`     |
+
+Raises:
+
+| Type         | Description                                     |
+| ------------ | ----------------------------------------------- |
+| `TryllError` | InvalidLocale (2004) when the tag is malformed. |
+
 #### create_session
 
 ```
-create_session(engine, game_name='', timeout=30.0, stt_engine=0, tts_engine=0, embedding_engine=0, storage_data_folder='')
+create_session(engines=None, game_name='', timeout=30.0, storage_data_folder='', locale='', placement_hints=None)
 ```
 
 Create the logical session for this connection (mandatory, one-shot).
@@ -712,15 +792,14 @@ Sends CreateSessionRequest and waits for CreateSessionResponse, which carries th
 
 Parameters:
 
-| Name                  | Type              | Description                                                                                                                                                                                                         | Default                                                                                    |
-| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `engine`              | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for language models.                                                     |
-| `game_name`           | `str`             | Integration identifier for telemetry grouping (e.g. "qa-and-eval"). Leave empty for anonymous sessions.                                                                                                             | `''`                                                                                       |
-| `timeout`             | `float`           | Maximum seconds to wait for the server response.                                                                                                                                                                    | `30.0`                                                                                     |
-| `stt_engine`          | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for STT (speech-to-text) models. Defaults to :attr:InferenceEngine.Mock. |
-| `tts_engine`          | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for TTS (text-to-speech) models. Defaults to :attr:InferenceEngine.Mock. |
-| `embedding_engine`    | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for embedding models. Defaults to :attr:InferenceEngine.Mock.            |
-| `storage_data_folder` | `str`             | Optional per-session storage data folder. Relative storage paths in node params (and voice-input hotwords) resolve against this folder. Empty (default) means the server falls back to its configured storage_root. | `''`                                                                                       |
+| Name                  | Type                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Default                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engines`             | \`'Optional\[Sequence\[tuple\[ModelRole    | int, InferenceEngine                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | int\]\]\]'\`                                                                                                                                                                                                                                                                                                                                                                     |
+| `game_name`           | `str`                                      | Integration identifier for telemetry grouping (e.g. "qa-and-eval"). Leave empty for anonymous sessions.                                                                                                                                                                                                                                                                                                                                                                                                             | `''`                                                                                                                                                                                                                                                                                                                                                                             |
+| `timeout`             | `float`                                    | Maximum seconds to wait for the server response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `30.0`                                                                                                                                                                                                                                                                                                                                                                           |
+| `placement_hints`     | \`'Optional\[Mapping\[str, MemoryPlacement | int\]\]'\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Optional per-model memory placement, e.g. {"Llama 3.1 8B": MemoryPlacement.Ram}. Sparse: a model you do not list means :attr:MemoryPlacement.Auto. These are hints — a host that cannot honour one downgrades it and reports what it actually did, so read the result from :meth:load_model rather than assuming. LoadModelRequest.placement overrides a hint for a single load. |
+| `storage_data_folder` | `str`                                      | Optional per-session storage data folder. Relative storage paths in node params (and voice-input hotwords) resolve against this folder. Empty (default) means the server falls back to its configured storage_root.                                                                                                                                                                                                                                                                                                 | `''`                                                                                                                                                                                                                                                                                                                                                                             |
+| `locale`              | `str`                                      | Optional session language as a BCP-47 tag ("de", "de-DE", "pt-BR"). One setting the whole voice + text stack derives from: the default tts_lang for every GenerateAndSpeak/Speak node, the language hint for multilingual STT models, loc/<locale>/ siblings prefix relative storage paths prefer, and the language Mustache key a prompt can write a "reply in X" directive against. Empty (default) leaves every one of those at its pre-locale behaviour. A malformed tag is rejected with InvalidLocale (2004). | `''`                                                                                                                                                                                                                                                                                                                                                                             |
 
 #### set_inference_throttle
 
@@ -804,7 +883,7 @@ Parameters:
 
 | Name                    | Type    | Description                                                                                                                                                                                                                                                            | Default    |
 | ----------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `model_name`            | `str`   | Catalog name of the STT model, e.g. "Parakeet TDT 0.6B v2 (int8)".                                                                                                                                                                                                     | *required* |
+| `model_name`            | `str`   | Catalog name of the STT model, e.g. "Parakeet TDT 0.6B v3 (int8)".                                                                                                                                                                                                     | *required* |
 | `sample_rate`           | `int`   | Sample rate of audio buffers you will push (Hz).                                                                                                                                                                                                                       | `16000`    |
 | `channels`              | `int`   | Channel count (1 = mono, typical for mic capture).                                                                                                                                                                                                                     | `1`        |
 | `bits_per_sample`       | `int`   | Bit depth of raw PCM samples (only 16-bit is supported).                                                                                                                                                                                                               | `16`       |
@@ -846,17 +925,44 @@ Parameters:
 list_models(timeout=10.0)
 ```
 
-Request all models known to the server for the session's engine.
+Request every model in the server's catalog, each reporting its engine.
+
+#### get_memory_consumption
+
+```
+get_memory_consumption(timeout=10.0)
+```
+
+Pull a server-wide RAM/VRAM snapshot.
+
+Session-scoped (must follow create_session) but the numbers cover every session on the process — the same view as the server monitor. Never fails with AgentBusy.
 
 #### load_model
 
 ```
-load_model(model_name, timeout=300.0)
+load_model(model_name, timeout=300.0, placement=None)
 ```
 
 Explicitly load and pin a model into memory.
 
 The model stays in memory until :meth:`unload_model` is called, regardless of whether any agents are using it. Raises :class:`TryllError` if the model cannot be resolved or loaded.
+
+Parameters:
+
+| Name        | Type               | Description | Default |
+| ----------- | ------------------ | ----------- | ------- |
+| `placement` | \`'MemoryPlacement | int         | None'\` |
+
+Returns:
+
+| Name       | Type              | Description                                                           |
+| ---------- | ----------------- | --------------------------------------------------------------------- |
+|            | `LoadModelResult` | class:LoadModelResult — where the model actually ended up and which   |
+|            | `LoadModelResult` | backend is serving it. Read this rather than assuming the request was |
+| `honoured` | `LoadModelResult` | a Vram request on a host with no GPU backend reports                  |
+|            | `LoadModelResult` | Ram, and a model another session already loaded reports its           |
+|            | `LoadModelResult` | resident placement. A mismatch against an explicit request is also    |
+|            | `LoadModelResult` | logged at warning level.                                              |
 
 #### unload_model
 
@@ -992,13 +1098,39 @@ Bases: `IntEnum`
 
 Inference backend. Mirrors the FlatBuffers `InferenceEngine` enum.
 
+### MemoryPlacement
+
+Bases: `IntEnum`
+
+Where a model's weights should live. Mirrors `MemoryPlacement`.
+
+Always a *hint*: a host that cannot honour it downgrades and reports what it did, so read the resolved value back rather than assuming. Which GPU API provides VRAM (CUDA / Vulkan / HIP) is a host decision and is deliberately not expressible here.
+
+`Auto` is all-or-nothing in this version — device memory when the host has a GPU, system memory otherwise. It does not size offload to free memory.
+
+### ModelDependency
+
+```
+ModelDependency(id, role, status, size_bytes=0, folder='', local_path='', failure_reason='')
+```
+
+Editor-facing status of one shared-asset dependency of a parent model.
+
 ### ModelInfo
 
 ```
-ModelInfo(name, status, hf_repo, size_bytes)
+ModelInfo(name, status, hf_repo, size_bytes, languages=(), dependencies=(), tts_capabilities=None)
 ```
 
 Summary information for one model returned by `list_models()`.
+
+### ModelRole
+
+Bases: `IntEnum`
+
+What a model is for. Mirrors the FlatBuffers `ModelRole` enum.
+
+Used to qualify an engine declaration in :meth:`TryllClient.create_session`. The role is redundant for lookup — the server reads each model's engine from its own catalog entry — and exists so a rejection can name what the mismatch actually is.
 
 ### ModelStatus
 
@@ -1013,6 +1145,30 @@ Bases: `IntEnum`
 Node type ordinal. Mirrors the NodeParams union order in nodes.fbs (0-based; the wire discriminator is this value + 1).
 
 The union discriminant in `NodeParams` supersedes this for the wire format; `NodeType` is kept for client-side ergonomics and generated convenience APIs.
+
+### TtsCapabilities
+
+```
+TtsCapabilities(voice_description=False, delivery_instruction=False, reference_voice=False, speed=False, language_per_call=False, voice_presets=(), inline_tags=())
+```
+
+Structured TTS capabilities advertised by the catalog.
+
+### TtsInlineTag
+
+```
+TtsInlineTag(token, kind='', verification='')
+```
+
+Model-native inline control token declared for authoring.
+
+### TtsVoicePreset
+
+```
+TtsVoicePreset(id, label, description='')
+```
+
+Catalog-advertised speaker/description preset.
 
 ### ManagedServer
 
@@ -1249,6 +1405,18 @@ Threading model
 - The main (calling) thread sends requests and blocks on the Event.
 - All access to \_pending is protected by \_lock.
 
+### LoadModelResult
+
+```
+LoadModelResult(placement, backend)
+```
+
+What a :meth:`TryllClient.load_model` call actually got.
+
+Both fields describe the load that happened, not the load that was asked for. `placement` is `Ram` when a `Vram` request could not be honoured (no GPU backend, or a CPU-only Sherpa ONNX Runtime build), and it is the *resident* value when another session already loaded the model the other way — placement is fixed at load time and deliberately is not part of the model cache key, so the first loader wins.
+
+`backend` is the device actually serving the model (`"cuda"`, `"vulkan"`, `"rocm"`, `"cpu"`, or an ONNX Runtime provider), and is empty when the load resolved no backend. A client never chooses it: which GPU API is available is a host decision, process-wide and one-shot for llama.cpp and compile-time for Sherpa.
+
 ### TryllClient
 
 ```
@@ -1261,7 +1429,7 @@ Usage::
 
 ```
 client = TryllClient.connect("127.0.0.1", 9100)
-client.create_session(InferenceEngine.LlamaCpp)
+client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
 graph = GraphDescription().add_node(...).set_start_node(...)
 # Exit fields (e.g. default_exit="") live on each node's typed params
 agent = client.create_agent(graph)
@@ -1290,7 +1458,7 @@ Starts a local server process (passing `--port <port>` and, unless *idle_shutdow
 
 ```
 with TryllClient.run_and_connect(exe=Path("..."), port=9100) as session:
-    session.client.create_session(InferenceEngine.LlamaCpp)
+    session.client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
     agent = session.client.create_agent(graph)
 ```
 
@@ -1327,10 +1495,46 @@ Raises:
 | `TimeoutError`      | If the port does not open within start_timeout.                                             |
 | `TryllError`        | If the session handshake fails, or identity verification keeps failing after a few retries. |
 
+#### set_session_locale
+
+```
+set_session_locale(locale, timeout=30.0)
+```
+
+Change the session language without tearing the session down.
+
+Same BCP-47 grammar as :meth:`create_session`'s `locale`; an empty string *clears* the locale, restoring pre-locale behaviour everywhere.
+
+```
+Applies to every agent, existing and future, from its next turn: TTS
+language and the locale template keys are read per turn, not captured.
+A new voice input picks up the new STT language hint; one already open
+keeps its recognizer. Storage paths re-resolve on the next load, but
+content already bound to a node (a Retrieve KB, canned lines) does NOT
+swap - those params are structural. Use this for the voice + template
+half of a language change; switching authored content still means
+recreating agents.
+```
+
+Not turn-atomic: a turn already running may render its prompt under the old locale and synthesize under the new one. Send it between turns if that matters.
+
+Parameters:
+
+| Name      | Type    | Description                                 | Default    |
+| --------- | ------- | ------------------------------------------- | ---------- |
+| `locale`  | `str`   | BCP-47 tag ("de", "pt-BR"), or '' to clear. | *required* |
+| `timeout` | `float` | Maximum seconds to wait for the server Ack. | `30.0`     |
+
+Raises:
+
+| Type         | Description                                     |
+| ------------ | ----------------------------------------------- |
+| `TryllError` | InvalidLocale (2004) when the tag is malformed. |
+
 #### create_session
 
 ```
-create_session(engine, game_name='', timeout=30.0, stt_engine=0, tts_engine=0, embedding_engine=0, storage_data_folder='')
+create_session(engines=None, game_name='', timeout=30.0, storage_data_folder='', locale='', placement_hints=None)
 ```
 
 Create the logical session for this connection (mandatory, one-shot).
@@ -1339,15 +1543,14 @@ Sends CreateSessionRequest and waits for CreateSessionResponse, which carries th
 
 Parameters:
 
-| Name                  | Type              | Description                                                                                                                                                                                                         | Default                                                                                    |
-| --------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `engine`              | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for language models.                                                     |
-| `game_name`           | `str`             | Integration identifier for telemetry grouping (e.g. "qa-and-eval"). Leave empty for anonymous sessions.                                                                                                             | `''`                                                                                       |
-| `timeout`             | `float`           | Maximum seconds to wait for the server response.                                                                                                                                                                    | `30.0`                                                                                     |
-| `stt_engine`          | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for STT (speech-to-text) models. Defaults to :attr:InferenceEngine.Mock. |
-| `tts_engine`          | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for TTS (text-to-speech) models. Defaults to :attr:InferenceEngine.Mock. |
-| `embedding_engine`    | \`InferenceEngine | int\`                                                                                                                                                                                                               | Inference backend for embedding models. Defaults to :attr:InferenceEngine.Mock.            |
-| `storage_data_folder` | `str`             | Optional per-session storage data folder. Relative storage paths in node params (and voice-input hotwords) resolve against this folder. Empty (default) means the server falls back to its configured storage_root. | `''`                                                                                       |
+| Name                  | Type                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Default                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engines`             | \`'Optional\[Sequence\[tuple\[ModelRole    | int, InferenceEngine                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | int\]\]\]'\`                                                                                                                                                                                                                                                                                                                                                                     |
+| `game_name`           | `str`                                      | Integration identifier for telemetry grouping (e.g. "qa-and-eval"). Leave empty for anonymous sessions.                                                                                                                                                                                                                                                                                                                                                                                                             | `''`                                                                                                                                                                                                                                                                                                                                                                             |
+| `timeout`             | `float`                                    | Maximum seconds to wait for the server response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `30.0`                                                                                                                                                                                                                                                                                                                                                                           |
+| `placement_hints`     | \`'Optional\[Mapping\[str, MemoryPlacement | int\]\]'\`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Optional per-model memory placement, e.g. {"Llama 3.1 8B": MemoryPlacement.Ram}. Sparse: a model you do not list means :attr:MemoryPlacement.Auto. These are hints — a host that cannot honour one downgrades it and reports what it actually did, so read the result from :meth:load_model rather than assuming. LoadModelRequest.placement overrides a hint for a single load. |
+| `storage_data_folder` | `str`                                      | Optional per-session storage data folder. Relative storage paths in node params (and voice-input hotwords) resolve against this folder. Empty (default) means the server falls back to its configured storage_root.                                                                                                                                                                                                                                                                                                 | `''`                                                                                                                                                                                                                                                                                                                                                                             |
+| `locale`              | `str`                                      | Optional session language as a BCP-47 tag ("de", "de-DE", "pt-BR"). One setting the whole voice + text stack derives from: the default tts_lang for every GenerateAndSpeak/Speak node, the language hint for multilingual STT models, loc/<locale>/ siblings prefix relative storage paths prefer, and the language Mustache key a prompt can write a "reply in X" directive against. Empty (default) leaves every one of those at its pre-locale behaviour. A malformed tag is rejected with InvalidLocale (2004). | `''`                                                                                                                                                                                                                                                                                                                                                                             |
 
 #### set_inference_throttle
 
@@ -1431,7 +1634,7 @@ Parameters:
 
 | Name                    | Type    | Description                                                                                                                                                                                                                                                            | Default    |
 | ----------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `model_name`            | `str`   | Catalog name of the STT model, e.g. "Parakeet TDT 0.6B v2 (int8)".                                                                                                                                                                                                     | *required* |
+| `model_name`            | `str`   | Catalog name of the STT model, e.g. "Parakeet TDT 0.6B v3 (int8)".                                                                                                                                                                                                     | *required* |
 | `sample_rate`           | `int`   | Sample rate of audio buffers you will push (Hz).                                                                                                                                                                                                                       | `16000`    |
 | `channels`              | `int`   | Channel count (1 = mono, typical for mic capture).                                                                                                                                                                                                                     | `1`        |
 | `bits_per_sample`       | `int`   | Bit depth of raw PCM samples (only 16-bit is supported).                                                                                                                                                                                                               | `16`       |
@@ -1473,17 +1676,44 @@ Parameters:
 list_models(timeout=10.0)
 ```
 
-Request all models known to the server for the session's engine.
+Request every model in the server's catalog, each reporting its engine.
+
+#### get_memory_consumption
+
+```
+get_memory_consumption(timeout=10.0)
+```
+
+Pull a server-wide RAM/VRAM snapshot.
+
+Session-scoped (must follow create_session) but the numbers cover every session on the process — the same view as the server monitor. Never fails with AgentBusy.
 
 #### load_model
 
 ```
-load_model(model_name, timeout=300.0)
+load_model(model_name, timeout=300.0, placement=None)
 ```
 
 Explicitly load and pin a model into memory.
 
 The model stays in memory until :meth:`unload_model` is called, regardless of whether any agents are using it. Raises :class:`TryllError` if the model cannot be resolved or loaded.
+
+Parameters:
+
+| Name        | Type               | Description | Default |
+| ----------- | ------------------ | ----------- | ------- |
+| `placement` | \`'MemoryPlacement | int         | None'\` |
+
+Returns:
+
+| Name       | Type              | Description                                                           |
+| ---------- | ----------------- | --------------------------------------------------------------------- |
+|            | `LoadModelResult` | class:LoadModelResult — where the model actually ended up and which   |
+|            | `LoadModelResult` | backend is serving it. Read this rather than assuming the request was |
+| `honoured` | `LoadModelResult` | a Vram request on a host with no GPU backend reports                  |
+|            | `LoadModelResult` | Ram, and a model another session already loaded reports its           |
+|            | `LoadModelResult` | resident placement. A mismatch against an explicit request is also    |
+|            | `LoadModelResult` | logged at warning level.                                              |
 
 #### unload_model
 
@@ -1549,7 +1779,7 @@ Obtain via :meth:`TryllClient.run_and_connect`. Use as a context manager (recomm
 
 ```
 with TryllClient.run_and_connect(exe=Path("..."), port=9100) as session:
-    session.client.create_session(InferenceEngine.LlamaCpp)
+    session.client.create_session([(ModelRole.Language, InferenceEngine.LlamaCpp)])
     agent = session.client.create_agent(graph)
     print(agent.send_message("hi"))
 ```
@@ -1605,6 +1835,30 @@ ToolResult(call_id, result)
 ```
 
 One model-visible result correlated to a tool-call `call_id`.
+
+### IntentClassifiedEvent
+
+```
+IntentClassifiedEvent(node_name, intent, record_id, record_index, distance, not_found_reason)
+```
+
+Embedding ClassifyIntent payload (`event_type="intent_classified"`).
+
+### IntentLlmLabelProb
+
+```
+IntentLlmLabelProb(label, prob)
+```
+
+One `<label>.prob` pair from ClassifyIntentLLM.
+
+### IntentLlmClassifiedEvent
+
+```
+IntentLlmClassifiedEvent(node_name, intent, top_prob, second_prob, not_found_reason, label_probs)
+```
+
+ClassifyIntentLLM payload (`event_type="intent_llm_classified"`).
 
 ### AgentProxy
 
@@ -1686,6 +1940,16 @@ last_tokens_generated
 Server-reported generated token count for the last turn.
 
 Authoritative for both streaming and non-streaming modes. Zero if the server has not yet completed a turn.
+
+#### paused_node
+
+```
+paused_node
+```
+
+Node this agent's turn is currently paused after; `''` when not paused.
+
+A non-empty value means the server is holding the turn open until :meth:`resume` (or :meth:`cancel`) — until then :meth:`send_message` keeps failing with `AgentBusy` (3004).
 
 #### set_on_answer_text
 
@@ -1773,13 +2037,19 @@ Fired on the reader thread when a user callback (tool_call, paused, etc.) raises
 set_on_intent_classified(cb)
 ```
 
-Register (or clear) a callback for intent-classification notifications.
+Register (or clear) the embedding ClassifyIntent callback.
 
-Fired on the reader thread for every `NodeEvent` with `event_type == "intent_classified"` — emitted by `ClassifyIntentNode` on its `"found"` path when `notify_client = "true"`.
+Fired on the reader thread for every `NodeEvent` with `event_type == "intent_classified"`. Call with `None` to unregister.
 
-The callback signature is `(intent: str, record_id: str, record_index: int, distance: float)`.
+#### set_on_intent_llm_classified
 
-Call with `None` to unregister.
+```
+set_on_intent_llm_classified(cb)
+```
+
+Register (or clear) the ClassifyIntentLLM callback.
+
+Fired on the reader thread for every `NodeEvent` with `event_type == "intent_llm_classified"`. Call with `None` to unregister.
 
 #### set_on_paused
 
@@ -2075,6 +2345,22 @@ Raises:
 | `ValueError` | If count is negative.                                  |
 | `TryllError` | On server-reported errors (AgentBusy 3004) or timeout. |
 
+#### export_dialog
+
+```
+export_dialog(timeout=30.0)
+```
+
+Return the agent's completed dialog as an owned snapshot. Idle-only.
+
+#### import_dialog
+
+```
+import_dialog(snapshot, compatibility=0, timeout=30.0)
+```
+
+Replace the agent's dialog with *snapshot*. Idle-only. Never appends.
+
 ______________________________________________________________________
 
 ## tryll_client.graph
@@ -2107,6 +2393,12 @@ Bases: `IntEnum`
 
 Controls whether/how a producer's slot output is replayed in later turns.
 
+### KvCacheType
+
+Bases: `IntEnum`
+
+llama.cpp KV cache dtype. Inherit = model variant, then q8_0.
+
 ### RetrievalMode
 
 Bases: `IntEnum`
@@ -2118,6 +2410,12 @@ RetrieveNode search path: dense HNSW, BM25 lexical, or RRF hybrid.
 Bases: `IntEnum`
 
 Predicate policy for BranchNode.
+
+### NotifyClient
+
+Bases: `IntEnum`
+
+When a ClassifyIntent / ClassifyIntentLLM node emits a NodeEvent.
 
 ### NodeType
 
@@ -2133,16 +2431,66 @@ Bases: `IntEnum`
 
 Inference backend. Mirrors the FlatBuffers `InferenceEngine` enum.
 
+### ModelRole
+
+Bases: `IntEnum`
+
+What a model is for. Mirrors the FlatBuffers `ModelRole` enum.
+
+Used to qualify an engine declaration in :meth:`TryllClient.create_session`. The role is redundant for lookup — the server reads each model's engine from its own catalog entry — and exists so a rejection can name what the mismatch actually is.
+
+### MemoryPlacement
+
+Bases: `IntEnum`
+
+Where a model's weights should live. Mirrors `MemoryPlacement`.
+
+Always a *hint*: a host that cannot honour it downgrades and reports what it did, so read the resolved value back rather than assuming. Which GPU API provides VRAM (CUDA / Vulkan / HIP) is a host decision and is deliberately not expressible here.
+
+`Auto` is all-or-nothing in this version — device memory when the host has a GPU, system memory otherwise. It does not size offload to free memory.
+
 ### ModelStatus
 
 Bases: `IntEnum`
 
 Status of a model as reported by the server.
 
+### ModelDependency
+
+```
+ModelDependency(id, role, status, size_bytes=0, folder='', local_path='', failure_reason='')
+```
+
+Editor-facing status of one shared-asset dependency of a parent model.
+
+### TtsVoicePreset
+
+```
+TtsVoicePreset(id, label, description='')
+```
+
+Catalog-advertised speaker/description preset.
+
+### TtsInlineTag
+
+```
+TtsInlineTag(token, kind='', verification='')
+```
+
+Model-native inline control token declared for authoring.
+
+### TtsCapabilities
+
+```
+TtsCapabilities(voice_description=False, delivery_instruction=False, reference_voice=False, speed=False, language_per_call=False, voice_presets=(), inline_tags=())
+```
+
+Structured TTS capabilities advertised by the catalog.
+
 ### ModelInfo
 
 ```
-ModelInfo(name, status, hf_repo, size_bytes)
+ModelInfo(name, status, hf_repo, size_bytes, languages=(), dependencies=(), tts_capabilities=None)
 ```
 
 Summary information for one model returned by `list_models()`.
@@ -2376,11 +2724,31 @@ KV-cache lifecycle types for server-side agents.
 
 ______________________________________________________________________
 
+## tryll_client.memory
+
+`TryllClient.get_memory_consumption()` returns a server-wide RAM/VRAM snapshot. Session-scoped (must follow `create_session`) but the numbers cover every session on the process. Never fails with `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/how-to/inspect-server-memory.html).
+
+## tryll_client.memory
+
+Memory-consumption snapshot types returned by GetMemoryConsumption.
+
+### snapshot_from_fields
+
+```
+snapshot_from_fields(fields)
+```
+
+Build a public snapshot from a decoded GetMemoryConsumptionResponse fields dict.
+
+______________________________________________________________________
+
 ## Dialog mutation
 
 `AgentProxy.append_interactions()` and `AgentProxy.remove_interactions_from_end()` append or tail-remove scripted history without running the graph. Both are **strict idle-only** (`AgentBusy` 3004 while running, paused, or during a KV-cache lifecycle operation). Return applied/removed counts; no `TurnComplete`.
 
 Each append item is `(user_message, assistant_message)` — `None` or empty strings omit that side; both empty → skipped. See [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html).
+
+`export_dialog()` / `import_dialog()` capture or replace the completed dialog. `encode_flatbuffer` / `decode_flatbuffer` produce canonical `TDLG` bytes; the game owns storage. See [Export and import dialog](https://docs.tryllengine.com/how-to/export-and-import-dialog.html) and [Save and load agent state](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html) for multi-agent envelopes, variables, and restore ordering.
 
 ______________________________________________________________________
 

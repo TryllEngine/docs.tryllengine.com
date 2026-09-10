@@ -6,7 +6,7 @@ This page documents the user-facing fields of `server-config.json`. Relative pat
 
 Built-in defaults vs the shipped file
 
-The **Default** column below is the *built-in* value the server uses when a field is **absent**. The bundled `data/server-config.json` deliberately sets some fields differently for development — notably `logs_dir: ".app-data/logs"`, `models_download_dir: ".app-data/models"`, `log_mode: "dev"`, `log_level: "trace"`, and `include_interaction_in_diagnostics: true`. The release pipeline rewrites these to quiet production values when it stages a shipped build. So the sample below reflects the shipped dev file, not the built-in defaults.
+The **Default** column below is the *built-in* value the server uses when a field is **absent**. The bundled `data/server-config.json` deliberately sets some fields differently for development — notably `logs_dir: ".app-data/logs"`, `models_download_dir: ".app-data/models"`, `log_mode: "dev"`, `log_level: "trace"`, `include_interaction_in_diagnostics: true`, and `engines.llama_cpp.backend: "vulkan"` (CUDA is opt-in via `--llama-backend` or the Unity/Unreal project setting). The release pipeline rewrites logging and diagnostics to quiet production values when it stages a shipped build; it leaves `backend` as `"vulkan"`. So the sample below reflects the shipped dev file, not the built-in defaults.
 
 ## Location and override
 
@@ -15,10 +15,11 @@ The default location is `data/server-config.json`, symlinked next to the server 
 ```
 tryll_server.exe --config path/to/server-config.json
 tryll_server.exe --port 9200
+tryll_server.exe --llama-backend vulkan
 tryll_server.exe --network-access local_network
 ```
 
-The flags can be combined. `--port` overrides the `port` field from the config file and is how `ManagedServer` (C++ and Python clients) ensures the port it connects to matches the port the server listens on. `--network-access` overrides the `network_access` field.
+The flags can be combined. `--port` overrides the `port` field from the config file and is how `ManagedServer` (C++ and Python clients) ensures the port it connects to matches the port the server listens on. `--llama-backend` overrides `engines.llama_cpp.backend` — Unity and Unreal auto-launch pass this from Project Settings. `--network-access` overrides the `network_access` field.
 
 Missing fields keep their defaults; the server runs with all defaults even if the file is absent.
 
@@ -55,13 +56,15 @@ Missing fields keep their defaults; the server runs with all defaults even if th
 
 ### Logging
 
-| Field       | Type   | Default        | Description                                                                                                                                                               |
-| ----------- | ------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `logs_dir`  | string | `"data/logs"`  | Directory for log files. Set to `""` (empty string) for console-only logging. The directory is created if it does not exist.                                              |
-| `log_mode`  | string | `"production"` | Log file naming. `"production"` writes a single rotating `tryll.log` (10 MiB × 5 files). `"dev"` writes a new `tryll_<timestamp>.log` per process start with no rotation. |
-| `log_level` | string | `"info"`       | Minimum log level. One of `"trace"`, `"debug"`, `"info"`, `"warn"`, `"error"`. Use `"trace"` to capture per-node workflow events for debugging graphs.                    |
+| Field                | Type   | Default        | Description                                                                                                                                                               |
+| -------------------- | ------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `logs_dir`           | string | `"data/logs"`  | Directory for log files. Set to `""` (empty string) for console-only logging. The directory is created if it does not exist.                                              |
+| `log_mode`           | string | `"production"` | Log file naming. `"production"` writes a single rotating `tryll.log` (10 MiB × 5 files). `"dev"` writes a new `tryll_<timestamp>.log` per process start with no rotation. |
+| `log_level`          | string | `"info"`       | Minimum log level. One of `"trace"`, `"debug"`, `"info"`, `"warn"`, `"error"`. Use `"trace"` to capture per-node workflow events for debugging graphs.                    |
+| `log_flush_on`       | string | `"warn"`       | Flush the log file as soon as a message at this level or higher is written. One of `"off"`, `"trace"`, `"debug"`, `"info"`, `"warn"`, `"error"`. `"off"` turns this off.  |
+| `log_flush_every_ms` | int    | `5000`         | Also flush the log file on this interval so a quiet server does not leave the file minutes behind. `0` turns the timer off.                                               |
 
-In both log modes the **console sink is always active**.
+In both log modes the **console sink is always active**. By default the file is also flushed on every warning/error and every 5 seconds, so a running server's log is readable without waiting for process exit.
 
 ### Storage root
 
@@ -90,10 +93,10 @@ Both files are loaded lazily on first use; an absent file on startup is fine as 
 
 ### Diagnostics
 
-| Field                                | Type | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ------------------------------------ | ---- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `include_interaction_in_diagnostics` | bool | `false` | When `true`, **and** the client sets `enable_diagnostics = true` on `CreateAgentRequest`, the current [interaction](https://docs.tryllengine.com/reference/glossary.html#interaction)'s components are serialised into `TurnDiagnostics.interaction` on `TurnComplete`. Each component appears as a flat JSON object with a `"_type"` discriminator. Intended for debug sessions; payload grows linearly with component count. |
-| `include_engine_diagnostics`         | bool | `false` | When `true`, **and** the client sets `enable_diagnostics = true`, per-node `diagnostics.engine` (scheduler / backend metrics) is included in wire `debug_info`. Never contains prompt or generated text. Development configs typically enable it; production release staging turns it off.                                                                                                                                     |
+| Field                                | Type | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------------------------ | ---- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `include_interaction_in_diagnostics` | bool | `false` | When `true`, **and** the client sets `enable_diagnostics = true` on `CreateAgentRequest`, the current [interaction](https://docs.tryllengine.com/reference/glossary.html#interaction)'s components are serialised into `TurnDiagnostics.interaction` on `TurnComplete`. Each component appears as a flat JSON object with a `"_type"` discriminator — see [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html#interaction). Intended for debug sessions; payload grows linearly with component count. |
+| `include_engine_diagnostics`         | bool | `false` | When `true`, **and** the client sets `enable_diagnostics = true`, per-node [`diagnostics.engine`](https://docs.tryllengine.com/reference/turn-diagnostics-json.html#engine) (scheduler / backend metrics) is included in wire `debug_info`. Never contains prompt or generated text. Development configs typically enable it; production release staging turns it off.                                                                                                                                                                      |
 
 ### Telemetry
 
@@ -135,14 +138,14 @@ Each sink in `"sinks"` supports:
 
 An optional HTTP/SSE sidecar for inspecting live turns during development. Only present in non-Production builds and gated by `monitor.enabled`.
 
-| Field                             | Type   | Default       | Description                                               |
-| --------------------------------- | ------ | ------------- | --------------------------------------------------------- |
-| `monitor.enabled`                 | bool   | `false`       | Turn the monitor sidecar on.                              |
-| `monitor.bind`                    | string | `"127.0.0.1"` | Interface the monitor HTTP server binds.                  |
-| `monitor.port`                    | uint16 | `9101`        | Monitor HTTP port.                                        |
-| `monitor.turn_ring_size`          | uint   | `200`         | How many recent turns to retain in the ring buffer.       |
-| `monitor.memory_tick_interval_ms` | uint   | `0`           | Memory-sampling interval; `0` disables periodic sampling. |
-| `monitor.allow_remote`            | bool   | `false`       | Allow non-loopback clients to reach the monitor.          |
+| Field                             | Type   | Default       | Description                                                                                                                            |
+| --------------------------------- | ------ | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `monitor.enabled`                 | bool   | `false`       | Turn the monitor sidecar on.                                                                                                           |
+| `monitor.bind`                    | string | `"127.0.0.1"` | Interface the monitor HTTP server binds.                                                                                               |
+| `monitor.port`                    | uint16 | `9101`        | Monitor HTTP port.                                                                                                                     |
+| `monitor.turn_ring_size`          | uint   | `200`         | How many recent turns to retain in the ring buffer.                                                                                    |
+| `monitor.memory_tick_interval_ms` | uint   | `0`           | Interval in milliseconds for the monitor's live memory sample. `0` disables periodic sampling; the Memory panel still loads on demand. |
+| `monitor.allow_remote`            | bool   | `false`       | Allow non-loopback clients to reach the monitor.                                                                                       |
 
 ### Crash dumps (`crash_dump`)
 
@@ -164,7 +167,7 @@ Per-engine tuning, keyed by backend. All fields are optional and default to the 
 ```
 "engines": {
     "llama_cpp": {
-        "n_gpu_layers": 99,
+        "backend": "cuda",
         "n_threads": 4,
         "n_threads_batch": 4,
         "inference": {
@@ -184,6 +187,12 @@ Per-engine tuning, keyed by backend. All fields are optional and default to the 
     }
 }
 ```
+
+`engines.llama_cpp.backend` (`auto` | `cuda` | `vulkan` | `hip` | `cpu`) selects the ggml GPU plugin. The committed file and shipped plugin default to `"vulkan"`. `auto` prefers CUDA on NVIDIA when that DLL loads, otherwise Vulkan, otherwise CPU. Override per process with `--llama-backend`. Unity and Unreal auto-launch pass that flag from Project Settings instead of editing this file. This is independent of per-model RAM/VRAM placement. The payload ships both llama.cpp plugins plus the llama-cuda redistributables (`cudart` / `cublas`). It does not ship cuDNN or a CUDA ONNX Runtime.
+
+GPU offload moved
+
+`engines.llama_cpp.n_gpu_layers` is **deprecated and ignored**. It applied one value to every model in the process, which cannot be right once different models want different memory. Offload is now decided per model from its placement — see [Choose where models run](https://docs.tryllengine.com/how-to/choose-where-models-run.html). A server that still finds the key logs a warning once at startup; remove it.
 
 `default_n_ctx` is the fallback context window when neither a node's `context_size` nor the model variant's `context_size` is set.
 

@@ -24,7 +24,12 @@ ______________________________________________________________________
 
 ## Runtime state
 
-There are no public runtime properties. Check `AudioSource.isPlaying` on the same GameObject to poll playback state.
+| Member            | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                              |
+| ----------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `HasPendingAudio` | `bool` | True while decoded audio is still waiting in the chunk queue (or the front chunk is only partially played). After the turn's `TurnComplete` — when no further audio arrives — a `false` value means playback has drained down to the small (~100 ms) streaming clip buffer. Useful for hands-free flows that must not re-open the microphone while the character is still audibly speaking. Main thread. |
+| `StopPlayback()`  | `void` | Cancels the current turn's playback: drops all queued audio and ignores further audio frames until the next turn's format announcement. Safe to call repeatedly and when nothing is playing. Main thread.                                                                                                                                                                                                |
+
+`AudioSource.isPlaying` is not a playback signal here: the streaming clip loops and keeps "playing" silence between turns.
 
 ______________________________________________________________________
 

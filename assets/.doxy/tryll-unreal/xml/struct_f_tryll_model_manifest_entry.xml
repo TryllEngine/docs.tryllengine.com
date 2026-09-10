@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="31" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="31" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="54" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_model_manifest_entry_1ac5823c8976d3459db23e3559cb34f7f9" prot="public" static="no" mutable="no">
         <type>FString</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="35" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="35" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="58" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="struct_f_tryll_model_manifest_entry_1a9c7c0a6773cedff0e310c3be9a84c1cc" prot="public" static="no" mutable="no">
         <type>ETryllModelRegistration</type>
@@ -46,7 +46,57 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="38" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="38" bodyend="-1"/>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="61" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_manifest_entry_1a226eb460476d488769db701bc0cb097c" prot="public" static="no" mutable="no">
+        <type>ETryllInferenceEngine</type>
+        <definition>ETryllInferenceEngine FTryllModelManifestEntry::Engine</definition>
+        <argsstring></argsstring>
+        <name>Engine</name>
+        <qualifiedname>FTryllModelManifestEntry::Engine</qualifiedname>
+        <initializer>= ETryllInferenceEngine::LlamaCpp</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Engine that runs this model, cached from the catalog when it was registered.</para>
+<para>Cached rather than read live because the session&apos;s engine set is built from this manifest at CreateSession, before any ListModels round trip could answer — an editor that could only build a session while connected would be worse than none. Defaults to LlamaCpp, not Mock: Mock is the enum&apos;s zero value and a production server refuses it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="73" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_manifest_entry_1a2bfde935bde28b637693826f7d56e8f1" prot="public" static="no" mutable="no">
+        <type>ETryllMemoryPlacement</type>
+        <definition>ETryllMemoryPlacement FTryllModelManifestEntry::Placement</definition>
+        <argsstring></argsstring>
+        <name>Placement</name>
+        <qualifiedname>FTryllModelManifestEntry::Placement</qualifiedname>
+        <initializer>= ETryllMemoryPlacement::Auto</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Where this model should live. See ETryllMemoryPlacement. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="77" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_model_manifest_entry_1a6af432198ae2bbe9ca48990b54b7f553" prot="public" static="no" mutable="no">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt;FString&gt; FTryllModelManifestEntry::Languages</definition>
+        <argsstring></argsstring>
+        <name>Languages</name>
+        <qualifiedname>FTryllModelManifestEntry::Languages</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>BCP-47 primary language subtags this model declares, cached from the catalog.</para>
+<para>The one piece of catalog metadata cached here rather than read live. Everything else can wait for a ListModels round trip, but the settings language dropdown and the model-picker warnings have to work with no server running - an editor that can only validate languages while connected would be worse than no validation at all. Written by the Model Manager from the live <ref refid="struct_f_tryll_model_info" kindref="compound">FTryllModelInfo</ref> at the moment the model is registered.</para>
+<para>Empty means undeclared, not &quot;supports nothing&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="92" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="92" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -54,10 +104,13 @@
     <detaileddescription>
 <para>One registered model: its name, type, and build tier. </para>
     </detaileddescription>
-    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="26" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="27" bodyend="39"/>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" line="49" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllModelManifest.h" bodystart="50" bodyend="93"/>
     <listofallmembers>
+      <member refid="struct_f_tryll_model_manifest_entry_1a226eb460476d488769db701bc0cb097c" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>Engine</name></member>
+      <member refid="struct_f_tryll_model_manifest_entry_1a6af432198ae2bbe9ca48990b54b7f553" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>Languages</name></member>
       <member refid="struct_f_tryll_model_manifest_entry_1ac5823c8976d3459db23e3559cb34f7f9" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>ModelType</name></member>
       <member refid="struct_f_tryll_model_manifest_entry_1a9d3b21c4c108fef751e990ed32bd34d8" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>Name</name></member>
+      <member refid="struct_f_tryll_model_manifest_entry_1a2bfde935bde28b637693826f7d56e8f1" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>Placement</name></member>
       <member refid="struct_f_tryll_model_manifest_entry_1a9c7c0a6773cedff0e310c3be9a84c1cc" prot="public" virt="non-virtual"><scope>FTryllModelManifestEntry</scope><name>Registration</name></member>
     </listofallmembers>
   </compounddef>

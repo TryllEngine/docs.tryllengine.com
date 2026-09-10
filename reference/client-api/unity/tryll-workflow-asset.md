@@ -49,9 +49,7 @@ var graph = new TryllGraphBuilder()
 var (agent, error) = await TryllClient.Instance.RequestCreateAgentAsync(graph);
 ```
 
-Inline graphs are temporary
-
-`TryllAgentComponent.InlineGraphDescription` — assigning a code-built graph to the component instead of using a Workflow Asset — is a temporary feature and will be removed in a future release. When you use `TryllAgentComponent`, author the graph as a Workflow Asset and assign it to the component's **Workflow Asset** field.
+When you drive an agent through [`TryllAgentComponent`](https://docs.tryllengine.com/reference/client-api/unity/tryll-agent-component.html), assign this asset to the component's **Workflow Asset** field. A component cannot create an agent without one.
 
 ______________________________________________________________________
 

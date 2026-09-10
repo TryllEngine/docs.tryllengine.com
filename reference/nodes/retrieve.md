@@ -61,32 +61,36 @@ The attached knowledge is rendered into the prompt **on the next Generate node**
 
 ## Diagnostics
 
-When `enable_diagnostics = true`, the node contributes a nested document under `TurnComplete.debug_info.nodes[].diagnostics` (TurnDiagnostics schema_version 2 — conventional sections `parameters` / `input` / `output`):
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
 
-| Key                                  | Meaning                                                                                                                                                              |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `parameters.source`                  | The `source` label attached to the component.                                                                                                                        |
-| `parameters.embedded_string_storage` | Configured storage name when set.                                                                                                                                    |
-| `parameters.top_k`                   | Number of chunks requested.                                                                                                                                          |
-| `parameters.threshold`               | Max cosine distance used for dense-leg filtering (or `"inf"` when disabled).                                                                                         |
-| `parameters.retrieval_mode`          | `Dense` / `Lexical` / `Hybrid`.                                                                                                                                      |
-| `parameters.rrf_k`                   | RRF constant (Hybrid only).                                                                                                                                          |
-| `parameters.filter`                  | Raw JSON of the active filter (empty when no filter is set).                                                                                                         |
-| `parameters.raw_result_count`        | Dense: chunks from the index before threshold. Hybrid: `dense_raw_count + sparse_raw_count` (per-leg candidates before threshold/fusion). Lexical: sparse hit count. |
-| `parameters.filtered_count`          | Dense/Hybrid: chunks removed by the dense-leg threshold. Lexical: always `0`.                                                                                        |
-| `parameters.dense_raw_count`         | Hybrid/Lexical path: dense hits before threshold (0 for Lexical).                                                                                                    |
-| `parameters.dense_filtered_count`    | Hybrid/Lexical path: dense hits removed by threshold.                                                                                                                |
-| `parameters.sparse_raw_count`        | Hybrid/Lexical path: BM25 hits before fusion/top-K trim.                                                                                                             |
-| `parameters.fused_candidate_count`   | Hybrid: unique record ids across both legs before top-K trim (0 for Lexical).                                                                                        |
-| `parameters.result_count`            | Chunks actually attached to the component.                                                                                                                           |
-| `input.query`                        | The human message text that was embedded / searched.                                                                                                                 |
-| `output.results[]`                   | Ranked hits (always present; empty array on `not_found`).                                                                                                            |
-| `output.results[].id`                | Chunk id.                                                                                                                                                            |
-| `output.results[].distance`          | Cosine distance (lower = more similar), or JSON `null` for lexical-only hits.                                                                                        |
-| `output.results[].bm25_score`        | Okapi BM25 score when the sparse leg contributed (stable public diagnostic).                                                                                         |
-| `output.results[].rank_dense`        | 1-based dense-leg rank when present (stable public diagnostic).                                                                                                      |
-| `output.results[].rank_sparse`       | 1-based BM25-leg rank when present (stable public diagnostic).                                                                                                       |
-| `output.results[].text`              | Chunk text that will be rendered into the prompt.                                                                                                                    |
+No model runs here, so there is no `engine` section.
+
+| Key                                  | Meaning                                                                                                                      | Absent when                                                                         |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `parameters.source`                  | The `source` label attached to the component.                                                                                | —                                                                                   |
+| `parameters.embedded_string_storage` | Configured storage name.                                                                                                     | Not set.                                                                            |
+| `parameters.top_k`                   | Number of chunks requested.                                                                                                  | —                                                                                   |
+| `parameters.threshold`               | Max cosine distance used for dense-leg filtering, or `"inf"` when disabled.                                                  | —                                                                                   |
+| `parameters.retrieval_mode`          | `Dense` / `Lexical` / `Hybrid`.                                                                                              | —                                                                                   |
+| `parameters.rrf_k`                   | RRF constant (Hybrid only).                                                                                                  | —                                                                                   |
+| `parameters.filter`                  | Raw JSON of the active filter. Empty string when no filter is set.                                                           | —                                                                                   |
+| `parameters.raw_result_count`        | Dense: chunks from the index before threshold. Hybrid: `dense_raw_count + sparse_raw_count`. Lexical: sparse hit count.      | —                                                                                   |
+| `parameters.filtered_count`          | Dense/Hybrid: chunks removed by the dense-leg threshold. Lexical: always `0`.                                                | —                                                                                   |
+| `parameters.dense_raw_count`         | Dense hits before threshold (0 for Lexical).                                                                                 | The run was pure Dense — the per-leg counts appear only on the Hybrid/Lexical path. |
+| `parameters.dense_filtered_count`    | Dense hits removed by threshold.                                                                                             | As above.                                                                           |
+| `parameters.sparse_raw_count`        | BM25 hits before fusion / top-K trim.                                                                                        | As above.                                                                           |
+| `parameters.fused_candidate_count`   | Hybrid: unique record ids across both legs before top-K trim (0 for Lexical).                                                | As above.                                                                           |
+| `parameters.result_count`            | Chunks actually attached to the component.                                                                                   | —                                                                                   |
+| `input.query`                        | The text that was embedded / searched.                                                                                       | The resolved text was empty.                                                        |
+| `output.results[]`                   | Ranked hits, in server order (RRF rank for Hybrid). **Always present** — an empty array on `not_found`, never a missing key. | —                                                                                   |
+| `output.results[].id`                | Chunk id.                                                                                                                    | —                                                                                   |
+| `output.results[].distance`          | Cosine distance (lower = more similar), or JSON `null` for lexical-only hits.                                                | —                                                                                   |
+| `output.results[].bm25_score`        | Okapi BM25 score (stable public diagnostic).                                                                                 | The sparse leg did not contribute to this hit.                                      |
+| `output.results[].rank_dense`        | 1-based dense-leg rank (stable public diagnostic).                                                                           | This hit did not come from the dense leg.                                           |
+| `output.results[].rank_sparse`       | 1-based BM25-leg rank (stable public diagnostic).                                                                            | This hit did not come from the sparse leg.                                          |
+| `output.results[].text`              | Chunk text that will be rendered into the prompt.                                                                            | —                                                                                   |
+
+The count chain `raw_result_count` → `filtered_count` → `result_count` is the funnel to read when retrieval returns too little: it separates "the index had nothing" from "the threshold rejected it". Note that `output.results[]` lists only the surviving chunks — the near-misses are visible as the gap between the counts, and in the turn inspector's dimmed rows.
 
 ## Minimum working example
 

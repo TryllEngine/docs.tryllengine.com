@@ -73,6 +73,35 @@ None. Branch is reader-only: it does not write a slot, call a model, or emit ans
 
 ______________________________________________________________________
 
+## Diagnostics
+
+When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].diagnostics`. See [Turn Diagnostics JSON](https://docs.tryllengine.com/reference/turn-diagnostics-json.html) for the envelope.
+
+Branch runs no model, so it emits `parameters` and `output` only. This is the block that answers "why did it go *that* way" — the operand text it actually compared is here and nowhere else.
+
+| Key                        | Meaning                                                                                                | Absent when                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| `parameters.test`          | The test mode that ran: `Equals`, `Contains`, `Regex`, `Expression`, …                                 | —                                  |
+| `parameters.operand_kind`  | What was read: `slot`, `variable` or `expression`.                                                     | —                                  |
+| `parameters.operand_name`  | Name of the slot or variable read. Empty for `Expression`.                                             | —                                  |
+| `parameters.values_count`  | How many candidate values were configured. `0` for `Expression`.                                       | —                                  |
+| `parameters.condition`     | The compiled filter expression, as JSON.                                                               | The test mode is not `Expression`. |
+| `parameters.notify_client` | Whether a `branch_taken` event was emitted.                                                            | —                                  |
+| `output.exit`              | The exit actually taken.                                                                               | —                                  |
+| `output.matched`           | Whether the test matched.                                                                              | —                                  |
+| `output.matched_index`     | 0-based index into `values`. `-1` when no indexed value matched — including every `Expression` branch. | —                                  |
+| `output.matched_value`     | The configured value that matched. Empty for `Expression`.                                             | —                                  |
+| `output.operand_missing`   | `true` when the slot or variable was never written — the case that logs a warning and falls to `else`. | —                                  |
+| `output.operand_text`      | The operand's raw text as compared.                                                                    | —                                  |
+
+`operand_missing: true` and an empty `operand_text` are the signature of the missing-slot trap described above. An operand that was written but blank shows `operand_missing: false` with an empty `operand_text` — a different problem, in a different node.
+
+`notify_client` does not gate this block
+
+`notify_client` controls only whether the client receives a `branch_taken` event. Routing is recorded here either way.
+
+______________________________________________________________________
+
 ## Examples
 
 A refusal-fallback gate: a hidden classification `Generate` produces a one-word verdict, and `Branch` routes `"UNSAFE"` to a canned refusal while everything else reaches the real answer.

@@ -45,7 +45,7 @@ If you want to hack on the server or your platform does not have a release yet:
    cmake --preset default
    ```
 
-   The `default` preset uses the Visual Studio 17 2022 generator with `TRYLL_VULKAN=PREBUILT`, which downloads the matching Vulkan DLL — no GPU SDK needed. For a CPU-only build add `-DTRYLL_VULKAN=OFF`. For CUDA or ROCm see the full build notes in the internal developer docs. 3. Build:
+   The `default` preset uses the Visual Studio 17 2022 generator with `TRYLL_CUDA=PREBUILT` and `TRYLL_VULKAN=PREBUILT` — both llama.cpp plugins, no GPU SDK. The committed `server-config.json` pins `backend` to `vulkan`. Prefer CUDA on NVIDIA with `--llama-backend auto` (or `cuda`). For a CPU-only build add `-DTRYLL_VULKAN=OFF -DTRYLL_CUDA=OFF`. The `production` preset ships the same llama.cpp CUDA+Vulkan payload with CPU ONNX Runtime (no CUDA Toolkit required). For ROCm see the internal developer docs. 3. Build:
 
    ```
    cmake --build --preset debug
@@ -79,6 +79,7 @@ The fields you most often want to touch:
 - **`logs_dir`** — where log files land. Empty string means console-only. The shipped config uses `.app-data/logs`.
 - **`log_mode`** — `"production"` rotates a single `tryll.log`; `"dev"` opens a new `tryll_<timestamp>.log` per run. Use `"dev"` while developing so you can diff runs.
 - **`log_level`** — `"info"` is a fine default. `"trace"` turns on the per-turn workflow trace, which logs every node execution — noisy but great for debugging graphs.
+- **`log_flush_on` / `log_flush_every_ms`** — how soon the log file catches up with the running process. Defaults (`"warn"` + 5000 ms) keep warnings immediate and everything else at most five seconds behind. Set `"off"` and `0` to leave buffering to the C library.
 - **`default_canned_responses_path`** and **`default_guardrail_patterns_path`** — *server-admin fallback.* Point these at files to supply defaults for [CannedResponse](https://docs.tryllengine.com/reference/nodes/canned-response.html) and [RegexGuardrail](https://docs.tryllengine.com/reference/nodes/regex-guardrail.html) nodes **when the client has not created a string storage**. Most client workflows won't need these — use [`CreateStringStorageRequest`](https://docs.tryllengine.com/reference/string-storage.html) (inline or `file_path`) instead.
 - **`telemetry`** — usage telemetry is **enabled by default** and sends performance and lifecycle events to PostHog (EU). Remove or empty the `"sinks"` array before shipping a game to players, or set `"enabled": false` to turn it off entirely. See [Telemetry](https://docs.tryllengine.com/reference/telemetry.html) for details.
 

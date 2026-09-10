@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  [**FTryllContextOverrides**](struct_f_tryll_context_overrides.md) | [**Context**](#variable-context)  <br> |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  FString | [**Grammar**](#variable-grammar)  <br> |
@@ -56,17 +57,21 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  float | [**Speed**](#variable-speed)   = `1.0f`<br> |
 |  FString | [**SystemPrompt**](#variable-systemprompt)  <br> |
 |  FString | [**Template**](#variable-template)  <br> |
+|  FString | [**TtsDeliveryInstruction**](#variable-ttsdeliveryinstruction)  <br> |
 |  FString | [**TtsLang**](#variable-ttslang)  <br> |
 |  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
 |  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
+|  FString | [**TtsVoiceDescription**](#variable-ttsvoicedescription)  <br> |
 |  bool | [**bOverrideGrammar**](#variable-boverridegrammar)   = `false`<br> |
 |  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideModelName**](#variable-boverridemodelname)   = `false`<br> |
 |  bool | [**bOverrideOutputName**](#variable-boverrideoutputname)   = `false`<br> |
 |  bool | [**bOverrideSystemPrompt**](#variable-boverridesystemprompt)   = `false`<br> |
 |  bool | [**bOverrideTemplate**](#variable-boverridetemplate)   = `false`<br> |
+|  bool | [**bOverrideTtsDeliveryInstruction**](#variable-boverridettsdeliveryinstruction)   = `false`<br> |
 |  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
 |  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
+|  bool | [**bOverrideTtsVoiceDescription**](#variable-boverridettsvoicedescription)   = `false`<br> |
 |  bool | [**bSubstituteAgentVariables**](#variable-bsubstituteagentvariables)   = `false`<br> |
 
 
@@ -189,6 +194,23 @@ LLM-driven text generation + streaming TTS synthesis in a single fused node. Str
     
 ## Public Attributes Documentation
 
+
+
+
+### variable Context 
+
+```C++
+FTryllContextOverrides UTryllGenerateAndSpeakParams::Context;
+```
+
+
+
+Backend context construction. Null table inherits, except CreateContext still defaults `n_outputs_max` to 1. Structural. Appended after tts\_delivery\_instruction so existing field IDs do not move. 
+
+
+        
+
+<hr>
 
 
 
@@ -431,6 +453,19 @@ FString UTryllGenerateAndSpeakParams::Template;
 
 
 
+### variable TtsDeliveryInstruction 
+
+```C++
+FString UTryllGenerateAndSpeakParams::TtsDeliveryInstruction;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable TtsLang 
 
 ```C++
@@ -469,6 +504,19 @@ Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path re
 
 
         
+
+<hr>
+
+
+
+### variable TtsVoiceDescription 
+
+```C++
+FString UTryllGenerateAndSpeakParams::TtsVoiceDescription;
+```
+
+
+
 
 <hr>
 
@@ -576,6 +624,23 @@ Mustache template applied to the user-area message at projection time. Set to tr
 
 
 
+### variable bOverrideTtsDeliveryInstruction 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideTtsDeliveryInstruction;
+```
+
+
+
+Natural-language sustained delivery direction for this synthesis call. Empty = neutral / model default. Set to true to override the inherited TtsDeliveryInstruction value. 
+
+
+        
+
+<hr>
+
+
+
 ### variable bOverrideTtsLang 
 
 ```C++
@@ -584,7 +649,7 @@ bool UTryllGenerateAndSpeakParams::bOverrideTtsLang;
 
 
 
-TTS language hint for multilingual models that select the language per call (e.g. Supertonic 3: "en", "de", "fr", …). Empty = the model's catalog default. Ignored by families whose language is fixed by the model itself (e.g. Pocket TTS per-language models). Set to true to override the inherited TtsLang value. 
+TTS language hint for multilingual models that select the language per call (e.g. Supertonic 3: "en", "de", "fr", …). Resolution order: this param, then the session locale (CreateSessionRequest.locale), then the model's catalog default. Set it only to override the session — one character who keeps speaking French in a German playthrough. For a whole-game language switch, set the session locale instead and leave this empty: it reaches every agent and every node with no per-node mutation. Ignored by families whose language is fixed by the model itself (e.g. Pocket TTS per-language models). Set to true to override the inherited TtsLang value. 
 
 
         
@@ -602,6 +667,23 @@ bool UTryllGenerateAndSpeakParams::bOverrideTtsModelName;
 
 
 TTS model catalog name. Optional — when empty the server uses the first available TTS voice in the model catalog. Set it to pick a specific voice. Set to true to override the inherited TtsModelName value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsVoiceDescription 
+
+```C++
+bool UTryllGenerateAndSpeakParams::bOverrideTtsVoiceDescription;
+```
+
+
+
+Natural-language stable voice identity: age, accent, pitch, timbre and baseline pacing. Empty = use speaker\_id / catalog default. Appended after output\_filter so existing FlatBuffers field IDs do not move. Set to true to override the inherited TtsVoiceDescription value. 
 
 
         

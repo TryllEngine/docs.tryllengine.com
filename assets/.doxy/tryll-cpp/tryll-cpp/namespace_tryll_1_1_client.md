@@ -43,6 +43,16 @@
 | class | [**AgentVariables**](class_tryll_1_1_client_1_1_agent_variables.md) <br>_Client-side mirror + deferred-flush batcher for one agent's declared variables._  |
 | struct | [**AudioFormat**](struct_tryll_1_1_client_1_1_audio_format.md) <br> |
 | class | [**ConnectedSession**](class_tryll_1_1_client_1_1_connected_session.md) <br>_RAII pair: owns a_ [_**ManagedServer**_](class_tryll_1_1_client_1_1_managed_server.md) _child process and a connected_[_**TryllClient**_](class_tryll_1_1_client_1_1_tryll_client.md) _._ |
+| struct | [**DialogImportResult**](struct_tryll_1_1_client_1_1_dialog_import_result.md) <br> |
+| struct | [**DialogIntention**](struct_tryll_1_1_client_1_1_dialog_intention.md) <br> |
+| struct | [**DialogInteractionSnapshot**](struct_tryll_1_1_client_1_1_dialog_interaction_snapshot.md) <br> |
+| struct | [**DialogKnowledge**](struct_tryll_1_1_client_1_1_dialog_knowledge.md) <br> |
+| struct | [**DialogKnowledgeChunk**](struct_tryll_1_1_client_1_1_dialog_knowledge_chunk.md) <br> |
+| struct | [**DialogProjectionWindow**](struct_tryll_1_1_client_1_1_dialog_projection_window.md) <br> |
+| struct | [**DialogSlot**](struct_tryll_1_1_client_1_1_dialog_slot.md) <br> |
+| struct | [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) <br> |
+| struct | [**DialogToolCall**](struct_tryll_1_1_client_1_1_dialog_tool_call.md) <br> |
+| struct | [**DialogToolResult**](struct_tryll_1_1_client_1_1_dialog_tool_result.md) <br> |
 | class | [**GraphDescription**](class_tryll_1_1_client_1_1_graph_description.md) <br>_Fluent builder for a workflow graph description sent to the server._  |
 | class | [**GraphDescriptionNodeMethods**](class_tryll_1_1_client_1_1_graph_description_node_methods.md) <br> |
 | class | [**ManagedServer**](class_tryll_1_1_client_1_1_managed_server.md) <br>_RAII handle around a child_ `tryll_server` _process._ |
@@ -62,6 +72,9 @@
 | ---: | :--- |
 | enum std::uint8\_t | [**AgentKvCachePrefixStatus**](#enum-agentkvcacheprefixstatus)  <br> |
 | enum std::uint8\_t | [**AgentKvCacheResidency**](#enum-agentkvcacheresidency)  <br> |
+| enum std::uint8\_t | [**DialogCompatibility**](#enum-dialogcompatibility)  <br> |
+| typedef std::variant&lt; [**DialogSlot**](struct_tryll_1_1_client_1_1_dialog_slot.md), [**DialogKnowledge**](struct_tryll_1_1_client_1_1_dialog_knowledge.md), [**DialogIntention**](struct_tryll_1_1_client_1_1_dialog_intention.md), [**DialogToolCall**](struct_tryll_1_1_client_1_1_dialog_tool_call.md), [**DialogToolResult**](struct_tryll_1_1_client_1_1_dialog_tool_result.md) &gt; | [**DialogComponent**](#typedef-dialogcomponent)  <br> |
+| enum std::uint8\_t | [**DialogSlotKind**](#enum-dialogslotkind)  <br> |
 | typedef std::function&lt; void(std::string\_view, std::uint64\_t, std::uint64\_t, float)&gt; | [**DownloadProgressCallback**](#typedef-downloadprogresscallback)  <br>_Callback invoked during_ [_**TryllClient::DownloadModel**_](class_tryll_1_1_client_1_1_tryll_client.md#function-downloadmodel) _as data arrives._ |
 | typedef std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT, ::Tryll::NodeParams::BranchParamsT &gt; | [**NodeParamsVariant**](#typedef-nodeparamsvariant)  <br>_Typed variant discriminating all concrete node-parameter PODs._  |
 | enum std::uint8\_t | [**VariableType**](#enum-variabletype)  <br>_Type tag for a declared agent variable._  |
@@ -86,6 +99,14 @@
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+|  [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) | [**DecodeFlatBuffer**](#function-decodeflatbuffer) (std::span&lt; const std::uint8\_t &gt; bytes) <br> |
+|  std::vector&lt; std::uint8\_t &gt; | [**EncodeFlatBuffer**](#function-encodeflatbuffer) (const [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) & snapshot) <br>_Canonical binary form (file identifier "TDLG"). Throws_ [_**TryllError**_](class_tryll_1_1_client_1_1_tryll_error.md) _on failure._ |
+|  flatbuffers::Offset&lt;::Tryll::PersistedDialogSnapshot &gt; | [**PackPersistedDialogSnapshot**](#function-packpersisteddialogsnapshot) (flatbuffers::FlatBufferBuilder & fbb, const [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) & snapshot) <br> |
+|  [**DialogSnapshot**](struct_tryll_1_1_client_1_1_dialog_snapshot.md) | [**UnpackPersistedDialogSnapshot**](#function-unpackpersisteddialogsnapshot) (const ::Tryll::PersistedDialogSnapshot & table) <br> |
 
 
 
@@ -141,6 +162,57 @@ enum Tryll::Client::AgentKvCachePrefixStatus {
 enum Tryll::Client::AgentKvCacheResidency {
     Evicted,
     Resident
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum DialogCompatibility 
+
+```C++
+enum Tryll::Client::DialogCompatibility {
+    Strict = 0,
+    AllowGraphMismatch = 1
+};
+```
+
+
+
+
+<hr>
+
+
+
+### typedef DialogComponent 
+
+```C++
+using Tryll::Client::DialogComponent = std::variant<
+   DialogSlot,
+   DialogKnowledge,
+   DialogIntention,
+   DialogToolCall,
+   DialogToolResult>;
+```
+
+
+
+
+<hr>
+
+
+
+### enum DialogSlotKind 
+
+```C++
+enum Tryll::Client::DialogSlotKind {
+    User = 0,
+    Instruction = 1,
+    General = 2
 };
 ```
 
@@ -238,6 +310,70 @@ A variable's value. The active alternative fixes its type for the agent's whole 
 
 
         
+
+<hr>
+## Public Functions Documentation
+
+
+
+
+### function DecodeFlatBuffer 
+
+```C++
+DialogSnapshot Tryll::Client::DecodeFlatBuffer (
+    std::span< const std::uint8_t > bytes
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function EncodeFlatBuffer 
+
+_Canonical binary form (file identifier "TDLG"). Throws_ [_**TryllError**_](class_tryll_1_1_client_1_1_tryll_error.md) _on failure._
+```C++
+std::vector< std::uint8_t > Tryll::Client::EncodeFlatBuffer (
+    const DialogSnapshot & snapshot
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function PackPersistedDialogSnapshot 
+
+```C++
+flatbuffers::Offset<::Tryll::PersistedDialogSnapshot > Tryll::Client::PackPersistedDialogSnapshot (
+    flatbuffers::FlatBufferBuilder & fbb,
+    const DialogSnapshot & snapshot
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function UnpackPersistedDialogSnapshot 
+
+```C++
+DialogSnapshot Tryll::Client::UnpackPersistedDialogSnapshot (
+    const ::Tryll::PersistedDialogSnapshot & table
+) 
+```
+
+
+
 
 <hr>
 

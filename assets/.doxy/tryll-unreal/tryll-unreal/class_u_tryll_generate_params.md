@@ -41,6 +41,7 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 
 | Type | Name |
 | ---: | :--- |
+|  [**FTryllContextOverrides**](struct_f_tryll_context_overrides.md) | [**Context**](#variable-context)  <br> |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
 |  FString | [**Grammar**](#variable-grammar)  <br> |
@@ -182,6 +183,23 @@ LLM-driven text generation node. Renders a Mustache template, runs sampling, pro
     
 ## Public Attributes Documentation
 
+
+
+
+### variable Context 
+
+```C++
+FTryllContextOverrides UTryllGenerateParams::Context;
+```
+
+
+
+Backend context construction (n\_batch / n\_ubatch / n\_outputs\_max / kv\_cache\_type / offload\_kqv). Null table inherits those knobs, except `n_outputs_max` which CreateContext still defaults to 1. Structural: baked into llama\_context\_params at context creation. Appended after output\_filter so existing FlatBuffers field IDs do not move. 
+
+
+        
+
+<hr>
 
 
 

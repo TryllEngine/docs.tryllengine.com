@@ -30,7 +30,7 @@ cmake --preset default
 cmake --build --preset debug
 ```
 
-The `default` preset uses the Visual Studio 17 2022 generator with Vulkan `PREBUILT` — no GPU SDK required. For a CPU-only build add `-DTRYLL_VULKAN=OFF`. The first build produces `tryll_server.exe` under `tryll\build\server\Debug\`; the second produces `tryll_test_chat.exe` under `test-chat\build\Debug\`.
+The `default` preset uses the Visual Studio 17 2022 generator with CUDA and Vulkan `PREBUILT` — no GPU SDK required. For a CPU-only build add `-DTRYLL_VULKAN=OFF -DTRYLL_CUDA=OFF`. The first build produces `tryll_server.exe` under `tryll\build\server\Debug\`; the second produces `tryll_test_chat.exe` under `test-chat\build\Debug\`.
 
 One-shot build-and-run
 

@@ -37,7 +37,7 @@ The file path is **relative to the session storage folder** (set via `storageDat
 #include <tryll/VoiceInput.h>
 
 Tryll::Client::VoiceInputConfig viCfg;
-viCfg.modelName            = "Parakeet TDT 0.6B v2 (int8)";
+viCfg.modelName            = "Parakeet TDT 0.6B v3 (int8)";
 viCfg.inputFormat          = micFormat;
 viCfg.hotwordsStoragePath  = "data/voice-hotwords.txt";
 viCfg.hotwordsScore        = 1.8f;   // 1.0 = no bias, 2.5 = aggressive
@@ -49,7 +49,7 @@ auto vi = client.CreateVoiceInput(viCfg);
 
 ```
 voice_input_id = client.create_voice_input(
-    model_name="Parakeet TDT 0.6B v2 (int8)",
+    model_name="Parakeet TDT 0.6B v3 (int8)",
     sample_rate=16000, channels=1, bits_per_sample=16,
     hotwords_storage_path="data/voice-hotwords.txt",
     hotwords_score=1.8,
@@ -61,7 +61,7 @@ voice_input_id = client.create_voice_input(
 ```
 var cfg = new VoiceInputConfig
 {
-    ModelName            = "Parakeet TDT 0.6B v2 (int8)",
+    ModelName            = "Parakeet TDT 0.6B v3 (int8)",
     InputFormat          = AudioFormat.Default,
     VadThreshold         = 0.5f,
     VadMinSilenceMs      = 500,
@@ -76,7 +76,7 @@ var (voice, err) = await client.CreateVoiceInputAsync(cfg);
 
 ```
 FTryllVoiceInputConfig Config;
-Config.ModelName             = TEXT("Parakeet TDT 0.6B v2 (int8)");
+Config.ModelName             = TEXT("Parakeet TDT 0.6B v3 (int8)");
 Config.InputFormat.SampleRate = 16000;
 Config.HotwordsStoragePath   = TEXT("data/voice-hotwords.txt");
 Config.HotwordsScore         = 1.8f;

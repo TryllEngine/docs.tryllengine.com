@@ -48,8 +48,8 @@ Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params
 |  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
 |  FString | [**MetadataField**](#variable-metadatafield)  <br> |
 |  FString | [**NotFoundExit**](#variable-notfoundexit)  <br> |
+|  ETryllNotifyClient | [**NotifyClient**](#variable-notifyclient)   = `ETryllNotifyClient::Disabled`<br> |
 |  float | [**Threshold**](#variable-threshold)   = `0.25f`<br> |
-|  bool | [**bNotifyClient**](#variable-bnotifyclient)   = `false`<br> |
 |  bool | [**bOverrideFilter**](#variable-boverridefilter)   = `false`<br> |
 |  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
 |  bool | [**bOverrideMetadataField**](#variable-boverridemetadatafield)   = `false`<br> |
@@ -288,6 +288,23 @@ Exit taken when no label cleared the threshold. Empty string = END. Graph exit "
 
 
 
+### variable NotifyClient 
+
+```C++
+ETryllNotifyClient UTryllClassifyIntentParams::NotifyClient;
+```
+
+
+
+When to fire OnNodeEvent("intent\_classified", …). 
+
+
+        
+
+<hr>
+
+
+
 ### variable Threshold 
 
 ```C++
@@ -297,23 +314,6 @@ float UTryllClassifyIntentParams::Threshold;
 
 
 Maximum cosine distance; hits above this are treated as not\_found. 
-
-
-        
-
-<hr>
-
-
-
-### variable bNotifyClient 
-
-```C++
-bool UTryllClassifyIntentParams::bNotifyClient;
-```
-
-
-
-When true, fire OnNodeEvent("intent\_classified", …) on the found path. 
 
 
         

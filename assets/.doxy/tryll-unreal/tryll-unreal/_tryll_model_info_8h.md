@@ -31,8 +31,12 @@
 
 | Type | Name |
 | ---: | :--- |
+| struct | [**FTryllModelDependency**](struct_f_tryll_model_dependency.md) <br> |
 | struct | [**FTryllModelInfo**](struct_f_tryll_model_info.md) <br> |
 | struct | [**FTryllSamplingParams**](struct_f_tryll_sampling_params.md) <br> |
+| struct | [**FTryllTtsCapabilities**](struct_f_tryll_tts_capabilities.md) <br> |
+| struct | [**FTryllTtsInlineTag**](struct_f_tryll_tts_inline_tag.md) <br> |
+| struct | [**FTryllTtsVoicePreset**](struct_f_tryll_tts_voice_preset.md) <br> |
 
 
 ## Public Types
@@ -101,7 +105,8 @@ enum ETryllModelStatus {
     Local = 1,
     Downloading = 2,
     Loaded = 3,
-    Downloaded = 4
+    Downloaded = 4,
+    Incomplete = 5
 };
 ```
 

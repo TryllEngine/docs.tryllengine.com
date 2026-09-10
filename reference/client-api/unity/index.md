@@ -41,7 +41,15 @@ public TryllNodeParamsBase GetNodeParamsBaseline(string nodeName);
 public void AppendInteractions(
     IReadOnlyList<TryllDialogInteraction> interactions,
     Action<uint, TryllError> onComplete = null);
-public void RemoveInteractionsFromEnd(int count, Action<TryllError> onComplete = null);
+public void RemoveInteractionsFromEnd(
+    int count,
+    Action<uint, TryllError> onComplete = null);
+public void ExportDialog(
+    Action<TryllDialogSnapshot, TryllError> onComplete = null);
+public void ImportDialog(
+    TryllDialogSnapshot snapshot,
+    TryllDialogCompatibility compatibility = TryllDialogCompatibility.Strict,
+    Action<TryllDialogImportResult, TryllError> onComplete = null);
 public TryllAgentVariables Variables { get; }
 
 // Lifetime
@@ -55,6 +63,8 @@ public void Dispose();
 For Inspector-friendly wrappers with `OnParamChanged` / `OnResumed` UnityEvents, prefer [`TryllAgentComponent`](https://docs.tryllengine.com/reference/client-api/unity/tryll-agent-component.html).
 
 `AppendInteractions` / `RemoveInteractionsFromEnd` use [`TryllDialogInteraction`](https://docs.tryllengine.com/reference/client-api/unity/index.html#trylldialoginteraction) pairs — strict idle-only; see [Seed and edit dialog history](https://docs.tryllengine.com/how-to/seed-and-edit-dialog-history.html).
+
+`ExportDialog` / `ImportDialog` return a [`TryllDialogSnapshot`](https://docs.tryllengine.com/how-to/export-and-import-dialog.html) (full-fidelity replace). `ToFlatBufferBytes` / `FromFlatBufferBytes` are the canonical `TDLG` helpers — the game owns the save file. See [Save and Load Agent State](https://docs.tryllengine.com/how-to/save-and-load-agent-state.html) for multi-agent coordination, variable restoration, and save-slot handling.
 
 Ownership
 
@@ -107,7 +117,7 @@ if (!err.IsOk) Debug.LogError($"{err.Code}: {err.Message}");
 vars.AddToSet("quests_reached", "lost_amulet");
 ```
 
-Declare variables on [`TryllWorkflowAsset.Variables`](https://docs.tryllengine.com/reference/client-api/unity/tryll-workflow-asset.html) (`TryllAgentComponent.InlineVariables` still works when no asset is assigned, but is [temporary](https://docs.tryllengine.com/reference/client-api/unity/tryll-agent-component.html) alongside inline graphs); a component's `VariableOverrides` may override an asset's declared initial value per-instance (Material-Instance pattern — the Inspector shows one optional row per declaration). Play Mode override edits update the live mirror; flush remains deferred (or use **Flush Now** in the Inspector).
+Declare variables on [`TryllWorkflowAsset.Variables`](https://docs.tryllengine.com/reference/client-api/unity/tryll-workflow-asset.html); a component's `VariableOverrides` may override an asset's declared initial value per-instance (Material-Instance pattern — the Inspector shows one optional row per declaration). Play Mode override edits update the live mirror; flush remains deferred (or use **Flush Now** in the Inspector).
 
 ______________________________________________________________________
 

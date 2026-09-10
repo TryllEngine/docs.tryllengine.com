@@ -16,9 +16,12 @@
 * `#include "Tickable.h"`
 * `#include "TryllError.h"`
 * `#include "TryllGraphDescription.h"`
+* `#include "TryllIntentClassification.h"`
+* `#include "TryllModelManifest.h"`
 * `#include "TryllKvCache.h"`
 * `#include "TryllThrottle.h"`
 * `#include "TryllVariableDecl.h"`
+* `#include "TryllMemorySnapshot.h"`
 * `#include "TryllModelInfo.h"`
 * `#include "TryllVoiceInput.h"`
 * `#include "TryllRuntimeSettings.h"`
@@ -44,7 +47,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) <br>_Intent classification typed event — fired for NodeEvent event\_type="intent\_classified"._  |
+| struct | [**FTryllNodeEventKeyValue**](struct_f_tryll_node_event_key_value.md) <br>_Embedding ClassifyIntent — event\_type="intent\_classified". Subscribing swallows OnNodeEvent._  |
 | struct | [**FTryllRegisteredAgentSnapshot**](struct_f_tryll_registered_agent_snapshot.md) <br> |
 | class | [**UTryllSubsystem**](class_u_tryll_subsystem.md) <br> |
 | struct | [**FEmbeddedStorageInfo**](struct_u_tryll_subsystem_1_1_f_embedded_storage_info.md) <br> |
@@ -56,6 +59,7 @@
 | ---: | :--- |
 | typedef void(TSharedPtr&lt; [**FTryllAgent**](class_f_tryll_agent.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnAgentCreated**](#typedef-ftryllonagentcreated)  <br> |
 | typedef void([**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnCreateSession**](#typedef-ftrylloncreatesession)  <br> |
+| typedef void([**FTryllMemorySnapshot**](struct_f_tryll_memory_snapshot.md), [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnGetMemoryConsumption**](#typedef-ftryllongetmemoryconsumption)  <br> |
 | typedef void(TArray&lt; [**FTryllModelInfo**](struct_f_tryll_model_info.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnListModels**](#typedef-ftryllonlistmodels)  <br> |
 | typedef void(TSharedPtr&lt; [**FTryllVoiceInput**](class_f_tryll_voice_input.md) &gt;, [**FTryllError**](struct_f_tryll_error.md)) | [**FTryllOnVoiceInputCreated**](#typedef-ftryllonvoiceinputcreated)  <br> |
 
@@ -128,6 +132,19 @@ using FTryllOnAgentCreated = void(TSharedPtr<FTryllAgent>, FTryllError);
 
 ```C++
 using FTryllOnCreateSession = void(FTryllError);
+```
+
+
+
+
+<hr>
+
+
+
+### typedef FTryllOnGetMemoryConsumption 
+
+```C++
+using FTryllOnGetMemoryConsumption = void(FTryllMemorySnapshot, FTryllError);
 ```
 
 

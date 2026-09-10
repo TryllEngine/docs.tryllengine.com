@@ -39,9 +39,11 @@
 |  FString | [**Audience**](#variable-audience)  <br> |
 |  int32 | [**ContextSize**](#variable-contextsize)   = `0`<br> |
 |  [**FTryllSamplingParams**](struct_f_tryll_sampling_params.md) | [**DefaultSampling**](#variable-defaultsampling)  <br> |
+|  TArray&lt; [**FTryllModelDependency**](struct_f_tryll_model_dependency.md) &gt; | [**Dependencies**](#variable-dependencies)  <br> |
 |  FString | [**Engine**](#variable-engine)  <br> |
 |  TArray&lt; FString &gt; | [**Files**](#variable-files)  <br> |
 |  FString | [**HuggingFaceRepo**](#variable-huggingfacerepo)  <br> |
+|  TArray&lt; FString &gt; | [**Languages**](#variable-languages)  <br> |
 |  FString | [**LocalPath**](#variable-localpath)  <br> |
 |  FString | [**ModelType**](#variable-modeltype)  <br> |
 |  FString | [**Name**](#variable-name)  <br> |
@@ -49,7 +51,9 @@
 |  ETryllModelStatus | [**Status**](#variable-status)   = `ETryllModelStatus::Absent`<br> |
 |  FString | [**ToolCallFormat**](#variable-toolcallformat)  <br> |
 |  FString | [**ToolCallSupport**](#variable-toolcallsupport)  <br> |
+|  [**FTryllTtsCapabilities**](struct_f_tryll_tts_capabilities.md) | [**TtsCapabilities**](#variable-ttscapabilities)  <br> |
 |  bool | [**bHasDefaultSampling**](#variable-bhasdefaultsampling)   = `false`<br> |
+|  bool | [**bHasTtsCapabilities**](#variable-bhasttscapabilities)   = `false`<br> |
 
 
 
@@ -157,6 +161,23 @@ Recommended sampling parameters; valid only when bHasDefaultSampling.
 
 
 
+### variable Dependencies 
+
+```C++
+TArray<FTryllModelDependency> FTryllModelInfo::Dependencies;
+```
+
+
+
+Shared-asset dependencies of this model. Empty when the variant has none. 
+
+
+        
+
+<hr>
+
+
+
 ### variable Engine 
 
 ```C++
@@ -200,6 +221,27 @@ FString FTryllModelInfo::HuggingFaceRepo;
 
 
 HuggingFace repo id (e.g. "Qwen/Qwen2.5-0.5B-Instruct-GGUF") or empty for local-only models. 
+
+
+        
+
+<hr>
+
+
+
+### variable Languages 
+
+```C++
+TArray<FString> FTryllModelInfo::Languages;
+```
+
+
+
+Languages this model can handle, as lowercase BCP-47 primary language subtags ("en", "de", ...). Read this to build a language menu instead of hardcoding one - it is how you discover that voice cloning is English-only, or which STT models cover the locale you want.
+
+
+Empty means _undeclared_, not "supports nothing": treat it as "no
+capability information" and keep offering the model. 
 
 
         
@@ -327,6 +369,23 @@ Advisory catalog-declared tool-calling capability for language models: "supporte
 
 
 
+### variable TtsCapabilities 
+
+```C++
+FTryllTtsCapabilities FTryllModelInfo::TtsCapabilities;
+```
+
+
+
+Catalog TTS capabilities; valid only when bHasTtsCapabilities. 
+
+
+        
+
+<hr>
+
+
+
 ### variable bHasDefaultSampling 
 
 ```C++
@@ -336,6 +395,23 @@ bool FTryllModelInfo::bHasDefaultSampling;
 
 
 True when the catalog supplies explicit default sampling parameters. 
+
+
+        
+
+<hr>
+
+
+
+### variable bHasTtsCapabilities 
+
+```C++
+bool FTryllModelInfo::bHasTtsCapabilities;
+```
+
+
+
+True when the catalog advertised structured TTS capabilities. 
 
 
         

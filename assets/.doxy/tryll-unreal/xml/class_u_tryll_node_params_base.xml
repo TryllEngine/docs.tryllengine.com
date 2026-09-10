@@ -109,7 +109,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Dropdown options for fields tagged with FlatBuffers <computeroutput>(exit)</computeroutput>. Walks the Outer chain to find the enclosing <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> (typically owned by a <ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref> or <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref>), then returns: [&quot;&quot;] + node names from that graph.</para>
+<para>Dropdown options for fields tagged with FlatBuffers <computeroutput>(exit)</computeroutput>. Walks the Outer chain to find the enclosing <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> (typically owned by a <ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref>), then returns: [&quot;&quot;] + node names from that graph.</para>
 <para>The leading empty string represents END (turn finishes after this node); Unreal&apos;s Details panel renders it as a blank entry in the dropdown.</para>
 <para>Bound via UPROPERTY meta=(GetOptions=&quot;GetExitTargetOptions&quot;) on every codegen-emitted exit field. When the params UObject is not part of an editable graph (orphaned / runtime-constructed), returns just [&quot;&quot;]. </para>
         </detaileddescription>
@@ -147,7 +147,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Walks the Outer chain from <computeroutput>Obj</computeroutput> to locate the enclosing <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> (a <ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref>&apos;s Graph or a <ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref>&apos;s InlineGraphDescription). Returns nullptr when <computeroutput>Obj</computeroutput> is not part of an editable graph (orphaned / runtime- constructed). Shared by GetExitTargetOptions and the editor-only slot-input dropdown / rename-propagation tooling (TryllClientEditor). </para>
+<para>Walks the Outer chain from <computeroutput>Obj</computeroutput> to locate the enclosing <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> (a <ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref>&apos;s Graph). Returns nullptr when <computeroutput>Obj</computeroutput> is not part of an editable graph (orphaned / runtime-constructed). Shared by GetExitTargetOptions and the editor-only slot-input dropdown / rename-propagation tooling (TryllClientEditor). </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

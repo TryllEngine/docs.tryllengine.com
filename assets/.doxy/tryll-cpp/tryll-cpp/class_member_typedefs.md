@@ -16,6 +16,7 @@
 ## i
 
 * **IntentClassifiedCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
+* **IntentLlmClassifiedCallback** ([**Tryll::Client::AgentProxy**](class_tryll_1_1_client_1_1_agent_proxy.md))
 
 
 ## n

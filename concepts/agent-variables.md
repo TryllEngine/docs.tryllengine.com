@@ -14,7 +14,7 @@ Variables are declared **completely** at `CreateAgent` time — the full set of 
 
 Five types are supported: `int` (64-bit), `float` (64-bit), `string`, `bool`, and `set<string>`.
 
-Declare on the workflow asset (`TryllWorkflowAsset.Variables`). The component's `InlineVariables` still works when no asset is assigned, but it is temporary and will be removed alongside inline graphs — prefer the asset:
+Declare on the workflow asset (`TryllWorkflowAsset.Variables`):
 
 ```
 // In the Inspector: TryllWorkflowAsset → Variables →
@@ -27,7 +27,7 @@ A `TryllAgentComponent` may override an asset's declared **initial value** (not 
 
 While the component has a live agent (Play Mode or the Editor **Tryll Chat** window), changing an override updates the live `Agent.Variables` mirror immediately; the server sees the new value on the next deferred flush (before `SendMessage` / `Resume` / `ChangeParams`), or immediately if you click **Flush Now** in the Inspector.
 
-Declare on the workflow asset (`UTryllWorkflowAsset::Variables`). The component's `InlineVariables` still works when no asset is assigned, but it is temporary and will be removed alongside inline graphs — prefer the asset. A component's `VariableOverrides` follows the same Material-Instance pattern as Unity: the Details panel lists every declared variable as an optional row (`[override] name [value]`). Stale/duplicate serialized entries appear in a warning group and are ignored at `CreateAgent`.
+Declare on the workflow asset (`UTryllWorkflowAsset::Variables`). A component's `VariableOverrides` follows the same Material-Instance pattern as Unity: the Details panel lists every declared variable as an optional row (`[override] name [value]`). Stale/duplicate serialized entries appear in a warning group and are ignored at `CreateAgent`.
 
 While the component has a live agent (PIE, or an editor-preview agent attached by **Window → Tryll → Tryll Chat**), changing an override updates the local `FTryllAgentVariables` mirror immediately. The wire flush stays deferred until the next `SendMessage` / `Resume` / `ChangeParams`, or run **Flush Now** under *Live Agent — Variables*. Unchecking an override assigns the **workflow declaration default** (not `Reset()`, which would restore the CreateAgent-time merged initial).
 

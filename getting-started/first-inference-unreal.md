@@ -78,16 +78,14 @@ ______________________________________________________________________
 
 Open **Edit → Project Settings → Plugins → Tryll Client** and set:
 
-| Setting                                                    | Value                               | Why                                                                                                                                                 |
-| ---------------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Auto Launch Server**                                     | `true` (default)                    | Subsystem spawns the bundled server on `Initialize`. Uncheck to run a server yourself.                                                              |
-| **Auto Connect**                                           | `true` (default)                    | Subsystem opens the session on `Initialize` (connect-retry covers server startup). Uncheck to call `Connect` yourself.                              |
-| **Auto Create Session**                                    | `true` (default)                    | On connect, the subsystem creates the session from the engine fields below — no Blueprint wiring needed. Uncheck to call `Create Session` yourself. |
-| **Engine**                                                 | `LlamaCpp`                          | LLM backend for `Generate` / tool-call nodes.                                                                                                       |
-| **Stt Engine** / **Tts Engine**                            | `Mock` here; `SherpaOnnx` for voice | Speech-to-text / text-to-speech backends. Leave `Mock` for this text-only tutorial.                                                                 |
-| **Embedding Engine**                                       | `Mock`                              | Embedding backend for string-storage / RAG nodes.                                                                                                   |
-| **Connect Max Attempts** / **Connect Retry Delay Seconds** | defaults                            | Subsystem retries while the freshly-spawned server warms up.                                                                                        |
-| **Game Name**                                              | e.g. `my-game`                      | Short slug sent to the server on every session for telemetry grouping. Please fill it.                                                              |
+| Setting                                                    | Value              | Why                                                                                                                                                   |
+| ---------------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Auto Launch Server**                                     | `true` (default)   | Subsystem spawns the bundled server on `Initialize`. Uncheck to run a server yourself.                                                                |
+| **Llama.cpp backend**                                      | `Vulkan` (default) | Portable GPU API. Set `Auto` to prefer CUDA on NVIDIA (also ships CUDA DLLs in a packaged build).                                                     |
+| **Auto Connect**                                           | `true` (default)   | Subsystem opens the session on `Initialize` (connect-retry covers server startup). Uncheck to call `Connect` yourself.                                |
+| **Auto Create Session**                                    | `true` (default)   | On connect, the subsystem creates the session from the models you registered — no Blueprint wiring needed. Uncheck to call `Create Session` yourself. |
+| **Connect Max Attempts** / **Connect Retry Delay Seconds** | defaults           | Subsystem retries while the freshly-spawned server warms up.                                                                                          |
+| **Game Name**                                              | e.g. `my-game`     | Short slug sent to the server on every session for telemetry grouping. Please fill it.                                                                |
 
 Settings are persisted to `Config/DefaultGame.ini` under `[/Script/TryllClient.TryllRuntimeSettings]`.
 
