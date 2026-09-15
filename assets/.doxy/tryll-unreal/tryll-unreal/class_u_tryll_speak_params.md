@@ -1,0 +1,457 @@
+
+
+# Class UTryllSpeakParams
+
+
+
+[**ClassList**](annotated.md) **>** [**UTryllSpeakParams**](class_u_tryll_speak_params.md)
+
+
+
+[More...](#detailed-description)
+
+* `#include <TryllSpeakParams.h>`
+
+
+
+Inherits the following classes: [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Public Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  FString | [**DefaultExit**](#variable-defaultexit)  <br> |
+|  [**FTryllSlotInput**](struct_f_tryll_slot_input.md) | [**Input**](#variable-input)  <br> |
+|  int32 | [**MinSentenceChars**](#variable-minsentencechars)   = `12`<br> |
+|  int32 | [**SpeakerId**](#variable-speakerid)   = `0`<br> |
+|  float | [**Speed**](#variable-speed)   = `1.0f`<br> |
+|  FString | [**TtsDeliveryInstruction**](#variable-ttsdeliveryinstruction)  <br> |
+|  FString | [**TtsLang**](#variable-ttslang)  <br> |
+|  [**FTryllModelName**](struct_f_tryll_model_name.md) | [**TtsModelName**](#variable-ttsmodelname)  <br> |
+|  [**FTryllStoragePath**](struct_f_tryll_storage_path.md) | [**TtsVoice**](#variable-ttsvoice)  <br> |
+|  FString | [**TtsVoiceDescription**](#variable-ttsvoicedescription)  <br> |
+|  bool | [**bOverrideInput**](#variable-boverrideinput)   = `false`<br> |
+|  bool | [**bOverrideTtsDeliveryInstruction**](#variable-boverridettsdeliveryinstruction)   = `false`<br> |
+|  bool | [**bOverrideTtsLang**](#variable-boverridettslang)   = `false`<br> |
+|  bool | [**bOverrideTtsModelName**](#variable-boverridettsmodelname)   = `false`<br> |
+|  bool | [**bOverrideTtsVoiceDescription**](#variable-boverridettsvoicedescription)   = `false`<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+| virtual ETryllNodeType | [**GetNodeType**](#function-getnodetype) () override const<br> |
+| virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, Tryll::NodeParams::NodeParams & OutType) override const<br> |
+
+
+## Public Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual TArray&lt; FString &gt; | [**GetExitTargetOptions**](class_u_tryll_node_params_base.md#function-getexittargetoptions) () const<br> |
+| virtual ETryllNodeType | [**GetNodeType**](class_u_tryll_node_params_base.md#function-getnodetype) () const<br> |
+|  FString | [**GetOwnerNodeName**](class_u_tryll_node_params_base.md#function-getownernodename) () const<br> |
+| virtual flatbuffers::Offset&lt; void &gt; | [**Pack**](class_u_tryll_node_params_base.md#function-pack) (flatbuffers::FlatBufferBuilder & Fbb, ::Tryll::NodeParams::NodeParams & OutType) const<br> |
+|  ETryllNodeType return | [**static\_cast**](class_u_tryll_node_params_base.md#function-static_cast) (0) <br> |
+
+
+
+
+## Public Static Functions inherited from UTryllNodeParamsBase
+
+See [UTryllNodeParamsBase](class_u_tryll_node_params_base.md)
+
+| Type | Name |
+| ---: | :--- |
+|  const [**FTryllGraphDescription**](struct_f_tryll_graph_description.md) \* | [**FindEnclosingGraph**](class_u_tryll_node_params_base.md#function-findenclosinggraph) (const UObject \* Obj) <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Detailed Description
+
+
+Standalone TTS-only node. Voices its `input`-resolved slot (any upstream node's output — Generate, CannedResponse, etc. — or `user_message` itself), segments it into sentences, and synthesizes each on a dedicated TTS strand, emitting PCM frames via OnTtsAudio callbacks. Unlike GenerateAndSpeak it runs no LLM inference, so it can voice canned/scripted lines or any upstream-produced answer without paying for a generation pass. 
+
+
+    
+## Public Attributes Documentation
+
+
+
+
+### variable DefaultExit 
+
+```C++
+FString UTryllSpeakParams::DefaultExit;
+```
+
+
+
+Default exit target — routes here after synthesis completes. Empty string = END. Graph exit "default" — target node name; empty = END. 
+
+
+        
+
+<hr>
+
+
+
+### variable Input 
+
+```C++
+FTryllSlotInput UTryllSpeakParams::Input;
+```
+
+
+
+Upstream inter-node slot this field consumes. Empty = context default. 
+
+
+        
+
+<hr>
+
+
+
+### variable MinSentenceChars 
+
+```C++
+int32 UTryllSpeakParams::MinSentenceChars;
+```
+
+
+
+Minimum characters before a sentence boundary fires. Lower values reduce first-utterance latency at the cost of more, smaller TTS calls. 
+
+
+        
+
+<hr>
+
+
+
+### variable SpeakerId 
+
+```C++
+int32 UTryllSpeakParams::SpeakerId;
+```
+
+
+
+TTS speaker / voice index (default 0). Valid range is 0 to the model's speaker count minus 1 — the shipped Supertonic 3 bundle has 10 voice styles (0–9); Pocket TTS is single-speaker, so it must stay 0 there (pick a Pocket voice with tts\_voice instead). Agent creation fails with an out-of-range error for values the model cannot satisfy. 
+
+
+        
+
+<hr>
+
+
+
+### variable Speed 
+
+```C++
+float UTryllSpeakParams::Speed;
+```
+
+
+
+TTS speech-rate multiplier. 1.0 = native speed. 
+
+
+        
+
+<hr>
+
+
+
+### variable TtsDeliveryInstruction 
+
+```C++
+FString UTryllSpeakParams::TtsDeliveryInstruction;
+```
+
+
+
+
+<hr>
+
+
+
+### variable TtsLang 
+
+```C++
+FString UTryllSpeakParams::TtsLang;
+```
+
+
+
+
+<hr>
+
+
+
+### variable TtsModelName 
+
+```C++
+FTryllModelName UTryllSpeakParams::TtsModelName;
+```
+
+
+
+
+<hr>
+
+
+
+### variable TtsVoice 
+
+```C++
+FTryllStoragePath UTryllSpeakParams::TtsVoice;
+```
+
+
+
+Reference-voice WAV for zero-shot voice-cloning families (Pocket TTS): a path relative to the session storage root pointing at a 10–20 s clean mono recording of the target voice. Empty = the model's default voice. Ignored by fixed-voice families (use speaker\_id there). 
+
+
+        
+
+<hr>
+
+
+
+### variable TtsVoiceDescription 
+
+```C++
+FString UTryllSpeakParams::TtsVoiceDescription;
+```
+
+
+
+
+<hr>
+
+
+
+### variable bOverrideInput 
+
+```C++
+bool UTryllSpeakParams::bOverrideInput;
+```
+
+
+
+Slot name this node voices. Empty = "user\_message" (same default as every other input-bearing node). Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsDeliveryInstruction 
+
+```C++
+bool UTryllSpeakParams::bOverrideTtsDeliveryInstruction;
+```
+
+
+
+Natural-language sustained delivery direction for this synthesis call. Empty = neutral / model default. Set to true to override the inherited TtsDeliveryInstruction value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsLang 
+
+```C++
+bool UTryllSpeakParams::bOverrideTtsLang;
+```
+
+
+
+TTS language hint for multilingual models that select the language per call (e.g. Supertonic 3: "en", "de", "fr", …). Resolution order: this param, then the session locale (CreateSessionRequest.locale), then the model's catalog default. Set it only to override the session — one character who keeps speaking French in a German playthrough. For a whole-game language switch, set the session locale instead and leave this empty: it reaches every agent and every node with no per-node mutation. Ignored by families whose language is fixed by the model itself (e.g. Pocket TTS per-language models). Set to true to override the inherited TtsLang value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsModelName 
+
+```C++
+bool UTryllSpeakParams::bOverrideTtsModelName;
+```
+
+
+
+TTS model catalog name. Optional — when empty the server uses the first available TTS voice in the model catalog. Set it to pick a specific voice. Set to true to override the inherited TtsModelName value. 
+
+
+        
+
+<hr>
+
+
+
+### variable bOverrideTtsVoiceDescription 
+
+```C++
+bool UTryllSpeakParams::bOverrideTtsVoiceDescription;
+```
+
+
+
+Natural-language stable voice identity: age, accent, pitch, timbre and baseline pacing. Empty = use speaker\_id / catalog default. Appended after default\_exit so existing FlatBuffers field IDs do not move. Set to true to override the inherited TtsVoiceDescription value. 
+
+
+        
+
+<hr>
+## Public Functions Documentation
+
+
+
+
+### function GetNodeType 
+
+```C++
+inline virtual ETryllNodeType UTryllSpeakParams::GetNodeType () override const
+```
+
+
+
+Implements [*UTryllNodeParamsBase::GetNodeType*](class_u_tryll_node_params_base.md#function-getnodetype)
+
+
+<hr>
+
+
+
+### function Pack 
+
+```C++
+virtual flatbuffers::Offset< void > UTryllSpeakParams::Pack (
+    flatbuffers::FlatBufferBuilder & Fbb,
+    Tryll::NodeParams::NodeParams & OutType
+) override const
+```
+
+
+
+Implements [*UTryllNodeParamsBase::Pack*](class_u_tryll_node_params_base.md#function-pack)
+
+
+<hr>
+
+------------------------------
+The documentation for this class was generated from the following file `C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSpeakParams.h`
+

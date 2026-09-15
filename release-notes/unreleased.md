@@ -1,0 +1,8 @@
+# Unreleased
+
+- **A broken `models.json` stops the server.** Catalog load failure (missing file, parse error, retired `device_preference`) is no longer downgraded to a warning and an empty catalog. `ServerContext` construction fails and the process exits non-zero, the same way a broken `server-config.json` already does.
+- **Unity/Unreal: an oversized outbound frame fails that request, not the connection.** `WriteFrame` now distinguishes `TooLarge` from `IoError`. Import of a snapshot past `MaxDialogSnapshotBytes` returns `3021 DialogSnapshotTooLarge` locally; other oversized commands return `5003 FrameTooLarge`. The session stays up.
+- **Unity/Unreal: an empty send is not a turn.** `SendMessage("")` is a no-op. The pending-message queue treats empty as "nothing queued", so a leftover empty string cannot go on the wire and trip `SendMessageRequest: missing required field 'text'`.
+- **Unity: code-created agents can receive their own answers.** `TryllAgent` now has public last-writer-wins setters — `SetOnAnswerText`, `SetOnTurnComplete`, `SetOnError`, `SetOnTtsAudioFormat`, `SetOnTtsAudio` — matching C++ / Unreal / Python. Register them before `SendMessage`; pass `null` to clear. [`TryllSpeaker.HandleFormat`](https://docs.tryllengine.com/reference/client-api/unity/tryll-speaker.html) / `HandleAudio` are public so a code-created agent can wire playback without a `TryllAgentComponent`. See [TryllAgent](https://docs.tryllengine.com/reference/client-api/unity/index.html#tryllagent).
+
+The most recent shipped version is [v0.7.0](https://docs.tryllengine.com/release-notes/v0.7.0.html).

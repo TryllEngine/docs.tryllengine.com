@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_f_tryll_agent_variables" kind="class" language="C++" prot="public">
+    <compoundname>FTryllAgentVariables</compoundname>
+    <includes refid="_tryll_agent_variables_8h" local="no">TryllAgentVariables.h</includes>
+    <innerclass refid="struct_f_tryll_agent_variables_1_1_f_pending_entry" prot="private">FTryllAgentVariables::FPendingEntry</innerclass>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1a8cc0cc3984f2058def2be2455ca75d94" prot="public" static="no" mutable="no">
+        <type>TFunction&lt; void(TArray&lt; <ref refid="struct_f_tryll_variable_update" kindref="compound">FTryllVariableUpdate</ref> &gt;, TFunction&lt; void(const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;)&gt;)&gt;</type>
+        <definition>TFunction&lt;void(TArray&lt;FTryllVariableUpdate&gt;, TFunction&lt;void(const FTryllError&amp;)&gt;)&gt; FTryllAgentVariables::TestSendUpdate</definition>
+        <argsstring></argsstring>
+        <name>TestSendUpdate</name>
+        <qualifiedname>FTryllAgentVariables::TestSendUpdate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Test hook: when set, FlushIfDirty invokes this instead of the live agent wire send. Signature is (WireBatch, OnComplete). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="94" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1a7b85ec5c8e863d595c497b3677d09cd8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> *</type>
+        <definition>FTryllAgent* FTryllAgentVariables::Agent</definition>
+        <argsstring></argsstring>
+        <name>Agent</name>
+        <qualifiedname>FTryllAgentVariables::Agent</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="97" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1adc69806590baab34198eb69e04da8644" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, ETryllVariableType &gt;</type>
+        <definition>TMap&lt;FString, ETryllVariableType&gt; FTryllAgentVariables::DeclaredTypes</definition>
+        <argsstring></argsstring>
+        <name>DeclaredTypes</name>
+        <qualifiedname>FTryllAgentVariables::DeclaredTypes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="99" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1a8215043bb01ede01fe2ebc5435319075" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt;</type>
+        <definition>TMap&lt;FString, FTryllVariableDecl&gt; FTryllAgentVariables::Initial</definition>
+        <argsstring></argsstring>
+        <name>Initial</name>
+        <qualifiedname>FTryllAgentVariables::Initial</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="100" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1a983c2fc505d0eca03229647eea149adb" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt;</type>
+        <definition>TMap&lt;FString, FTryllVariableDecl&gt; FTryllAgentVariables::Values</definition>
+        <argsstring></argsstring>
+        <name>Values</name>
+        <qualifiedname>FTryllAgentVariables::Values</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="101" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1acf4d8c1855bd7146a8f5d7312b1d1f98" prot="private" static="no" mutable="no">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt;FString&gt; FTryllAgentVariables::PendingOrder</definition>
+        <argsstring></argsstring>
+        <name>PendingOrder</name>
+        <qualifiedname>FTryllAgentVariables::PendingOrder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="111" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1a8cfd02529b03cd668fce19a8fca9233f" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, FPendingEntry &gt;</type>
+        <definition>TMap&lt;FString, FPendingEntry&gt; FTryllAgentVariables::PendingByName</definition>
+        <argsstring></argsstring>
+        <name>PendingByName</name>
+        <qualifiedname>FTryllAgentVariables::PendingByName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="112" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1ab31c7083f728aa7056353320d3042bab" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, int32 &gt;</type>
+        <definition>TMap&lt;FString, int32&gt; FTryllAgentVariables::InFlightRefCounts</definition>
+        <argsstring></argsstring>
+        <name>InFlightRefCounts</name>
+        <qualifiedname>FTryllAgentVariables::InFlightRefCounts</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="118" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_agent_variables_1aefc3988d3e4fce58a2b76b231f28be3e" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, int32 &gt;</type>
+        <definition>TMap&lt;FString, int32&gt; FTryllAgentVariables::MutationSeq</definition>
+        <argsstring></argsstring>
+        <name>MutationSeq</name>
+        <qualifiedname>FTryllAgentVariables::MutationSeq</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="119" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1ab2da0d6b92d28887e2b0dbf5a18adb7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllAgentVariables::FTryllAgentVariables</definition>
+        <argsstring>(FTryllAgent *InAgent, const TArray&lt; FTryllVariableDecl &gt; &amp;Declared)</argsstring>
+        <name>FTryllAgentVariables</name>
+        <qualifiedname>FTryllAgentVariables::FTryllAgentVariables</qualifiedname>
+        <param>
+          <type><ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> *</type>
+          <declname>InAgent</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt; &amp;</type>
+          <declname>Declared</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a49a49bda2c02711b36e72f33eb293ccb" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllAgentVariables::IsDeclared</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>IsDeclared</name>
+        <qualifiedname>FTryllAgentVariables::IsDeclared</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="43" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a2fa1f85f755e4c325429e6a3a8d25990" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TOptional&lt; ETryllVariableType &gt;</type>
+        <definition>TOptional&lt; ETryllVariableType &gt; FTryllAgentVariables::DeclaredType</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>DeclaredType</name>
+        <qualifiedname>FTryllAgentVariables::DeclaredType</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="44" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1abcaf2bda7113a32e9f089017cdf6f52a" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllAgentVariables::IsDirty</definition>
+        <argsstring>() const</argsstring>
+        <name>IsDirty</name>
+        <qualifiedname>FTryllAgentVariables::IsDirty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when one or more mutations are staged and not yet flushed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="47" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1aca14a39f113b3f7b127f813fbcd9a6c0" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TMap&lt; FString, <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt;</type>
+        <definition>TMap&lt; FString, FTryllVariableDecl &gt; FTryllAgentVariables::Snapshot</definition>
+        <argsstring>() const</argsstring>
+        <name>Snapshot</name>
+        <qualifiedname>FTryllAgentVariables::Snapshot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy of every declared variable&apos;s current local value, keyed by name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="50" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a09f63b5459ce6eceeb02e76bcaa0453f" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int64</type>
+        <definition>int64 FTryllAgentVariables::GetInt</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>GetInt</name>
+        <qualifiedname>FTryllAgentVariables::GetInt</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="52" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a527af6c40aad8f4c656830ade6f67569" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double FTryllAgentVariables::GetFloat</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>GetFloat</name>
+        <qualifiedname>FTryllAgentVariables::GetFloat</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="53" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1abe45f08ab4a501ae71930ddde3a4901e" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>FString FTryllAgentVariables::GetString</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>GetString</name>
+        <qualifiedname>FTryllAgentVariables::GetString</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="54" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a6af3c6f59cd70ec984ea55f2f2165e57" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllAgentVariables::GetBool</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>GetBool</name>
+        <qualifiedname>FTryllAgentVariables::GetBool</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="55" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1af861415b83a3128ffc2845ee363615dc" prot="public" static="no" nodiscard="yes" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt; FString &gt; FTryllAgentVariables::GetStringSet</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>GetStringSet</name>
+        <qualifiedname>FTryllAgentVariables::GetStringSet</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="56" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1ab92ccdf4c75df2b1452936db74130a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::SetInt</definition>
+        <argsstring>(const FString &amp;Name, int64 Value)</argsstring>
+        <name>SetInt</name>
+        <qualifiedname>FTryllAgentVariables::SetInt</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>int64</type>
+          <declname>Value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="60" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a2d0ec9e76ba42d6ecf22824c2c2d95b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::SetFloat</definition>
+        <argsstring>(const FString &amp;Name, double Value)</argsstring>
+        <name>SetFloat</name>
+        <qualifiedname>FTryllAgentVariables::SetFloat</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>Value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="61" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a90c8064f5f8478224ed22ff296f77a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::SetString</definition>
+        <argsstring>(const FString &amp;Name, const FString &amp;Value)</argsstring>
+        <name>SetString</name>
+        <qualifiedname>FTryllAgentVariables::SetString</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="62" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1ab6a038d800d9e57e1b49b0590aecdd74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::SetBool</definition>
+        <argsstring>(const FString &amp;Name, bool bValue)</argsstring>
+        <name>SetBool</name>
+        <qualifiedname>FTryllAgentVariables::SetBool</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>bValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="63" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a9c457e3d33f8805a7c8a8355e495f26b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::SetStringSet</definition>
+        <argsstring>(const FString &amp;Name, const TArray&lt; FString &gt; &amp;Values)</argsstring>
+        <name>SetStringSet</name>
+        <qualifiedname>FTryllAgentVariables::SetStringSet</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>Values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="64" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a8e58c9e121f7d6848668d80c51f4b93a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::AddToSet</definition>
+        <argsstring>(const FString &amp;Name, const FString &amp;Element)</argsstring>
+        <name>AddToSet</name>
+        <qualifiedname>FTryllAgentVariables::AddToSet</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Idempotent — a no-op success if Element is already present. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="67" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1aed1a0effe1d26fe95088d357fa712fee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::RemoveFromSet</definition>
+        <argsstring>(const FString &amp;Name, const FString &amp;Element)</argsstring>
+        <name>RemoveFromSet</name>
+        <qualifiedname>FTryllAgentVariables::RemoveFromSet</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Idempotent — a no-op success if Element is already absent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="69" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a024e98348736313896e6ab9b7ddd6852" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::Reset</definition>
+        <argsstring>(const FString &amp;Name)</argsstring>
+        <name>Reset</name>
+        <qualifiedname>FTryllAgentVariables::Reset</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Restores the CreateAgent-time initial value for Name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="71" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1ad154263195444994406d845171635dda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllAgentVariables::FlushIfDirty</definition>
+        <argsstring>(TFunction&lt; void(const FTryllError &amp;)&gt; OnComplete=nullptr, uint64 CarrierRequestId=0)</argsstring>
+        <name>FlushIfDirty</name>
+        <qualifiedname>FTryllAgentVariables::FlushIfDirty</qualifiedname>
+        <param>
+          <type>TFunction&lt; void(const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;)&gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>uint64</type>
+          <declname>CarrierRequestId</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send every staged mutation as one batched UpdateAgentVariablesRequest. Called automatically at the top of <ref refid="class_f_tryll_agent_1a64957405d4f07552440502df56034ed9" kindref="member">FTryllAgent::SendMessage</ref>/Resume/ ChangeParams — deliberately NOT before Cancel. No-op (invokes OnComplete with Ok) when nothing is staged. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="81" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1aa665d7a5c70431e4ecda85bd0cee38aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllAgentVariables::SyncFromServerAsync</definition>
+        <argsstring>(TArray&lt; FString &gt; Names={}, TFunction&lt; void(const FTryllError &amp;)&gt; OnComplete=nullptr)</argsstring>
+        <name>SyncFromServerAsync</name>
+        <qualifiedname>FTryllAgentVariables::SyncFromServerAsync</qualifiedname>
+        <param>
+          <type>TArray&lt; FString &gt;</type>
+          <declname>Names</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>TFunction&lt; void(const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;)&gt;</type>
+          <declname>OnComplete</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Refresh the local mirror from the server&apos;s authoritative current values. Names with a locally newer (staged or in-flight) write are skipped. Empty Names = every declared variable. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="88" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a3e6f0abedc8a35992c6414c27564863e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>FTryllError FTryllAgentVariables::RequireType</definition>
+        <argsstring>(const FString &amp;Name, ETryllVariableType Expected) const</argsstring>
+        <name>RequireType</name>
+        <qualifiedname>FTryllAgentVariables::RequireType</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>ETryllVariableType</type>
+          <declname>Expected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="121" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a512fed861f601a57be19f0692d447c1f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>FPendingEntry &amp;</type>
+        <definition>FPendingEntry &amp; FTryllAgentVariables::TouchPending</definition>
+        <argsstring>(const FString &amp;Name)</argsstring>
+        <name>TouchPending</name>
+        <qualifiedname>FTryllAgentVariables::TouchPending</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="125" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a7dbdd6319cae9206b5d92778cfc23fd8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllAgentVariables::MarkWholesale</definition>
+        <argsstring>(const FString &amp;Name, const TCHAR *Mode)</argsstring>
+        <name>MarkWholesale</name>
+        <qualifiedname>FTryllAgentVariables::MarkWholesale</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const TCHAR *</type>
+          <declname>Mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="126" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a1d6a304c1358996f2ec33e8f644164df" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; <ref refid="struct_f_tryll_variable_update" kindref="compound">FTryllVariableUpdate</ref> &gt;</type>
+        <definition>TArray&lt; FTryllVariableUpdate &gt; FTryllAgentVariables::BuildWireBatch</definition>
+        <argsstring>() const</argsstring>
+        <name>BuildWireBatch</name>
+        <qualifiedname>FTryllAgentVariables::BuildWireBatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="127" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a83f1490cdf3099c7af909ceac10ebaf9" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllAgentVariables::IsBatchCurrent</definition>
+        <argsstring>(const FString &amp;Name, const TMap&lt; FString, int32 &gt; &amp;BatchSeq) const</argsstring>
+        <name>IsBatchCurrent</name>
+        <qualifiedname>FTryllAgentVariables::IsBatchCurrent</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <param>
+          <type>const TMap&lt; FString, int32 &gt; &amp;</type>
+          <declname>BatchSeq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="128" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1a9e1b5407aba7ad7a607c6cc4ad7baba1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllAgentVariables::HandleFlushResult</definition>
+        <argsstring>(const FTryllError &amp;Error, TArray&lt; FString &gt; BatchOrder, TMap&lt; FString, FPendingEntry &gt; BatchByName, TMap&lt; FString, int32 &gt; BatchSeq)</argsstring>
+        <name>HandleFlushResult</name>
+        <qualifiedname>FTryllAgentVariables::HandleFlushResult</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+          <declname>Error</declname>
+        </param>
+        <param>
+          <type>TArray&lt; FString &gt;</type>
+          <declname>BatchOrder</declname>
+        </param>
+        <param>
+          <type>TMap&lt; FString, FPendingEntry &gt;</type>
+          <declname>BatchByName</declname>
+        </param>
+        <param>
+          <type>TMap&lt; FString, int32 &gt;</type>
+          <declname>BatchSeq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="129" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1ae995d54f0cbbe12f75aabcd8d8d0baad" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref></type>
+        <definition>static FTryllError FTryllAgentVariables::UnknownVariableError</definition>
+        <argsstring>(const FString &amp;Name)</argsstring>
+        <name>UnknownVariableError</name>
+        <qualifiedname>FTryllAgentVariables::UnknownVariableError</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="122" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_agent_variables_1af30ee3bed98232923baf7516d61cf5f6" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>static TArray&lt; FString &gt; FTryllAgentVariables::NormalizeSet</definition>
+        <argsstring>(const TArray&lt; FString &gt; &amp;In)</argsstring>
+        <name>NormalizeSet</name>
+        <qualifiedname>FTryllAgentVariables::NormalizeSet</qualifiedname>
+        <param>
+          <type>const TArray&lt; FString &gt; &amp;</type>
+          <declname>In</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="123" column="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Local mirror of one agent&apos;s declared per-agent Variables (C++ surface). Obtained via <ref refid="class_f_tryll_agent_1acbccf3e515bcb82ee55d7b7e087bbc68" kindref="member">FTryllAgent::GetVariables()</ref>. Blueprint code uses the <ref refid="class_u_tryll_agent_variables" kindref="compound">UTryllAgentVariables</ref> wrapper (<ref refid="class_u_tryll_agent_component_1a048419ac43d7d4b1d67f1b19c8d2ad63" kindref="member">UTryllAgentComponent::GetVariables()</ref>) instead. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" line="36" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentVariables.h" bodystart="37" bodyend="134"/>
+    <listofallmembers>
+      <member refid="class_f_tryll_agent_variables_1a8e58c9e121f7d6848668d80c51f4b93a" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>AddToSet</name></member>
+      <member refid="class_f_tryll_agent_variables_1a7b85ec5c8e863d595c497b3677d09cd8" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>Agent</name></member>
+      <member refid="class_f_tryll_agent_variables_1a1d6a304c1358996f2ec33e8f644164df" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>BuildWireBatch</name></member>
+      <member refid="class_f_tryll_agent_variables_1a2fa1f85f755e4c325429e6a3a8d25990" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>DeclaredType</name></member>
+      <member refid="class_f_tryll_agent_variables_1adc69806590baab34198eb69e04da8644" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>DeclaredTypes</name></member>
+      <member refid="class_f_tryll_agent_variables_1ad154263195444994406d845171635dda" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>FlushIfDirty</name></member>
+      <member refid="class_f_tryll_agent_variables_1ab2da0d6b92d28887e2b0dbf5a18adb7d" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>FTryllAgentVariables</name></member>
+      <member refid="class_f_tryll_agent_variables_1a6af3c6f59cd70ec984ea55f2f2165e57" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>GetBool</name></member>
+      <member refid="class_f_tryll_agent_variables_1a527af6c40aad8f4c656830ade6f67569" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>GetFloat</name></member>
+      <member refid="class_f_tryll_agent_variables_1a09f63b5459ce6eceeb02e76bcaa0453f" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>GetInt</name></member>
+      <member refid="class_f_tryll_agent_variables_1abe45f08ab4a501ae71930ddde3a4901e" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>GetString</name></member>
+      <member refid="class_f_tryll_agent_variables_1af861415b83a3128ffc2845ee363615dc" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>GetStringSet</name></member>
+      <member refid="class_f_tryll_agent_variables_1a9e1b5407aba7ad7a607c6cc4ad7baba1" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>HandleFlushResult</name></member>
+      <member refid="class_f_tryll_agent_variables_1ab31c7083f728aa7056353320d3042bab" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>InFlightRefCounts</name></member>
+      <member refid="class_f_tryll_agent_variables_1a8215043bb01ede01fe2ebc5435319075" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>Initial</name></member>
+      <member refid="class_f_tryll_agent_variables_1a83f1490cdf3099c7af909ceac10ebaf9" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>IsBatchCurrent</name></member>
+      <member refid="class_f_tryll_agent_variables_1a49a49bda2c02711b36e72f33eb293ccb" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>IsDeclared</name></member>
+      <member refid="class_f_tryll_agent_variables_1abcaf2bda7113a32e9f089017cdf6f52a" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>IsDirty</name></member>
+      <member refid="class_f_tryll_agent_variables_1a7dbdd6319cae9206b5d92778cfc23fd8" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>MarkWholesale</name></member>
+      <member refid="class_f_tryll_agent_variables_1aefc3988d3e4fce58a2b76b231f28be3e" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>MutationSeq</name></member>
+      <member refid="class_f_tryll_agent_variables_1af30ee3bed98232923baf7516d61cf5f6" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>NormalizeSet</name></member>
+      <member refid="class_f_tryll_agent_variables_1a8cfd02529b03cd668fce19a8fca9233f" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>PendingByName</name></member>
+      <member refid="class_f_tryll_agent_variables_1acf4d8c1855bd7146a8f5d7312b1d1f98" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>PendingOrder</name></member>
+      <member refid="class_f_tryll_agent_variables_1aed1a0effe1d26fe95088d357fa712fee" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>RemoveFromSet</name></member>
+      <member refid="class_f_tryll_agent_variables_1a3e6f0abedc8a35992c6414c27564863e" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>RequireType</name></member>
+      <member refid="class_f_tryll_agent_variables_1a024e98348736313896e6ab9b7ddd6852" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>Reset</name></member>
+      <member refid="class_f_tryll_agent_variables_1ab6a038d800d9e57e1b49b0590aecdd74" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SetBool</name></member>
+      <member refid="class_f_tryll_agent_variables_1a2d0ec9e76ba42d6ecf22824c2c2d95b6" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SetFloat</name></member>
+      <member refid="class_f_tryll_agent_variables_1ab92ccdf4c75df2b1452936db74130a6f" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SetInt</name></member>
+      <member refid="class_f_tryll_agent_variables_1a90c8064f5f8478224ed22ff296f77a85" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SetString</name></member>
+      <member refid="class_f_tryll_agent_variables_1a9c457e3d33f8805a7c8a8355e495f26b" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SetStringSet</name></member>
+      <member refid="class_f_tryll_agent_variables_1aca14a39f113b3f7b127f813fbcd9a6c0" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>Snapshot</name></member>
+      <member refid="class_f_tryll_agent_variables_1aa665d7a5c70431e4ecda85bd0cee38aa" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>SyncFromServerAsync</name></member>
+      <member refid="class_f_tryll_agent_variables_1a8cc0cc3984f2058def2be2455ca75d94" prot="public" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>TestSendUpdate</name></member>
+      <member refid="class_f_tryll_agent_variables_1a512fed861f601a57be19f0692d447c1f" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>TouchPending</name></member>
+      <member refid="class_f_tryll_agent_variables_1ae995d54f0cbbe12f75aabcd8d8d0baad" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>UnknownVariableError</name></member>
+      <member refid="class_f_tryll_agent_variables_1a983c2fc505d0eca03229647eea149adb" prot="private" virt="non-virtual"><scope>FTryllAgentVariables</scope><name>Values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
