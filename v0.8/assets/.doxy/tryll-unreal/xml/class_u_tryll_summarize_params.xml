@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_summarize_params" kind="class" language="C++" prot="public">
+    <compoundname>UTryllSummarizeParams</compoundname>
+    <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
+    <includes refid="_tryll_summarize_params_8h" local="no">TryllSummarizeParams.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1ab091c5b4fe38ec96991248f84e468d57" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSummarizeParams::bOverrideModelName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideModelName</name>
+        <qualifiedname>UTryllSummarizeParams::bOverrideModelName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Language model used for summarization. Empty = the agent&apos;s default_model_name. The node always runs under its own instruction-only system prompt, never a character persona; point this at a plain instruct model when the character itself runs on roleplay-fine-tuned weights. Set to true to override the inherited ModelName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="39" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1ae7c5e268043baffb775997ef33feec8c" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllSummarizeParams::ModelName</definition>
+        <argsstring></argsstring>
+        <name>ModelName</name>
+        <qualifiedname>UTryllSummarizeParams::ModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="42" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a57578086048f6e8a4be4cb4cb9d1de6b" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSummarizeParams::ContextSize</definition>
+        <argsstring></argsstring>
+        <name>ContextSize</name>
+        <qualifiedname>UTryllSummarizeParams::ContextSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>KV-cache / context window (n_ctx) for this node&apos;s own context, in tokens. 0 = 2048 (the node-type default). Validated against the model&apos;s trained maximum at agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="47" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a6a7d2e0a00c54514a06bff22d451d6b0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSummarizeParams::bOverrideSystemPrompt</definition>
+        <argsstring></argsstring>
+        <name>bOverrideSystemPrompt</name>
+        <qualifiedname>UTryllSummarizeParams::bOverrideSystemPrompt</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Instruction-only system prompt for the summarizer. Empty = the built-in default (third person, named speakers, merge-and-shorten, no speculation). Set to true to override the inherited SystemPrompt value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="52" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a9e996412cbd92a0d2de28dc8c49e98ef" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllSummarizeParams::SystemPrompt</definition>
+        <argsstring></argsstring>
+        <name>SystemPrompt</name>
+        <qualifiedname>UTryllSummarizeParams::SystemPrompt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="55" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a2e6659c0f46c43eeae9b6a23ae96ece6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSummarizeParams::bOverrideTemplate</definition>
+        <argsstring></argsstring>
+        <name>bOverrideTemplate</name>
+        <qualifiedname>UTryllSummarizeParams::bOverrideTemplate</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mustache body rendered as the summarizer&apos;s user turn. Context: <computeroutput>previous_summary</computeroutput> (absent when there is none), <computeroutput>turns</computeroutput> (iterable of {index, user, assistant}); <computeroutput>assistant</computeroutput> joins every assistant-history slot in that interaction in execution order, <computeroutput>max_summary_tokens</computeroutput>, and the session locale keys (<computeroutput>language</computeroutput>, …). Empty = the built-in default. Set to true to override the inherited Template value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="60" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a489fbd16d296766edc2ec2c123326930" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllSummarizeParams::Template</definition>
+        <argsstring></argsstring>
+        <name>Template</name>
+        <qualifiedname>UTryllSummarizeParams::Template</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="63" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a8ecc393a29bff0a7211ca67c0466a97d" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSummarizeParams::TriggerTokens</definition>
+        <argsstring></argsstring>
+        <name>TriggerTokens</name>
+        <qualifiedname>UTryllSummarizeParams::TriggerTokens</qualifiedname>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fold when the not-yet-folded history reaches this many tokens. &lt;= 0 disables this trigger. Set it below the consuming node&apos;s trim threshold so a fold always happens before trimming would. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="68" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1aeb9499b3fd9bfa61d3ea27153ee16fd4" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSummarizeParams::TriggerTurns</definition>
+        <argsstring></argsstring>
+        <name>TriggerTurns</name>
+        <qualifiedname>UTryllSummarizeParams::TriggerTurns</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fold every N completed interactions since the last fold. &lt;= 0 disables this trigger. With both triggers disabled the node no-ops. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="73" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a0087103fc5f3697404ace5a4e49de745" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSummarizeParams::KeepRecentTurns</definition>
+        <argsstring></argsstring>
+        <name>KeepRecentTurns</name>
+        <qualifiedname>UTryllSummarizeParams::KeepRecentTurns</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Most recent interactions never folded — they always replay verbatim. The summary is always strictly behind this hot window. Capped at 512. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="78" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1ab7061d23ae9ff57f675e22a5229c1f93" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllSummarizeParams::MaxSummaryTokens</definition>
+        <argsstring></argsstring>
+        <name>MaxSummaryTokens</name>
+        <qualifiedname>UTryllSummarizeParams::MaxSummaryTokens</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hard cap on the generated summary (applied as the sampling max_tokens). Must leave at least 64 tokens in context_size for prompt framing. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="83" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a559af994573e3efdb95dd398e9303db0" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_sampling_overrides" kindref="compound">FTryllSamplingOverrides</ref></type>
+        <definition>FTryllSamplingOverrides UTryllSummarizeParams::Sampling</definition>
+        <argsstring></argsstring>
+        <name>Sampling</name>
+        <qualifiedname>UTryllSummarizeParams::Sampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sparse sampling overrides applied on top of the model-catalog defaults. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="87" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a53e98d9e84c158582dd303c39c478363" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSummarizeParams::bNotifyClient</definition>
+        <argsstring></argsstring>
+        <name>bNotifyClient</name>
+        <qualifiedname>UTryllSummarizeParams::bNotifyClient</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, fire OnNodeEvent(&quot;summarized&quot;, …) after a fold. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="91" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1aa82a94b4a84aa52dbdfeaf9faea24c1f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllSummarizeParams::bRunInline</definition>
+        <argsstring></argsstring>
+        <name>bRunInline</name>
+        <qualifiedname>UTryllSummarizeParams::bRunInline</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>true = fold inside the turn that triggered it (deterministic, costs that turn the summarizer latency). false is reserved for background folding and is rejected until background state publication is implemented. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="95" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a2bbf19cf821f80c89ce47bfe88932e13" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllSummarizeParams::DefaultExit</definition>
+        <argsstring></argsstring>
+        <name>DefaultExit</name>
+        <qualifiedname>UTryllSummarizeParams::DefaultExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default exit target — routed after the node runs, whether or not it folded. Empty string = END (turn finishes). Graph exit &quot;default&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="101" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_summarize_params_1a0ccc877310dbc6a0f3b769c7d2b7f8ce" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_context_overrides" kindref="compound">FTryllContextOverrides</ref></type>
+        <definition>FTryllContextOverrides UTryllSummarizeParams::Context</definition>
+        <argsstring></argsstring>
+        <name>Context</name>
+        <qualifiedname>UTryllSummarizeParams::Context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Backend context construction (n_batch / n_ubatch / kv_cache_type / offload_kqv). Null table inherits; <computeroutput>n_outputs_max</computeroutput> is always forced to 1. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="106" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_summarize_params_1aa6ae2e527879d9463da34b2cfa4763c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ETryllNodeType</type>
+        <definition>virtual ETryllNodeType UTryllSummarizeParams::GetNodeType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetNodeType</name>
+        <qualifiedname>UTryllSummarizeParams::GetNodeType</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6">GetNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="109" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_summarize_params_1a72f07e5face56befcc868c01f79fc177" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>flatbuffers::Offset&lt; void &gt;</type>
+        <definition>virtual flatbuffers::Offset&lt; void &gt; UTryllSummarizeParams::Pack</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;Fbb, Tryll::NodeParams::NodeParams &amp;OutType) const override</argsstring>
+        <name>Pack</name>
+        <qualifiedname>UTryllSummarizeParams::Pack</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d">Pack</reimplements>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>Fbb</declname>
+        </param>
+        <param>
+          <type>Tryll::NodeParams::NodeParams &amp;</type>
+          <declname>OutType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="110" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Rolling conversation summary. Every time the history since the last fold crosses a trigger, this node compresses the older interactions (everything outside <computeroutput>keep_recent_turns</computeroutput>) into a SummaryComponent. Generate-class projection then renders that summary at the end of its system message and replays history only from <computeroutput>covered_through + 1</computeroutput>, so a long dialogue stays coherent at a fixed token cost instead of being trimmed away. Place it last in the graph, after the node that produced the player-facing reply. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UTryllSummarizeParams</label>
+        <link refid="class_u_tryll_summarize_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>FTryllContextOverrides</label>
+        <link refid="struct_f_tryll_context_overrides"/>
+      </node>
+      <node id="4">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="5">
+        <label>FTryllSamplingOverrides</label>
+        <link refid="struct_f_tryll_sampling_overrides"/>
+      </node>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>UTryllSummarizeParams</label>
+        <link refid="class_u_tryll_summarize_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>ModelName</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Sampling</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>Context</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" line="32" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllSummarizeParams.h" bodystart="33" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_summarize_params_1a53e98d9e84c158582dd303c39c478363" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>bNotifyClient</name></member>
+      <member refid="class_u_tryll_summarize_params_1ab091c5b4fe38ec96991248f84e468d57" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>bOverrideModelName</name></member>
+      <member refid="class_u_tryll_summarize_params_1a6a7d2e0a00c54514a06bff22d451d6b0" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>bOverrideSystemPrompt</name></member>
+      <member refid="class_u_tryll_summarize_params_1a2e6659c0f46c43eeae9b6a23ae96ece6" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>bOverrideTemplate</name></member>
+      <member refid="class_u_tryll_summarize_params_1aa82a94b4a84aa52dbdfeaf9faea24c1f" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>bRunInline</name></member>
+      <member refid="class_u_tryll_summarize_params_1a0ccc877310dbc6a0f3b769c7d2b7f8ce" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>Context</name></member>
+      <member refid="class_u_tryll_summarize_params_1a57578086048f6e8a4be4cb4cb9d1de6b" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>ContextSize</name></member>
+      <member refid="class_u_tryll_summarize_params_1a2bbf19cf821f80c89ce47bfe88932e13" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>FindEnclosingGraph</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllSummarizeParams</scope><name>GetExitTargetOptions</name></member>
+      <member refid="class_u_tryll_summarize_params_1aa6ae2e527879d9463da34b2cfa4763c7" prot="public" virt="virtual"><scope>UTryllSummarizeParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>GetOwnerNodeName</name></member>
+      <member refid="class_u_tryll_summarize_params_1a0087103fc5f3697404ace5a4e49de745" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>KeepRecentTurns</name></member>
+      <member refid="class_u_tryll_summarize_params_1ab7061d23ae9ff57f675e22a5229c1f93" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>MaxSummaryTokens</name></member>
+      <member refid="class_u_tryll_summarize_params_1ae7c5e268043baffb775997ef33feec8c" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>ModelName</name></member>
+      <member refid="class_u_tryll_summarize_params_1a72f07e5face56befcc868c01f79fc177" prot="public" virt="virtual"><scope>UTryllSummarizeParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_summarize_params_1a559af994573e3efdb95dd398e9303db0" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>Sampling</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_summarize_params_1a9e996412cbd92a0d2de28dc8c49e98ef" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>SystemPrompt</name></member>
+      <member refid="class_u_tryll_summarize_params_1a489fbd16d296766edc2ec2c123326930" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>Template</name></member>
+      <member refid="class_u_tryll_summarize_params_1a8ecc393a29bff0a7211ca67c0466a97d" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>TriggerTokens</name></member>
+      <member refid="class_u_tryll_summarize_params_1aeb9499b3fd9bfa61d3ea27153ee16fd4" prot="public" virt="non-virtual"><scope>UTryllSummarizeParams</scope><name>TriggerTurns</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

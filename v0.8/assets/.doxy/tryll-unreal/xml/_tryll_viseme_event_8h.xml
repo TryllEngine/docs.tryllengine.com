@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="_tryll_viseme_event_8h" kind="file" language="C++">
+    <compoundname>TryllVisemeEvent.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes local="yes">TryllVisemeEvent.generated.h</includes>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_lip_sync_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h</includedby>
+    <includedby refid="_tryll_speaker_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h</includedby>
+    <includedby refid="_tryll_viseme_player_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemePlayer.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemeEvent.h</label>
+        <link refid="_tryll_viseme_event_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="3">
+        <label>TryllVisemeEvent.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <link refid="_tryll_agent_8h_source"/>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h</label>
+        <link refid="_tryll_lip_sync_component_8h_source"/>
+      </node>
+      <node id="4">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h</label>
+        <link refid="_tryll_speaker_component_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemeEvent.h</label>
+        <link refid="_tryll_viseme_event_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemePlayer.h</label>
+        <link refid="_tryll_viseme_player_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_viseme_event" prot="public">FTryllVisemeEvent</innerclass>
+    <innerclass refid="struct_f_tryll_viseme_channel_weight" prot="public">FTryllVisemeChannelWeight</innerclass>
+    <innerclass refid="struct_f_tryll_viseme_pose" prot="public">FTryllVisemePose</innerclass>
+    <innerclass refid="struct_f_tryll_viseme_settings" prot="public">FTryllVisemeSettings</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllViseme</name>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a25704265805b1f622d5660d2a0a6a6c5" prot="public">
+          <name>sil</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a4baee84af7a92177c9064ddc2fc010ce" prot="public">
+          <name>PP</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a1fd406685cbdee605d0a7bebed56fdb0" prot="public">
+          <name>FF</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a5b79c40fa7c2bd12dd2df53c4a2b6836" prot="public">
+          <name>TH</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a350bfcb1e3cfb28ddff48ce525d4f139" prot="public">
+          <name>DD</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930adc468c70fb574ebd07287b38d0d0676d" prot="public">
+          <name>kk</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a1ee0bf89c5d1032317d13a2e022793c8" prot="public">
+          <name>CH</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930ad53aeb78abc83a52ab8982f5c82a3d5b" prot="public">
+          <name>SS</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930aeab71244afb687f16d8c4f5ee9d6ef0e" prot="public">
+          <name>nn</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930acb95449a94688af33f6e9bb090cf2936" prot="public">
+          <name>RR</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a4124bc0a9335c27f086f24ba207a4912" prot="public">
+          <name>aa</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a3a3ea00cfc35332cedf6e5e9a32e94da" prot="public">
+          <name>E</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a95f11b6956a5cd3a7de04c8f2664316e" prot="public">
+          <name>ih</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930ac7218260ef2b966ab0454e07c55cf4e9" prot="public">
+          <name>oh</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_viseme_event_8h_1ac3bec51e2ea197b2b135627512e98930a583eb722b77d6c7791d1811f6a42450c" prot="public">
+          <name>ou</name>
+          <initializer>= 14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Oculus 15-viseme set, as sent in TtsVisemeFrame. Mirrors the FlatBuffers WireViseme enum in messages.fbs — ordinal values must stay in sync. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemeEvent.h" line="13" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemeEvent.h" bodystart="14" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVisemeEvent.h"/>
+  </compounddef>
+</doxygen>

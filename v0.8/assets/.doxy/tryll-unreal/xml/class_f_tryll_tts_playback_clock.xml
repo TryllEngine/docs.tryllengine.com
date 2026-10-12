@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_f_tryll_tts_playback_clock" kind="class" language="C++" prot="public">
+    <compoundname>FTryllTtsPlaybackClock</compoundname>
+    <includes refid="_tryll_speaker_component_8h" local="no">TryllSpeakerComponent.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_f_tryll_tts_playback_clock_1a624eabc3eda8a5cf93ab3fe6e5ddeab5" prot="private" static="no" mutable="yes">
+        <type>FCriticalSection</type>
+        <definition>FCriticalSection FTryllTtsPlaybackClock::Lock</definition>
+        <argsstring></argsstring>
+        <name>Lock</name>
+        <qualifiedname>FTryllTtsPlaybackClock::Lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="37" column="26" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_tts_playback_clock_1a21f942aa80a5214a613217a2d2f7acd2" prot="private" static="no" mutable="no">
+        <type>USoundWaveProcedural *</type>
+        <definition>USoundWaveProcedural* FTryllTtsPlaybackClock::Wave</definition>
+        <argsstring></argsstring>
+        <name>Wave</name>
+        <qualifiedname>FTryllTtsPlaybackClock::Wave</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="38" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_f_tryll_tts_playback_clock_1a1bf059d8ea33c4d6c9b6286f07f02a6f" prot="private" static="no" mutable="no">
+        <type>int64</type>
+        <definition>int64 FTryllTtsPlaybackClock::QueuedSamples</definition>
+        <argsstring></argsstring>
+        <name>QueuedSamples</name>
+        <qualifiedname>FTryllTtsPlaybackClock::QueuedSamples</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="39" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_f_tryll_tts_playback_clock_1abff772d2d1331ba6a873b719bc27658f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllTtsPlaybackClock::OnSamplesQueued</definition>
+        <argsstring>(int64 NumSamples)</argsstring>
+        <name>OnSamplesQueued</name>
+        <qualifiedname>FTryllTtsPlaybackClock::OnSamplesQueued</qualifiedname>
+        <param>
+          <type>int64</type>
+          <declname>NumSamples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="30" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_tts_playback_clock_1af46c461fc312c67b2228b6d08f5128a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllTtsPlaybackClock::SetWave</definition>
+        <argsstring>(USoundWaveProcedural *InWave)</argsstring>
+        <name>SetWave</name>
+        <qualifiedname>FTryllTtsPlaybackClock::SetWave</qualifiedname>
+        <param>
+          <type>USoundWaveProcedural *</type>
+          <declname>InWave</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="31" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_tts_playback_clock_1a38aa85a2d8ec197cbadb77831be38faf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int64</type>
+        <definition>int64 FTryllTtsPlaybackClock::GetPlayedSamples</definition>
+        <argsstring>() const</argsstring>
+        <name>GetPlayedSamples</name>
+        <qualifiedname>FTryllTtsPlaybackClock::GetPlayedSamples</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="32" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_f_tryll_tts_playback_clock_1aa51ddbc62f6e246d4f7ffa3974ab11df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int64</type>
+        <definition>int64 FTryllTtsPlaybackClock::GetQueuedSamples</definition>
+        <argsstring>() const</argsstring>
+        <name>GetQueuedSamples</name>
+        <qualifiedname>FTryllTtsPlaybackClock::GetQueuedSamples</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Every sample ever queued, played or not. The next queued sample lands at this position. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="34" column="7"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Tracks how many TTS samples the audio device has actually consumed, so consumers pacing work against playback (e.g. lip sync) can slave to it. Safe to query from any thread; the speaker updates it on the game thread. Samples queued to a procedural sound that was discarded before draining (format change, EndPlay) count as played. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="27" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" bodystart="28" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_f_tryll_tts_playback_clock_1a38aa85a2d8ec197cbadb77831be38faf" prot="public" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>GetPlayedSamples</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1aa51ddbc62f6e246d4f7ffa3974ab11df" prot="public" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>GetQueuedSamples</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1a624eabc3eda8a5cf93ab3fe6e5ddeab5" prot="private" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>Lock</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1abff772d2d1331ba6a873b719bc27658f" prot="public" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>OnSamplesQueued</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1a1bf059d8ea33c4d6c9b6286f07f02a6f" prot="private" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>QueuedSamples</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1af46c461fc312c67b2228b6d08f5128a8" prot="public" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>SetWave</name></member>
+      <member refid="class_f_tryll_tts_playback_clock_1a21f942aa80a5214a613217a2d2f7acd2" prot="private" virt="non-virtual"><scope>FTryllTtsPlaybackClock</scope><name>Wave</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
