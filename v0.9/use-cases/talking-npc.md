@@ -147,7 +147,7 @@ On Unreal, the MetaHuman lip-sync plugin can also take the mood, so the face mat
 
 **In the demo:** *EmotionalVoiceCharacter* (one voice with eight moods, each from its own clip; the mood is switched from the editor rather than by game logic).
 
-**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Clone a voice: switching moods at runtime](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html#switching-moods-at-runtime) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
+**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
 
 ______________________________________________________________________
 

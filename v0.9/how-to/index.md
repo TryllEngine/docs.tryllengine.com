@@ -79,7 +79,9 @@ The mental model for this section is the per-turn [slot blackboard](https://docs
 
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) ★ — make an NPC speak with `GenerateAndSpeak` / `Speak` and a playback component.
 - [Add Lip Sync to a Character](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) — move a character's mouth with its voice using the server's viseme track.
-- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — point a Pocket TTS node at a short reference WAV to speak in that voice.
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — point a voice profile at a short reference WAV to speak in that voice.
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a reference clip from a text description, without an actor.
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood as delivery modes, switched at runtime.
 - [Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) — create a VoiceInput handle, stream PCM audio, receive transcripts, push-to-talk vs. hands-free.
 - [Bias Voice Input with Hotwords](https://docs.tryllengine.com/v0.9/how-to/use-voice-input-hotwords.html) — nudge the STT decoder toward game-specific proper nouns, spell names, and other lexicon items without retraining the model.
 - [Add Lip Sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html) (Unreal) — make a MetaHuman's mouth follow an agent's TTS voice with the separate Tryll MetaHuman Lip Sync plugin, using Epic's neural model or the viseme track.
@@ -87,6 +89,7 @@ The mental model for this section is the per-turn [slot blackboard](https://docs
 ## Models and shipping
 
 - [Use Your Own Local Model](https://docs.tryllengine.com/v0.9/how-to/use-your-own-local-model.html) — register a GGUF file that lives on disk without a Hugging Face download.
+- [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) — run an LLM node with a fine-tuned GGUF adapter, and tune how strongly it applies.
 - [Pin and Unpin Models](https://docs.tryllengine.com/v0.9/how-to/pin-and-unpin-models.html) — keep a model warm (`LoadModelRequest`) or release it (`UnloadModelRequest`).
 - [Verify Required Models Before Play](https://docs.tryllengine.com/v0.9/how-to/verify-models-before-play.html) — gate Play/PIE on every registered model being downloaded first, and fail the build when a workflow references a model that will not ship.
 - [Estimate Memory Footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html) — work out the RAM and VRAM a model line-up needs before you ship, so it fits your target hardware. Check the live numbers in [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html).

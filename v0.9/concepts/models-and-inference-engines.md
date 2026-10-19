@@ -105,6 +105,7 @@ Models you did not bundle with the server can be pulled from Hugging Face via `D
 - **KV cache is *per node, per agent*.** Two `Generate` nodes using the same model in the same graph still each pay their own KV cost. Budget memory accordingly.
 - **Embedding and language models are not interchangeable.** Trying to point a `Retrieve` node at a language model (or a `Generate` node at an embedding model) fails validation with a clear error.
 - **Context-window claims are rough.** Official context sizes assume no generation buffer; the high-water mark is what actually governs your prompt budget.
+- **One base model, several behaviours.** An LLM node can run its model with [LoRA adapters](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html): small GGUF files trained for that base model. The base weights stay loaded once; only the nodes that name an adapter use it.
 
 ## Related
 
@@ -115,5 +116,6 @@ Models you did not bundle with the server can be pulled from Hugging Face via `D
 - [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.9/concepts/projection-and-token-budgets.html)
 - [Concept: RAG](https://docs.tryllengine.com/v0.9/concepts/rag.html)
 - [How-to: Use your own local model](https://docs.tryllengine.com/v0.9/how-to/use-your-own-local-model.html)
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Pin and unpin models](https://docs.tryllengine.com/v0.9/how-to/pin-and-unpin-models.html)
 - [How-to: Estimate memory footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html)

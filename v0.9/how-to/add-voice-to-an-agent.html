@@ -3265,6 +3265,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3668,6 +3672,76 @@
   
   
     <li class="md-nav__item">
+      <a href="design-a-voice-with-qwen3-tts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a voice clip with Qwen3-TTS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="add-emotions-to-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add emotions to a voice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="use-voice-input.html" class="md-nav__link">
         
   
@@ -3797,6 +3871,8 @@
       
         
       
+        
+      
     
     
     
@@ -3855,6 +3931,41 @@
     
   
     Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="use-a-lora-adapter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use a LoRA adapter
   
 
     
@@ -9300,6 +9411,11 @@ session in English.</p>
 <td>Zero-shot cloning from a reference WAV (10–20 s recommended; the first 30 s are used); each agent can use a different clip on the same loaded model.</td>
 </tr>
 <tr>
+<td>Qwen3-TTS 1.7B Base</td>
+<td><code>ReferenceVoice</code></td>
+<td>Cloning from a reference WAV (3–10 s), required: there is no default voice. Speaks 10 languages from one clip; set <code>Lang</code>.</td>
+</tr>
+<tr>
 <td>Orpheus 3B FT</td>
 <td><code>SpeakerId</code></td>
 <td>8 named English speakers — indices <code>0</code>–<code>7</code> (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as <code>&lt;laugh&gt;</code> may appear in the spoken text.</td>
@@ -9333,9 +9449,11 @@ with <code>ReferenceVoice</code>, not <code>SpeakerId</code>. Orpheus accepts <c
 accepts <code>0</code>–<code>1</code> — <code>VoiceDescription</code> replaces the preset voice but does not
 widen the range.</p>
 </div>
-<p>For <code>ReferenceVoice</code> — including cloning a brand-new voice from your own
-recording, and one clip per mood — see
-<a href="clone-a-voice.html">Clone a Voice from an Audio Sample</a>.</p>
+<p>For <code>ReferenceVoice</code> — cloning a brand-new voice from your own recording —
+see <a href="clone-a-voice.html">Clone a Voice from an Audio Sample</a>. To make a clip from
+a text description instead, see
+<a href="design-a-voice-with-qwen3-tts.html">Design a Voice Clip with Qwen3-TTS</a>, and for
+one clip per mood, <a href="add-emotions-to-a-voice.html">Add Emotions to a Voice</a>.</p>
 <h2 id="8-change-the-voice-or-its-delivery-at-runtime">8. Change the voice or its delivery at runtime<a class="headerlink" href="#8-change-the-voice-or-its-delivery-at-runtime" title="Permanent link">&para;</a></h2>
 <p>Two calls change how an agent sounds after it is created. Neither needs the
 agent to be rebuilt.</p>
@@ -9477,6 +9595,8 @@ nothing consumes the queue, so it never fires.</p>
 <li><a href="add-lip-sync-to-a-character.html">How-to: Add Lip Sync to a Character</a> —
   move the character's mouth with the voice</li>
 <li><a href="clone-a-voice.html">How-to: Clone a Voice from an Audio Sample</a></li>
+<li><a href="add-emotions-to-a-voice.html">How-to: Add Emotions to a Voice</a> — one
+  clip per mood, switched with delivery modes</li>
 <li><a href="change-agent-parameters.html">How-to: Change Agent Parameters at Runtime</a></li>
 <li><a href="use-voice-input.html">How-to: Use Voice Input</a> — add microphone input
   alongside TTS output</li>

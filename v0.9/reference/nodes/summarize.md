@@ -36,6 +36,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | --------------------------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routed after the node runs, whether or not it folded. Empty string = END (turn finishes). |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ______________________________________________________________________
 
 ## How the summary reaches the prompt
@@ -205,6 +209,7 @@ ______________________________________________________________________
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html)
 - [Concept: Slots and inter-node value passing](https://docs.tryllengine.com/v0.9/concepts/slots-and-inter-node-value-passing.html)
 - [How-to: Save and load agent state](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html)

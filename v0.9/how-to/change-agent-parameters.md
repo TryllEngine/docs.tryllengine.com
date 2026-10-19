@@ -29,7 +29,7 @@ Fields marked `(structural)` in the schema **cannot** be changed at runtime. All
 
 Structural on every node
 
-On every node that has them, the exit fields (`default_exit`, `found_exit`, `not_found_exit`, `tool_called_exit`, `no_tool_called_exit`, `timeout_exit`, …), plus `context_size`, `input`, and `output_name`, are **structural** — fixed at `CreateAgent`. The table lists only the node-specific structural fields *in addition* to those.
+On every node that has them, the exit fields (`default_exit`, `found_exit`, `not_found_exit`, `tool_called_exit`, `no_tool_called_exit`, `timeout_exit`, …), plus `context_size`, `input`, and `output_name`, are **structural** — fixed at `CreateAgent`. So is `adaptation` (the [LoRA adapters](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)) on every LLM node. The table lists only the node-specific structural fields *in addition* to those.
 
 | Node                  | Node-specific structural fields                      | Mutable fields                                                                                                                                                                        |
 | --------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

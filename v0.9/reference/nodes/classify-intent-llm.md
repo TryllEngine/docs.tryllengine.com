@@ -101,6 +101,10 @@ Each exit is a structural string field on the node's params; its value names the
 | `found`     | `found_exit`     | Exit taken when classification produced a label above threshold/margin. Empty string = END. |
 | `not_found` | `not_found_exit` | Exit taken when no label cleared the threshold/margin. Empty string = END.                  |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Exit routes
 
 `temperature` (0 = 1.0, mutable) rescales the scored letter probabilities (`p ← p^(1/T)`) before threshold/margin. Diagnostics emit `parameters.temperature` and, when T ≠ 1, `output.classification.probs_raw`.
@@ -232,6 +236,7 @@ See `tryll_test_chat` agent `butler2` (`IntentLLMWorkflow`) for a full graph alo
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Design an intent-classifier prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-intent-classifier-prompt.html) — the template contract, writing and ordering labels, tuning `threshold`/`margin`
 - [How-to: Classify intent without a knowledge base](https://docs.tryllengine.com/v0.9/how-to/classify-intent-without-a-knowledge-base.html) — the end-to-end graph in all four clients
 - [How-to: Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) — two measured classifiers in front of an NPC

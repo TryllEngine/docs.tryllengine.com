@@ -29,6 +29,10 @@ Each exit is a structural string field on the node's params; its value names the
 | `default`   | `default_exit`   | Exit taken when no attribute triggers. Empty string = END.                                                     |
 | `triggered` | `triggered_exit` | Exit taken when any attribute triggers, or when on_failure is Triggered and scoring fails. Empty string = END. |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Kinds
 
 | Kind    | Slot value                                                                                                                       | Trigger                                                                       |
@@ -101,4 +105,5 @@ Graphs authored against the proof-of-concept fields (`independent_prompts`, `cho
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Classify Intent (LLM)](https://docs.tryllengine.com/v0.9/reference/nodes/classify-intent-llm.html)

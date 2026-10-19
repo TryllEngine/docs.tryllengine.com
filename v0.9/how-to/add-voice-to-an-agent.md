@@ -259,12 +259,13 @@ Models whose language is fixed per model (Pocket TTS, Orpheus, Maya1 — all Eng
 
 Which profile field selects the voice depends on the model family:
 
-| Model         | Voice field        | How it works                                                                                                                                                                                                                                       |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Supertonic 3  | `SpeakerId`        | 10 built-in voice styles — indices `0`–`9`.                                                                                                                                                                                                        |
-| Pocket TTS    | `ReferenceVoice`   | Zero-shot cloning from a reference WAV (10–20 s recommended; the first 30 s are used); each agent can use a different clip on the same loaded model.                                                                                               |
-| Orpheus 3B FT | `SpeakerId`        | 8 named English speakers — indices `0`–`7` (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as `<laugh>` may appear in the spoken text.                                                                                               |
-| Maya1 3B      | `VoiceDescription` | Natural-language identity (age, accent, pitch, timbre). Empty falls back to `SpeakerId` `0`–`1` (male / female 30s American). Steer delivery with [delivery modes](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes). |
+| Model               | Voice field        | How it works                                                                                                                                                                                                                                       |
+| ------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Supertonic 3        | `SpeakerId`        | 10 built-in voice styles — indices `0`–`9`.                                                                                                                                                                                                        |
+| Pocket TTS          | `ReferenceVoice`   | Zero-shot cloning from a reference WAV (10–20 s recommended; the first 30 s are used); each agent can use a different clip on the same loaded model.                                                                                               |
+| Qwen3-TTS 1.7B Base | `ReferenceVoice`   | Cloning from a reference WAV (3–10 s), required: there is no default voice. Speaks 10 languages from one clip; set `Lang`.                                                                                                                         |
+| Orpheus 3B FT       | `SpeakerId`        | 8 named English speakers — indices `0`–`7` (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as `<laugh>` may appear in the spoken text.                                                                                               |
+| Maya1 3B            | `VoiceDescription` | Natural-language identity (age, accent, pitch, timbre). Empty falls back to `SpeakerId` `0`–`1` (male / female 30s American). Steer delivery with [delivery modes](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes). |
 
 eSpeak-based TTS models are not supported
 
@@ -274,7 +275,7 @@ Model families that depend on eSpeak NG for text-to-phoneme conversion — **Pip
 
 `SpeakerId` must be below the model's speaker count — creating an agent with a larger value fails with `3023` and *"speaker_id N is out of range for TTS model … (M speaker(s); valid range 0..M-1)"*. Pocket TTS exposes exactly **one** speaker, so it must stay `0` there; change the Pocket voice with `ReferenceVoice`, not `SpeakerId`. Orpheus accepts `0`–`7`; Maya1 accepts `0`–`1` — `VoiceDescription` replaces the preset voice but does not widen the range.
 
-For `ReferenceVoice` — including cloning a brand-new voice from your own recording, and one clip per mood — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html).
+For `ReferenceVoice` — cloning a brand-new voice from your own recording — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). To make a clip from a text description instead, see [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html), and for one clip per mood, [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ## 8. Change the voice or its delivery at runtime
 
@@ -353,5 +354,6 @@ The server automatically normalizes *characters* for Pocket TTS — typographic 
 - [Reference: UTryllSpeakerComponent (Unreal)](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/cpp/index.html)
 - [How-to: Add Lip Sync to a Character](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) — move the character's mouth with the voice
 - [How-to: Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html)
+- [How-to: Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched with delivery modes
 - [How-to: Change Agent Parameters at Runtime](https://docs.tryllengine.com/v0.9/how-to/change-agent-parameters.html)
 - [How-to: Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) — add microphone input alongside TTS output

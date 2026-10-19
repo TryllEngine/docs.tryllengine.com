@@ -3258,6 +3258,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3386,6 +3390,76 @@
     
   
     Clone a voice from an audio sample
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/design-a-voice-with-qwen3-tts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a voice clip with Qwen3-TTS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/add-emotions-to-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add emotions to a voice
   
 
     
@@ -3542,6 +3616,8 @@
       
         
       
+        
+      
     
     
     
@@ -3600,6 +3676,41 @@
     
   
     Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/use-a-lora-adapter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use a LoRA adapter
   
 
     
@@ -8987,6 +9098,10 @@ full lifecycle and the distinction between on-disk statuses and <code>Loaded</co
 <li><strong>Context-window claims are rough.</strong> Official context sizes assume
   no generation buffer; the high-water mark is what actually governs
   your prompt budget.</li>
+<li><strong>One base model, several behaviours.</strong> An LLM node can run its model
+  with <a href="../how-to/use-a-lora-adapter.html">LoRA adapters</a>: small GGUF
+  files trained for that base model. The base weights stay loaded once;
+  only the nodes that name an adapter use it.</li>
 </ul>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
@@ -8997,6 +9112,7 @@ full lifecycle and the distinction between on-disk statuses and <code>Loaded</co
 <li><a href="projection-and-token-budgets.html">Concept: Projection and Token Budgets</a></li>
 <li><a href="rag.html">Concept: RAG</a></li>
 <li><a href="../how-to/use-your-own-local-model.html">How-to: Use your own local model</a></li>
+<li><a href="../how-to/use-a-lora-adapter.html">How-to: Use a LoRA adapter</a></li>
 <li><a href="../how-to/pin-and-unpin-models.html">How-to: Pin and unpin models</a></li>
 <li><a href="../how-to/estimate-memory-footprint.html">How-to: Estimate memory footprint</a></li>
 </ul>

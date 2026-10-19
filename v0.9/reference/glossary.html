@@ -3258,6 +3258,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3386,6 +3390,76 @@
     
   
     Clone a voice from an audio sample
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/design-a-voice-with-qwen3-tts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a voice clip with Qwen3-TTS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/add-emotions-to-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add emotions to a voice
   
 
     
@@ -3542,6 +3616,8 @@
       
         
       
+        
+      
     
     
     
@@ -3600,6 +3676,41 @@
     
   
     Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/use-a-lora-adapter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use a LoRA adapter
   
 
     
@@ -7737,6 +7848,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lora-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoRA adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model-catalog" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -9719,6 +9841,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#lora-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LoRA adapter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#model-catalog" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -10325,6 +10458,13 @@ engines.</p>
 <a href="#language-model">language models</a>. Tryll downloads GGUF files from
 HuggingFace for catalog entries whose
 <a href="#inference-engine">inference engine</a> is <code>llama.cpp</code>.</p>
+<h3 id="lora-adapter">LoRA adapter<a class="headerlink" href="#lora-adapter" title="Permanent link">&para;</a></h3>
+<p>A small <a href="#gguf">GGUF</a> file, fine-tuned for one base
+<a href="#language-model">language model</a>, that changes how that model behaves for a
+narrow job. An LLM node runs its model with up to 8 adapters, each with a
+scale (<code>1</code> = as trained, <code>0</code> = off), listed in the node's <code>adaptation</code> table.
+Fixed when the agent is created. See
+<a href="../how-to/use-a-lora-adapter.html">Use a LoRA Adapter</a>.</p>
 <h3 id="model-catalog">Model catalog<a class="headerlink" href="#model-catalog" title="Permanent link">&para;</a></h3>
 <p>The server's <code>models.json</code> file — the authoritative list of models
 Tryll can download, load, and run. Each catalog entry declares a name,
@@ -10379,7 +10519,8 @@ as <code>angry</code> or <code>whisper</code>. Game code switches it with <code>
 which applies from the next sentence. <code>neutral</code> is built in and means the plain
 voice. What a mode can change depends on the TTS model: a different reference
 clip, a Maya1 delivery clause, the Chatterbox exaggeration, or only speed. See
-<a href="voice-profile.html#delivery-modes">Voice Profile</a>.</p>
+<a href="voice-profile.html#delivery-modes">Voice Profile</a> and
+<a href="../how-to/add-emotions-to-a-voice.html">Add Emotions to a Voice</a>.</p>
 <hr />
 <h2 id="prompts-tokens-and-streaming">Prompts, tokens, and streaming<a class="headerlink" href="#prompts-tokens-and-streaming" title="Permanent link">&para;</a></h2>
 <h3 id="prompt">Prompt<a class="headerlink" href="#prompt" title="Permanent link">&para;</a></h3>

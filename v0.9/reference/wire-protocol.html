@@ -3258,6 +3258,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3386,6 +3390,76 @@
     
   
     Clone a voice from an audio sample
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/design-a-voice-with-qwen3-tts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a voice clip with Qwen3-TTS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/add-emotions-to-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add emotions to a voice
   
 
     
@@ -3542,6 +3616,8 @@
       
         
       
+        
+      
     
     
     
@@ -3600,6 +3676,41 @@
     
   
     Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/use-a-lora-adapter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use a LoRA adapter
   
 
     
@@ -10598,7 +10709,8 @@ the source node, the exit, and the missing target.</p>
 (<code>ModelAdaptation</code>) to <code>GenerateParams</code>, <code>ToolCallParams</code>, <code>ClassifyIntentLLMParams</code>, <code>ClassifyAttributesLLMParams</code>, <code>GenerateAndSpeakParams</code> and
 <code>SummarizeParams</code>:
 a list of LoRA adapters (<code>loras</code>, each a storage-relative GGUF path and a
-scale) applied to the node's model. A version 27 server would ignore it and
+scale) applied to the node's model (see
+<a href="../how-to/use-a-lora-adapter.html">Use a LoRA Adapter</a>). A version 27 server would ignore it and
 run the base model, so the versions must match. Version 27 moves the voice from
 the TTS nodes to the agent: <code>SpeakParams</code> and <code>GenerateAndSpeakParams</code> lose
 <code>tts_model_name</code>, <code>speaker_id</code>, <code>speed</code>, <code>tts_lang</code>, <code>tts_voice</code>,

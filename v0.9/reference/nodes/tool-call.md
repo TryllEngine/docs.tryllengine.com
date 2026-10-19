@@ -52,6 +52,10 @@ Each exit is a structural string field on the node's params; its value names the
 | `tool_called`    | `tool_called_exit`    | Exit taken when one or more tool calls are parsed from the response. Empty string = END.                                                                              |
 | `no_tool_called` | `no_tool_called_exit` | Exit taken when no tool call is parsed (or, under mode=call_or_answer, when the model's residual text was emitted as a plain-text reply instead). Empty string = END. |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Exit routes
 
 | Route            | Fires when                                                 |
@@ -259,6 +263,7 @@ See the full flow (including client-side execution and feeding the result back) 
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Concept: Tool calling](https://docs.tryllengine.com/v0.9/concepts/tool-calling.html)
 - [How to define and handle tool calls](https://docs.tryllengine.com/v0.9/how-to/define-and-handle-tool-calls.html)
 - [How to test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/v0.9/how-to/test-tool-calls-in-editor.html)

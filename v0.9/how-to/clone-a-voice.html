@@ -16,7 +16,7 @@
         <link rel="prev" href="add-lip-sync-to-a-character.html">
       
       
-        <link rel="next" href="use-voice-input.html">
+        <link rel="next" href="design-a-voice-with-qwen3-tts.html">
       
       
         
@@ -3265,6 +3265,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3459,10 +3463,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intended-use-one-voice-per-character-one-delivery-mode-per-mood" class="md-nav__link">
+  <a href="#one-voice-per-character" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Intended use: one voice per character, one delivery mode per mood
+        One voice per character
       
     </span>
   </a>
@@ -3640,6 +3644,76 @@
   
   
     <li class="md-nav__item">
+      <a href="design-a-voice-with-qwen3-tts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design a voice clip with Qwen3-TTS
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="add-emotions-to-a-voice.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add emotions to a voice
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="use-voice-input.html" class="md-nav__link">
         
   
@@ -3769,6 +3843,8 @@
       
         
       
+        
+      
     
     
     
@@ -3827,6 +3903,41 @@
     
   
     Use your own local model
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="use-a-lora-adapter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use a LoRA adapter
   
 
     
@@ -8681,10 +8792,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intended-use-one-voice-per-character-one-delivery-mode-per-mood" class="md-nav__link">
+  <a href="#one-voice-per-character" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Intended use: one voice per character, one delivery mode per mood
+        One voice per character
       
     </span>
   </a>
@@ -8889,7 +9000,7 @@ project's storage folder and point the agent's
 <td><code>Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)</code></td>
 <td>zh, en, de, it, pt, es, ja, ko, fr, ru (via <strong>Lang</strong>)</td>
 <td>3–10 s</td>
-<td>Internal preview</td>
+<td>Public</td>
 </tr>
 </tbody>
 </table>
@@ -8906,46 +9017,28 @@ model serves many distinct voices concurrently.</p>
   <a href="ship-storage-folders-for-builds.html">Ship Storage Folders for Builds</a>.</li>
 </ul>
 </div>
-<h2 id="intended-use-one-voice-per-character-one-delivery-mode-per-mood">Intended use: one voice per character, one delivery mode per mood<a class="headerlink" href="#intended-use-one-voice-per-character-one-delivery-mode-per-mood" title="Permanent link">&para;</a></h2>
+<h2 id="one-voice-per-character">One voice per character<a class="headerlink" href="#one-voice-per-character" title="Permanent link">&para;</a></h2>
 <p>Cloning is how a character keeps <strong>the same voice in every sentence and every
 turn</strong>. The clip fixes the speaker; the model only adds the words. That makes
 cloning the right tool for named characters, and a better fit than models that
 invent a voice from a text description. Those models (for example Qwen3-TTS
 VoiceDesign) sample a new voice on each synthesis call, and Tryll synthesizes a
 reply sentence by sentence, so the voice would change mid-reply. Use them to
-<em>create</em> clips (see <a href="#where-clips-come-from">Where clips come from</a>), not to
-speak at runtime.</p>
+<em>create</em> clips, not to speak at runtime.</p>
 <p><strong>The clip's mood carries over.</strong> Cloning copies the register and energy of
-the reference along with the timbre. In our measurements, neutral text cloned
-from a shouted, angry clip came out raised and loud on both models. Cloned from
-a sad clip, it came out low and flat. So the intended pattern for emotion is:</p>
-<ol>
-<li>Make one clip per character per mood you need, for example
-   <code>voices/guard/neutral.wav</code>, <code>voices/guard/angry.wav</code>, <code>voices/guard/afraid.wav</code>.</li>
-<li>Put the neutral clip in the profile's <strong>Reference Voice</strong>. That is the
-   built-in <code>neutral</code> mode.</li>
-<li>Add one <strong>delivery mode</strong> per mood to the same profile, each with its own
-   <strong>Reference Voice</strong>: <code>angry</code> uses <code>voices/guard/angry.wav</code>, <code>afraid</code> uses
-   <code>voices/guard/afraid.wav</code>.</li>
-<li>Switch moods at runtime with <code>SetAgentDeliveryMode("angry")</code>. It needs no
-   agent rebuild and applies from the next sentence (see
-   <a href="#switching-moods-at-runtime">Switching moods at runtime</a>).</li>
-</ol>
-<p>Record every mood with the same speaker. Clips from different speakers, or
-separate takes from a voice-design model, are different voices. Switching between
-them changes who is speaking, not just how.</p>
+the clip along with the timbre: an angry clip gives an angry-sounding voice.
+Record the base clip in the character's usual mood. To switch moods at
+runtime, give the profile one clip per mood — see
+<a href="add-emotions-to-a-voice.html">Add Emotions to a Voice</a>.</p>
 <h2 id="where-clips-come-from">Where clips come from<a class="headerlink" href="#where-clips-come-from" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Record an actor.</strong> This gives the best quality and one true identity across
   every mood. Follow <a href="#what-to-record">What to record</a> below.</li>
-<li><strong>Design a voice with a text prompt, outside Tryll.</strong> Qwen3-TTS VoiceDesign turns
-  a description such as "Man in his thirties, Eastern European accent, irritated"
-  into speech. Try it in the
-  <a href="https://huggingface.co/spaces/Qwen/Qwen3-TTS">hosted demo</a>, or run it locally
-  with Qwen's <code>qwen-tts</code> Python package
-  (<code>qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign</code>). Render a few takes, keep
-  the one you like, and save it as the character's clip. Render each mood clip in
-  the mood you want; the delivery is part of the description.</li>
+<li><strong>Design a voice with a text prompt, outside Tryll.</strong> Qwen3-TTS VoiceDesign
+  turns a description such as "Man in his thirties, Eastern European accent,
+  irritated" into speech. Render a few takes, keep the one you like, and save it
+  as the character's clip. See
+  <a href="design-a-voice-with-qwen3-tts.html">Design a Voice Clip with Qwen3-TTS</a>.</li>
 <li><strong>Use stock or synthetic voice libraries,</strong> as long as the licence covers use in
   your product.</li>
 </ul>
@@ -9095,34 +9188,10 @@ fails with an error telling you to set the voice profile's
 <code>reference_voice</code>.</p>
 </div>
 <h3 id="switching-moods-at-runtime">Switching moods at runtime<a class="headerlink" href="#switching-moods-at-runtime" title="Permanent link">&para;</a></h3>
-<p>Add a delivery mode per mood to the profile, each naming its own clip, and
-switch between them with <code>SetAgentDeliveryMode</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tryll_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeliveryMode</span><span class="p">,</span> <span class="n">VoiceProfile</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">guard</span> <span class="o">=</span> <span class="n">VoiceProfile</span><span class="p">(</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">tts_model_name</span><span class="o">=</span><span class="s2">&quot;Pocket TTS (int8)&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">reference_voice</span><span class="o">=</span><span class="s2">&quot;voices/guard/neutral.wav&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">delivery_modes</span><span class="o">=</span><span class="p">[</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">DeliveryMode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;angry&quot;</span><span class="p">,</span>  <span class="n">reference_voice</span><span class="o">=</span><span class="s2">&quot;voices/guard/angry.wav&quot;</span><span class="p">),</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">DeliveryMode</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;afraid&quot;</span><span class="p">,</span> <span class="n">reference_voice</span><span class="o">=</span><span class="s2">&quot;voices/guard/afraid.wav&quot;</span><span class="p">),</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="p">])</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_agent</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">voice</span><span class="o">=</span><span class="n">guard</span><span class="p">)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">agent</span><span class="o">.</span><span class="n">set_delivery_mode</span><span class="p">(</span><span class="s2">&quot;angry&quot;</span><span class="p">)</span>    <span class="c1"># the NPC loses their temper</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">agent</span><span class="o">.</span><span class="n">set_delivery_mode</span><span class="p">(</span><span class="s2">&quot;neutral&quot;</span><span class="p">)</span>  <span class="c1"># and calms down again</span>
-</code></pre></div>
-<p>In Unity and Unreal, add the modes to the <strong>Delivery Modes</strong> list on the
-voice profile asset, and call <code>SetDeliveryModeAsync</code> (Unity) or
-<strong>Set Delivery Mode</strong> (Unreal) on the agent component.</p>
-<ul>
-<li>The call is accepted at any time, even mid-turn. The new clip is used from
-  the next sentence.</li>
-<li>By default every clip in the profile is prepared when the agent is created,
-  so the first sentence in a new mood has no extra delay. Set <strong>Prepare</strong> to
-  <code>Lazy</code> to prepare each clip on first use instead.</li>
-<li><code>intensity</code> does not blend clips: a clip is all or nothing. On Pocket TTS it
-  only scales a mode's <code>speed_scale</code>.</li>
-</ul>
+<p>A profile can hold one clip per mood as named <strong>delivery modes</strong>, and game code
+switches between them with <code>SetAgentDeliveryMode("angry")</code>, from the next
+sentence. The full recipe, from making the clips to switching at runtime, is in
+<a href="add-emotions-to-a-voice.html">Add Emotions to a Voice</a>.</p>
 <p>To give the character a <strong>different voice</strong> rather than a different mood, for
 example another actor, replace the whole profile with <code>SetAgentVoice</code> while the
 agent is idle.</p>
@@ -9146,12 +9215,13 @@ per-clip warning tells you when only part of a long clip is used).</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Pocket TTS is English only.</strong> The sherpa-onnx Pocket TTS conversion covers
-  Kyutai's English model. Qwen3-TTS Base (internal preview) clones in 10
+  Kyutai's English model. Qwen3-TTS Base clones in 10
   languages. Supertonic 3 covers 31 languages with fixed voices — see
   <a href="add-voice-to-an-agent.html">Add Voice Output to an Agent</a>.</li>
 <li><strong>Mood comes from the clip, not from a parameter.</strong> Cloning models do not take
   a <strong>Voice Description</strong> or a delivery-mode <strong>Instruction</strong>; setting either
-  fails with <code>3023</code>. Use one delivery mode per mood, each with its own clip.
+  fails with <code>3023</code>. Use one delivery mode per mood, each with its own clip
+  (see <a href="add-emotions-to-a-voice.html">Add Emotions to a Voice</a>).
   Maya1 is the voice that takes delivery as text.</li>
 <li>A bad or missing clip path, in the profile or in any delivery mode, fails
   agent creation (or <code>SetAgentVoice</code>) with <code>3023</code>, and the message names the
@@ -9162,6 +9232,10 @@ per-clip warning tells you when only part of a long clip is used).</p>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="add-voice-to-an-agent.html">Add Voice Output to an Agent</a></li>
+<li><a href="design-a-voice-with-qwen3-tts.html">Design a Voice Clip with Qwen3-TTS</a> —
+  make a clip from a text description</li>
+<li><a href="add-emotions-to-a-voice.html">Add Emotions to a Voice</a> — one clip per mood,
+  switched at runtime</li>
 <li><a href="../reference/voice-profile.html">Reference: Voice Profile</a> — delivery modes
   and what each model does with them</li>
 <li><a href="ship-storage-folders-for-builds.html">Ship Storage Folders for Builds</a></li>
@@ -9226,13 +9300,13 @@ per-clip warning tells you when only part of a long clip is used).</p>
         
         
           
-          <a href="use-voice-input.html" class="md-footer__link md-footer__link--next" aria-label="Next: Use voice input">
+          <a href="design-a-voice-with-qwen3-tts.html" class="md-footer__link md-footer__link--next" aria-label="Next: Design a voice clip with Qwen3-TTS">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Use voice input
+                Design a voice clip with Qwen3-TTS
               </div>
             </div>
             <div class="md-footer__button md-icon">

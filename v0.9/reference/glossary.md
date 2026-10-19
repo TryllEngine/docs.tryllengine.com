@@ -152,6 +152,10 @@ The backend runtime that executes a [model](#language-model). Each [model catalo
 
 The binary file format used by `llama.cpp` for quantised [language models](#language-model). Tryll downloads GGUF files from HuggingFace for catalog entries whose [inference engine](#inference-engine) is `llama.cpp`.
 
+### LoRA adapter
+
+A small [GGUF](#gguf) file, fine-tuned for one base [language model](#language-model), that changes how that model behaves for a narrow job. An LLM node runs its model with up to 8 adapters, each with a scale (`1` = as trained, `0` = off), listed in the node's `adaptation` table. Fixed when the agent is created. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html).
+
 ### Model catalog
 
 The server's `models.json` file — the authoritative list of models Tryll can download, load, and run. Each catalog entry declares a name, a purpose (`model_type`: `language` — the default when the field is omitted — `embedding`, `stt`, `tts`, or `vad`), default sampling parameters, and one or more [variants](#model-variant). See the [model management reference](https://docs.tryllengine.com/v0.9/reference/model-management.html).
@@ -186,7 +190,7 @@ An [agent](#agent)'s one voice (`VoiceProfile`): the TTS model from the [model c
 
 ### Delivery mode
 
-A named way of speaking that a [voice profile](#voice-profile) defines, such as `angry` or `whisper`. Game code switches it with `SetAgentDeliveryMode`, which applies from the next sentence. `neutral` is built in and means the plain voice. What a mode can change depends on the TTS model: a different reference clip, a Maya1 delivery clause, the Chatterbox exaggeration, or only speed. See [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes).
+A named way of speaking that a [voice profile](#voice-profile) defines, such as `angry` or `whisper`. Game code switches it with `SetAgentDeliveryMode`, which applies from the next sentence. `neutral` is built in and means the plain voice. What a mode can change depends on the TTS model: a different reference clip, a Maya1 delivery clause, the Chatterbox exaggeration, or only speed. See [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes) and [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ______________________________________________________________________
 

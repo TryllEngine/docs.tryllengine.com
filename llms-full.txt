@@ -1435,7 +1435,7 @@ On Unreal, the MetaHuman lip-sync plugin can also take the mood, so the face mat
 
 **In the demo:** *EmotionalVoiceCharacter* (one voice with eight moods, each from its own clip; the mood is switched from the editor rather than by game logic).
 
-**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Clone a voice: switching moods at runtime](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html#switching-moods-at-runtime) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
+**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
 
 ______________________________________________________________________
 
@@ -2454,6 +2454,7 @@ Models you did not bundle with the server can be pulled from Hugging Face via `D
 - **KV cache is *per node, per agent*.** Two `Generate` nodes using the same model in the same graph still each pay their own KV cost. Budget memory accordingly.
 - **Embedding and language models are not interchangeable.** Trying to point a `Retrieve` node at a language model (or a `Generate` node at an embedding model) fails validation with a clear error.
 - **Context-window claims are rough.** Official context sizes assume no generation buffer; the high-water mark is what actually governs your prompt budget.
+- **One base model, several behaviours.** An LLM node can run its model with [LoRA adapters](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html): small GGUF files trained for that base model. The base weights stay loaded once; only the nodes that name an adapter use it.
 
 ## Related
 
@@ -2464,6 +2465,7 @@ Models you did not bundle with the server can be pulled from Hugging Face via `D
 - [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.9/concepts/projection-and-token-budgets.html)
 - [Concept: RAG](https://docs.tryllengine.com/v0.9/concepts/rag.html)
 - [How-to: Use your own local model](https://docs.tryllengine.com/v0.9/how-to/use-your-own-local-model.html)
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Pin and unpin models](https://docs.tryllengine.com/v0.9/how-to/pin-and-unpin-models.html)
 - [How-to: Estimate memory footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html)
 
@@ -2521,16 +2523,16 @@ An agent has **one voice**, a [voice profile](https://docs.tryllengine.com/v0.9/
 
 The profile holds:
 
-| Field               | Description                                                                                                                                                                                                                                              |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tts_model_name`    | Catalog voice name. **Required**; there is no default model.                                                                                                                                                                                             |
-| `speaker_id`        | Built-in voice index, `0` to the model's speaker count − 1. Supertonic 3: `0`–`9`. Orpheus: `0`–`7` (Tara … Zoe). Maya1: `0`–`1` (or override with `voice_description`). Single-speaker models (Pocket TTS) must stay `0`.                               |
-| `reference_voice`   | Reference clip (storage-root-relative) for voice-cloning models (Pocket TTS; Qwen3-TTS Base, internal preview). Empty = model default voice (Qwen3-TTS Base has none). See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). |
-| `voice_description` | Maya1 only: natural-language identity (age, accent, pitch, timbre).                                                                                                                                                                                      |
-| `speed`             | Speech-rate multiplier, `0.1`–`3.0`. Orpheus, Maya1 and Qwen3-TTS: only `1.0`.                                                                                                                                                                           |
-| `lang`              | Synthesis language on models that choose it per call (Supertonic 3: 31 languages). Empty = the session locale, then the catalog default. Rejected on fixed-language models.                                                                              |
-| `emit_visemes`      | Send a lip-sync viseme track for every sentence the agent speaks.                                                                                                                                                                                        |
-| `delivery_modes`    | Named deliveries (`angry`, `calm`, …). See below.                                                                                                                                                                                                        |
+| Field               | Description                                                                                                                                                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tts_model_name`    | Catalog voice name. **Required**; there is no default model.                                                                                                                                                                           |
+| `speaker_id`        | Built-in voice index, `0` to the model's speaker count − 1. Supertonic 3: `0`–`9`. Orpheus: `0`–`7` (Tara … Zoe). Maya1: `0`–`1` (or override with `voice_description`). Single-speaker models (Pocket TTS) must stay `0`.             |
+| `reference_voice`   | Reference clip (storage-root-relative) for voice-cloning models (Pocket TTS, Qwen3-TTS Base). Empty = model default voice (Qwen3-TTS Base has none). See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). |
+| `voice_description` | Maya1 only: natural-language identity (age, accent, pitch, timbre).                                                                                                                                                                    |
+| `speed`             | Speech-rate multiplier, `0.1`–`3.0`. Orpheus, Maya1 and Qwen3-TTS: only `1.0`.                                                                                                                                                         |
+| `lang`              | Synthesis language on models that choose it per call (Supertonic 3: 31 languages). Empty = the session locale, then the catalog default. Rejected on fixed-language models.                                                            |
+| `emit_visemes`      | Send a lip-sync viseme track for every sentence the agent speaks.                                                                                                                                                                      |
+| `delivery_modes`    | Named deliveries (`angry`, `calm`, …). See below.                                                                                                                                                                                      |
 
 The profile is validated once, when it is set. A field the loaded model cannot use fails with `3023 InvalidVoiceProfile` rather than being ignored.
 
@@ -2590,6 +2592,7 @@ The Unreal speaker is always non-spatialized (2D). The Unity speaker plays throu
 - [Substitute agent variables in LLM output](https://docs.tryllengine.com/v0.9/how-to/substitute-agent-variables-in-output.html) — replace `__PLACEHOLDER__` markers before TTS
 - [Reference: TTS Models](https://docs.tryllengine.com/v0.9/reference/tts-models.html) — shipped voices (Sherpa-ONNX and llama.cpp SNAC), family matrix, and licenses
 - [Reference: Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — the agent's voice, delivery modes, and per-model delivery
+- [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one cloned clip per mood, switched with delivery modes
 - [Reference: GenerateAndSpeak node](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html)
 - [Reference: Speak node](https://docs.tryllengine.com/v0.9/reference/nodes/speak.html)
 - [Reference: TryllSpeaker (Unity)](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-speaker.html)
@@ -3498,7 +3501,9 @@ The mental model for this section is the per-turn [slot blackboard](https://docs
 
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) ★ — make an NPC speak with `GenerateAndSpeak` / `Speak` and a playback component.
 - [Add Lip Sync to a Character](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) — move a character's mouth with its voice using the server's viseme track.
-- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — point a Pocket TTS node at a short reference WAV to speak in that voice.
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — point a voice profile at a short reference WAV to speak in that voice.
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a reference clip from a text description, without an actor.
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood as delivery modes, switched at runtime.
 - [Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) — create a VoiceInput handle, stream PCM audio, receive transcripts, push-to-talk vs. hands-free.
 - [Bias Voice Input with Hotwords](https://docs.tryllengine.com/v0.9/how-to/use-voice-input-hotwords.html) — nudge the STT decoder toward game-specific proper nouns, spell names, and other lexicon items without retraining the model.
 - [Add Lip Sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html) (Unreal) — make a MetaHuman's mouth follow an agent's TTS voice with the separate Tryll MetaHuman Lip Sync plugin, using Epic's neural model or the viseme track.
@@ -3506,6 +3511,7 @@ The mental model for this section is the per-turn [slot blackboard](https://docs
 ## Models and shipping
 
 - [Use Your Own Local Model](https://docs.tryllengine.com/v0.9/how-to/use-your-own-local-model.html) — register a GGUF file that lives on disk without a Hugging Face download.
+- [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) — run an LLM node with a fine-tuned GGUF adapter, and tune how strongly it applies.
 - [Pin and Unpin Models](https://docs.tryllengine.com/v0.9/how-to/pin-and-unpin-models.html) — keep a model warm (`LoadModelRequest`) or release it (`UnloadModelRequest`).
 - [Verify Required Models Before Play](https://docs.tryllengine.com/v0.9/how-to/verify-models-before-play.html) — gate Play/PIE on every registered model being downloaded first, and fail the build when a workflow references a model that will not ship.
 - [Estimate Memory Footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html) — work out the RAM and VRAM a model line-up needs before you ship, so it fits your target hardware. Check the live numbers in [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html).
@@ -6471,7 +6477,7 @@ Fields marked `(structural)` in the schema **cannot** be changed at runtime. All
 
 Structural on every node
 
-On every node that has them, the exit fields (`default_exit`, `found_exit`, `not_found_exit`, `tool_called_exit`, `no_tool_called_exit`, `timeout_exit`, …), plus `context_size`, `input`, and `output_name`, are **structural** — fixed at `CreateAgent`. The table lists only the node-specific structural fields *in addition* to those.
+On every node that has them, the exit fields (`default_exit`, `found_exit`, `not_found_exit`, `tool_called_exit`, `no_tool_called_exit`, `timeout_exit`, …), plus `context_size`, `input`, and `output_name`, are **structural** — fixed at `CreateAgent`. So is `adaptation` (the [LoRA adapters](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)) on every LLM node. The table lists only the node-specific structural fields *in addition* to those.
 
 | Node                  | Node-specific structural fields                      | Mutable fields                                                                                                                                                                        |
 | --------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -11696,12 +11702,13 @@ Models whose language is fixed per model (Pocket TTS, Orpheus, Maya1 — all Eng
 
 Which profile field selects the voice depends on the model family:
 
-| Model         | Voice field        | How it works                                                                                                                                                                                                                                       |
-| ------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Supertonic 3  | `SpeakerId`        | 10 built-in voice styles — indices `0`–`9`.                                                                                                                                                                                                        |
-| Pocket TTS    | `ReferenceVoice`   | Zero-shot cloning from a reference WAV (10–20 s recommended; the first 30 s are used); each agent can use a different clip on the same loaded model.                                                                                               |
-| Orpheus 3B FT | `SpeakerId`        | 8 named English speakers — indices `0`–`7` (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as `<laugh>` may appear in the spoken text.                                                                                               |
-| Maya1 3B      | `VoiceDescription` | Natural-language identity (age, accent, pitch, timbre). Empty falls back to `SpeakerId` `0`–`1` (male / female 30s American). Steer delivery with [delivery modes](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes). |
+| Model               | Voice field        | How it works                                                                                                                                                                                                                                       |
+| ------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Supertonic 3        | `SpeakerId`        | 10 built-in voice styles — indices `0`–`9`.                                                                                                                                                                                                        |
+| Pocket TTS          | `ReferenceVoice`   | Zero-shot cloning from a reference WAV (10–20 s recommended; the first 30 s are used); each agent can use a different clip on the same loaded model.                                                                                               |
+| Qwen3-TTS 1.7B Base | `ReferenceVoice`   | Cloning from a reference WAV (3–10 s), required: there is no default voice. Speaks 10 languages from one clip; set `Lang`.                                                                                                                         |
+| Orpheus 3B FT       | `SpeakerId`        | 8 named English speakers — indices `0`–`7` (Tara, Leah, Jess, Leo, Dan, Mia, Zac, Zoe). Inline tags such as `<laugh>` may appear in the spoken text.                                                                                               |
+| Maya1 3B            | `VoiceDescription` | Natural-language identity (age, accent, pitch, timbre). Empty falls back to `SpeakerId` `0`–`1` (male / female 30s American). Steer delivery with [delivery modes](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes). |
 
 eSpeak-based TTS models are not supported
 
@@ -11711,7 +11718,7 @@ Model families that depend on eSpeak NG for text-to-phoneme conversion — **Pip
 
 `SpeakerId` must be below the model's speaker count — creating an agent with a larger value fails with `3023` and *"speaker_id N is out of range for TTS model … (M speaker(s); valid range 0..M-1)"*. Pocket TTS exposes exactly **one** speaker, so it must stay `0` there; change the Pocket voice with `ReferenceVoice`, not `SpeakerId`. Orpheus accepts `0`–`7`; Maya1 accepts `0`–`1` — `VoiceDescription` replaces the preset voice but does not widen the range.
 
-For `ReferenceVoice` — including cloning a brand-new voice from your own recording, and one clip per mood — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html).
+For `ReferenceVoice` — cloning a brand-new voice from your own recording — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). To make a clip from a text description instead, see [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html), and for one clip per mood, [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ## 8. Change the voice or its delivery at runtime
 
@@ -11790,6 +11797,7 @@ The server automatically normalizes *characters* for Pocket TTS — typographic 
 - [Reference: UTryllSpeakerComponent (Unreal)](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/cpp/index.html)
 - [How-to: Add Lip Sync to a Character](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) — move the character's mouth with the voice
 - [How-to: Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html)
+- [How-to: Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched with delivery modes
 - [How-to: Change Agent Parameters at Runtime](https://docs.tryllengine.com/v0.9/how-to/change-agent-parameters.html)
 - [How-to: Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) — add microphone input alongside TTS output
 
@@ -11950,10 +11958,10 @@ agent.SetOnTtsVisemes([](std::string_view nodeName,
 
 Give an NPC a custom voice from a short recording. Voice-cloning TTS models condition synthesis on a *reference clip*: a recording of the target voice. There is no training or preprocessing step. You put a WAV file in your project's storage folder and point the agent's [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) at it with **Reference Voice**.
 
-| Model                               | Languages                                             | Clip length               | Status           |
-| ----------------------------------- | ----------------------------------------------------- | ------------------------- | ---------------- |
-| `Pocket TTS (int8)`                 | English                                               | 10–20 s (first 30 s used) | Public           |
-| `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` | zh, en, de, it, pt, es, ja, ko, fr, ru (via **Lang**) | 3–10 s                    | Internal preview |
+| Model                               | Languages                                             | Clip length               | Status |
+| ----------------------------------- | ----------------------------------------------------- | ------------------------- | ------ |
+| `Pocket TTS (int8)`                 | English                                               | 10–20 s (first 30 s used) | Public |
+| `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` | zh, en, de, it, pt, es, ja, ko, fr, ru (via **Lang**) | 3–10 s                    | Public |
 
 The same mechanism also powers plain **voice selection**: ship several reference clips and give each NPC a voice profile that names one. One loaded cloning model serves many distinct voices concurrently.
 
@@ -11963,23 +11971,16 @@ Prerequisites
 - A TTS model with voice cloning in the catalog (see the table above).
 - A process storage root (the server's storage folder) — see [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html).
 
-## Intended use: one voice per character, one delivery mode per mood
+## One voice per character
 
-Cloning is how a character keeps **the same voice in every sentence and every turn**. The clip fixes the speaker; the model only adds the words. That makes cloning the right tool for named characters, and a better fit than models that invent a voice from a text description. Those models (for example Qwen3-TTS VoiceDesign) sample a new voice on each synthesis call, and Tryll synthesizes a reply sentence by sentence, so the voice would change mid-reply. Use them to *create* clips (see [Where clips come from](#where-clips-come-from)), not to speak at runtime.
+Cloning is how a character keeps **the same voice in every sentence and every turn**. The clip fixes the speaker; the model only adds the words. That makes cloning the right tool for named characters, and a better fit than models that invent a voice from a text description. Those models (for example Qwen3-TTS VoiceDesign) sample a new voice on each synthesis call, and Tryll synthesizes a reply sentence by sentence, so the voice would change mid-reply. Use them to *create* clips, not to speak at runtime.
 
-**The clip's mood carries over.** Cloning copies the register and energy of the reference along with the timbre. In our measurements, neutral text cloned from a shouted, angry clip came out raised and loud on both models. Cloned from a sad clip, it came out low and flat. So the intended pattern for emotion is:
-
-1. Make one clip per character per mood you need, for example `voices/guard/neutral.wav`, `voices/guard/angry.wav`, `voices/guard/afraid.wav`.
-1. Put the neutral clip in the profile's **Reference Voice**. That is the built-in `neutral` mode.
-1. Add one **delivery mode** per mood to the same profile, each with its own **Reference Voice**: `angry` uses `voices/guard/angry.wav`, `afraid` uses `voices/guard/afraid.wav`.
-1. Switch moods at runtime with `SetAgentDeliveryMode("angry")`. It needs no agent rebuild and applies from the next sentence (see [Switching moods at runtime](#switching-moods-at-runtime)).
-
-Record every mood with the same speaker. Clips from different speakers, or separate takes from a voice-design model, are different voices. Switching between them changes who is speaking, not just how.
+**The clip's mood carries over.** Cloning copies the register and energy of the clip along with the timbre: an angry clip gives an angry-sounding voice. Record the base clip in the character's usual mood. To switch moods at runtime, give the profile one clip per mood — see [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ## Where clips come from
 
 - **Record an actor.** This gives the best quality and one true identity across every mood. Follow [What to record](#what-to-record) below.
-- **Design a voice with a text prompt, outside Tryll.** Qwen3-TTS VoiceDesign turns a description such as "Man in his thirties, Eastern European accent, irritated" into speech. Try it in the [hosted demo](https://huggingface.co/spaces/Qwen/Qwen3-TTS), or run it locally with Qwen's `qwen-tts` Python package (`qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign`). Render a few takes, keep the one you like, and save it as the character's clip. Render each mood clip in the mood you want; the delivery is part of the description.
+- **Design a voice with a text prompt, outside Tryll.** Qwen3-TTS VoiceDesign turns a description such as "Man in his thirties, Eastern European accent, irritated" into speech. Render a few takes, keep the one you like, and save it as the character's clip. See [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html).
 - **Use stock or synthetic voice libraries,** as long as the licence covers use in your product.
 
 ## 1. Record (or choose) a reference clip
@@ -12077,29 +12078,7 @@ Pocket TTS falls back to a bundled default voice when **Reference Voice** is emp
 
 ### Switching moods at runtime
 
-Add a delivery mode per mood to the profile, each naming its own clip, and switch between them with `SetAgentDeliveryMode`:
-
-```
-from tryll_client import DeliveryMode, VoiceProfile
-
-guard = VoiceProfile(
-    tts_model_name="Pocket TTS (int8)",
-    reference_voice="voices/guard/neutral.wav",
-    delivery_modes=[
-        DeliveryMode(name="angry",  reference_voice="voices/guard/angry.wav"),
-        DeliveryMode(name="afraid", reference_voice="voices/guard/afraid.wav"),
-    ])
-agent = client.create_agent(graph, voice=guard)
-
-agent.set_delivery_mode("angry")    # the NPC loses their temper
-agent.set_delivery_mode("neutral")  # and calms down again
-```
-
-In Unity and Unreal, add the modes to the **Delivery Modes** list on the voice profile asset, and call `SetDeliveryModeAsync` (Unity) or **Set Delivery Mode** (Unreal) on the agent component.
-
-- The call is accepted at any time, even mid-turn. The new clip is used from the next sentence.
-- By default every clip in the profile is prepared when the agent is created, so the first sentence in a new mood has no extra delay. Set **Prepare** to `Lazy` to prepare each clip on first use instead.
-- `intensity` does not blend clips: a clip is all or nothing. On Pocket TTS it only scales a mode's `speed_scale`.
+A profile can hold one clip per mood as named **delivery modes**, and game code switches between them with `SetAgentDeliveryMode("angry")`, from the next sentence. The full recipe, from making the clips to switching at runtime, is in [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 To give the character a **different voice** rather than a different mood, for example another actor, replace the whole profile with `SetAgentVoice` while the agent is idle.
 
@@ -12117,18 +12096,267 @@ If the voice drifts between sentences, the reference clip is conditioning too we
 
 ## Limitations
 
-- **Pocket TTS is English only.** The sherpa-onnx Pocket TTS conversion covers Kyutai's English model. Qwen3-TTS Base (internal preview) clones in 10 languages. Supertonic 3 covers 31 languages with fixed voices — see [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html).
-- **Mood comes from the clip, not from a parameter.** Cloning models do not take a **Voice Description** or a delivery-mode **Instruction**; setting either fails with `3023`. Use one delivery mode per mood, each with its own clip. Maya1 is the voice that takes delivery as text.
+- **Pocket TTS is English only.** The sherpa-onnx Pocket TTS conversion covers Kyutai's English model. Qwen3-TTS Base clones in 10 languages. Supertonic 3 covers 31 languages with fixed voices — see [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html).
+- **Mood comes from the clip, not from a parameter.** Cloning models do not take a **Voice Description** or a delivery-mode **Instruction**; setting either fails with `3023`. Use one delivery mode per mood, each with its own clip (see [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html)). Maya1 is the voice that takes delivery as text.
 - A bad or missing clip path, in the profile or in any delivery mode, fails agent creation (or `SetAgentVoice`) with `3023`, and the message names the field.
 - Cloning quality tracks clip quality. If the voice sounds muffled or noisy, re-record the reference clip.
 
 ## Related
 
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html)
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a clip from a text description
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched at runtime
 - [Reference: Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — delivery modes and what each model does with them
 - [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html)
 - [Concept: TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html)
 - [Reference: TTS Models](https://docs.tryllengine.com/v0.9/reference/tts-models.html) — which families clone (Pocket TTS, Qwen3-TTS Base) and which take text-described voices (Maya1)
+
+# Design a Voice Clip with Qwen3-TTS
+
+Make a reference clip for a character without recording an actor. Qwen3-TTS **VoiceDesign** creates a voice from a text description, such as "a gruff man in his fifties with a low, gravelly voice". You render a short line in that voice, save it as a WAV, and the agent's voice profile [clones](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) it at runtime.
+
+VoiceDesign runs **outside Tryll**, while you author content. Tryll does not use it to speak at runtime: a description-based model samples a new voice on every call, and Tryll synthesizes a reply sentence by sentence, so the voice would change in the middle of a reply. A clip fixes the voice once, and the cloning model then keeps it the same in every sentence.
+
+Prerequisites
+
+- A cloning TTS model for runtime: `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` or `Pocket TTS (int8)`. See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html).
+- A web browser for the hosted demo, or Python if you run VoiceDesign on your own machine.
+
+## 1. Open VoiceDesign
+
+- **Hosted demo.** Open the [Qwen3-TTS demo](https://huggingface.co/spaces/Qwen/Qwen3-TTS) on Hugging Face and stay on the **Voice Design** tab. It has three inputs: **Text to Synthesize** (the words of the clip), **Language**, and **Voice Description** (who is speaking and how).
+- **On your own machine.** Install Qwen's `qwen-tts` Python package and run `qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign`. It opens the same interface locally. See the [Qwen3-TTS repository](https://github.com/QwenLM/Qwen3-TTS) for setup.
+
+The other two tabs are not needed here. **Voice Clone (Base)** is the same cloning that Tryll runs. **TTS (CustomVoice)** speaks with Qwen's preset speakers.
+
+## 2. Write the voice description
+
+The description decides the voice. Vague words give a generic voice, and a different one each time. These rules come from Alibaba Cloud's [Voice Design guide](https://help.aliyun.com/en/model-studio/voice-design-user-guide):
+
+- **Be specific.** Use words for qualities you can hear, such as *deep*, *husky*, *crisp*, *nasal*, *fast-paced*. Avoid *nice*, *normal*, *good*.
+
+- **Combine several dimensions.** "Female voice" alone says almost nothing. Cover most of these:
+
+  | Dimension            | Examples                                                                               |
+  | -------------------- | -------------------------------------------------------------------------------------- |
+  | Gender               | male, female                                                                           |
+  | Age                  | child, teenager, young adult, middle-aged, elderly, or an age such as "in her sixties" |
+  | Pitch                | high, medium, low; "slightly low"                                                      |
+  | Speed                | fast, medium, slow                                                                     |
+  | Timbre               | resonant, husky, gravelly, breathy, crisp, mellow                                      |
+  | Accent               | Scottish accent, light Eastern European accent                                         |
+  | Emotion and delivery | calm, cheerful, irritated, fearful, whispering                                         |
+  | Role                 | tavern keeper, army sergeant, news anchor, storyteller                                 |
+
+- **Describe the sound, not your taste.** "Warm, slow, slightly breathy" works. "A voice players will love" does not.
+
+- **Do not ask for a real person.** Describe the qualities instead of naming an actor or a celebrity.
+
+- **Keep it short.** One or two sentences. Drop repeated synonyms and filler.
+
+- **Write it in English or Chinese.** The text to synthesize can be in any of the model's languages.
+
+Some examples:
+
+| Too vague                     | Better                                                                                                                       |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| "Old man."                    | "A man in his seventies with a low, gravelly voice, speaking slowly and kindly, like a village storyteller."                 |
+| "Female warrior, cool voice." | "A woman in her thirties with a firm, slightly low voice and a light Scottish accent, speaking briskly with calm authority." |
+| "A merchant."                 | "A cheerful middle-aged man with a bright, slightly nasal voice, speaking fast and eagerly, like a market trader."           |
+
+For a character who will need **several moods**, write the description in two parts: the **identity** (gender, age, pitch, timbre, accent) and the **delivery** (the emotion). Keep the identity part word for word, and change only the delivery for each mood. See [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
+
+## 3. Write the text to synthesize
+
+- **The model speaks the text word for word.** Put stage directions in the description, never in the text.
+- **Write a line the character would say, in the mood you want.** The words help the delivery: an angry clip is easier to get from an angry line.
+- **Use the language the character speaks in the game.** Set **Language** to match, or leave it on **Auto**. Pocket TTS speaks English only.
+- **Match the clip length to the runtime model.** Qwen3-TTS Base needs **3–10 seconds**. Pocket TTS works best with **10–20 seconds**, so write two or three sentences. Render the whole clip in one go: takes joined from separate renders can sound like different people.
+
+## 4. Render several takes, keep the best
+
+The same description gives a slightly different voice on every render. Render a few takes, and keep the one that fits the character best. Listen for:
+
+- a voice that stays the same from the first word to the last;
+- clean audio with no clicks, warbling or cut-off words;
+- speech that starts right away, without a long silence.
+
+If no take fits, change the description, not just the seed. Add the dimension that is off: the age, the pitch, or the speed.
+
+## 5. Save the clip and use it
+
+1. Download the take with the download button on the **Generated Audio** player.
+1. Convert it to **mono 16-bit PCM WAV** (24 kHz is ideal) and trim any silence at the start. The Audacity and ffmpeg steps are in [Clone a Voice → Record a reference clip](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html#1-record-or-choose-a-reference-clip).
+1. Put it in the storage folder, for example `<storage root>/voices/innkeeper/neutral.wav`.
+1. Point the voice profile's **Reference Voice** at it, as in [Clone a Voice → Point the agent at the clip](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html#3-point-the-agent-at-the-clip).
+
+Licence and rights
+
+Check the licence of the Qwen3-TTS model and the terms of the service you render with before you ship a generated clip in a product. Do not describe a real person's voice.
+
+## Related
+
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — how the clip is used at runtime
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched with delivery modes
+- [Reference: TTS Models](https://docs.tryllengine.com/v0.9/reference/tts-models.html) — Qwen3-TTS Base and Pocket TTS
+- [Alibaba Cloud: Voice Design guide](https://help.aliyun.com/en/model-studio/voice-design-user-guide) — how to write a voice description
+- [Qwen3-TTS on GitHub](https://github.com/QwenLM/Qwen3-TTS) — the models, local setup, and example descriptions
+
+# Add Emotions to a Voice with Delivery Modes
+
+Make a character sound angry, afraid or joyful, and switch between moods while the game runs. A voice profile holds one voice and a list of **delivery modes**: named ways of speaking, such as `angry` or `whisper`. Game code switches the mode with `SetAgentDeliveryMode`, and the next sentence is spoken in the new mood.
+
+With a **cloning** model (Qwen3-TTS Base or Pocket TTS), each mood is a **reference clip of the same character speaking in that mood**. This page shows how to make those clips, put them in a profile, and switch between them.
+
+Prerequisites
+
+- Voice output working — see [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html).
+- A cloning model, `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` or `Pocket TTS (int8)`, and a neutral reference clip for the character — see [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html).
+
+## Why one clip per mood
+
+Cloning copies the **register and energy** of the reference clip along with the voice. In our measurements, neutral text cloned from a shouted, angry clip came out raised and loud on both models. Cloned from a sad clip, it came out low and flat. Cloning models have no emotion parameter: setting a delivery mode's **Instruction** on them fails with `3023`. So the clip *is* the mood:
+
+1. One clip per character per mood, for example `voices/guard/neutral.wav`, `voices/guard/angry.wav`, `voices/guard/afraid.wav`.
+1. The neutral clip in the profile's **Reference Voice**. That is the built-in `neutral` mode.
+1. One delivery mode per mood in the same profile, each with its own **Reference Voice**.
+1. `SetAgentDeliveryMode("angry")` at runtime. It needs no agent rebuild.
+
+**Every mood must sound like the same person.** A clip from another speaker changes who is talking, not just how.
+
+## 1. Plan the moods
+
+- **Pick the few moods your game uses.** Each one is a clip to make and to check. Three to five per character is plenty for most NPCs.
+- **Use the same mode names on every character.** Then one call, such as `SetAgentDeliveryMode("angry")`, works on everyone. A mode with no fields set sounds like `neutral`, so a character without an angry clip can still define an empty `angry` mode.
+- **Keep names short and lowercase**, such as `angry`, `afraid`, `joyful`. Game code and the editor's dropdown use them as written.
+
+## 2. Make one clip per mood
+
+There are two ways to get a set of clips that sound like one person.
+
+### Record one actor
+
+This gives the best result. Record every mood with the same actor, in the same session, with the same microphone and room. Follow the clip rules in [Clone a Voice → Record a reference clip](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html#1-record-or-choose-a-reference-clip). Ask for each mood in character, and keep the same distance to the microphone, even when the actor shouts or whispers.
+
+### Design the moods with Qwen3-TTS
+
+Without an actor, render each mood with Qwen3-TTS **VoiceDesign**. The steps for one clip are in [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html). For a set of moods:
+
+1. **Split the description into identity and delivery.** The identity (gender, age, pitch, timbre, accent) stays **word for word** in every mood. Only the delivery changes.
+1. **Write a line in each mood.** An angry line for the angry clip, a frightened line for the afraid one.
+1. **Render several takes per mood** and keep the ones that sound most like the neutral clip. Listen to them side by side. Drop a take that sounds like someone else, even if its mood is right.
+
+For example, a palace guard:
+
+| Mood      | Voice description                                                                                                                                                      |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `neutral` | A man in his forties with a deep, slightly hoarse voice and a light Northern English accent. **He speaks calmly, at an even pace.**                                    |
+| `angry`   | A man in his forties with a deep, slightly hoarse voice and a light Northern English accent. **He is furious and shouts, fast and sharp.**                             |
+| `afraid`  | A man in his forties with a deep, slightly hoarse voice and a light Northern English accent. **He is frightened; his voice shakes and he speaks quickly and quietly.** |
+
+Each render is a new sample, so designed moods can drift slightly away from each other. Picking takes by ear keeps the drift small.
+
+Put the clips together in one folder per character:
+
+```
+<storage root>/
+  └─ voices/
+      └─ guard/
+          ├─ neutral.wav
+          ├─ angry.wav
+          └─ afraid.wav
+```
+
+## 3. Add the modes to the voice profile
+
+1. Select the character's **Voice Profile** asset (**Create → Tryll → Voice Profile** if it has none).
+
+1. Set **Tts Model Name** to the cloning model and **Reference Voice** to the neutral clip.
+
+1. Under **Delivery Modes**, add one element per mood. Set its **Name** (`angry`) and its **Reference Voice** (`voices/guard/angry.wav`, with the **…** button or typed). Leave **Instruction** empty.
+
+1. Open the character's **Tryll Voice Profile** data asset.
+
+1. Set the TTS model to the cloning model and **Reference Voice** to the neutral clip.
+
+1. Under **Delivery Modes**, add one element per mood with its **Name** and **Reference Voice**. Leave **Instruction** empty.
+
+```
+from tryll_client import DeliveryMode, VoiceProfile
+
+guard = VoiceProfile(
+    tts_model_name="Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)",
+    reference_voice="voices/guard/neutral.wav",
+    delivery_modes=[
+        DeliveryMode(name="angry",  reference_voice="voices/guard/angry.wav"),
+        DeliveryMode(name="afraid", reference_voice="voices/guard/afraid.wav"),
+    ])
+agent = client.create_agent(graph, voice=guard)
+```
+
+A mode can also set **Speed Scale**, for example `1.15` to make `afraid` a little faster.
+
+By default, the server prepares every clip in the profile when the agent is created, so the first sentence in a new mood has no extra delay. Set **Prepare** to `Lazy` to prepare each clip on its first use instead. A bad or missing clip path, in the profile or in any mode, fails agent creation with `3023`, and the message names the field.
+
+## 4. Switch the mood at runtime
+
+```
+await agentComp.SetDeliveryModeAsync("angry");    // the guard loses his temper
+await agentComp.SetDeliveryModeAsync("neutral");  // and calms down again
+```
+
+Call **Set Delivery Mode** on the **Tryll Agent** component with the mode name. It reports completion through its delegate.
+
+```
+agent.set_delivery_mode("angry")
+agent.set_delivery_mode("neutral")
+```
+
+```
+agent.SetDeliveryMode("angry", 1.0f);
+```
+
+- **It applies from the next sentence.** The call is accepted at any time, even mid-turn. A sentence already sent to the TTS model keeps its mood.
+- **`neutral` is built in.** It always exists and means the profile's own **Reference Voice**.
+- **Intensity does not blend clips.** A clip is all or nothing. On Pocket TTS, `intensity` only scales the mode's **Speed Scale**; on Qwen3-TTS Base it does nothing.
+- **An unknown name** fails with `3024 UnknownDeliveryMode`, and the current mode stays.
+
+To try a mood without code, use the agent component's **Voice Delivery** override in the Inspector (Unity) or Details panel (Unreal). Its dropdown lists `neutral` and the profile's modes, and changing it on a live agent switches the mood at once.
+
+### Decide when to switch
+
+Tryll does not detect the mood for you: only the API switches the mode, and the language model cannot. Your game owns the character's emotional state, the same way it owns health or quest progress, and calls `SetAgentDeliveryMode` when it changes. Pass the same mood into the prompt too, so that *what* the character says matches *how* it sounds. See [Talking NPC → An NPC who shows emotion](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html#step-4-an-npc-who-shows-emotion).
+
+## Example: the Unity demo
+
+The Unity demo's **EmotionalVoiceCharacter** is a complete example. Kira, a K-pop singer giving a magazine interview, speaks with one Qwen3-TTS voice and eight moods:
+
+- **Voice profile:** `Assets/Voices/VoiceCharacterWithEmotions`, on `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)`.
+- **Neutral clip:** `voice/young_female/female_young_calm.wav`.
+- **Delivery modes:** `angry`, `very_angry`, `fear`, `hysteria`, `joy`, `sad`, `flirty` and `terror`, each with its own clip in `TryllStorage/voice/young_female/`.
+- **Workflow:** `Assets/Workflows/EmotionalVoiceCharacter`.
+
+The clips were made with Qwen3-TTS VoiceDesign, with one description per mood. To hear it, open `DemoScene`, select the **EmotionalVoiceCharacter** object, pick a mood in the agent component's **Voice Delivery** dropdown, then enter Play mode and talk to Kira. Change the mood while she speaks to hear the switch at the next sentence.
+
+## Other TTS models
+
+How a mode expresses a mood depends on the model:
+
+| Model                      | What a mood is                                                       |
+| -------------------------- | -------------------------------------------------------------------- |
+| Qwen3-TTS Base, Pocket TTS | A reference clip per mood (this page)                                |
+| Maya1                      | A text **Instruction**, such as `angry` or `whisper`, with intensity |
+| Supertonic 3, Orpheus      | No emotion control: a mode can only change speed, or stay empty      |
+
+The details for each model are in [Voice Profile → Delivery modes](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes).
+
+## Related
+
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html)
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html)
+- [Reference: Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — every field, delivery modes, intensity, clip preparation
+- [Reference: TTS Models](https://docs.tryllengine.com/v0.9/reference/tts-models.html) — delivery modes by family
+- [Use case: Talking NPC](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html) — where emotion fits in a full character
 
 # Use Voice Input
 
@@ -12850,6 +13078,144 @@ The Catalog field above is the place to link the file. Auto-launch passes it as 
 
 - [Model management](https://docs.tryllengine.com/v0.9/reference/model-management.html) — merge rules and catalog schema
 - [Server configuration](https://docs.tryllengine.com/v0.9/reference/server-configuration.html) — `user_models_catalog_path`
+
+# Use a LoRA Adapter
+
+Run an LLM node with a **LoRA adapter**: a small GGUF file, fine-tuned for one base model, that changes how that model behaves for one job. A small adapter can teach a small model a narrow task, such as a fixed rewrite style or one character's way of speaking, without shipping a second model.
+
+Any node that runs a language model takes adapters: [Generate](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html), [Generate and Speak](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html), [Tool Call](https://docs.tryllengine.com/v0.9/reference/nodes/tool-call.html), [Classify Intent (LLM)](https://docs.tryllengine.com/v0.9/reference/nodes/classify-intent-llm.html), [Classify Attributes (LLM)](https://docs.tryllengine.com/v0.9/reference/nodes/classify-attributes-llm.html) and [Summarize](https://docs.tryllengine.com/v0.9/reference/nodes/summarize.html). The base model is loaded once. Each node that names an adapter runs it on its own context, so one agent can run a fine-tuned node next to nodes that use the plain base model.
+
+Getting an adapter
+
+Tryll does not train adapters, and this page does not cover fine-tuning. If you need an adapter for your game, [contact the Tryll developers](https://tryllengine.com/).
+
+Prerequisites
+
+- A LoRA adapter in **GGUF** format, trained for the **same base model** that the node runs. An adapter made for another model fails agent creation.
+- That base model in the catalog and downloaded — see [Manage Models in the Editor](https://docs.tryllengine.com/v0.9/how-to/manage-models-in-editor.html).
+- The server's **process storage root**. Unity and Unreal default it to `<Project>/TryllStorage/`. See [Server Configuration → Storage root](https://docs.tryllengine.com/v0.9/reference/server-configuration.html#storage-root).
+
+## 1. Put the adapter in the storage folder
+
+The adapter's path is **relative to the storage root**, like voice clips and string storages:
+
+```
+<storage root>/
+  └─ lora/
+      └─ merchant_style.gguf
+```
+
+The file stays on the machine that runs the Tryll server. The client only sends the path. For a packaged build, ship the folder with the game, as described in [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html).
+
+## 2. Add the adapter to the node
+
+Each LLM node has an **Adaptation** table with a **Loras** list. Every entry has a **Path** and a **Scale**.
+
+1. Open the workflow in the [graph editor](https://docs.tryllengine.com/v0.9/how-to/edit-workflows-in-graph-editor.html) (or select the workflow asset) and select the LLM node.
+1. Expand **Adaptation → Loras** and add an element.
+1. In **Path**, click the **…** button and pick the `.gguf` file. The field stores the storage-relative path, such as `lora/merchant_style.gguf`. You can also type it.
+1. Leave **Scale** at `1` for now.
+
+The workflow validator flags an absolute path or a `..` path as an error before Play, and a missing or non-`.gguf` file as a warning.
+
+In code:
+
+```
+using Tryll.Client;
+
+var gen = new TryllGenerateParams { SystemPrompt = "You are a merchant." };
+gen.Adaptation.Loras = new[]
+{
+    new TryllLoraAdapter { Path = "lora/merchant_style.gguf", Scale = 1f },
+};
+```
+
+1. Open the workflow asset in the [graph editor](https://docs.tryllengine.com/v0.9/how-to/edit-workflows-in-unreal-graph-editor.html) and select the LLM node.
+1. In the Details panel, expand **Adaptation → Loras** and add an element.
+1. In **Path**, click the browse button and pick the `.gguf` file. The stored value is the storage-relative path.
+1. Leave **Scale** at `1` for now.
+
+In C++:
+
+```
+UTryllGenerateParams* P = UTryllNodeParamsFactory::MakeGenerateParams(this);
+
+FTryllLoraAdapter Lora;
+Lora.Path.Path = TEXT("lora/merchant_style.gguf");
+Lora.Scale = 1.0f;
+P->Adaptation.Loras.Add(Lora);
+```
+
+```
+from tryll_client.graph import GenerateParams, LoraAdapter, ModelAdaptation
+
+gen = GenerateParams(
+    system_prompt="You are a merchant.",
+    adaptation=ModelAdaptation(loras=[
+        LoraAdapter(path="lora/merchant_style.gguf", scale=1.0),
+    ]),
+)
+```
+
+```
+using namespace Tryll::NodeParams;
+
+GenerateParamsT gp;
+gp.system_prompt = "You are a merchant.";
+
+auto lora = std::make_unique<LoraAdapterT>();
+lora->path  = "lora/merchant_style.gguf";
+lora->scale = 1.0f;
+gp.adaptation = std::make_unique<ModelAdaptationT>();
+gp.adaptation->loras.push_back(std::move(lora));
+```
+
+The other LLM nodes take the same `adaptation` field.
+
+## 3. Create the agent and check it
+
+Create the agent as usual. The server loads the adapter when it creates the node's context, and logs each load with its size. If the path or the file is wrong, agent creation fails, and the error names the file:
+
+| Error                         | Cause                                                                                                                                                            |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `3009 StorageOutsideRoot`     | The path is absolute or leaves the storage root with `..`.                                                                                                       |
+| `3010 StorageFileNotFound`    | No file at that path under the storage root.                                                                                                                     |
+| `3003 GraphCompilationFailed` | The file is not a LoRA GGUF, or it was trained for a different base model. Also: an empty path, the same file listed twice, or more than 8 adapters on one node. |
+
+Then talk to the agent and compare its replies with the base model's. Setting **Scale** to `0` turns the adapter off without changing the graph, which gives you a quick before-and-after.
+
+## 4. Tune the scale
+
+**Scale** sets how strongly the adapter changes the model. The range is `0` to `4`:
+
+- `1` applies the adapter **as trained**. Start here.
+- `0` turns it **off**. The node runs the plain base model.
+- Between `0` and `1` the effect is **weaker**. Lower the scale when the adapter takes over too much: replies all sound alike, or the node starts ignoring its system prompt or the character's details.
+- Above `1` the effect is **stronger**. Raise it carefully, in small steps, when the adapter's effect is too faint. High values tend to make the output repetitive or broken.
+
+Change the scale in steps of about `0.25` and compare the same dialog each time. The [Dialog Lab](https://docs.tryllengine.com/v0.9/how-to/compare-dialog-variants.html) does this well: give each variant its own agent with a different scale, run the same script with several seeds, and compare the replies side by side.
+
+The adapter is fixed when the agent is created
+
+`adaptation` is **structural**. Changing the path or the scale on a live agent with [Change Agent Parameters](https://docs.tryllengine.com/v0.9/how-to/change-agent-parameters.html) fails with `3006 ParamNotMutable`. To try another scale, recreate the agent.
+
+## Several adapters on one node
+
+A node takes **up to 8 adapters**. Each one adds its change, multiplied by its scale, to the base model. The changes add up, so the order of the list does not matter. Each file may appear only once per node.
+
+Stacking adapters that were trained separately can weaken each one or make them conflict. If you stack adapters, retune their scales together.
+
+## Memory
+
+An adapter's weights are loaded next to the base model's weights, on the GPU when the model runs there. The cost is roughly the adapter's file size. A rank-16 adapter for a 3–4B model is about 50–100 MiB. Each file is loaded once and shared by every node and agent that names it, and it is freed when the last of them is gone. The [Memory window](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html) counts adapters with their model.
+
+## Related
+
+- [Reference: Generate](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html) — the `adaptation` field, which every LLM node shares
+- [Change Agent Parameters](https://docs.tryllengine.com/v0.9/how-to/change-agent-parameters.html) — structural fields
+- [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html)
+- [Compare Dialog Variants in the Lab](https://docs.tryllengine.com/v0.9/how-to/compare-dialog-variants.html)
+- [Concept: Models and Inference Engines](https://docs.tryllengine.com/v0.9/concepts/models-and-inference-engines.html)
 
 # Pin and Unpin Models
 
@@ -14097,6 +14463,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | ------------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routes here after generation completes. Empty string = END (turn finishes). |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Exit routes
 
 | Route     | Param field    | Fires when                                                                                                                 |
@@ -14236,6 +14606,7 @@ Or author the same node inside a `UTryllWorkflowAsset` in the Content Browser an
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Concept: Models and inference engines](https://docs.tryllengine.com/v0.9/concepts/models-and-inference-engines.html)
 - [Concept: Projection and token budgets](https://docs.tryllengine.com/v0.9/concepts/projection-and-token-budgets.html)
 - [Concept: Constrained output (GBNF)](https://docs.tryllengine.com/v0.9/concepts/constrained-output.html)
@@ -14721,6 +15092,10 @@ Each exit is a structural string field on the node's params; its value names the
 | `default`   | `default_exit`   | Exit taken when no attribute triggers. Empty string = END.                                                     |
 | `triggered` | `triggered_exit` | Exit taken when any attribute triggers, or when on_failure is Triggered and scoring fails. Empty string = END. |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Kinds
 
 | Kind    | Slot value                                                                                                                       | Trigger                                                                       |
@@ -14793,6 +15168,7 @@ Graphs authored against the proof-of-concept fields (`independent_prompts`, `cho
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Classify Intent (LLM)](https://docs.tryllengine.com/v0.9/reference/nodes/classify-intent-llm.html)
 
 # Classify Intent (LLM)
@@ -14897,6 +15273,10 @@ Each exit is a structural string field on the node's params; its value names the
 | ----------- | ---------------- | ------------------------------------------------------------------------------------------- |
 | `found`     | `found_exit`     | Exit taken when classification produced a label above threshold/margin. Empty string = END. |
 | `not_found` | `not_found_exit` | Exit taken when no label cleared the threshold/margin. Empty string = END.                  |
+
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
 
 ## Exit routes
 
@@ -15029,6 +15409,7 @@ See `tryll_test_chat` agent `butler2` (`IntentLLMWorkflow`) for a full graph alo
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Design an intent-classifier prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-intent-classifier-prompt.html) — the template contract, writing and ordering labels, tuning `threshold`/`margin`
 - [How-to: Classify intent without a knowledge base](https://docs.tryllengine.com/v0.9/how-to/classify-intent-without-a-knowledge-base.html) — the end-to-end graph in all four clients
 - [How-to: Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) — two measured classifiers in front of an NPC
@@ -15368,6 +15749,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | -------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routes here after generation + synthesis complete. Empty string = END. |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Constrained output (GBNF grammar)
 
 Like [Generate](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html#constrained-output-gbnf-grammar), this node accepts an optional `grammar` (GBNF) that constrains the generated output at every decode step. The full rules there apply verbatim (must contain a `root` rule; fail-fast at agent creation and `InvalidParamValue` 3007 on a bad mutation; mutable per turn; constrain the wire, not the thinking).
@@ -15415,6 +15800,7 @@ The node-level `variable_replacements[]` and `output_filter_removals[]` arrays b
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How to filter LLM output artifacts](https://docs.tryllengine.com/v0.9/how-to/filter-llm-output-artifacts.html)
 - [How to substitute agent variables in LLM output](https://docs.tryllengine.com/v0.9/how-to/substitute-agent-variables-in-output.html)
 - [Concept: TTS and voice output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html)
@@ -16624,6 +17010,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | --------------------------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routed after the node runs, whether or not it folded. Empty string = END (turn finishes). |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ______________________________________________________________________
 
 ## How the summary reaches the prompt
@@ -16793,6 +17183,7 @@ ______________________________________________________________________
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How-to: Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html)
 - [Concept: Slots and inter-node value passing](https://docs.tryllengine.com/v0.9/concepts/slots-and-inter-node-value-passing.html)
 - [How-to: Save and load agent state](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html)
@@ -16851,6 +17242,10 @@ Each exit is a structural string field on the node's params; its value names the
 | ---------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `tool_called`    | `tool_called_exit`    | Exit taken when one or more tool calls are parsed from the response. Empty string = END.                                                                              |
 | `no_tool_called` | `no_tool_called_exit` | Exit taken when no tool call is parsed (or, under mode=call_or_answer, when the model's residual text was emitted as a plain-text reply instead). Empty string = END. |
+
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
 
 ## Exit routes
 
@@ -17059,6 +17454,7 @@ See the full flow (including client-side execution and feeding the result back) 
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Concept: Tool calling](https://docs.tryllengine.com/v0.9/concepts/tool-calling.html)
 - [How to define and handle tool calls](https://docs.tryllengine.com/v0.9/how-to/define-and-handle-tool-calls.html)
 - [How to test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/v0.9/how-to/test-tool-calls-in-editor.html)
@@ -17435,6 +17831,10 @@ The backend runtime that executes a [model](#language-model). Each [model catalo
 
 The binary file format used by `llama.cpp` for quantised [language models](#language-model). Tryll downloads GGUF files from HuggingFace for catalog entries whose [inference engine](#inference-engine) is `llama.cpp`.
 
+### LoRA adapter
+
+A small [GGUF](#gguf) file, fine-tuned for one base [language model](#language-model), that changes how that model behaves for a narrow job. An LLM node runs its model with up to 8 adapters, each with a scale (`1` = as trained, `0` = off), listed in the node's `adaptation` table. Fixed when the agent is created. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html).
+
 ### Model catalog
 
 The server's `models.json` file — the authoritative list of models Tryll can download, load, and run. Each catalog entry declares a name, a purpose (`model_type`: `language` — the default when the field is omitted — `embedding`, `stt`, `tts`, or `vad`), default sampling parameters, and one or more [variants](#model-variant). See the [model management reference](https://docs.tryllengine.com/v0.9/reference/model-management.html).
@@ -17469,7 +17869,7 @@ An [agent](#agent)'s one voice (`VoiceProfile`): the TTS model from the [model c
 
 ### Delivery mode
 
-A named way of speaking that a [voice profile](#voice-profile) defines, such as `angry` or `whisper`. Game code switches it with `SetAgentDeliveryMode`, which applies from the next sentence. `neutral` is built in and means the plain voice. What a mode can change depends on the TTS model: a different reference clip, a Maya1 delivery clause, the Chatterbox exaggeration, or only speed. See [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes).
+A named way of speaking that a [voice profile](#voice-profile) defines, such as `angry` or `whisper`. Game code switches it with `SetAgentDeliveryMode`, which applies from the next sentence. `neutral` is built in and means the plain voice. What a mode can change depends on the TTS model: a different reference clip, a Maya1 delivery clause, the Chatterbox exaggeration, or only speed. See [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html#delivery-modes) and [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ______________________________________________________________________
 
@@ -18942,7 +19342,7 @@ The server validates all exit targets when processing `CreateAgentRequest`. A no
 
 ## Versioning
 
-The current wire-protocol version is **28**. Version 28 adds `adaptation` (`ModelAdaptation`) to `GenerateParams`, `ToolCallParams`, `ClassifyIntentLLMParams`, `ClassifyAttributesLLMParams`, `GenerateAndSpeakParams` and `SummarizeParams`: a list of LoRA adapters (`loras`, each a storage-relative GGUF path and a scale) applied to the node's model. A version 27 server would ignore it and run the base model, so the versions must match. Version 27 moves the voice from the TTS nodes to the agent: `SpeakParams` and `GenerateAndSpeakParams` lose `tts_model_name`, `speaker_id`, `speed`, `tts_lang`, `tts_voice`, `tts_voice_description`, `tts_delivery_instruction` and (Generate and Speak) `emit_visemes`, which shifts the later fields' vtable slots. `CreateAgentRequest` gains `voice` (`VoiceProfile`), `SetAgentVoiceRequest` (95) and `SetAgentDeliveryModeRequest` (96) are appended to `MessageBody`, `TtsCapabilitiesInfo` gains `expressiveness` and `num_speakers`, and the audio format is announced once per agent turn. See [Agent voice](#agent-voice). Version 26 appends `ClassifyAttributesLLMParams` to the `NodeParams` union after `SummarizeParams` (a v25 server cannot construct that node). Version 25 adds `first_chunk_max_chars` to `GenerateAndSpeakParams` and `SpeakParams` (a v24 server would silently ignore it). Version 24 removes `CreateSessionRequest.storage_data_folder` (storage root is process-wide at startup) and adds `mode` on `ConnectionReady`. Version 23 removes `BeginUtteranceRequest.agent_id`; the server transcribes only, and the client starts any turn from the `UtteranceFinal` text. Version 22 adds `SummarizeParams` to the `NodeParams` union (after `WriteToMemoryParams`) and `PersistedSummary` to the standalone dialog-snapshot component union. Version 21 adds the viseme lip-sync track (`TtsVisemeFrame`, `GenerateAndSpeakParams.emit_visemes`; the flag moved to `VoiceProfile` in version 27). Version 20 adds experimental session-scoped mutable knowledge bases: `EnsureMutableKb` / enumerate / write / delete / clear / query / get / list / stats, per-store `ExportMutableKb` / `ImportMutableKb`, and `SaveGameMemory` / `LoadGameMemory` (unions 64–89). `LoadGameMemory.embed_timing` must be `Now` or `Lazy`; `Unspecified` is rejected (`8107`). Version 20 also adds dialog file `SaveDialog` / `LoadDialog` (90–93) with a caller `save_id`. Version 19 reordered `ClassifyIntentLLMParams` fields, a positional FlatBuffers layout break. Version 18 added `HotwordBias` to model-placement hints and changed the omitted `vad_min_silence_ms` default from 500 to 1000. Version 17 added `GetMemoryConsumptionRequest` / `GetMemoryConsumptionResponse` (union 62/63) and the `MemoryTier` / `MemoryOwnerKind` / `InferenceConsumerClass` enums. The request is session-scoped (`SessionNotReady` before `CreateSession`) but the snapshot is **server-wide** — every session on the process, the same collector as the monitor's `GET /api/memory`. It never returns `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html). Version 16 changed `notify_client` on the classify nodes from a bool to the `NotifyClient` enum. Version 15 added the TTS voice controls `tts_voice_description` / `tts_delivery_instruction` on `GenerateAndSpeak` and `Speak`, `ModelStatus.Incomplete`, and `ModelInfo.dependencies` / `tts_capabilities`. Version 14 added dialog export/import (unions 58–61). Version 13 replaced the four per-role engine fields on `CreateSessionRequest` with the optional `model_config` hint and added per-model memory placement. Version 12 added the session locale (`CreateSessionRequest.locale`, `SetSessionLocaleRequest`, `ModelInfo.languages`) and pause deadlines. Version 11 added the manual inference throttle — `SetInferenceThrottle` (56) — and `CreateAgentRequest.workload` (see [Inference throttle and agent workload](#inference-throttle-and-agent-workload)). Both are additive, but every client compares versions with `!=`, so any bump is a hard break at `ConnectionReady`. Version 10 was required because `RetrieveParams` gained `retrieval_mode` and `rrf_k` in the middle of the shipped FlatBuffers table (before `source` / `filter` / exits). Vtable slots are positional — mixed v9/v10 peers would decode those fields into the wrong slots — so the handshake hard-rejects a version mismatch. Version 9 replaced `ToolCallParams.notify_client`, `pause_after_tool_call`, and `history_policy` with a single `disposition: ToolCallDisposition` enum; `tool_call` NodeEvents now carry a `disposition` kv (not `history_policy`). Version 8 extended `ResumeAgentRequest` with optional `tool_results: [ToolResult {call_id, result}]` for paused `AwaitResult` tool-call batches (see [Pausing and resuming a turn](#pausing-and-resuming-a-turn)). Version 7 added dialog history mutation: `AppendInteractionsRequest` / `AppendInteractionsResponse` (52/53) and `RemoveInteractionsFromEndRequest` / `RemoveInteractionsFromEndResponse` (54/55). Version 6 added agent KV-cache lifecycle initialization and the dedicated prefill, eviction, and status request/response pairs. Version 5 added [Variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) messages (`UpdateAgentVariablesRequest`, `GetAgentVariablesRequest`, `GetAgentVariablesResponse`) and the trailing `CreateAgentRequest.variables` field; the version was bumped so a v5 client fails an incompatible v4 server at the `ConnectionReady` handshake rather than on the first variable request. Version 4 split the TCP connection from the logical session: `ConnectionReady` is now a connection-level hello with **no** `session_id`, and `CreateSession` (renamed from `ConfigureSession`) is mandatory and one-shot — it returns the server-allocated `session_id` in `CreateSessionResponse`. Every request before `CreateSession` is rejected with `2002 SessionNotReady`; a second `CreateSession` with `2003 SessionAlreadyExists`. (Version 2 had removed the `routes: [ExitRoute]` field from `GraphDescription` in favor of typed-param wiring; version 3 reinterpreted string-storage create/destroy as pin/unpin.)
+The current wire-protocol version is **28**. Version 28 adds `adaptation` (`ModelAdaptation`) to `GenerateParams`, `ToolCallParams`, `ClassifyIntentLLMParams`, `ClassifyAttributesLLMParams`, `GenerateAndSpeakParams` and `SummarizeParams`: a list of LoRA adapters (`loras`, each a storage-relative GGUF path and a scale) applied to the node's model (see [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)). A version 27 server would ignore it and run the base model, so the versions must match. Version 27 moves the voice from the TTS nodes to the agent: `SpeakParams` and `GenerateAndSpeakParams` lose `tts_model_name`, `speaker_id`, `speed`, `tts_lang`, `tts_voice`, `tts_voice_description`, `tts_delivery_instruction` and (Generate and Speak) `emit_visemes`, which shifts the later fields' vtable slots. `CreateAgentRequest` gains `voice` (`VoiceProfile`), `SetAgentVoiceRequest` (95) and `SetAgentDeliveryModeRequest` (96) are appended to `MessageBody`, `TtsCapabilitiesInfo` gains `expressiveness` and `num_speakers`, and the audio format is announced once per agent turn. See [Agent voice](#agent-voice). Version 26 appends `ClassifyAttributesLLMParams` to the `NodeParams` union after `SummarizeParams` (a v25 server cannot construct that node). Version 25 adds `first_chunk_max_chars` to `GenerateAndSpeakParams` and `SpeakParams` (a v24 server would silently ignore it). Version 24 removes `CreateSessionRequest.storage_data_folder` (storage root is process-wide at startup) and adds `mode` on `ConnectionReady`. Version 23 removes `BeginUtteranceRequest.agent_id`; the server transcribes only, and the client starts any turn from the `UtteranceFinal` text. Version 22 adds `SummarizeParams` to the `NodeParams` union (after `WriteToMemoryParams`) and `PersistedSummary` to the standalone dialog-snapshot component union. Version 21 adds the viseme lip-sync track (`TtsVisemeFrame`, `GenerateAndSpeakParams.emit_visemes`; the flag moved to `VoiceProfile` in version 27). Version 20 adds experimental session-scoped mutable knowledge bases: `EnsureMutableKb` / enumerate / write / delete / clear / query / get / list / stats, per-store `ExportMutableKb` / `ImportMutableKb`, and `SaveGameMemory` / `LoadGameMemory` (unions 64–89). `LoadGameMemory.embed_timing` must be `Now` or `Lazy`; `Unspecified` is rejected (`8107`). Version 20 also adds dialog file `SaveDialog` / `LoadDialog` (90–93) with a caller `save_id`. Version 19 reordered `ClassifyIntentLLMParams` fields, a positional FlatBuffers layout break. Version 18 added `HotwordBias` to model-placement hints and changed the omitted `vad_min_silence_ms` default from 500 to 1000. Version 17 added `GetMemoryConsumptionRequest` / `GetMemoryConsumptionResponse` (union 62/63) and the `MemoryTier` / `MemoryOwnerKind` / `InferenceConsumerClass` enums. The request is session-scoped (`SessionNotReady` before `CreateSession`) but the snapshot is **server-wide** — every session on the process, the same collector as the monitor's `GET /api/memory`. It never returns `AgentBusy`. See [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html). Version 16 changed `notify_client` on the classify nodes from a bool to the `NotifyClient` enum. Version 15 added the TTS voice controls `tts_voice_description` / `tts_delivery_instruction` on `GenerateAndSpeak` and `Speak`, `ModelStatus.Incomplete`, and `ModelInfo.dependencies` / `tts_capabilities`. Version 14 added dialog export/import (unions 58–61). Version 13 replaced the four per-role engine fields on `CreateSessionRequest` with the optional `model_config` hint and added per-model memory placement. Version 12 added the session locale (`CreateSessionRequest.locale`, `SetSessionLocaleRequest`, `ModelInfo.languages`) and pause deadlines. Version 11 added the manual inference throttle — `SetInferenceThrottle` (56) — and `CreateAgentRequest.workload` (see [Inference throttle and agent workload](#inference-throttle-and-agent-workload)). Both are additive, but every client compares versions with `!=`, so any bump is a hard break at `ConnectionReady`. Version 10 was required because `RetrieveParams` gained `retrieval_mode` and `rrf_k` in the middle of the shipped FlatBuffers table (before `source` / `filter` / exits). Vtable slots are positional — mixed v9/v10 peers would decode those fields into the wrong slots — so the handshake hard-rejects a version mismatch. Version 9 replaced `ToolCallParams.notify_client`, `pause_after_tool_call`, and `history_policy` with a single `disposition: ToolCallDisposition` enum; `tool_call` NodeEvents now carry a `disposition` kv (not `history_policy`). Version 8 extended `ResumeAgentRequest` with optional `tool_results: [ToolResult {call_id, result}]` for paused `AwaitResult` tool-call batches (see [Pausing and resuming a turn](#pausing-and-resuming-a-turn)). Version 7 added dialog history mutation: `AppendInteractionsRequest` / `AppendInteractionsResponse` (52/53) and `RemoveInteractionsFromEndRequest` / `RemoveInteractionsFromEndResponse` (54/55). Version 6 added agent KV-cache lifecycle initialization and the dedicated prefill, eviction, and status request/response pairs. Version 5 added [Variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) messages (`UpdateAgentVariablesRequest`, `GetAgentVariablesRequest`, `GetAgentVariablesResponse`) and the trailing `CreateAgentRequest.variables` field; the version was bumped so a v5 client fails an incompatible v4 server at the `ConnectionReady` handshake rather than on the first variable request. Version 4 split the TCP connection from the logical session: `ConnectionReady` is now a connection-level hello with **no** `session_id`, and `CreateSession` (renamed from `ConfigureSession`) is mandatory and one-shot — it returns the server-allocated `session_id` in `CreateSessionResponse`. Every request before `CreateSession` is rejected with `2002 SessionNotReady`; a second `CreateSession` with `2003 SessionAlreadyExists`. (Version 2 had removed the `routes: [ExitRoute]` field from `GraphDescription` in favor of typed-param wiring; version 3 reinterpreted string-storage create/destroy as pin/unpin.)
 
 The server does not check the client's version and never sends `5004`. Each client compares `ConnectionReady.protocol_version` with its own version and, if they differ, fails the connection locally with `5004` `ProtocolVersionMismatch`. A new client should do the same: surface both version numbers and stop reconnecting.
 
@@ -19614,11 +20014,11 @@ Only three things in the current models carry a sustained mood: a reference clip
 | Supertonic 3                          | `speaker_id` (style `0`–`9`)                            | `speed_scale` only                                                               | scales `speed_scale`                         | none                                                                 |
 | Pocket TTS                            | `reference_voice` (default `bria.wav`)                  | `reference_voice`, `speed_scale`                                                 | scales `speed_scale` only                    | first use of a clip computes an embedding, unless it was prepared    |
 | Chatterbox EN / ML / Turbo (internal) | `reference_voice` (model default)                       | `reference_voice`, `expressiveness` (where the model supports it), `speed_scale` | lerps `expressiveness`; scales `speed_scale` | first use of a clip encodes it, unless it was prepared               |
-| Qwen3-TTS 1.7B Base (internal)        | `reference_voice` (required)                            | `reference_voice` only                                                           | nothing                                      | first use of a clip runs the speaker encoder, unless it was prepared |
+| Qwen3-TTS 1.7B Base                   | `reference_voice` (required)                            | `reference_voice` only                                                           | nothing                                      | first use of a clip runs the speaker encoder, unless it was prepared |
 | Orpheus 3B FT                         | `speaker_id` (preset `0`–`7`)                           | nothing: modes must be empty                                                     | nothing                                      | none                                                                 |
 | Maya1 3B                              | `voice_description`, else `speaker_id` (preset `0`–`1`) | `instruction`                                                                    | rewrites the clause's intensity word         | none                                                                 |
 
-Clone models copy the mood of the clip along with the timbre, so a mode for Pocket TTS or Qwen3-TTS is "a recording of this character being angry". Record every mode clip with the same speaker; a clip from another speaker changes who is talking. See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html).
+Clone models copy the mood of the clip along with the timbre, so a mode for Pocket TTS or Qwen3-TTS is "a recording of this character being angry". Record every mode clip with the same speaker; a clip from another speaker changes who is talking. See [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) for the recipe, and [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) for the clip itself.
 
 Changing the Orpheus preset changes who speaks, so it is not a delivery. Use `SetAgentVoice` for that.
 
@@ -19933,7 +20333,9 @@ ______________________________________________________________________
 - [TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html) — the streaming pipeline and audio format.
 - [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — every voice field, delivery modes and intensity.
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) — task walkthrough.
-- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — Pocket TTS reference-voice workflow.
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — Pocket TTS and Qwen3-TTS reference-voice workflow.
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a reference clip from a text description.
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched with delivery modes.
 - [Model Management](https://docs.tryllengine.com/v0.9/reference/model-management.html) — `models.json` schema, download and load lifecycle.
 - [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html) and [`Speak`](https://docs.tryllengine.com/v0.9/reference/nodes/speak.html) — the nodes that produce audio.
 

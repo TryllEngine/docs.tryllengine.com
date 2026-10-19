@@ -34,6 +34,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | ------------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routes here after generation completes. Empty string = END (turn finishes). |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Exit routes
 
 | Route     | Param field    | Fires when                                                                                                                 |
@@ -173,6 +177,7 @@ Or author the same node inside a `UTryllWorkflowAsset` in the Content Browser an
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [Concept: Models and inference engines](https://docs.tryllengine.com/v0.9/concepts/models-and-inference-engines.html)
 - [Concept: Projection and token budgets](https://docs.tryllengine.com/v0.9/concepts/projection-and-token-budgets.html)
 - [Concept: Constrained output (GBNF)](https://docs.tryllengine.com/v0.9/concepts/constrained-output.html)

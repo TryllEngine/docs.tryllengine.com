@@ -158,6 +158,8 @@ ______________________________________________________________________
 - [TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html) — the streaming pipeline and audio format.
 - [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — every voice field, delivery modes and intensity.
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) — task walkthrough.
-- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — Pocket TTS reference-voice workflow.
+- [Clone a Voice from an Audio Sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) — Pocket TTS and Qwen3-TTS reference-voice workflow.
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a reference clip from a text description.
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched with delivery modes.
 - [Model Management](https://docs.tryllengine.com/v0.9/reference/model-management.html) — `models.json` schema, download and load lifecycle.
 - [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html) and [`Speak`](https://docs.tryllengine.com/v0.9/reference/nodes/speak.html) — the nodes that produce audio.

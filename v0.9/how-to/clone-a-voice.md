@@ -2,10 +2,10 @@
 
 Give an NPC a custom voice from a short recording. Voice-cloning TTS models condition synthesis on a *reference clip*: a recording of the target voice. There is no training or preprocessing step. You put a WAV file in your project's storage folder and point the agent's [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) at it with **Reference Voice**.
 
-| Model                               | Languages                                             | Clip length               | Status           |
-| ----------------------------------- | ----------------------------------------------------- | ------------------------- | ---------------- |
-| `Pocket TTS (int8)`                 | English                                               | 10–20 s (first 30 s used) | Public           |
-| `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` | zh, en, de, it, pt, es, ja, ko, fr, ru (via **Lang**) | 3–10 s                    | Internal preview |
+| Model                               | Languages                                             | Clip length               | Status |
+| ----------------------------------- | ----------------------------------------------------- | ------------------------- | ------ |
+| `Pocket TTS (int8)`                 | English                                               | 10–20 s (first 30 s used) | Public |
+| `Qwen3-TTS 12Hz 1.7B Base (Q4_K_M)` | zh, en, de, it, pt, es, ja, ko, fr, ru (via **Lang**) | 3–10 s                    | Public |
 
 The same mechanism also powers plain **voice selection**: ship several reference clips and give each NPC a voice profile that names one. One loaded cloning model serves many distinct voices concurrently.
 
@@ -15,23 +15,16 @@ Prerequisites
 - A TTS model with voice cloning in the catalog (see the table above).
 - A process storage root (the server's storage folder) — see [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html).
 
-## Intended use: one voice per character, one delivery mode per mood
+## One voice per character
 
-Cloning is how a character keeps **the same voice in every sentence and every turn**. The clip fixes the speaker; the model only adds the words. That makes cloning the right tool for named characters, and a better fit than models that invent a voice from a text description. Those models (for example Qwen3-TTS VoiceDesign) sample a new voice on each synthesis call, and Tryll synthesizes a reply sentence by sentence, so the voice would change mid-reply. Use them to *create* clips (see [Where clips come from](#where-clips-come-from)), not to speak at runtime.
+Cloning is how a character keeps **the same voice in every sentence and every turn**. The clip fixes the speaker; the model only adds the words. That makes cloning the right tool for named characters, and a better fit than models that invent a voice from a text description. Those models (for example Qwen3-TTS VoiceDesign) sample a new voice on each synthesis call, and Tryll synthesizes a reply sentence by sentence, so the voice would change mid-reply. Use them to *create* clips, not to speak at runtime.
 
-**The clip's mood carries over.** Cloning copies the register and energy of the reference along with the timbre. In our measurements, neutral text cloned from a shouted, angry clip came out raised and loud on both models. Cloned from a sad clip, it came out low and flat. So the intended pattern for emotion is:
-
-1. Make one clip per character per mood you need, for example `voices/guard/neutral.wav`, `voices/guard/angry.wav`, `voices/guard/afraid.wav`.
-1. Put the neutral clip in the profile's **Reference Voice**. That is the built-in `neutral` mode.
-1. Add one **delivery mode** per mood to the same profile, each with its own **Reference Voice**: `angry` uses `voices/guard/angry.wav`, `afraid` uses `voices/guard/afraid.wav`.
-1. Switch moods at runtime with `SetAgentDeliveryMode("angry")`. It needs no agent rebuild and applies from the next sentence (see [Switching moods at runtime](#switching-moods-at-runtime)).
-
-Record every mood with the same speaker. Clips from different speakers, or separate takes from a voice-design model, are different voices. Switching between them changes who is speaking, not just how.
+**The clip's mood carries over.** Cloning copies the register and energy of the clip along with the timbre: an angry clip gives an angry-sounding voice. Record the base clip in the character's usual mood. To switch moods at runtime, give the profile one clip per mood — see [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 ## Where clips come from
 
 - **Record an actor.** This gives the best quality and one true identity across every mood. Follow [What to record](#what-to-record) below.
-- **Design a voice with a text prompt, outside Tryll.** Qwen3-TTS VoiceDesign turns a description such as "Man in his thirties, Eastern European accent, irritated" into speech. Try it in the [hosted demo](https://huggingface.co/spaces/Qwen/Qwen3-TTS), or run it locally with Qwen's `qwen-tts` Python package (`qwen-tts-demo Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign`). Render a few takes, keep the one you like, and save it as the character's clip. Render each mood clip in the mood you want; the delivery is part of the description.
+- **Design a voice with a text prompt, outside Tryll.** Qwen3-TTS VoiceDesign turns a description such as "Man in his thirties, Eastern European accent, irritated" into speech. Render a few takes, keep the one you like, and save it as the character's clip. See [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html).
 - **Use stock or synthetic voice libraries,** as long as the licence covers use in your product.
 
 ## 1. Record (or choose) a reference clip
@@ -129,29 +122,7 @@ Pocket TTS falls back to a bundled default voice when **Reference Voice** is emp
 
 ### Switching moods at runtime
 
-Add a delivery mode per mood to the profile, each naming its own clip, and switch between them with `SetAgentDeliveryMode`:
-
-```
-from tryll_client import DeliveryMode, VoiceProfile
-
-guard = VoiceProfile(
-    tts_model_name="Pocket TTS (int8)",
-    reference_voice="voices/guard/neutral.wav",
-    delivery_modes=[
-        DeliveryMode(name="angry",  reference_voice="voices/guard/angry.wav"),
-        DeliveryMode(name="afraid", reference_voice="voices/guard/afraid.wav"),
-    ])
-agent = client.create_agent(graph, voice=guard)
-
-agent.set_delivery_mode("angry")    # the NPC loses their temper
-agent.set_delivery_mode("neutral")  # and calms down again
-```
-
-In Unity and Unreal, add the modes to the **Delivery Modes** list on the voice profile asset, and call `SetDeliveryModeAsync` (Unity) or **Set Delivery Mode** (Unreal) on the agent component.
-
-- The call is accepted at any time, even mid-turn. The new clip is used from the next sentence.
-- By default every clip in the profile is prepared when the agent is created, so the first sentence in a new mood has no extra delay. Set **Prepare** to `Lazy` to prepare each clip on first use instead.
-- `intensity` does not blend clips: a clip is all or nothing. On Pocket TTS it only scales a mode's `speed_scale`.
+A profile can hold one clip per mood as named **delivery modes**, and game code switches between them with `SetAgentDeliveryMode("angry")`, from the next sentence. The full recipe, from making the clips to switching at runtime, is in [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html).
 
 To give the character a **different voice** rather than a different mood, for example another actor, replace the whole profile with `SetAgentVoice` while the agent is idle.
 
@@ -169,14 +140,16 @@ If the voice drifts between sentences, the reference clip is conditioning too we
 
 ## Limitations
 
-- **Pocket TTS is English only.** The sherpa-onnx Pocket TTS conversion covers Kyutai's English model. Qwen3-TTS Base (internal preview) clones in 10 languages. Supertonic 3 covers 31 languages with fixed voices — see [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html).
-- **Mood comes from the clip, not from a parameter.** Cloning models do not take a **Voice Description** or a delivery-mode **Instruction**; setting either fails with `3023`. Use one delivery mode per mood, each with its own clip. Maya1 is the voice that takes delivery as text.
+- **Pocket TTS is English only.** The sherpa-onnx Pocket TTS conversion covers Kyutai's English model. Qwen3-TTS Base clones in 10 languages. Supertonic 3 covers 31 languages with fixed voices — see [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html).
+- **Mood comes from the clip, not from a parameter.** Cloning models do not take a **Voice Description** or a delivery-mode **Instruction**; setting either fails with `3023`. Use one delivery mode per mood, each with its own clip (see [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html)). Maya1 is the voice that takes delivery as text.
 - A bad or missing clip path, in the profile or in any delivery mode, fails agent creation (or `SetAgentVoice`) with `3023`, and the message names the field.
 - Cloning quality tracks clip quality. If the voice sounds muffled or noisy, re-record the reference clip.
 
 ## Related
 
 - [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html)
+- [Design a Voice Clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) — make a clip from a text description
+- [Add Emotions to a Voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one clip per mood, switched at runtime
 - [Reference: Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — delivery modes and what each model does with them
 - [Ship Storage Folders for Builds](https://docs.tryllengine.com/v0.9/how-to/ship-storage-folders-for-builds.html)
 - [Concept: TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html)

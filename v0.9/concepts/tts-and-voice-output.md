@@ -52,16 +52,16 @@ An agent has **one voice**, a [voice profile](https://docs.tryllengine.com/v0.9/
 
 The profile holds:
 
-| Field               | Description                                                                                                                                                                                                                                              |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tts_model_name`    | Catalog voice name. **Required**; there is no default model.                                                                                                                                                                                             |
-| `speaker_id`        | Built-in voice index, `0` to the model's speaker count − 1. Supertonic 3: `0`–`9`. Orpheus: `0`–`7` (Tara … Zoe). Maya1: `0`–`1` (or override with `voice_description`). Single-speaker models (Pocket TTS) must stay `0`.                               |
-| `reference_voice`   | Reference clip (storage-root-relative) for voice-cloning models (Pocket TTS; Qwen3-TTS Base, internal preview). Empty = model default voice (Qwen3-TTS Base has none). See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). |
-| `voice_description` | Maya1 only: natural-language identity (age, accent, pitch, timbre).                                                                                                                                                                                      |
-| `speed`             | Speech-rate multiplier, `0.1`–`3.0`. Orpheus, Maya1 and Qwen3-TTS: only `1.0`.                                                                                                                                                                           |
-| `lang`              | Synthesis language on models that choose it per call (Supertonic 3: 31 languages). Empty = the session locale, then the catalog default. Rejected on fixed-language models.                                                                              |
-| `emit_visemes`      | Send a lip-sync viseme track for every sentence the agent speaks.                                                                                                                                                                                        |
-| `delivery_modes`    | Named deliveries (`angry`, `calm`, …). See below.                                                                                                                                                                                                        |
+| Field               | Description                                                                                                                                                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tts_model_name`    | Catalog voice name. **Required**; there is no default model.                                                                                                                                                                           |
+| `speaker_id`        | Built-in voice index, `0` to the model's speaker count − 1. Supertonic 3: `0`–`9`. Orpheus: `0`–`7` (Tara … Zoe). Maya1: `0`–`1` (or override with `voice_description`). Single-speaker models (Pocket TTS) must stay `0`.             |
+| `reference_voice`   | Reference clip (storage-root-relative) for voice-cloning models (Pocket TTS, Qwen3-TTS Base). Empty = model default voice (Qwen3-TTS Base has none). See [Clone a Voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html). |
+| `voice_description` | Maya1 only: natural-language identity (age, accent, pitch, timbre).                                                                                                                                                                    |
+| `speed`             | Speech-rate multiplier, `0.1`–`3.0`. Orpheus, Maya1 and Qwen3-TTS: only `1.0`.                                                                                                                                                         |
+| `lang`              | Synthesis language on models that choose it per call (Supertonic 3: 31 languages). Empty = the session locale, then the catalog default. Rejected on fixed-language models.                                                            |
+| `emit_visemes`      | Send a lip-sync viseme track for every sentence the agent speaks.                                                                                                                                                                      |
+| `delivery_modes`    | Named deliveries (`angry`, `calm`, …). See below.                                                                                                                                                                                      |
 
 The profile is validated once, when it is set. A field the loaded model cannot use fails with `3023 InvalidVoiceProfile` rather than being ignored.
 
@@ -121,6 +121,7 @@ The Unreal speaker is always non-spatialized (2D). The Unity speaker plays throu
 - [Substitute agent variables in LLM output](https://docs.tryllengine.com/v0.9/how-to/substitute-agent-variables-in-output.html) — replace `__PLACEHOLDER__` markers before TTS
 - [Reference: TTS Models](https://docs.tryllengine.com/v0.9/reference/tts-models.html) — shipped voices (Sherpa-ONNX and llama.cpp SNAC), family matrix, and licenses
 - [Reference: Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) — the agent's voice, delivery modes, and per-model delivery
+- [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) — one cloned clip per mood, switched with delivery modes
 - [Reference: GenerateAndSpeak node](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html)
 - [Reference: Speak node](https://docs.tryllengine.com/v0.9/reference/nodes/speak.html)
 - [Reference: TryllSpeaker (Unity)](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-speaker.html)

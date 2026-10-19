@@ -41,6 +41,10 @@ Each exit is a structural string field on the node's params; its value names the
 | --------- | -------------- | -------------------------------------------------------------------------------------------- |
 | `default` | `default_exit` | Default exit target — routes here after generation + synthesis complete. Empty string = END. |
 
+LoRA adapters
+
+`adaptation.loras` runs this node's model with one or more fine-tuned LoRA adapters, each with a scale. See [Use a LoRA Adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html) for where to put the file and how to tune the scale.
+
 ## Constrained output (GBNF grammar)
 
 Like [Generate](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html#constrained-output-gbnf-grammar), this node accepts an optional `grammar` (GBNF) that constrains the generated output at every decode step. The full rules there apply verbatim (must contain a `root` rule; fail-fast at agent creation and `InvalidParamValue` 3007 on a bad mutation; mutable per turn; constrain the wire, not the thinking).
@@ -88,6 +92,7 @@ The node-level `variable_replacements[]` and `output_filter_removals[]` arrays b
 
 ## Related
 
+- [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.html)
 - [How to filter LLM output artifacts](https://docs.tryllengine.com/v0.9/how-to/filter-llm-output-artifacts.html)
 - [How to substitute agent variables in LLM output](https://docs.tryllengine.com/v0.9/how-to/substitute-agent-variables-in-output.html)
 - [Concept: TTS and voice output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html)

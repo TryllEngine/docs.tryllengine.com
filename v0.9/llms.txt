@@ -111,10 +111,13 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Add voice output to an agent](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.md): Give an NPC a voice with `GenerateAndSpeak` or `Speak`, end to end.
 - [Add lip sync to a character](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.md): Move a character's mouth with its voice — `emit_visemes` plus `TryllLipSync` (Unity) or Tryll Lip Sync (Unreal), or the raw viseme events.
 - [Clone a voice from an audio sample](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.md): Zero-shot voice cloning from a short reference recording.
+- [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.md): Make a reference clip from a text description with Qwen3-TTS VoiceDesign, and how to write the description.
+- [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.md): One cloned clip per mood as delivery modes on a voice profile, switched at runtime with `SetAgentDeliveryMode`.
 - [Use voice input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.md): Stream microphone PCM to the server for speech-to-text.
 - [Bias voice input with hotwords](https://docs.tryllengine.com/v0.9/how-to/use-voice-input-hotwords.md): Bias recognition toward proper nouns and game-specific vocabulary.
 - [Add lip sync to a MetaHuman (Unreal)](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.md): Make a MetaHuman's mouth follow an agent's TTS voice with Epic's neural model or the viseme track (Unreal, separate Tryll MetaHuman Lip Sync plugin).
 - [Use your own local model](https://docs.tryllengine.com/v0.9/how-to/use-your-own-local-model.md): Register a GGUF file already on disk, with no Hugging Face download.
+- [Use a LoRA adapter](https://docs.tryllengine.com/v0.9/how-to/use-a-lora-adapter.md): Run an LLM node with a GGUF LoRA adapter — where to put the file, how to set it on the node, and how to tune its scale.
 - [Pin and unpin models](https://docs.tryllengine.com/v0.9/how-to/pin-and-unpin-models.md): Keep a model warm in memory, or release it explicitly.
 - [Verify required models before Play](https://docs.tryllengine.com/v0.9/how-to/verify-models-before-play.md): Fail the build early when a workflow references a model that will not ship.
 - [Estimate memory footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.md): Work out RAM and VRAM cost before shipping.
