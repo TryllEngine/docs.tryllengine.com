@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="_tryll_speaker_component_8h" kind="file" language="C++">
+    <compoundname>TryllSpeakerComponent.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes local="yes">Components/ActorComponent.h</includes>
+    <includes refid="_tryll_tts_playback_events_8h" local="yes">TryllTtsPlaybackEvents.h</includes>
+    <includes refid="_tryll_viseme_event_8h" local="yes">TryllVisemeEvent.h</includes>
+    <includes local="yes">TryllSpeakerComponent.generated.h</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h</label>
+        <link refid="_tryll_speaker_component_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>TryllTtsPlaybackEvents.h</label>
+        <link refid="_tryll_tts_playback_events_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>TryllVisemeEvent.h</label>
+        <link refid="_tryll_viseme_event_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Components/ActorComponent.h</label>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="7">
+        <label>TryllSpeakerComponent.generated.h</label>
+      </node>
+      <node id="6">
+        <label>TryllVisemeEvent.generated.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_f_tryll_tts_playback_clock" prot="public">FTryllTtsPlaybackClock</innerclass>
+    <innerclass refid="class_u_tryll_speaker_component" prot="public">UTryllSpeakerComponent</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_tryll_speaker_component_8h_1a390387b368b7d561210f27289247e7ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllTtsPcm, const TArray&lt; float &gt; &amp;, int32)</argsstring>
+        <name>DECLARE_MULTICAST_DELEGATE_TwoParams</name>
+        <param>
+          <type>FOnTryllTtsPcm</type>
+        </param>
+        <param>
+          <type>const TArray&lt; float &gt; &amp;</type>
+        </param>
+        <param>
+          <type>int32</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="16" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" declline="16" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_tryll_speaker_component_8h_1ab5f0673052b10be69e29f0fd7d71d0f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllTtsTurnStarted, int32, int64)</argsstring>
+        <name>DECLARE_MULTICAST_DELEGATE_TwoParams</name>
+        <param>
+          <type>FOnTryllTtsTurnStarted</type>
+        </param>
+        <param>
+          <type>int32</type>
+        </param>
+        <param>
+          <type>int64</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="17" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" declline="17" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_tryll_speaker_component_8h_1ab50645452f7c5d43d1e86acb176991f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DECLARE_MULTICAST_DELEGATE_TwoParams</definition>
+        <argsstring>(FOnTryllTtsVisemes, const FString &amp;, TArrayView&lt; const FTryllVisemeEvent &gt;)</argsstring>
+        <name>DECLARE_MULTICAST_DELEGATE_TwoParams</name>
+        <param>
+          <type>FOnTryllTtsVisemes</type>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+        </param>
+        <param>
+          <type>TArrayView&lt; const <ref refid="struct_f_tryll_viseme_event" kindref="compound">FTryllVisemeEvent</ref> &gt;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" line="18" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h" declline="18" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSpeakerComponent.h"/>
+  </compounddef>
+</doxygen>

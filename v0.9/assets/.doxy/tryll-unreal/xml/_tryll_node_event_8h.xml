@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="_tryll_node_event_8h" kind="file" language="C++">
+    <compoundname>TryllNodeEvent.h</compoundname>
+    <includes local="yes">CoreMinimal.h</includes>
+    <includes refid="_tryll_intent_classification_8h" local="yes">TryllIntentClassification.h</includes>
+    <includes refid="_tryll_tool_call_8h" local="yes">TryllToolCall.h</includes>
+    <includes local="yes">TryllNodeEvent.generated.h</includes>
+    <includedby refid="_tryll_agent_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</includedby>
+    <includedby refid="_tryll_agent_component_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</includedby>
+    <includedby refid="_tryll_subsystem_8h" local="yes">C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>TryllIntentClassification.h</label>
+        <link refid="_tryll_intent_classification_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h</label>
+        <link refid="_tryll_node_event_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>TryllToolCall.h</label>
+        <link refid="_tryll_tool_call_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>CoreMinimal.h</label>
+      </node>
+      <node id="4">
+        <label>Kismet/BlueprintFunctionLibrary.h</label>
+      </node>
+      <node id="5">
+        <label>TryllIntentClassification.generated.h</label>
+      </node>
+      <node id="8">
+        <label>TryllNodeEvent.generated.h</label>
+      </node>
+      <node id="7">
+        <label>TryllToolCall.generated.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgent.h</label>
+        <link refid="_tryll_agent_8h_source"/>
+      </node>
+      <node id="3">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h</label>
+        <link refid="_tryll_agent_component_8h_source"/>
+      </node>
+      <node id="5">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h</label>
+        <link refid="_tryll_editor_bridge_8h_source"/>
+      </node>
+      <node id="1">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h</label>
+        <link refid="_tryll_node_event_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllSubsystem.h</label>
+        <link refid="_tryll_subsystem_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_f_tryll_node_event_key_value" prot="public">FTryllNodeEventKeyValue</innerclass>
+    <innerclass refid="struct_f_tryll_decoded_node_event" prot="public">FTryllDecodedNodeEvent</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllNodeEventKind</name>
+        <enumvalue id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7a56cf76fe1bae84d5d923b81016d60116" prot="public">
+          <name>ToolCall</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7aecc093f1d1012e7adda6d45607f0e060" prot="public">
+          <name>IntentClassified</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7acecd769b675b928d9b8504cae7914669" prot="public">
+          <name>IntentLlmClassified</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7ae99180abf47a8b3a856e0bcb2656990a" prot="public">
+          <name>Paused</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1afd46d8a0e4952168bbc23cf527666eb7a88183b946cc5f0e8c96b2e66e1c74a7e" prot="public">
+          <name>Unknown</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Which typed NodeEvent the shared decoder recognised. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" bodystart="29" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651a" prot="public" static="no" strong="yes">
+        <type>uint8</type>
+        <name>ETryllAgentNodeEventKind</name>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aa56cf76fe1bae84d5d923b81016d60116" prot="public">
+          <name>ToolCall</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aad73f784b58bf13940020030fcaf0428f" prot="public">
+          <name>ToolCallWithId</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aa2692e9f356e9b46d8890bdc792146221" prot="public">
+          <name>ToolCallDetailed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aaecc093f1d1012e7adda6d45607f0e060" prot="public">
+          <name>IntentClassified</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aacecd769b675b928d9b8504cae7914669" prot="public">
+          <name>IntentLlmClassified</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aae99180abf47a8b3a856e0bcb2656990a" prot="public">
+          <name>Paused</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_tryll_node_event_8h_1a32d5062646a962429b2a4862b4c8651aa2ead579bb64f7f715be4dfabb9b4c18a" prot="public">
+          <name>NodeEvent</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Listener slots on one agent. The component&apos;s probe reports these from Blueprint IsBound(); a raw <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> reports them from its callback slots. ToolCallDetailed suppresses the agent&apos;s generic OnNodeEvent (C++ AgentProxy parity) even though the session-level detailed event does not. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" line="43" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" bodystart="44" bodyend="52"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_tryll_node_event_8h_1aa6c170a1a4c6ee8f44f7aa07c2d3fb8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_decoded_node_event" kindref="compound">FTryllDecodedNodeEvent</ref></type>
+        <definition>FTryllDecodedNodeEvent TryllDecodeNodeEvent</definition>
+        <argsstring>(const FString &amp;NodeName, const FString &amp;EventType, const TArray&lt; TPair&lt; FString, FString &gt; &gt; &amp;WirePairs)</argsstring>
+        <name>TryllDecodeNodeEvent</name>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>NodeName</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>EventType</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; TPair&lt; FString, FString &gt; &gt; &amp;</type>
+          <declname>WirePairs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse a NodeEvent payload once. Both dispatch sites (<ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> and UTryllEditorSubsystem) call this, then broadcast their own session delegates and hand the result to <ref refid="class_f_tryll_agent_1a5f3aa876ecc759d1004631be7b701d4e" kindref="member">FTryllAgent::HandleNodeEvent</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" line="73" column="25" declfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h" declline="73" declcolumn="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllNodeEvent.h"/>
+  </compounddef>
+</doxygen>

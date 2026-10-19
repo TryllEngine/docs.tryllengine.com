@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_voice_profile_data" kind="struct" language="C++" prot="public">
+    <compoundname>FTryllVoiceProfileData</compoundname>
+    <includes refid="_tryll_voice_profile_8h" local="no">TryllVoiceProfile.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a0e7de4a9ffe108ab0de8a8396cf40dbb" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName FTryllVoiceProfileData::TtsModelName</definition>
+        <argsstring></argsstring>
+        <name>TtsModelName</name>
+        <qualifiedname>FTryllVoiceProfileData::TtsModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>TTS model catalog name. Required: there is no default model. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="74" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1acf4e919fae35256ff79cb710924b8d83" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 FTryllVoiceProfileData::SpeakerId</definition>
+        <argsstring></argsstring>
+        <name>SpeakerId</name>
+        <qualifiedname>FTryllVoiceProfileData::SpeakerId</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Speaker or style index for multi-speaker models (Supertonic 3: 0-9; Orpheus and Maya1: preset index). Must be below the model&apos;s speaker count. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="78" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a8db5bda15fcae3fac39fb1484b780b9a" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_storage_path" kindref="compound">FTryllStoragePath</ref></type>
+        <definition>FTryllStoragePath FTryllVoiceProfileData::ReferenceVoice</definition>
+        <argsstring></argsstring>
+        <name>ReferenceVoice</name>
+        <qualifiedname>FTryllVoiceProfileData::ReferenceVoice</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clone families (Pocket TTS, Chatterbox, Qwen3-TTS Base): reference clip relative to the storage root; locale-aware (voices/loc/&lt;locale&gt;/). Empty = the model&apos;s default voice (Qwen3-TTS Base requires a clip). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="82" column="19" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a66fe957b1aa337319ada98a2b15fa3a5" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllVoiceProfileData::VoiceDescription</definition>
+        <argsstring></argsstring>
+        <name>VoiceDescription</name>
+        <qualifiedname>FTryllVoiceProfileData::VoiceDescription</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maya1: natural-language identity of the voice. Overrides Speaker Id. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="86" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1ae67d585d13cc9413b8ec29e1d9ec5f00" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float FTryllVoiceProfileData::Speed</definition>
+        <argsstring></argsstring>
+        <name>Speed</name>
+        <qualifiedname>FTryllVoiceProfileData::Speed</qualifiedname>
+        <initializer>= 1.f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Speech-rate multiplier, 1.0 = native. Must stay 1.0 on models without speed control (Orpheus, Maya1, Qwen3-TTS). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="90" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a921f052589b07ceb9b0f8ae74c4e9ae2" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllVoiceProfileData::Lang</definition>
+        <argsstring></argsstring>
+        <name>Lang</name>
+        <qualifiedname>FTryllVoiceProfileData::Lang</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Language for multilingual models that pick it per call. Empty = session locale, then the model default. Rejected on models with a fixed language. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="94" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a19279e4eefa34fa40e3e45471b2f883d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float FTryllVoiceProfileData::Expressiveness</definition>
+        <argsstring></argsstring>
+        <name>Expressiveness</name>
+        <qualifiedname>FTryllVoiceProfileData::Expressiveness</qualifiedname>
+        <initializer>= 0.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chatterbox exaggeration used by &quot;neutral&quot; and by modes that do not set their own, 0.0-2.0. Ignored by other families. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="98" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a2a27a9ed613e13fa69192545be220bb9" prot="public" static="no" mutable="no">
+        <type>ETryllVoicePreparation</type>
+        <definition>ETryllVoicePreparation FTryllVoiceProfileData::Prepare</definition>
+        <argsstring></argsstring>
+        <name>Prepare</name>
+        <qualifiedname>FTryllVoiceProfileData::Prepare</qualifiedname>
+        <initializer>= ETryllVoicePreparation::Eager</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When the server prepares the reference clips. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="102" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a50688d36ad2a2f9f4a37b84a1eee312c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool FTryllVoiceProfileData::bEmitVisemes</definition>
+        <argsstring></argsstring>
+        <name>bEmitVisemes</name>
+        <qualifiedname>FTryllVoiceProfileData::bEmitVisemes</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Emit a viseme track for every sentence this agent speaks, from any speaking node. Turn on for lip-synced characters (Tryll Lip Sync, the MetaHuman Viseme solver). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="106" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a4516246c420c7d862d869bbe92023484" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_delivery_mode" kindref="compound">FTryllDeliveryMode</ref> &gt;</type>
+        <definition>TArray&lt;FTryllDeliveryMode&gt; FTryllVoiceProfileData::DeliveryModes</definition>
+        <argsstring></argsstring>
+        <name>DeliveryModes</name>
+        <qualifiedname>FTryllVoiceProfileData::DeliveryModes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Named delivery modes. Game code switches between them with Set Delivery Mode. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="110" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a785a81f3c95cc2e5f708c13b43cdb3cb" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString FTryllVoiceProfileData::DefaultDeliveryMode</definition>
+        <argsstring></argsstring>
+        <name>DefaultDeliveryMode</name>
+        <qualifiedname>FTryllVoiceProfileData::DefaultDeliveryMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mode active after the voice is set. Empty = &quot;neutral&quot;. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="114" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_voice_profile_data_1a577e3589340c75368caf7c8e684dec1e" prot="public" static="yes" mutable="no">
+        <type>const TCHAR *</type>
+        <definition>const TCHAR* FTryllVoiceProfileData::NeutralMode</definition>
+        <argsstring></argsstring>
+        <name>NeutralMode</name>
+        <qualifiedname>FTryllVoiceProfileData::NeutralMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The built-in mode that is always available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="143" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a8df113f4ff171d91ef27dbbbcba8cf2f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllVoiceProfileData::ToWire</definition>
+        <argsstring>(::Tryll::VoiceProfileT &amp;Out) const</argsstring>
+        <name>ToWire</name>
+        <qualifiedname>FTryllVoiceProfileData::ToWire</qualifiedname>
+        <param>
+          <type>::Tryll::VoiceProfileT &amp;</type>
+          <declname>Out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fill the FlatBuffers object-API mirror. Storage paths are normalized like node file pickers. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="117" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a8f74c1bc5ae24bc8f1985bb439cb02db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; FString &gt;</type>
+        <definition>TArray&lt; FString &gt; FTryllVoiceProfileData::GetModeNames</definition>
+        <argsstring>() const</argsstring>
+        <name>GetModeNames</name>
+        <qualifiedname>FTryllVoiceProfileData::GetModeNames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Names of the defined delivery modes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="120" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a599c5f46a1f9f8d4d6fe5b99115ed083" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllVoiceProfileData::HasMode</definition>
+        <argsstring>(const FString &amp;Name) const</argsstring>
+        <name>HasMode</name>
+        <qualifiedname>FTryllVoiceProfileData::HasMode</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when Name is &quot;neutral&quot; or one of the defined modes. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="123" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a58a362015205c5b73fb7794102ed8f26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllVoiceProfileData::Validate</definition>
+        <argsstring>(const FString &amp;Context, TArray&lt; FTryllWorkflowIssue &gt; &amp;OutIssues, bool bCheckFilesExist=true) const</argsstring>
+        <name>Validate</name>
+        <qualifiedname>FTryllVoiceProfileData::Validate</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Context</declname>
+        </param>
+        <param>
+          <type>TArray&lt; <ref refid="struct_f_tryll_workflow_issue" kindref="compound">FTryllWorkflowIssue</ref> &gt; &amp;</type>
+          <declname>OutIssues</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>bCheckFilesExist</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Local checks the server would also make, minus anything that needs the model&apos;s capabilities: a model name, mode names, the default mode, ranges, text limits and the reference clips (path shape and, when bCheckFilesExist and the storage folder is configured, that the file exists). Context names the profile in each message. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="132" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a94415056f98c128faefa06fbefe244a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllVoiceProfileData::ValidateAgainst</definition>
+        <argsstring>(const FTryllTtsCapabilities &amp;Caps, const FString &amp;Context, TArray&lt; FTryllWorkflowIssue &gt; &amp;OutIssues) const</argsstring>
+        <name>ValidateAgainst</name>
+        <qualifiedname>FTryllVoiceProfileData::ValidateAgainst</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_tts_capabilities" kindref="compound">FTryllTtsCapabilities</ref> &amp;</type>
+          <declname>Caps</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Context</declname>
+        </param>
+        <param>
+          <type>TArray&lt; <ref refid="struct_f_tryll_workflow_issue" kindref="compound">FTryllWorkflowIssue</ref> &gt; &amp;</type>
+          <declname>OutIssues</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The capability half of the server&apos;s check (InvalidVoiceProfile, 3023): a field the model cannot use is an error. Caps usually come from the catalog (ListModels or the editor&apos;s catalog file); the server checks the loaded model&apos;s runtime capabilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="140" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_f_tryll_voice_profile_data_1a6c0a4ecf1713adf739442efe0b509f72" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool FTryllVoiceProfileData::IsValidModeName</definition>
+        <argsstring>(const FString &amp;Name)</argsstring>
+        <name>IsValidModeName</name>
+        <qualifiedname>FTryllVoiceProfileData::IsValidModeName</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True for a valid delivery-mode name: [a-z0-9_]{1,32}. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="146" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The voice of one agent (protocol v27): the TTS model, the base identity, the speech-pipeline settings and the named delivery modes. Every speaking node of the agent (Speak, Generate And Speak) uses it. Hand-mirrors VoiceProfile in voice.fbs; ToWire converts it for CreateAgent / SetAgentVoice. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="3">
+        <label>FTryllStoragePath</label>
+        <link refid="struct_f_tryll_storage_path"/>
+      </node>
+      <node id="1">
+        <label>FTryllVoiceProfileData</label>
+        <link refid="struct_f_tryll_voice_profile_data"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>TtsModelName</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ReferenceVoice</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" line="68" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllVoiceProfile.h" bodystart="69" bodyend="147"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_voice_profile_data_1a50688d36ad2a2f9f4a37b84a1eee312c" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>bEmitVisemes</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a785a81f3c95cc2e5f708c13b43cdb3cb" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>DefaultDeliveryMode</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a4516246c420c7d862d869bbe92023484" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>DeliveryModes</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a19279e4eefa34fa40e3e45471b2f883d" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>Expressiveness</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a8f74c1bc5ae24bc8f1985bb439cb02db" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>GetModeNames</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a599c5f46a1f9f8d4d6fe5b99115ed083" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>HasMode</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a6c0a4ecf1713adf739442efe0b509f72" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>IsValidModeName</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a921f052589b07ceb9b0f8ae74c4e9ae2" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>Lang</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a577e3589340c75368caf7c8e684dec1e" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>NeutralMode</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a2a27a9ed613e13fa69192545be220bb9" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>Prepare</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a8db5bda15fcae3fac39fb1484b780b9a" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>ReferenceVoice</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1acf4e919fae35256ff79cb710924b8d83" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>SpeakerId</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1ae67d585d13cc9413b8ec29e1d9ec5f00" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>Speed</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a8df113f4ff171d91ef27dbbbcba8cf2f" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>ToWire</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a0e7de4a9ffe108ab0de8a8396cf40dbb" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>TtsModelName</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a58a362015205c5b73fb7794102ed8f26" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>Validate</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a94415056f98c128faefa06fbefe244a0" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>ValidateAgainst</name></member>
+      <member refid="struct_f_tryll_voice_profile_data_1a66fe957b1aa337319ada98a2b15fa3a5" prot="public" virt="non-virtual"><scope>FTryllVoiceProfileData</scope><name>VoiceDescription</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

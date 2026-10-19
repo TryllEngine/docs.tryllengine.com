@@ -1,0 +1,453 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_lip_sync_component" kind="class" language="C++" prot="public">
+    <compoundname>UTryllLipSyncComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UActorComponent</basecompoundref>
+    <includes refid="_tryll_lip_sync_component_8h" local="no">TryllLipSyncComponent.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a9ae441bec4107413ddce9aa17b559cac" prot="public" static="no" mutable="no">
+        <type>TObjectPtr&lt; <ref refid="class_u_tryll_speaker_component" kindref="compound">UTryllSpeakerComponent</ref> &gt;</type>
+        <definition>TObjectPtr&lt;UTryllSpeakerComponent&gt; UTryllLipSyncComponent::Speaker</definition>
+        <argsstring></argsstring>
+        <name>Speaker</name>
+        <qualifiedname>UTryllLipSyncComponent::Speaker</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Speaker whose TTS drives the face. Auto-discovered on the owner if unset. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="37" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a25904dc7d8a34f5fae65628a80d0f6ab" prot="public" static="no" mutable="no">
+        <type>TObjectPtr&lt; USkeletalMeshComponent &gt;</type>
+        <definition>TObjectPtr&lt;USkeletalMeshComponent&gt; UTryllLipSyncComponent::FaceMesh</definition>
+        <argsstring></argsstring>
+        <name>FaceMesh</name>
+        <qualifiedname>UTryllLipSyncComponent::FaceMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mesh carrying the ARKit morph targets. If unset, the owner&apos;s skeletal meshes are searched for one that has them. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="41" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1ae3f1fb59bc8c992f65a583ee7ff1730c" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_viseme_settings" kindref="compound">FTryllVisemeSettings</ref></type>
+        <definition>FTryllVisemeSettings UTryllLipSyncComponent::Settings</definition>
+        <argsstring></argsstring>
+        <name>Settings</name>
+        <qualifiedname>UTryllLipSyncComponent::Settings</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Look and sync. Live-editable in Play. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="45" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a6b3b004446d5a2d39590122e17e5c67e" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_viseme_pose" kindref="compound">FTryllVisemePose</ref> &gt;</type>
+        <definition>TArray&lt;FTryllVisemePose&gt; UTryllLipSyncComponent::Poses</definition>
+        <argsstring></argsstring>
+        <name>Poses</name>
+        <qualifiedname>UTryllLipSyncComponent::Poses</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pose per viseme, as ARKit channel weights. Empty uses the built-in table. Read at BeginPlay. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="53" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a1f03d780e2b912e96174bd987dd95bba" prot="private" static="no" mutable="no">
+        <type><ref refid="class_f_tryll_viseme_player" kindref="compound">FTryllVisemePlayer</ref></type>
+        <definition>FTryllVisemePlayer UTryllLipSyncComponent::Player</definition>
+        <argsstring></argsstring>
+        <name>Player</name>
+        <qualifiedname>UTryllLipSyncComponent::Player</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="88" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a395146ca66df24f1ffef5ee6e1e4db65" prot="private" static="no" mutable="no">
+        <type>TArray&lt; int32 &gt;</type>
+        <definition>TArray&lt;int32&gt; UTryllLipSyncComponent::BoundChannels</definition>
+        <argsstring></argsstring>
+        <name>BoundChannels</name>
+        <qualifiedname>UTryllLipSyncComponent::BoundChannels</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Index into Player.GetChannels() of each channel the face has as a morph target. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="91" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1abc34904bb0ca333bd2025aece4ef57b7" prot="private" static="no" mutable="no">
+        <type>FDelegateHandle</type>
+        <definition>FDelegateHandle UTryllLipSyncComponent::TurnStartedHandle</definition>
+        <argsstring></argsstring>
+        <name>TurnStartedHandle</name>
+        <qualifiedname>UTryllLipSyncComponent::TurnStartedHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="93" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_lip_sync_component_1a9bcae2281f52b4c9c56524b042c6b344" prot="private" static="no" mutable="no">
+        <type>FDelegateHandle</type>
+        <definition>FDelegateHandle UTryllLipSyncComponent::VisemesHandle</definition>
+        <argsstring></argsstring>
+        <name>VisemesHandle</name>
+        <qualifiedname>UTryllLipSyncComponent::VisemesHandle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="94" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a5dc93c894958f81e0d1ee0a40011a8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllLipSyncComponent::UTryllLipSyncComponent</definition>
+        <argsstring>()</argsstring>
+        <name>UTryllLipSyncComponent</name>
+        <qualifiedname>UTryllLipSyncComponent::UTryllLipSyncComponent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1ae7becc2c9da6d0fd1cd84c603e95b984" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllLipSyncComponent::SetIntensity</definition>
+        <argsstring>(float InIntensity)</argsstring>
+        <name>SetIntensity</name>
+        <qualifiedname>UTryllLipSyncComponent::SetIntensity</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>InIntensity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience for the most-used knob. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="49" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a607b902a907421e7591927cea1a20725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllLipSyncComponent::BindFace</definition>
+        <argsstring>(USkeletalMeshComponent *InFaceMesh)</argsstring>
+        <name>BindFace</name>
+        <qualifiedname>UTryllLipSyncComponent::BindFace</qualifiedname>
+        <param>
+          <type>USkeletalMeshComponent *</type>
+          <declname>InFaceMesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Rebinds to a face mesh (e.g. after spawning or swapping it at runtime). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="57" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1ae8655735c3f33473880f84ba0e717234" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllLipSyncComponent::IsFaceBound</definition>
+        <argsstring>() const</argsstring>
+        <name>IsFaceBound</name>
+        <qualifiedname>UTryllLipSyncComponent::IsFaceBound</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True once at least one morph target in the pose table was found on the face. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="61" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a2be6778ab8cb14d8019a2a1cd7f3de3e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int32</type>
+        <definition>int32 UTryllLipSyncComponent::GetBoundChannelCount</definition>
+        <argsstring>() const</argsstring>
+        <name>GetBoundChannelCount</name>
+        <qualifiedname>UTryllLipSyncComponent::GetBoundChannelCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of pose-table channels found as morph targets on the face. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="65" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1aaa2f47c7d572f09d4b2da6033c9e7e67" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>ETryllViseme</type>
+        <definition>ETryllViseme UTryllLipSyncComponent::GetActiveViseme</definition>
+        <argsstring>() const</argsstring>
+        <name>GetActiveViseme</name>
+        <qualifiedname>UTryllLipSyncComponent::GetActiveViseme</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="68" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a8cd9baf965e16fc2e912a3ec11675eb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float UTryllLipSyncComponent::GetAppliedJawOpen</definition>
+        <argsstring>() const</argsstring>
+        <name>GetAppliedJawOpen</name>
+        <qualifiedname>UTryllLipSyncComponent::GetAppliedJawOpen</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>jawOpen as written this frame (0..1). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="72" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a920a95272e015fa0c17c680721cec15a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_f_tryll_viseme_player" kindref="compound">FTryllVisemePlayer</ref> &amp;</type>
+        <definition>const FTryllVisemePlayer &amp; UTryllLipSyncComponent::GetPlayer</definition>
+        <argsstring>() const</argsstring>
+        <name>GetPlayer</name>
+        <qualifiedname>UTryllLipSyncComponent::GetPlayer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The player, for integrations that apply the curves themselves (e.g. a MetaHuman face). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="75" column="26" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a7e98d0e31449d1ff17a42d38848b07da" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllLipSyncComponent::BeginPlay</definition>
+        <argsstring>() override</argsstring>
+        <name>BeginPlay</name>
+        <qualifiedname>UTryllLipSyncComponent::BeginPlay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="78" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a4baeaaa7856b91beaed08ba9b1e50814" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllLipSyncComponent::EndPlay</definition>
+        <argsstring>(const EEndPlayReason::Type EndPlayReason) override</argsstring>
+        <name>EndPlay</name>
+        <qualifiedname>UTryllLipSyncComponent::EndPlay</qualifiedname>
+        <param>
+          <type>const EEndPlayReason::Type</type>
+          <declname>EndPlayReason</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="79" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a1ffb8bdf53aabdd9b90744fd11963282" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllLipSyncComponent::TickComponent</definition>
+        <argsstring>(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override</argsstring>
+        <name>TickComponent</name>
+        <qualifiedname>UTryllLipSyncComponent::TickComponent</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>DeltaTime</declname>
+        </param>
+        <param>
+          <type>ELevelTick</type>
+          <declname>TickType</declname>
+        </param>
+        <param>
+          <type>FActorComponentTickFunction *</type>
+          <declname>ThisTickFunction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="80" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a1042777c69560a6c0a24b2b78da259ed" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllLipSyncComponent::HandleTurnStarted</definition>
+        <argsstring>(int32 SampleRate, int64 TurnOriginSamples)</argsstring>
+        <name>HandleTurnStarted</name>
+        <qualifiedname>UTryllLipSyncComponent::HandleTurnStarted</qualifiedname>
+        <param>
+          <type>int32</type>
+          <declname>SampleRate</declname>
+        </param>
+        <param>
+          <type>int64</type>
+          <declname>TurnOriginSamples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="83" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1ab766ead93867ec4aea8e5d5c8dff8d93" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllLipSyncComponent::HandleVisemes</definition>
+        <argsstring>(const FString &amp;NodeName, TArrayView&lt; const FTryllVisemeEvent &gt; Events)</argsstring>
+        <name>HandleVisemes</name>
+        <qualifiedname>UTryllLipSyncComponent::HandleVisemes</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>NodeName</declname>
+        </param>
+        <param>
+          <type>TArrayView&lt; const <ref refid="struct_f_tryll_viseme_event" kindref="compound">FTryllVisemeEvent</ref> &gt;</type>
+          <declname>Events</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="84" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a91707939186c020603502dd14a533e1b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>USkeletalMeshComponent *</type>
+        <definition>USkeletalMeshComponent * UTryllLipSyncComponent::FindFaceMesh</definition>
+        <argsstring>() const</argsstring>
+        <name>FindFaceMesh</name>
+        <qualifiedname>UTryllLipSyncComponent::FindFaceMesh</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="85" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_lip_sync_component_1a835ba8ac741b0f6d7c8eed6474bc9c99" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllLipSyncComponent::ReleaseFace</definition>
+        <argsstring>()</argsstring>
+        <name>ReleaseFace</name>
+        <qualifiedname>UTryllLipSyncComponent::ReleaseFace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="86" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Moves a character&apos;s mouth with its voice. Plays the server&apos;s viseme track (the agent&apos;s voice profile needs Emit Visemes on) on a face with ARKit morph targets, in step with the audio the Tryll Speaker is playing.</para>
+<para>Only the morph targets its pose table names are written; everything else on the mesh (blinks, brows, expressions) is left to the character&apos;s animation. Written morph targets override the AnimBP&apos;s value for that name while non-zero, and return to it at rest.</para>
+<para>Requires a <ref refid="class_u_tryll_speaker_component" kindref="compound">UTryllSpeakerComponent</ref>: it is the audio, the playback clock and the source of the viseme track. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllLipSyncComponent</label>
+        <link refid="class_u_tryll_lip_sync_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>FTryllVisemeSettings</label>
+        <link refid="struct_f_tryll_viseme_settings"/>
+      </node>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllLipSyncComponent</label>
+        <link refid="class_u_tryll_lip_sync_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>Settings</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllLipSyncComponent.h" bodystart="29" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_lip_sync_component_1a7e98d0e31449d1ff17a42d38848b07da" prot="protected" virt="virtual"><scope>UTryllLipSyncComponent</scope><name>BeginPlay</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a607b902a907421e7591927cea1a20725" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>BindFace</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a395146ca66df24f1ffef5ee6e1e4db65" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>BoundChannels</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a4baeaaa7856b91beaed08ba9b1e50814" prot="protected" virt="virtual"><scope>UTryllLipSyncComponent</scope><name>EndPlay</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a25904dc7d8a34f5fae65628a80d0f6ab" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>FaceMesh</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a91707939186c020603502dd14a533e1b" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>FindFaceMesh</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1aaa2f47c7d572f09d4b2da6033c9e7e67" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>GetActiveViseme</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a8cd9baf965e16fc2e912a3ec11675eb5" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>GetAppliedJawOpen</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a2be6778ab8cb14d8019a2a1cd7f3de3e" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>GetBoundChannelCount</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a920a95272e015fa0c17c680721cec15a" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>GetPlayer</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a1042777c69560a6c0a24b2b78da259ed" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>HandleTurnStarted</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1ab766ead93867ec4aea8e5d5c8dff8d93" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>HandleVisemes</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1ae8655735c3f33473880f84ba0e717234" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>IsFaceBound</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a1f03d780e2b912e96174bd987dd95bba" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>Player</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a6b3b004446d5a2d39590122e17e5c67e" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>Poses</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a835ba8ac741b0f6d7c8eed6474bc9c99" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>ReleaseFace</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1ae7becc2c9da6d0fd1cd84c603e95b984" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>SetIntensity</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1ae3f1fb59bc8c992f65a583ee7ff1730c" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>Settings</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a9ae441bec4107413ddce9aa17b559cac" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>Speaker</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a1ffb8bdf53aabdd9b90744fd11963282" prot="protected" virt="virtual"><scope>UTryllLipSyncComponent</scope><name>TickComponent</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1abc34904bb0ca333bd2025aece4ef57b7" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>TurnStartedHandle</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a5dc93c894958f81e0d1ee0a40011a8d1" prot="public" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>UTryllLipSyncComponent</name></member>
+      <member refid="class_u_tryll_lip_sync_component_1a9bcae2281f52b4c9c56524b042c6b344" prot="private" virt="non-virtual"><scope>UTryllLipSyncComponent</scope><name>VisemesHandle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

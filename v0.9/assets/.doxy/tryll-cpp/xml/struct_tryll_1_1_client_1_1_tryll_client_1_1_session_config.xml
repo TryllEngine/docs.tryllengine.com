@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config" kind="struct" language="C++" prot="public">
+    <compoundname>Tryll::Client::TryllClient::SessionConfig</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1a2408e71af5d0b919f741796eabfaaf58" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_engine_selection" kindref="compound">EngineSelection</ref> &gt;</type>
+        <definition>std::vector&lt;EngineSelection&gt; Tryll::Client::TryllClient::SessionConfig::engines</definition>
+        <argsstring></argsstring>
+        <name>engines</name>
+        <qualifiedname>Tryll::Client::TryllClient::SessionConfig::engines</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optional, advisory hint: the engines this session expects to touch, as (role, engine) pairs. Leaving it empty is legal and unremarkable — a model&apos;s engine comes from the server&apos;s catalog, so a load works whether or not this named the engine it needs.</para>
+<para>What it buys is timing: the server initialises the named engines&apos; backends at CreateSession instead of at first use, which is worth doing when that cost is large (an ORT CUDA cold start was measured in tens of seconds). A harness that wants determinism about which engines a run touched can also state it here; the editors derive it from their model manifest and expose no engine control.</para>
+<para>Only an out-of-range ordinal is rejected (<computeroutput>InvalidEngineSet</computeroutput>, 2005). A duplicate pair is logged and ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="210" column="16" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1afb409fbdb23e154b3cc0ea028d7cf46f" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_model_placement_hint" kindref="compound">ModelPlacementHint</ref> &gt;</type>
+        <definition>std::vector&lt;ModelPlacementHint&gt; Tryll::Client::TryllClient::SessionConfig::placementHints</definition>
+        <argsstring></argsstring>
+        <name>placementHints</name>
+        <qualifiedname>Tryll::Client::TryllClient::SessionConfig::placementHints</qualifiedname>
+        <briefdescription>
+<para>Optional per-model placement hints. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="212" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1afff7a921acbd3cb9536084582143a15f" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tryll::Client::TryllClient::SessionConfig::gameName</definition>
+        <argsstring></argsstring>
+        <name>gameName</name>
+        <qualifiedname>Tryll::Client::TryllClient::SessionConfig::gameName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Integration identifier for telemetry grouping (e.g. &quot;my-game&quot;). Empty for anonymous sessions. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="218" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1a9a094afb56e8e27de2a699fb42490d4e" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Tryll::Client::TryllClient::SessionConfig::locale</definition>
+        <argsstring></argsstring>
+        <name>locale</name>
+        <qualifiedname>Tryll::Client::TryllClient::SessionConfig::locale</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optional session language as a BCP-47 tag (&quot;de&quot;, &quot;de-DE&quot;, &quot;pt-BR&quot;). One setting the whole voice + text stack derives from: it becomes the default <computeroutput>lang</computeroutput> of every agent voice (VoiceProfile.lang), the language hint for multilingual STT models, <computeroutput>loc/&lt;<ref refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1a9a094afb56e8e27de2a699fb42490d4e" kindref="member">locale</ref>&gt;/</computeroutput> siblings relative storage paths prefer, and the <computeroutput>language</computeroutput> Mustache key templates can write a &quot;reply in X&quot; directive against. Empty = unset (every one of those keeps its pre-locale behaviour). A malformed tag is rejected with <computeroutput>InvalidLocale</computeroutput> (2004). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="227" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1acf32f8c157c3a4e1484f73c7ba0dd213" prot="public" static="no" mutable="no">
+        <type>std::chrono::milliseconds</type>
+        <definition>std::chrono::milliseconds Tryll::Client::TryllClient::SessionConfig::timeout</definition>
+        <argsstring></argsstring>
+        <name>timeout</name>
+        <qualifiedname>Tryll::Client::TryllClient::SessionConfig::timeout</qualifiedname>
+        <initializer>= std::chrono::seconds{30}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="228" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="228" bodyend="228"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="194" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="195" bodyend="229"/>
+    <listofallmembers>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1a2408e71af5d0b919f741796eabfaaf58" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::SessionConfig</scope><name>engines</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1afff7a921acbd3cb9536084582143a15f" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::SessionConfig</scope><name>gameName</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1a9a094afb56e8e27de2a699fb42490d4e" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::SessionConfig</scope><name>locale</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1afb409fbdb23e154b3cc0ea028d7cf46f" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::SessionConfig</scope><name>placementHints</name></member>
+      <member refid="struct_tryll_1_1_client_1_1_tryll_client_1_1_session_config_1acf32f8c157c3a4e1484f73c7ba0dd213" prot="public" virt="non-virtual"><scope>Tryll::Client::TryllClient::SessionConfig</scope><name>timeout</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_classify_attributes_l_l_m_params" kind="class" language="C++" prot="public">
+    <compoundname>UTryllClassifyAttributesLLMParams</compoundname>
+    <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
+    <includes refid="_tryll_classify_attributes_l_l_m_params_8h" local="no">TryllClassifyAttributesLLMParams.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a4b54d2ac9b68d2d54b06921acc87d1fd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyAttributesLLMParams::bOverrideModelName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideModelName</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::bOverrideModelName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Model catalog name. Structural because the token-ID mapping is built from the model&apos;s vocabulary at construction. Set to true to override the inherited ModelName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="42" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a5f3e951cb2e3155d3794754506c4f0e9" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllClassifyAttributesLLMParams::ModelName</definition>
+        <argsstring></argsstring>
+        <name>ModelName</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::ModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="45" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a1a53dc7fa03b571fd520820357fa2025" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllClassifyAttributesLLMParams::ContextSize</definition>
+        <argsstring></argsstring>
+        <name>ContextSize</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::ContextSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>KV-cache window in tokens. 0 = size from the rendered specialist prompts plus a per-attribute tail budget, else the classify default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="50" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1aafbb43c6df813daabeb0bae56dce9366" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_classify_attribute_def" kindref="compound">FTryllClassifyAttributeDef</ref> &gt;</type>
+        <definition>TArray&lt;FTryllClassifyAttributeDef&gt; UTryllClassifyAttributesLLMParams::Attributes</definition>
+        <argsstring></argsstring>
+        <name>Attributes</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Attributes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The attributes to classify. 1-16 entries, unique names. Shape, name, kind and choice id/prompt are structural; the hand-written Apply allows statement, prompt, decision and trigger edits. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="54" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a4226036e43c48d2a9a2fc2f261ce9801" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyAttributesLLMParams::bOverrideInput</definition>
+        <argsstring></argsstring>
+        <name>bOverrideInput</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::bOverrideInput</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slot name this node consumes. Empty = &quot;user_message&quot;. Set to true to override the inherited Input value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="59" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a5d1d8b9a22ad6fead5876a089e6d7ff8" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_input" kindref="compound">FTryllSlotInput</ref></type>
+        <definition>FTryllSlotInput UTryllClassifyAttributesLLMParams::Input</definition>
+        <argsstring></argsstring>
+        <name>Input</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Upstream inter-node slot this field consumes. Empty = context default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="63" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a37ce421478f658b578a629658d0067ff" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllClassifyAttributesLLMParams::HistoryTurns</definition>
+        <argsstring></argsstring>
+        <name>HistoryTurns</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::HistoryTurns</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Dialog turns included before the current user text. Default 0 until history quality is measured. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="68" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1aeb6b9b333b8e1836894c9cbd36a23f84" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllClassifyAttributesLLMParams::Temperature</definition>
+        <argsstring></argsstring>
+        <name>Temperature</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Temperature</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Softmax temperature for every attribute. 0 = 1.0 (identity). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="73" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a3c205314936302ca43fa2cb0f67a7220" prot="public" static="no" mutable="no">
+        <type>ETryllAttributeFailureRoute</type>
+        <definition>ETryllAttributeFailureRoute UTryllClassifyAttributesLLMParams::OnFailure</definition>
+        <argsstring></argsstring>
+        <name>OnFailure</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::OnFailure</qualifiedname>
+        <initializer>= ETryllAttributeFailureRoute::Default</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when scoring fails. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="77" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1ad761743414f95235e5a1fae52281457d" prot="public" static="no" mutable="no">
+        <type>ETryllNotifyClient</type>
+        <definition>ETryllNotifyClient UTryllClassifyAttributesLLMParams::NotifyClient</definition>
+        <argsstring></argsstring>
+        <name>NotifyClient</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::NotifyClient</qualifiedname>
+        <initializer>= ETryllNotifyClient::Disabled</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When to fire OnNodeEvent(&quot;attributes_classified&quot;, …). OnFound means the triggered exit was taken. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="81" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a16deeec34102517b8bb3b261657160d8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyAttributesLLMParams::bOverrideOutputName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideOutputName</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::bOverrideOutputName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slot namespace. Empty = node name. Set to true to override the inherited OutputName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="86" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a295e63d9914577a9383560380d743fd0" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_name" kindref="compound">FTryllSlotName</ref></type>
+        <definition>FTryllSlotName UTryllClassifyAttributesLLMParams::OutputName</definition>
+        <argsstring></argsstring>
+        <name>OutputName</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::OutputName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effective output slot name for this node. Empty = the node&apos;s own name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="90" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1ad0abfccffafee24161cc226d3a0b60f0" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyAttributesLLMParams::DefaultExit</definition>
+        <argsstring></argsstring>
+        <name>DefaultExit</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::DefaultExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when no attribute triggers. Empty string = END. Graph exit &quot;default&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="96" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a3b927df1d104641e85b5af04e7a4a54a" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyAttributesLLMParams::TriggeredExit</definition>
+        <argsstring></argsstring>
+        <name>TriggeredExit</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::TriggeredExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when any attribute triggers, or when on_failure is Triggered and scoring fails. Empty string = END. Graph exit &quot;triggered&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="102" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1a13ff5f20a746cab9c522c4fbd8d5301a" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_context_overrides" kindref="compound">FTryllContextOverrides</ref></type>
+        <definition>FTryllContextOverrides UTryllClassifyAttributesLLMParams::Context</definition>
+        <argsstring></argsstring>
+        <name>Context</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Backend context construction. The node derives n_seq_max and n_outputs_max from the attribute count. Structural. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="107" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_attributes_l_l_m_params_1ab8ff23e1559987523f911c3147651040" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_adaptation" kindref="compound">FTryllModelAdaptation</ref></type>
+        <definition>FTryllModelAdaptation UTryllClassifyAttributesLLMParams::Adaptation</definition>
+        <argsstring></argsstring>
+        <name>Adaptation</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Adaptation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes how the model behaves for this node (LoRA adapters; later control vectors). Null = base model. Structural: applied to the llama context at creation, so a change means a new context. Appended last so existing field IDs do not move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="112" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_classify_attributes_l_l_m_params_1a28093f993fca2081180aa4f8d2af601c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ETryllNodeType</type>
+        <definition>virtual ETryllNodeType UTryllClassifyAttributesLLMParams::GetNodeType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetNodeType</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::GetNodeType</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6">GetNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="115" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_classify_attributes_l_l_m_params_1a4b793fd2c7d20ad28c5067421135a4d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>flatbuffers::Offset&lt; void &gt;</type>
+        <definition>virtual flatbuffers::Offset&lt; void &gt; UTryllClassifyAttributesLLMParams::Pack</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;Fbb, Tryll::NodeParams::NodeParams &amp;OutType) const override</argsstring>
+        <name>Pack</name>
+        <qualifiedname>UTryllClassifyAttributesLLMParams::Pack</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d">Pack</reimplements>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>Fbb</declname>
+        </param>
+        <param>
+          <type>Tryll::NodeParams::NodeParams &amp;</type>
+          <declname>OutType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="116" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Several specialist classifiers scored in one cached batched call. Each attribute writes slot.&lt;output_name&gt;_&lt;name&gt;. triggered_exit is taken when any attribute&apos;s own rule fires. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllClassifyAttributesLLMParams</label>
+        <link refid="class_u_tryll_classify_attributes_l_l_m_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>FTryllContextOverrides</label>
+        <link refid="struct_f_tryll_context_overrides"/>
+      </node>
+      <node id="8">
+        <label>FTryllModelAdaptation</label>
+        <link refid="struct_f_tryll_model_adaptation"/>
+      </node>
+      <node id="4">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="5">
+        <label>FTryllSlotInput</label>
+        <link refid="struct_f_tryll_slot_input"/>
+      </node>
+      <node id="6">
+        <label>FTryllSlotName</label>
+        <link refid="struct_f_tryll_slot_name"/>
+      </node>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllClassifyAttributesLLMParams</label>
+        <link refid="class_u_tryll_classify_attributes_l_l_m_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>ModelName</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Input</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>OutputName</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>Context</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>Adaptation</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" line="35" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyAttributesLLMParams.h" bodystart="36" bodyend="118"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1ab8ff23e1559987523f911c3147651040" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Adaptation</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59f6a5f51f16b4602026b3b9d237cc6f" prot="protected" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>ApplyOldDefaults</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1aafbb43c6df813daabeb0bae56dce9366" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Attributes</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a4226036e43c48d2a9a2fc2f261ce9801" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>bOverrideInput</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a4b54d2ac9b68d2d54b06921acc87d1fd" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>bOverrideModelName</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a16deeec34102517b8bb3b261657160d8" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>bOverrideOutputName</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a13ff5f20a746cab9c522c4fbd8d5301a" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Context</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a1a53dc7fa03b571fd520820357fa2025" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>ContextSize</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1ad0abfccffafee24161cc226d3a0b60f0" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>FindEnclosingGraph</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>GetExitTargetOptions</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a28093f993fca2081180aa4f8d2af601c" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>GetOwnerNodeName</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a37ce421478f658b578a629658d0067ff" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>HistoryTurns</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a5d1d8b9a22ad6fead5876a089e6d7ff8" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Input</name></member>
+      <member refid="class_u_tryll_node_params_base_1a56c224665255d3620da305f1780f9daf" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>IsTtsConsumer</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a5f3e951cb2e3155d3794754506c4f0e9" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>ModelName</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1ad761743414f95235e5a1fae52281457d" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>NotifyClient</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a3c205314936302ca43fa2cb0f67a7220" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>OnFailure</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a295e63d9914577a9383560380d743fd0" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>OutputName</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a4b793fd2c7d20ad28c5067421135a4d0" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_node_params_base_1a6413f691e6a2a6dc6d065d65d747bdb7" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>PostLoad</name></member>
+      <member refid="class_u_tryll_node_params_base_1aefb7f6950eebb0ca467f61e3d756efac" prot="public" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Serialize</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1aeb6b9b333b8e1836894c9cbd36a23f84" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>Temperature</name></member>
+      <member refid="class_u_tryll_classify_attributes_l_l_m_params_1a3b927df1d104641e85b5af04e7a4a54a" prot="public" virt="non-virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>TriggeredExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab3b0d4f4038a64a01db05ffcfc1304ef" prot="protected" virt="virtual"><scope>UTryllClassifyAttributesLLMParams</scope><name>UpgradeFrom</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

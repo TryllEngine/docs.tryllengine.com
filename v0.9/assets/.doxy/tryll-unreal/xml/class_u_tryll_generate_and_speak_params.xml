@@ -1,0 +1,610 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_generate_and_speak_params" kind="class" language="C++" prot="public">
+    <compoundname>UTryllGenerateAndSpeakParams</compoundname>
+    <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
+    <includes refid="_tryll_generate_and_speak_params_8h" local="no">TryllGenerateAndSpeakParams.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a781b447ecf28b91f35e052d5790362af" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideModelName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideModelName</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideModelName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>LLM model catalog name. Empty = use the agent&apos;s default_model_name. Set to true to override the inherited ModelName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="43" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1add8f988a0496c09f92a95f36cca8a761" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllGenerateAndSpeakParams::ModelName</definition>
+        <argsstring></argsstring>
+        <name>ModelName</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::ModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="46" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a2588d3ccd055bfc4d13bb54884920dbd" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllGenerateAndSpeakParams::ContextSize</definition>
+        <argsstring></argsstring>
+        <name>ContextSize</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::ContextSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>KV-cache / context window (n_ctx) for the LLM in tokens. 0 = fall back to the model variant&apos;s context_size, else the server default_n_ctx. Validated against the model&apos;s trained maximum at agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="51" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1ad7fa67237214d56ea6a4c4e953f752ec" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideSystemPrompt</definition>
+        <argsstring></argsstring>
+        <name>bOverrideSystemPrompt</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideSystemPrompt</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prepended before the user turn during projection. Empty = none. Set to true to override the inherited SystemPrompt value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="56" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1acb55d7a825d237b70258b5d9a2a7ed86" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bSystemPromptLocalized</definition>
+        <argsstring></argsstring>
+        <name>bSystemPromptLocalized</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bSystemPromptLocalized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ticked: SystemPromptTextId is resolved by the text provider and that text is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="59" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a3d4c3e9366f103c8193da8b27d44ec74" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::SystemPrompt</definition>
+        <argsstring></argsstring>
+        <name>SystemPrompt</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::SystemPrompt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="62" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a8a8464dcf9417556a94c448ea7dfc9f6" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::SystemPromptTextId</definition>
+        <argsstring></argsstring>
+        <name>SystemPromptTextId</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::SystemPromptTextId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Text ID in the workflow text table. The provider&apos;s text is what is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="65" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a0778af7d34be6e4855a284f975ebbbab" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideInput</definition>
+        <argsstring></argsstring>
+        <name>bOverrideInput</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideInput</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slot name this node consumes as its primary text. Empty = &quot;user_message&quot;. Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="70" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a2ef5ec42cb4fee75030a814b683fffcb" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_input" kindref="compound">FTryllSlotInput</ref></type>
+        <definition>FTryllSlotInput UTryllGenerateAndSpeakParams::Input</definition>
+        <argsstring></argsstring>
+        <name>Input</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Upstream inter-node slot this field consumes. Empty = context default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="74" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a6bbc8d202024d03f61535353140e282c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideTemplate</definition>
+        <argsstring></argsstring>
+        <name>bOverrideTemplate</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideTemplate</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mustache template applied to the user-area message at projection time. Empty = no template. Set to true to override the inherited Template value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="79" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1add65fe3621eb11b81c46278dfd0d6c3d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bTemplateLocalized</definition>
+        <argsstring></argsstring>
+        <name>bTemplateLocalized</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bTemplateLocalized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ticked: TemplateTextId is resolved by the text provider and that text is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="82" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a12ad14a481a8f008e8f71aaf0e39b322" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::Template</definition>
+        <argsstring></argsstring>
+        <name>Template</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Template</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="85" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a31b290acb08bffb021bf9e55f25f9bc8" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::TemplateTextId</definition>
+        <argsstring></argsstring>
+        <name>TemplateTextId</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::TemplateTextId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Text ID in the workflow text table. The provider&apos;s text is what is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="88" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a2a43bc8de2ab950af8a624f61c240bb0" prot="public" static="no" mutable="no">
+        <type>ETryllPlacement</type>
+        <definition>ETryllPlacement UTryllGenerateAndSpeakParams::Placement</definition>
+        <argsstring></argsstring>
+        <name>Placement</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Placement</qualifiedname>
+        <initializer>= ETryllPlacement::BeforeUserAsSystem</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Where the rendered template body is placed relative to the resolved <computeroutput>input</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="92" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a11d0b11f9ec25a40c32a14395a45e4c8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideOutputName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideOutputName</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideOutputName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name this node&apos;s output slot is stored under. Empty = the node&apos;s own name. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="97" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a80e88606905dfcc3d3f66457cc3a2ba9" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_name" kindref="compound">FTryllSlotName</ref></type>
+        <definition>FTryllSlotName UTryllGenerateAndSpeakParams::OutputName</definition>
+        <argsstring></argsstring>
+        <name>OutputName</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::OutputName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effective output slot name for this node. Empty = the node&apos;s own name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="101" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a4107b3e6360946fae77eee3b350725e6" prot="public" static="no" mutable="no">
+        <type>ETryllHistoryRole</type>
+        <definition>ETryllHistoryRole UTryllGenerateAndSpeakParams::HistoryRole</definition>
+        <argsstring></argsstring>
+        <name>HistoryRole</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::HistoryRole</qualifiedname>
+        <initializer>= ETryllHistoryRole::Assistant</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Controls whether/how this node&apos;s slot replays in later turns&apos; projected transcript. No <computeroutput>send</computeroutput> field — GenerateAndSpeak always streams text (streaming and non-streaming delivery would need incompatible projection-replay handling, so only the streamed mode is supported). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="105" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a3d37e148c6cecd89aa726a3de59bb299" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_sampling_overrides" kindref="compound">FTryllSamplingOverrides</ref></type>
+        <definition>FTryllSamplingOverrides UTryllGenerateAndSpeakParams::Sampling</definition>
+        <argsstring></argsstring>
+        <name>Sampling</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Sampling</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sparse sampling overrides applied on top of the model-catalog defaults. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="109" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a28404c88c810197eec5c1b7a1ba8bd1a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bOverrideGrammar</definition>
+        <argsstring></argsstring>
+        <name>bOverrideGrammar</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bOverrideGrammar</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optional GBNF grammar. When non-empty, the generated (and spoken) output is constrained to this grammar at every decode step. Empty = unconstrained. Must contain a <computeroutput>root</computeroutput> rule. Mutable — rebuilt per turn. Narrower fit than on Generate: use it to constrain spoken output to a fixed set of barks / canned lines. Validated at agent creation and on mutation (3007). Set to true to override the inherited Grammar value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="114" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a6ef139ea199844a76eab2967c3216ec3" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::Grammar</definition>
+        <argsstring></argsstring>
+        <name>Grammar</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Grammar</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="117" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1ad14b273082daf73bf32a5024d3ce8c60" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllGenerateAndSpeakParams::MinSentenceChars</definition>
+        <argsstring></argsstring>
+        <name>MinSentenceChars</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::MinSentenceChars</qualifiedname>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum width of the text since the last cut before a sentence end closes a chunk; a CJK or other 3–4-byte character counts as 2. The default 12 is two or three English words. Lower values reduce first-utterance latency at the cost of more, smaller TTS calls. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="122" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a500b2dc826a6c64033cdd51d1d89787a" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllGenerateAndSpeakParams::FirstChunkMaxChars</definition>
+        <argsstring></argsstring>
+        <name>FirstChunkMaxChars</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::FirstChunkMaxChars</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Time-to-first-audio knob. When &gt; 0, the FIRST chunk may also end at a comma, semicolon or colon followed by a space, or at an em dash, and is cut at the next space once it is this wide, so speech starts sooner. Neither cut fires before 5 words or min_sentence_chars. Later chunks keep whole sentences. No effect on text without spaces (CJK). 0 = off. 48 is the measured starting point: about 40% less model-side wait on Supertonic and Pocket. Check how it sounds with your voice before shipping it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="127" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1a97b49657e8110b536b4165922450d9b0" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllGenerateAndSpeakParams::DefaultExit</definition>
+        <argsstring></argsstring>
+        <name>DefaultExit</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::DefaultExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default exit target — routes here after generation + synthesis complete. Empty string = END. Graph exit &quot;default&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="133" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1abfe14a35d0986f5a1d8c55ba215cacd9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllGenerateAndSpeakParams::bSubstituteAgentVariables</definition>
+        <argsstring></argsstring>
+        <name>bSubstituteAgentVariables</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::bSubstituteAgentVariables</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true, replace <computeroutput>__VARIABLE__</computeroutput> markers in streamed LLM output with the rendered values of agent variables that declared <computeroutput>allow_output_substitution</computeroutput>. Matching is ASCII case-insensitive. Default false. Transformed text is authoritative for the slot, wire answer, history, and TTS input (substitution runs before synthesis). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="137" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1af87fdb42da86332c69805fb4d455b70a" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_output_filter_overrides" kindref="compound">FTryllOutputFilterOverrides</ref></type>
+        <definition>FTryllOutputFilterOverrides UTryllGenerateAndSpeakParams::OutputFilter</definition>
+        <argsstring></argsstring>
+        <name>OutputFilter</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::OutputFilter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Opt-in bounded artifact cleanup applied to streamed LLM output before variable substitution, slot/history write, wire delivery, and TTS. Missing/null = all flags off (defaults). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="141" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1adb7dd9540195fc1a3a0ba6c09eabcd58" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_context_overrides" kindref="compound">FTryllContextOverrides</ref></type>
+        <definition>FTryllContextOverrides UTryllGenerateAndSpeakParams::Context</definition>
+        <argsstring></argsstring>
+        <name>Context</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Backend context construction. Null table inherits, except CreateContext still defaults <computeroutput>n_outputs_max</computeroutput> to 1. Structural. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="146" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_generate_and_speak_params_1aabbda55d501b898ebfb8e70e072a4cba" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_adaptation" kindref="compound">FTryllModelAdaptation</ref></type>
+        <definition>FTryllModelAdaptation UTryllGenerateAndSpeakParams::Adaptation</definition>
+        <argsstring></argsstring>
+        <name>Adaptation</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Adaptation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes how the model behaves for this node (LoRA adapters; later control vectors). Null = base model. Structural: applied to the llama context at creation, so a change means a new context. Appended last so existing field IDs do not move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="151" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_generate_and_speak_params_1a03e8a848d80bbbef812d7543dbeae98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ETryllNodeType</type>
+        <definition>virtual ETryllNodeType UTryllGenerateAndSpeakParams::GetNodeType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetNodeType</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::GetNodeType</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6">GetNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="154" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="154" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_generate_and_speak_params_1a85a86e92fc6f3f435280d1e0233fa167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool UTryllGenerateAndSpeakParams::IsTtsConsumer</definition>
+        <argsstring>() const override</argsstring>
+        <name>IsTtsConsumer</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::IsTtsConsumer</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a56c224665255d3620da305f1780f9daf">IsTtsConsumer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when this node speaks through the agent&apos;s voice (Speak, GenerateAndSpeak). A graph with such a node needs a voice profile. From the schema&apos;s (tts_consumer). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="155" column="18" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_generate_and_speak_params_1a7a9ec73f7764b4c6f62925f07d0a9e55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>flatbuffers::Offset&lt; void &gt;</type>
+        <definition>virtual flatbuffers::Offset&lt; void &gt; UTryllGenerateAndSpeakParams::Pack</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;Fbb, Tryll::NodeParams::NodeParams &amp;OutType) const override</argsstring>
+        <name>Pack</name>
+        <qualifiedname>UTryllGenerateAndSpeakParams::Pack</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d">Pack</reimplements>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>Fbb</declname>
+        </param>
+        <param>
+          <type>Tryll::NodeParams::NodeParams &amp;</type>
+          <declname>OutType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="156" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>LLM-driven text generation + streaming TTS synthesis in a single fused node. Streams LLM tokens, segments them into sentences, synthesizes each sentence on a dedicated TTS strand, and emits PCM frames via OnTtsAudio callbacks. The voice (model, speaker, delivery mode, visemes) belongs to the agent: CreateAgentRequest.voice. Agent creation fails without one (3025). </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllGenerateAndSpeakParams</label>
+        <link refid="class_u_tryll_generate_and_speak_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9">
+        <label>FTryllContextOverrides</label>
+        <link refid="struct_f_tryll_context_overrides"/>
+      </node>
+      <node id="10">
+        <label>FTryllModelAdaptation</label>
+        <link refid="struct_f_tryll_model_adaptation"/>
+      </node>
+      <node id="4">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="8">
+        <label>FTryllOutputFilterOverrides</label>
+        <link refid="struct_f_tryll_output_filter_overrides"/>
+      </node>
+      <node id="7">
+        <label>FTryllSamplingOverrides</label>
+        <link refid="struct_f_tryll_sampling_overrides"/>
+      </node>
+      <node id="5">
+        <label>FTryllSlotInput</label>
+        <link refid="struct_f_tryll_slot_input"/>
+      </node>
+      <node id="6">
+        <label>FTryllSlotName</label>
+        <link refid="struct_f_tryll_slot_name"/>
+      </node>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllGenerateAndSpeakParams</label>
+        <link refid="class_u_tryll_generate_and_speak_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>ModelName</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Input</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>OutputName</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>Sampling</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>OutputFilter</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>Context</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>Adaptation</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" line="36" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllGenerateAndSpeakParams.h" bodystart="37" bodyend="158"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_generate_and_speak_params_1aabbda55d501b898ebfb8e70e072a4cba" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Adaptation</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59f6a5f51f16b4602026b3b9d237cc6f" prot="protected" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>ApplyOldDefaults</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a28404c88c810197eec5c1b7a1ba8bd1a" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideGrammar</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a0778af7d34be6e4855a284f975ebbbab" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideInput</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a781b447ecf28b91f35e052d5790362af" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideModelName</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a11d0b11f9ec25a40c32a14395a45e4c8" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideOutputName</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1ad7fa67237214d56ea6a4c4e953f752ec" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideSystemPrompt</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a6bbc8d202024d03f61535353140e282c" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bOverrideTemplate</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1abfe14a35d0986f5a1d8c55ba215cacd9" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bSubstituteAgentVariables</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1acb55d7a825d237b70258b5d9a2a7ed86" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bSystemPromptLocalized</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1add65fe3621eb11b81c46278dfd0d6c3d" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>bTemplateLocalized</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1adb7dd9540195fc1a3a0ba6c09eabcd58" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Context</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a2588d3ccd055bfc4d13bb54884920dbd" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>ContextSize</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a97b49657e8110b536b4165922450d9b0" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>DefaultExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>FindEnclosingGraph</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a500b2dc826a6c64033cdd51d1d89787a" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>FirstChunkMaxChars</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>GetExitTargetOptions</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a03e8a848d80bbbef812d7543dbeae98f" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>GetOwnerNodeName</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a6ef139ea199844a76eab2967c3216ec3" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Grammar</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a4107b3e6360946fae77eee3b350725e6" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>HistoryRole</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a2ef5ec42cb4fee75030a814b683fffcb" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Input</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a85a86e92fc6f3f435280d1e0233fa167" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>IsTtsConsumer</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1ad14b273082daf73bf32a5024d3ce8c60" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>MinSentenceChars</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1add8f988a0496c09f92a95f36cca8a761" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>ModelName</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1af87fdb42da86332c69805fb4d455b70a" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>OutputFilter</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a80e88606905dfcc3d3f66457cc3a2ba9" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>OutputName</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a7a9ec73f7764b4c6f62925f07d0a9e55" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a2a43bc8de2ab950af8a624f61c240bb0" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Placement</name></member>
+      <member refid="class_u_tryll_node_params_base_1a6413f691e6a2a6dc6d065d65d747bdb7" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>PostLoad</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a3d37e148c6cecd89aa726a3de59bb299" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Sampling</name></member>
+      <member refid="class_u_tryll_node_params_base_1aefb7f6950eebb0ca467f61e3d756efac" prot="public" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Serialize</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a3d4c3e9366f103c8193da8b27d44ec74" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>SystemPrompt</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a8a8464dcf9417556a94c448ea7dfc9f6" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>SystemPromptTextId</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a12ad14a481a8f008e8f71aaf0e39b322" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>Template</name></member>
+      <member refid="class_u_tryll_generate_and_speak_params_1a31b290acb08bffb021bf9e55f25f9bc8" prot="public" virt="non-virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>TemplateTextId</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab3b0d4f4038a64a01db05ffcfc1304ef" prot="protected" virt="virtual"><scope>UTryllGenerateAndSpeakParams</scope><name>UpgradeFrom</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,544 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_classify_intent_l_l_m_params" kind="class" language="C++" prot="public">
+    <compoundname>UTryllClassifyIntentLLMParams</compoundname>
+    <basecompoundref refid="class_u_tryll_node_params_base" prot="public" virt="non-virtual">UTryllNodeParamsBase</basecompoundref>
+    <includes refid="_tryll_classify_intent_l_l_m_params_8h" local="no">TryllClassifyIntentLLMParams.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1ad97cf84b8cf929018fd0826eef4ae6ab" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bOverrideModelName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideModelName</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bOverrideModelName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Model catalog name. Structural because the token-ID mapping is built from the model&apos;s vocabulary at construction. Set to true to override the inherited ModelName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="42" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1aa051ccb4936c92ba5de59828c240b6b8" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_name" kindref="compound">FTryllModelName</ref></type>
+        <definition>FTryllModelName UTryllClassifyIntentLLMParams::ModelName</definition>
+        <argsstring></argsstring>
+        <name>ModelName</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::ModelName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="45" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a797a007c7585abd2b9721c451d5f2554" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllClassifyIntentLLMParams::ContextSize</definition>
+        <argsstring></argsstring>
+        <name>ContextSize</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::ContextSize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>KV-cache / context window (n_ctx) for this node in tokens. 0 = node default 2048, else the model variant&apos;s context_size, else server default_n_ctx. Validated against the model&apos;s trained maximum at agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="50" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a3b7456409c692e4d6d871a89983e625d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bSystemPromptLocalized</definition>
+        <argsstring></argsstring>
+        <name>bSystemPromptLocalized</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bSystemPromptLocalized</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mustache template for the classifier&apos;s system message. Required: empty or unparsable templates fail agent creation and ChangeAgentParam. Must reference intents_block (the letter-prefixed list built from the resolved prompts). letters (e.g. &quot;A, B, C&quot;) is optional — padded and triple-brace forms count. Ticked: SystemPromptTextId is resolved by the text provider and that text is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="55" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1af344b1b9c6e749d58865ff7a358ff9af" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::SystemPrompt</definition>
+        <argsstring></argsstring>
+        <name>SystemPrompt</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::SystemPrompt</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="59" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a707308b9873677851f74ba63db9ce333" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::SystemPromptTextId</definition>
+        <argsstring></argsstring>
+        <name>SystemPromptTextId</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::SystemPromptTextId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Text ID in the workflow text table. The provider&apos;s text is what is sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="63" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a6b752a75f561bdc095ce47bb4a646c74" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_classify_intent_entry" kindref="compound">FTryllClassifyIntentEntry</ref> &gt;</type>
+        <definition>TArray&lt;FTryllClassifyIntentEntry&gt; UTryllClassifyIntentLLMParams::Intents</definition>
+        <argsstring></argsstring>
+        <name>Intents</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Intents</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Intent list: id + prompt pairs. Entry 0 is letter A. 2-26 unique ids, non-empty prompts. Structural because the projection scaffolding and label-token mapping are built at construction. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="68" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a710ad69c8da6b4dbb278581a783b983f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bOverrideInput</definition>
+        <argsstring></argsstring>
+        <name>bOverrideInput</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bOverrideInput</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slot name this node consumes as its primary text for the current turn. Empty = &quot;user_message&quot;. Structural: immutable after creation — rebinding would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited Input value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="73" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a4adc203b4436fb3fd4e11b4ea913a6ab" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_input" kindref="compound">FTryllSlotInput</ref></type>
+        <definition>FTryllSlotInput UTryllClassifyIntentLLMParams::Input</definition>
+        <argsstring></argsstring>
+        <name>Input</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Input</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Upstream inter-node slot this field consumes. Empty = context default. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="77" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a49d0e8b1664d5132aadc3fcbed9313f6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bOverrideOutputName</definition>
+        <argsstring></argsstring>
+        <name>bOverrideOutputName</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bOverrideOutputName</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name of the slot this node writes on every path. Empty = node name. Holds the winning intent id on found, and not_found_intent (possibly empty) on not_found. Structural: immutable after creation — renaming would re-wire the slot dataflow that is validated once at agent creation. Set to true to override the inherited OutputName value. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="82" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a39cfc4223a771665593de709ca08adfc" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_slot_name" kindref="compound">FTryllSlotName</ref></type>
+        <definition>FTryllSlotName UTryllClassifyIntentLLMParams::OutputName</definition>
+        <argsstring></argsstring>
+        <name>OutputName</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::OutputName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effective output slot name for this node. Empty = the node&apos;s own name. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="86" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1ae0144e9a6b84ca655c360e0b23cade4f" prot="public" static="no" mutable="no">
+        <type>int32</type>
+        <definition>int32 UTryllClassifyIntentLLMParams::HistoryTurns</definition>
+        <argsstring></argsstring>
+        <name>HistoryTurns</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::HistoryTurns</qualifiedname>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of dialog history turns included in the classification context. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="91" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1aad867f5ead030e733ce96423bae0bb85" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllClassifyIntentLLMParams::Threshold</definition>
+        <argsstring></argsstring>
+        <name>Threshold</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Threshold</qualifiedname>
+        <initializer>= 0.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>First-token probability threshold for the winning label. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="96" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a827697f050e50094fad7d8ff0eb94db1" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllClassifyIntentLLMParams::Margin</definition>
+        <argsstring></argsstring>
+        <name>Margin</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Margin</qualifiedname>
+        <initializer>= 0.15f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum margin between top and second label probabilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="101" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a12a350f9c6711777cd8294171a8bf288" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float UTryllClassifyIntentLLMParams::Temperature</definition>
+        <argsstring></argsstring>
+        <name>Temperature</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Temperature</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Softmax temperature applied to scored letter probabilities before threshold/margin. 0 = 1.0 (identity). Mutable. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="106" column="11" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a69b36880a03555cd2d50f1a7080f4100" prot="public" static="no" mutable="no">
+        <type>ETryllNotifyClient</type>
+        <definition>ETryllNotifyClient UTryllClassifyIntentLLMParams::NotifyClient</definition>
+        <argsstring></argsstring>
+        <name>NotifyClient</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::NotifyClient</qualifiedname>
+        <initializer>= ETryllNotifyClient::Disabled</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When to fire OnNodeEvent(&quot;intent_llm_classified&quot;, …). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="110" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a75b5af678431a71eaa1f519054f8bbdd" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::NotFoundIntent</definition>
+        <argsstring></argsstring>
+        <name>NotFoundIntent</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::NotFoundIntent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sink intent. When it wins, the node exits not_found. Written to the output slot on every not_found path. One of the intent ids, the reserved &quot;#uncertain&quot;, or empty. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="114" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a850598e996caa8167300eaae2d6b9b9e" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::FoundExit</definition>
+        <argsstring></argsstring>
+        <name>FoundExit</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::FoundExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when classification produced a label above threshold/margin. Empty string = END. Graph exit &quot;found&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="120" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a20436ab11653193e49ab92af890524b7" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::NotFoundExit</definition>
+        <argsstring></argsstring>
+        <name>NotFoundExit</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::NotFoundExit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Exit taken when no label cleared the threshold/margin. Empty string = END. Graph exit &quot;not_found&quot; — target node name; empty = END. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="126" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1ab07de241ef561b981bd77dc060753c0b" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_context_overrides" kindref="compound">FTryllContextOverrides</ref></type>
+        <definition>FTryllContextOverrides UTryllClassifyIntentLLMParams::Context</definition>
+        <argsstring></argsstring>
+        <name>Context</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Context</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Backend context construction. Null table inherits, except CreateContext still defaults <computeroutput>n_outputs_max</computeroutput> to 1. Structural. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="131" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a41ff68707f035932579506ac306c6e52" prot="public" static="no" mutable="no">
+        <type><ref refid="struct_f_tryll_model_adaptation" kindref="compound">FTryllModelAdaptation</ref></type>
+        <definition>FTryllModelAdaptation UTryllClassifyIntentLLMParams::Adaptation</definition>
+        <argsstring></argsstring>
+        <name>Adaptation</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Adaptation</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes how the model behaves for this node (LoRA adapters; later control vectors). Null = base model. Structural: applied to the llama context at creation, so a change means a new context. Appended last so existing field IDs do not move. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="136" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1af9784480ee5499053639ed5902ffe8dd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bOverrideIntentsIds_DEPRECATED</definition>
+        <argsstring></argsstring>
+        <name>bOverrideIntentsIds_DEPRECATED</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bOverrideIntentsIds_DEPRECATED</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="144" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a42c83422c26979d208d3f066f07ccfdb" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::IntentsIds_DEPRECATED</definition>
+        <argsstring></argsstring>
+        <name>IntentsIds_DEPRECATED</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::IntentsIds_DEPRECATED</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="146" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1aef8c3c6e02415aab8a3d5e7788cd4826" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllClassifyIntentLLMParams::bOverrideIntentsPrompt_DEPRECATED</definition>
+        <argsstring></argsstring>
+        <name>bOverrideIntentsPrompt_DEPRECATED</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::bOverrideIntentsPrompt_DEPRECATED</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="148" column="10" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_classify_intent_l_l_m_params_1a3eb64178eb39e32fd238ec4dd1a914d3" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllClassifyIntentLLMParams::IntentsPrompt_DEPRECATED</definition>
+        <argsstring></argsstring>
+        <name>IntentsPrompt_DEPRECATED</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::IntentsPrompt_DEPRECATED</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="150" column="13" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_classify_intent_l_l_m_params_1aa43287699b21c07cf55b6f9820bfc04f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>ETryllNodeType</type>
+        <definition>virtual ETryllNodeType UTryllClassifyIntentLLMParams::GetNodeType</definition>
+        <argsstring>() const override</argsstring>
+        <name>GetNodeType</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::GetNodeType</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a03dc6241b0d1f501ef6ec626eb7250d6">GetNodeType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="139" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="139" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_classify_intent_l_l_m_params_1a0d079b0f1c925f64709bac544beb651f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>flatbuffers::Offset&lt; void &gt;</type>
+        <definition>virtual flatbuffers::Offset&lt; void &gt; UTryllClassifyIntentLLMParams::Pack</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;Fbb, Tryll::NodeParams::NodeParams &amp;OutType) const override</argsstring>
+        <name>Pack</name>
+        <qualifiedname>UTryllClassifyIntentLLMParams::Pack</qualifiedname>
+        <reimplements refid="class_u_tryll_node_params_base_1a2cdd06d50f3d50615e42023403653b2d">Pack</reimplements>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>Fbb</declname>
+        </param>
+        <param>
+          <type>Tryll::NodeParams::NodeParams &amp;</type>
+          <declname>OutType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="140" column="33"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Intent classification node (LLM first-token logprob over letter candidates). Scores labels via a dedicated LLM, attaches an IntentionComponent on found, and writes the decision to slot.&lt;output_name&gt;. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllClassifyIntentLLMParams</label>
+        <link refid="class_u_tryll_classify_intent_l_l_m_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>FTryllContextOverrides</label>
+        <link refid="struct_f_tryll_context_overrides"/>
+      </node>
+      <node id="8">
+        <label>FTryllModelAdaptation</label>
+        <link refid="struct_f_tryll_model_adaptation"/>
+      </node>
+      <node id="4">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="5">
+        <label>FTryllSlotInput</label>
+        <link refid="struct_f_tryll_slot_input"/>
+      </node>
+      <node id="6">
+        <label>FTryllSlotName</label>
+        <link refid="struct_f_tryll_slot_name"/>
+      </node>
+      <node id="3">
+        <label>UObject</label>
+      </node>
+      <node id="1">
+        <label>UTryllClassifyIntentLLMParams</label>
+        <link refid="class_u_tryll_classify_intent_l_l_m_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>ModelName</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Input</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>OutputName</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>Context</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>Adaptation</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>UTryllNodeParamsBase</label>
+        <link refid="class_u_tryll_node_params_base"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" line="35" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/Generated/Nodes/TryllClassifyIntentLLMParams.h" bodystart="36" bodyend="151"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a41ff68707f035932579506ac306c6e52" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Adaptation</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59f6a5f51f16b4602026b3b9d237cc6f" prot="protected" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>ApplyOldDefaults</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a710ad69c8da6b4dbb278581a783b983f" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bOverrideInput</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1af9784480ee5499053639ed5902ffe8dd" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bOverrideIntentsIds_DEPRECATED</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1aef8c3c6e02415aab8a3d5e7788cd4826" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bOverrideIntentsPrompt_DEPRECATED</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1ad97cf84b8cf929018fd0826eef4ae6ab" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bOverrideModelName</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a49d0e8b1664d5132aadc3fcbed9313f6" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bOverrideOutputName</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a3b7456409c692e4d6d871a89983e625d" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>bSystemPromptLocalized</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1ab07de241ef561b981bd77dc060753c0b" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Context</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a797a007c7585abd2b9721c451d5f2554" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>ContextSize</name></member>
+      <member refid="class_u_tryll_node_params_base_1ad4673ce66ff3247a21c3fe2a38010ef8" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>FindEnclosingGraph</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a850598e996caa8167300eaae2d6b9b9e" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>FoundExit</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab266c9fd695305c0b4388c0233942793" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>GetExitTargetOptions</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1aa43287699b21c07cf55b6f9820bfc04f" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>GetNodeType</name></member>
+      <member refid="class_u_tryll_node_params_base_1a79a4893bb03c13c46ccacec21171fef5" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>GetOwnerNodeName</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1ae0144e9a6b84ca655c360e0b23cade4f" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>HistoryTurns</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a4adc203b4436fb3fd4e11b4ea913a6ab" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Input</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a6b752a75f561bdc095ce47bb4a646c74" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Intents</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a42c83422c26979d208d3f066f07ccfdb" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>IntentsIds_DEPRECATED</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a3eb64178eb39e32fd238ec4dd1a914d3" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>IntentsPrompt_DEPRECATED</name></member>
+      <member refid="class_u_tryll_node_params_base_1a56c224665255d3620da305f1780f9daf" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>IsTtsConsumer</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a827697f050e50094fad7d8ff0eb94db1" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Margin</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1aa051ccb4936c92ba5de59828c240b6b8" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>ModelName</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a20436ab11653193e49ab92af890524b7" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>NotFoundExit</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a75b5af678431a71eaa1f519054f8bbdd" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>NotFoundIntent</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a69b36880a03555cd2d50f1a7080f4100" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>NotifyClient</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a39cfc4223a771665593de709ca08adfc" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>OutputName</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a0d079b0f1c925f64709bac544beb651f" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Pack</name></member>
+      <member refid="class_u_tryll_node_params_base_1a6413f691e6a2a6dc6d065d65d747bdb7" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>PostLoad</name></member>
+      <member refid="class_u_tryll_node_params_base_1aefb7f6950eebb0ca467f61e3d756efac" prot="public" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Serialize</name></member>
+      <member refid="class_u_tryll_node_params_base_1a59a7b28218f2e9d6c1bb7a6f20b2f22c" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>static_cast</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1af344b1b9c6e749d58865ff7a358ff9af" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>SystemPrompt</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a707308b9873677851f74ba63db9ce333" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>SystemPromptTextId</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1a12a350f9c6711777cd8294171a8bf288" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Temperature</name></member>
+      <member refid="class_u_tryll_classify_intent_l_l_m_params_1aad867f5ead030e733ce96423bae0bb85" prot="public" virt="non-virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>Threshold</name></member>
+      <member refid="class_u_tryll_node_params_base_1ab3b0d4f4038a64a01db05ffcfc1304ef" prot="protected" virt="virtual"><scope>UTryllClassifyIntentLLMParams</scope><name>UpgradeFrom</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

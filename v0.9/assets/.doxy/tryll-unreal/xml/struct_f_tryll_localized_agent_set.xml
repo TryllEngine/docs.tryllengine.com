@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="struct_f_tryll_localized_agent_set" kind="struct" language="C++" prot="public">
+    <compoundname>FTryllLocalizedAgentSet</compoundname>
+    <includes refid="_tryll_text_resolve_8h" local="no">TryllTextResolve.h</includes>
+    <innerclass refid="struct_f_tryll_localized_agent_set_1_1_f_binding" prot="private">FTryllLocalizedAgentSet::FBinding</innerclass>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="struct_f_tryll_localized_agent_set_1a921429f9f262b988a1815fb847780162" prot="public" static="no">
+        <type>TFunction&lt; void( const TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt; &amp;Agent, const FString &amp;NodeName, <ref refid="class_u_tryll_node_params_base" kindref="compound">UTryllNodeParamsBase</ref> *Params, TFunction&lt; void(const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;)&gt; OnComplete)&gt;</type>
+        <definition>using FTryllLocalizedAgentSet::FSend = TFunction&lt;void(
+       const TSharedPtr&lt;FTryllAgent&gt;&amp; Agent,
+       const FString&amp; NodeName,
+       UTryllNodeParamsBase* Params,
+       TFunction&lt;void(const FTryllError&amp;)&gt; OnComplete)&gt;</definition>
+        <argsstring></argsstring>
+        <name>FSend</name>
+        <qualifiedname>FTryllLocalizedAgentSet::FSend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="76" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_f_tryll_localized_agent_set_1a411d117226da89c41bd68f378a4efcaf" prot="public" static="no">
+        <type>TFunction&lt; void(uint64 AgentId, const FString &amp;AssetName, const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;Error)&gt;</type>
+        <definition>using FTryllLocalizedAgentSet::FFail = TFunction&lt;void(uint64 AgentId, const FString&amp; AssetName, const FTryllError&amp; Error)&gt;</definition>
+        <argsstring></argsstring>
+        <name>FFail</name>
+        <qualifiedname>FTryllLocalizedAgentSet::FFail</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="82" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="struct_f_tryll_localized_agent_set_1a66cbf2abd206b7622c52fe3d700f8f32" prot="public" static="no">
+        <type>TFunction&lt; void(uint64 AgentId, const FString &amp;AssetName)&gt;</type>
+        <definition>using FTryllLocalizedAgentSet::FApplied = TFunction&lt;void(uint64 AgentId, const FString&amp; AssetName)&gt;</definition>
+        <argsstring></argsstring>
+        <name>FApplied</name>
+        <qualifiedname>FTryllLocalizedAgentSet::FApplied</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="84" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_f_tryll_localized_agent_set_1afa7c714a5adb438504bdd15c41b4eef8" prot="private" static="no" mutable="no">
+        <type>TMap&lt; uint64, FBinding &gt;</type>
+        <definition>TMap&lt;uint64, FBinding&gt; FTryllLocalizedAgentSet::ById</definition>
+        <argsstring></argsstring>
+        <name>ById</name>
+        <qualifiedname>FTryllLocalizedAgentSet::ById</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="119" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_f_tryll_localized_agent_set_1ad92627cd3e73f09aaeb99dfb90711469" prot="private" static="no" mutable="no">
+        <type>TSharedRef&lt; int32 &gt;</type>
+        <definition>TSharedRef&lt;int32&gt; FTryllLocalizedAgentSet::AliveToken</definition>
+        <argsstring></argsstring>
+        <name>AliveToken</name>
+        <qualifiedname>FTryllLocalizedAgentSet::AliveToken</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send callbacks hold a weak reference to this, so a reply after teardown is ignored. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="122" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1af56e8577ea2e2256435aac04ff324314" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllLocalizedAgentSet::FTryllLocalizedAgentSet</definition>
+        <argsstring>()</argsstring>
+        <name>FTryllLocalizedAgentSet</name>
+        <qualifiedname>FTryllLocalizedAgentSet::FTryllLocalizedAgentSet</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a5ba2b0aed913f8c9dfec1c4702e14d70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FTryllLocalizedAgentSet::FTryllLocalizedAgentSet</definition>
+        <argsstring>(const FTryllLocalizedAgentSet &amp;)=delete</argsstring>
+        <name>FTryllLocalizedAgentSet</name>
+        <qualifiedname>FTryllLocalizedAgentSet::FTryllLocalizedAgentSet</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_localized_agent_set" kindref="compound">FTryllLocalizedAgentSet</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1aac1e25d2619848cb7776c1f7f4bc099b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_f_tryll_localized_agent_set" kindref="compound">FTryllLocalizedAgentSet</ref> &amp;</type>
+        <definition>FTryllLocalizedAgentSet &amp; FTryllLocalizedAgentSet::operator=</definition>
+        <argsstring>(const FTryllLocalizedAgentSet &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>FTryllLocalizedAgentSet::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_localized_agent_set" kindref="compound">FTryllLocalizedAgentSet</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="88" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1adf965696a2fe1b1f25c4314df728dbfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllLocalizedAgentSet::Track</definition>
+        <argsstring>(const TSharedPtr&lt; FTryllAgent &gt; &amp;Agent, FName Table, const FString &amp;AssetName)</argsstring>
+        <name>Track</name>
+        <qualifiedname>FTryllLocalizedAgentSet::Track</qualifiedname>
+        <param>
+          <type>const TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt; &amp;</type>
+          <declname>Agent</declname>
+        </param>
+        <param>
+          <type>FName</type>
+          <declname>Table</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>AssetName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="90" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a0f3c99e8195af54df25c0b810ebb03d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllLocalizedAgentSet::Forget</definition>
+        <argsstring>(uint64 AgentId)</argsstring>
+        <name>Forget</name>
+        <qualifiedname>FTryllLocalizedAgentSet::Forget</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="91" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1aa8c3fc20e8d9a8c9ec150455b8a86782" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllLocalizedAgentSet::ForgetAll</definition>
+        <argsstring>()</argsstring>
+        <name>ForgetAll</name>
+        <qualifiedname>FTryllLocalizedAgentSet::ForgetAll</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="92" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a97209397656bbc65ea2e50d555d9068f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllLocalizedAgentSet::IsTracked</definition>
+        <argsstring>(uint64 AgentId) const</argsstring>
+        <name>IsTracked</name>
+        <qualifiedname>FTryllLocalizedAgentSet::IsTracked</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="94" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a50eabb4eb9ca5171f4c7ee48b87ddd90" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FTryllLocalizedAgentSet::HasPending</definition>
+        <argsstring>(uint64 AgentId) const</argsstring>
+        <name>HasPending</name>
+        <qualifiedname>FTryllLocalizedAgentSet::HasPending</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="95" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a9d14853fa60d29ac794d76e01bbf3dfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int32</type>
+        <definition>int32 FTryllLocalizedAgentSet::Num</definition>
+        <argsstring>() const</argsstring>
+        <name>Num</name>
+        <qualifiedname>FTryllLocalizedAgentSet::Num</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="96" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a5e1dc764d05fe4c60c69d6624bfb073b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32</type>
+        <definition>int32 FTryllLocalizedAgentSet::Refresh</definition>
+        <argsstring>(UTryllTextProvider *Provider, const FSend &amp;Send, const FFail &amp;Fail, const FApplied &amp;Applied=FApplied())</argsstring>
+        <name>Refresh</name>
+        <qualifiedname>FTryllLocalizedAgentSet::Refresh</qualifiedname>
+        <param>
+          <type><ref refid="class_u_tryll_text_provider" kindref="compound">UTryllTextProvider</ref> *</type>
+          <declname>Provider</declname>
+        </param>
+        <param>
+          <type>const FSend &amp;</type>
+          <declname>Send</declname>
+        </param>
+        <param>
+          <type>const FFail &amp;</type>
+          <declname>Fail</declname>
+        </param>
+        <param>
+          <type>const FApplied &amp;</type>
+          <declname>Applied</declname>
+          <defval>FApplied()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Refresh every tracked agent. Returns the number of node sends. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="99" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1a1fe56dcba609ddbce63da4a224dbf1e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32</type>
+        <definition>int32 FTryllLocalizedAgentSet::RefreshAgent</definition>
+        <argsstring>(uint64 AgentId, UTryllTextProvider *Provider, const FSend &amp;Send, const FFail &amp;Fail, const FApplied &amp;Applied=FApplied())</argsstring>
+        <name>RefreshAgent</name>
+        <qualifiedname>FTryllLocalizedAgentSet::RefreshAgent</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <param>
+          <type><ref refid="class_u_tryll_text_provider" kindref="compound">UTryllTextProvider</ref> *</type>
+          <declname>Provider</declname>
+        </param>
+        <param>
+          <type>const FSend &amp;</type>
+          <declname>Send</declname>
+        </param>
+        <param>
+          <type>const FFail &amp;</type>
+          <declname>Fail</declname>
+        </param>
+        <param>
+          <type>const FApplied &amp;</type>
+          <declname>Applied</declname>
+          <defval>FApplied()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Refresh one agent from its current baseline. Returns the number of node sends. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="102" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1ae12479d7994ddf0e905fe770ff4aef3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32</type>
+        <definition>int32 FTryllLocalizedAgentSet::NoteTurnEnded</definition>
+        <argsstring>(uint64 AgentId, UTryllTextProvider *Provider, const FSend &amp;Send, const FFail &amp;Fail, const FApplied &amp;Applied=FApplied())</argsstring>
+        <name>NoteTurnEnded</name>
+        <qualifiedname>FTryllLocalizedAgentSet::NoteTurnEnded</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <param>
+          <type><ref refid="class_u_tryll_text_provider" kindref="compound">UTryllTextProvider</ref> *</type>
+          <declname>Provider</declname>
+        </param>
+        <param>
+          <type>const FSend &amp;</type>
+          <declname>Send</declname>
+        </param>
+        <param>
+          <type>const FFail &amp;</type>
+          <declname>Fail</declname>
+        </param>
+        <param>
+          <type>const FApplied &amp;</type>
+          <declname>Applied</declname>
+          <defval>FApplied()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The agent&apos;s turn ended: redo the refresh when an earlier send came back AgentBusy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="105" column="7"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_f_tryll_localized_agent_set_1aca9d5523a24c41aa25c4cea8e0415d1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FTryllLocalizedAgentSet::MarkDirty</definition>
+        <argsstring>(uint64 AgentId)</argsstring>
+        <name>MarkDirty</name>
+        <qualifiedname>FTryllLocalizedAgentSet::MarkDirty</qualifiedname>
+        <param>
+          <type>uint64</type>
+          <declname>AgentId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="107" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Live agents created with ticked Text IDs. On a language change each agent is refreshed from its current params baseline (so runtime ChangeParams survive): ticked non-structural fields are re-resolved on a clone and only nodes whose text changed are sent. One failed field sends nothing for that agent. An AgentBusy reply marks the agent dirty; the refresh is redone when its turn ends. Applied fires once the latest refresh of an agent is fully acknowledged, or at once when no text changed. A refresh started later makes the replies of an earlier one stale. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" line="74" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllTextResolve.h" bodystart="75" bodyend="123"/>
+    <listofallmembers>
+      <member refid="struct_f_tryll_localized_agent_set_1ad92627cd3e73f09aaeb99dfb90711469" prot="private" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>AliveToken</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1afa7c714a5adb438504bdd15c41b4eef8" prot="private" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>ById</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a66cbf2abd206b7622c52fe3d700f8f32" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>FApplied</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a411d117226da89c41bd68f378a4efcaf" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>FFail</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a0f3c99e8195af54df25c0b810ebb03d1" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>Forget</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1aa8c3fc20e8d9a8c9ec150455b8a86782" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>ForgetAll</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a921429f9f262b988a1815fb847780162" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>FSend</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1af56e8577ea2e2256435aac04ff324314" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>FTryllLocalizedAgentSet</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a5ba2b0aed913f8c9dfec1c4702e14d70" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>FTryllLocalizedAgentSet</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a50eabb4eb9ca5171f4c7ee48b87ddd90" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>HasPending</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a97209397656bbc65ea2e50d555d9068f" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>IsTracked</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1aca9d5523a24c41aa25c4cea8e0415d1b" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>MarkDirty</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1ae12479d7994ddf0e905fe770ff4aef3b" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>NoteTurnEnded</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a9d14853fa60d29ac794d76e01bbf3dfd" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>Num</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1aac1e25d2619848cb7776c1f7f4bc099b" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>operator=</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a5e1dc764d05fe4c60c69d6624bfb073b" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>Refresh</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1a1fe56dcba609ddbce63da4a224dbf1e4" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>RefreshAgent</name></member>
+      <member refid="struct_f_tryll_localized_agent_set_1adf965696a2fe1b1f25c4314df728dbfc" prot="public" virt="non-virtual"><scope>FTryllLocalizedAgentSet</scope><name>Track</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

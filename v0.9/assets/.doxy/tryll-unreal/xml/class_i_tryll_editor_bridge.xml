@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_i_tryll_editor_bridge" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ITryllEditorBridge</compoundname>
+    <includes refid="_tryll_editor_bridge_8h" local="no">TryllEditorBridge.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a1f90726fc4876ed1a073359ac77a2ac4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ITryllEditorBridge::~ITryllEditorBridge</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ITryllEditorBridge</name>
+        <qualifiedname>ITryllEditorBridge::~ITryllEditorBridge</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="67" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a63382e9582de5f51eddddf184da441af" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ITryllEditorBridge::AcquireConnection</definition>
+        <argsstring>()=0</argsstring>
+        <name>AcquireConnection</name>
+        <qualifiedname>ITryllEditorBridge::AcquireConnection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="69" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a3615af25bf856f73aeb8d7a50a65a138" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ITryllEditorBridge::ReleaseConnection</definition>
+        <argsstring>()=0</argsstring>
+        <name>ReleaseConnection</name>
+        <qualifiedname>ITryllEditorBridge::ReleaseConnection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="70" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a2ce390936b16eb7f70b3777b62c2cd94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ITryllEditorBridge::IsConnected</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsConnected</name>
+        <qualifiedname>ITryllEditorBridge::IsConnected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="72" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1abf8f5ae74aff2f1f5a77530d5819493d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ITryllEditorBridge::IsSessionReady</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsSessionReady</name>
+        <qualifiedname>ITryllEditorBridge::IsSessionReady</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="73" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a2e097aabcb1c86b0a4a6d071becfe45e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int64</type>
+        <definition>virtual int64 ITryllEditorBridge::GetSessionId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetSessionId</name>
+        <qualifiedname>ITryllEditorBridge::GetSessionId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="74" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a8049e8f06b6a9f26ec000d46d0766795" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ITryllEditorBridge::TryLaunch</definition>
+        <argsstring>(EServerBuildVariant Variant, int32 KnownPort, int32 IdleShutdownTimeoutSeconds, FString &amp;OutError)=0</argsstring>
+        <name>TryLaunch</name>
+        <qualifiedname>ITryllEditorBridge::TryLaunch</qualifiedname>
+        <param>
+          <type>EServerBuildVariant</type>
+          <declname>Variant</declname>
+        </param>
+        <param>
+          <type>int32</type>
+          <declname>KnownPort</declname>
+        </param>
+        <param>
+          <type>int32</type>
+          <declname>IdleShutdownTimeoutSeconds</declname>
+        </param>
+        <param>
+          <type>FString &amp;</type>
+          <declname>OutError</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="76" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a6c49eedcf298d32409caca59149a5bed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int32</type>
+        <definition>virtual int32 ITryllEditorBridge::GetActualPort</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetActualPort</name>
+        <qualifiedname>ITryllEditorBridge::GetActualPort</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="77" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1ab7623a9176ce02c3e43d55d3215d928b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ITryllEditorBridge::AdoptRelaunchedServer</definition>
+        <argsstring>()=0</argsstring>
+        <name>AdoptRelaunchedServer</name>
+        <qualifiedname>ITryllEditorBridge::AdoptRelaunchedServer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>After TryLaunch replaced a running server, move an open shared connection onto the new port. No-op when nothing is connected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="83" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1aa402426333157dc1e3aba869f38bb923" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int32</type>
+        <definition>virtual int32 ITryllEditorBridge::RegisterPauseListenerProbe</definition>
+        <argsstring>(TFunction&lt; bool()&gt; Probe)=0</argsstring>
+        <name>RegisterPauseListenerProbe</name>
+        <qualifiedname>ITryllEditorBridge::RegisterPauseListenerProbe</qualifiedname>
+        <param>
+          <type>TFunction&lt; bool()&gt;</type>
+          <declname>Probe</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Report whether this consumer&apos;s session-facing OnPaused is actually bound. Used so a PIE subscription is not mistaken for a listener. Returns an id to pass to UnregisterPauseListenerProbe. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="90" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a74b48e6d20d0027fdf62caaefa8375bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ITryllEditorBridge::UnregisterPauseListenerProbe</definition>
+        <argsstring>(int32 ProbeId)=0</argsstring>
+        <name>UnregisterPauseListenerProbe</name>
+        <qualifiedname>ITryllEditorBridge::UnregisterPauseListenerProbe</qualifiedname>
+        <param>
+          <type>int32</type>
+          <declname>ProbeId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="91" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1abc8c8aeecd0d7a5d75b6b6e3ae75b7e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ITryllEditorBridge::HasSessionPauseListener</definition>
+        <argsstring>() const =0</argsstring>
+        <name>HasSessionPauseListener</name>
+        <qualifiedname>ITryllEditorBridge::HasSessionPauseListener</qualifiedname>
+        <briefdescription>
+<para>Direct OnPausedNative listeners, or any registered probe that returns true. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="93" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a7d32c690c02f3b8c3e4cfb949e8c36fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int32</type>
+        <definition>virtual int32 ITryllEditorBridge::RegisterToolCallListenerProbe</definition>
+        <argsstring>(TFunction&lt; bool()&gt; Probe)=0</argsstring>
+        <name>RegisterToolCallListenerProbe</name>
+        <qualifiedname>ITryllEditorBridge::RegisterToolCallListenerProbe</qualifiedname>
+        <param>
+          <type>TFunction&lt; bool()&gt;</type>
+          <declname>Probe</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Report whether this consumer&apos;s session-facing OnToolCall / OnToolCallWithId / OnToolCallDetailed is actually bound. The native tool-call delegates are the PIE forwarding channels and are always subscribed while delegating, so they cannot tell on their own. A bound listener makes the pause after a tool-call batch resumable (it can answer with ResumeWithToolResult(s)). Returns an id to pass to UnregisterToolCallListenerProbe. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="103" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a8d40e92653706f123c3716d637f94c54" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ITryllEditorBridge::UnregisterToolCallListenerProbe</definition>
+        <argsstring>(int32 ProbeId)=0</argsstring>
+        <name>UnregisterToolCallListenerProbe</name>
+        <qualifiedname>ITryllEditorBridge::UnregisterToolCallListenerProbe</qualifiedname>
+        <param>
+          <type>int32</type>
+          <declname>ProbeId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="104" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a0cd7621e78ad5524d0e95b2a6063b869" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ITryllEditorBridge::HasSessionToolCallListener</definition>
+        <argsstring>() const =0</argsstring>
+        <name>HasSessionToolCallListener</name>
+        <qualifiedname>ITryllEditorBridge::HasSessionToolCallListener</qualifiedname>
+        <briefdescription>
+<para>Any registered tool-call probe that returns true. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="106" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1a66b0dd0a3b313fbf6dc84ea2c101f63a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>FTryllConnection *</type>
+        <definition>virtual FTryllConnection * ITryllEditorBridge::GetSharedConnection</definition>
+        <argsstring>()=0</argsstring>
+        <name>GetSharedConnection</name>
+        <qualifiedname>ITryllEditorBridge::GetSharedConnection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The editor&apos;s shared connection. Null when the editor has not connected. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="109" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_i_tryll_editor_bridge_1ae85a7ae6a005993bd4a32093d22463e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>FTryllConnectionEvents *</type>
+        <definition>virtual FTryllConnectionEvents * ITryllEditorBridge::GetConnectionEvents</definition>
+        <argsstring>()=0</argsstring>
+        <name>GetConnectionEvents</name>
+        <qualifiedname>ITryllEditorBridge::GetConnectionEvents</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Broadcast-class events for that connection. Null when there is no connection. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="111" column="32"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Runtime-facing surface for the editor-only shared Tryll connection/session. UTryllEditorSubsystem (TryllClientEditor) registers an implementation so <ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> (TryllClient) can share the editor connection in PIE without linking the editor module. Per-message calls are not forwarded: the game subsystem uses <ref refid="class_i_tryll_editor_bridge_1a66b0dd0a3b313fbf6dc84ea2c101f63a" kindref="member">GetSharedConnection()</ref> and its own completions. </para>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" line="64" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllEditorBridge.h" bodystart="65" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_i_tryll_editor_bridge_1a63382e9582de5f51eddddf184da441af" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>AcquireConnection</name></member>
+      <member refid="class_i_tryll_editor_bridge_1ab7623a9176ce02c3e43d55d3215d928b" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>AdoptRelaunchedServer</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a6c49eedcf298d32409caca59149a5bed" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>GetActualPort</name></member>
+      <member refid="class_i_tryll_editor_bridge_1ae85a7ae6a005993bd4a32093d22463e4" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>GetConnectionEvents</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a2e097aabcb1c86b0a4a6d071becfe45e" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>GetSessionId</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a66b0dd0a3b313fbf6dc84ea2c101f63a" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>GetSharedConnection</name></member>
+      <member refid="class_i_tryll_editor_bridge_1abc8c8aeecd0d7a5d75b6b6e3ae75b7e0" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>HasSessionPauseListener</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a0cd7621e78ad5524d0e95b2a6063b869" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>HasSessionToolCallListener</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a2ce390936b16eb7f70b3777b62c2cd94" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>IsConnected</name></member>
+      <member refid="class_i_tryll_editor_bridge_1abf8f5ae74aff2f1f5a77530d5819493d" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>IsSessionReady</name></member>
+      <member refid="class_i_tryll_editor_bridge_1aa402426333157dc1e3aba869f38bb923" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>RegisterPauseListenerProbe</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a7d32c690c02f3b8c3e4cfb949e8c36fa" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>RegisterToolCallListenerProbe</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a3615af25bf856f73aeb8d7a50a65a138" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>ReleaseConnection</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a8049e8f06b6a9f26ec000d46d0766795" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>TryLaunch</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a74b48e6d20d0027fdf62caaefa8375bb" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>UnregisterPauseListenerProbe</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a8d40e92653706f123c3716d637f94c54" prot="public" virt="pure-virtual"><scope>ITryllEditorBridge</scope><name>UnregisterToolCallListenerProbe</name></member>
+      <member refid="class_i_tryll_editor_bridge_1a1f90726fc4876ed1a073359ac77a2ac4" prot="public" virt="virtual"><scope>ITryllEditorBridge</scope><name>~ITryllEditorBridge</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

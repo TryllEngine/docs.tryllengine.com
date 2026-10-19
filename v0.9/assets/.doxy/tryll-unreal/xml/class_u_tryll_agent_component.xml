@@ -1,0 +1,2057 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="class_u_tryll_agent_component" kind="class" language="C++" prot="public">
+    <compoundname>UTryllAgentComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">UActorComponent</basecompoundref>
+    <includes refid="_tryll_agent_component_8h" local="no">TryllAgentComponent.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a8eb35c4a704babfeb0ddaf7030759eda" prot="public" static="no" mutable="no">
+        <type><ref refid="class_u_tryll_workflow_asset" kindref="compound">UTryllWorkflowAsset</ref> *</type>
+        <definition>UTryllWorkflowAsset* UTryllAgentComponent::WorkflowAsset</definition>
+        <argsstring></argsstring>
+        <name>WorkflowAsset</name>
+        <qualifiedname>UTryllAgentComponent::WorkflowAsset</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Designer-authored workflow asset. Required for agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="92" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a5ae5ee74e04b44c5897716c58bcc763b" prot="public" static="no" mutable="no">
+        <type>TArray&lt; <ref refid="struct_f_tryll_variable_override" kindref="compound">FTryllVariableOverride</ref> &gt;</type>
+        <definition>TArray&lt;FTryllVariableOverride&gt; UTryllAgentComponent::VariableOverrides</definition>
+        <argsstring></argsstring>
+        <name>VariableOverrides</name>
+        <qualifiedname>UTryllAgentComponent::VariableOverrides</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Per-instance value overrides for the workflow&apos;s declared variables (Material-Instance pattern — name/type come from the declaration; only the initial value can be overridden). Entries whose Name/Type no longer match a declared variable are skipped with a warning at agent-creation time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="101" column="8" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aeeceabf9349cc44504656a2ecc6ed6e2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bAutoCreateOnConnect</definition>
+        <argsstring></argsstring>
+        <name>bAutoCreateOnConnect</name>
+        <qualifiedname>UTryllAgentComponent::bAutoCreateOnConnect</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Automatically create the agent once the session is ready (connected + configured). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="106" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a64f2c849e3b2d4fe236a97d79f766040" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bEnableDiagnostics</definition>
+        <argsstring></argsstring>
+        <name>bEnableDiagnostics</name>
+        <qualifiedname>UTryllAgentComponent::bEnableDiagnostics</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Request the server to populate TurnComplete.debug_info with workflow execution data. Authoring UI retired (Package 2): Chat and Agent Log OR this on via transient override / diagnostics-demand lease. Kept for runtime/Blueprint API and asset compatibility; default remains false (zero overhead in production). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="115" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ac69d50227fe29259ef9064f48098891d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bMaintainDialogueHistory</definition>
+        <argsstring></argsstring>
+        <name>bMaintainDialogueHistory</name>
+        <qualifiedname>UTryllAgentComponent::bMaintainDialogueHistory</qualifiedname>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When true (default) the agent keeps its full dialogue history across turns. When false the history is discarded after each turn — a stateless agent, useful for technical/classification agents that should not store or project prior turns. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="124" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ae88e6c2a2ab36c2037a1e05c7169f663" prot="public" static="no" mutable="no">
+        <type>ETryllKvCacheInitialization</type>
+        <definition>ETryllKvCacheInitialization UTryllAgentComponent::KvCacheInitialization</definition>
+        <argsstring></argsstring>
+        <name>KvCacheInitialization</name>
+        <qualifiedname>UTryllAgentComponent::KvCacheInitialization</qualifiedname>
+        <initializer>= ETryllKvCacheInitialization::AllocateOnly</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>How language-model KV contexts are materialised at agent creation. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="128" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ab2c685cf41d0a5ada54c89b7463278b5" prot="public" static="no" mutable="no">
+        <type>ETryllWorkload</type>
+        <definition>ETryllWorkload UTryllAgentComponent::Workload</definition>
+        <argsstring></argsstring>
+        <name>Workload</name>
+        <qualifiedname>UTryllAgentComponent::Workload</qualifiedname>
+        <initializer>= ETryllWorkload::Interactive</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether a human ever waits on this agent&apos;s turns. Set Background for world-logic/evaluator agents so the inference scheduler paces or defers their work first under GPU pressure. Purely a scheduling hint. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="136" column="16" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1adfdef767461b7802bcc14956600e8a4f" prot="public" static="no" mutable="no">
+        <type>TObjectPtr&lt; <ref refid="class_u_tryll_speaker_component" kindref="compound">UTryllSpeakerComponent</ref> &gt;</type>
+        <definition>TObjectPtr&lt;UTryllSpeakerComponent&gt; UTryllAgentComponent::Speaker</definition>
+        <argsstring></argsstring>
+        <name>Speaker</name>
+        <qualifiedname>UTryllAgentComponent::Speaker</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optional speaker component used to play streaming TTS audio frames emitted by the agent (e.g. from a GenerateAndSpeak node).</para>
+<para>If left unset, CreateAgent uses the <ref refid="class_u_tryll_speaker_component" kindref="compound">UTryllSpeakerComponent</ref> on the same actor, and adds one if there is none and the workflow has a GenerateAndSpeak or Speak node. Set this explicitly when the owning actor has more than one speaker and you need to pick a specific one. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="149" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a873fa19ae2c9500bde0e0636656ee34f" prot="public" static="no" mutable="no">
+        <type>TObjectPtr&lt; <ref refid="class_u_tryll_voice_profile" kindref="compound">UTryllVoiceProfile</ref> &gt;</type>
+        <definition>TObjectPtr&lt;UTryllVoiceProfile&gt; UTryllAgentComponent::VoiceProfile</definition>
+        <argsstring></argsstring>
+        <name>VoiceProfile</name>
+        <qualifiedname>UTryllAgentComponent::VoiceProfile</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The agent&apos;s voice (protocol v27): TTS model, identity, visemes and delivery modes. Every speaking node of the workflow uses it. Required when the workflow has a Speak or Generate And Speak node: creation fails with AgentVoiceRequired (3025) without one. Sent at CreateAgent; change it on a live agent with SetVoice. One workflow can serve many characters, each with its own profile. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="161" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a28fa8a366fb5b9675375171b066ee51f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bOverrideVoiceDelivery</definition>
+        <argsstring></argsstring>
+        <name>bOverrideVoiceDelivery</name>
+        <qualifiedname>UTryllAgentComponent::bOverrideVoiceDelivery</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Override the Voice Profile&apos;s default delivery for this agent instance. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="165" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ae3cb569683e3f183c0c5a4feaac3133a" prot="public" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::VoiceDelivery</definition>
+        <argsstring></argsstring>
+        <name>VoiceDelivery</name>
+        <qualifiedname>UTryllAgentComponent::VoiceDelivery</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initial delivery used when bOverrideVoiceDelivery is on. Empty = neutral. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="170" column="9" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a78605148242728951408cc53ef141d57" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentReady</type>
+        <definition>FOnTryllAgentReady UTryllAgentComponent::OnAgentReady</definition>
+        <argsstring></argsstring>
+        <name>OnAgentReady</name>
+        <qualifiedname>UTryllAgentComponent::OnAgentReady</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired once after the server confirms the agent has been created. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="455" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="455" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ac1b52a0b1011a0df7aad65f3fb54c55a" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentAnswerText</type>
+        <definition>FOnTryllAgentAnswerText UTryllAgentComponent::OnAnswerText</definition>
+        <argsstring></argsstring>
+        <name>OnAnswerText</name>
+        <qualifiedname>UTryllAgentComponent::OnAnswerText</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired for each streaming AnswerText chunk.<itemizedlist>
+<listitem><para>Text = the chunk (delta or accumulated, per server config).</para>
+</listitem><listitem><para>bIsFinal = true on the last chunk before TurnComplete. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="463" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="463" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a911455e482ff82354dbb09980a7f5023" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentAnswerFull</type>
+        <definition>FOnTryllAgentAnswerFull UTryllAgentComponent::OnAnswerFull</definition>
+        <argsstring></argsstring>
+        <name>OnAnswerFull</name>
+        <qualifiedname>UTryllAgentComponent::OnAnswerFull</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired after TurnComplete with the full accumulated response text. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="467" column="25" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ab57dd47b5bda98b4c63d79974b8a7696" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentTurnComplete</type>
+        <definition>FOnTryllAgentTurnComplete UTryllAgentComponent::OnTurnComplete</definition>
+        <argsstring></argsstring>
+        <name>OnTurnComplete</name>
+        <qualifiedname>UTryllAgentComponent::OnTurnComplete</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when TurnComplete arrives, carrying the turn outcome status. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="471" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="471" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aab970ed488da81746d6a5c8ce9ec8512" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentError</type>
+        <definition>FOnTryllAgentError UTryllAgentComponent::OnError</definition>
+        <argsstring></argsstring>
+        <name>OnError</name>
+        <qualifiedname>UTryllAgentComponent::OnError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired on any agent-level error (send failure, server error response). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="475" column="20" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="475" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a209f7c4f0ae6b26130fec5ea1ae2b98e" prot="public" static="no" mutable="no">
+        <type>FOnTryllParamChanged</type>
+        <definition>FOnTryllParamChanged UTryllAgentComponent::OnParamChanged</definition>
+        <argsstring></argsstring>
+        <name>OnParamChanged</name>
+        <qualifiedname>UTryllAgentComponent::OnParamChanged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when a ChangeParam request completes.<itemizedlist>
+<listitem><para>bSuccess = true on Ack; false on any server error.</para>
+</listitem><listitem><para>ErrorMessage = empty on success; human-readable description on failure. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="483" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="483" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ad9943f7bdc77578e71e7501a13f1b1dc" prot="public" static="no" mutable="no">
+        <type>FOnTryllResumed</type>
+        <definition>FOnTryllResumed UTryllAgentComponent::OnResumed</definition>
+        <argsstring></argsstring>
+        <name>OnResumed</name>
+        <qualifiedname>UTryllAgentComponent::OnResumed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when a Resume request completes.<itemizedlist>
+<listitem><para>bSuccess = true on Ack; false on any server error (e.g. AgentNotPaused, UnknownNode).</para>
+</listitem><listitem><para>ErrorMessage = empty on success; human-readable description on failure. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="491" column="17" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="491" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a97e99cc06b665a8240023114f1b6c019" prot="public" static="no" mutable="no">
+        <type>FOnTryllVoiceChanged</type>
+        <definition>FOnTryllVoiceChanged UTryllAgentComponent::OnVoiceChanged</definition>
+        <argsstring></argsstring>
+        <name>OnVoiceChanged</name>
+        <qualifiedname>UTryllAgentComponent::OnVoiceChanged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when SetVoice completes. Error.Code is 0 on success (InvalidVoiceProfile 3023, AgentBusy 3004, ... on failure). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="495" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="495" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a7e4147879fd20e42b95f7665bd660326" prot="public" static="no" mutable="no">
+        <type>FOnTryllDeliveryModeChanged</type>
+        <definition>FOnTryllDeliveryModeChanged UTryllAgentComponent::OnDeliveryModeChanged</definition>
+        <argsstring></argsstring>
+        <name>OnDeliveryModeChanged</name>
+        <qualifiedname>UTryllAgentComponent::OnDeliveryModeChanged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when SetDeliveryMode completes, with the requested mode. Error.Code is 0 on success (UnknownDeliveryMode 3024, AgentVoiceRequired 3025, ... on failure). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="499" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="499" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ad9cd0b2984ffdd824b61e476cf908516" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCachePrefilled</type>
+        <definition>FOnTryllKvCachePrefilled UTryllAgentComponent::OnKvCachePrefilled</definition>
+        <argsstring></argsstring>
+        <name>OnKvCachePrefilled</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCachePrefilled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="502" column="26" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="502" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a1a1fdab310515c002a4169784723f585" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCacheEvicted</type>
+        <definition>FOnTryllKvCacheEvicted UTryllAgentComponent::OnKvCacheEvicted</definition>
+        <argsstring></argsstring>
+        <name>OnKvCacheEvicted</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCacheEvicted</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="505" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a813e6764126f8994ebe1f09272ff4f64" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCacheStatus</type>
+        <definition>FOnTryllKvCacheStatus UTryllAgentComponent::OnKvCacheStatus</definition>
+        <argsstring></argsstring>
+        <name>OnKvCacheStatus</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCacheStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="508" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aa9bd138442da20faac600376b95d6253" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCachePrefillError</type>
+        <definition>FOnTryllKvCachePrefillError UTryllAgentComponent::OnKvCachePrefillError</definition>
+        <argsstring></argsstring>
+        <name>OnKvCachePrefillError</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCachePrefillError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="511" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="511" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a19a87f006830d99f89df8e955d3dceae" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCacheEvictError</type>
+        <definition>FOnTryllKvCacheEvictError UTryllAgentComponent::OnKvCacheEvictError</definition>
+        <argsstring></argsstring>
+        <name>OnKvCacheEvictError</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCacheEvictError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="514" column="27" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="514" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aff37f826daa9db0534b191221b92c7fe" prot="public" static="no" mutable="no">
+        <type>FOnTryllKvCacheStatusError</type>
+        <definition>FOnTryllKvCacheStatusError UTryllAgentComponent::OnKvCacheStatusError</definition>
+        <argsstring></argsstring>
+        <name>OnKvCacheStatusError</name>
+        <qualifiedname>UTryllAgentComponent::OnKvCacheStatusError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="517" column="28" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="517" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a9436f7e1e194f2bd9cf9b9ea568a0619" prot="public" static="no" mutable="no">
+        <type>FOnTryllMessageQueued</type>
+        <definition>FOnTryllMessageQueued UTryllAgentComponent::OnMessageQueued</definition>
+        <argsstring></argsstring>
+        <name>OnMessageQueued</name>
+        <qualifiedname>UTryllAgentComponent::OnMessageQueued</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Fired when SendMessage could not hand the message over immediately and queued it instead. Carries the queued text, so a game can show that it is waiting rather than leaving the player wondering whether their line registered. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="525" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="525" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a49198c15322d291ed22525819dd5db42" prot="public" static="no" mutable="no">
+        <type>FOnTryllInteractionsAppended</type>
+        <definition>FOnTryllInteractionsAppended UTryllAgentComponent::OnInteractionsAppended</definition>
+        <argsstring></argsstring>
+        <name>OnInteractionsAppended</name>
+        <qualifiedname>UTryllAgentComponent::OnInteractionsAppended</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="528" column="30" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="528" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a6e7412b6c544f2fd19176c565fe83c8c" prot="public" static="no" mutable="no">
+        <type>FOnTryllAppendInteractionsError</type>
+        <definition>FOnTryllAppendInteractionsError UTryllAgentComponent::OnAppendInteractionsError</definition>
+        <argsstring></argsstring>
+        <name>OnAppendInteractionsError</name>
+        <qualifiedname>UTryllAgentComponent::OnAppendInteractionsError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="531" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="531" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a300ec4f58af05ca736eb0f5de2c919f2" prot="public" static="no" mutable="no">
+        <type>FOnTryllInteractionsRemoved</type>
+        <definition>FOnTryllInteractionsRemoved UTryllAgentComponent::OnInteractionsRemoved</definition>
+        <argsstring></argsstring>
+        <name>OnInteractionsRemoved</name>
+        <qualifiedname>UTryllAgentComponent::OnInteractionsRemoved</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="534" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="534" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a34e6fa619404e065cfd0ccb3b3aaa0e1" prot="public" static="no" mutable="no">
+        <type>FOnTryllRemoveInteractionsError</type>
+        <definition>FOnTryllRemoveInteractionsError UTryllAgentComponent::OnRemoveInteractionsError</definition>
+        <argsstring></argsstring>
+        <name>OnRemoveInteractionsError</name>
+        <qualifiedname>UTryllAgentComponent::OnRemoveInteractionsError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="537" column="33" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="537" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a918ff7ef703533ab97f51bb71a249b62" prot="public" static="no" mutable="no">
+        <type>FOnTryllDialogExportedNative</type>
+        <definition>FOnTryllDialogExportedNative UTryllAgentComponent::OnDialogExported</definition>
+        <argsstring></argsstring>
+        <name>OnDialogExported</name>
+        <qualifiedname>UTryllAgentComponent::OnDialogExported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="539" column="30" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="539" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ac5bc2e7ca0f8c01d1b010256ce47adec" prot="public" static="no" mutable="no">
+        <type>FOnTryllDialogImportedNative</type>
+        <definition>FOnTryllDialogImportedNative UTryllAgentComponent::OnDialogImported</definition>
+        <argsstring></argsstring>
+        <name>OnDialogImported</name>
+        <qualifiedname>UTryllAgentComponent::OnDialogImported</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="540" column="30" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="540" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a7e1e5e55b0693c2ce5eca607ddf2371f" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentToolCall</type>
+        <definition>FOnTryllAgentToolCall UTryllAgentComponent::OnToolCall</definition>
+        <argsstring></argsstring>
+        <name>OnToolCall</name>
+        <qualifiedname>UTryllAgentComponent::OnToolCall</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tool call for this agent only (tool name, arguments JSON). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="544" column="23" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="544" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a5c78c4f80acd1ba2bdc531a1a913f667" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentToolCallWithId</type>
+        <definition>FOnTryllAgentToolCallWithId UTryllAgentComponent::OnToolCallWithId</definition>
+        <argsstring></argsstring>
+        <name>OnToolCallWithId</name>
+        <qualifiedname>UTryllAgentComponent::OnToolCallWithId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call-id-aware tool call for this agent. Use the id when resuming with a result. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="548" column="29" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="548" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ab71180732d2f2cef28b8bf823e09278e" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentToolCallDetailed</type>
+        <definition>FOnTryllAgentToolCallDetailed UTryllAgentComponent::OnToolCallDetailed</definition>
+        <argsstring></argsstring>
+        <name>OnToolCallDetailed</name>
+        <qualifiedname>UTryllAgentComponent::OnToolCallDetailed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Detailed tool call for this agent (node name and disposition included). Fired in addition to OnToolCall / OnToolCallWithId. Binding it also suppresses this component&apos;s OnNodeEvent for that event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="556" column="31" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="556" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a6f8ee1b26c87251bea0b7a3ace30dead" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentIntentClassified</type>
+        <definition>FOnTryllAgentIntentClassified UTryllAgentComponent::OnIntentClassified</definition>
+        <argsstring></argsstring>
+        <name>OnIntentClassified</name>
+        <qualifiedname>UTryllAgentComponent::OnIntentClassified</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Embedding ClassifyIntent result for this agent. No agent id: this component is the agent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="560" column="31" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="560" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1af40c84bc6438023dfbcc891c8ca9be8a" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentIntentLlmClassified</type>
+        <definition>FOnTryllAgentIntentLlmClassified UTryllAgentComponent::OnIntentLlmClassified</definition>
+        <argsstring></argsstring>
+        <name>OnIntentLlmClassified</name>
+        <qualifiedname>UTryllAgentComponent::OnIntentLlmClassified</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>ClassifyIntentLLM result for this agent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="564" column="34" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="564" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ad6ce9da133f097b535655435918c726a" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentPaused</type>
+        <definition>FOnTryllAgentPaused UTryllAgentComponent::OnPaused</definition>
+        <argsstring></argsstring>
+        <name>OnPaused</name>
+        <qualifiedname>UTryllAgentComponent::OnPaused</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This agent&apos;s turn paused between nodes. Call Resume, or RegisterTool a handler for every tool in the batch. Binding this suppresses OnNodeEvent for the pause. <ref refid="class_u_tryll_subsystem_1ab4f9591d561a55a6c695b526b8d29a44" kindref="member">UTryllSubsystem::OnPaused</ref> remains the all-agents surface. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="572" column="21" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="572" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a8fef165987a7171ce7605b9e97036048" prot="public" static="no" mutable="no">
+        <type>FOnTryllAgentNodeEvent</type>
+        <definition>FOnTryllAgentNodeEvent UTryllAgentComponent::OnNodeEvent</definition>
+        <argsstring></argsstring>
+        <name>OnNodeEvent</name>
+        <qualifiedname>UTryllAgentComponent::OnNodeEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generic NodeEvent for this agent, for event types with no typed listener bound on this component. A typed listener here does not affect <ref refid="class_u_tryll_subsystem_1ab7fd60016ccd276d082575c6b3253682" kindref="member">UTryllSubsystem::OnNodeEvent</ref>, and the reverse. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="580" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="580" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1a557edace5aa9d91b47278e4a8882c4fa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllAgentComponentPendingMessageSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllAgentComponentPendingMessageSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllAgentComponentPendingMessageSpec</qualifiedname>
+        <param>
+          <type>FTryllAgentComponentPendingMessageSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="598" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="598" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1ae9b6ad284bfd2fe504f97769d46cd5d4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllVoiceInputComponentForwardSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllVoiceInputComponentForwardSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllVoiceInputComponentForwardSpec</qualifiedname>
+        <param>
+          <type>FTryllVoiceInputComponentForwardSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="599" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="599" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1a67a9644445c1e88e2eeef0c79d44b87c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllAgentNodeEventSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllAgentNodeEventSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllAgentNodeEventSpec</qualifiedname>
+        <param>
+          <type>FTryllAgentNodeEventSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="600" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="600" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1a1d082b8f39f7d79e0f261c4b215b86a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllAgentToolCallResumeSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllAgentToolCallResumeSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllAgentToolCallResumeSpec</qualifiedname>
+        <param>
+          <type>FTryllAgentToolCallResumeSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="601" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="601" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1a0cd0b0baf7fe26477a4ee43bb3f568fd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllAgentComponentCreateInFlightSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllAgentComponentCreateInFlightSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllAgentComponentCreateInFlightSpec</qualifiedname>
+        <param>
+          <type>FTryllAgentComponentCreateInFlightSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="602" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="602" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_u_tryll_agent_component_1a396f6de0776f6e2915145074214a0266" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>class</type>
+        <definition>friend class FTryllAgentVoiceSpec</definition>
+        <argsstring></argsstring>
+        <name>FTryllAgentVoiceSpec</name>
+        <qualifiedname>UTryllAgentComponent::FTryllAgentVoiceSpec</qualifiedname>
+        <param>
+          <type>FTryllAgentVoiceSpec</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="603" column="14" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="603" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aefd2f2ffe85ee990874b5d3ace9fdcfa" prot="private" static="no" mutable="no">
+        <type><ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> *</type>
+        <definition>UTryllSubsystem* UTryllAgentComponent::TryllSubsystem</definition>
+        <argsstring></argsstring>
+        <name>TryllSubsystem</name>
+        <qualifiedname>UTryllAgentComponent::TryllSubsystem</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="631" column="24" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="631" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a489b90d32875c2fc0cc368622bf373c4" prot="private" static="no" mutable="no">
+        <type>TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt;</type>
+        <definition>TSharedPtr&lt;FTryllAgent&gt; UTryllAgentComponent::Agent</definition>
+        <argsstring></argsstring>
+        <name>Agent</name>
+        <qualifiedname>UTryllAgentComponent::Agent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="632" column="12" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="632" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a06e7da1146325abce4bf428e0ce1c941" prot="private" static="no" mutable="no">
+        <type><ref refid="class_u_tryll_agent_variables" kindref="compound">UTryllAgentVariables</ref> *</type>
+        <definition>UTryllAgentVariables* UTryllAgentComponent::VariablesObject</definition>
+        <argsstring></argsstring>
+        <name>VariablesObject</name>
+        <qualifiedname>UTryllAgentComponent::VariablesObject</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="642" column="22" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="642" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1abd0294dd85a19700b8947391c9bb9982" prot="private" static="no" mutable="no">
+        <type>std::uint64_t</type>
+        <definition>std::uint64_t UTryllAgentComponent::AgentIdNumeric</definition>
+        <argsstring></argsstring>
+        <name>AgentIdNumeric</name>
+        <qualifiedname>UTryllAgentComponent::AgentIdNumeric</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="644" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="644" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a1ce8b2afec19c6ed577febf810bc33e7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bAgentReady</definition>
+        <argsstring></argsstring>
+        <name>bAgentReady</name>
+        <qualifiedname>UTryllAgentComponent::bAgentReady</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="645" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="645" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1ae6685893b7cd9dc08c9706bdd70fc568" prot="private" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::PendingMessage</definition>
+        <argsstring></argsstring>
+        <name>PendingMessage</name>
+        <qualifiedname>UTryllAgentComponent::PendingMessage</qualifiedname>
+        <briefdescription>
+<para>Typed but not yet accepted by the agent — see SendMessage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="648" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="648" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1acafcaebad5f9ad5e2795284beadc2291" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bHasPendingMessage</definition>
+        <argsstring></argsstring>
+        <name>bHasPendingMessage</name>
+        <qualifiedname>UTryllAgentComponent::bHasPendingMessage</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Whether PendingMessage holds anything. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="650" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="650" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a077ce61dc966f2c480be1d9329c17113" prot="private" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::InFlightMessage</definition>
+        <argsstring></argsstring>
+        <name>InFlightMessage</name>
+        <qualifiedname>UTryllAgentComponent::InFlightMessage</qualifiedname>
+        <briefdescription>
+<para>Handed to the agent but not yet confirmed by a turn, so it can be re-queued. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="652" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="652" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a121a4c86f4fc992a647cc980a519bc48" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bTurnInFlight</definition>
+        <argsstring></argsstring>
+        <name>bTurnInFlight</name>
+        <qualifiedname>UTryllAgentComponent::bTurnInFlight</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A turn this component started and has not seen complete. Conservative: it tracks only the busy windows this component can see, and the error path re-queues if the server refuses. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="655" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="655" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1aebe7ad7bfff3921b7a6308bfa60148d9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bCreateQueued</definition>
+        <argsstring></argsstring>
+        <name>bCreateQueued</name>
+        <qualifiedname>UTryllAgentComponent::bCreateQueued</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>CreateAgent was requested before the session was ready; create on configure-complete. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="657" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="657" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a73e2d67843c869a7a7d5c93ababe1bf4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::bCreateInFlight</definition>
+        <argsstring></argsstring>
+        <name>bCreateInFlight</name>
+        <qualifiedname>UTryllAgentComponent::bCreateInFlight</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>A CreateAgent request is waiting for its response; further CreateAgent calls are no-ops. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="659" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="659" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a6e2570af8b232921efb5d5f2734b0230" prot="private" static="no" mutable="no">
+        <type>uint32</type>
+        <definition>uint32 UTryllAgentComponent::CreateGeneration</definition>
+        <argsstring></argsstring>
+        <name>CreateGeneration</name>
+        <qualifiedname>UTryllAgentComponent::CreateGeneration</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Tags each CreateAgent request; bumped to orphan a pending response. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="661" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="661" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a2b0307d1058dc829ed32680bae0c8253" prot="private" static="no" mutable="no">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::AccumulatedText</definition>
+        <argsstring></argsstring>
+        <name>AccumulatedText</name>
+        <qualifiedname>UTryllAgentComponent::AccumulatedText</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="662" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="662" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_u_tryll_agent_component_1a62662331108ac0aef50aa6126dac5072" prot="private" static="no" mutable="no">
+        <type>TMap&lt; FString, FTryllToolHandler &gt;</type>
+        <definition>TMap&lt;FString, FTryllToolHandler&gt; UTryllAgentComponent::ToolHandlers</definition>
+        <argsstring></argsstring>
+        <name>ToolHandlers</name>
+        <qualifiedname>UTryllAgentComponent::ToolHandlers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="663" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="663" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a53c2d75e681bb39fef1538efaed5e0f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UTryllAgentComponent::UTryllAgentComponent</definition>
+        <argsstring>()</argsstring>
+        <name>UTryllAgentComponent</name>
+        <qualifiedname>UTryllAgentComponent::UTryllAgentComponent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a152fa4d0968d29452231c6d4518162e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::CreateAgent</definition>
+        <argsstring>()</argsstring>
+        <name>CreateAgent</name>
+        <qualifiedname>UTryllAgentComponent::CreateAgent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Request creation of a server-side agent from WorkflowAsset. Fires OnAgentReady on success; OnError on failure (including when no WorkflowAsset is assigned). Safe to call from Blueprint Begin Play. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="180" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a8d302e7424294cd225f82cba28197ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::DestroyAgent</definition>
+        <argsstring>()</argsstring>
+        <name>DestroyAgent</name>
+        <qualifiedname>UTryllAgentComponent::DestroyAgent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Request destruction of the current server-side agent. OnAgentDestroyed (on the subsystem) fires on completion. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="184" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ad8c21935bebe0e779cde76a8931b5aff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::SendMessage</definition>
+        <argsstring>(const FString &amp;Message)</argsstring>
+        <name>SendMessage</name>
+        <qualifiedname>UTryllAgentComponent::SendMessage</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Send a user-turn message to the agent. Streaming tokens arrive on OnAnswerText; the turn ends with OnTurnComplete + OnAnswerFull. No-op if the agent is not yet ready (<ref refid="class_u_tryll_agent_component_1a561f838a9b48eba8e80d1fbee7a0f6b3" kindref="member">IsAgentReady()</ref> == false).</para>
+<para>The message is <bold>queued, not dropped</bold>, when the agent exists but cannot accept it yet. An agent refuses a send with AgentBusy while a turn is running or a KV-cache operation is in flight — and a cache operation is exactly what happens when a game prefills the agent the player has just selected. Without queueing, a message typed during that window is silently lost and the player must retype it, which is the worst available outcome. The queue is flushed automatically when the agent becomes ready, when a turn completes, and when a cache operation finishes.</para>
+<para>Only the most recent message is held: if two are sent before either reaches the agent, the newer line is the one the player meant. OnMessageQueued fires when a send is deferred. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="203" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a93cd7dbe3e3865928dddb3f8f247e2d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::TryFlushPendingMessage</definition>
+        <argsstring>()</argsstring>
+        <name>TryFlushPendingMessage</name>
+        <qualifiedname>UTryllAgentComponent::TryFlushPendingMessage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hands the queued message to the agent if it can accept one now. Safe and cheap to call repeatedly; returns true only when a message was actually handed over.</para>
+<para>Called automatically on agent-ready, turn-complete and cache-operation-complete. It is public because a KV-residency policy that drives prefills through <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> directly — rather than through this component — closes a busy window this component never observed, and should nudge the queue when it does. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="215" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a8bc8057f5ed2d035dd79204506e664d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::HasPendingMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>HasPendingMessage</name>
+        <qualifiedname>UTryllAgentComponent::HasPendingMessage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True while a message is waiting for the agent to become available. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="219" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="219" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a71cf559d532c4e4d16d93363b9f64957" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::IsTurnInFlight</definition>
+        <argsstring>() const</argsstring>
+        <name>IsTurnInFlight</name>
+        <qualifiedname>UTryllAgentComponent::IsTurnInFlight</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True while a turn this component started has not yet completed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="223" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a50668bb83f89fb7416767ae8174c7ded" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt; &amp;</type>
+        <definition>const TSharedPtr&lt; FTryllAgent &gt; &amp; UTryllAgentComponent::GetAgent</definition>
+        <argsstring>() const</argsstring>
+        <name>GetAgent</name>
+        <qualifiedname>UTryllAgentComponent::GetAgent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Native access to the underlying agent, for C++ callers that need per-call callbacks the Blueprint event surface cannot express — a KV-residency policy managing several agents, for instance, needs to know which prefill finished. Not a UFUNCTION: TSharedPtr is not a Blueprint type. Mirrors the public <computeroutput>Agent</computeroutput> property on the Unity component.</para>
+<para>May be null before creation completes; check <ref refid="class_u_tryll_agent_component_1a561f838a9b48eba8e80d1fbee7a0f6b3" kindref="member">IsAgentReady()</ref> first. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="233" column="18" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="233" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ae15fe6c77843c08de38cdfa0bb1f621c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const FString &amp;</type>
+        <definition>const FString &amp; UTryllAgentComponent::GetPendingMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>GetPendingMessage</name>
+        <qualifiedname>UTryllAgentComponent::GetPendingMessage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The queued message, or empty. For a &quot;waiting to send&quot; indicator. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="237" column="15" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="237" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a9d10631d9b024cbe87f43ff3293fd863" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ChangeParams</definition>
+        <argsstring>(const FString &amp;NodeName, UTryllNodeParamsBase *Params)</argsstring>
+        <name>ChangeParams</name>
+        <qualifiedname>UTryllAgentComponent::ChangeParams</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>NodeName</declname>
+        </param>
+        <param>
+          <type><ref refid="class_u_tryll_node_params_base" kindref="compound">UTryllNodeParamsBase</ref> *</type>
+          <declname>Params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Mutate a named parameter on a workflow node at runtime. The agent must not be processing a turn. On completion (success or error), OnParamChanged fires.</para>
+<para>Use the clone-set-send idiom: auto* P = Cast&lt;UTryllGenerateParams&gt;(GetNodeParamsBaseline(&quot;gen&quot;)); auto* Mut = Cast&lt;UTryllGenerateParams&gt;(UTryllNodeParamsFactory::CloneParams(P, this)); Mut-&gt;SystemPrompt = TEXT(&quot;New prompt&quot;); ChangeParams(TEXT(&quot;gen&quot;), Mut);</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>NodeName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Instance name of the target node in the graph. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Fully specified typed params for the node (clone of baseline + edits). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="254" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a10ef1068f1855d1e8876e4340bbf4dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::Resume</definition>
+        <argsstring>(const FString &amp;ResumeNode=TEXT(&quot;&quot;))</argsstring>
+        <name>Resume</name>
+        <qualifiedname>UTryllAgentComponent::Resume</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ResumeNode</declname>
+          <defval>TEXT(&quot;&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resume a turn that is currently paused (see OnPaused on this component, or <ref refid="class_u_tryll_subsystem_1ab4f9591d561a55a6c695b526b8d29a44" kindref="member">UTryllSubsystem::OnPaused</ref> for every agent). On completion (success or error), OnResumed fires.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ResumeNode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Empty continues via the paused node&apos;s pending exit route; non-empty jumps to that node by name. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="265" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a9e6f90a6295598fdc70b5851edd7fbc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ResumeWithToolResult</definition>
+        <argsstring>(const FTryllToolResult &amp;ToolResult, const FString &amp;ResumeNode=TEXT(&quot;&quot;))</argsstring>
+        <name>ResumeWithToolResult</name>
+        <qualifiedname>UTryllAgentComponent::ResumeWithToolResult</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_tool_result" kindref="compound">FTryllToolResult</ref> &amp;</type>
+          <declname>ToolResult</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ResumeNode</declname>
+          <defval>TEXT(&quot;&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resume with one result correlated to a tool-call ID. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="269" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a98d0a1922c6f2efd66cae860ed936534" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ResumeWithToolResults</definition>
+        <argsstring>(const TArray&lt; FTryllToolResult &gt; &amp;ToolResults, const FString &amp;ResumeNode=TEXT(&quot;&quot;))</argsstring>
+        <name>ResumeWithToolResults</name>
+        <qualifiedname>UTryllAgentComponent::ResumeWithToolResults</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_tool_result" kindref="compound">FTryllToolResult</ref> &gt; &amp;</type>
+          <declname>ToolResults</declname>
+        </param>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ResumeNode</declname>
+          <defval>TEXT(&quot;&quot;)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resume with the complete result batch for one paused tool-call pass. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="275" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aac8da7cedbc45655ab2e8a1eca8859e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::RegisterTool</definition>
+        <argsstring>(const FString &amp;ToolName, FTryllToolHandler Handler)</argsstring>
+        <name>RegisterTool</name>
+        <qualifiedname>UTryllAgentComponent::RegisterTool</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ToolName</declname>
+        </param>
+        <param>
+          <type>FTryllToolHandler</type>
+          <declname>Handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Register native game-thread auto-resume sugar for a named tool. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="280" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aa7b824dd76c414de96ffe4adaa8ad74d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::RegisterTool</definition>
+        <argsstring>(const FString &amp;ToolName, FTryllSimpleToolHandler Handler)</argsstring>
+        <name>RegisterTool</name>
+        <qualifiedname>UTryllAgentComponent::RegisterTool</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ToolName</declname>
+        </param>
+        <param>
+          <type>FTryllSimpleToolHandler</type>
+          <declname>Handler</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="281" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a71a9b5da32ba7eb02e485b9957a47c4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::UnregisterTool</definition>
+        <argsstring>(const FString &amp;ToolName)</argsstring>
+        <name>UnregisterTool</name>
+        <qualifiedname>UTryllAgentComponent::UnregisterTool</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ToolName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove a previously registered native tool handler. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="284" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a0ce4a6ccccc70ebf398595e215f7b283" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const FTryllToolHandler *</type>
+        <definition>const FTryllToolHandler * UTryllAgentComponent::FindToolHandler</definition>
+        <argsstring>(const FString &amp;ToolName) const</argsstring>
+        <name>FindToolHandler</name>
+        <qualifiedname>UTryllAgentComponent::FindToolHandler</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>ToolName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Look up a registered tool handler without going through an agent, or nullptr when this component has none for that name. Lets an external driver that runs its own agent — the Dialog Lab — invoke the same game-side handler this component would have used, instead of simulating it with authored data.</para>
+<para>A handler that keeps per-conversation state must be told when the dialogue restarts, and such a driver&apos;s agent is not this component&apos;s, so none of the delegates here fire for it. The convention is a parameterless <computeroutput>UFUNCTION()</computeroutput> named <computeroutput>ResetToolState</computeroutput> on the handler&apos;s component, which the driver dispatches by name. The Chat panel and the Dialog Lab both run their own agent and dispatch it at each new conversation. In-game callers need nothing extra: the handler binds OnAgentReady and OnInteractionsRemoved itself.</para>
+<para>The returned pointer is owned by this component&apos;s handler map and is invalidated by RegisterTool / UnregisterTool. Call it, do not store it. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="302" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a25d1b7204c230e3dd6f5440f5a4af9f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::HasPausedToolBatch</definition>
+        <argsstring>() const</argsstring>
+        <name>HasPausedToolBatch</name>
+        <qualifiedname>UTryllAgentComponent::HasPausedToolBatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True while a paused tool-call batch is retained: surfaced by the current pause and not yet cleared by a successful resume Ack, turn end/cancel, destroy, or a terminal disconnect. False when no agent is ready. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="310" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a4c67c69041170b11cae3f55e7946c928" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::GetPausedNode</definition>
+        <argsstring>() const</argsstring>
+        <name>GetPausedNode</name>
+        <qualifiedname>UTryllAgentComponent::GetPausedNode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Name of the node this agent&apos;s turn is paused after, or an empty string when it is not paused. Non-empty means the server is holding the turn open until Resume (or Cancel) — Send Message will keep failing with AgentBusy until one of those arrives. Covers Pause nodes as well as pausing tool calls, unlike Has Paused Tool Batch. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="320" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a4f8e2e14d0be1830a0601c2e032d27da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::RetryPausedToolBatch</definition>
+        <argsstring>()</argsstring>
+        <name>RetryPausedToolBatch</name>
+        <qualifiedname>UTryllAgentComponent::RetryPausedToolBatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Re-attempt the retained paused tool-call batch: handlers that already produced a result on a previous attempt are skipped, remaining handlers run, and a fresh Resume is sent. No-op when no agent is ready or there is no retained batch. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="329" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a0f837872bf42c592daa75fc13ea4e882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::Cancel</definition>
+        <argsstring>(ETryllCancelMode Mode=ETryllCancelMode::StopAndKeep)</argsstring>
+        <name>Cancel</name>
+        <qualifiedname>UTryllAgentComponent::Cancel</qualifiedname>
+        <param>
+          <type>ETryllCancelMode</type>
+          <declname>Mode</declname>
+          <defval>ETryllCancelMode::StopAndKeep</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Cooperatively cancel the in-flight turn. The turn ends with ETryllTurnStatus::Cancelled via OnTurnComplete. No-op if idle or the agent is not ready. Mode selects whether the partial interaction is kept (StopAndKeep, the chat &quot;Stop&quot; button) or discarded (StopAndDiscard). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="338" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a11a39d6150767faf0394c854f7d34be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::SetVoice</definition>
+        <argsstring>(UTryllVoiceProfile *NewVoice)</argsstring>
+        <name>SetVoice</name>
+        <qualifiedname>UTryllAgentComponent::SetVoice</qualifiedname>
+        <param>
+          <type><ref refid="class_u_tryll_voice_profile" kindref="compound">UTryllVoiceProfile</ref> *</type>
+          <declname>NewVoice</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Change the agent&apos;s voice. With a live agent this sends SetAgentVoice (idle-only: AgentBusy 3004 during a turn; InvalidVoiceProfile 3023 when the model cannot use the profile, and the old voice stays) and assigns VoiceProfile on success. Without an agent it only assigns VoiceProfile for the next CreateAgent. OnVoiceChanged reports the result either way. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="348" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ac80958d5ea79c52b5d79084b30e04051" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::SetDeliveryMode</definition>
+        <argsstring>(const FString &amp;Mode, float Intensity=1.f)</argsstring>
+        <name>SetDeliveryMode</name>
+        <qualifiedname>UTryllAgentComponent::SetDeliveryMode</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>Mode</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>Intensity</declname>
+          <defval>1.f</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Switch the voice&apos;s delivery mode, e.g. &quot;angry&quot;. Allowed mid-turn; applies from the next sentence. &quot;neutral&quot; always works; a mode the profile does not define fails with UnknownDeliveryMode (3024) and the current mode stays. Intensity (0..1) scales the mode where the model can (speed scale, Maya1 clause strength, Chatterbox expressiveness). OnDeliveryModeChanged reports the result. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="359" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a45d4687819dfb92cc4465e1dfacd468c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>FString</type>
+        <definition>FString UTryllAgentComponent::GetDeliveryMode</definition>
+        <argsstring>() const</argsstring>
+        <name>GetDeliveryMode</name>
+        <qualifiedname>UTryllAgentComponent::GetDeliveryMode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The delivery mode last applied to the live agent (&quot;&quot; = neutral, or the voice&apos;s default before any switch). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="363" column="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1addeaefbb9bad17f5895f3ad9ed7ca012" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TOptional&lt; <ref refid="struct_f_tryll_voice_profile_data" kindref="compound">FTryllVoiceProfileData</ref> &gt;</type>
+        <definition>TOptional&lt; FTryllVoiceProfileData &gt; UTryllAgentComponent::GetEffectiveVoiceProfile</definition>
+        <argsstring>() const</argsstring>
+        <name>GetEffectiveVoiceProfile</name>
+        <qualifiedname>UTryllAgentComponent::GetEffectiveVoiceProfile</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Voice profile data with this component&apos;s delivery override applied to a copy. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="366" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ae5f869b78c7996fe16f1c14ed0514d83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::PrefillKvCache</definition>
+        <argsstring>()</argsstring>
+        <name>PrefillKvCache</name>
+        <qualifiedname>UTryllAgentComponent::PrefillKvCache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Synchronise every eligible language-model context to its reusable prefix. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="377" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1af2e47ceeff39730f54789b187fecc9ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::EvictKvCache</definition>
+        <argsstring>()</argsstring>
+        <name>EvictKvCache</name>
+        <qualifiedname>UTryllAgentComponent::EvictKvCache</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Release every eligible language-model backend KV context. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="381" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aa9418a4b96803b8e3b8cf9868bf3b39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::GetKvCacheStatus</definition>
+        <argsstring>()</argsstring>
+        <name>GetKvCacheStatus</name>
+        <qualifiedname>UTryllAgentComponent::GetKvCacheStatus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Query aggregate language-model KV-cache lifecycle state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="385" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a5e7d69e0432225032868685d8762e503" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::AppendInteractions</definition>
+        <argsstring>(const TArray&lt; FTryllDialogInteraction &gt; &amp;Interactions)</argsstring>
+        <name>AppendInteractions</name>
+        <qualifiedname>UTryllAgentComponent::AppendInteractions</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_dialog_interaction" kindref="compound">FTryllDialogInteraction</ref> &gt; &amp;</type>
+          <declname>Interactions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Append scripted user/assistant interactions without running the graph. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="389" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1afd18719afb77188089592e36c7498a14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::RemoveInteractionsFromEnd</definition>
+        <argsstring>(int32 Count)</argsstring>
+        <name>RemoveInteractionsFromEnd</name>
+        <qualifiedname>UTryllAgentComponent::RemoveInteractionsFromEnd</qualifiedname>
+        <param>
+          <type>int32</type>
+          <declname>Count</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Remove whole interactions from the end of the dialog. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="393" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a7268c4428893614d7cc699ce35e9d4c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ExportDialog</definition>
+        <argsstring>()</argsstring>
+        <name>ExportDialog</name>
+        <qualifiedname>UTryllAgentComponent::ExportDialog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Export the completed dialog. C++ only — snapshot is not Blueprint-exposed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="396" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a27d64ac992c52985774f340f0b55853b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ImportDialog</definition>
+        <argsstring>(const FTryllDialogSnapshot &amp;Snapshot, ETryllDialogCompatibility Compatibility=ETryllDialogCompatibility::Strict)</argsstring>
+        <name>ImportDialog</name>
+        <qualifiedname>UTryllAgentComponent::ImportDialog</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_dialog_snapshot" kindref="compound">FTryllDialogSnapshot</ref> &amp;</type>
+          <declname>Snapshot</declname>
+        </param>
+        <param>
+          <type>ETryllDialogCompatibility</type>
+          <declname>Compatibility</declname>
+          <defval>ETryllDialogCompatibility::Strict</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Replace the agent&apos;s dialog. C++ only — snapshot is not Blueprint-exposed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="399" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aca37eae83fb3a298c20876616809e7ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_u_tryll_node_params_base" kindref="compound">UTryllNodeParamsBase</ref> *</type>
+        <definition>UTryllNodeParamsBase * UTryllAgentComponent::GetNodeParamsBaseline</definition>
+        <argsstring>(const FString &amp;NodeName) const</argsstring>
+        <name>GetNodeParamsBaseline</name>
+        <qualifiedname>UTryllAgentComponent::GetNodeParamsBaseline</qualifiedname>
+        <param>
+          <type>const FString &amp;</type>
+          <declname>NodeName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return the authored params baseline for the named node. Call after OnAgentReady has fired; returns null if the node name is unknown. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="408" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a048419ac43d7d4b1d67f1b19c8d2ad63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_u_tryll_agent_variables" kindref="compound">UTryllAgentVariables</ref> *</type>
+        <definition>UTryllAgentVariables * UTryllAgentComponent::GetVariables</definition>
+        <argsstring>()</argsstring>
+        <name>GetVariables</name>
+        <qualifiedname>UTryllAgentComponent::GetVariables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blueprint/C++ access to this agent&apos;s declared per-agent Variables, or nullptr if no agent is ready. Use to Set/Get/AddToSet/RemoveFromSet/Reset declared variables from Blueprint or C++ — see <ref refid="class_u_tryll_agent_variables" kindref="compound">UTryllAgentVariables</ref>. (C++ code that needs the raw mirror can use the agent&apos;s own <ref refid="class_f_tryll_agent_1acbccf3e515bcb82ee55d7b7e087bbc68" kindref="member">FTryllAgent::GetVariables()</ref>.) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="418" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a24fb8ecdf91849ba42277a7dcc29f728" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_f_tryll_agent_variables" kindref="compound">FTryllAgentVariables</ref> *</type>
+        <definition>FTryllAgentVariables * UTryllAgentComponent::GetLiveVariables</definition>
+        <argsstring>()</argsstring>
+        <name>GetLiveVariables</name>
+        <qualifiedname>UTryllAgentComponent::GetLiveVariables</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>C++ access to the live variables mirror: the PIE agent when ready, otherwise an editor-preview agent attached by Tryll Chat (if any). Null when neither is active. Used by Details customization for live override apply / Flush Now. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="425" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aba11290624577b8d1605ca3846a07095" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::HasLiveAgent</definition>
+        <argsstring>() const</argsstring>
+        <name>HasLiveAgent</name>
+        <qualifiedname>UTryllAgentComponent::HasLiveAgent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True when a PIE agent or editor-preview agent is available for live variable edits. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="428" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a561f838a9b48eba8e80d1fbee7a0f6b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool UTryllAgentComponent::IsAgentReady</definition>
+        <argsstring>() const</argsstring>
+        <name>IsAgentReady</name>
+        <qualifiedname>UTryllAgentComponent::IsAgentReady</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True after the server has confirmed agent creation (OnAgentReady has fired). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="445" column="6" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="445" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aeda94201d1c7865f0c71a6bfac53a3e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int64</type>
+        <definition>int64 UTryllAgentComponent::GetAgentId</definition>
+        <argsstring>() const</argsstring>
+        <name>GetAgentId</name>
+        <qualifiedname>UTryllAgentComponent::GetAgentId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Server-assigned agent id, or 0 if the agent has not been created yet. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="449" column="7" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="449" bodyend="449"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_u_tryll_agent_component_1acad9744233dbf357f3f435065a56b9ff" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_u_tryll_agent_component" kindref="compound">UTryllAgentComponent</ref> *</type>
+        <definition>static UTryllAgentComponent * UTryllAgentComponent::FindForSpeaker</definition>
+        <argsstring>(const AActor *Owner, const UTryllSpeakerComponent *Speaker)</argsstring>
+        <name>FindForSpeaker</name>
+        <qualifiedname>UTryllAgentComponent::FindForSpeaker</qualifiedname>
+        <param>
+          <type>const AActor *</type>
+          <declname>Owner</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_u_tryll_speaker_component" kindref="compound">UTryllSpeakerComponent</ref> *</type>
+          <declname>Speaker</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The agent component on Owner whose speaker is Speaker (or which has no speaker yet and so will auto-discover it), or null. Lip-sync components use it to read the voice profile of the agent they animate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="373" column="29"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a99586b555ca6cae23d273e8a1b731aa4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllAgentComponent::BeginPlay</definition>
+        <argsstring>() override</argsstring>
+        <name>BeginPlay</name>
+        <qualifiedname>UTryllAgentComponent::BeginPlay</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="588" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a165784345ecf661007d1accf2fc47780" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void UTryllAgentComponent::EndPlay</definition>
+        <argsstring>(const EEndPlayReason::Type EndPlayReason) override</argsstring>
+        <name>EndPlay</name>
+        <qualifiedname>UTryllAgentComponent::EndPlay</qualifiedname>
+        <param>
+          <type>const EEndPlayReason::Type</type>
+          <declname>EndPlayReason</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="589" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a7aba2701ce9a5ff9ff4704993cb01042" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::HandleConnectionChanged</definition>
+        <argsstring>(bool bConnected)</argsstring>
+        <name>HandleConnectionChanged</name>
+        <qualifiedname>UTryllAgentComponent::HandleConnectionChanged</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>bConnected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="593" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ac4df650266a4995cfdf64031bcb25219" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::HandleCreateSessionComplete</definition>
+        <argsstring>(bool bSuccess)</argsstring>
+        <name>HandleCreateSessionComplete</name>
+        <qualifiedname>UTryllAgentComponent::HandleCreateSessionComplete</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>bSuccess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="596" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aa5119e06383ab1fe4ef89b27f436fabd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::HandleCreateAgentResponse</definition>
+        <argsstring>(uint32 Generation, TSharedPtr&lt; FTryllAgent &gt; CreatedAgent, const FTryllError &amp;Err)</argsstring>
+        <name>HandleCreateAgentResponse</name>
+        <qualifiedname>UTryllAgentComponent::HandleCreateAgentResponse</qualifiedname>
+        <param>
+          <type>uint32</type>
+          <declname>Generation</declname>
+        </param>
+        <param>
+          <type>TSharedPtr&lt; <ref refid="class_f_tryll_agent" kindref="compound">FTryllAgent</ref> &gt;</type>
+          <declname>CreatedAgent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+          <declname>Err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Completes the CreateAgent request tagged Generation. A response whose generation is no longer current (DestroyAgent, EndPlay or a disconnect ran while it was pending) is dropped and its server agent destroyed, so it never fires OnAgentReady. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="610" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a8648b54e7dffd8f2551138679c8df304" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::InvalidateCreateState</definition>
+        <argsstring>()</argsstring>
+        <name>InvalidateCreateState</name>
+        <qualifiedname>UTryllAgentComponent::InvalidateCreateState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Orphans any pending CreateAgent response and allows a new request. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="612" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1acb4aee836bde7decbe42426e79a7ea81" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ResolveSpeaker</definition>
+        <argsstring>(const FTryllGraphDescription &amp;Graph)</argsstring>
+        <name>ResolveSpeaker</name>
+        <qualifiedname>UTryllAgentComponent::ResolveSpeaker</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> &amp;</type>
+          <declname>Graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="614" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ab8a9f5155621bdf5b0b85a9bf5ae87c7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>TOptional&lt; <ref refid="struct_f_tryll_voice_profile_data" kindref="compound">FTryllVoiceProfileData</ref> &gt;</type>
+        <definition>TOptional&lt; FTryllVoiceProfileData &gt; UTryllAgentComponent::ResolveCreateVoice</definition>
+        <argsstring>(const FTryllGraphDescription &amp;Graph) const</argsstring>
+        <name>ResolveCreateVoice</name>
+        <qualifiedname>UTryllAgentComponent::ResolveCreateVoice</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_graph_description" kindref="compound">FTryllGraphDescription</ref> &amp;</type>
+          <declname>Graph</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The voice CreateAgent sends: VoiceProfile&apos;s data, or unset (logging an error when Graph speaks). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="616" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1af9c716232d7b58558b87698d8f35cd7b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::BindAgentCallbacks</definition>
+        <argsstring>()</argsstring>
+        <name>BindAgentCallbacks</name>
+        <qualifiedname>UTryllAgentComponent::BindAgentCallbacks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="617" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1ad42b1120fd816147173fb1f4764b432e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::HandleInboundError</definition>
+        <argsstring>(const FTryllError &amp;Err)</argsstring>
+        <name>HandleInboundError</name>
+        <qualifiedname>UTryllAgentComponent::HandleInboundError</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_f_tryll_error" kindref="compound">FTryllError</ref> &amp;</type>
+          <declname>Err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="618" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="class_u_tryll_agent_component_1aae539b9e799a1029a7ae87823604d4e4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void UTryllAgentComponent::ClearSendQueue</definition>
+        <argsstring>()</argsstring>
+        <name>ClearSendQueue</name>
+        <qualifiedname>UTryllAgentComponent::ClearSendQueue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="619" column="6"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_u_tryll_agent_component_1a1ae02f1201bc6d3b3c0a6a02f757adc1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TArray&lt; <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt;</type>
+        <definition>static TArray&lt; FTryllVariableDecl &gt; UTryllAgentComponent::MergeVariableOverrides</definition>
+        <argsstring>(const TArray&lt; FTryllVariableDecl &gt; &amp;Declared, const TArray&lt; FTryllVariableOverride &gt; &amp;Overrides)</argsstring>
+        <name>MergeVariableOverrides</name>
+        <qualifiedname>UTryllAgentComponent::MergeVariableOverrides</qualifiedname>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_variable_decl" kindref="compound">FTryllVariableDecl</ref> &gt; &amp;</type>
+          <declname>Declared</declname>
+        </param>
+        <param>
+          <type>const TArray&lt; <ref refid="struct_f_tryll_variable_override" kindref="compound">FTryllVariableOverride</ref> &gt; &amp;</type>
+          <declname>Overrides</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Merge a workflow&apos;s declared variables with this component&apos;s enabled value overrides (Material-Instance pattern: an override may only replace the initial value of a declaration with the same name AND type). Overrides that don&apos;t match any declared variable, or whose type disagrees, are skipped with a warning (stale — e.g. after the declaration changed). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="628" column="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Per-agent NodeEvent surfaces. No AgentId pin: the component is the agent. Session-level equivalents on <ref refid="class_u_tryll_subsystem" kindref="compound">UTryllSubsystem</ref> stay the &quot;all agents&quot; escape hatch. Actor component: manages one Tryll server-side agent. Attach to any Actor; Blueprint users bind to the delegates and call <ref refid="class_u_tryll_agent_component_1ad8c21935bebe0e779cde76a8931b5aff" kindref="member">SendMessage()</ref>.</para>
+<para>The graph comes from WorkflowAsset — a designer-authored data asset in the Content Browser. CreateAgent fails if no asset is assigned. To build a graph in C++ without an asset, use <ref refid="struct_f_tryll_graph_builder" kindref="compound">FTryllGraphBuilder</ref> and <ref refid="class_u_tryll_subsystem_1a1192b653c65b1d8b18804be8e7b5cc27" kindref="member">UTryllSubsystem::RequestCreateAgent</ref>.</para>
+<para>The component auto-creates an agent once the session is ready (if bAutoCreateOnConnect) — it queues until OnCreateSessionComplete if it spawns before the session is configured. It auto-destroys the agent on EndPlay. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="1">
+        <label>UTryllAgentComponent</label>
+        <link refid="class_u_tryll_agent_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>FTryllGraphDescription</label>
+        <link refid="struct_f_tryll_graph_description"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>DefaultModelName</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>FTryllModelName</label>
+        <link refid="struct_f_tryll_model_name"/>
+      </node>
+      <node id="2">
+        <label>UActorComponent</label>
+      </node>
+      <node id="4">
+        <label>UPrimaryDataAsset</label>
+      </node>
+      <node id="1">
+        <label>UTryllAgentComponent</label>
+        <link refid="class_u_tryll_agent_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>WorkflowAsset</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>UTryllWorkflowAsset</label>
+        <link refid="class_u_tryll_workflow_asset"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Graph</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" line="81" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/unreal/Source/TryllClient/Public/TryllAgentComponent.h" bodystart="82" bodyend="664"/>
+    <listofallmembers>
+      <member refid="class_u_tryll_agent_component_1a2b0307d1058dc829ed32680bae0c8253" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>AccumulatedText</name></member>
+      <member refid="class_u_tryll_agent_component_1a489b90d32875c2fc0cc368622bf373c4" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>Agent</name></member>
+      <member refid="class_u_tryll_agent_component_1abd0294dd85a19700b8947391c9bb9982" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>AgentIdNumeric</name></member>
+      <member refid="class_u_tryll_agent_component_1a5e7d69e0432225032868685d8762e503" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>AppendInteractions</name></member>
+      <member refid="class_u_tryll_agent_component_1a1ce8b2afec19c6ed577febf810bc33e7" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bAgentReady</name></member>
+      <member refid="class_u_tryll_agent_component_1aeeceabf9349cc44504656a2ecc6ed6e2" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bAutoCreateOnConnect</name></member>
+      <member refid="class_u_tryll_agent_component_1a73e2d67843c869a7a7d5c93ababe1bf4" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bCreateInFlight</name></member>
+      <member refid="class_u_tryll_agent_component_1aebe7ad7bfff3921b7a6308bfa60148d9" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bCreateQueued</name></member>
+      <member refid="class_u_tryll_agent_component_1a99586b555ca6cae23d273e8a1b731aa4" prot="protected" virt="virtual"><scope>UTryllAgentComponent</scope><name>BeginPlay</name></member>
+      <member refid="class_u_tryll_agent_component_1a64f2c849e3b2d4fe236a97d79f766040" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bEnableDiagnostics</name></member>
+      <member refid="class_u_tryll_agent_component_1acafcaebad5f9ad5e2795284beadc2291" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bHasPendingMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1af9c716232d7b58558b87698d8f35cd7b" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>BindAgentCallbacks</name></member>
+      <member refid="class_u_tryll_agent_component_1ac69d50227fe29259ef9064f48098891d" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bMaintainDialogueHistory</name></member>
+      <member refid="class_u_tryll_agent_component_1a28fa8a366fb5b9675375171b066ee51f" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bOverrideVoiceDelivery</name></member>
+      <member refid="class_u_tryll_agent_component_1a121a4c86f4fc992a647cc980a519bc48" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>bTurnInFlight</name></member>
+      <member refid="class_u_tryll_agent_component_1a0f837872bf42c592daa75fc13ea4e882" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>Cancel</name></member>
+      <member refid="class_u_tryll_agent_component_1a9d10631d9b024cbe87f43ff3293fd863" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ChangeParams</name></member>
+      <member refid="class_u_tryll_agent_component_1aae539b9e799a1029a7ae87823604d4e4" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ClearSendQueue</name></member>
+      <member refid="class_u_tryll_agent_component_1a152fa4d0968d29452231c6d4518162e3" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>CreateAgent</name></member>
+      <member refid="class_u_tryll_agent_component_1a6e2570af8b232921efb5d5f2734b0230" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>CreateGeneration</name></member>
+      <member refid="class_u_tryll_agent_component_1a8d302e7424294cd225f82cba28197ad0" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>DestroyAgent</name></member>
+      <member refid="class_u_tryll_agent_component_1a165784345ecf661007d1accf2fc47780" prot="protected" virt="virtual"><scope>UTryllAgentComponent</scope><name>EndPlay</name></member>
+      <member refid="class_u_tryll_agent_component_1af2e47ceeff39730f54789b187fecc9ae" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>EvictKvCache</name></member>
+      <member refid="class_u_tryll_agent_component_1a7268c4428893614d7cc699ce35e9d4c8" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ExportDialog</name></member>
+      <member refid="class_u_tryll_agent_component_1acad9744233dbf357f3f435065a56b9ff" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FindForSpeaker</name></member>
+      <member refid="class_u_tryll_agent_component_1a0ce4a6ccccc70ebf398595e215f7b283" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FindToolHandler</name></member>
+      <member refid="class_u_tryll_agent_component_1a0cd0b0baf7fe26477a4ee43bb3f568fd" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllAgentComponentCreateInFlightSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1a557edace5aa9d91b47278e4a8882c4fa" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllAgentComponentPendingMessageSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1a67a9644445c1e88e2eeef0c79d44b87c" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllAgentNodeEventSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1a1d082b8f39f7d79e0f261c4b215b86a7" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllAgentToolCallResumeSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1a396f6de0776f6e2915145074214a0266" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllAgentVoiceSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1ae9b6ad284bfd2fe504f97769d46cd5d4" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>FTryllVoiceInputComponentForwardSpec</name></member>
+      <member refid="class_u_tryll_agent_component_1a50668bb83f89fb7416767ae8174c7ded" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetAgent</name></member>
+      <member refid="class_u_tryll_agent_component_1aeda94201d1c7865f0c71a6bfac53a3e8" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetAgentId</name></member>
+      <member refid="class_u_tryll_agent_component_1a45d4687819dfb92cc4465e1dfacd468c" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetDeliveryMode</name></member>
+      <member refid="class_u_tryll_agent_component_1addeaefbb9bad17f5895f3ad9ed7ca012" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetEffectiveVoiceProfile</name></member>
+      <member refid="class_u_tryll_agent_component_1aa9418a4b96803b8e3b8cf9868bf3b39a" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetKvCacheStatus</name></member>
+      <member refid="class_u_tryll_agent_component_1a24fb8ecdf91849ba42277a7dcc29f728" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetLiveVariables</name></member>
+      <member refid="class_u_tryll_agent_component_1aca37eae83fb3a298c20876616809e7ad" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetNodeParamsBaseline</name></member>
+      <member refid="class_u_tryll_agent_component_1a4c67c69041170b11cae3f55e7946c928" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetPausedNode</name></member>
+      <member refid="class_u_tryll_agent_component_1ae15fe6c77843c08de38cdfa0bb1f621c" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetPendingMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1a048419ac43d7d4b1d67f1b19c8d2ad63" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>GetVariables</name></member>
+      <member refid="class_u_tryll_agent_component_1a7aba2701ce9a5ff9ff4704993cb01042" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HandleConnectionChanged</name></member>
+      <member refid="class_u_tryll_agent_component_1aa5119e06383ab1fe4ef89b27f436fabd" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HandleCreateAgentResponse</name></member>
+      <member refid="class_u_tryll_agent_component_1ac4df650266a4995cfdf64031bcb25219" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HandleCreateSessionComplete</name></member>
+      <member refid="class_u_tryll_agent_component_1ad42b1120fd816147173fb1f4764b432e" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HandleInboundError</name></member>
+      <member refid="class_u_tryll_agent_component_1aba11290624577b8d1605ca3846a07095" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HasLiveAgent</name></member>
+      <member refid="class_u_tryll_agent_component_1a25d1b7204c230e3dd6f5440f5a4af9f6" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HasPausedToolBatch</name></member>
+      <member refid="class_u_tryll_agent_component_1a8bc8057f5ed2d035dd79204506e664d9" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>HasPendingMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1a27d64ac992c52985774f340f0b55853b" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ImportDialog</name></member>
+      <member refid="class_u_tryll_agent_component_1a077ce61dc966f2c480be1d9329c17113" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>InFlightMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1a8648b54e7dffd8f2551138679c8df304" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>InvalidateCreateState</name></member>
+      <member refid="class_u_tryll_agent_component_1a561f838a9b48eba8e80d1fbee7a0f6b3" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>IsAgentReady</name></member>
+      <member refid="class_u_tryll_agent_component_1a71cf559d532c4e4d16d93363b9f64957" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>IsTurnInFlight</name></member>
+      <member refid="class_u_tryll_agent_component_1ae88e6c2a2ab36c2037a1e05c7169f663" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>KvCacheInitialization</name></member>
+      <member refid="class_u_tryll_agent_component_1a1ae02f1201bc6d3b3c0a6a02f757adc1" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>MergeVariableOverrides</name></member>
+      <member refid="class_u_tryll_agent_component_1a78605148242728951408cc53ef141d57" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnAgentReady</name></member>
+      <member refid="class_u_tryll_agent_component_1a911455e482ff82354dbb09980a7f5023" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnAnswerFull</name></member>
+      <member refid="class_u_tryll_agent_component_1ac1b52a0b1011a0df7aad65f3fb54c55a" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnAnswerText</name></member>
+      <member refid="class_u_tryll_agent_component_1a6e7412b6c544f2fd19176c565fe83c8c" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnAppendInteractionsError</name></member>
+      <member refid="class_u_tryll_agent_component_1a7e4147879fd20e42b95f7665bd660326" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnDeliveryModeChanged</name></member>
+      <member refid="class_u_tryll_agent_component_1a918ff7ef703533ab97f51bb71a249b62" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnDialogExported</name></member>
+      <member refid="class_u_tryll_agent_component_1ac5bc2e7ca0f8c01d1b010256ce47adec" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnDialogImported</name></member>
+      <member refid="class_u_tryll_agent_component_1aab970ed488da81746d6a5c8ce9ec8512" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnError</name></member>
+      <member refid="class_u_tryll_agent_component_1a6f8ee1b26c87251bea0b7a3ace30dead" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnIntentClassified</name></member>
+      <member refid="class_u_tryll_agent_component_1af40c84bc6438023dfbcc891c8ca9be8a" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnIntentLlmClassified</name></member>
+      <member refid="class_u_tryll_agent_component_1a49198c15322d291ed22525819dd5db42" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnInteractionsAppended</name></member>
+      <member refid="class_u_tryll_agent_component_1a300ec4f58af05ca736eb0f5de2c919f2" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnInteractionsRemoved</name></member>
+      <member refid="class_u_tryll_agent_component_1a1a1fdab310515c002a4169784723f585" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCacheEvicted</name></member>
+      <member refid="class_u_tryll_agent_component_1a19a87f006830d99f89df8e955d3dceae" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCacheEvictError</name></member>
+      <member refid="class_u_tryll_agent_component_1ad9cd0b2984ffdd824b61e476cf908516" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCachePrefilled</name></member>
+      <member refid="class_u_tryll_agent_component_1aa9bd138442da20faac600376b95d6253" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCachePrefillError</name></member>
+      <member refid="class_u_tryll_agent_component_1a813e6764126f8994ebe1f09272ff4f64" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCacheStatus</name></member>
+      <member refid="class_u_tryll_agent_component_1aff37f826daa9db0534b191221b92c7fe" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnKvCacheStatusError</name></member>
+      <member refid="class_u_tryll_agent_component_1a9436f7e1e194f2bd9cf9b9ea568a0619" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnMessageQueued</name></member>
+      <member refid="class_u_tryll_agent_component_1a8fef165987a7171ce7605b9e97036048" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnNodeEvent</name></member>
+      <member refid="class_u_tryll_agent_component_1a209f7c4f0ae6b26130fec5ea1ae2b98e" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnParamChanged</name></member>
+      <member refid="class_u_tryll_agent_component_1ad6ce9da133f097b535655435918c726a" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnPaused</name></member>
+      <member refid="class_u_tryll_agent_component_1a34e6fa619404e065cfd0ccb3b3aaa0e1" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnRemoveInteractionsError</name></member>
+      <member refid="class_u_tryll_agent_component_1ad9943f7bdc77578e71e7501a13f1b1dc" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnResumed</name></member>
+      <member refid="class_u_tryll_agent_component_1a7e1e5e55b0693c2ce5eca607ddf2371f" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnToolCall</name></member>
+      <member refid="class_u_tryll_agent_component_1ab71180732d2f2cef28b8bf823e09278e" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnToolCallDetailed</name></member>
+      <member refid="class_u_tryll_agent_component_1a5c78c4f80acd1ba2bdc531a1a913f667" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnToolCallWithId</name></member>
+      <member refid="class_u_tryll_agent_component_1ab57dd47b5bda98b4c63d79974b8a7696" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnTurnComplete</name></member>
+      <member refid="class_u_tryll_agent_component_1a97e99cc06b665a8240023114f1b6c019" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>OnVoiceChanged</name></member>
+      <member refid="class_u_tryll_agent_component_1ae6685893b7cd9dc08c9706bdd70fc568" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>PendingMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1ae5f869b78c7996fe16f1c14ed0514d83" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>PrefillKvCache</name></member>
+      <member refid="class_u_tryll_agent_component_1aac8da7cedbc45655ab2e8a1eca8859e0" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>RegisterTool</name></member>
+      <member refid="class_u_tryll_agent_component_1aa7b824dd76c414de96ffe4adaa8ad74d" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>RegisterTool</name></member>
+      <member refid="class_u_tryll_agent_component_1afd18719afb77188089592e36c7498a14" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>RemoveInteractionsFromEnd</name></member>
+      <member refid="class_u_tryll_agent_component_1ab8a9f5155621bdf5b0b85a9bf5ae87c7" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ResolveCreateVoice</name></member>
+      <member refid="class_u_tryll_agent_component_1acb4aee836bde7decbe42426e79a7ea81" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ResolveSpeaker</name></member>
+      <member refid="class_u_tryll_agent_component_1a10ef1068f1855d1e8876e4340bbf4dd3" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>Resume</name></member>
+      <member refid="class_u_tryll_agent_component_1a9e6f90a6295598fdc70b5851edd7fbc3" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ResumeWithToolResult</name></member>
+      <member refid="class_u_tryll_agent_component_1a98d0a1922c6f2efd66cae860ed936534" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ResumeWithToolResults</name></member>
+      <member refid="class_u_tryll_agent_component_1a4f8e2e14d0be1830a0601c2e032d27da" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>RetryPausedToolBatch</name></member>
+      <member refid="class_u_tryll_agent_component_1ad8c21935bebe0e779cde76a8931b5aff" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>SendMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1ac80958d5ea79c52b5d79084b30e04051" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>SetDeliveryMode</name></member>
+      <member refid="class_u_tryll_agent_component_1a11a39d6150767faf0394c854f7d34be1" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>SetVoice</name></member>
+      <member refid="class_u_tryll_agent_component_1adfdef767461b7802bcc14956600e8a4f" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>Speaker</name></member>
+      <member refid="class_u_tryll_agent_component_1a62662331108ac0aef50aa6126dac5072" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>ToolHandlers</name></member>
+      <member refid="class_u_tryll_agent_component_1a93cd7dbe3e3865928dddb3f8f247e2d8" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>TryFlushPendingMessage</name></member>
+      <member refid="class_u_tryll_agent_component_1aefd2f2ffe85ee990874b5d3ace9fdcfa" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>TryllSubsystem</name></member>
+      <member refid="class_u_tryll_agent_component_1a71a9b5da32ba7eb02e485b9957a47c4f" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>UnregisterTool</name></member>
+      <member refid="class_u_tryll_agent_component_1a53c2d75e681bb39fef1538efaed5e0f3" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>UTryllAgentComponent</name></member>
+      <member refid="class_u_tryll_agent_component_1a5ae5ee74e04b44c5897716c58bcc763b" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>VariableOverrides</name></member>
+      <member refid="class_u_tryll_agent_component_1a06e7da1146325abce4bf428e0ce1c941" prot="private" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>VariablesObject</name></member>
+      <member refid="class_u_tryll_agent_component_1ae3cb569683e3f183c0c5a4feaac3133a" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>VoiceDelivery</name></member>
+      <member refid="class_u_tryll_agent_component_1a873fa19ae2c9500bde0e0636656ee34f" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>VoiceProfile</name></member>
+      <member refid="class_u_tryll_agent_component_1a8eb35c4a704babfeb0ddaf7030759eda" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>WorkflowAsset</name></member>
+      <member refid="class_u_tryll_agent_component_1ab2c685cf41d0a5ada54c89b7463278b5" prot="public" virt="non-virtual"><scope>UTryllAgentComponent</scope><name>Workload</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

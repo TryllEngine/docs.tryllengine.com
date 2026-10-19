@@ -1,0 +1,626 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.17.0" xml:lang="en-US">
+  <compounddef id="namespace_tryll_1_1_client" kind="namespace" language="C++">
+    <compoundname>Tryll::Client</compoundname>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_create_options" prot="public">Tryll::Client::AgentCreateOptions</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_kv_cache_evict_result" prot="public">Tryll::Client::AgentKvCacheEvictResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_kv_cache_prefill_result" prot="public">Tryll::Client::AgentKvCachePrefillResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_kv_cache_status" prot="public">Tryll::Client::AgentKvCacheStatus</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_agent_proxy" prot="public">Tryll::Client::AgentProxy</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_agent_variable_decl" prot="public">Tryll::Client::AgentVariableDecl</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_agent_variables" prot="public">Tryll::Client::AgentVariables</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_audio_format" prot="public">Tryll::Client::AudioFormat</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_connected_session" prot="public">Tryll::Client::ConnectedSession</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_file_load_result" prot="public">Tryll::Client::DialogFileLoadResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_file_save_result" prot="public">Tryll::Client::DialogFileSaveResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_import_result" prot="public">Tryll::Client::DialogImportResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_intention" prot="public">Tryll::Client::DialogIntention</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_interaction_snapshot" prot="public">Tryll::Client::DialogInteractionSnapshot</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_knowledge" prot="public">Tryll::Client::DialogKnowledge</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_knowledge_chunk" prot="public">Tryll::Client::DialogKnowledgeChunk</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_projection_window" prot="public">Tryll::Client::DialogProjectionWindow</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_slot" prot="public">Tryll::Client::DialogSlot</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_snapshot" prot="public">Tryll::Client::DialogSnapshot</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_summary" prot="public">Tryll::Client::DialogSummary</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_tool_call" prot="public">Tryll::Client::DialogToolCall</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_dialog_tool_result" prot="public">Tryll::Client::DialogToolResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_game_memory_load_result" prot="public">Tryll::Client::GameMemoryLoadResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_game_memory_save_result" prot="public">Tryll::Client::GameMemorySaveResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_game_memory_snapshot" prot="public">Tryll::Client::GameMemorySnapshot</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_graph_description" prot="public">Tryll::Client::GraphDescription</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_graph_description_node_methods" prot="public">Tryll::Client::GraphDescriptionNodeMethods</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_managed_server" prot="public">Tryll::Client::ManagedServer</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_managed_server_options" prot="public">Tryll::Client::ManagedServerOptions</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_message_result" prot="public">Tryll::Client::MessageResult</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_mutable_kb" prot="public">Tryll::Client::MutableKb</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_hit" prot="public">Tryll::Client::MutableKbHit</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_import_result" prot="public">Tryll::Client::MutableKbImportResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_info" prot="public">Tryll::Client::MutableKbInfo</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_list_page" prot="public">Tryll::Client::MutableKbListPage</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_record" prot="public">Tryll::Client::MutableKbRecord</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_snapshot" prot="public">Tryll::Client::MutableKbSnapshot</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_stats" prot="public">Tryll::Client::MutableKbStats</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_upsert" prot="public">Tryll::Client::MutableKbUpsert</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_mutable_kb_write_result" prot="public">Tryll::Client::MutableKbWriteResult</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_transcript_update" prot="public">Tryll::Client::TranscriptUpdate</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_tryll_client" prot="public">Tryll::Client::TryllClient</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_tryll_error" prot="public">Tryll::Client::TryllError</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_utterance_options" prot="public">Tryll::Client::UtteranceOptions</innerclass>
+    <innerclass refid="class_tryll_1_1_client_1_1_voice_input" prot="public">Tryll::Client::VoiceInput</innerclass>
+    <innerclass refid="struct_tryll_1_1_client_1_1_voice_input_config" prot="public">Tryll::Client::VoiceInputConfig</innerclass>
+    <innernamespace refid="namespace_tryll_1_1_client_1_1_internal">Tryll::Client::Internal</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="_agent_kv_cache_8h_1a100283acea456d264a259d144d911c0f" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>AgentKvCacheResidency</name>
+        <qualifiedname>Tryll::Client::AgentKvCacheResidency</qualifiedname>
+        <enumvalue id="_agent_kv_cache_8h_1a100283acea456d264a259d144d911c0faf756efe6580f590fd25d2f57c998d948" prot="public">
+          <name>Evicted</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_kv_cache_8h_1a100283acea456d264a259d144d911c0fabad08a863dfd6ade28fd8ef69b15005a" prot="public">
+          <name>Resident</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentKvCache.h" line="8" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentKvCache.h" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="enum" id="_agent_kv_cache_8h_1a006f78a1a0e7533b48e30392e44d7ece" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>AgentKvCachePrefixStatus</name>
+        <qualifiedname>Tryll::Client::AgentKvCachePrefixStatus</qualifiedname>
+        <enumvalue id="_agent_kv_cache_8h_1a006f78a1a0e7533b48e30392e44d7ecea299dd739174c96faa19856a3e8b62b47" prot="public">
+          <name>NotCurrent</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_kv_cache_8h_1a006f78a1a0e7533b48e30392e44d7ecea222a267cc5778206b253be35ee3ddab5" prot="public">
+          <name>Current</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentKvCache.h" line="14" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentKvCache.h" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="enum" id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ad" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>VariableType</name>
+        <qualifiedname>Tryll::Client::VariableType</qualifiedname>
+        <enumvalue id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ada1686a6c336b71b36d77354cea19a8b52" prot="public">
+          <name>Int</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ada22ae0e2b89e5e3d477f988cc36d3272b" prot="public">
+          <name>Float</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ada27118326006d3829667a400ad23d5d98" prot="public">
+          <name>String</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7adac26f15e86e3de4c398a8273272aba034" prot="public">
+          <name>Bool</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_agent_variables_8h_1a53ff6e56b9c8b9bd526571ae5c86a7ada5337bd52d98d5795311f0632ba5488b0" prot="public">
+          <name>StringSet</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Type tag for a declared agent variable. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="35" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="_dialog_snapshot_8h_1a229b6e53045c037985392ac9041b34b3" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>DialogCompatibility</name>
+        <qualifiedname>Tryll::Client::DialogCompatibility</qualifiedname>
+        <enumvalue id="_dialog_snapshot_8h_1a229b6e53045c037985392ac9041b34b3a2e979835dd62324f5bfe217449ba4974" prot="public">
+          <name>Strict</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_dialog_snapshot_8h_1a229b6e53045c037985392ac9041b34b3a5b287e223975f0c953b9710be5a1bcaa" prot="public">
+          <name>AllowGraphMismatch</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="16" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="enum" id="_dialog_snapshot_8h_1aa60c3abba35b23bc7c723363eba1c778" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>DialogSlotKind</name>
+        <qualifiedname>Tryll::Client::DialogSlotKind</qualifiedname>
+        <enumvalue id="_dialog_snapshot_8h_1aa60c3abba35b23bc7c723363eba1c778a8f9bfe9d1345237cb3b2b205864da075" prot="public">
+          <name>User</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_dialog_snapshot_8h_1aa60c3abba35b23bc7c723363eba1c778ac742c5a36b6307267bb709355feb2c41" prot="public">
+          <name>Instruction</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_dialog_snapshot_8h_1aa60c3abba35b23bc7c723363eba1c778a0db377921f4ce762c62526131097968f" prot="public">
+          <name>General</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="22" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="_mkb_snapshot_8h_1a39fa85eaeb308f8718053cf4489a5b0d" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>MutableKbCompatibility</name>
+        <qualifiedname>Tryll::Client::MutableKbCompatibility</qualifiedname>
+        <enumvalue id="_mkb_snapshot_8h_1a39fa85eaeb308f8718053cf4489a5b0da2e979835dd62324f5bfe217449ba4974" prot="public">
+          <name>Strict</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mkb_snapshot_8h_1a39fa85eaeb308f8718053cf4489a5b0da733d0fba474aa9efa40838d31d58d344" prot="public">
+          <name>AllowSchemaDrift</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="15" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="enum" id="_mkb_snapshot_8h_1a4e47f67bb8c6d78b72e3004e35536c4c" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>MutableKbEmbedTiming</name>
+        <qualifiedname>Tryll::Client::MutableKbEmbedTiming</qualifiedname>
+        <enumvalue id="_mkb_snapshot_8h_1a4e47f67bb8c6d78b72e3004e35536c4ca6fcdc090caeade09d0efd6253932b6f5" prot="public">
+          <name>Unspecified</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mkb_snapshot_8h_1a4e47f67bb8c6d78b72e3004e35536c4ca1e1cc9bdeb2f29f5480106aec7e9bc48" prot="public">
+          <name>Now</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="_mkb_snapshot_8h_1a4e47f67bb8c6d78b72e3004e35536c4ca46a9ebdb80117bfa1f0cdea65438290a" prot="public">
+          <name>Lazy</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="21" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" bodystart="22" bodyend="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_agent_variables_8h_1ac4df003950d9e7781921b17431b3504c" prot="public" static="no">
+        <type>std::variant&lt; std::int64_t, double, std::string, bool, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>using Tryll::Client::VariableValue = std::variant&lt;std::int64_t, double, std::string, bool, std::vector&lt;std::string&gt;&gt;</definition>
+        <argsstring></argsstring>
+        <name>VariableValue</name>
+        <qualifiedname>Tryll::Client::VariableValue</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A variable&apos;s value. The active alternative fixes its type for the agent&apos;s whole lifetime (server-enforced; see VariableTypeMismatch 3014). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" line="39" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentVariables.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_dialog_snapshot_8h_1a338bb128bd338bff56693e3e4a9a7c1c" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="struct_tryll_1_1_client_1_1_dialog_slot" kindref="compound">DialogSlot</ref>, <ref refid="struct_tryll_1_1_client_1_1_dialog_knowledge" kindref="compound">DialogKnowledge</ref>, <ref refid="struct_tryll_1_1_client_1_1_dialog_intention" kindref="compound">DialogIntention</ref>, <ref refid="struct_tryll_1_1_client_1_1_dialog_tool_call" kindref="compound">DialogToolCall</ref>, <ref refid="struct_tryll_1_1_client_1_1_dialog_tool_result" kindref="compound">DialogToolResult</ref>, <ref refid="struct_tryll_1_1_client_1_1_dialog_summary" kindref="compound">DialogSummary</ref> &gt;</type>
+        <definition>using Tryll::Client::DialogComponent = std::variant&lt;
+   DialogSlot,
+   DialogKnowledge,
+   DialogIntention,
+   DialogToolCall,
+   DialogToolResult,
+   DialogSummary&gt;</definition>
+        <argsstring></argsstring>
+        <name>DialogComponent</name>
+        <qualifiedname>Tryll::Client::DialogComponent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="95" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_graph_description_8h_1aa4ab8c0f3117a804a53245de550e7e4a" prot="public" static="no">
+        <type>std::variant&lt; ::Tryll::NodeParams::GenerateParamsT, ::Tryll::NodeParams::RegexGuardrailParamsT, ::Tryll::NodeParams::CannedResponseParamsT, ::Tryll::NodeParams::ToolCallParamsT, ::Tryll::NodeParams::RetrieveParamsT, ::Tryll::NodeParams::InstructionParamsT, ::Tryll::NodeParams::ClassifyIntentParamsT, ::Tryll::NodeParams::ClassifyIntentLLMParamsT, ::Tryll::NodeParams::IntentToInstructionParamsT, ::Tryll::NodeParams::GenerateAndSpeakParamsT, ::Tryll::NodeParams::SpeakParamsT, ::Tryll::NodeParams::PauseParamsT, ::Tryll::NodeParams::TransformParamsT, ::Tryll::NodeParams::BranchParamsT, ::Tryll::NodeParams::WriteToMemoryParamsT, ::Tryll::NodeParams::SummarizeParamsT, ::Tryll::NodeParams::ClassifyAttributesLLMParamsT &gt;</type>
+        <definition>using Tryll::Client::NodeParamsVariant =  std::variant&lt;
+    ::Tryll::NodeParams::GenerateParamsT,
+    ::Tryll::NodeParams::RegexGuardrailParamsT,
+    ::Tryll::NodeParams::CannedResponseParamsT,
+    ::Tryll::NodeParams::ToolCallParamsT,
+    ::Tryll::NodeParams::RetrieveParamsT,
+    ::Tryll::NodeParams::InstructionParamsT,
+    ::Tryll::NodeParams::ClassifyIntentParamsT,
+    ::Tryll::NodeParams::ClassifyIntentLLMParamsT,
+    ::Tryll::NodeParams::IntentToInstructionParamsT,
+    ::Tryll::NodeParams::GenerateAndSpeakParamsT,
+    ::Tryll::NodeParams::SpeakParamsT,
+    ::Tryll::NodeParams::PauseParamsT,
+    ::Tryll::NodeParams::TransformParamsT,
+    ::Tryll::NodeParams::BranchParamsT,
+    ::Tryll::NodeParams::WriteToMemoryParamsT,
+    ::Tryll::NodeParams::SummarizeParamsT,
+    ::Tryll::NodeParams::ClassifyAttributesLLMParamsT
+&gt;</definition>
+        <argsstring></argsstring>
+        <name>NodeParamsVariant</name>
+        <qualifiedname>Tryll::Client::NodeParamsVariant</qualifiedname>
+        <briefdescription>
+<para>Typed variant discriminating all concrete node-parameter PODs. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generated AddXxx methods build a <ref refid="_graph_description_8h_1aa4ab8c0f3117a804a53245de550e7e4a" kindref="member">NodeParamsVariant</ref> and store it in NodeDesc.params. The ClientCodec serialises the variant into the FlatBuffers NodeParams union. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/GraphDescription.h" line="28" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/GraphDescription.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_tryll_client_8h_1a655e81b819f1af79cb6320bec974e14a" prot="public" static="no">
+        <type>std::function&lt; void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;</type>
+        <definition>using Tryll::Client::DownloadProgressCallback = 
+std::function&lt;void(std::string_view, std::uint64_t, std::uint64_t, float)&gt;</definition>
+        <argsstring></argsstring>
+        <name>DownloadProgressCallback</name>
+        <qualifiedname>Tryll::Client::DownloadProgressCallback</qualifiedname>
+        <briefdescription>
+<para>Callback invoked during <ref refid="class_tryll_1_1_client_1_1_tryll_client_1a9ab77ba202dd636de012c9981067f646" kindref="member">TryllClient::DownloadModel</ref> as data arrives. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Invoked synchronously on the reader thread — keep the callback short and non-blocking.</para>
+<para>Parameters (in order): <computeroutput>modelName</computeroutput>, <computeroutput>bytesDownloaded</computeroutput>, <computeroutput>totalBytes</computeroutput>, <computeroutput>percent</computeroutput> (0–100). </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" line="73" column="1" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/TryllClient.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="_mkb_snapshot_8h_1a6d1cb4b368e7a2706c862acd27bd39de" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t Tryll::Client::kGameMemoryFormatVersion</definition>
+        <argsstring></argsstring>
+        <name>kGameMemoryFormatVersion</name>
+        <qualifiedname>Tryll::Client::kGameMemoryFormatVersion</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="13" column="32" bodyfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_dialog_snapshot_8h_1a108d6e160cd19cc86bed62e9540fa28e" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::uint8_t &gt;</type>
+        <definition>std::vector&lt; std::uint8_t &gt; Tryll::Client::EncodeFlatBuffer</definition>
+        <argsstring>(const DialogSnapshot &amp;snapshot)</argsstring>
+        <name>EncodeFlatBuffer</name>
+        <qualifiedname>Tryll::Client::EncodeFlatBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_dialog_snapshot" kindref="compound">DialogSnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+<para>Canonical binary form (file identifier &quot;TDLG&quot;). Throws <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> on failure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="139" column="14" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" declline="139" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="_dialog_snapshot_8h_1aa1724b149d49638b3f8afe6196e35114" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_dialog_snapshot" kindref="compound">DialogSnapshot</ref></type>
+        <definition>DialogSnapshot Tryll::Client::DecodeFlatBuffer</definition>
+        <argsstring>(std::span&lt; const std::uint8_t &gt; bytes)</argsstring>
+        <name>DecodeFlatBuffer</name>
+        <qualifiedname>Tryll::Client::DecodeFlatBuffer</qualifiedname>
+        <param>
+          <type>std::span&lt; const std::uint8_t &gt;</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="140" column="17" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" declline="140" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="_dialog_snapshot_8h_1adf4f2f069f7abe67b69f98f52ddb687d" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_dialog_snapshot" kindref="compound">DialogSnapshot</ref></type>
+        <definition>DialogSnapshot Tryll::Client::UnpackPersistedDialogSnapshot</definition>
+        <argsstring>(const ::Tryll::PersistedDialogSnapshot &amp;table)</argsstring>
+        <name>UnpackPersistedDialogSnapshot</name>
+        <qualifiedname>Tryll::Client::UnpackPersistedDialogSnapshot</qualifiedname>
+        <param>
+          <type>const ::Tryll::PersistedDialogSnapshot &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="142" column="17" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" declline="142" declcolumn="17"/>
+      </memberdef>
+      <memberdef kind="function" id="_dialog_snapshot_8h_1a771c8daf7db9017435beaa598855e96a" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>flatbuffers::Offset&lt;::Tryll::PersistedDialogSnapshot &gt;</type>
+        <definition>flatbuffers::Offset&lt;::Tryll::PersistedDialogSnapshot &gt; Tryll::Client::PackPersistedDialogSnapshot</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;fbb, const DialogSnapshot &amp;snapshot)</argsstring>
+        <name>PackPersistedDialogSnapshot</name>
+        <qualifiedname>Tryll::Client::PackPersistedDialogSnapshot</qualifiedname>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>fbb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_dialog_snapshot" kindref="compound">DialogSnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" line="145" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/DialogSnapshot.h" declline="145" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1a97d9044ad470a0382a055b6270e30b76" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::uint8_t &gt;</type>
+        <definition>std::vector&lt; std::uint8_t &gt; Tryll::Client::EncodeFlatBuffer</definition>
+        <argsstring>(const MutableKbSnapshot &amp;snapshot)</argsstring>
+        <name>EncodeFlatBuffer</name>
+        <qualifiedname>Tryll::Client::EncodeFlatBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_mutable_kb_snapshot" kindref="compound">MutableKbSnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+<para>Canonical TMKB bytes. Throws <ref refid="class_tryll_1_1_client_1_1_tryll_error" kindref="compound">TryllError</ref> on failure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="74" column="14" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="74" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1a2bd82501de2814480c20500df375d885" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_mutable_kb_snapshot" kindref="compound">MutableKbSnapshot</ref></type>
+        <definition>MutableKbSnapshot Tryll::Client::DecodeMutableKbSnapshot</definition>
+        <argsstring>(std::span&lt; const std::uint8_t &gt; bytes)</argsstring>
+        <name>DecodeMutableKbSnapshot</name>
+        <qualifiedname>Tryll::Client::DecodeMutableKbSnapshot</qualifiedname>
+        <param>
+          <type>std::span&lt; const std::uint8_t &gt;</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="75" column="20" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="75" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1a2cfa2607a74d0289ead0462b56f7db64" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::uint8_t &gt;</type>
+        <definition>std::vector&lt; std::uint8_t &gt; Tryll::Client::EncodeFlatBuffer</definition>
+        <argsstring>(const GameMemorySnapshot &amp;snapshot)</argsstring>
+        <name>EncodeFlatBuffer</name>
+        <qualifiedname>Tryll::Client::EncodeFlatBuffer</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_game_memory_snapshot" kindref="compound">GameMemorySnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="77" column="14" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="77" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1aea619224a2637bca79d89b8c657d2d55" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_game_memory_snapshot" kindref="compound">GameMemorySnapshot</ref></type>
+        <definition>GameMemorySnapshot Tryll::Client::DecodeGameMemory</definition>
+        <argsstring>(std::span&lt; const std::uint8_t &gt; bytes)</argsstring>
+        <name>DecodeGameMemory</name>
+        <qualifiedname>Tryll::Client::DecodeGameMemory</qualifiedname>
+        <param>
+          <type>std::span&lt; const std::uint8_t &gt;</type>
+          <declname>bytes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="78" column="21" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="78" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1a501a577f5f82980d6f400812380c8ccc" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_mutable_kb_snapshot" kindref="compound">MutableKbSnapshot</ref></type>
+        <definition>MutableKbSnapshot Tryll::Client::UnpackPersistedMutableKb</definition>
+        <argsstring>(const ::Tryll::PersistedMutableKb &amp;table)</argsstring>
+        <name>UnpackPersistedMutableKb</name>
+        <qualifiedname>Tryll::Client::UnpackPersistedMutableKb</qualifiedname>
+        <param>
+          <type>const ::Tryll::PersistedMutableKb &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="80" column="20" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="80" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1ad58bc2d734db24a7c370b0f4f1e14b55" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>flatbuffers::Offset&lt;::Tryll::PersistedMutableKb &gt;</type>
+        <definition>flatbuffers::Offset&lt;::Tryll::PersistedMutableKb &gt; Tryll::Client::PackPersistedMutableKb</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;fbb, const MutableKbSnapshot &amp;snapshot)</argsstring>
+        <name>PackPersistedMutableKb</name>
+        <qualifiedname>Tryll::Client::PackPersistedMutableKb</qualifiedname>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>fbb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_mutable_kb_snapshot" kindref="compound">MutableKbSnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="82" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="82" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1accd9762342d33ef2f63f53d8a9d4d3a9" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_tryll_1_1_client_1_1_game_memory_snapshot" kindref="compound">GameMemorySnapshot</ref></type>
+        <definition>GameMemorySnapshot Tryll::Client::UnpackGameMemory</definition>
+        <argsstring>(const ::Tryll::GameMemory &amp;table)</argsstring>
+        <name>UnpackGameMemory</name>
+        <qualifiedname>Tryll::Client::UnpackGameMemory</qualifiedname>
+        <param>
+          <type>const ::Tryll::GameMemory &amp;</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="86" column="21" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="86" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="_mkb_snapshot_8h_1ae98bd680d5e1c86a96f411a4716cb152" prot="public" static="no" nodiscard="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>flatbuffers::Offset&lt;::Tryll::GameMemory &gt;</type>
+        <definition>flatbuffers::Offset&lt;::Tryll::GameMemory &gt; Tryll::Client::PackGameMemory</definition>
+        <argsstring>(flatbuffers::FlatBufferBuilder &amp;fbb, const GameMemorySnapshot &amp;snapshot)</argsstring>
+        <name>PackGameMemory</name>
+        <qualifiedname>Tryll::Client::PackGameMemory</qualifiedname>
+        <param>
+          <type>flatbuffers::FlatBufferBuilder &amp;</type>
+          <declname>fbb</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_tryll_1_1_client_1_1_game_memory_snapshot" kindref="compound">GameMemorySnapshot</ref> &amp;</type>
+          <declname>snapshot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" line="88" column="1" declfile="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/MkbSnapshot.h" declline="88" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/_tryll/_monorepo3/tryll/clients/cpp/include/tryll/AgentCreateOptions.h" line="9" column="1"/>
+  </compounddef>
+</doxygen>

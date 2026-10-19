@@ -1,0 +1,195 @@
+# Agent Parameters
+
+Every [agent](https://docs.tryllengine.com/v0.9/reference/glossary.html#agent) in Tryll is created by a single wire frame: `CreateAgentRequest`. This page documents every field on that request, grouped by what it controls:
+
+1. The [graph](#graph) the agent will run.
+1. The [fallback model](#default-model) every language-model node uses by default.
+1. [Diagnostics](#diagnostics).
+1. The agent's [variables](#variables) declaration.
+1. [KV-cache initialization](#kv-cache-initialization).
+1. The agent's [workload](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html#inference-throttle-and-agent-workload) class.
+1. The agent's [voice](#voice).
+
+The authoritative source for every shape below is the [wire protocol](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html).
+
+Changing parameters after creation
+
+Many node parameters can be updated after the agent is created and while it is idle. See [Change Agent Parameters at Runtime](https://docs.tryllengine.com/v0.9/how-to/change-agent-parameters.html) for the full list and API examples.
+
+## Overview
+
+| Field                       | Type                         | Required           | Default        | Description                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------------------- | ---------------------------- | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request_id`                | uint64                       | Yes                | —              | Client-assigned correlation id. Echoed on `CreateAgentResponse` and on any `ErrorResponse` replacing it.                                                                                                                                                                                                                                                                                   |
+| `graph`                     | `GraphDescription`           | Yes                | —              | The workflow graph. See [Graph](#graph).                                                                                                                                                                                                                                                                                                                                                   |
+| `default_model_name`        | string                       | No                 | `""`           | Fallback model name for language-model nodes (Generate, GenerateAndSpeak, ToolCall, ClassifyIntentLLM, Summarize) that do not set their own `model_name` param. Empty = no default; every such node must supply its own. See [Default model](#default-model).                                                                                                                              |
+| `enable_diagnostics`        | bool                         | No                 | `false`        | When `true`, the server serialises per-node execution data into `TurnComplete.debug_info`.                                                                                                                                                                                                                                                                                                 |
+| `maintain_dialogue_history` | bool                         | No                 | `true`         | When `true` (default) the agent keeps its full dialogue history across turns. When `false` the history is cleared after each turn completes — a **stateless agent** whose turns start with only the system prompt and the new message. Useful for technical agents (classification, routing, tool-picking) that gain nothing from prior turns and should not pay to store or project them. |
+| `variables`                 | `[AgentVariable]`            | No                 | `[]`           | The agent's **complete** variable declaration — every variable it will ever have, with its initial value. The value's type fixes that variable's type for the agent's lifetime; post-create writes to an undeclared name are rejected. See [Variables](#variables).                                                                                                                        |
+| `kv_cache_initialization`   | `AgentKvCacheInitialization` | No                 | `AllocateOnly` | How the agent's language-model KV caches are prepared at creation: `AllocateOnly` (default), `Prefill`, or `DeferAllocation`. See [KV-cache initialization](#kv-cache-initialization).                                                                                                                                                                                                     |
+| `workload`                  | `AgentWorkload`              | No                 | `Interactive`  | Scheduling hint, fixed for the agent's lifetime: `Interactive` (default) or `Background` for agents nobody waits on, which the inference scheduler paces or defers first under load. See [Inference throttle and agent workload](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html#inference-throttle-and-agent-workload).                                                    |
+| `voice`                     | `VoiceProfile`               | When a node speaks | absent         | The agent's one voice: TTS model, identity, `emit_visemes` and delivery modes. Required when the graph has a `Speak` or `GenerateAndSpeak` node. See [Voice](#voice).                                                                                                                                                                                                                      |
+
+A `CreateAgentRequest` is rejected with error [`3003`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent) `GraphCompilationFailed` if any graph validation rule below fails. Voice errors have their own codes; see [Voice](#voice).
+
+______________________________________________________________________
+
+## Graph
+
+`GraphDescription` carries the full topology of the agent's workflow.
+
+| Field        | Type                | Description                                                            |
+| ------------ | ------------------- | ---------------------------------------------------------------------- |
+| `nodes`      | `[NodeDescription]` | List of every [node](#nodedescription) in the graph. At least one.     |
+| `start_node` | string              | Name of the node where execution begins. Must match a node in `nodes`. |
+
+Wiring between nodes is encoded in each node's typed **params** object, not in a separate list. Each declared exit has a corresponding `<exit_name>_exit` field (e.g. `default_exit`, `triggered_exit`). An **empty string** routes the turn to END. A **non-empty string** must name another node in `nodes` — the server rejects graphs where an exit field names a missing node with error [`3003 GraphCompilationFailed`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent).
+
+### `NodeDescription`
+
+| Field         | Type        | Description                                                                                                                                                                                                                         |
+| ------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`        | string      | Node instance name. Unique within the graph. Also the default `source` label on Retrieve.                                                                                                                                           |
+| `params_type` | union tag   | Selects the typed params table variant (`GenerateParams`, `RegexGuardrailParams`, etc.).                                                                                                                                            |
+| `params`      | typed table | The typed params table for this node type. Contains configuration fields (model name, prompts, …) **and** exit fields (`default_exit`, `triggered_exit`, …). Each node's reference page lists all available params and exit fields. |
+
+### `ToolDefinition`
+
+Tool schemas are not a `NodeDescription` field. They live on the Tool Call node's own params, in `ToolCallParams.tools: [ToolDefinition]`.
+
+| Field         | Type                    | Description                                                      |
+| ------------- | ----------------------- | ---------------------------------------------------------------- |
+| `name`        | string                  | Tool name exposed to the model.                                  |
+| `description` | string                  | Short description shown to the model as part of the tool prompt. |
+| `parameters`  | `[ToolParamDefinition]` | Parameter schema for the tool.                                   |
+
+#### `ToolParamDefinition`
+
+| Field         | Type   | Description                                                                                                      |
+| ------------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
+| `name`        | string | Parameter name.                                                                                                  |
+| `type`        | string | Type hint as a string (e.g. `"string"`, `"integer"`). Model-facing only; the server does not validate arguments. |
+| `description` | string | Short description of the parameter.                                                                              |
+
+See [Tool Call node](https://docs.tryllengine.com/v0.9/reference/nodes/tool-call.html) and the [tool-calling concept page](https://docs.tryllengine.com/v0.9/concepts/tool-calling.html) for how the server uses these definitions.
+
+______________________________________________________________________
+
+## Default model
+
+`default_model_name` is a fallback used by language-model nodes that omit their own `model_name` param: Generate, GenerateAndSpeak, ToolCall, ClassifyIntentLLM, and Summarize. Speak, and the speech half of GenerateAndSpeak, take their TTS model from the agent's [voice](#voice) (`voice.tts_model_name`) and never use this field. Leaving it empty is legal — every such node must then supply `model_name` itself; any node missing both results in a compilation failure.
+
+Naming resolves against the [model catalog](https://docs.tryllengine.com/v0.9/reference/glossary.html#model-catalog) (`models.json`). The server loads the model on demand if it is not already resident; see [model management](https://docs.tryllengine.com/v0.9/reference/model-management.html#lifecycle).
+
+______________________________________________________________________
+
+## Diagnostics
+
+When `enable_diagnostics = true`, every `TurnComplete` carries a JSON string in `debug_info` describing what the turn did: the nodes it ran and the [exit route](https://docs.tryllengine.com/v0.9/reference/glossary.html#exit-route) each took, the prompt every model received, what each node produced, and engine counters. **[Turn Diagnostics JSON](https://docs.tryllengine.com/v0.9/reference/turn-diagnostics-json.html) documents every field**, including why a given key may be absent.
+
+`enable_diagnostics` is **structural**: it is fixed for the agent's lifetime and cannot be turned on for an agent that already exists. Two server-side flags in [`server-config.json`](https://docs.tryllengine.com/v0.9/reference/server-configuration.html) trim the payload further — `include_engine_diagnostics` removes the `engine` sections, and `include_interaction_in_diagnostics` removes the end-of-turn [interaction](https://docs.tryllengine.com/v0.9/reference/glossary.html#interaction) snapshot.
+
+The default is `false` — no diagnostics, zero overhead. Flip it on for debug sessions only; payloads grow linearly with graph size and knowledge component count.
+
+The editor tooling manages this for you: the Chat Window enables it on the agent it creates, and the [Agent Log](https://docs.tryllengine.com/v0.9/how-to/use-agent-log.html) holds a lease so agents created while it is open request diagnostics too. See [How to define and handle tool calls](https://docs.tryllengine.com/v0.9/how-to/define-and-handle-tool-calls.html) for a worked example that turns diagnostics on to inspect the tool-call detection path.
+
+______________________________________________________________________
+
+## Variables
+
+`variables` declares the agent's typed per-agent key→value store, **complete** at creation. Each `AgentVariable` carries a name and an initial value whose active type (`int64` / `double` / `string` / `bool` / `set<string>`) fixes that variable's type for the agent's lifetime.
+
+- Consumed by Mustache templates as `{{var.<name>}}`, by the Retrieve / ClassifyIntent filter grammar as a `{"var": "<name>"}` operand, and — when a `Generate` / `GenerateAndSpeak` node sets `substitute_agent_variables` — by `__NAME__` marker substitution in streamed output.
+- Mutated over the wire with `UpdateAgentVariablesRequest`; writes to an undeclared name are rejected locally without a round-trip. An invalid declaration fails creation with [`3015 InvalidVariableValue`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent); runtime write errors are [`3013 UnknownVariable`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent) and [`3014 VariableTypeMismatch`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent).
+
+See [Concept: Agent Variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) and the how-tos [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.9/how-to/drive-prompts-and-retrieval-from-game-state.html) and [Substitute agent variables in LLM output](https://docs.tryllengine.com/v0.9/how-to/substitute-agent-variables-in-output.html).
+
+______________________________________________________________________
+
+## Voice
+
+`voice` is the agent's [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html): the TTS model (`tts_model_name`, required), the base identity (`speaker_id`, `reference_voice` or `voice_description`), `speed`, `lang`, `emit_visemes`, and named delivery modes. Every speaking node of the agent uses it; the nodes hold no voice settings.
+
+- **Required when the graph speaks.** If any node is a `Speak` or `GenerateAndSpeak` and `voice` is absent, creation fails with [`3025 AgentVoiceRequired`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent). There is no default voice.
+- **Optional otherwise.** An agent whose graph never speaks loads no TTS model, even with a voice. It cannot be given a voice later, so pass one at creation if you will need `SetAgentVoice` or `SetAgentDeliveryMode`.
+- **Validated when set.** A field the model cannot use, a missing clip, or an unknown model fails creation with [`3023 InvalidVoiceProfile`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent); a session language the model does not declare fails with [`3017 ModelLanguageUnsupported`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#3xxx-agent).
+- **Not a node parameter.** `ChangeAgentParam` cannot change it. Replace it with `SetAgentVoiceRequest` (idle only) and switch its delivery mode with `SetAgentDeliveryModeRequest` (any time).
+
+See [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) for every field and rule.
+
+______________________________________________________________________
+
+## KV-cache initialization
+
+`kv_cache_initialization` chooses how the agent's eligible language-model contexts (LLM nodes only — embeddings and all STT/TTS models, including the llama.cpp voices Orpheus and Maya1, are unaffected) are prepared when the agent is created:
+
+| Value                    | Behavior                                                                                                                                                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `AllocateOnly` (default) | Allocate each context's KV cache but do not decode anything yet.                                                                                                                                                                                       |
+| `Prefill`                | Allocate **and** decode each context's reusable prefix up front, so the first turn skips that cost. Prefill failure surfaces as [`4004 KvCacheOperationFailed`](https://docs.tryllengine.com/v0.9/reference/error-codes.html#4xxx-inference-workflow). |
+| `DeferAllocation`        | Defer even allocation until the first send.                                                                                                                                                                                                            |
+
+Idle agents also support the aggregate `PrefillAgentKvCache`, `EvictAgentKvCache`, and `GetAgentKvCacheStatus` operations; eligible contexts are restored automatically before every send. See [Manage an agent's KV cache](https://docs.tryllengine.com/v0.9/how-to/manage-agent-kv-cache.html).
+
+______________________________________________________________________
+
+## Minimum working example
+
+```
+# Minimal agent with no Retrieve nodes
+from tryll_client.graph import GraphDescription, GenerateParams
+
+graph = (
+    GraphDescription()
+    .add_node("answer", GenerateParams())
+    .set_start_node("answer")
+    .set_default_model_name("My Local Model")
+)
+
+agent = client.create_agent(graph)
+```
+
+```
+using namespace Tryll::Client;
+using namespace Tryll::NodeParams;
+
+GenerateParamsT gp;
+// default_exit defaults to "" (END)
+
+GraphDescription graph;
+graph.AddGenerate("answer", std::move(gp))
+     .SetStartNode("answer")
+     .SetDefaultModelName("My Local Model");
+
+auto agent = client.CreateAgent(graph);
+```
+
+```
+UTryllGenerateParams* P = UTryllNodeParamsFactory::MakeGenerateParams(this);
+// DefaultExit defaults to TEXT("") (END)
+
+FTryllGraphDescription Graph = FTryllGraphBuilder()
+    .AddNode(TEXT("answer"), P)
+    .SetStartNode(TEXT("answer"))
+    .SetDefaultModelName(TEXT("My Local Model"))
+    .Build();
+```
+
+Or author the equivalent inside a `UTryllWorkflowAsset` and assign it to the `UTryllAgentComponent`.
+
+For an agent with Retrieve + Mustache template, see [How to create a simple RAG assistant](https://docs.tryllengine.com/v0.9/how-to/create-simple-rag-assistant.html) and [How to use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html).
+
+## Client bindings
+
+- **C++:** `Tryll::Client::TryllClient::CreateAgent` + `Tryll::Client::GraphDescription` — `TryllClient.h`, `GraphDescription.h`
+- **Python:** `tryll_client.TryllClient.create_agent` + `tryll_client.GraphDescription` — `client.py`, `graph.py`
+- **Unreal:** `UTryllAgentComponent::CreateAgent` / `FTryllGraphDescription` / `UTryllWorkflowAsset` — `TryllGraphDescription.h`
+
+## Related
+
+- [Node catalog](https://docs.tryllengine.com/v0.9/reference/nodes/index.html)
+- [Voice Profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html)
+- [How to build a chat agent with a graph](https://docs.tryllengine.com/v0.9/how-to/build-chat-agent-with-graph.html)
+- [How to use Mustache templates for prompt projection](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html)
+- [Concept: Workflows, graphs, and nodes](https://docs.tryllengine.com/v0.9/concepts/workflows-graphs-nodes.html)
+- [Glossary](https://docs.tryllengine.com/v0.9/reference/glossary.html)
