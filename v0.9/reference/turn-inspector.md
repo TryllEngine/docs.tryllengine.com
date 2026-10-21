@@ -12,6 +12,8 @@ It is **one component with three hosts**. The same blocks, in the same order, wi
 
 This page is the reference for the panel itself. Each host page covers only what is specific to that host — how turns get selected there, and what else that window does.
 
+The turn inspector in its Chat host. Route, Timing, and Prompt & output start expanded; Parameters starts collapsed. Unity shown; the Unreal panel has the same layout.
+
 Prerequisite: diagnostics must be on
 
 The inspector renders the `debug_info` payload a turn carries, which requires `enable_diagnostics` at `CreateAgent`. That flag is **structural** — it cannot be turned on for an agent that already exists.

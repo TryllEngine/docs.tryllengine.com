@@ -30,6 +30,8 @@ Disconnected state still shows this editor process's RAM. The label is **Unity r
 
 There is no poll and no graph. Click **Refresh**.
 
+A snapshot with one language model on the GPU and one STT model on the CPU. The amber **estimated** tags and `~` ranges mark numbers that are not measured directly. Unity shown; the Unreal panel has the same layout.
+
 Refresh is disabled until the session is Ready, and while a fetch is in flight. A late reply cannot overwrite a newer one. If a fetch fails after you already have numbers, a stale-snapshot banner keeps the last good table and shows the error.
 
 ## How to read the numbers
@@ -108,6 +110,7 @@ C++ (`TryllClient::GetMemoryConsumption`), Python (`client.get_memory_consumptio
 
 - [Estimate Memory Footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html) — the pre-ship recipe this window checks live
 - [Use the Agent Log](https://docs.tryllengine.com/v0.9/how-to/use-agent-log.html) — per-connection traffic, not process memory
+- [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) — the neighbouring window for mutable knowledge stores
 - [Wire Protocol](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html) — `GetMemoryConsumptionRequest` / `Response`
 - [Unity `TryllClient`](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-client.html) — `RequestGetMemoryConsumptionAsync`
 - [Unreal C++ API](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/cpp/index.html) — `RequestGetMemoryConsumption` / `FTryllMemorySnapshot`

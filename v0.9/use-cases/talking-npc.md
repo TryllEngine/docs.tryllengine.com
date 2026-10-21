@@ -1,28 +1,51 @@
 # Talking NPC
 
-A character the player can speak with: it listens, answers in its own voice, knows its world, takes part in your game's mechanics, shows emotion and acts.
+A character the player can speak with: it listens, answers in its own voice, knows its world, takes part in your game's mechanics, shows emotion, acts and remembers.
 
-You do not build all of that at once. This page is a ladder. Each step adds one building block to the step before it, and each step is a complete NPC you could ship. Stop at the step your game needs.
+You do not build all of that at once. Every talking character starts from the same **basic NPC**: it holds a conversation, by text or voice, and stays in its role. On top of that, the **advanced NPC** features are add-ons. Each one is independent of the others, so pick the ones your game needs, in any order.
 
-```
-flowchart LR
-    S1["1 · Talks"] --> S2["2 · Knows the world"]
-    S2 --> S3["3 · Plays a mechanic"]
-    S3 --> S4["4 · Shows emotion"]
-    S4 --> S5["5 · Acts in the game"]
-```
+| Part         | Feature                                               | What it adds                                   | Building blocks                            |
+| ------------ | ----------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+| Basic NPC    | [Natural dialogue](#natural-dialogue)                 | Free conversation, no dialogue tree            | A small language model                     |
+| Basic NPC    | [Voice in and out](#voice-in-and-out)                 | The player speaks; the character answers aloud | Speech-to-text, text-to-speech             |
+| Basic NPC    | [Roleplay guardrails](#roleplay-guardrails)           | The character stays in its world               | A pattern check and two classifiers        |
+| Advanced NPC | [Knowledge and lore](#knowledge-and-lore)             | Answers from your world's facts                | Retrieval (RAG)                            |
+| Advanced NPC | [Talking is the gameplay](#talking-is-the-gameplay)   | Dating, interrogation, trading, negotiation    | Classification, pause, branching           |
+| Advanced NPC | [Emotions](#emotions)                                 | Mood in the words and in the voice             | Instructions, voice delivery modes         |
+| Advanced NPC | [Actions and tools](#actions-and-tools)               | The conversation changes the game              | Tool calls                                 |
+| Advanced NPC | [Memory and summarization](#memory-and-summarization) | The character remembers, across saves too      | Summaries, writable memory, save snapshots |
 
-One principle runs through every step: **your game owns the rules, the agent owns the words.** The model never decides a price, a relationship score or whether a door opens. It reads the player, and it speaks. Your game code holds the state and makes the decisions.
+One principle runs through every feature: **your game owns the rules, the agent owns the words.** The model never decides a price, a relationship score or whether a door opens. It reads the player, and it speaks. Your game code holds the state and makes the decisions.
 
 ______________________________________________________________________
 
-## Step 1 · An NPC you can talk to
+## Basic NPC
 
-**The player experiences:** a character who answers out loud, in character, for as long as they keep talking.
+The three things every talking character needs. With these alone you can ship a character the player talks to freely.
 
-**Building blocks:** speech-to-text, a small language model, text-to-speech.
+### Natural dialogue
 
-The smallest working graph is one node, [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html). It writes the reply and starts speaking the first sentence while later sentences are still being generated, so the character starts talking almost at once. The voice belongs to the agent, set through its [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html).
+**The player experiences:** a character who understands plain language and answers in character, for as long as they keep talking. There is no dialogue tree and no list of lines to pick from.
+
+**Building block:** a small language model.
+
+The smallest working graph is one node. For a voiced character it is [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html), which writes the reply and speaks it (see [Voice in and out](#voice-in-and-out)); for a text character it is [`Generate`](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html).
+
+What makes the character feel right is mostly the prompt: the role, the backstory and the way the character speaks. Our [NPC prompt study](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) found two rules that matter most: include at least one line of the character's own dialogue, and never put a speaker label such as `Kira:` in front of it, because models copy the label into the reply.
+
+The same prompt can change with your game. A template such as `{{var.player_title}}` reads an [agent variable](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) your game sets, so a quest giver greets a newcomer and a hero differently without a second graph.
+
+**In the demo:** *TavernBartender* (a text NPC) and *QuestGiver* (one character, two attitudes, driven only by game variables).
+
+**Build it:** [Design an NPC prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) · [Build a chat agent with a graph](https://docs.tryllengine.com/v0.9/how-to/build-chat-agent-with-graph.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Agent variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html)
+
+### Voice in and out
+
+**The player experiences:** they speak to the character and it answers out loud, in its own voice, with almost no wait.
+
+**Building blocks:** speech-to-text (STT), text-to-speech (TTS). Both run on the player's device, and the lighter models run on the CPU.
+
+[`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html) starts speaking the first sentence while later sentences are still being generated, so the character starts talking almost at once. The voice belongs to the agent, set through its [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html): pick a TTS model and a voice, or clone one from a short recording. You do not record every line.
 
 Voice input sits outside the graph. Your game streams microphone audio to Tryll, gets the transcript back, and sends the final phrase to the agent as if the player had typed it. You choose push-to-talk or hands-free.
 
@@ -33,19 +56,50 @@ flowchart LR
     GAS -->|TTS| Audio["NPC speaks"]
 ```
 
-What makes the character feel right is mostly the prompt. Our [NPC prompt study](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) found two rules that matter most: include at least one line of the character's own dialogue, and never put a speaker label such as `Kira:` in front of it, because models copy the label into the reply.
+Languages depend on the models you choose; see [speech-to-text and voice input](https://docs.tryllengine.com/v0.9/concepts/stt-and-voice-input.html) and the [TTS models](https://docs.tryllengine.com/v0.9/reference/tts-models.html). For a face that moves with the voice, add lip sync.
 
-For long conversations, add a [`Summarize`](https://docs.tryllengine.com/v0.9/reference/nodes/summarize.html) node. It folds older turns into a rolling summary, so the conversation can go on at a fixed token cost.
+**In the demo:** *VoiceCharacter* (the full voice loop).
 
-**In the demo:** *VoiceCharacter* (the full voice loop) and *TavernBartender* (a text NPC with long-conversation memory).
+**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) · [Clone a voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) · [Add lip sync](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html)
 
-**Build it:** [Design an NPC prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) · [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) · [Clone a voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) · [Add lip sync](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) · [Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html)
+### Roleplay guardrails
+
+**The player experiences:** a character who stays in its world, however hard they push. "Ignore your instructions", "what model are you?" or "tell me about smartphones" in a medieval village get an in-character answer.
+
+**Building blocks:** a pattern check and two classifiers, in front of the reply.
+
+Players will test your character. An immersion guard catches those lines before they reach the reply model. The recommended guard has three stages, cheapest first:
+
+1. **Pattern check.** A [`RegexGuardrail`](https://docs.tryllengine.com/v0.9/reference/nodes/regex-guardrail.html) catches the well-known phrasings at almost no cost.
+1. **General check.** A classifier catches lines aimed at the software rather than the character: jailbreaks, questions about the AI, requests to change the rules.
+1. **World check.** A second classifier catches lines that do not belong in your world, such as modern technology in a fantasy setting.
+
+```
+flowchart LR
+    In["Player line"] --> P["Pattern check"]
+    P -->|caught| D["In-character deflection"]
+    P -->|ok| G["General check"]
+    G -->|caught| D
+    G -->|ok| W["World check"]
+    W -->|caught| D
+    W -->|ok| R["Reply"]
+```
+
+A caught line gets a prewritten, in-character deflection from a [`CannedResponse`](https://docs.tryllengine.com/v0.9/reference/nodes/canned-response.html) and never reaches the reply model. Your game can also remove it from the conversation history, so it does not echo in later turns.
+
+**In the demo:** *Death on Set* (every suspect has the three-stage guard in front of its reply).
+
+**Build it:** [Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) · [Use canned responses and guardrails](https://docs.tryllengine.com/v0.9/how-to/use-canned-responses-and-guardrails.html)
 
 ______________________________________________________________________
 
-## Step 2 · An NPC who knows your world
+## Advanced NPC
 
-**The player experiences:** the character knows the world's history, the town's gossip and its own past, and stays consistent about them.
+Add-ons to the basic NPC. Each one works without the others; combine the ones your game needs.
+
+### Knowledge and lore
+
+**The player experiences:** the character knows the world's history, the town's gossip and its own past, stays consistent about them, and says so when it does not know.
 
 **Building block:** retrieval (RAG).
 
@@ -71,13 +125,11 @@ If players ask vague follow-ups ("what about him?"), a [query-rewriting step](ht
 
 **Build it:** [Retrieval-augmented generation](https://docs.tryllengine.com/v0.9/concepts/rag.html) · [Create a simple RAG assistant](https://docs.tryllengine.com/v0.9/how-to/create-simple-rag-assistant.html) · [Query rewriting for RAG](https://docs.tryllengine.com/v0.9/how-to/query-rewriting-for-rag.html) · [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.9/how-to/drive-prompts-and-retrieval-from-game-state.html)
 
-______________________________________________________________________
+### Talking is the gameplay
 
-## Step 3 · An NPC who plays a mechanic
+**The player experiences:** what they say *is* the gameplay. Flattery works on one character and annoys another; an accusation backed by evidence breaks a suspect; a good argument lowers a price.
 
-**The player experiences:** talking *is* the gameplay. Flattery works on one character and annoys another; an accusation backed by evidence breaks a suspect; a good argument lowers a price.
-
-**Building blocks:** classification, branching, game state.
+**Building blocks:** classification, pausing the turn, branching, game state.
 
 A mechanic needs numbers and decisions, and those belong in your game code. The agent's job is to turn the player's free-form line into values your mechanic can read, and then to voice whatever your mechanic decided. That makes a loop:
 
@@ -118,15 +170,13 @@ If you only need one label per turn, such as the player's intent, [`ClassifyInte
 
 **Build it:** [Build an intent-driven NPC](https://docs.tryllengine.com/v0.9/how-to/build-intent-driven-npc.html) · [Classify intent without a knowledge base](https://docs.tryllengine.com/v0.9/how-to/classify-intent-without-a-knowledge-base.html) · [Pause and resume a turn](https://docs.tryllengine.com/v0.9/how-to/pause-and-resume-turns.html) · [Branch on a slot](https://docs.tryllengine.com/v0.9/how-to/branch-on-a-slot.html) · [Agent variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) · [Keep merchant prices deterministic](https://docs.tryllengine.com/v0.9/how-to/keep-merchant-prices-deterministic.html)
 
-______________________________________________________________________
+### Emotions
 
-## Step 4 · An NPC who shows emotion
-
-**The player experiences:** the character's mood changes with what happens, and you can hear it in both what they say and how they say it.
+**The player experiences:** the character's mood changes with what happens, and they can hear it in both what the character says and how it sounds.
 
 **Building blocks:** your game's emotion system, instructions in the prompt, voice delivery modes.
 
-The emotional state is another piece of game state, so your game owns it, just like the mechanic in step 3. It can change because of the classifier's results or because of anything else in the game: the player broke a promise, the character was hurt, night fell. Tryll then carries the mood into two places.
+The emotional state is another piece of game state, so your game owns it, just like a [mechanic](#talking-is-the-gameplay). It can change because of a classifier's results or because of anything else in the game: the player broke a promise, the character was hurt, night fell. Tryll then carries the mood into two places.
 
 **What the character says.** Pass the mood into the reply prompt:
 
@@ -147,11 +197,9 @@ On Unreal, the MetaHuman lip-sync plugin can also take the mood, so the face mat
 
 **In the demo:** *EmotionalVoiceCharacter* (one voice with eight moods, each from its own clip; the mood is switched from the editor rather than by game logic).
 
-**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
+**Build it:** [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
 
-______________________________________________________________________
-
-## Step 5 · An NPC who acts in the game
+### Actions and tools
 
 **The player experiences:** the conversation has consequences. The guard opens the gate, the merchant hands over the item, the bandit draws a sword, the healer heals.
 
@@ -178,21 +226,38 @@ Choose the model by the job. In our [tool-call comparison](https://docs.trylleng
 
 **Build it:** [Tool calling](https://docs.tryllengine.com/v0.9/concepts/tool-calling.html) · [Define and handle tool calls](https://docs.tryllengine.com/v0.9/how-to/define-and-handle-tool-calls.html) · [Design a tool-call prompt](https://docs.tryllengine.com/v0.9/how-to/design-a-tool-call-prompt.html) · [Compare tool-call models](https://docs.tryllengine.com/v0.9/how-to/compare-tool-call-models.html) · [Test tool calls in the editor](https://docs.tryllengine.com/v0.9/how-to/test-tool-calls-in-editor.html)
 
+### Memory and summarization
+
+**The player experiences:** the character remembers. It does not lose the thread of a long conversation, it brings back what the player told it hours ago, and it still knows after the game is saved and loaded.
+
+**Building blocks:** a rolling summary, a writable memory, save snapshots.
+
+Memory works at three time scales.
+
+**Within a conversation.** Every model has a fixed context window, and when the conversation outgrows it, the oldest turns drop out of the prompt. Add a [`Summarize`](https://docs.tryllengine.com/v0.9/reference/nodes/summarize.html) node and the older turns are folded into a rolling summary instead, so the conversation can go on at a fixed token cost without the character forgetting how it started.
+
+**Facts that last.** To keep specific facts, such as "the player likes cats" or "the player killed Atticus Pünd", write them into a memory the character can search. A [`WriteToMemory`](https://docs.tryllengine.com/v0.9/reference/nodes/write-to-memory.html) node stores a line in a named knowledge base, one per character if you like, and a [`Retrieve`](https://docs.tryllengine.com/v0.9/reference/nodes/retrieve.html) node on the same store, placed before the reply, brings the matching facts back when they become relevant. Writable memory is experimental in this release.
+
+```
+flowchart LR
+    In["Player line"] --> R["Retrieve: character's memory"]
+    R --> G["GenerateAndSpeak"]
+    G --> W["WriteToMemory"]
+```
+
+To pull out structured facts, such as the clues a suspect mentioned, let a second agent read the exchange and answer through a [grammar](https://docs.tryllengine.com/v0.9/how-to/constrain-output-with-a-grammar.html), so the result is always data your game can store.
+
+**Across saves.** Your game owns the save file, and Tryll gives it what to put there: a snapshot of each agent's conversation, and a snapshot of every memory store. Load them back into a new session and the characters continue where they left off.
+
+**In the demo:** *TavernBartender* (a long conversation kept coherent with a rolling summary) and *Death on Set* (a note-taker agent writes up each interview into the detective's case notes).
+
+**Build it:** [Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html) · [Inspect and edit knowledge stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) · [Constrain output with a grammar](https://docs.tryllengine.com/v0.9/how-to/constrain-output-with-a-grammar.html) · [Export and import dialog](https://docs.tryllengine.com/v0.9/how-to/export-and-import-dialog.html) · [Save and load agent state](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html)
+
 ______________________________________________________________________
 
-## At every step · Keep the NPC in its world
+## All together
 
-Players will test your character: "ignore your instructions", "what model are you?", "tell me about smartphones" in a medieval village. An immersion guard in front of the NPC catches these lines and answers in character instead.
-
-The recommended guard has three stages, cheapest first: a pattern check that costs almost nothing, then a classifier for lines aimed at the software, then a classifier for lines that do not belong in your world. A caught line gets a prewritten, in-character deflection and never reaches the reply model. Your game can also remove it from the conversation history, so it does not echo in later turns.
-
-**Build it:** [Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) · [Use canned responses and guardrails](https://docs.tryllengine.com/v0.9/how-to/use-canned-responses-and-guardrails.html)
-
-______________________________________________________________________
-
-## All five steps together
-
-The *Death on Set* murder mystery in the Unity demos combines almost the whole ladder in one graph per suspect:
+The *Death on Set* murder mystery in the Unity demos combines most of these features in one graph per suspect:
 
 ```
 flowchart LR

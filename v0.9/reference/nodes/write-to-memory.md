@@ -38,3 +38,7 @@ Each exit is a structural string field on the node's params; its value names the
 ## First-use cost
 
 The first write to a new store embeds the record inline. Loading a GameMemory snapshot with `embed_timing=Now` batch-embeds every imported store before the response; `Lazy` installs text immediately and embeds on the first dense or hybrid search.
+
+## Related
+
+- [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) — see what this node wrote, and query or edit the store in the editor

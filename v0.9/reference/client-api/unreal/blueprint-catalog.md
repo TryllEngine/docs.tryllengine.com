@@ -146,15 +146,18 @@ The component Details panel also exposes declaration-driven **Variable Overrides
 
 On `UTryllVoiceInputComponent`. Add one to an actor (optionally alongside a `UTryllAgentComponent`) and download an STT model in the Model Manager. See [`UTryllVoiceInputComponent`](https://docs.tryllengine.com/v0.9/tryll-unreal/class_u_tryll_voice_input_component.html) for the full property list.
 
-| Node                    | Kind     | Inputs                                              | Outputs | Notes                                                                                                                             |
-| ----------------------- | -------- | --------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Create Voice Input**  | Callable | —                                                   | —       | Creates the server-side STT handle. Fires `OnVoiceInputCreated`. Normally automatic when `bCreateOnConnect` is true.              |
-| **Destroy Voice Input** | Callable | —                                                   | —       | Releases the server-side STT handle.                                                                                              |
-| **Begin Utterance**     | Callable | `Agent Override` (`UTryllAgentComponent`, optional) | —       | Opens an utterance and starts mic capture. The final transcript routes to the override, else `TargetAgent`, else transcribe-only. |
-| **End Utterance**       | Callable | —                                                   | —       | Commits the utterance (push-to-talk release).                                                                                     |
-| **Cancel Utterance**    | Callable | —                                                   | —       | Drops the utterance without producing a transcript.                                                                               |
-| **Has Voice Input**     | Pure     | —                                                   | `bool`  | True once the handle exists.                                                                                                      |
-| **Is Utterance Active** | Pure     | —                                                   | `bool`  | True while an utterance is open.                                                                                                  |
+| Node                              | Kind     | Inputs                                              | Outputs                  | Notes                                                                                                                              |
+| --------------------------------- | -------- | --------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Create Voice Input**            | Callable | —                                                   | —                        | Creates the server-side STT handle. Fires `OnVoiceInputCreated`. Normally automatic when `bCreateOnConnect` is true.               |
+| **Destroy Voice Input**           | Callable | —                                                   | —                        | Releases the server-side STT handle.                                                                                               |
+| **Begin Utterance**               | Callable | `Agent Override` (`UTryllAgentComponent`, optional) | —                        | Opens an utterance and starts mic capture. The final transcript routes to the override, else `TargetAgent`, else transcribe-only.  |
+| **End Utterance**                 | Callable | —                                                   | —                        | Commits the utterance (push-to-talk release).                                                                                      |
+| **Cancel Utterance**              | Callable | —                                                   | —                        | Drops the utterance without producing a transcript.                                                                                |
+| **Has Voice Input**               | Pure     | —                                                   | `bool`                   | True once the handle exists.                                                                                                       |
+| **Is Utterance Active**           | Pure     | —                                                   | `bool`                   | True while an utterance is open.                                                                                                   |
+| **Get Microphone Status**         | Pure     | —                                                   | `ETryllMicrophoneStatus` | Result of the last microphone check: `Unknown`, `Available`, `NoDevice` or `CaptureFailed`.                                        |
+| **Get Microphone Status Message** | Pure     | —                                                   | `FString`                | Why the microphone is unavailable; empty when it is not.                                                                           |
+| **Is Microphone Unavailable**     | Pure     | —                                                   | `bool`                   | True for `NoDevice` or `CaptureFailed`. Show "type to chat"; **Begin Utterance** re-checks and recovers once a microphone appears. |
 
 ## Events — `Tryll|Events` (on `UTryllAgentComponent`)
 
@@ -241,11 +244,12 @@ See [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-
 
 ## Events — `Tryll|Events` (on `UTryllVoiceInputComponent`)
 
-| Event                      | Payload                             | Fires when                                                                                                                                        |
-| -------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **On Transcript Update**   | `Update` (`FTryllTranscriptUpdate`) | Each transcript update — partial and final. Read `Update.Kind` (`SpeechStart` / `Partial` / `SegmentFinal` / `UtteranceFinal`) and `Update.Text`. |
-| **On Error**               | `ErrorMessage` (`FString`)          | A protocol-level voice error.                                                                                                                     |
-| **On Voice Input Created** | —                                   | The STT handle has been created.                                                                                                                  |
+| Event                      | Payload                             | Fires when                                                                                                                                                                                   |
+| -------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **On Transcript Update**   | `Update` (`FTryllTranscriptUpdate`) | Each transcript update — partial and final. Read `Update.Kind` (`SpeechStart` / `Partial` / `SegmentFinal` / `UtteranceFinal`) and `Update.Text`.                                            |
+| **On Error**               | `ErrorMessage` (`FString`)          | Any voice error, message only.                                                                                                                                                               |
+| **On Error Detailed**      | `Error` (`FTryllError`)             | Fires with **On Error**, carrying the code — e.g. `MicrophoneUnavailable` (`4108`) when there is no usable microphone, `VoiceInputStarting` (`4109`) while voice input is being (re)created. |
+| **On Voice Input Created** | —                                   | The STT handle has been created.                                                                                                                                                             |
 
 See [Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) and [`UTryllVoiceInputComponent`](https://docs.tryllengine.com/v0.9/tryll-unreal/class_u_tryll_voice_input_component.html).
 

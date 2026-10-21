@@ -288,17 +288,22 @@ ______________________________________________________________________
 ## Step 5 — Create a workflow asset and set up the scene
 
 1. In the Project window, right-click → **Create → Tryll → Workflow Asset**. Name it `DemoWorkflow`.
-1. Select `DemoWorkflow`. In the Inspector, expand **Graph**:
+
+   The **Create → Tryll** submenu (the same menu as **Assets → Create → Tryll**).
+
+   2. Select `DemoWorkflow`. In the Inspector, expand **Graph**:
+
    - Under **Nodes**, click **+** to add one entry.
    - Set **Name** = `answer`.
    - Click the **Params** type picker (shows `<null>` by default) and select **Generate** from the dropdown. The node's parameter fields expand below it — leave them all at their defaults; the **Default Exit** field stays empty, which routes the turn to END.
    - Set **Start Node** = `answer`.
    - Set **Default Model Name** using the dropdown — it now lists the models you registered in the Model Manager. Pick the one you downloaded in Step 4.
-1. Create a new empty **GameObject** — call it `TryllDemo`.
-1. Add a **Tryll Agent Component** (`Add Component → Tryll → Tryll Agent Component`).
-1. Assign `DemoWorkflow` to the component's **Workflow Asset** field.
-1. **Un-check Auto Create On Connect** — this tutorial wires the lifecycle explicitly so you control exactly when the agent is created.
-1. Create a C# script `TryllDemo.cs` and attach it to the same GameObject:
+
+   3. Create a new empty **GameObject** — call it `TryllDemo`.
+   1. Add a **Tryll Agent Component** (`Add Component → Tryll → Tryll Agent Component`).
+   1. Assign `DemoWorkflow` to the component's **Workflow Asset** field.
+   1. **Un-check Auto Create On Connect** — this tutorial wires the lifecycle explicitly so you control exactly when the agent is created.
+   1. Create a C# script `TryllDemo.cs` and attach it to the same GameObject:
 
 ```
 using UnityEngine;
@@ -526,6 +531,8 @@ Open **Edit → Project Settings → Plugins → Tryll Client** and set:
 | **Storage Data Folder**                                    | `TryllStorage` (default) | Project folder **outside** `Content/`. The plugin passes `--storage-root`.                                                                            |
 
 Settings are persisted to `Config/DefaultGame.ini` under `[/Script/TryllClient.TryllRuntimeSettings]`.
+
+**Project Settings → Plugins → Tryll Client** with the defaults: auto-launch and auto-connect on, Vulkan backend, port 9100, and `TryllStorage` as the storage folder.
 
 Client Dev usage telemetry is always on in the editor; set `TRYLL_SERVER_MODE=tryll-dev` only for Tryll’s own CI. Player builds that still launch Client Dev are **unreleasable** until a Client Prod binary ships.
 
@@ -985,13 +992,13 @@ Every use case combines the same few blocks:
 
 ## The use cases
 
-| Use case                                                                                    | The player experiences                                                                                                                                                            | Main blocks                                               |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| **[Talking NPC](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html)**             | A character you speak with, who knows the world, plays a mechanic, shows emotion and acts. Built up one step at a time.                                                           | STT, SLM, TTS, then retrieval, classification, tool calls |
-| **[Ambient world](https://docs.tryllengine.com/v0.9/use-cases/ambient-world.html)**         | Background characters who chat among themselves, and a narrator, radio or newspaper that reports what happened in the game.                                                       | SLM, TTS, game events, background priority                |
-| **[Voice control](https://docs.tryllengine.com/v0.9/use-cases/voice-control.html)**         | Commanding the game or your squad by voice. Characters may answer with prewritten lines.                                                                                          | STT, SLM, tool calls                                      |
-| **[In-game assistant](https://docs.tryllengine.com/v0.9/use-cases/in-game-assistant.html)** | A helper that knows the game, remembers what you did, looks things up and acts for you.                                                                                           | STT, SLM, TTS, retrieval, tool calls                      |
-| **[AI director](https://docs.tryllengine.com/v0.9/use-cases/ai-director.html)** *(idea)*    | A model that plans quests or directs the story, while your game systems carry out the plan. We have not built this yet; the page shows the research and the blocks you would use. | SLM, grammar-constrained output, tool calls               |
+| Use case                                                                                    | The player experiences                                                                                                                                                            | Main blocks                                                       |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **[Talking NPC](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html)**             | A character you speak with: a basic NPC that talks and stays in its role, plus add-ons for knowledge, mechanics, emotion, actions and memory.                                     | STT, SLM, TTS, then retrieval, classification, tool calls, memory |
+| **[Ambient world](https://docs.tryllengine.com/v0.9/use-cases/ambient-world.html)**         | Background characters who chat among themselves, and a narrator, radio or newspaper that reports what happened in the game.                                                       | SLM, TTS, game events, background priority                        |
+| **[Voice control](https://docs.tryllengine.com/v0.9/use-cases/voice-control.html)**         | Commanding the game or your squad by voice. Characters may answer with prewritten lines.                                                                                          | STT, SLM, tool calls                                              |
+| **[In-game assistant](https://docs.tryllengine.com/v0.9/use-cases/in-game-assistant.html)** | A helper that knows the game, remembers what you did, looks things up and acts for you.                                                                                           | STT, SLM, TTS, retrieval, tool calls                              |
+| **[AI director](https://docs.tryllengine.com/v0.9/use-cases/ai-director.html)** *(idea)*    | A model that plans quests or directs the story, while your game systems carry out the plan. We have not built this yet; the page shows the research and the blocks you would use. | SLM, grammar-constrained output, tool calls                       |
 
 # AI Director (Idea)
 
@@ -1288,29 +1295,52 @@ Keep the assistant inside the fiction where your game has one. A ship's computer
 
 # Talking NPC
 
-A character the player can speak with: it listens, answers in its own voice, knows its world, takes part in your game's mechanics, shows emotion and acts.
+A character the player can speak with: it listens, answers in its own voice, knows its world, takes part in your game's mechanics, shows emotion, acts and remembers.
 
-You do not build all of that at once. This page is a ladder. Each step adds one building block to the step before it, and each step is a complete NPC you could ship. Stop at the step your game needs.
+You do not build all of that at once. Every talking character starts from the same **basic NPC**: it holds a conversation, by text or voice, and stays in its role. On top of that, the **advanced NPC** features are add-ons. Each one is independent of the others, so pick the ones your game needs, in any order.
 
-```
-flowchart LR
-    S1["1 · Talks"] --> S2["2 · Knows the world"]
-    S2 --> S3["3 · Plays a mechanic"]
-    S3 --> S4["4 · Shows emotion"]
-    S4 --> S5["5 · Acts in the game"]
-```
+| Part         | Feature                                               | What it adds                                   | Building blocks                            |
+| ------------ | ----------------------------------------------------- | ---------------------------------------------- | ------------------------------------------ |
+| Basic NPC    | [Natural dialogue](#natural-dialogue)                 | Free conversation, no dialogue tree            | A small language model                     |
+| Basic NPC    | [Voice in and out](#voice-in-and-out)                 | The player speaks; the character answers aloud | Speech-to-text, text-to-speech             |
+| Basic NPC    | [Roleplay guardrails](#roleplay-guardrails)           | The character stays in its world               | A pattern check and two classifiers        |
+| Advanced NPC | [Knowledge and lore](#knowledge-and-lore)             | Answers from your world's facts                | Retrieval (RAG)                            |
+| Advanced NPC | [Talking is the gameplay](#talking-is-the-gameplay)   | Dating, interrogation, trading, negotiation    | Classification, pause, branching           |
+| Advanced NPC | [Emotions](#emotions)                                 | Mood in the words and in the voice             | Instructions, voice delivery modes         |
+| Advanced NPC | [Actions and tools](#actions-and-tools)               | The conversation changes the game              | Tool calls                                 |
+| Advanced NPC | [Memory and summarization](#memory-and-summarization) | The character remembers, across saves too      | Summaries, writable memory, save snapshots |
 
-One principle runs through every step: **your game owns the rules, the agent owns the words.** The model never decides a price, a relationship score or whether a door opens. It reads the player, and it speaks. Your game code holds the state and makes the decisions.
+One principle runs through every feature: **your game owns the rules, the agent owns the words.** The model never decides a price, a relationship score or whether a door opens. It reads the player, and it speaks. Your game code holds the state and makes the decisions.
 
 ______________________________________________________________________
 
-## Step 1 · An NPC you can talk to
+## Basic NPC
 
-**The player experiences:** a character who answers out loud, in character, for as long as they keep talking.
+The three things every talking character needs. With these alone you can ship a character the player talks to freely.
 
-**Building blocks:** speech-to-text, a small language model, text-to-speech.
+### Natural dialogue
 
-The smallest working graph is one node, [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html). It writes the reply and starts speaking the first sentence while later sentences are still being generated, so the character starts talking almost at once. The voice belongs to the agent, set through its [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html).
+**The player experiences:** a character who understands plain language and answers in character, for as long as they keep talking. There is no dialogue tree and no list of lines to pick from.
+
+**Building block:** a small language model.
+
+The smallest working graph is one node. For a voiced character it is [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html), which writes the reply and speaks it (see [Voice in and out](#voice-in-and-out)); for a text character it is [`Generate`](https://docs.tryllengine.com/v0.9/reference/nodes/generate.html).
+
+What makes the character feel right is mostly the prompt: the role, the backstory and the way the character speaks. Our [NPC prompt study](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) found two rules that matter most: include at least one line of the character's own dialogue, and never put a speaker label such as `Kira:` in front of it, because models copy the label into the reply.
+
+The same prompt can change with your game. A template such as `{{var.player_title}}` reads an [agent variable](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) your game sets, so a quest giver greets a newcomer and a hero differently without a second graph.
+
+**In the demo:** *TavernBartender* (a text NPC) and *QuestGiver* (one character, two attitudes, driven only by game variables).
+
+**Build it:** [Design an NPC prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) · [Build a chat agent with a graph](https://docs.tryllengine.com/v0.9/how-to/build-chat-agent-with-graph.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Agent variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html)
+
+### Voice in and out
+
+**The player experiences:** they speak to the character and it answers out loud, in its own voice, with almost no wait.
+
+**Building blocks:** speech-to-text (STT), text-to-speech (TTS). Both run on the player's device, and the lighter models run on the CPU.
+
+[`GenerateAndSpeak`](https://docs.tryllengine.com/v0.9/reference/nodes/generate-and-speak.html) starts speaking the first sentence while later sentences are still being generated, so the character starts talking almost at once. The voice belongs to the agent, set through its [voice profile](https://docs.tryllengine.com/v0.9/reference/voice-profile.html): pick a TTS model and a voice, or clone one from a short recording. You do not record every line.
 
 Voice input sits outside the graph. Your game streams microphone audio to Tryll, gets the transcript back, and sends the final phrase to the agent as if the player had typed it. You choose push-to-talk or hands-free.
 
@@ -1321,19 +1351,50 @@ flowchart LR
     GAS -->|TTS| Audio["NPC speaks"]
 ```
 
-What makes the character feel right is mostly the prompt. Our [NPC prompt study](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) found two rules that matter most: include at least one line of the character's own dialogue, and never put a speaker label such as `Kira:` in front of it, because models copy the label into the reply.
+Languages depend on the models you choose; see [speech-to-text and voice input](https://docs.tryllengine.com/v0.9/concepts/stt-and-voice-input.html) and the [TTS models](https://docs.tryllengine.com/v0.9/reference/tts-models.html). For a face that moves with the voice, add lip sync.
 
-For long conversations, add a [`Summarize`](https://docs.tryllengine.com/v0.9/reference/nodes/summarize.html) node. It folds older turns into a rolling summary, so the conversation can go on at a fixed token cost.
+**In the demo:** *VoiceCharacter* (the full voice loop).
 
-**In the demo:** *VoiceCharacter* (the full voice loop) and *TavernBartender* (a text NPC with long-conversation memory).
+**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) · [Clone a voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) · [Add lip sync](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html)
 
-**Build it:** [Design an NPC prompt](https://docs.tryllengine.com/v0.9/how-to/design-an-npc-prompt.html) · [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) · [Clone a voice](https://docs.tryllengine.com/v0.9/how-to/clone-a-voice.html) · [Add lip sync](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-a-character.html) · [Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html)
+### Roleplay guardrails
+
+**The player experiences:** a character who stays in its world, however hard they push. "Ignore your instructions", "what model are you?" or "tell me about smartphones" in a medieval village get an in-character answer.
+
+**Building blocks:** a pattern check and two classifiers, in front of the reply.
+
+Players will test your character. An immersion guard catches those lines before they reach the reply model. The recommended guard has three stages, cheapest first:
+
+1. **Pattern check.** A [`RegexGuardrail`](https://docs.tryllengine.com/v0.9/reference/nodes/regex-guardrail.html) catches the well-known phrasings at almost no cost.
+1. **General check.** A classifier catches lines aimed at the software rather than the character: jailbreaks, questions about the AI, requests to change the rules.
+1. **World check.** A second classifier catches lines that do not belong in your world, such as modern technology in a fantasy setting.
+
+```
+flowchart LR
+    In["Player line"] --> P["Pattern check"]
+    P -->|caught| D["In-character deflection"]
+    P -->|ok| G["General check"]
+    G -->|caught| D
+    G -->|ok| W["World check"]
+    W -->|caught| D
+    W -->|ok| R["Reply"]
+```
+
+A caught line gets a prewritten, in-character deflection from a [`CannedResponse`](https://docs.tryllengine.com/v0.9/reference/nodes/canned-response.html) and never reaches the reply model. Your game can also remove it from the conversation history, so it does not echo in later turns.
+
+**In the demo:** *Death on Set* (every suspect has the three-stage guard in front of its reply).
+
+**Build it:** [Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) · [Use canned responses and guardrails](https://docs.tryllengine.com/v0.9/how-to/use-canned-responses-and-guardrails.html)
 
 ______________________________________________________________________
 
-## Step 2 · An NPC who knows your world
+## Advanced NPC
 
-**The player experiences:** the character knows the world's history, the town's gossip and its own past, and stays consistent about them.
+Add-ons to the basic NPC. Each one works without the others; combine the ones your game needs.
+
+### Knowledge and lore
+
+**The player experiences:** the character knows the world's history, the town's gossip and its own past, stays consistent about them, and says so when it does not know.
 
 **Building block:** retrieval (RAG).
 
@@ -1359,13 +1420,11 @@ If players ask vague follow-ups ("what about him?"), a [query-rewriting step](ht
 
 **Build it:** [Retrieval-augmented generation](https://docs.tryllengine.com/v0.9/concepts/rag.html) · [Create a simple RAG assistant](https://docs.tryllengine.com/v0.9/how-to/create-simple-rag-assistant.html) · [Query rewriting for RAG](https://docs.tryllengine.com/v0.9/how-to/query-rewriting-for-rag.html) · [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.9/how-to/drive-prompts-and-retrieval-from-game-state.html)
 
-______________________________________________________________________
+### Talking is the gameplay
 
-## Step 3 · An NPC who plays a mechanic
+**The player experiences:** what they say *is* the gameplay. Flattery works on one character and annoys another; an accusation backed by evidence breaks a suspect; a good argument lowers a price.
 
-**The player experiences:** talking *is* the gameplay. Flattery works on one character and annoys another; an accusation backed by evidence breaks a suspect; a good argument lowers a price.
-
-**Building blocks:** classification, branching, game state.
+**Building blocks:** classification, pausing the turn, branching, game state.
 
 A mechanic needs numbers and decisions, and those belong in your game code. The agent's job is to turn the player's free-form line into values your mechanic can read, and then to voice whatever your mechanic decided. That makes a loop:
 
@@ -1406,15 +1465,13 @@ If you only need one label per turn, such as the player's intent, [`ClassifyInte
 
 **Build it:** [Build an intent-driven NPC](https://docs.tryllengine.com/v0.9/how-to/build-intent-driven-npc.html) · [Classify intent without a knowledge base](https://docs.tryllengine.com/v0.9/how-to/classify-intent-without-a-knowledge-base.html) · [Pause and resume a turn](https://docs.tryllengine.com/v0.9/how-to/pause-and-resume-turns.html) · [Branch on a slot](https://docs.tryllengine.com/v0.9/how-to/branch-on-a-slot.html) · [Agent variables](https://docs.tryllengine.com/v0.9/concepts/agent-variables.html) · [Keep merchant prices deterministic](https://docs.tryllengine.com/v0.9/how-to/keep-merchant-prices-deterministic.html)
 
-______________________________________________________________________
+### Emotions
 
-## Step 4 · An NPC who shows emotion
-
-**The player experiences:** the character's mood changes with what happens, and you can hear it in both what they say and how they say it.
+**The player experiences:** the character's mood changes with what happens, and they can hear it in both what the character says and how it sounds.
 
 **Building blocks:** your game's emotion system, instructions in the prompt, voice delivery modes.
 
-The emotional state is another piece of game state, so your game owns it, just like the mechanic in step 3. It can change because of the classifier's results or because of anything else in the game: the player broke a promise, the character was hurt, night fell. Tryll then carries the mood into two places.
+The emotional state is another piece of game state, so your game owns it, just like a [mechanic](#talking-is-the-gameplay). It can change because of a classifier's results or because of anything else in the game: the player broke a promise, the character was hurt, night fell. Tryll then carries the mood into two places.
 
 **What the character says.** Pass the mood into the reply prompt:
 
@@ -1435,11 +1492,9 @@ On Unreal, the MetaHuman lip-sync plugin can also take the mood, so the face mat
 
 **In the demo:** *EmotionalVoiceCharacter* (one voice with eight moods, each from its own clip; the mood is switched from the editor rather than by game logic).
 
-**Build it:** [Add voice output](https://docs.tryllengine.com/v0.9/how-to/add-voice-to-an-agent.html) · [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
+**Build it:** [Add emotions to a voice](https://docs.tryllengine.com/v0.9/how-to/add-emotions-to-a-voice.html) · [Design a voice clip with Qwen3-TTS](https://docs.tryllengine.com/v0.9/how-to/design-a-voice-with-qwen3-tts.html) · [Voice profile reference](https://docs.tryllengine.com/v0.9/reference/voice-profile.html) · [Use Mustache templates](https://docs.tryllengine.com/v0.9/how-to/use-mustache-templates.html) · [Add lip sync to a MetaHuman](https://docs.tryllengine.com/v0.9/how-to/add-lip-sync-to-metahuman.html)
 
-______________________________________________________________________
-
-## Step 5 · An NPC who acts in the game
+### Actions and tools
 
 **The player experiences:** the conversation has consequences. The guard opens the gate, the merchant hands over the item, the bandit draws a sword, the healer heals.
 
@@ -1466,21 +1521,38 @@ Choose the model by the job. In our [tool-call comparison](https://docs.trylleng
 
 **Build it:** [Tool calling](https://docs.tryllengine.com/v0.9/concepts/tool-calling.html) · [Define and handle tool calls](https://docs.tryllengine.com/v0.9/how-to/define-and-handle-tool-calls.html) · [Design a tool-call prompt](https://docs.tryllengine.com/v0.9/how-to/design-a-tool-call-prompt.html) · [Compare tool-call models](https://docs.tryllengine.com/v0.9/how-to/compare-tool-call-models.html) · [Test tool calls in the editor](https://docs.tryllengine.com/v0.9/how-to/test-tool-calls-in-editor.html)
 
+### Memory and summarization
+
+**The player experiences:** the character remembers. It does not lose the thread of a long conversation, it brings back what the player told it hours ago, and it still knows after the game is saved and loaded.
+
+**Building blocks:** a rolling summary, a writable memory, save snapshots.
+
+Memory works at three time scales.
+
+**Within a conversation.** Every model has a fixed context window, and when the conversation outgrows it, the oldest turns drop out of the prompt. Add a [`Summarize`](https://docs.tryllengine.com/v0.9/reference/nodes/summarize.html) node and the older turns are folded into a rolling summary instead, so the conversation can go on at a fixed token cost without the character forgetting how it started.
+
+**Facts that last.** To keep specific facts, such as "the player likes cats" or "the player killed Atticus Pünd", write them into a memory the character can search. A [`WriteToMemory`](https://docs.tryllengine.com/v0.9/reference/nodes/write-to-memory.html) node stores a line in a named knowledge base, one per character if you like, and a [`Retrieve`](https://docs.tryllengine.com/v0.9/reference/nodes/retrieve.html) node on the same store, placed before the reply, brings the matching facts back when they become relevant. Writable memory is experimental in this release.
+
+```
+flowchart LR
+    In["Player line"] --> R["Retrieve: character's memory"]
+    R --> G["GenerateAndSpeak"]
+    G --> W["WriteToMemory"]
+```
+
+To pull out structured facts, such as the clues a suspect mentioned, let a second agent read the exchange and answer through a [grammar](https://docs.tryllengine.com/v0.9/how-to/constrain-output-with-a-grammar.html), so the result is always data your game can store.
+
+**Across saves.** Your game owns the save file, and Tryll gives it what to put there: a snapshot of each agent's conversation, and a snapshot of every memory store. Load them back into a new session and the characters continue where they left off.
+
+**In the demo:** *TavernBartender* (a long conversation kept coherent with a rolling summary) and *Death on Set* (a note-taker agent writes up each interview into the detective's case notes).
+
+**Build it:** [Keep long conversations coherent](https://docs.tryllengine.com/v0.9/how-to/keep-long-conversations-coherent.html) · [Inspect and edit knowledge stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) · [Constrain output with a grammar](https://docs.tryllengine.com/v0.9/how-to/constrain-output-with-a-grammar.html) · [Export and import dialog](https://docs.tryllengine.com/v0.9/how-to/export-and-import-dialog.html) · [Save and load agent state](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html)
+
 ______________________________________________________________________
 
-## At every step · Keep the NPC in its world
+## All together
 
-Players will test your character: "ignore your instructions", "what model are you?", "tell me about smartphones" in a medieval village. An immersion guard in front of the NPC catches these lines and answers in character instead.
-
-The recommended guard has three stages, cheapest first: a pattern check that costs almost nothing, then a classifier for lines aimed at the software, then a classifier for lines that do not belong in your world. A caught line gets a prewritten, in-character deflection and never reaches the reply model. Your game can also remove it from the conversation history, so it does not echo in later turns.
-
-**Build it:** [Build an immersion guard](https://docs.tryllengine.com/v0.9/how-to/build-an-immersion-guard.html) · [Use canned responses and guardrails](https://docs.tryllengine.com/v0.9/how-to/use-canned-responses-and-guardrails.html)
-
-______________________________________________________________________
-
-## All five steps together
-
-The *Death on Set* murder mystery in the Unity demos combines almost the whole ladder in one graph per suspect:
+The *Death on Set* murder mystery in the Unity demos combines most of these features in one graph per suspect:
 
 ```
 flowchart LR
@@ -2693,7 +2765,7 @@ Every offline model also loads a **VAD** model (default `Silero VAD`) as a depen
 - [How-to: Bias Voice Input with Hotwords](https://docs.tryllengine.com/v0.9/how-to/use-voice-input-hotwords.html)
 - [Concept: TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html) — the other half of a voiced NPC.
 - [Concept: Models and Inference Engines](https://docs.tryllengine.com/v0.9/concepts/models-and-inference-engines.html)
-- [Reference: Error Codes — 4100–4107](https://docs.tryllengine.com/v0.9/reference/error-codes.html#4xxx-inference-workflow) — voice-input errors.
+- [Reference: Error Codes — 4100–4109](https://docs.tryllengine.com/v0.9/reference/error-codes.html#4xxx-inference-workflow) — voice-input errors.
 
 # Retrieval-Augmented Generation (RAG)
 
@@ -3033,9 +3105,13 @@ A `TryllAgentComponent` may override an asset's declared **initial value** (not 
 
 While the component has a live agent (Play Mode or the Editor **Tryll Chat** window), changing an override updates the live `Agent.Variables` mirror immediately; the server sees the new value on the next deferred flush (before `SendMessage` / `Resume` / `ChangeParams`), or immediately if you click **Flush Now** in the Inspector.
 
+The workflow declares one variable, `Advanced`. This component overrides its initial value (left checkbox ticked) to `true`.
+
 Declare on the workflow asset (`UTryllWorkflowAsset::Variables`). A component's `VariableOverrides` follows the same Material-Instance pattern as Unity: the Details panel lists every declared variable as an optional row (`[override] name [value]`). Stale/duplicate serialized entries appear in a warning group and are ignored at `CreateAgent`.
 
 While the component has a live agent (PIE, or an editor-preview agent attached by **Window → Tryll → Tryll Chat**), changing an override updates the local `FTryllAgentVariables` mirror immediately. The wire flush stays deferred until the next `SendMessage` / `Resume` / `ChangeParams`, or run **Flush Now** under *Live Agent — Variables*. Unchecking an override assigns the **workflow declaration default** (not `Reset()`, which would restore the CreateAgent-time merged initial).
+
+The same component in Unreal. `Advanced` is not overridden (checkbox clear), so the row shows the workflow default, `false`. *Live Agent — Variables* reads **No live agent** until PIE or Tryll Chat creates one.
 
 ```
 #include <tryll/TryllClient.h>
@@ -3439,7 +3515,8 @@ Guides marked ★ are the ones to read first in their area.
 - [Manage Models in the Editor](https://docs.tryllengine.com/v0.9/how-to/manage-models-in-editor.html) — browse, download, load/unload, and register models for builds from the GUI.
 - [Choose Where Models Run](https://docs.tryllengine.com/v0.9/how-to/choose-where-models-run.html) — put each model in RAM or VRAM, and understand why placement is a hint rather than a guarantee.
 - [Use the Agent Log](https://docs.tryllengine.com/v0.9/how-to/use-agent-log.html) — the per-agent send/receive narrative in the editor: what your game asked for, and what came back.
-- [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html) — Unity and Unreal Memory windows: live RAM/VRAM for the whole server process (Refresh only). The Knowledge window (Unity **Window ▸ Tryll ▸ Knowledge**, Unreal **Window ▸ Tryll ▸ Tryll Knowledge**) also edits experimental mutable stores: stores on the left, Filter or Query records in the center, and write, delete, clear, and per-store export/import on the right.
+- [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html) — Unity and Unreal Memory windows: live RAM/VRAM for the whole server process (Refresh only).
+- [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) — Unity and Unreal Knowledge windows: list, query, and edit experimental mutable stores, save and load game memory, and export or import one store.
 - [Compare Dialog Variants in the Lab](https://docs.tryllengine.com/v0.9/how-to/compare-dialog-variants.html) — run one scripted dialog across parameter variants and seeds, and read the spread instead of guessing from a single reply.
 - [Test Tool Calls in Chat and the Dialog Lab](https://docs.tryllengine.com/v0.9/how-to/test-tool-calls-in-editor.html) — register a handler on the scene agent, talk to it in Chat, then script canned or live-tool Lab runs.
 - [Agentic Coding With Tryll](https://docs.tryllengine.com/v0.9/how-to/agentic-coding-with-tryll.html) — have an AI coding agent build Tryll agents: `AGENTS.md`, the Unreal MCP tools, and how to write a prompt it can finish.
@@ -4095,7 +4172,7 @@ The window docks like any Unity editor panel. Check the two fields in the config
 | **Tryll Settings**  | Your `TryllRuntimeSettings` asset. Auto-found if one exists anywhere in the project or in `Resources/`. |
 | **Agent Component** | A `TryllAgentComponent` from an open scene.                                                             |
 
-Chat Window after a session is running — status shows **Ready**.
+Chat Window after a session is running — status shows **Ready**. Voice Input is set to **Chat**, so the STT Model and Mic Device rows appear.
 
 Chat creates its own editor-owned agent from the component's resolved graph and variable overrides, snapshotted at **Start**. Editing the component's Variable Overrides afterwards does **not** reach the running chat agent — press **Stop** and **Start** again to pick the new values up. (Unreal differs here: it maintains a transient preview link that applies Details edits live.)
 
@@ -4133,6 +4210,8 @@ Type a message and press **Enter** or click **Send**. Replies stream into the ch
 ### Turn diagnostics pane
 
 Chat hosts the shared **[turn inspector](https://docs.tryllengine.com/v0.9/reference/turn-inspector.html)** in a right-hand pane (visible by default; toggle with **Inspector ▸ / ◂**). Resize and collapse state are remembered for Chat independently of Dialog Lab and the Agent Log.
+
+The selected answer (accent border) is inspected on the right: it took a **ToolCall** → **Generate** route. Unity shown; the Unreal panel has the same layout.
 
 That reference page covers the panel itself — route, timing, parameters, prompt & output, retrieval, tool calls, and raw JSON. What is specific to Chat is how you select a turn:
 
@@ -4219,6 +4298,8 @@ Either:
 
 The window docks like any Unity editor panel. The canvas fills the left side; a property panel sits on the right, and the divider between them is draggable to resize.
 
+With no node selected, the panel shows workflow-level settings: **Default Model Name**, **Text Table**, **Variables**, and the **Check texts** button.
+
 ## Step 2 — read the graph
 
 | Element          | Meaning                                                                                                                              |
@@ -4248,6 +4329,8 @@ Each exit holds exactly one target, so an exit port allows only one outgoing edg
 ## Step 5 — edit node parameters
 
 Click a node to select it. The property panel on the right binds to that node's `Params` and renders the **same drawers** the Inspector uses — model-name dropdowns, exit dropdowns, `[Range]` sliders, storage file pickers, multi-line text. Editing here changes the asset directly.
+
+The `rewrite` node selected. Its **Default Exit** dropdown names `retrieve_hybrid` — the same wiring the canvas edge shows.
 
 Canvas and panel share one source of truth
 
@@ -4308,6 +4391,8 @@ Double-click the `UTryllWorkflowAsset` in the Content Browser. The asset editor 
 
 A toolbar across the top adds **Validate** and **Auto Layout** buttons and a live error/warning count, alongside the usual **Save**.
 
+The **Entry** node is selected, so Details shows the workflow-level settings: **Default Model Name**, the text table, **Variables**, and **Check texts**. The toolbar reads **No issues**.
+
 ## Step 2 — add nodes
 
 Right-click an empty spot on the canvas and pick a type from the **Add Node** menu (Generate, ToolCall, Retrieve, CannedResponse, …). The menu lists every node type the server supports — it is generated from the schema, so new node types appear automatically.
@@ -4332,6 +4417,8 @@ Exit names read as friendly labels (`Tool Called`, `No Tool Called`) but map to 
 ## Step 4 — edit node parameters
 
 Select a node to edit its parameters in the **Details** panel — **Node Name** first, then system prompt, model, sampling, storage paths, and so on, with the same dropdowns and pickers as the regular Details view. Exit fields are intentionally **hidden here**: you set routing by dragging wires, not by typing node names.
+
+The `rewrite` node selected. Details lists its **Tryll Generate Params**; there is no exit field, because the wire to `retrieve_hybrid` is the routing.
 
 Select the **Entry** node to set the workflow's **Default Model Name** — the fallback model for any `Generate`-family node that does not specify its own.
 
@@ -4393,6 +4480,8 @@ The window opens with the title **Tryll Models** and connects to the server auto
 Opens as a dockable tab (**Tryll Model Manager**) and connects on open.
 
 The layout is the same in both engines: a **filters** column on the left, the **model list** in the middle, and a **properties + actions** panel on the right.
+
+Model Manager with a downloaded language model selected. The pills in the list show build registration (**PROD**, **EXP**, or not registered); the dot colour is the model status from the legend at the bottom. Unity shown; the Unreal panel has the same layout plus a search box and an Audience filter.
 
 ## Step 2 — find a model
 
@@ -4599,6 +4688,8 @@ Opening the window starts capture: it subscribes to the internal client observer
 
 ## Layout
 
+Agent Log in **Curated · Coalesce · Collapse Completed** mode. One turn is expanded, and its received row is open in the inspector. Unity shown; the Unreal panel has the same layout.
+
 | Pane           | Role                                                                                          |
 | -------------- | --------------------------------------------------------------------------------------------- |
 | **Agent list** | **All Agents** (first entry) plus every known agent. Selecting an entry filters the timeline. |
@@ -4794,6 +4885,8 @@ Disconnected state still shows this editor process's RAM. The label is **Unity r
 
 There is no poll and no graph. Click **Refresh**.
 
+A snapshot with one language model on the GPU and one STT model on the CPU. The amber **estimated** tags and `~` ranges mark numbers that are not measured directly. Unity shown; the Unreal panel has the same layout.
+
 Refresh is disabled until the session is Ready, and while a fetch is in flight. A late reply cannot overwrite a newer one. If a fetch fails after you already have numbers, a stale-snapshot banner keeps the last good table and shows the error.
 
 ## How to read the numbers
@@ -4872,9 +4965,170 @@ C++ (`TryllClient::GetMemoryConsumption`), Python (`client.get_memory_consumptio
 
 - [Estimate Memory Footprint](https://docs.tryllengine.com/v0.9/how-to/estimate-memory-footprint.html) — the pre-ship recipe this window checks live
 - [Use the Agent Log](https://docs.tryllengine.com/v0.9/how-to/use-agent-log.html) — per-connection traffic, not process memory
+- [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) — the neighbouring window for mutable knowledge stores
 - [Wire Protocol](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html) — `GetMemoryConsumptionRequest` / `Response`
 - [Unity `TryllClient`](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-client.html) — `RequestGetMemoryConsumptionAsync`
 - [Unreal C++ API](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/cpp/index.html) — `RequestGetMemoryConsumption` / `FTryllMemorySnapshot`
+
+# Inspect and Edit Knowledge Stores
+
+The editor **Knowledge** window (Unity and Unreal) shows the **mutable knowledge bases** in the current server session. These are the named stores your agents write to with [`WriteToMemory`](https://docs.tryllengine.com/v0.9/reference/nodes/write-to-memory.html) and read back with [`Retrieve`](https://docs.tryllengine.com/v0.9/reference/nodes/retrieve.html). The window lists them, shows their records, and lets you add, change, or delete records. You can also save and load the whole session's memory, or export and import a single store.
+
+Typical questions it answers: *did the NPC actually remember that?*, *what does the retriever find for this phrase?*, *does my save file restore what I expect?*
+
+Experimental
+
+Mutable knowledge bases and game memory are experimental (protocol v20). The window, the wire messages, and the TMKB file format may change between releases.
+
+Prerequisites
+
+- The Tryll Unity or Unreal plugin installed.
+- Nothing else. The window launches the bundled server and opens the shared editor connection itself. You do not need Chat or Play mode running, and it does not wait for registered models to download.
+
+## Open the window
+
+| Editor | Menu                                 |
+| ------ | ------------------------------------ |
+| Unity  | **Window → Tryll → Knowledge**       |
+| Unreal | **Window → Tryll → Tryll Knowledge** |
+
+The status bar steps through **Connecting… → Configuring session… → Ready**. If the connection fails, the status turns red and offers **Retry**.
+
+The window shows the stores of the **shared editor session**, the same connection that Chat and the Dialog Lab use. Stores that an agent created in Chat appear here. A standalone game build or a Python client has its own session, so its stores do not appear.
+
+Closing the window releases the connection. It does **not** stop the server.
+
+A store with three records, Filter mode, and record `3` selected for editing. Unity shown; the Unreal panel has the same layout, with field labels above the fields instead of beside them.
+
+## Refresh
+
+The window **never polls**, and it does not load anything when it opens. Click **Refresh** to list the session's stores and load the selected store's records. If no store is selected, the first one is selected for you.
+
+Refresh is disabled until the session is **Ready**. Every action that changes data (Write, Delete, Clear, Load, Import) refreshes the view when it finishes.
+
+## Read the store list
+
+The left column lists every mutable store in the session, whichever way it was created: by an agent's `WriteToMemory` or `Retrieve` node, by game code, by **Ensure** in this window, or by loading a game-memory file.
+
+Each row has the store name, then a summary line:
+
+```
+npc.memory.nessa
+npc_memory  ·  3  ·  gen 4  ·  materialized
+```
+
+| Token                   | Meaning                                                                                                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npc_memory`            | The schema the store uses, from the bundled schema catalog.                                                                                                                 |
+| `3`                     | Live records (not deleted).                                                                                                                                                 |
+| `gen 4`                 | Write generation. Every successful write, delete, or clear increases it, so a changed number tells you something wrote to the store.                                        |
+| `materialized` / `lazy` | `materialized`: every record has its embedding vector. `lazy`: records were loaded with **Lazy** embed timing and their vectors are built the first time the store is used. |
+
+Click a row to load that store's records.
+
+### Create a store
+
+**Ensure Store** creates a store with the given **Name** and **Schema**, or selects it if it already exists. The **Schema** dropdown lists the schemas in the bundled catalog (`data/schemas.json`). The server checks the schema either way.
+
+Selecting a store re-creates it if it is gone
+
+Loading a store's records always ensures the store first. If a store disappeared from the session (for example, after **Load game memory** from a file that does not contain it), Refresh warns *"Store '…' is no longer present."* and then re-creates it empty, using the schema in the Ensure Store section.
+
+## Find records
+
+The centre column starts with a stats line for the selected store:
+
+```
+Records — npc.memory.nessa
+live 3  ·  tombstones 0  ·  gen 4  ·  materialized  ·  ~4712 bytes
+```
+
+**Tombstones** are deleted record slots the server keeps until it compacts the store. **~bytes** is the server's estimate of the store's memory use.
+
+Two modes switch what the list shows:
+
+- **Filter** (default) — a case-insensitive substring match on the record id or text. It runs only in the editor, on the records already loaded, and does not call the server.
+- **Query** — dense retrieval against the store, the same kind of search a `Retrieve` node runs. Enter text, set **Top K** (how many nearest records to return), and click **Run query**. Results are listed best first, each with its distance (`d=0.123`; lower is closer). They replace the list until you switch back to **Filter**.
+
+Use **Query** to check retrieval. If a phrase the player might say does not bring back the record you expect, the problem is in the stored text or the query, not the prompt.
+
+The window loads at most **1024** records per store. For a larger store, a banner says so and the list shows the first 1024.
+
+## Add, change, and delete records
+
+Select a record to load its **Id** and **Text** into the right column.
+
+- **Write** creates the record, or replaces it if the **Id** already exists. Leave **Id** empty to have the server generate one; the new id is put back in the field. Write a standalone sentence, the same shape a `WriteToMemory` node stores (*"Player killed NPC Atticus Pünd at 15:47 in the Bell Inn pub"*), so that retrieval works on it out of context.
+- **Delete selected** deletes the selected record. The store stays.
+- **Clear store** deletes every live record in the store, after a confirmation.
+
+Changes apply to the **live session** immediately. A running agent sees them on its next retrieval.
+
+## Save and load game memory
+
+The **Session File** section at the bottom left saves or loads **every store in the session** as one TMKB file. This is the same operation as `SaveGameMemory` / `LoadGameMemory` in game code, so you can use it to check your save files from the editor.
+
+| Field             | Meaning                                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Path**          | File path relative to the server's storage root, e.g. `memory/game.tmkb`. In the editor this lands under your storage folder (`TryllStorage`).          |
+| **Save id**       | Your label for the save slot, stored beside the snapshot. Compare it with the dialog snapshot's `save_id` to detect a mismatched pair.                  |
+| **Embed timing**  | Used on load. **Lazy** builds vectors the first time each store is used; **Now** builds them all during the load.                                       |
+| **Compatibility** | Used on load and on **Import TMKB**. **Strict** rejects a file whose schemas differ from the catalog; **Allow schema drift** imports it with a warning. |
+
+**Save game memory** writes the file and reports how many stores were saved. **Load game memory** **replaces** the session's stores with the file's contents, then refreshes.
+
+See [Save and Load Agent State](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html) for how game memory and dialog snapshots fit together, and [Server Configuration → Saves](https://docs.tryllengine.com/v0.9/reference/server-configuration.html#saves) for where relative paths resolve outside the editor.
+
+## Export or import one store
+
+The **Store Snapshot** section at the bottom right works on the **selected store only**:
+
+- **Export TMKB** opens a save dialog and writes the store to a `.tmkb` file you choose on your machine. **Hint name** is the suggested file name.
+- **Import TMKB** opens a file dialog and **replaces** the selected store with the file's contents. The snapshot's store name must match. It uses the **Compatibility** setting from the Session File section.
+
+|               | Store snapshot (right)            | Session file (left)                          |
+| ------------- | --------------------------------- | -------------------------------------------- |
+| Covers        | One store                         | Every store in the session                   |
+| File location | Any file you pick on your machine | A path relative to the server's storage root |
+| Embed timing  | Not used                          | Used on load                                 |
+| Save id       | Not used                          | Used                                         |
+
+Use a store snapshot to hand one NPC's memory to a teammate or to keep a test fixture. Use the session file to check what a real save contains.
+
+## Banners
+
+A single banner under the toolbar shows problems:
+
+| Message                                                                         | Meaning                                                                                                    |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| *Showing the last good view.* + an error                                        | A Refresh failed (or the store was busy) after a successful one. The tables still show the last good data. |
+| *This store has more records than the window can show. Showing the first 1024.* | The store has more than 1024 records.                                                                      |
+| *Store '…' is no longer present.*                                               | The selected store left the session; see [Create a store](#create-a-store).                                |
+| *No matching records.*                                                          | A Query returned no hits.                                                                                  |
+| *Write rejected* (or the server's reason)                                       | The server refused the write.                                                                              |
+| Compatibility warnings                                                          | A load or import with **Allow schema drift** found differences.                                            |
+
+The [error codes reference](https://docs.tryllengine.com/v0.9/reference/error-codes.html) lists the 8xxx storage errors (`MutableKbSnapshotInvalid`, `UnknownMutableKb`, `SavesDisabled`, …) that can appear here.
+
+## Unity and Unreal differences
+
+The windows behave the same way. The small differences:
+
+|                                     | Unity                   | Unreal          |
+| ----------------------------------- | ----------------------- | --------------- |
+| Field labels                        | Beside the field        | Above the field |
+| **Top K**                           | Any value from 1        | 1–64            |
+| Buttons before the session is Ready | Enabled, but do nothing | Disabled        |
+| Selection after a script reload     | Restored                | Not restored    |
+
+## Related
+
+- [Save and Load Agent State](https://docs.tryllengine.com/v0.9/how-to/save-and-load-agent-state.html) — game memory next to dialog snapshots
+- [WriteToMemory node](https://docs.tryllengine.com/v0.9/reference/nodes/write-to-memory.html) — how agents write to these stores
+- [Retrieve node](https://docs.tryllengine.com/v0.9/reference/nodes/retrieve.html) — how agents read them
+- [Retrieval-Augmented Generation (RAG)](https://docs.tryllengine.com/v0.9/concepts/rag.html) — top-K and dense search
+- [Inspect Server Memory](https://docs.tryllengine.com/v0.9/how-to/inspect-server-memory.html) — the neighbouring editor window for RAM and VRAM
+- [Wire Protocol](https://docs.tryllengine.com/v0.9/reference/wire-protocol.html) — `EnsureMutableKb`, `MutableKbQuery`, `SaveGameMemory`, and the other store messages
 
 # Compare Dialog Variants in the Lab
 
@@ -4903,6 +5157,8 @@ ______________________________________________________________________
    - **A different agent** — set the variant's **Agent** to another `TryllAgentComponent` to compare a different context size or a whole different workflow. These are *structural* and cannot be changed as parameters (the server rejects that with `3006`), which is why the override editor doesn't list them and why swapping the agent is the way to do it.
 
    Switch back to **Dialog** to see results.
+
+   The **Variants (3)** tab. *Baseline* runs the default agent unchanged, *Variant2* overrides two retrieval parameters, and *Variant3* swaps the model. Unity shown; the Unreal panel has the same layout.
 
 Mixing the two
 
@@ -4946,11 +5202,15 @@ Word counting is language-specific
 
 ## Read the results
 
+Grid view after a 6-cell run — the run stat reads **6/6 cells · 46/48 turns clean · 2 check fail**. The amber cell failed `must contain "territorial"`. Unity shown; the Unreal panel has the same layout.
+
 - **Summary** (default) collapses each turn to one row with a coloured dot per sample — green (clean), amber (a check failed), red (error), open outline (not run, because an earlier turn in that column errored). Click a dot to expand and select that cell.
 - **Grid** shows every sample side by side per turn, full transcript style. Switch to it when you want to read several answers at once rather than scan verdicts.
 - Click any cell to open the shared **[turn inspector](https://docs.tryllengine.com/v0.9/reference/turn-inspector.html)** — route, timing, the node parameters that turn actually ran with, the rendered prompt and output, retrieval hits, the intent decision, and tool calls. Everything is attributed to the node that produced it, and clicking a node in the Route breadcrumb narrows the whole panel to that node; see the reference page for the full block list. Drag the pane's left edge to resize it (the width is remembered), or use the **Inspector** toolbar button to collapse it.
 - The Lab adds one block the other hosts do not have: **Checks**, listing each authored check for that step with its pass/fail.
 - **⇧-click two cells** (or the ⊙ in a column header) to pin them; the inspector's prompt section becomes a two-sided line diff — `+` green for lines only in the selected cell, `−` red for lines only in the other. The red side is usually the interesting one: it shows what a variant *dropped*. Each node is compared against its own counterpart, so a change in the generate prompt shows up there and nowhere else. If a node ran in one variant and not the other, it is called out as present on one side only — often the whole explanation for why the two answers differ.
+
+Selecting the failed cell opens it in the inspector. The Lab-only **Checks** block shows which check failed (amber ✕); the PIN A / PIN B slots at the top fill when you pin two columns.
 
 Turns without diagnostics
 
@@ -6949,7 +7209,7 @@ An exported dialog snapshot contains the completed interactions and the projecti
 
 **Experimental game memory (protocol v20).** Named mutable knowledge bases are a second snapshot: `SaveGameMemory(path, save_id)` / `LoadGameMemory(path, embed_timing, …)`. Callers supply `save_id`; the server stamps `saved_at_ms`. Whichever of dialog or memory is loaded second warns if the `save_id` values differ. `embed_timing` is required (`Now` or `Lazy`); first-use and eager loads re-embed every record.
 
-Unity: `TryllClient.SaveGameMemoryAsync` / `LoadGameMemoryAsync` (embed timing must be `Now` or `Lazy`), plus per-store `TryllMutableKb.ExportAsync` / `ImportAsync`. Unreal: `UTryllSubsystem::RequestSaveGameMemory` / `RequestLoadGameMemory` (same embed-timing rule), plus `FTryllMutableKb::Export` / `Import`. Inspect and mutate stores in **Window ▸ Tryll ▸ Knowledge** in Unity or **Window ▸ Tryll ▸ Tryll Knowledge** in Unreal (manual Refresh; the window never polls): stores and session save/load on the left, Filter or Query records in the center, write/delete/clear and per-store TMKB export/import on the right. Dialog file APIs are `TryllAgent.SaveDialog` / `LoadDialog` and they preserve `save_id` / `saved_at_ms` on the `TDLG` snapshot.
+Unity: `TryllClient.SaveGameMemoryAsync` / `LoadGameMemoryAsync` (embed timing must be `Now` or `Lazy`), plus per-store `TryllMutableKb.ExportAsync` / `ImportAsync`. Unreal: `UTryllSubsystem::RequestSaveGameMemory` / `RequestLoadGameMemory` (same embed-timing rule), plus `FTryllMutableKb::Export` / `Import`. Inspect and mutate stores in **Window ▸ Tryll ▸ Knowledge** in Unity or **Window ▸ Tryll ▸ Tryll Knowledge** in Unreal (manual Refresh; the window never polls): stores and session save/load on the left, Filter or Query records in the center, write/delete/clear and per-store TMKB export/import on the right — see [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html). Dialog file APIs are `TryllAgent.SaveDialog` / `LoadDialog` and they preserve `save_id` / `saved_at_ms` on the `TDLG` snapshot.
 
 Relative save paths join the process **save root**, not a per-session client field. An auto-launched Unity/Unreal sidecar passes `--allow-absolute-save-paths` and, in a player build, `--save-root` set to `persistentDataPath` / `ProjectSavedDir()` (or Project Settings **Save Data Folder** when you set one). The editor omits `--save-root` so `memory/game.tmkb` still lands under the authored storage folder. A standalone server sets `saves` in `server-config.json` and ignores any folder the game might wish it had sent; turn `saves.enabled` off to refuse disk writes. Absolute paths on the four file RPCs work only when the process allows them. See [Server Configuration → Saves](https://docs.tryllengine.com/v0.9/reference/server-configuration.html#saves).
 
@@ -12325,7 +12585,7 @@ To try a mood without code, use the agent component's **Voice Delivery** overrid
 
 ### Decide when to switch
 
-Tryll does not detect the mood for you: only the API switches the mode, and the language model cannot. Your game owns the character's emotional state, the same way it owns health or quest progress, and calls `SetAgentDeliveryMode` when it changes. Pass the same mood into the prompt too, so that *what* the character says matches *how* it sounds. See [Talking NPC → An NPC who shows emotion](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html#step-4-an-npc-who-shows-emotion).
+Tryll does not detect the mood for you: only the API switches the mode, and the language model cannot. Your game owns the character's emotional state, the same way it owns health or quest progress, and calls `SetAgentDeliveryMode` when it changes. Pass the same mood into the prompt too, so that *what* the character says matches *how* it sounds. See [Talking NPC → Emotions](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html#emotions).
 
 ## Example: the Unity demo
 
@@ -12368,6 +12628,7 @@ For the mental model behind this — the utterance lifecycle, push-to-talk vs. h
 
 - A connected session. No STT engine setting is needed: the STT model's catalog entry names its engine (Sherpa-ONNX).
 - An STT model on disk — download one in the editor Model Manager, or from code (`DownloadModel` in C++, `download_model` in Python, `RequestDownloadModel` in Unity and Unreal).
+- With the Unity or Unreal voice input component: a microphone. The component checks for one itself and reports when there is none; see [Handle a missing microphone](#handle-a-missing-microphone).
 
 Optionally, warm the STT engine up at session creation so the first utterance does not pay its start-up cost:
 
@@ -12630,6 +12891,15 @@ voice.Dispose();  // Unity (C#)
 ```
 Subsystem->RequestDestroyVoiceInput(Voice);  // Unreal (C++)
 ```
+
+## Handle a missing microphone
+
+The Unity `TryllVoiceInputComponent` and Unreal `UTryllVoiceInputComponent` check for a microphone before creating the voice input and before every `BeginUtterance`. When there is none they do not create the voice input (no STT model is loaded), log one `[Tryll]` warning naming the component, and report `MicrophoneUnavailable` (`4108`) from each call. Text chat is unaffected. Automatic creation (on enable / `BeginPlay`) only sets the status and logs, because it can run before your listeners are bound: read the status at start-up.
+
+- **Unity:** `OnError` receives the `TryllError`; `MicrophoneStatus` / `IsMicrophoneUnavailable` say why (`NoDevice`, `DeviceNotFound` for a `micDeviceName` that is not connected, or `CaptureFailed`).
+- **Unreal:** bind `OnErrorDetailed` to get the `FTryllError` with its code (`OnError` still fires with the message alone); `GetMicrophoneStatus` / `IsMicrophoneUnavailable` say why (`NoDevice` or `CaptureFailed`).
+
+Show "type to chat" while the microphone is unavailable. To recover, call `BeginUtterance` again on a user action or a timer: once a microphone is present it creates the voice input and reports `VoiceInputStarting` (`4109`) for that one call. In Unreal, if the default device's sample rate changes under a live voice input, `BeginUtterance` recreates the voice input with the new rate and also reports `4109`; the microphone status stays `Available`. Treat `4109` as "try again in a moment", not as an error to show.
 
 ## Next steps
 
@@ -17599,6 +17869,10 @@ Each exit is a structural string field on the node's params; its value names the
 ## First-use cost
 
 The first write to a new store embeds the record inline. Loading a GameMemory snapshot with `embed_timing=Now` batch-embeds every imported store before the response; `Lazy` installs text immediately and embeds on the first dense or hybrid search.
+
+## Related
+
+- [Inspect and Edit Knowledge Stores](https://docs.tryllengine.com/v0.9/how-to/inspect-knowledge-stores.html) — see what this node wrote, and query or edit the store in the editor
 # Reference
 
 # Reference
@@ -18167,6 +18441,8 @@ It is **one component with three hosts**. The same blocks, in the same order, wi
 | [Dialog Lab](https://docs.tryllengine.com/v0.9/how-to/compare-dialog-variants.html) | `Window ▸ Tryll ▸ Dialog Lab` / `Window ▸ Tryll ▸ Tryll Dialog Lab` | Click a grid cell         |
 
 This page is the reference for the panel itself. Each host page covers only what is specific to that host — how turns get selected there, and what else that window does.
+
+The turn inspector in its Chat host. Route, Timing, and Prompt & output start expanded; Parameters starts collapsed. Unity shown; the Unreal panel has the same layout.
 
 Prerequisite: diagnostics must be on
 
@@ -19475,7 +19751,7 @@ ______________________________________________________________________
 
 ## 4xxx — Inference / workflow
 
-Errors raised while a [turn](https://docs.tryllengine.com/v0.9/reference/glossary.html#turn) runs, by dedicated KV-cache operations, and by voice-input requests. A turn that fails is reported as `4001` `InferenceFailed` followed by a `TurnComplete` with `TurnStatus::Error`; the [agent](https://docs.tryllengine.com/v0.9/reference/glossary.html#agent) remains usable and can accept the next turn. The voice-input codes (4100–4107) are `ErrorResponse`s to the voice-input request itself: they do not end a turn and do not affect the agent.
+Errors raised while a [turn](https://docs.tryllengine.com/v0.9/reference/glossary.html#turn) runs, by dedicated KV-cache operations, and by voice-input requests. A turn that fails is reported as `4001` `InferenceFailed` followed by a `TurnComplete` with `TurnStatus::Error`; the [agent](https://docs.tryllengine.com/v0.9/reference/glossary.html#agent) remains usable and can accept the next turn. The voice-input codes (4100–4107) are `ErrorResponse`s to the voice-input request itself: they do not end a turn and do not affect the agent. `4108` and `4109` are raised by the client's voice input component before any request is sent.
 
 | Code   | Name                           | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -19490,10 +19766,12 @@ Errors raised while a [turn](https://docs.tryllengine.com/v0.9/reference/glossar
 | `4103` | `UtteranceInProgress`          | `BeginUtterance` was called while an utterance is already open on that handle.                                                                                                                                                                                                                                                                                                                                                             |
 | `4104` | `NoActiveUtterance`            | `EndUtterance` / `CancelUtterance` / audio push arrived with no utterance open.                                                                                                                                                                                                                                                                                                                                                            |
 | `4105` | `UtteranceTimeout`             | Defined but not currently returned. When an open utterance exceeds `max_utterance_ms`, the server flushes and closes it as if `EndUtterance` had been sent, without sending an error.                                                                                                                                                                                                                                                      |
-| `4107` | `InvalidHotwordsScore`         | `hotwords_score` was not a finite, non-negative number. It reaches the recognizer's beam search as a per-token bonus, where a NaN or an infinity produces garbled output with nothing in the log — so it is refused rather than clamped.                                                                                                                                                                                                   |
 | `4106` | `HotwordBiasDisabled`          | The voice input supplied a hotwords lexicon for a model this session turned hotword biasing **off** on. Refused rather than ignored, so a lexicon never silently does nothing. Either drop the lexicon or set that model's hotword bias to on.                                                                                                                                                                                             |
+| `4107` | `InvalidHotwordsScore`         | `hotwords_score` was not a finite, non-negative number. It reaches the recognizer's beam search as a per-token bonus, where a NaN or an infinity produces garbled output with nothing in the log — so it is refused rather than clamped.                                                                                                                                                                                                   |
+| `4108` | `MicrophoneUnavailable`        | **Client-side only; the server never sends it.** The voice input component found no usable microphone: none present, the configured device is not connected, or its capture stream would not open. `message` names the cause; the component's microphone status says the same.                                                                                                                                                             |
+| `4109` | `VoiceInputStarting`           | **Client-side only; the server never sends it.** `BeginUtterance` did not start because the component is (re)creating its voice input: a microphone appeared after creation was skipped, or (Unreal) the default device's sample rate changed under a live voice input. Not a failure; try again shortly.                                                                                                                                  |
 
-**Recovery:** for `4001` during a turn, the turn ends with the `TurnComplete` that follows; surface the error to the user or retry the user's message. For `4004` / `4005`, the failed request is a dedicated KV-cache operation rather than a turn: keep the agent, inspect the message, and retry only after resolving the underlying resource or backend issue. For `4100`–`4107`, only the voice-input request failed: fix the model, audio format, handle, or hotword settings named in `message` and retry that request.
+**Recovery:** for `4001` during a turn, the turn ends with the `TurnComplete` that follows; surface the error to the user or retry the user's message. For `4004` / `4005`, the failed request is a dedicated KV-cache operation rather than a turn: keep the agent, inspect the message, and retry only after resolving the underlying resource or backend issue. For `4100`–`4107`, only the voice-input request failed: fix the model, audio format, handle, or hotword settings named in `message` and retry that request. For `4108`, keep text input working and offer voice again later: the next `BeginUtterance` re-checks the microphone and recreates the voice input once one is present. For `4109`, just call `BeginUtterance` again a moment later.
 
 ______________________________________________________________________
 
@@ -20118,7 +20396,11 @@ Errors throw `TryllError`. See the [C++ client reference](https://docs.tryllengi
 
 Create a **Voice Profile** asset (**Create → Tryll → Voice Profile**) and assign it to the **Voice** field of the `TryllAgentComponent`. Set `TryllAgentComponent.Voice` from code before the agent is created for characters spawned at runtime. At runtime, call `SetVoiceAsync` and `SetDeliveryModeAsync` on the component or on `TryllAgent`. See the [Unity client reference](https://docs.tryllengine.com/v0.9/reference/client-api/unity/index.html).
 
+A voice-cloning profile: each delivery mode swaps in its own `reference_voice` clip.
+
 Create a **Tryll Voice Profile** data asset (`UTryllVoiceProfile`) and assign it to the **Voice Profile** property of the `UTryllAgentComponent`. At runtime, call **Set Voice** and **Set Delivery Mode**. See the [Unreal Blueprint catalog](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/blueprint-catalog.html).
+
+A multi-speaker profile. The line under the model lists what Supertonic 3 supports, so **Speaker Id**, **Speed**, and **Lang** appear, there is no **Reference Voice**, and delivery modes offer only **Speed Scale**.
 
 ## Diagnostics
 
@@ -23490,7 +23772,7 @@ public enum TryllErrorCode
     // Agent: 3001–3022 (3012 AgentNotPaused, 3013–3015 Variables,
     //        3016 InvalidToolResults, 3018–3022 Dialog snapshots)
     // Inference: 4001–4005 (4004–4005 KV cache)
-    // VoiceInput / STT: 4100–4107
+    // VoiceInput / STT: 4100–4109 (4108–4109 are raised client-side)
     // Protocol: 5001–5006 (5004 ProtocolVersionMismatch is raised client-side)
     // Download / models: 6001–6005, 6007–6009
     // StringStorage: 7001–7004
@@ -23821,6 +24103,8 @@ ______________________________________________________________________
 
 ## Inspector fields
 
+The component with a workflow assigned. Under **Variable Overrides**, the workflow's `Advanced` variable is overridden (left checkbox ticked) to `true`.
+
 | Field                                     | Type                                                                                                         | Default           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `WorkflowAsset`                           | `TryllWorkflowAsset`                                                                                         | —                 | **Required.** Workflow graph asset to use. `CreateAgent` fails if this is unset. Author the graph as a [`TryllWorkflowAsset`](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-workflow-asset.html) (**Create ▸ Tryll ▸ Workflow Asset**). To build a graph in code without a component, use [`TryllGraphBuilder`](https://docs.tryllengine.com/v0.9/reference/client-api/unity/index.html#tryllgraphbuilder) and [`TryllClient.RequestCreateAgentAsync`](https://docs.tryllengine.com/v0.9/reference/client-api/unity/tryll-client.html). |
@@ -24042,7 +24326,9 @@ ______________________________________________________________________
 
 Project-level settings for the Tryll Client package. Persisted to `Assets/Resources/TryllRuntimeSettings.asset` (created automatically on first access).
 
-Edit via **Project Settings → Tryll Client** (registered by `TryllRuntimeSettingsProvider`).
+Edit via **Project Settings → Tryll Client** (registered by `TryllRuntimeSettingsProvider`). Selecting the asset itself shows the same fields in the Inspector:
+
+The settings asset with the bundled server auto-launched on the Vulkan backend at `127.0.0.1:9100`.
 
 ______________________________________________________________________
 
@@ -24403,6 +24689,8 @@ ______________________________________________________________________
 
 ## Inspector
 
+A cloning-model profile with one reference clip per emotion. Qwen3-TTS has no speaker presets, so no **Speaker** field is shown.
+
 The custom Inspector shows only what the chosen model can use, read from the catalog's TTS capabilities:
 
 - **Speaker** is a preset dropdown for models with named presets (Orpheus, Maya1), a slider for multi-speaker models (Supertonic 3), and hidden for single-speaker models.
@@ -24501,6 +24789,11 @@ ______________________________________________________________________
 public TryllVoiceInput Voice       { get; }
 public bool HasVoiceInput          { get; }
 public bool IsUtteranceActive      { get; }
+
+// Microphone check (see "No microphone" below)
+public TryllMicrophoneStatus MicrophoneStatus { get; }  // Unknown, Available, NoDevice, DeviceNotFound, CaptureFailed
+public string MicrophoneStatusMessage         { get; }  // why it is unavailable; empty otherwise
+public bool IsMicrophoneUnavailable           { get; }  // NoDevice, DeviceNotFound or CaptureFailed
 ```
 
 ______________________________________________________________________
@@ -24524,15 +24817,17 @@ public void CancelUtterance();
 
 `CancelUtterance` discards the current utterance without producing a transcript.
 
+`CreateVoiceInput` and `BeginUtterance` both check the microphone first. Without one they raise `OnError` with `MicrophoneUnavailable` (`4108`) and send nothing to the server.
+
 ______________________________________________________________________
 
 ## Events
 
-| Event                 | Signature                      | Description                                                                                     |
-| --------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `OnTranscriptUpdate`  | `UnityEvent<TranscriptUpdate>` | Fired for each transcript update (partial and final). Check `update.Kind` for `UtteranceFinal`. |
-| `OnError`             | `UnityEvent<TryllError>`       | Fired on protocol-level errors.                                                                 |
-| `OnVoiceInputCreated` | `UnityEvent`                   | Fired when the VoiceInput handle is created.                                                    |
+| Event                 | Signature                      | Description                                                                                                   |
+| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `OnTranscriptUpdate`  | `UnityEvent<TranscriptUpdate>` | Fired for each transcript update (partial and final). Check `update.Kind` for `UtteranceFinal`.               |
+| `OnError`             | `UnityEvent<TryllError>`       | Fired on protocol-level errors, and with `MicrophoneUnavailable` (`4108`) when there is no usable microphone. |
+| `OnVoiceInputCreated` | `UnityEvent`                   | Fired when the VoiceInput handle is created.                                                                  |
 
 ______________________________________________________________________
 
@@ -24541,6 +24836,22 @@ ______________________________________________________________________
 - Microphone starts on `BeginUtterance` and stops when the `UtteranceFinal` arrives (or on `EndUtterance` / `CancelUtterance`). Each turn closes on a non-empty speech final; begin a new utterance for the next turn.
 - A coroutine pumps small PCM chunks at `pumpIntervalMs` cadence into the server's audio pipeline.
 - The device-native sample rate is declared to the server; the server resamples to the STT model's expected rate.
+
+### No microphone
+
+Before creating the voice input and before every utterance, the component checks `Microphone.devices`:
+
+| `MicrophoneStatus` | Cause                                                                                                                                     |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `NoDevice`         | The system reports no recording device.                                                                                                   |
+| `DeviceNotFound`   | `micDeviceName` names a device that is not connected. The message lists the devices that are.                                             |
+| `CaptureFailed`    | The device is listed but `Microphone.Start` could not open it (in use by another app, or blocked by Windows microphone privacy settings). |
+
+In each case the voice input is not created, so no STT model is loaded; one `[Tryll]` warning is logged per distinct problem; and every `CreateVoiceInput` / `BeginUtterance` raises `OnError` with `MicrophoneUnavailable` (`4108`) and the same message. Text chat on the agent is unaffected.
+
+The automatic create (`createOnEnable`) is the exception: it can run inside `OnEnable`, before other scripts subscribe to `OnError`, so it only sets the status and logs. Read `MicrophoneStatus` at start-up rather than waiting for an error.
+
+Read `IsMicrophoneUnavailable` to show "type to chat" instead of a listening prompt. Calling `BeginUtterance` again is how to recover: it re-reads the device list and, once a microphone is present, creates the voice input and reports `VoiceInputStarting` (`4109`) for that one call: not a failure, just begin again a moment later. Re-check on a user action or a timer, not every frame.
 
 ______________________________________________________________________
 
@@ -25019,15 +25330,18 @@ The component Details panel also exposes declaration-driven **Variable Overrides
 
 On `UTryllVoiceInputComponent`. Add one to an actor (optionally alongside a `UTryllAgentComponent`) and download an STT model in the Model Manager. See [`UTryllVoiceInputComponent`](https://docs.tryllengine.com/v0.9/tryll-unreal/class_u_tryll_voice_input_component.html) for the full property list.
 
-| Node                    | Kind     | Inputs                                              | Outputs | Notes                                                                                                                             |
-| ----------------------- | -------- | --------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| **Create Voice Input**  | Callable | —                                                   | —       | Creates the server-side STT handle. Fires `OnVoiceInputCreated`. Normally automatic when `bCreateOnConnect` is true.              |
-| **Destroy Voice Input** | Callable | —                                                   | —       | Releases the server-side STT handle.                                                                                              |
-| **Begin Utterance**     | Callable | `Agent Override` (`UTryllAgentComponent`, optional) | —       | Opens an utterance and starts mic capture. The final transcript routes to the override, else `TargetAgent`, else transcribe-only. |
-| **End Utterance**       | Callable | —                                                   | —       | Commits the utterance (push-to-talk release).                                                                                     |
-| **Cancel Utterance**    | Callable | —                                                   | —       | Drops the utterance without producing a transcript.                                                                               |
-| **Has Voice Input**     | Pure     | —                                                   | `bool`  | True once the handle exists.                                                                                                      |
-| **Is Utterance Active** | Pure     | —                                                   | `bool`  | True while an utterance is open.                                                                                                  |
+| Node                              | Kind     | Inputs                                              | Outputs                  | Notes                                                                                                                              |
+| --------------------------------- | -------- | --------------------------------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Create Voice Input**            | Callable | —                                                   | —                        | Creates the server-side STT handle. Fires `OnVoiceInputCreated`. Normally automatic when `bCreateOnConnect` is true.               |
+| **Destroy Voice Input**           | Callable | —                                                   | —                        | Releases the server-side STT handle.                                                                                               |
+| **Begin Utterance**               | Callable | `Agent Override` (`UTryllAgentComponent`, optional) | —                        | Opens an utterance and starts mic capture. The final transcript routes to the override, else `TargetAgent`, else transcribe-only.  |
+| **End Utterance**                 | Callable | —                                                   | —                        | Commits the utterance (push-to-talk release).                                                                                      |
+| **Cancel Utterance**              | Callable | —                                                   | —                        | Drops the utterance without producing a transcript.                                                                                |
+| **Has Voice Input**               | Pure     | —                                                   | `bool`                   | True once the handle exists.                                                                                                       |
+| **Is Utterance Active**           | Pure     | —                                                   | `bool`                   | True while an utterance is open.                                                                                                   |
+| **Get Microphone Status**         | Pure     | —                                                   | `ETryllMicrophoneStatus` | Result of the last microphone check: `Unknown`, `Available`, `NoDevice` or `CaptureFailed`.                                        |
+| **Get Microphone Status Message** | Pure     | —                                                   | `FString`                | Why the microphone is unavailable; empty when it is not.                                                                           |
+| **Is Microphone Unavailable**     | Pure     | —                                                   | `bool`                   | True for `NoDevice` or `CaptureFailed`. Show "type to chat"; **Begin Utterance** re-checks and recovers once a microphone appears. |
 
 ## Events — `Tryll|Events` (on `UTryllAgentComponent`)
 
@@ -25114,11 +25428,12 @@ See [Add Voice Output to an Agent](https://docs.tryllengine.com/v0.9/how-to/add-
 
 ## Events — `Tryll|Events` (on `UTryllVoiceInputComponent`)
 
-| Event                      | Payload                             | Fires when                                                                                                                                        |
-| -------------------------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **On Transcript Update**   | `Update` (`FTryllTranscriptUpdate`) | Each transcript update — partial and final. Read `Update.Kind` (`SpeechStart` / `Partial` / `SegmentFinal` / `UtteranceFinal`) and `Update.Text`. |
-| **On Error**               | `ErrorMessage` (`FString`)          | A protocol-level voice error.                                                                                                                     |
-| **On Voice Input Created** | —                                   | The STT handle has been created.                                                                                                                  |
+| Event                      | Payload                             | Fires when                                                                                                                                                                                   |
+| -------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **On Transcript Update**   | `Update` (`FTryllTranscriptUpdate`) | Each transcript update — partial and final. Read `Update.Kind` (`SpeechStart` / `Partial` / `SegmentFinal` / `UtteranceFinal`) and `Update.Text`.                                            |
+| **On Error**               | `ErrorMessage` (`FString`)          | Any voice error, message only.                                                                                                                                                               |
+| **On Error Detailed**      | `Error` (`FTryllError`)             | Fires with **On Error**, carrying the code — e.g. `MicrophoneUnavailable` (`4108`) when there is no usable microphone, `VoiceInputStarting` (`4109`) while voice input is being (re)created. |
+| **On Voice Input Created** | —                                   | The STT handle has been created.                                                                                                                                                             |
 
 See [Use Voice Input](https://docs.tryllengine.com/v0.9/how-to/use-voice-input.html) and [`UTryllVoiceInputComponent`](https://docs.tryllengine.com/v0.9/tryll-unreal/class_u_tryll_voice_input_component.html).
 

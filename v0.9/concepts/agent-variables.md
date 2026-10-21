@@ -27,9 +27,13 @@ A `TryllAgentComponent` may override an asset's declared **initial value** (not 
 
 While the component has a live agent (Play Mode or the Editor **Tryll Chat** window), changing an override updates the live `Agent.Variables` mirror immediately; the server sees the new value on the next deferred flush (before `SendMessage` / `Resume` / `ChangeParams`), or immediately if you click **Flush Now** in the Inspector.
 
+The workflow declares one variable, `Advanced`. This component overrides its initial value (left checkbox ticked) to `true`.
+
 Declare on the workflow asset (`UTryllWorkflowAsset::Variables`). A component's `VariableOverrides` follows the same Material-Instance pattern as Unity: the Details panel lists every declared variable as an optional row (`[override] name [value]`). Stale/duplicate serialized entries appear in a warning group and are ignored at `CreateAgent`.
 
 While the component has a live agent (PIE, or an editor-preview agent attached by **Window → Tryll → Tryll Chat**), changing an override updates the local `FTryllAgentVariables` mirror immediately. The wire flush stays deferred until the next `SendMessage` / `Resume` / `ChangeParams`, or run **Flush Now** under *Live Agent — Variables*. Unchecking an override assigns the **workflow declaration default** (not `Reset()`, which would restore the CreateAgent-time merged initial).
+
+The same component in Unreal. `Advanced` is not overridden (checkbox clear), so the row shows the workflow default, `false`. *Live Agent — Variables* reads **No live agent** until PIE or Tryll Chat creates one.
 
 ```
 #include <tryll/TryllClient.h>

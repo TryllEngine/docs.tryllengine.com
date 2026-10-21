@@ -1262,6 +1262,8 @@
       
         
       
+        
+      
     
     
     
@@ -1689,6 +1691,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8919,8 +8956,8 @@ configuration area at the top:</p>
 </tbody>
 </table>
 <p><figure markdown="span">
-  <img alt="Tryll Chat Window in Unity" src="../assets/images/agent-chat-window-unity.png" width="480" />
-  <figcaption>Chat Window after a session is running — status shows <strong>Ready</strong>.</figcaption>
+  <img alt="Tryll Chat Window in Unity: configuration fields at the top, Stop button and green Ready status, and a three-turn conversation with a shop agent" src="../assets/images/chat-ready-conversation-unity.png" />
+  <figcaption>Chat Window after a session is running — status shows <strong>Ready</strong>. Voice Input is set to <strong>Chat</strong>, so the STT Model and Mic Device rows appear.</figcaption>
 </figure></p>
 <p>Chat creates its own editor-owned agent from the component's resolved graph and
 variable overrides, snapshotted at <strong>Start</strong>. Editing the component's Variable
@@ -9003,6 +9040,11 @@ the <code>TryllAgentComponent</code>'s GameObject / actor name.</p>
 <p>Chat hosts the shared <strong><a href="../reference/turn-inspector.html">turn inspector</a></strong> in a right-hand
 pane (visible by default; toggle with <strong>Inspector ▸ / ◂</strong>). Resize and collapse state are
 remembered for Chat independently of Dialog Lab and the Agent Log.</p>
+<figure>
+  <img alt="Chat Window with the last assistant answer selected and the Turn diagnostics pane open on the right, showing Route, Timing, and Prompt &amp; output" src="../assets/images/chat-inspector-open-unity.png" />
+<br />
+<figcaption>The selected answer (accent border) is inspected on the right: it took a <strong>ToolCall</strong> → <strong>Generate</strong> route. Unity shown; the Unreal panel has the same layout.</figcaption>
+</figure>
 <p>That reference page covers the panel itself — route, timing, parameters, prompt &amp; output,
 retrieval, tool calls, and raw JSON. What is specific to Chat is how you select a turn:</p>
 <ul>

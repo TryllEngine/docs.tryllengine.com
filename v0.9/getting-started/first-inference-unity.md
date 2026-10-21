@@ -133,17 +133,22 @@ ______________________________________________________________________
 ## Step 5 — Create a workflow asset and set up the scene
 
 1. In the Project window, right-click → **Create → Tryll → Workflow Asset**. Name it `DemoWorkflow`.
-1. Select `DemoWorkflow`. In the Inspector, expand **Graph**:
+
+   The **Create → Tryll** submenu (the same menu as **Assets → Create → Tryll**).
+
+   2. Select `DemoWorkflow`. In the Inspector, expand **Graph**:
+
    - Under **Nodes**, click **+** to add one entry.
    - Set **Name** = `answer`.
    - Click the **Params** type picker (shows `<null>` by default) and select **Generate** from the dropdown. The node's parameter fields expand below it — leave them all at their defaults; the **Default Exit** field stays empty, which routes the turn to END.
    - Set **Start Node** = `answer`.
    - Set **Default Model Name** using the dropdown — it now lists the models you registered in the Model Manager. Pick the one you downloaded in Step 4.
-1. Create a new empty **GameObject** — call it `TryllDemo`.
-1. Add a **Tryll Agent Component** (`Add Component → Tryll → Tryll Agent Component`).
-1. Assign `DemoWorkflow` to the component's **Workflow Asset** field.
-1. **Un-check Auto Create On Connect** — this tutorial wires the lifecycle explicitly so you control exactly when the agent is created.
-1. Create a C# script `TryllDemo.cs` and attach it to the same GameObject:
+
+   3. Create a new empty **GameObject** — call it `TryllDemo`.
+   1. Add a **Tryll Agent Component** (`Add Component → Tryll → Tryll Agent Component`).
+   1. Assign `DemoWorkflow` to the component's **Workflow Asset** field.
+   1. **Un-check Auto Create On Connect** — this tutorial wires the lifecycle explicitly so you control exactly when the agent is created.
+   1. Create a C# script `TryllDemo.cs` and attach it to the same GameObject:
 
 ```
 using UnityEngine;

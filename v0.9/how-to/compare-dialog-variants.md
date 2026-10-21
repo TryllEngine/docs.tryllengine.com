@@ -26,6 +26,8 @@ ______________________________________________________________________
 
    Switch back to **Dialog** to see results.
 
+   The **Variants (3)** tab. *Baseline* runs the default agent unchanged, *Variant2* overrides two retrieval parameters, and *Variant3* swaps the model. Unity shown; the Unreal panel has the same layout.
+
 Mixing the two
 
 A variant with both an agent *and* overrides applies the overrides to that agent's workflow. If an override names a node the new agent doesn't have, the tab flags it before you run — it won't be applied, and it won't be silently discarded either.
@@ -68,11 +70,15 @@ Word counting is language-specific
 
 ## Read the results
 
+Grid view after a 6-cell run — the run stat reads **6/6 cells · 46/48 turns clean · 2 check fail**. The amber cell failed `must contain "territorial"`. Unity shown; the Unreal panel has the same layout.
+
 - **Summary** (default) collapses each turn to one row with a coloured dot per sample — green (clean), amber (a check failed), red (error), open outline (not run, because an earlier turn in that column errored). Click a dot to expand and select that cell.
 - **Grid** shows every sample side by side per turn, full transcript style. Switch to it when you want to read several answers at once rather than scan verdicts.
 - Click any cell to open the shared **[turn inspector](https://docs.tryllengine.com/v0.9/reference/turn-inspector.html)** — route, timing, the node parameters that turn actually ran with, the rendered prompt and output, retrieval hits, the intent decision, and tool calls. Everything is attributed to the node that produced it, and clicking a node in the Route breadcrumb narrows the whole panel to that node; see the reference page for the full block list. Drag the pane's left edge to resize it (the width is remembered), or use the **Inspector** toolbar button to collapse it.
 - The Lab adds one block the other hosts do not have: **Checks**, listing each authored check for that step with its pass/fail.
 - **⇧-click two cells** (or the ⊙ in a column header) to pin them; the inspector's prompt section becomes a two-sided line diff — `+` green for lines only in the selected cell, `−` red for lines only in the other. The red side is usually the interesting one: it shows what a variant *dropped*. Each node is compared against its own counterpart, so a change in the generate prompt shows up there and nowhere else. If a node ran in one variant and not the other, it is called out as present on one side only — often the whole explanation for why the two answers differ.
+
+Selecting the failed cell opens it in the inspector. The Lab-only **Checks** block shows which check failed (amber ✕); the PIN A / PIN B slots at the top fill when you pin two columns.
 
 Turns without diagnostics
 

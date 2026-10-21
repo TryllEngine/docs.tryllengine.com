@@ -27,6 +27,8 @@ Opening the window starts capture: it subscribes to the internal client observer
 
 ## Layout
 
+Agent Log in **Curated · Coalesce · Collapse Completed** mode. One turn is expanded, and its received row is open in the inspector. Unity shown; the Unreal panel has the same layout.
+
 | Pane           | Role                                                                                          |
 | -------------- | --------------------------------------------------------------------------------------------- |
 | **Agent list** | **All Agents** (first entry) plus every known agent. Selecting an entry filters the timeline. |

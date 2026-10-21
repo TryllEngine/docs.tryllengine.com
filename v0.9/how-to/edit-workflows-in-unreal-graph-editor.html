@@ -1262,6 +1262,8 @@
       
         
       
+        
+      
     
     
     
@@ -1689,6 +1691,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8892,6 +8929,11 @@ opens with two panels:</p>
 </table>
 <p>A toolbar across the top adds <strong>Validate</strong> and <strong>Auto Layout</strong> buttons and a
 live error/warning count, alongside the usual <strong>Save</strong>.</p>
+<figure>
+  <img alt="Unreal Tryll Workflow asset editor: toolbar with Validate, Auto Layout, and &quot;No issues&quot;; the node graph from Entry through Branch, rewrite, two Retrieve nodes, compose, answer, and reject; and the Details panel showing workflow settings" src="../assets/images/graph-overview-unreal.png" />
+<br />
+<figcaption>The <strong>Entry</strong> node is selected, so Details shows the workflow-level settings: <strong>Default Model Name</strong>, the text table, <strong>Variables</strong>, and <strong>Check texts</strong>. The toolbar reads <strong>No issues</strong>.</figcaption>
+</figure>
 <h2 id="step-2-add-nodes">Step 2 — add nodes<a class="headerlink" href="#step-2-add-nodes" title="Permanent link">&para;</a></h2>
 <p>Right-click an empty spot on the canvas and pick a type from the <strong>Add Node</strong>
 menu (Generate, ToolCall, Retrieve, CannedResponse, …). The menu lists every
@@ -8931,6 +8973,11 @@ first, then system prompt, model, sampling, storage paths, and so on, with the
 same dropdowns and pickers as the regular Details view. Exit fields are
 intentionally <strong>hidden here</strong>: you set routing by dragging wires, not by typing
 node names.</p>
+<figure>
+  <img alt="The same graph with the rewrite Generate node selected; Details shows Node Name, Model Name, Context Size, System Prompt Localized, and the System Prompt text" src="../assets/images/graph-nodeselected-unreal.png" />
+<br />
+<figcaption>The <code>rewrite</code> node selected. Details lists its <strong>Tryll Generate Params</strong>; there is no exit field, because the wire to <code>retrieve_hybrid</code> is the routing.</figcaption>
+</figure>
 <p>Select the <strong>Entry</strong> node to set the workflow's <strong>Default Model Name</strong> — the
 fallback model for any <code>Generate</code>-family node that does not specify its own.</p>
 <h3 id="slot-inputs">Slot inputs<a class="headerlink" href="#slot-inputs" title="Permanent link">&para;</a></h3>

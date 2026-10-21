@@ -8,6 +8,7 @@ For the mental model behind this — the utterance lifecycle, push-to-talk vs. h
 
 - A connected session. No STT engine setting is needed: the STT model's catalog entry names its engine (Sherpa-ONNX).
 - An STT model on disk — download one in the editor Model Manager, or from code (`DownloadModel` in C++, `download_model` in Python, `RequestDownloadModel` in Unity and Unreal).
+- With the Unity or Unreal voice input component: a microphone. The component checks for one itself and reports when there is none; see [Handle a missing microphone](#handle-a-missing-microphone).
 
 Optionally, warm the STT engine up at session creation so the first utterance does not pay its start-up cost:
 
@@ -270,6 +271,15 @@ voice.Dispose();  // Unity (C#)
 ```
 Subsystem->RequestDestroyVoiceInput(Voice);  // Unreal (C++)
 ```
+
+## Handle a missing microphone
+
+The Unity `TryllVoiceInputComponent` and Unreal `UTryllVoiceInputComponent` check for a microphone before creating the voice input and before every `BeginUtterance`. When there is none they do not create the voice input (no STT model is loaded), log one `[Tryll]` warning naming the component, and report `MicrophoneUnavailable` (`4108`) from each call. Text chat is unaffected. Automatic creation (on enable / `BeginPlay`) only sets the status and logs, because it can run before your listeners are bound: read the status at start-up.
+
+- **Unity:** `OnError` receives the `TryllError`; `MicrophoneStatus` / `IsMicrophoneUnavailable` say why (`NoDevice`, `DeviceNotFound` for a `micDeviceName` that is not connected, or `CaptureFailed`).
+- **Unreal:** bind `OnErrorDetailed` to get the `FTryllError` with its code (`OnError` still fires with the message alone); `GetMicrophoneStatus` / `IsMicrophoneUnavailable` say why (`NoDevice` or `CaptureFailed`).
+
+Show "type to chat" while the microphone is unavailable. To recover, call `BeginUtterance` again on a user action or a timer: once a microphone is present it creates the voice input and reports `VoiceInputStarting` (`4109`) for that one call. In Unreal, if the default device's sample rate changes under a live voice input, `BeginUtterance` recreates the voice input with the new rate and also reports `4109`; the microphone status stays `Available`. Treat `4109` as "try again in a moment", not as an error to show.
 
 ## Next steps
 

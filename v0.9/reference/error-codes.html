@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -9225,7 +9262,8 @@ reported as <code>4001</code> <code>InferenceFailed</code> followed by a <code>T
 <code>TurnStatus::Error</code>; the <a href="glossary.html#agent">agent</a> remains usable and
 can accept the next turn. The voice-input codes (4100–4107) are
 <code>ErrorResponse</code>s to the voice-input request itself: they do not end a
-turn and do not affect the agent.</p>
+turn and do not affect the agent. <code>4108</code> and <code>4109</code> are raised by the
+client's voice input component before any request is sent.</p>
 <table>
 <thead>
 <tr>
@@ -9291,14 +9329,24 @@ turn and do not affect the agent.</p>
 <td>Defined but not currently returned. When an open utterance exceeds <code>max_utterance_ms</code>, the server flushes and closes it as if <code>EndUtterance</code> had been sent, without sending an error.</td>
 </tr>
 <tr>
+<td style="text-align: right;"><code>4106</code></td>
+<td><code>HotwordBiasDisabled</code></td>
+<td>The voice input supplied a hotwords lexicon for a model this session turned hotword biasing <strong>off</strong> on. Refused rather than ignored, so a lexicon never silently does nothing. Either drop the lexicon or set that model's hotword bias to on.</td>
+</tr>
+<tr>
 <td style="text-align: right;"><code>4107</code></td>
 <td><code>InvalidHotwordsScore</code></td>
 <td><code>hotwords_score</code> was not a finite, non-negative number. It reaches the recognizer's beam search as a per-token bonus, where a NaN or an infinity produces garbled output with nothing in the log — so it is refused rather than clamped.</td>
 </tr>
 <tr>
-<td style="text-align: right;"><code>4106</code></td>
-<td><code>HotwordBiasDisabled</code></td>
-<td>The voice input supplied a hotwords lexicon for a model this session turned hotword biasing <strong>off</strong> on. Refused rather than ignored, so a lexicon never silently does nothing. Either drop the lexicon or set that model's hotword bias to on.</td>
+<td style="text-align: right;"><code>4108</code></td>
+<td><code>MicrophoneUnavailable</code></td>
+<td><strong>Client-side only; the server never sends it.</strong> The voice input component found no usable microphone: none present, the configured device is not connected, or its capture stream would not open. <code>message</code> names the cause; the component's microphone status says the same.</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>4109</code></td>
+<td><code>VoiceInputStarting</code></td>
+<td><strong>Client-side only; the server never sends it.</strong> <code>BeginUtterance</code> did not start because the component is (re)creating its voice input: a microphone appeared after creation was skipped, or (Unreal) the default device's sample rate changed under a live voice input. Not a failure; try again shortly.</td>
 </tr>
 </tbody>
 </table>
@@ -9309,7 +9357,10 @@ dedicated KV-cache operation rather than a turn: keep the agent, inspect the
 message, and retry only after resolving the underlying resource or backend
 issue. For <code>4100</code>–<code>4107</code>, only the voice-input request failed: fix the
 model, audio format, handle, or hotword settings named in <code>message</code> and
-retry that request.</p>
+retry that request. For <code>4108</code>, keep text input working and offer voice
+again later: the next <code>BeginUtterance</code> re-checks the microphone and
+recreates the voice input once one is present. For <code>4109</code>, just call
+<code>BeginUtterance</code> again a moment later.</p>
 <hr />
 <h2 id="5xxx-protocol-framing">5xxx — Protocol / framing<a class="headerlink" href="#5xxx-protocol-framing" title="Permanent link">&para;</a></h2>
 <p>Most 5xxx codes mean the server could not make sense of a frame the

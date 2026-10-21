@@ -34,6 +34,11 @@ ______________________________________________________________________
 public TryllVoiceInput Voice       { get; }
 public bool HasVoiceInput          { get; }
 public bool IsUtteranceActive      { get; }
+
+// Microphone check (see "No microphone" below)
+public TryllMicrophoneStatus MicrophoneStatus { get; }  // Unknown, Available, NoDevice, DeviceNotFound, CaptureFailed
+public string MicrophoneStatusMessage         { get; }  // why it is unavailable; empty otherwise
+public bool IsMicrophoneUnavailable           { get; }  // NoDevice, DeviceNotFound or CaptureFailed
 ```
 
 ______________________________________________________________________
@@ -57,15 +62,17 @@ public void CancelUtterance();
 
 `CancelUtterance` discards the current utterance without producing a transcript.
 
+`CreateVoiceInput` and `BeginUtterance` both check the microphone first. Without one they raise `OnError` with `MicrophoneUnavailable` (`4108`) and send nothing to the server.
+
 ______________________________________________________________________
 
 ## Events
 
-| Event                 | Signature                      | Description                                                                                     |
-| --------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `OnTranscriptUpdate`  | `UnityEvent<TranscriptUpdate>` | Fired for each transcript update (partial and final). Check `update.Kind` for `UtteranceFinal`. |
-| `OnError`             | `UnityEvent<TryllError>`       | Fired on protocol-level errors.                                                                 |
-| `OnVoiceInputCreated` | `UnityEvent`                   | Fired when the VoiceInput handle is created.                                                    |
+| Event                 | Signature                      | Description                                                                                                   |
+| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `OnTranscriptUpdate`  | `UnityEvent<TranscriptUpdate>` | Fired for each transcript update (partial and final). Check `update.Kind` for `UtteranceFinal`.               |
+| `OnError`             | `UnityEvent<TryllError>`       | Fired on protocol-level errors, and with `MicrophoneUnavailable` (`4108`) when there is no usable microphone. |
+| `OnVoiceInputCreated` | `UnityEvent`                   | Fired when the VoiceInput handle is created.                                                                  |
 
 ______________________________________________________________________
 
@@ -74,6 +81,22 @@ ______________________________________________________________________
 - Microphone starts on `BeginUtterance` and stops when the `UtteranceFinal` arrives (or on `EndUtterance` / `CancelUtterance`). Each turn closes on a non-empty speech final; begin a new utterance for the next turn.
 - A coroutine pumps small PCM chunks at `pumpIntervalMs` cadence into the server's audio pipeline.
 - The device-native sample rate is declared to the server; the server resamples to the STT model's expected rate.
+
+### No microphone
+
+Before creating the voice input and before every utterance, the component checks `Microphone.devices`:
+
+| `MicrophoneStatus` | Cause                                                                                                                                     |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `NoDevice`         | The system reports no recording device.                                                                                                   |
+| `DeviceNotFound`   | `micDeviceName` names a device that is not connected. The message lists the devices that are.                                             |
+| `CaptureFailed`    | The device is listed but `Microphone.Start` could not open it (in use by another app, or blocked by Windows microphone privacy settings). |
+
+In each case the voice input is not created, so no STT model is loaded; one `[Tryll]` warning is logged per distinct problem; and every `CreateVoiceInput` / `BeginUtterance` raises `OnError` with `MicrophoneUnavailable` (`4108`) and the same message. Text chat on the agent is unaffected.
+
+The automatic create (`createOnEnable`) is the exception: it can run inside `OnEnable`, before other scripts subscribe to `OnError`, so it only sets the status and logs. Read `MicrophoneStatus` at start-up rather than waiting for an error.
+
+Read `IsMicrophoneUnavailable` to show "type to chat" instead of a listening prompt. Calling `BeginUtterance` again is how to recover: it re-reads the device list and, once a microphone is present, creates the voice input and reports `VoiceInputStarting` (`4109`) for that one call: not a failure, just begin again a moment later. Re-check on a user action or a timer, not every frame.
 
 ______________________________________________________________________
 

@@ -16,7 +16,7 @@
         <link rel="prev" href="use-agent-log.html">
       
       
-        <link rel="next" href="compare-dialog-variants.html">
+        <link rel="next" href="inspect-knowledge-stores.html">
       
       
         
@@ -1262,6 +1262,8 @@
       
         
       
+        
+      
     
     
     
@@ -1726,6 +1728,41 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
     </li>
   
 
@@ -8954,6 +8991,11 @@ different metrics — do not compare them to each other. The server tables
 stay on screen if you already have a snapshot; they are not wiped.</p>
 <h2 id="take-a-snapshot">Take a snapshot<a class="headerlink" href="#take-a-snapshot" title="Permanent link">&para;</a></h2>
 <p>There is no poll and no graph. Click <strong>Refresh</strong>.</p>
+<figure>
+  <img alt="Tryll Memory window after Refresh: System memory, Devices, KV cache by agent, and Components tables" src="../assets/images/memory-snapshot-unity.png" />
+<br />
+<figcaption>A snapshot with one language model on the GPU and one STT model on the CPU. The amber <strong>estimated</strong> tags and <code>~</code> ranges mark numbers that are not measured directly. Unity shown; the Unreal panel has the same layout.</figcaption>
+</figure>
 <p>Refresh is disabled until the session is Ready, and while a fetch is in
 flight. A late reply cannot overwrite a newer one. If a fetch fails after
 you already have numbers, a stale-snapshot banner keeps the last good
@@ -9143,6 +9185,8 @@ snapshot.</p>
   pre-ship recipe this window checks live</li>
 <li><a href="use-agent-log.html">Use the Agent Log</a> — per-connection traffic, not
   process memory</li>
+<li><a href="inspect-knowledge-stores.html">Inspect and Edit Knowledge Stores</a> — the
+  neighbouring window for mutable knowledge stores</li>
 <li><a href="../reference/wire-protocol.html">Wire Protocol</a> —
   <code>GetMemoryConsumptionRequest</code> / <code>Response</code></li>
 <li><a href="../reference/client-api/unity/tryll-client.html">Unity <code>TryllClient</code></a> —
@@ -9207,13 +9251,13 @@ snapshot.</p>
         
         
           
-          <a href="compare-dialog-variants.html" class="md-footer__link md-footer__link--next" aria-label="Next: Compare dialog variants in the Lab">
+          <a href="inspect-knowledge-stores.html" class="md-footer__link md-footer__link--next" aria-label="Next: Inspect and edit knowledge stores">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compare dialog variants in the Lab
+                Inspect and edit knowledge stores
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -182,7 +182,11 @@ Errors throw `TryllError`. See the [C++ client reference](https://docs.tryllengi
 
 Create a **Voice Profile** asset (**Create → Tryll → Voice Profile**) and assign it to the **Voice** field of the `TryllAgentComponent`. Set `TryllAgentComponent.Voice` from code before the agent is created for characters spawned at runtime. At runtime, call `SetVoiceAsync` and `SetDeliveryModeAsync` on the component or on `TryllAgent`. See the [Unity client reference](https://docs.tryllengine.com/v0.9/reference/client-api/unity/index.html).
 
+A voice-cloning profile: each delivery mode swaps in its own `reference_voice` clip.
+
 Create a **Tryll Voice Profile** data asset (`UTryllVoiceProfile`) and assign it to the **Voice Profile** property of the `UTryllAgentComponent`. At runtime, call **Set Voice** and **Set Delivery Mode**. See the [Unreal Blueprint catalog](https://docs.tryllengine.com/v0.9/reference/client-api/unreal/blueprint-catalog.html).
+
+A multi-speaker profile. The line under the model lists what Supertonic 3 supports, so **Speaker Id**, **Speed**, and **Lang** appear, there is no **Reference Voice**, and delivery modes offer only **Speed Scale**.
 
 ## Diagnostics
 

@@ -1249,6 +1249,8 @@
       
         
       
+        
+      
     
     
     
@@ -1517,6 +1519,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8848,6 +8885,7 @@
 <li><strong>BeginDestroy</strong> (<a href="class_u_tryll_string_table_text_provider.html"><strong>UTryllStringTableTextProvider</strong></a>)</li>
 <li><strong>BindLocalizedTurn</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>BroadcastLocaleChanged</strong> (<a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
+<li><strong>BroadcastError</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>BuildVoiceInputConfig</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 </ul>
 <h2 id="c">c<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
@@ -8871,7 +8909,9 @@
 <li><strong>CreateSession</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>CreateSessionFromSettings</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>CurrentProviderLocale</strong> (<a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
+<li><strong>CheckMicrophone</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>CreateVoiceInput</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
+<li><strong>CreateVoiceInputImpl</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 </ul>
 <h2 id="d">d<a class="headerlink" href="#d" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9022,6 +9062,8 @@
 <li><strong>GetTickableTickType</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>GetCurrentLocale</strong> (<a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
 <li><strong>GetText</strong> (<a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
+<li><strong>GetMicrophoneStatus</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
+<li><strong>GetMicrophoneStatusMessage</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>GetVoiceInput</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>GetPrimaryAssetId</strong> (<a href="class_u_tryll_workflow_asset.html"><strong>UTryllWorkflowAsset</strong></a>)</li>
 <li><strong>GetStartNodeOptions</strong> (<a href="class_u_tryll_workflow_asset.html"><strong>UTryllWorkflowAsset</strong></a>)</li>
@@ -9098,6 +9140,7 @@
 <li><strong>IsTickable</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>IsTickableInEditor</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>IsTickableWhenPaused</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
+<li><strong>IsMicrophoneUnavailable</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 </ul>
 <h2 id="l">l<a class="headerlink" href="#l" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9142,6 +9185,7 @@
 <li><strong>MakeLocalizedApplied</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>MakeLocalizedFail</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>MakeLocalizedSend</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
+<li><strong>MicrophoneError</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 </ul>
 <h2 id="n">n<a class="headerlink" href="#n" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9172,6 +9216,7 @@
 <li><strong>OpenInEditor</strong> (<a href="class_u_tryll_string_table_text_provider.html"><strong>UTryllStringTableTextProvider</strong></a>, <a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
 <li><strong>OnConnectRetryStateChanged</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>OnLocaleChanged</strong> (<a href="class_u_tryll_text_provider.html"><strong>UTryllTextProvider</strong></a>)</li>
+<li><strong>OwnerLabel</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 </ul>
 <h2 id="p">p<a class="headerlink" href="#p" title="Permanent link">&para;</a></h2>
 <ul>
@@ -9315,6 +9360,7 @@
 <li><strong>SetInferenceThrottle</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>SetSessionLocale</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
 <li><strong>SnapshotRegisteredAgents</strong> (<a href="class_u_tryll_subsystem.html"><strong>UTryllSubsystem</strong></a>)</li>
+<li><strong>SetMicrophoneStatus</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>StartCapture</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>StopCapture</strong> (<a href="class_u_tryll_voice_input_component.html"><strong>UTryllVoiceInputComponent</strong></a>)</li>
 <li><strong>SyncLocalizedTextFields</strong> (<a href="class_u_tryll_workflow_asset.html"><strong>UTryllWorkflowAsset</strong></a>)</li>

@@ -18,6 +18,8 @@ Double-click the `UTryllWorkflowAsset` in the Content Browser. The asset editor 
 
 A toolbar across the top adds **Validate** and **Auto Layout** buttons and a live error/warning count, alongside the usual **Save**.
 
+The **Entry** node is selected, so Details shows the workflow-level settings: **Default Model Name**, the text table, **Variables**, and **Check texts**. The toolbar reads **No issues**.
+
 ## Step 2 — add nodes
 
 Right-click an empty spot on the canvas and pick a type from the **Add Node** menu (Generate, ToolCall, Retrieve, CannedResponse, …). The menu lists every node type the server supports — it is generated from the schema, so new node types appear automatically.
@@ -42,6 +44,8 @@ Exit names read as friendly labels (`Tool Called`, `No Tool Called`) but map to 
 ## Step 4 — edit node parameters
 
 Select a node to edit its parameters in the **Details** panel — **Node Name** first, then system prompt, model, sampling, storage paths, and so on, with the same dropdowns and pickers as the regular Details view. Exit fields are intentionally **hidden here**: you set routing by dragging wires, not by typing node names.
+
+The `rewrite` node selected. Details lists its **Tryll Generate Params**; there is no exit field, because the wire to `retrieve_hybrid` is the routing.
 
 Select the **Entry** node to set the workflow's **Default Model Name** — the fallback model for any `Generate`-family node that does not specify its own.
 

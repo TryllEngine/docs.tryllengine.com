@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -5022,6 +5059,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Capture model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-microphone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No microphone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -8757,6 +8811,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Capture model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-microphone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No microphone
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -8903,6 +8974,11 @@ transcription. Transcripts can be forwarded automatically to a
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">public</span><span class="w"> </span><span class="n">TryllVoiceInput</span><span class="w"> </span><span class="n">Voice</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">HasVoiceInput</span><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsUtteranceActive</span><span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">// Microphone check (see &quot;No microphone&quot; below)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">public</span><span class="w"> </span><span class="n">TryllMicrophoneStatus</span><span class="w"> </span><span class="n">MicrophoneStatus</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// Unknown, Available, NoDevice, DeviceNotFound, CaptureFailed</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">MicrophoneStatusMessage</span><span class="w">         </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// why it is unavailable; empty otherwise</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsMicrophoneUnavailable</span><span class="w">           </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">  </span><span class="c1">// NoDevice, DeviceNotFound or CaptureFailed</span>
 </code></pre></div>
 <hr />
 <h2 id="public-api">Public API<a class="headerlink" href="#public-api" title="Permanent link">&para;</a></h2>
@@ -8920,6 +8996,8 @@ transcription. Transcripts can be forwarded automatically to a
 <code>targetAgent</code> is used. When both are null the component operates in transcribe-only mode.</p>
 <p><code>EndUtterance</code> commits the current utterance (push-to-talk release) and stops capture.</p>
 <p><code>CancelUtterance</code> discards the current utterance without producing a transcript.</p>
+<p><code>CreateVoiceInput</code> and <code>BeginUtterance</code> both check the microphone first. Without one they
+raise <code>OnError</code> with <code>MicrophoneUnavailable</code> (<code>4108</code>) and send nothing to the server.</p>
 <hr />
 <h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
 <table>
@@ -8939,7 +9017,7 @@ transcription. Transcripts can be forwarded automatically to a
 <tr>
 <td><code>OnError</code></td>
 <td><code>UnityEvent&lt;TryllError&gt;</code></td>
-<td>Fired on protocol-level errors.</td>
+<td>Fired on protocol-level errors, and with <code>MicrophoneUnavailable</code> (<code>4108</code>) when there is no usable microphone.</td>
 </tr>
 <tr>
 <td><code>OnVoiceInputCreated</code></td>
@@ -8955,6 +9033,42 @@ transcription. Transcripts can be forwarded automatically to a
 <li>A coroutine pumps small PCM chunks at <code>pumpIntervalMs</code> cadence into the server's audio pipeline.</li>
 <li>The device-native sample rate is declared to the server; the server resamples to the STT model's expected rate.</li>
 </ul>
+<h3 id="no-microphone">No microphone<a class="headerlink" href="#no-microphone" title="Permanent link">&para;</a></h3>
+<p>Before creating the voice input and before every utterance, the component checks
+<code>Microphone.devices</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>MicrophoneStatus</code></th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NoDevice</code></td>
+<td>The system reports no recording device.</td>
+</tr>
+<tr>
+<td><code>DeviceNotFound</code></td>
+<td><code>micDeviceName</code> names a device that is not connected. The message lists the devices that are.</td>
+</tr>
+<tr>
+<td><code>CaptureFailed</code></td>
+<td>The device is listed but <code>Microphone.Start</code> could not open it (in use by another app, or blocked by Windows microphone privacy settings).</td>
+</tr>
+</tbody>
+</table>
+<p>In each case the voice input is not created, so no STT model is loaded; one <code>[Tryll]</code> warning
+is logged per distinct problem; and every <code>CreateVoiceInput</code> / <code>BeginUtterance</code> raises
+<code>OnError</code> with <code>MicrophoneUnavailable</code> (<code>4108</code>) and the same message. Text chat on the agent is
+unaffected.</p>
+<p>The automatic create (<code>createOnEnable</code>) is the exception: it can run inside <code>OnEnable</code>, before
+other scripts subscribe to <code>OnError</code>, so it only sets the status and logs. Read
+<code>MicrophoneStatus</code> at start-up rather than waiting for an error.</p>
+<p>Read <code>IsMicrophoneUnavailable</code> to show "type to chat" instead of a listening prompt. Calling
+<code>BeginUtterance</code> again is how to recover: it re-reads the device list and, once a microphone is
+present, creates the voice input and reports <code>VoiceInputStarting</code> (<code>4109</code>) for that one call:
+not a failure, just begin again a moment later. Re-check on a user action or a timer, not every frame.</p>
 <hr />
 <h2 id="lifetime-and-ownership">Lifetime and ownership<a class="headerlink" href="#lifetime-and-ownership" title="Permanent link">&para;</a></h2>
 <ul>

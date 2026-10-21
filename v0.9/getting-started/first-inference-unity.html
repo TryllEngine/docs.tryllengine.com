@@ -1457,6 +1457,8 @@
       
         
       
+        
+      
     
     
     
@@ -1725,6 +1727,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -9116,29 +9153,33 @@ executable.  A model that is downloaded but unregistered (status
 <hr />
 <h2 id="step-5-create-a-workflow-asset-and-set-up-the-scene">Step 5 — Create a workflow asset and set up the scene<a class="headerlink" href="#step-5-create-a-workflow-asset-and-set-up-the-scene" title="Permanent link">&para;</a></h2>
 <ol>
-<li>In the Project window, right-click → <strong>Create → Tryll → Workflow
-   Asset</strong>. Name it <code>DemoWorkflow</code>.</li>
-<li>Select <code>DemoWorkflow</code>. In the Inspector, expand <strong>Graph</strong>:<ul>
-<li>Under <strong>Nodes</strong>, click <strong>+</strong> to add one entry.</li>
-<li>Set <strong>Name</strong> = <code>answer</code>.</li>
-<li>Click the <strong>Params</strong> type picker (shows <code>&lt;null&gt;</code> by default) and
+<li>
+<p>In the Project window, right-click → <strong>Create → Tryll → Workflow
+   Asset</strong>. Name it <code>DemoWorkflow</code>.</p>
+<p><figure markdown="span">
+  <img alt="Unity Assets → Create → Tryll submenu listing Dialog Script, Runtime Settings, Workflow Asset, JSON Text Provider, and Voice Profile" src="../assets/images/create-menu-unity.png" width="560" />
+  <figcaption>The <strong>Create → Tryll</strong> submenu (the same menu as <strong>Assets → Create → Tryll</strong>).</figcaption>
+</figure>
+2. Select <code>DemoWorkflow</code>. In the Inspector, expand <strong>Graph</strong>:
+- Under <strong>Nodes</strong>, click <strong>+</strong> to add one entry.
+- Set <strong>Name</strong> = <code>answer</code>.
+- Click the <strong>Params</strong> type picker (shows <code>&lt;null&gt;</code> by default) and
   select <strong>Generate</strong> from the dropdown. The node's parameter
   fields expand below it — leave them all at their defaults; the
-  <strong>Default Exit</strong> field stays empty, which routes the turn to END.</li>
-<li>Set <strong>Start Node</strong> = <code>answer</code>.</li>
-<li>Set <strong>Default Model Name</strong> using the dropdown — it now lists the
+  <strong>Default Exit</strong> field stays empty, which routes the turn to END.
+- Set <strong>Start Node</strong> = <code>answer</code>.
+- Set <strong>Default Model Name</strong> using the dropdown — it now lists the
   models you registered in the Model Manager. Pick the one you
-  downloaded in Step 4.</li>
-</ul>
+  downloaded in Step 4.
+3. Create a new empty <strong>GameObject</strong> — call it <code>TryllDemo</code>.
+4. Add a <strong>Tryll Agent Component</strong> (<code>Add Component → Tryll → Tryll Agent
+   Component</code>).
+5. Assign <code>DemoWorkflow</code> to the component's <strong>Workflow Asset</strong> field.
+6. <strong>Un-check Auto Create On Connect</strong> — this tutorial wires the
+   lifecycle explicitly so you control exactly when the agent is created.
+7. Create a C# script <code>TryllDemo.cs</code> and attach it to the same
+   GameObject:</p>
 </li>
-<li>Create a new empty <strong>GameObject</strong> — call it <code>TryllDemo</code>.</li>
-<li>Add a <strong>Tryll Agent Component</strong> (<code>Add Component → Tryll → Tryll Agent
-   Component</code>).</li>
-<li>Assign <code>DemoWorkflow</code> to the component's <strong>Workflow Asset</strong> field.</li>
-<li><strong>Un-check Auto Create On Connect</strong> — this tutorial wires the
-   lifecycle explicitly so you control exactly when the agent is created.</li>
-<li>Create a C# script <code>TryllDemo.cs</code> and attach it to the same
-   GameObject:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">Tryll.Client</span><span class="p">;</span>

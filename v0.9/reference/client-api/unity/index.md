@@ -213,7 +213,7 @@ public enum TryllErrorCode
     // Agent: 3001–3022 (3012 AgentNotPaused, 3013–3015 Variables,
     //        3016 InvalidToolResults, 3018–3022 Dialog snapshots)
     // Inference: 4001–4005 (4004–4005 KV cache)
-    // VoiceInput / STT: 4100–4107
+    // VoiceInput / STT: 4100–4109 (4108–4109 are raised client-side)
     // Protocol: 5001–5006 (5004 ProtocolVersionMismatch is raised client-side)
     // Download / models: 6001–6005, 6007–6009
     // StringStorage: 7001–7004

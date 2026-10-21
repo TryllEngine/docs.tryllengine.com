@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -9720,6 +9757,27 @@ property list.</p>
 <td><code>bool</code></td>
 <td>True while an utterance is open.</td>
 </tr>
+<tr>
+<td><strong>Get Microphone Status</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>ETryllMicrophoneStatus</code></td>
+<td>Result of the last microphone check: <code>Unknown</code>, <code>Available</code>, <code>NoDevice</code> or <code>CaptureFailed</code>.</td>
+</tr>
+<tr>
+<td><strong>Get Microphone Status Message</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>FString</code></td>
+<td>Why the microphone is unavailable; empty when it is not.</td>
+</tr>
+<tr>
+<td><strong>Is Microphone Unavailable</strong></td>
+<td>Pure</td>
+<td>—</td>
+<td><code>bool</code></td>
+<td>True for <code>NoDevice</code> or <code>CaptureFailed</code>. Show "type to chat"; <strong>Begin Utterance</strong> re-checks and recovers once a microphone appears.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="events-tryllevents-on-utryllagentcomponent">Events — <code>Tryll|Events</code> (on <code>UTryllAgentComponent</code>)<a class="headerlink" href="#events-tryllevents-on-utryllagentcomponent" title="Permanent link">&para;</a></h2>
@@ -10065,7 +10123,12 @@ targets. See <a href="../../../how-to/add-lip-sync-to-a-character.html">Add Lip 
 <tr>
 <td><strong>On Error</strong></td>
 <td><code>ErrorMessage</code> (<code>FString</code>)</td>
-<td>A protocol-level voice error.</td>
+<td>Any voice error, message only.</td>
+</tr>
+<tr>
+<td><strong>On Error Detailed</strong></td>
+<td><code>Error</code> (<code>FTryllError</code>)</td>
+<td>Fires with <strong>On Error</strong>, carrying the code — e.g. <code>MicrophoneUnavailable</code> (<code>4108</code>) when there is no usable microphone, <code>VoiceInputStarting</code> (<code>4109</code>) while voice input is being (re)created.</td>
 </tr>
 <tr>
 <td><strong>On Voice Input Created</strong></td>

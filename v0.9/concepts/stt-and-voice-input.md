@@ -91,4 +91,4 @@ Every offline model also loads a **VAD** model (default `Silero VAD`) as a depen
 - [How-to: Bias Voice Input with Hotwords](https://docs.tryllengine.com/v0.9/how-to/use-voice-input-hotwords.html)
 - [Concept: TTS and Voice Output](https://docs.tryllengine.com/v0.9/concepts/tts-and-voice-output.html) — the other half of a voiced NPC.
 - [Concept: Models and Inference Engines](https://docs.tryllengine.com/v0.9/concepts/models-and-inference-engines.html)
-- [Reference: Error Codes — 4100–4107](https://docs.tryllengine.com/v0.9/reference/error-codes.html#4xxx-inference-workflow) — voice-input errors.
+- [Reference: Error Codes — 4100–4109](https://docs.tryllengine.com/v0.9/reference/error-codes.html#4xxx-inference-workflow) — voice-input errors.

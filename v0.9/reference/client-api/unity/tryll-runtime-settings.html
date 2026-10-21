@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8860,7 +8897,13 @@
 <strong>Source:</strong> <code>Runtime/TryllRuntimeSettings.cs</code></p>
 <p>Project-level settings for the Tryll Client package. Persisted to
 <code>Assets/Resources/TryllRuntimeSettings.asset</code> (created automatically on first access).</p>
-<p>Edit via <strong>Project Settings → Tryll Client</strong> (registered by <code>TryllRuntimeSettingsProvider</code>).</p>
+<p>Edit via <strong>Project Settings → Tryll Client</strong> (registered by <code>TryllRuntimeSettingsProvider</code>).
+Selecting the asset itself shows the same fields in the Inspector:</p>
+<figure>
+  <img alt="TryllRuntimeSettings asset in the Unity Inspector: Auto Launch Server, Server Build Variant, Llama Cpp Backend, Enable Play Mode Model Guard, server host and port, connection timeouts, Game Name, storage folders, User Models Catalog Path, Locale, and Text Provider" src="../../../assets/images/settings-overview-unity.png" width="520" />
+<br />
+<figcaption>The settings asset with the bundled server auto-launched on the Vulkan backend at <code>127.0.0.1:9100</code>.</figcaption>
+</figure>
 <hr />
 <h2 id="loading-at-runtime">Loading at runtime<a class="headerlink" href="#loading-at-runtime" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">var</span><span class="w"> </span><span class="n">settings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TryllRuntimeSettings</span><span class="p">.</span><span class="n">Load</span><span class="p">();</span>

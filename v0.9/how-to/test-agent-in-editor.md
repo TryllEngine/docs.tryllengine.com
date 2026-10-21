@@ -27,7 +27,7 @@ The window docks like any Unity editor panel. Check the two fields in the config
 | **Tryll Settings**  | Your `TryllRuntimeSettings` asset. Auto-found if one exists anywhere in the project or in `Resources/`. |
 | **Agent Component** | A `TryllAgentComponent` from an open scene.                                                             |
 
-Chat Window after a session is running — status shows **Ready**.
+Chat Window after a session is running — status shows **Ready**. Voice Input is set to **Chat**, so the STT Model and Mic Device rows appear.
 
 Chat creates its own editor-owned agent from the component's resolved graph and variable overrides, snapshotted at **Start**. Editing the component's Variable Overrides afterwards does **not** reach the running chat agent — press **Stop** and **Start** again to pick the new values up. (Unreal differs here: it maintains a transient preview link that applies Details edits live.)
 
@@ -65,6 +65,8 @@ Type a message and press **Enter** or click **Send**. Replies stream into the ch
 ### Turn diagnostics pane
 
 Chat hosts the shared **[turn inspector](https://docs.tryllengine.com/v0.9/reference/turn-inspector.html)** in a right-hand pane (visible by default; toggle with **Inspector ▸ / ◂**). Resize and collapse state are remembered for Chat independently of Dialog Lab and the Agent Log.
+
+The selected answer (accent border) is inspected on the right: it took a **ToolCall** → **Generate** route. Unity shown; the Unreal panel has the same layout.
 
 That reference page covers the panel itself — route, timing, parameters, prompt & output, retrieval, tool calls, and raw JSON. What is specific to Chat is how you select a turn:
 

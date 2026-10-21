@@ -1262,6 +1262,8 @@
       
         
       
+        
+      
     
     
     
@@ -1700,6 +1702,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8910,6 +8947,11 @@ builder API, or (Unreal) Blueprint — see
 <p>The window docks like any Unity editor panel. The canvas fills the left side; a
 property panel sits on the right, and the divider between them is draggable to
 resize.</p>
+<figure>
+  <img alt="Tryll Workflow window: an Entry node wired to a Branch node that splits into rewrite → retrieve_hybrid and retrieve_dense paths, which converge through compose to answer or reject; the right panel shows workflow-level settings" src="../assets/images/graph-overview-unity.png" />
+<br />
+<figcaption>With no node selected, the panel shows workflow-level settings: <strong>Default Model Name</strong>, <strong>Text Table</strong>, <strong>Variables</strong>, and the <strong>Check texts</strong> button.</figcaption>
+</figure>
 <h2 id="step-2-read-the-graph">Step 2 — read the graph<a class="headerlink" href="#step-2-read-the-graph" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -8973,6 +9015,11 @@ allowed; the graph is a router, not a DAG.</p>
 <code>Params</code> and renders the <strong>same drawers</strong> the Inspector uses — model-name
 dropdowns, exit dropdowns, <code>[Range]</code> sliders, storage file pickers, multi-line
 text. Editing here changes the asset directly.</p>
+<figure>
+  <img alt="The same workflow with the rewrite Generate node selected; the right panel shows its Name, Model Name, Context Size, System Prompt, Input, Template, Placement, and Default Exit fields" src="../assets/images/graph-nodeselected-unity.png" />
+<br />
+<figcaption>The <code>rewrite</code> node selected. Its <strong>Default Exit</strong> dropdown names <code>retrieve_hybrid</code> — the same wiring the canvas edge shows.</figcaption>
+</figure>
 <div class="admonition tip">
 <p class="admonition-title">Canvas and panel share one source of truth</p>
 <p>Both the canvas and the property panel edit the one <code>TryllWorkflowAsset</code>. If

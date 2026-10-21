@@ -1260,6 +1260,8 @@
       
         
       
+        
+      
     
     
     
@@ -1528,6 +1530,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -3694,6 +3731,17 @@
     <span class="md-ellipsis">
       
         7. Destroy the handle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handle-a-missing-microphone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handle a missing microphone
       
     </span>
   </a>
@@ -8914,6 +8962,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#handle-a-missing-microphone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handle a missing microphone
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8969,6 +9028,9 @@ see <a href="../concepts/stt-and-voice-input.html">Concept: STT and Voice Input<
 <li>An STT model on disk — download one in the editor Model Manager, or
   from code (<code>DownloadModel</code> in C++, <code>download_model</code> in Python,
   <code>RequestDownloadModel</code> in Unity and Unreal).</li>
+<li>With the Unity or Unreal voice input component: a microphone. The
+  component checks for one itself and reports when there is none; see
+  <a href="#handle-a-missing-microphone">Handle a missing microphone</a>.</li>
 </ul>
 <p>Optionally, warm the STT engine up at session creation so the first
 utterance does not pay its start-up cost:</p>
@@ -9198,6 +9260,29 @@ longer.</p>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">Subsystem</span><span class="o">-&gt;</span><span class="n">RequestDestroyVoiceInput</span><span class="p">(</span><span class="n">Voice</span><span class="p">);</span><span class="w">  </span><span class="c1">// Unreal (C++)</span>
 </code></pre></div>
+<h2 id="handle-a-missing-microphone">Handle a missing microphone<a class="headerlink" href="#handle-a-missing-microphone" title="Permanent link">&para;</a></h2>
+<p>The Unity <code>TryllVoiceInputComponent</code> and Unreal <code>UTryllVoiceInputComponent</code>
+check for a microphone before creating the voice input and before every
+<code>BeginUtterance</code>. When there is none they do not create the voice input (no
+STT model is loaded), log one <code>[Tryll]</code> warning naming the component, and
+report <code>MicrophoneUnavailable</code> (<code>4108</code>) from each call. Text chat is unaffected.
+Automatic creation (on enable / <code>BeginPlay</code>) only sets the status and logs, because
+it can run before your listeners are bound: read the status at start-up.</p>
+<ul>
+<li><strong>Unity:</strong> <code>OnError</code> receives the <code>TryllError</code>; <code>MicrophoneStatus</code> /
+  <code>IsMicrophoneUnavailable</code> say why (<code>NoDevice</code>, <code>DeviceNotFound</code> for a
+  <code>micDeviceName</code> that is not connected, or <code>CaptureFailed</code>).</li>
+<li><strong>Unreal:</strong> bind <code>OnErrorDetailed</code> to get the <code>FTryllError</code> with its code
+  (<code>OnError</code> still fires with the message alone); <code>GetMicrophoneStatus</code> /
+  <code>IsMicrophoneUnavailable</code> say why (<code>NoDevice</code> or <code>CaptureFailed</code>).</li>
+</ul>
+<p>Show "type to chat" while the microphone is unavailable. To recover, call
+<code>BeginUtterance</code> again on a user action or a timer: once a microphone is
+present it creates the voice input and reports <code>VoiceInputStarting</code> (<code>4109</code>)
+for that one call. In Unreal, if the default device's sample rate changes under
+a live voice input, <code>BeginUtterance</code> recreates the voice input with the new rate
+and also reports <code>4109</code>; the microphone status stays <code>Available</code>. Treat <code>4109</code>
+as "try again in a moment", not as an error to show.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="use-voice-input-hotwords.html">Bias Voice Input with Hotwords</a> —

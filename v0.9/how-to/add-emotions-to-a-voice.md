@@ -121,7 +121,7 @@ To try a mood without code, use the agent component's **Voice Delivery** overrid
 
 ### Decide when to switch
 
-Tryll does not detect the mood for you: only the API switches the mode, and the language model cannot. Your game owns the character's emotional state, the same way it owns health or quest progress, and calls `SetAgentDeliveryMode` when it changes. Pass the same mood into the prompt too, so that *what* the character says matches *how* it sounds. See [Talking NPC → An NPC who shows emotion](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html#step-4-an-npc-who-shows-emotion).
+Tryll does not detect the mood for you: only the API switches the mode, and the language model cannot. Your game owns the character's emotional state, the same way it owns health or quest progress, and calls `SetAgentDeliveryMode` when it changes. Pass the same mood into the prompt too, so that *what* the character says matches *how* it sounds. See [Talking NPC → Emotions](https://docs.tryllengine.com/v0.9/use-cases/talking-npc.html#emotions).
 
 ## Example: the Unity demo
 

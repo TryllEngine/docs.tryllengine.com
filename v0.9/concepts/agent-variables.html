@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -8840,6 +8877,10 @@ with a warning at <code>CreateAgent</code>.</p>
 changing an override updates the live <code>Agent.Variables</code> mirror immediately; the server
 sees the new value on the next deferred flush (before <code>SendMessage</code> / <code>Resume</code> /
 <code>ChangeParams</code>), or immediately if you click <strong>Flush Now</strong> in the Inspector.</p>
+<p><figure markdown="span">
+  <img alt="Tryll Agent Component in the Unity Inspector with the Variable Overrides foldout open and the Advanced variable overridden" src="../assets/images/agent-component-unity.png" width="520" />
+  <figcaption>The workflow declares one variable, <code>Advanced</code>. This component overrides its initial value (left checkbox ticked) to <code>true</code>.</figcaption>
+</figure></p>
 </div>
 <div class="tabbed-block">
 <p>Declare on the workflow asset (<code>UTryllWorkflowAsset::Variables</code>). A
@@ -8853,6 +8894,10 @@ warning group and are ignored at <code>CreateAgent</code>.</p>
 next <code>SendMessage</code> / <code>Resume</code> / <code>ChangeParams</code>, or run <strong>Flush Now</strong> under
 <em>Live Agent — Variables</em>. Unchecking an override assigns the <strong>workflow declaration
 default</strong> (not <code>Reset()</code>, which would restore the CreateAgent-time merged initial).</p>
+<p><figure markdown="span">
+  <img alt="Tryll Agent Component in the Unreal Details panel: Agent, Scheduling, TTS, Variables with an Advanced override row, and the Live Agent — Variables section with a disabled Flush Now button" src="../assets/images/agent-component-unreal.png" width="520" />
+  <figcaption>The same component in Unreal. <code>Advanced</code> is not overridden (checkbox clear), so the row shows the workflow default, <code>false</code>. <em>Live Agent — Variables</em> reads <strong>No live agent</strong> until PIE or Tryll Chat creates one.</figcaption>
+</figure></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tryll/TryllClient.h&gt;</span>

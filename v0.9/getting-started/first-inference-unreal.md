@@ -91,6 +91,8 @@ Open **Edit → Project Settings → Plugins → Tryll Client** and set:
 
 Settings are persisted to `Config/DefaultGame.ini` under `[/Script/TryllClient.TryllRuntimeSettings]`.
 
+**Project Settings → Plugins → Tryll Client** with the defaults: auto-launch and auto-connect on, Vulkan backend, port 9100, and `TryllStorage` as the storage folder.
+
 Client Dev usage telemetry is always on in the editor; set `TRYLL_SERVER_MODE=tryll-dev` only for Tryll’s own CI. Player builds that still launch Client Dev are **unreleasable** until a Client Prod binary ships.
 
 The Model Manager is the primary way to get models

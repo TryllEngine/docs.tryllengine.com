@@ -1255,6 +1255,8 @@
       
         
       
+        
+      
     
     
     
@@ -1523,6 +1525,41 @@
     
   
     Inspect server memory
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--complete"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to/inspect-knowledge-stores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inspect and edit knowledge stores
   
 
     
@@ -9399,6 +9436,10 @@ assign it to the <strong>Voice</strong> field of the <code>TryllAgentComponent</
 characters spawned at runtime. At runtime, call <code>SetVoiceAsync</code> and
 <code>SetDeliveryModeAsync</code> on the component or on <code>TryllAgent</code>. See the
 <a href="client-api/unity/index.html">Unity client reference</a>.</p>
+<p><figure markdown="span">
+  <img alt="Tryll Voice Profile Inspector in Unity for a Qwen3-TTS cloning model, with a reference clip for the profile and one for each of eight delivery modes" src="../assets/images/voice-profile-unity.png" width="520" />
+  <figcaption>A voice-cloning profile: each delivery mode swaps in its own <code>reference_voice</code> clip.</figcaption>
+</figure></p>
 </div>
 <div class="tabbed-block">
 <p>Create a <strong>Tryll Voice Profile</strong> data asset (<code>UTryllVoiceProfile</code>) and
@@ -9406,6 +9447,10 @@ assign it to the <strong>Voice Profile</strong> property of the
 <code>UTryllAgentComponent</code>. At runtime, call <strong>Set Voice</strong> and
 <strong>Set Delivery Mode</strong>. See the
 <a href="client-api/unreal/blueprint-catalog.html">Unreal Blueprint catalog</a>.</p>
+<p><figure markdown="span">
+  <img alt="Tryll Voice Profile asset editor in Unreal for Supertonic 3: a capability line, Speaker Id 5, Speed, Lang, Emit Visemes, two delivery modes with speed scales, Default Delivery Mode, and Prepare" src="../assets/images/voice-profile-unreal.png" width="520" />
+  <figcaption>A multi-speaker profile. The line under the model lists what Supertonic 3 supports, so <strong>Speaker Id</strong>, <strong>Speed</strong>, and <strong>Lang</strong> appear, there is no <strong>Reference Voice</strong>, and delivery modes offer only <strong>Speed Scale</strong>.</figcaption>
+</figure></p>
 </div>
 </div>
 </div>

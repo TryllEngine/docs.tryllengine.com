@@ -6,7 +6,9 @@
 
 Project-level settings for the Tryll Client package. Persisted to `Assets/Resources/TryllRuntimeSettings.asset` (created automatically on first access).
 
-Edit via **Project Settings → Tryll Client** (registered by `TryllRuntimeSettingsProvider`).
+Edit via **Project Settings → Tryll Client** (registered by `TryllRuntimeSettingsProvider`). Selecting the asset itself shows the same fields in the Inspector:
+
+The settings asset with the bundled server auto-launched on the Vulkan backend at `127.0.0.1:9100`.
 
 ______________________________________________________________________
 

@@ -49,6 +49,8 @@ ______________________________________________________________________
 
 ## Inspector
 
+A cloning-model profile with one reference clip per emotion. Qwen3-TTS has no speaker presets, so no **Speaker** field is shown.
+
 The custom Inspector shows only what the chosen model can use, read from the catalog's TTS capabilities:
 
 - **Speaker** is a preset dropdown for models with named presets (Orpheus, Maya1), a slider for multi-speaker models (Supertonic 3), and hidden for single-speaker models.

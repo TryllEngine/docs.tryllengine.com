@@ -20,6 +20,8 @@ Either:
 
 The window docks like any Unity editor panel. The canvas fills the left side; a property panel sits on the right, and the divider between them is draggable to resize.
 
+With no node selected, the panel shows workflow-level settings: **Default Model Name**, **Text Table**, **Variables**, and the **Check texts** button.
+
 ## Step 2 — read the graph
 
 | Element          | Meaning                                                                                                                              |
@@ -49,6 +51,8 @@ Each exit holds exactly one target, so an exit port allows only one outgoing edg
 ## Step 5 — edit node parameters
 
 Click a node to select it. The property panel on the right binds to that node's `Params` and renders the **same drawers** the Inspector uses — model-name dropdowns, exit dropdowns, `[Range]` sliders, storage file pickers, multi-line text. Editing here changes the asset directly.
+
+The `rewrite` node selected. Its **Default Exit** dropdown names `retrieve_hybrid` — the same wiring the canvas edge shows.
 
 Canvas and panel share one source of truth
 

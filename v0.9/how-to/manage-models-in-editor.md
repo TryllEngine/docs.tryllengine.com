@@ -21,6 +21,8 @@ Opens as a dockable tab (**Tryll Model Manager**) and connects on open.
 
 The layout is the same in both engines: a **filters** column on the left, the **model list** in the middle, and a **properties + actions** panel on the right.
 
+Model Manager with a downloaded language model selected. The pills in the list show build registration (**PROD**, **EXP**, or not registered); the dot colour is the model status from the legend at the bottom. Unity shown; the Unreal panel has the same layout plus a search box and an Audience filter.
+
 ## Step 2 — find a model
 
 Use the left column to narrow the list:
