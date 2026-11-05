@@ -44,15 +44,15 @@ flowchart LR
 
 **Retention modes:**
 
-- **Pinned** — set by `CreateStringStorageRequest` (explicit Pin) or when `NodeFactory` loads a file-backed storage at `CreateAgent` time. The manager holds a reference of its own; `EvictUnusedOnDemand()` will not evict it.
+- **Pinned** — set by `CreateStringStorageRequest` (explicit Pin) or when the server loads a file-backed storage at `CreateAgent` time. The manager holds a reference of its own, so freeing unused storages never evicts it.
 - **OnDemand** — the default for lazy file-backed loads that are then Unpinned (e.g. after `DestroyStringStorageRequest`). The manager releases its reference; once the last node drops its reference the storage is freed.
 
 **What each operation actually does:**
 
 - `CreateStringStorageRequest` — loads or registers the storage and Pins it. Server responds with `CreateStringStorageResponse`.
 - `DestroyStringStorageRequest` — for file-backed storages: demotes from Pinned to OnDemand (eligible for eviction once no node holds it). For virtual / inline storages: removes the named entry. The node references are unaffected in either case.
-- `CreateAgentRequest` (with a relative-path `string_storage` param) — the session's `NodeFactory` resolves the path, loads-or-gets the storage from the manager, Pins it while the agent is alive, and gives the node a shared reference.
-- `DestroyAgentRequest` — each node's shared reference drops. If the storage was loaded as part of this agent and has since been Unpinned (or was never explicitly Pinned), the manager demotes to OnDemand and the entry is evicted on the next `EvictUnusedOnDemand` call.
+- `CreateAgentRequest` (with a relative-path `string_storage` param) — the server resolves the path, loads-or-gets the storage from the manager, Pins it while the agent is alive, and gives the node a shared reference.
+- `DestroyAgentRequest` — each node's shared reference drops. If the storage was loaded as part of this agent and has since been Unpinned (or was never explicitly Pinned), the manager demotes to OnDemand and the entry is evicted the next time the server frees unused entries.
 - Session close — every remaining agent is cancelled and released first, then the session drops its storage managers. The last reference goes with whichever of them is released last.
 
 Updating a storage in place is not supported — create a new one under a different name (and, if needed, rebind via [`change_param`](https://docs.tryllengine.com/v0.10/how-to/change-agent-parameters.html)) instead of mutating one that agents already hold.
@@ -90,7 +90,7 @@ Models follow the same manager + node pattern, but the manager lives on the **se
 ```
 flowchart LR
     subgraph Server process
-        MM[ModelManager]
+        MM[Model manager]
     end
     subgraph Session A
         GA[Generate / ToolCall node]
@@ -105,13 +105,13 @@ flowchart LR
 
 Two things decide how long the model stays resident. The same rules apply to **language, embedding, STT, and TTS** (each kind has its own cache; VAD is catalog/download-only and follows the STT model that loads it):
 
-- **Retention mode.** `LoadModelRequest` installs the model as **Pinned** — the `ModelManager` holds a reference of its own. A model loaded implicitly (because an agent's graph, voice input, TTS, or embedding use referenced it without a prior `LoadModelRequest`) is **OnDemand** — only the live users hold references beyond the cache entry.
+- **Retention mode.** `LoadModelRequest` installs the model as **Pinned** — the server's model manager holds a reference of its own. A model loaded implicitly (because an agent's graph, voice input, TTS, or embedding use referenced it without a prior `LoadModelRequest`) is **OnDemand** — only the live users hold references beyond the cache entry.
 - **Active users.** Each `Generate` / `ToolCall` context (and STT / TTS / embedding holder) keeps a reference for the life of its agent or voice-input session.
 
 The model is unloaded when the last reference goes away *and* the manager decides to drop the cache entry:
 
 - **Pinned** → released by `UnloadModelRequest`, but only after every user has been torn down. If agents are still active the request is acknowledged immediately and the actual unload is deferred until the last context drops.
-- **OnDemand** → the server runs `EvictUnusedOnDemand` after every `DestroyAgentRequest`, and again immediately before the next validated load into any of the four caches (cross-cache sweep). No explicit unload call is needed.
+- **OnDemand** → the server frees unused OnDemand entries after every `DestroyAgentRequest`, and again immediately before the next validated load into any of the four caches (cross-cache sweep). No explicit unload call is needed.
 
 ## Session end
 

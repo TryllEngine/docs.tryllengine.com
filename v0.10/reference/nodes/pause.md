@@ -2,7 +2,7 @@
 
 **`NodeType = Pause` (`NodeParams` union discriminator 12)**
 
-A no-op node. When it exits, the workflow executor suspends the turn **between nodes** — after `PauseNode` exits but before the graph resolves its next node — instead of continuing immediately. The turn stays open (the client still owns it and it still counts as busy for `SendMessage`), but unlike a normal in-flight turn, [`ChangeAgentParam`](https://docs.tryllengine.com/v0.10/how-to/change-agent-parameters.html) is allowed while paused.
+A no-op node. When it exits, the workflow executor suspends the turn **between nodes** — after the `Pause` node exits but before the graph resolves its next node — instead of continuing immediately. The turn stays open (the client still owns it and it still counts as busy for `SendMessage`), but unlike a normal in-flight turn, [`ChangeAgentParam`](https://docs.tryllengine.com/v0.10/how-to/change-agent-parameters.html) is allowed while paused.
 
 The node itself does **not** call a model and does **not** modify the conversation history. It exists purely to give game logic a checkpoint to react to before the turn continues.
 

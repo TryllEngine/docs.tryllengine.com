@@ -313,7 +313,7 @@ for hit in store.query("What am I afraid of?", top_k=3):
 - **The embedding model is fixed by the schema.** All three bundled schemas use `All-MiniLM-L6-v2 (Q4_K_M)`. You cannot pick another model per node.
 - **It lasts for the session.** Disconnecting drops every store unless you saved it. Stores are per session, so a game build and the editor never share one.
 - **A save holds text, not vectors.** Loading re-embeds every record, either during the load (`Now`) or on the first search (`Lazy`). Budget for that time on a loading screen.
-- **New lines appear on the next turn.** A write does not refresh knowledge already projected in the current turn.
+- **New lines appear on the next turn.** A write does not refresh knowledge already in the current turn's prompt.
 
 ## Common pitfalls
 

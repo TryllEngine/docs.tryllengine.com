@@ -98,7 +98,7 @@ The plugin payload ships both llama.cpp plugins plus the llama-cuda redistributa
 
 Auto is all-or-nothing: a model goes wholly to VRAM or wholly to RAM. It does **not** size the model to fit whatever VRAM happens to be free. A large model on a small card behaves exactly as it did before you set anything — so if you are close to the limit, choose `Ram` deliberately rather than hoping Auto notices.
 
-The Server Monitor **Server** tab shows the same resident answer live: each loaded model lists its resolved placement and the weight bytes currently in RAM versus VRAM. In Unity, [Inspect Server Memory](https://docs.tryllengine.com/v0.10/how-to/inspect-server-memory.html) shows the same placement as device **ours** versus system unattributed (mmap) after you click Refresh.
+To check where a loaded model actually ended up, open [Inspect Server Memory](https://docs.tryllengine.com/v0.10/how-to/inspect-server-memory.html) in Unity and click Refresh. It shows the placement as device **ours** versus system unattributed (mmap).
 
 ## Related
 

@@ -8,6 +8,10 @@ Use **GenerateAndSpeak** to speak a generated answer with the lowest latency (sy
 
 For background on how streaming TTS works, see [Concept: TTS and Voice Output](https://docs.tryllengine.com/v0.10/concepts/tts-and-voice-output.html).
 
+Watch it built
+
+The [Voice Character](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#voice-character) (5 min) video builds a one-node speaking agent with Generate and Speak and picks a Supertonic voice.
+
 Prerequisites
 
 - A connected session — see [Connect and Manage a Session](https://docs.tryllengine.com/v0.10/how-to/connect-and-manage-session.html).

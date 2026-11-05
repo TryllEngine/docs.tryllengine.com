@@ -22,7 +22,7 @@ One request–response cycle initiated by a user message. A turn begins when the
 
 ### Dialog
 
-The ordered list of interactions belonging to an [agent](#agent) — the conversation as the server sees it. Each [turn](#turn) appends exactly one [interaction](#interaction). Used by the [projection](#projection) stage to build the next [prompt](#prompt).
+The ordered list of interactions belonging to an [agent](#agent) — the conversation as the server sees it. Each [turn](#turn) appends exactly one [interaction](#interaction). Each language-model node builds its next [prompt](#prompt) from it. Also called the *dialog history*.
 
 ### Interaction
 
@@ -46,15 +46,11 @@ A single unit of computation within a [graph](#graph). Each node has a typed par
 
 ### Exit route
 
-A named output of a [node](#node). Each exit is encoded as a typed string field on the node's params object using the naming convention `<exit_name>_exit` (e.g. `triggered_exit`, `not_triggered_exit`). An empty string routes the turn to end-of-turn; any non-empty value names the next node to execute. For example, `RegexGuardrailNode` has `triggered` and `not_triggered` exits; `ToolCallNode` has `tool_called` and `no_tool_called`.
-
-### Projection
-
-The stage that turns the [dialog](#dialog) plus retained state into a [prompt](#prompt) for a [language model](#language-model). For `Generate` nodes, projection also renders the node's [Mustache template](#mustache-template) against the current turn's [instruction slots](#instruction-slot) and [knowledge components](#knowledge-component), then splices the result into the prompt at the configured placement. A token budget with hysteresis ensures the prompt fits inside the model's context window. When a [rolling summary](#rolling-summary) is present, history replay starts after the newest fold. See the [projection concept page](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html).
+A named output of a [node](#node). Each exit is encoded as a typed string field on the node's params object using the naming convention `<exit_name>_exit` (e.g. `triggered_exit`, `not_triggered_exit`). An empty string routes the turn to end-of-turn; any non-empty value names the next node to execute. For example, a `RegexGuardrail` node has `triggered` and `not_triggered` exits; a `ToolCall` node has `tool_called` and `no_tool_called`.
 
 ### Rolling summary
 
-The compressed record of interactions a [Summarize node](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) has [folded](#fold). Projection appends the newest summary to the system message and replays the [dialog](#dialog) only after `covered_through`. Older summaries stay in the dialog as history and are not rendered. The summary is part of an exported dialog snapshot.
+The compressed record of interactions a [Summarize node](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) has [folded](#fold). Every prompt appends the newest summary to the system message and replays the [dialog](#dialog) only after `covered_through`. Older summaries stay in the dialog as history and are not rendered. The summary is part of an exported dialog snapshot.
 
 ### Fold
 
@@ -62,7 +58,7 @@ One summarizer pass. It rewrites the [rolling summary](#rolling-summary) from th
 
 ### Mustache template
 
-A [Mustache](https://mustache.github.io/) source string attached to a `Generate` node via the `template` param. Before each model call, [projection](#projection) renders it against a context that includes `{{user_message}}`, the `{{#instructions}}` list from [instruction slots](#instruction-slot), and the `{{#knowledge}}` list from [knowledge components](#knowledge-component). The rendered text is spliced into the [prompt](#prompt) at the position specified by the `placement` param. See the [Use Mustache Templates how-to](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html).
+A [Mustache](https://mustache.github.io/) source string attached to a `Generate` node via the `template` param. Before each model call, the node renders it against a context that includes `{{user_message}}`, the `{{#instructions}}` list from [instruction slots](#instruction-slot), and the `{{#knowledge}}` list from [knowledge components](#knowledge-component). The rendered text is spliced into the [prompt](#prompt) at the position specified by the `placement` param. See the [Use Mustache Templates how-to](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html).
 
 ### Classify Intent node
 
@@ -94,11 +90,11 @@ Synonym for "vector index used by a [Retrieve node](#retrieve-node)". In Tryll, 
 
 ### Instruction slot
 
-A named instruction string attached to the current [interaction](#interaction) as a `kind=Instruction` [slot](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html) by an [Instruction node](https://docs.tryllengine.com/v0.10/reference/nodes/instruction.html) (or [Intent to Instruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html)). [Projection](#projection) exposes instruction slots to the downstream `Generate` node's [Mustache template](#mustache-template) as: `{{slot.<name>}}` (direct lookup) and entries in the `{{#instructions}}` list (each with `{{name}}` and `{{text}}`).
+A named instruction string attached to the current [interaction](#interaction) as a `kind=Instruction` [slot](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html) by an [Instruction node](https://docs.tryllengine.com/v0.10/reference/nodes/instruction.html) (or [Intent to Instruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html)). The node's prompt exposes instruction slots to the downstream `Generate` node's [Mustache template](#mustache-template) as: `{{slot.<name>}}` (direct lookup) and entries in the `{{#instructions}}` list (each with `{{name}}` and `{{text}}`).
 
 ### Knowledge component
 
-A single piece of retrieved or attached text plus metadata (source, score, chunk id). Multiple components may attach to one [interaction](#interaction). [Projection](#projection) exposes them to the `Generate` node's [Mustache template](#mustache-template) as the `{{#knowledge}}` list and `{{#knowledge_<source>}}` direct-lookup sections.
+A single piece of retrieved or attached text plus metadata (source, score, chunk id). Multiple components may attach to one [interaction](#interaction). The node's prompt exposes them to the `Generate` node's [Mustache template](#mustache-template) as the `{{#knowledge}}` list and `{{#knowledge_<source>}}` direct-lookup sections.
 
 ### Chunk
 
@@ -110,7 +106,7 @@ A dense floating-point vector that represents the semantic content of a piece of
 
 ### Embedding model
 
-A [model](#language-model) whose output is an [embedding](#embedding) rather than generated text. Declared in the [model catalog](#model-catalog) with `"model_type": "embedding"`. Referenced by name from `RetrieveNode` parameters or from an [embedded string storage](#embedded-string-storage) config file.
+A [model](#language-model) whose output is an [embedding](#embedding) rather than generated text. Declared in the [model catalog](#model-catalog) with `"model_type": "embedding"`. Referenced by name from `Retrieve` node parameters or from an [embedded string storage](#embedded-string-storage) config file.
 
 ### HNSW
 
@@ -198,15 +194,15 @@ ______________________________________________________________________
 
 ### Prompt
 
-The concatenated input passed to the [language model](#language-model) at [generation](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) time: system preamble, projected [dialog](#dialog), attached [knowledge](#knowledge-component), tool descriptions, and the current user message. Produced by [projection](#projection).
+The ordered chat messages a language-model node sends to its [language model](#language-model) on one turn. Each node builds its own, every turn, in this order: the system message (with the newest [rolling summary](#rolling-summary), if any), the earlier turns of the [dialog](#dialog) that still fit the [token budget](#token-budget), and the current turn. On the current turn only, the node's [Mustache template](#mustache-template) is rendered with that turn's [instruction slots](#instruction-slot) and [knowledge](#knowledge-component) and inserted at its `placement`; a Tool Call node also adds its tool descriptions. The Turn Inspector's **Prompt & output** block shows it as sent. See [Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html).
 
 ### Token
 
-The atomic unit the [language model](#language-model) reads and emits. Each model has its own tokenizer; token counts for the same text differ between models. Token budgets in [projection](#projection) are measured in tokens of the active model.
+The atomic unit the [language model](#language-model) reads and emits. Each model has its own tokenizer; token counts for the same text differ between models. [Token budgets](#token-budget) are measured in tokens of the active model.
 
 ### Token budget
 
-The number of [tokens](#token) a language-model node's [projected](#projection) [prompt](#prompt) may use: that node's context size minus the headroom reserved for the generated response. Each node trims its own prompt; there is no per-agent setting. Exceeding the budget triggers dialog truncation with hysteresis.
+The number of [tokens](#token) a language-model node's [prompt](#prompt) may use: that node's Context Size minus its Max Tokens. Each node trims its own prompt; there is no per-agent setting. When the prompt goes over budget, the node drops the oldest whole turns until it is down to 75 % of the budget (hysteresis), so it does not have to trim again on the very next turn. Dropped turns stay in the [dialog](#dialog).
 
 ### Streaming
 
@@ -267,10 +263,6 @@ The shared panel that explains a single [turn](#turn): which [nodes](#node) ran 
 ### Turn diagnostics
 
 The per-turn `debug_info` payload the server attaches when an [agent](#agent) was created with `enable_diagnostics`. It is the data the [turn inspector](#turn-inspector) renders. The flag is **structural** — it cannot be enabled on an agent that already exists.
-
-### Server monitor
-
-A contributor-facing browser UI served by a dev-time HTTP/SSE sidecar in the server process. Sees every [session](#session) on the server, which is its advantage over the [Agent Log](#agent-log); it cannot see what a client sent, which is the Agent Log's. Compiled out of Production builds.
 
 ______________________________________________________________________
 

@@ -190,6 +190,6 @@ For an agent with Retrieve + Mustache template, see [How to create a simple RAG 
 - [Node catalog](https://docs.tryllengine.com/v0.10/reference/nodes/index.html)
 - [Voice Profile](https://docs.tryllengine.com/v0.10/reference/voice-profile.html)
 - [How to build a chat agent with a graph](https://docs.tryllengine.com/v0.10/how-to/build-chat-agent-with-graph.html)
-- [How to use Mustache templates for prompt projection](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html)
+- [How to use Mustache templates in prompts](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html)
 - [Concept: Workflows, graphs, and nodes](https://docs.tryllengine.com/v0.10/concepts/workflows-graphs-nodes.html)
 - [Glossary](https://docs.tryllengine.com/v0.10/reference/glossary.html)

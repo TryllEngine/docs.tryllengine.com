@@ -27,11 +27,11 @@ ______________________________________________________________________
 
 In `debug_info.nodes[]`, find the entry whose `diagnostics.output.text` is the bubble. Its `_type` and a few fields beside it tell you which case this is:
 
-| The text is on                             | And you also see                                                                                                                       | Case                                                                          |
-| ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| A `GenerateNode` or `GenerateAndSpeakNode` | `engine.chat_turn.tool_count: 0`                                                                                                       | [A speech node wrote a call](#2-a-speech-node-wrote-a-call)                   |
-| A `ToolCallNode`                           | `output.parse_fallback: true`, `output.parse_failure: malformed_call`, `parameters.mode: call_or_answer`, `exit_route: no_tool_called` | [The tool node sent an unparsed call](#3-the-tool-node-sent-an-unparsed-call) |
-| Either, on this turn and earlier ones      | An `assistant` message in `input.prompt[]` whose `content` is the markup                                                               | [The markup is in history](#4-the-markup-is-in-history) — fix A or B first    |
+| The text is on                            | And you also see                                                                                                                       | Case                                                                          |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| A `Generate` or `Generate and Speak` node | `engine.chat_turn.tool_count: 0`                                                                                                       | [A speech node wrote a call](#2-a-speech-node-wrote-a-call)                   |
+| A `ToolCall` node                         | `output.parse_fallback: true`, `output.parse_failure: malformed_call`, `parameters.mode: call_or_answer`, `exit_route: no_tool_called` | [The tool node sent an unparsed call](#3-the-tool-node-sent-an-unparsed-call) |
+| Either, on this turn and earlier ones     | An `assistant` message in `input.prompt[]` whose `content` is the markup                                                               | [The markup is in history](#4-the-markup-is-in-history) — fix A or B first    |
 
 ______________________________________________________________________
 
@@ -137,7 +137,7 @@ ______________________________________________________________________
 ## Related
 
 - [Tool Call node](https://docs.tryllengine.com/v0.10/reference/nodes/tool-call.html#diagnosing-a-call-that-never-happened) — when the tool node itself does not call
-- [Concept: Tool calling](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html) — `mode`, `require_call` and history projection
+- [Concept: Tool calling](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html) — `mode`, `require_call` and how tool calls replay in history
 - [Classify Intent (LLM)](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent-llm.html) — `threshold`, `margin`, `not_found_intent`
 - [Keep merchant prices deterministic](https://docs.tryllengine.com/v0.10/how-to/keep-merchant-prices-deterministic.html) — an alternative that needs no tool call for prices
 - [Turn Diagnostics JSON](https://docs.tryllengine.com/v0.10/reference/turn-diagnostics-json.html) — every field used on this page

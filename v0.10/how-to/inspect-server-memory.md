@@ -93,17 +93,6 @@ Kind, name, confidence, RAM (a `~` band when estimated), VRAM. KV rows are liste
 | Server `engines.llama_cpp.inference.default_n_ctx` | [Server configuration](https://docs.tryllengine.com/v0.10/reference/server-configuration.html)                  |
 | Catalog `kv_cache_type`                            | [Model management](https://docs.tryllengine.com/v0.10/reference/model-management.html)                          |
 
-## Relationship to the server monitor
-
-|           | Memory window                            | Server monitor Memory panel      |
-| --------- | ---------------------------------------- | -------------------------------- |
-| Scope     | Whole server process                     | Whole server process             |
-| Collector | The same `CollectMemorySnapshot`         | The same `CollectMemorySnapshot` |
-| Surface   | Unity / Unreal editor, over the TCP wire | Browser, `GET /api/memory`       |
-| Refresh   | Button only                              | SSE / poll, plus a sparkline     |
-
-The numbers should match. The monitor still has the sparkline and stacked bars; this window does not.
-
 C++ (`TryllClient::GetMemoryConsumption`), Python (`client.get_memory_consumption()`), Unity (`RequestGetMemoryConsumptionAsync`), and Unreal (`UTryllSubsystem::RequestGetMemoryConsumption`) return the same snapshot.
 
 ## Related

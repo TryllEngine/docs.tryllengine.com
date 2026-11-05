@@ -175,7 +175,7 @@ ______________________________________________________________________
 
 ## `system_prompt` and KV-cache rewind
 
-Changing `system_prompt` does **not** immediately flush the KV cache. The change is stored and picked up on the *next* `send_message` call. At that point the projection pipeline detects the new token sequence, trims the stale tail of the cache, and re-decodes only the changed prefix. This is the most efficient path: back-to-back `change_params` / `send_message` calls impose only one re-decode, not two.
+Changing `system_prompt` does **not** immediately flush the KV cache. The change is stored and picked up on the *next* `send_message` call. At that point the node builds its prompt, detects the new token sequence, trims the stale tail of the cache, and re-decodes only the changed prefix. This is the most efficient path: back-to-back `change_params` / `send_message` calls impose only one re-decode, not two.
 
 ______________________________________________________________________
 

@@ -141,7 +141,7 @@ save = {
 agent.import_dialog(save["dialog"])
 ```
 
-`compatibility=Strict` (default) rejects a snapshot whose graph signature does not match the agent's create-time graph (`DialogGraphMismatch` 3020). `AllowGraphMismatch` restores the interactions, remaps compatible projection windows, and returns warnings.
+`compatibility=Strict` (default) rejects a snapshot whose graph signature does not match the agent's create-time graph (`DialogGraphMismatch` 3020). `AllowGraphMismatch` restores the interactions, remaps each compatible node's trim position (how many old turns its prompt had dropped), and returns warnings.
 
 The Murder Mystery Demo is one game-owned wrapper of this pattern: a versioned JSON envelope under `Application.persistentDataPath` that stores Base64 canonical `TDLG` bytes per character (and the note-taker), plus agent variables, disclosure, the client transcript, notes, and investigation progress. Tryll still does not own that file or its schema.
 

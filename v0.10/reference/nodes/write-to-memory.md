@@ -2,7 +2,7 @@
 
 **`NodeType = WriteToMemory` (`NodeParams` union discriminator 15)**
 
-Experimental mutable-KB write. Upserts the current input slot into a session-scoped named store. Place a Retrieve on the same store **before** this node in the same turn if the model should see prior memory — a write does not refresh already-projected knowledge.
+Experimental mutable-KB write. Upserts the current input slot into a session-scoped named store. Place a Retrieve on the same store **before** this node in the same turn if the model should see prior memory — a write does not refresh knowledge already in this turn's prompt.
 
 A blank `input` reads the player's message, so it stores the player line. The node writes nothing and takes `written` only when that resolved text is empty. Only a rejected write (for example the store is full) or a failed per-turn id template takes `failed`. A store that does not exist yet is created when the agent is created. Agent creation fails instead when the store name or schema is invalid or unknown, or the store already exists under a different schema.
 

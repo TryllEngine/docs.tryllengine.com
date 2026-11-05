@@ -2,6 +2,11 @@
 
 Every producing node in a Tryll workflow — [`Generate`](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html), [`GenerateAndSpeak`](https://docs.tryllengine.com/v0.10/reference/nodes/generate-and-speak.html), [`CannedResponse`](https://docs.tryllengine.com/v0.10/reference/nodes/canned-response.html), [`Transform`](https://docs.tryllengine.com/v0.10/reference/nodes/transform.html), and the instruction nodes — writes its output into a **slot**: a named piece of text on a shared, per-turn blackboard. Downstream nodes in the *same* turn, and Mustache templates anywhere in the graph, can read any slot that has been written so far. This page explains the model; see the node reference pages for each node's specific `input`/`output_name`/`send`/`history_role` behaviour.
 
+Watch it built
+
+- [Quest Giver](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#quest-giver) (7 min): Explains slots against variables and points a Generate node's Input at a Transform slot.
+- [Aquarium Expert, advanced path](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert-advanced) (13 min): Uses a hidden Generate node whose slot only the next node reads.
+
 ## The blackboard
 
 Each turn has one blackboard (an `Interaction`). At the start of the turn the client's message is written into the reserved slot `user_message`. As the graph runs, every node that produces text writes it into a slot too — named by that node's `output_name` if set, otherwise the node's own name. Slot names must match `[A-Za-z_][A-Za-z0-9_]*` and `user_message` is reserved (no node may claim it).
@@ -16,7 +21,7 @@ flowchart LR
     retrieve --> generate["Generate<br>generate"]
 ```
 
-`ClassifyIntentLLM` is a partial exception: `input` only re-selects the **current** turn's user-area message; the `history_turns` of past turns it replays for coreference always use the plain `user_message` slot, matching `Generate`'s own history projection.
+`ClassifyIntentLLM` is a partial exception: `input` only re-selects the **current** turn's user-area message; the `history_turns` of past turns it replays for coreference always use the plain `user_message` slot, matching how `Generate` replays earlier turns in its own prompt.
 
 ## Reading a slot in a template: `{{slot.<name>}}`
 
@@ -36,12 +41,12 @@ Every `AnswerText` frame carries `node_name`, so a client that cares which node 
 
 ## Controlling replay: `history_role`
 
-`history_role: HistoryRole` controls whether a slot's text is replayed as a separate assistant message in the projected prompt — both on *later* turns and, for downstream nodes, within the *same* turn it was written (see [Same-turn effects](#same-turn-effects) below):
+`history_role: HistoryRole` controls whether a slot's text is replayed as a separate assistant message in the prompt — both on *later* turns and, for downstream nodes, within the *same* turn it was written (see [Same-turn effects](#same-turn-effects) below):
 
-| Value       | Behaviour                                                                                                                                                           |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `None`      | Never replayed — a scratch value that only exists within the turn it was written, readable only via `input`/`{{slot.<name>}}`.                                      |
-| `Assistant` | Replayed as a separate assistant message, in the order it was produced, both to downstream nodes later in the same turn and on every later turn's projected prompt. |
+| Value       | Behaviour                                                                                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `None`      | Never replayed — a scratch value that only exists within the turn it was written, readable only via `input`/`{{slot.<name>}}`.                            |
+| `Assistant` | Replayed as a separate assistant message, in the order it was produced, both to downstream nodes later in the same turn and in every later turn's prompt. |
 
 `User` and `System` are reserved for future use and not implemented yet.
 
@@ -50,7 +55,7 @@ Every `AnswerText` frame carries `node_name`, so a client that cares which node 
 Within the **same turn**, `send`/`history_role` have two independent effects on downstream nodes — neither is gated by "did this go out on the wire":
 
 1. **Every slot is directly readable**, no matter its `send`/`history_role`. Any downstream node's `input` selector and any template's `{{slot.<name>}}` reference can see it. A `Transform` node with `send=None` can still feed a `Retrieve` or `Generate` node two steps later; nothing about "not on the wire" means "not available internally".
-1. **`history_role=Assistant` slots additionally replay as assistant-role messages** into every downstream node's projected prompt within the same turn — the same replay mechanism used for later-turn history, applied within-turn to upstream outputs. A "draft → refine" chain gets the draft in context for free: the refine node sees it both as `{{slot.draft}}` and as a natural assistant message immediately before its own prompt.
+1. **`history_role=Assistant` slots additionally replay as assistant-role messages** into every downstream node's prompt within the same turn — the same replay mechanism used for later-turn history, applied within-turn to upstream outputs. A "draft → refine" chain gets the draft in context for free: the refine node sees it both as `{{slot.draft}}` and as a natural assistant message immediately before its own prompt.
 
 ## Naming and renaming
 

@@ -1,23 +1,23 @@
 # AI Director (Idea)
 
+Many games need a system that decides what happens next: which quest to offer, how a rival faction responds to the player, what a village does tomorrow, when to raise the tension. An AI director gives that job to a language model. Like a dungeon master, the director watches the game and plans the next events, and your game carries them out.
+
 This is an idea, not a feature
 
-We have not built an AI director, and we have not measured how well small on-device models do this job. This page describes the idea, what published research says about it, and which Tryll building blocks you would use to try it. Every block it needs exists today.
-
-So far, every use case has the model *talking*. An AI director has the model *deciding*: which quest to offer next, how a rival faction responds to the player, what a village does tomorrow, when to raise the tension. Think of a dungeon master who watches the game and plans what happens next.
+We have not built an AI director, and we have not measured how well small on-device models do this job. Every Tryll building block it needs exists today.
 
 ______________________________________________________________________
 
 ## The model plans, the game executes
 
-A language model is good at reading a messy situation and proposing a sensible next move. It is bad at keeping exact rules, counts and world state consistent over a long game. Research on LLM game masters finds exactly this split: models write engaging stories but struggle to run consistent, verifiable game mechanics ([RPGBench](https://arxiv.org/abs/2502.00595)), and they cannot reliably check their own plans ([Kambhampati et al.](https://arxiv.org/abs/2402.01817)).
+A language model is good at proposing a sensible next move from a messy situation. It is bad at keeping exact rules, counts and world state consistent over a long game. Research on LLM game masters finds the same split. Models write engaging stories but struggle to run consistent, verifiable game mechanics ([RPGBench](https://arxiv.org/abs/2502.00595)), and they cannot reliably check their own plans ([Kambhampati et al.](https://arxiv.org/abs/2402.01817)).
 
-So divide the work:
+Divide the work this way:
 
-- **High level, the model:** pick goals and write a plan. "The bandits raid the mill at dawn, because the player killed their scout and the guard is away."
-- **Low level, your game:** carry out the plan with the systems you already have: pathfinding, combat AI, crafting recipes, schedules. These are exact and tested.
+- **High level, the model:** picks goals and writes a plan, for example "The bandits raid the mill at dawn, because the player killed their scout and the guard is away."
+- **Low level, your game:** carries out the plan with the systems it already has, such as pathfinding, combat AI, crafting recipes and schedules. These systems are exact and tested.
 
-The best-known example of this loop is [Voyager](https://arxiv.org/abs/2305.16291): in Minecraft, the model proposes the next task and writes the steps, the game's own API executes them, and the results go back to the model for the next round. [Generative Agents](https://arxiv.org/abs/2304.03442) uses the same split for characters: the model writes each character's plan for the day, and the game moves them around.
+The best-known example of this loop is [Voyager](https://arxiv.org/abs/2305.16291). In Minecraft, the model proposes the next task and writes the steps, the game's own API executes them, and the results go back to the model for the next round. [Generative Agents](https://arxiv.org/abs/2304.03442) uses the same split for characters. The model writes each character's plan for the day, and the game moves the characters.
 
 ```
 flowchart LR
@@ -33,14 +33,14 @@ ______________________________________________________________________
 
 ## How you would build it with Tryll
 
-1. **Give it the current state, every time.** Your game sends a short, up-to-date summary of the world with each planning request: who is where, what the player did, what the factions want. Do not rely on the model to remember the world across many turns. Run the director **stateless**, or with a [summary](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) at most.
-1. **Give it your design.** Put your designers' material in a [knowledge base](https://docs.tryllengine.com/v0.10/concepts/rag.html): quest templates, faction goals, story beats that are allowed to happen. The model then chooses and adapts authored content instead of inventing the world. [Drama Llama](https://arxiv.org/abs/2501.09099) works this way: authors write story fragments with conditions, and the model decides when they fire.
-1. **Force a plan your game can read.** Add a grammar to the generation node, so the output is always a JSON plan in your schema. Grammar-constrained decoding produces reliable structured output without fine-tuning ([Geng et al.](https://arxiv.org/abs/2305.13971)). See [Constrained output](https://docs.tryllengine.com/v0.10/concepts/constrained-output.html). Alternatively, let the director call [tools](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html) such as `spawn_patrol(...)` or `offer_quest(...)`; giving an LLM game master game-specific functions improved both its storytelling and its consistency with the game state ([Song et al.](https://arxiv.org/abs/2409.06949)).
-1. **Validate before you run.** The grammar guarantees the plan's *shape*, never that it makes sense. Your game checks every plan: does this character exist, is this recipe real, can this patrol reach the mill? If not, send the errors back and ask for a new plan, or fall back to a scripted choice. This "the model proposes, something exact checks" structure is the core recommendation of [Kambhampati et al.](https://arxiv.org/abs/2402.01817), and [LLM+P](https://arxiv.org/abs/2304.11477) takes it further by letting a classical planner do the planning.
-1. **Plan in stages.** Ask for the big picture first (this act's three main beats), then the details of each beat in separate calls. A recent world-to-quest pipeline found that each stage conditioned on the structured output of the previous one reduced drift and invented facts ([Borawski et al.](https://arxiv.org/abs/2604.25482)).
-1. **Keep it off the player's path.** A director thinks between moments, not during them. Create it with the `Background` workload so its work yields to the characters the player is talking to. See [Ambient world](https://docs.tryllengine.com/v0.10/use-cases/ambient-world.html#keeping-the-world-from-slowing-the-player-down).
+1. **Give it the current state, every time.** With each planning request, your game sends a short, up-to-date summary of the world: who is where, what the player did, what the factions want. Do not rely on the model to remember the world across many turns. Run the director **stateless**, or with a [summary](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) at most.
+1. **Give it your design.** Put your designers' material, such as quest templates, faction goals and the story beats that are allowed to happen, in a [knowledge base](https://docs.tryllengine.com/v0.10/concepts/rag.html). The model then chooses and adapts authored content instead of inventing the world. [Drama Llama](https://arxiv.org/abs/2501.09099) works this way. Authors write story fragments with conditions, and the model decides when they fire.
+1. **Force a plan your game can read.** Add a grammar to the generation node so the output is always a JSON plan in your schema. Grammar-constrained decoding produces reliable structured output without fine-tuning ([Geng et al.](https://arxiv.org/abs/2305.13971)). See [Constrained output](https://docs.tryllengine.com/v0.10/concepts/constrained-output.html). The director can instead call [tools](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html) such as `spawn_patrol(...)` or `offer_quest(...)`. Giving an LLM game master game-specific functions improved both its storytelling and its consistency with the game state ([Song et al.](https://arxiv.org/abs/2409.06949)).
+1. **Validate before you run.** The grammar guarantees the plan's *shape*, not that the plan makes sense. Your game checks every plan: that each character exists, that each recipe is real, that the patrol can reach the mill. If a check fails, send the errors back and ask for a new plan, or fall back to a scripted choice. Letting the model propose and something exact check is the core recommendation of [Kambhampati et al.](https://arxiv.org/abs/2402.01817). [LLM+P](https://arxiv.org/abs/2304.11477) goes further and lets a classical planner do the planning.
+1. **Plan in stages.** Ask for the big picture first, such as this act's three main beats, then for the details of each beat in separate calls. In a recent world-to-quest pipeline, conditioning each stage on the structured output of the previous one reduced drift and invented facts ([Borawski et al.](https://arxiv.org/abs/2604.25482)).
+1. **Keep it off the player's path.** A director plans between moments of play. Create it with the `Background` workload so its work yields to the characters the player is talking to. See [Ambient world](https://docs.tryllengine.com/v0.10/use-cases/ambient-world.html#keeping-the-world-from-slowing-the-player-down).
 
-An illustrative plan schema, the kind of output a grammar would enforce:
+For example, a grammar could enforce a plan like this:
 
 ```
 {
@@ -60,8 +60,8 @@ ______________________________________________________________________
 ## Risks to plan for
 
 - **Invalid plans.** Models name places, items and characters that do not exist. Validation in step 4 is not optional.
-- **Drift over a long game.** In a benchmark of long interactive stories, the best model tested kept its narrative commitments in only 42% of runs after 20 turns ([NCP-Bench](https://arxiv.org/abs/2608.08160)). Your game, not the model, must hold the canonical state, and send it fresh every time.
-- **Latency.** Plan, check and retry loops take several model calls. That is fine for a director that plans the next hour of play, and wrong for anything that must react within a second.
+- **Drift over a long game.** In a benchmark of long interactive stories, the best model tested kept its narrative commitments in only 42% of runs after 20 turns ([NCP-Bench](https://arxiv.org/abs/2608.08160)). Your game, not the model, must hold the canonical state and send it fresh every time.
+- **Latency.** A plan, check and retry loop takes several model calls. That is acceptable for a director that plans the next hour of play, and too slow for anything that must react within a second.
 - **Small models are untested here.** The research above uses large cloud models. Whether a 4B to 14B model on the player's GPU plans well enough is an open question. Start small to find out.
 
 ## A small first experiment
@@ -72,7 +72,7 @@ Do not start with a full story director. Pick one narrow decision with a clear f
 - **Plan a villager's day** as a list of activities and places that your schedule system then runs.
 - **Pick a faction's response** to the player's last major action from a short menu of authored responses.
 
-Each is one grammar-constrained call, easy to validate and easy to replace with a scripted choice when the plan is rejected.
+Each is one grammar-constrained call. Its plan is easy to validate, and easy to replace with a scripted choice when rejected.
 
 ## Further reading
 

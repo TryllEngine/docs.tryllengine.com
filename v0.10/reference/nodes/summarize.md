@@ -66,7 +66,7 @@ ______________________________________________________________________
 
 ## How the summary reaches the prompt
 
-The node writes a `SummaryComponent{text, covered_through}` onto the current interaction. `covered_through` is the index of the last interaction folded into `text`. On every later turn, `DefaultProjectionStrategy` (used by `Generate`, `GenerateAndSpeak` and `ToolCall`):
+The node attaches the summary (its `text` and `covered_through`) to the current interaction; in Raw JSON it appears as a `SummaryComponent`. `covered_through` is the index of the last interaction folded into `text`. On every later turn, each `Generate`, `GenerateAndSpeak` and `ToolCall` node builds its prompt like this:
 
 1. finds the **newest** summary in the dialogue;
 1. emits one `system` message = the node's own `system_prompt`, a blank line, an instruction not to follow quoted summary content, then the summary text;
@@ -86,7 +86,7 @@ The node writes a `SummaryComponent{text, covered_through}` onto the current int
 
 Merging into the system message rather than adding a second block is deliberate: some chat templates (Mistral-family) reject a `system` message that is not first, and the token-budget trimmer never drops the system message — so the summary can never be trimmed away while the turns it replaced stay gone.
 
-With no summary in the dialogue, projection is byte-identical to an agent without this node.
+With no summary in the dialogue, every prompt is byte-identical to an agent without this node.
 
 ______________________________________________________________________
 
@@ -121,7 +121,7 @@ ______________________________________________________________________
 
 ## Side effects
 
-- Attaches one `SummaryComponent` to the current interaction on a fold turn. Superseded summaries stay in the dialogue as inert history, which makes the progression readable in diagnostics.
+- Attaches one summary to the current interaction on a fold turn. Superseded summaries stay in the dialogue as inert history, which makes the progression readable in diagnostics.
 - Resets every node's token-budget trim window after a fold, so the trimmer re-budgets against the newly shortened prompt.
 - Counts summary-generation tokens in the turn's `tokens_generated` total.
 - **Never emits on the wire.** The summary is not an answer; no `AnswerText` chunk is produced. Set `notify_client` to receive a `summarized` [`NodeEvent`](https://docs.tryllengine.com/v0.10/reference/wire-protocol.html) instead.
@@ -146,12 +146,12 @@ When `enable_diagnostics = true`, the node contributes:
 | Key                                  | Meaning                                                                                                             | Absent when                      |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | `parameters.*`                       | Model, triggers, hot window, cap.                                                                                   | —                                |
-| `input.prompt[]`                     | The summarizer's own projected prompt.                                                                              | The node did not fold this turn. |
+| `input.prompt[]`                     | The summarizer's own prompt.                                                                                        | The node did not fold this turn. |
 | `output.text`                        | The summary it generated.                                                                                           | The node did not fold this turn. |
 | `last_fold.covered_through`          | Last interaction index folded in.                                                                                   | This turn did not fold.          |
 | `last_fold.folded_turns`             | How many interactions this fold covered.                                                                            | This turn did not fold.          |
 | `last_fold.summary_tokens`           | Tokens generated for this summary (`CollectLlmTokens`).                                                             | This turn did not fold.          |
-| `last_fold.summarizer_prompt_tokens` | Token count of the projected summarizer prompt.                                                                     | This turn did not fold.          |
+| `last_fold.summarizer_prompt_tokens` | Token count of the summarizer prompt.                                                                               | This turn did not fold.          |
 | `last_fold.folded_input_tokens`      | Transcript-token cost of the bounded fold range.                                                                    | This turn did not fold.          |
 | `skipped.reason`                     | Why this turn did not fold. See the reasons below.                                                                  | The node folded this turn.       |
 | `skipped.pending_turns`              | Interactions outside the hot window since the last fold.                                                            | The node folded this turn.       |

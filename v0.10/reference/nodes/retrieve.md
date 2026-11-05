@@ -6,6 +6,11 @@ It does **not** modify the prompt directly. Rendering is delegated to the downst
 
 `NodeType`: `Retrieve`.
 
+Watch it built
+
+- [Aquarium Expert](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert) (9 min): Covers Input, Retrieval Mode, Top K, Threshold and the two exits.
+- [Aquarium Expert, advanced path](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert-advanced) (13 min): Switches to Hybrid and reads a hybrid hit table.
+
 ## Parameters
 
 ### Input

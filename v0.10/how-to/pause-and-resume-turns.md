@@ -157,7 +157,7 @@ flowchart LR
     tc -- "no_tool_called" --> gen
 ```
 
-This single-pass shape (one call → one result → one downstream answer) is the only pattern currently validated end-to-end (see `scenarios.tools.tool_result_v1`). **Repeated result-bearing jumps back into the same `ToolCall` node (an agentic multi-round loop) are not supported**: correlation IDs (`c%08x`) restart at `c00000000` on every `ToolCallNode::Execute()`, so a second pass in the same interaction can collide with the first, and there is no regression test for it. Model a bounded number of rounds as separate `ToolCall` nodes in the graph instead of looping through one, until unique per-interaction exchange IDs and a two-pause regression test exist.
+This single-pass shape (one call → one result → one downstream answer) is the only pattern currently validated end-to-end (see `scenarios.tools.tool_result_v1`). **Repeated result-bearing jumps back into the same `ToolCall` node (an agentic multi-round loop) are not supported**: correlation IDs (`c%08x`) restart at `c00000000` every time the `ToolCall` node runs, so a second pass in the same interaction can collide with the first, and there is no regression test for it. Model a bounded number of rounds as separate `ToolCall` nodes in the graph instead of looping through one, until unique per-interaction exchange IDs and a two-pause regression test exist.
 
 Side-effect tools that do not need a client result can use the default `disposition = Acknowledge` (or `RouteOnly`) and skip `tool_results` entirely — see [Define and handle tool calls](https://docs.tryllengine.com/v0.10/how-to/define-and-handle-tool-calls.html).
 

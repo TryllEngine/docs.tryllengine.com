@@ -2,7 +2,7 @@
 
 Both the Unity and Unreal plugins include an editor-only **Agent Log** window that shows what this editor process **sent and received**, per agent — typed turns, voice turns the client sent, deferred variable flushes, lifecycle events, and per-turn diagnostics when available.
 
-It answers questions a transcript cannot: *did we actually send that?*, *what changed between these two turns?*, *did the tool call come back?* It complements the [Chat Window](https://docs.tryllengine.com/v0.10/how-to/test-agent-in-editor.html) (an interactive conversation) and the server monitor (a server-wide browser UI for contributors).
+It answers questions a transcript cannot: *did we actually send that?*, *what changed between these two turns?*, *did the tool call come back?* It complements the [Chat Window](https://docs.tryllengine.com/v0.10/how-to/test-agent-in-editor.html), which is an interactive conversation.
 
 An export contains the conversation
 
@@ -159,17 +159,6 @@ The bounds are editor-user configuration with **no UI**. Set them directly:
 Section `[TryllAgentLog]` in `Saved/Config/.../EditorPerProjectUserSettings.ini`, keys `MaxCompletedTurnsPerAgent`, `MaxObservationsPerAgent`, `MaxRawSessionObservations`.
 
 History does **not** survive an editor reload — Unity domain reload or Unreal hot reload. After one, the window says history was discarded rather than showing an empty timeline, because an empty window next to demonstrably running agents reads as a broken feature.
-
-## Relationship to the server monitor
-
-|          | Agent Log                                                        | Server monitor                            |
-| -------- | ---------------------------------------------------------------- | ----------------------------------------- |
-| Scope    | This editor client's connection                                  | Whole server process                      |
-| Surface  | In-editor window                                                 | Browser HTTP/SSE UI                       |
-| Best for | What the game client put on the wire, deferred vars, voice turns | Cross-client / server-side workflow turns |
-| Protocol | No wire changes                                                  | Sidecar; independent of clients           |
-
-Neither supersedes the other. Contributor reference for the sidecar: `docs/dev/server-monitor.md` in the monorepo.
 
 ## Export
 

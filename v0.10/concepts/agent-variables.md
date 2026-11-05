@@ -6,6 +6,10 @@ Agent Variables are a typed, per-agent key→value store that the game writes ov
 
 See [Slots vs. Variables](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html#slots-vs-variables) for how this differs from the (superficially similar) `{{slot.<name>}}` mechanism.
 
+Watch it built
+
+The [Quest Giver](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#quest-giver) (7 min) video declares four variables, overrides them per NPC, and shows the rendered prompt for each.
+
 ______________________________________________________________________
 
 ## Declaring variables

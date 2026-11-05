@@ -30,7 +30,7 @@ For a `Generate` node, add the system prompt, whatever retrieval or instruction 
 
 Do not size to the exact budget
 
-When the prompt exceeds the window, the token-budget projection trims the **oldest turns**. It keeps working, so the failure is silent: a classifier quietly loses the conversation history it needs to resolve *"And that one?"* or *"Yes, do it."* — the very inputs that are unclassifiable without it. After tightening a classifier's window, check that intents still fire, not merely that the game still runs.
+When the prompt exceeds the window, the node trims the **oldest turns** from it. It keeps working, so the failure is silent: a classifier quietly loses the conversation history it needs to resolve *"And that one?"* or *"Yes, do it."* — the very inputs that are unclassifiable without it. After tightening a classifier's window, check that intents still fire, not merely that the game still runs.
 
 ### What a context actually costs
 

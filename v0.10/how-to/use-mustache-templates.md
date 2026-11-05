@@ -1,4 +1,4 @@
-# Use Mustache Templates for Prompt Projection
+# Use Mustache Templates in Prompts
 
 Control exactly how retrieved knowledge and instructions land in the prompt by writing a [Mustache](https://mustache.github.io/) template on your `Generate` node's `template` parameter and choosing a `placement`.
 
@@ -9,7 +9,7 @@ Prerequisites
 
 ______________________________________________________________________
 
-## How projection works
+## How the template is rendered
 
 Before each `Generate` call the server builds a **Mustache context** from the current turn's data and renders the node's `template` string. The rendered text is then spliced into the prompt according to `placement`.
 
@@ -21,7 +21,7 @@ The context contains:
 | `slot.<name>`        | string                                                    | Direct lookup for any [slot](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html) written so far this turn, by node/`output_name`, e.g. `{{slot.greeter}}`. Works for instruction slots, `Transform` output, and any other producing node's slot.   |
 | `var.<name>`         | string                                                    | Direct lookup for a declared [Agent Variable](https://docs.tryllengine.com/v0.10/concepts/agent-variables.html), e.g. `{{var.mood}}`. Scalars render as their value (`bool` as `true`/`false`); a `set<string>` renders sorted and comma-joined (a single string, not an iterable). |
 | `instructions`       | list of `{name, text}`                                    | Every `kind = Instruction` slot on the current interaction (one per `Instruction`/`IntentToInstruction` node that ran).                                                                                                                                                             |
-| `knowledge`          | list of `{name, has_chunks, chunks:[{id,text,distance}]}` | All `KnowledgeComponent`s from the current interaction (one per `Retrieve` node).                                                                                                                                                                                                   |
+| `knowledge`          | list of `{name, has_chunks, chunks:[{id,text,distance}]}` | All knowledge retrieved on the current turn (one entry per `Retrieve` node).                                                                                                                                                                                                        |
 | `knowledge_<source>` | list of `{id,text,distance}`                              | Direct lookup for one retriever's chunks by source label, e.g. `{{#knowledge_rag}}`.                                                                                                                                                                                                |
 
 Each `knowledge` item carries a `has_chunks` **boolean** that is `true` when the retriever found at least one chunk and `false` when it returned nothing. Use it to gate the context preamble without the preamble accidentally repeating once per chunk:
@@ -204,9 +204,9 @@ Each `knowledge_<source>` section is a list of chunk objects, so you iterate ove
 
 ______________________________________________________________________
 
-## Step 3 — Instructions from InstructionNode
+## Step 3 — Instructions from an Instruction node
 
-Use an `InstructionNode` to inject a changeable instruction string into the prompt without touching the graph:
+Use an `Instruction` node to inject a changeable instruction string into the prompt without touching the graph:
 
 ```
 from tryll_client.graph import (
@@ -367,7 +367,7 @@ ______________________________________________________________________
 - [Reference: Instruction node](https://docs.tryllengine.com/v0.10/reference/nodes/instruction.html)
 - [Reference: Retrieve node](https://docs.tryllengine.com/v0.10/reference/nodes/retrieve.html)
 - [Concept: RAG](https://docs.tryllengine.com/v0.10/concepts/rag.html)
-- [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 - [Concept: Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html)
 - [How-to: Create a Simple RAG Assistant](https://docs.tryllengine.com/v0.10/how-to/create-simple-rag-assistant.html)
 - [How-to: Query rewriting for RAG](https://docs.tryllengine.com/v0.10/how-to/query-rewriting-for-rag.html)

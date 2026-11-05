@@ -78,13 +78,13 @@ Some models — notably ones fine-tuned on the Mistral tool-call format, includi
 - **The model cannot answer plain questions anymore.** If a turn isn't actually a command, `require_call` still forces a tool call — usually with `"unspecified"`-style placeholder arguments. Only use `require_call` behind something that already knows the turn is a command (an intent/routing node, or client-side knowledge of the input channel), and switch back to `detect_only` / `call_or_answer` for anything else.
 - **It can occasionally stall instead of failing fast.** On some models, a turn the model is reluctant to act on can run all the way to `max_tokens` before giving up, rather than immediately emitting a placeholder call. Budget `max_tokens` accordingly for `require_call` nodes.
 - **It does not fix a template that can't render tools at all** — that is the [fail-fast check below](#not-every-model-can-call-tools), a separate problem `require_call` cannot work around.
-- **Multi-turn Mistral-family tool calling is supported** under the default complete-pair history projection (`Acknowledge` / `RouteOnly` / `AwaitResult` — see below). An earlier dangling-call shape used to crash those templates on the second tool-calling turn; that gap is closed.
+- **Multi-turn Mistral-family tool calling is supported** under the default complete-pair history replay (`Acknowledge` / `RouteOnly` / `AwaitResult` — see below). An earlier dangling-call shape used to crash those templates on the second tool-calling turn; that gap is closed.
 
 Node creation rejects `mode = require_call` combined with an empty `tools` list up front (forcing a call with nothing to call is meaningless).
 
 ## Tool-call history: complete pairs, never dangling
 
-Once a `ToolCall` node detects a call, the turn typically has no `AnswerText` — only tool-call records (and, depending on policy, tool results). Tryll projects those into later prompts as a **complete** `assistant(tool_calls)` → `tool(result)` pair in the model's native syntax — never a half-pair dangling before the next user turn (that shape was off-distribution and crashed Mistral-family templates).
+Once a `ToolCall` node detects a call, the turn typically has no `AnswerText` — only tool-call records (and, depending on policy, tool results). Tryll replays those in later prompts as a **complete** `assistant(tool_calls)` → `tool(result)` pair in the model's native syntax — never a half-pair dangling before the next user turn (that shape was off-distribution and crashed Mistral-family templates).
 
 `ToolCallParams.disposition` chooses notify, pause, and history shape (schema default **`Acknowledge`**):
 

@@ -52,6 +52,8 @@ Each exit holds exactly one target, so an exit port allows only one outgoing edg
 
 Click a node to select it. The property panel on the right binds to that node's `Params` and renders the **same drawers** the Inspector uses — model-name dropdowns, exit dropdowns, `[Range]` sliders, storage file pickers, multi-line text. Editing here changes the asset directly.
 
+Multi-line text wraps to the panel width. For a long system prompt, click the small button at the right of the field's **Localize text** row (or of its label) to open the text in a larger window. What you type there applies to the field as you type, and **Ctrl+Z** undoes it.
+
 The `rewrite` node selected. Its **Default Exit** dropdown names `retrieve_hybrid` — the same wiring the canvas edge shows.
 
 Canvas and panel share one source of truth

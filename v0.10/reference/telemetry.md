@@ -30,7 +30,7 @@ ______________________________________________________________________
 
 Telemetry is part of the Tryll Runtime Licence. When you accept the licence, you agree to telemetry. There is no separate choice. In the editor, telemetry is always on.
 
-You accept the licence in the **Tryll Welcome** window (Unity: **Window → Tryll → Welcome**; Unreal: **Window → Tryll → Tryll Welcome**). The editor starts the server only after you accept. **Telemetry** opens this page. **Read the licence** shows the full text from the plugin's `LICENSE.md`. The same text is on the [Licence](https://docs.tryllengine.com/v0.10/legal/licence.html) page.
+You accept the licence in the **Tryll Welcome** window (Unity: **Window → Tryll → Welcome**; Unreal: **Window → Tryll → Tryll Welcome**). The editor starts the server only after you accept. **Telemetry** opens this page. **Read the licence** shows the full text from the plugin's `LICENSE.md`. The same text is on the [License Agreement](https://docs.tryllengine.com/v0.10/reference/legal/licence.html) page.
 
 If you click **Withdraw**, the editor stops its server and does not start it again until you accept the licence again.
 
@@ -46,7 +46,7 @@ ______________________________________________________________________
 
 `basic` and `turns` contain no conversation text, no authored names, and no free-text errors. Conversation text is included only at `full`.
 
-`off` is not a Project Settings choice. It is only `--telemetry-level off` on the command line, or `telemetry.level` / `telemetry.enabled` in a config for a server you start yourself. An editor server (Client Dev) raises `off` to `basic` and logs a warning. A value other than `off`, `basic`, `turns`, or `full` is a startup error.
+There is no `off` level in the editor. If `--telemetry-level off`, `telemetry.level` set to `off`, or `telemetry.enabled` set to `false` reaches the editor server, it raises the level to `basic` and logs a warning. A value other than `off`, `basic`, `turns`, or `full` is a startup error.
 
 The old keys `activity_enabled` and `include_user_content` are ignored. Set `level`.
 
@@ -63,10 +63,10 @@ Choose **Turns** for timings and counts, or **Full** when the report needs promp
 
 The editor passes the choice as `--telemetry-level` the next time it launches the server, and that flag overrides `telemetry.level` in `server-config.json`. Exit Play mode and let the managed server exit (it shuts itself down about 60 seconds after the last session), or quit the editor, then start again. The log line `[Telemetry] level=turns` (or `basic`, or `full`) is the level that took effect. The same value is attached to the session-started event.
 
-A server you start yourself can set the same flag:
+A server you start yourself from the release takes the same flag:
 
 ```
-tryll_server.exe --mode tryll-dev --telemetry-level turns
+tryll_server.exe --telemetry-level turns
 ```
 
 ______________________________________________________________________
@@ -75,7 +75,7 @@ ______________________________________________________________________
 
 Events go to [PostHog](https://posthog.com/) in the EU (`eu.i.posthog.com`). The address is built into the editor server. The `sinks` entry in the config only tunes how events are batched. Removing it leaves `basic` telemetry on.
 
-We use the report to improve the engine: which models are in use, how fast inference is on real hardware, and where errors occur. We do not use it for advertising or share it with third parties.
+We use the report to improve the engine: which models are in use, how fast inference is on real hardware, and where errors occur. We do not sell it or use it for advertising. We may use aggregated, anonymized data that no longer identifies you or your project for any lawful business purpose, including product analytics and reporting to investors. We keep telemetry for up to 12 months after collection. Section 5 of the [License Agreement](https://docs.tryllengine.com/v0.10/reference/legal/licence.html#s5) and the [Privacy Policy](https://docs.tryllengine.com/v0.10/reference/legal/privacy-policy.html) are the full terms.
 
 The install id is a random identifier stored on the machine. It is not derived from a hardware address. Events from one project are grouped by a project id the editor generates once and saves with the project, so a clone or a teammate checkout stays on the same id. **Game Name** in Project Settings is the human label: it is sent as the session name and as `--project-name`, and it is used for log folders together with the project directory. The telemetry group is the project id.
 
@@ -104,21 +104,10 @@ ______________________________________________________________________
 
 ## Who sends what
 
-| Where you run                                                                 | What is sent                                                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Editor** (Unity or Unreal, Client Dev)                                      | The Project Settings level, default `basic`. The floor is `basic`.                                                                                                                                                                                     |
-| **Packaged player** (Client Prod)                                             | Nothing. The log line is `[Telemetry] telemetry=compiled-out`. A player config with `telemetry.enabled` set to `true` fails startup.                                                                                                                   |
-| **Tryll Dev** (a server you start yourself, or `TRYLL_SERVER_MODE=tryll-dev`) | Nothing when `telemetry.enabled` is `false`, `telemetry.level` is `off`, or you pass `--telemetry-level off`. The shipped `server-config.json` sets `enabled` to `true` and `level` to `basic`. With telemetry on, `basic`, `turns`, and `full` apply. |
-
-`TRYLL_SERVER_MODE=tryll-dev` is for Tryll’s own CI. It launches Tryll Dev with `--telemetry-level off` and ignores the Project Settings level.
-
-### Turn telemetry off for one Tryll Dev run
-
-```
-tryll_server.exe --mode tryll-dev --telemetry-level off
-```
-
-Or set `"enabled": false` or `"level": "off"` in the config. Passing `off` to an editor server does not lower it below `basic`. The qa-and-eval pipeline passes `--telemetry-level off` when it spawns a managed server. Pass `--enable-telemetry` on the QA CLI to let that run send events.
+| Where you run                                                                                     | What is sent                                                                                                                         |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Editor server** (the Unity or Unreal editor, or the release server started by hand; Client Dev) | The Project Settings level, default `basic`. The floor is `basic`.                                                                   |
+| **Packaged player** (Client Prod)                                                                 | Nothing. The log line is `[Telemetry] telemetry=compiled-out`. A player config with `telemetry.enabled` set to `true` fails startup. |
 
 ______________________________________________________________________
 

@@ -20,7 +20,7 @@ These pages explain *how Tryll thinks* — the mental models behind the server, 
 - **[Agent Variables](https://docs.tryllengine.com/v0.10/concepts/agent-variables.html)** — a typed, per-agent key→value store the game writes over the wire and the server reads from Mustache templates (`{{var.<name>}}`), the Retrieve filter, and (opt-in) `__NAME__` markers in Generate / GenerateAndSpeak output.
 - **[Slots and Inter-node Value Passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html)** — the per-turn blackboard nodes read and write: `input` selection, `{{slot.<name>}}` templates, and `send` / `history_role` delivery.
 - **[Constrained Output (GBNF)](https://docs.tryllengine.com/v0.10/concepts/constrained-output.html)** — forcing a model to emit exactly a fixed shape (a command, a choice, a tiny JSON object) with a grammar: what it guarantees (syntax) and what it never does (meaning).
-- **[Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)** — how a growing dialog is turned into a bounded prompt, how the token budget trims it, and how a rolling summary keeps the thread.
+- **[Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)** — how each node builds a prompt from the growing dialog history, why it trims old turns further than it has to, and how a rolling summary keeps the thread.
 
 ## How these relate to the rest of the docs
 

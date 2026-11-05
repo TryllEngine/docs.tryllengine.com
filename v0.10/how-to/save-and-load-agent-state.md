@@ -12,7 +12,7 @@ Prerequisites
 
 ## Decide what belongs in the save
 
-An exported dialog snapshot contains the completed interactions and the projection state needed to continue the conversation faithfully, including any [rolling summary](https://docs.tryllengine.com/v0.10/reference/glossary.html#rolling-summary) produced by a [`Summarize`](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) node. A snapshot that contains a fold cannot be imported by a pre-Summarize server (`DialogUnsupportedComponent`). It does **not** contain:
+An exported dialog snapshot contains the completed interactions and the prompt state (each node's trim position) needed to continue the conversation faithfully, including any [rolling summary](https://docs.tryllengine.com/v0.10/reference/glossary.html#rolling-summary) produced by a [`Summarize`](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) node. A snapshot that contains a fold cannot be imported by a pre-Summarize server (`DialogUnsupportedComponent`). It does **not** contain:
 
 - agent variables;
 - the workflow graph or model files;
@@ -291,7 +291,7 @@ If three agents import successfully and the fourth fails, Tryll does not roll ba
 
 Use `Strict` for normal game loading. It verifies that the saved graph signature matches the recreated agent and returns `DialogGraphMismatch` (`3020`) if it does not.
 
-`AllowGraphMismatch` is a migration tool. It restores compatible interactions, remaps projection windows where possible, and returns warnings. Do not enable it silently for production saves: inspect the warnings and test the changed workflow first.
+`AllowGraphMismatch` is a migration tool. It restores compatible interactions, remaps each node's trim position where possible, and returns warnings. Do not enable it silently for production saves: inspect the warnings and test the changed workflow first.
 
 Version the outer save separately from the Tryll snapshot format. When a game update changes character keys, variable declarations, or workflow graphs, migrate or reject the game save explicitly.
 

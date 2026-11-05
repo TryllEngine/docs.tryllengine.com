@@ -2,6 +2,10 @@
 
 Short-circuit jailbreak attempts, off-topic prompts, and other unwanted inputs to a scripted reply — without ever running the model.
 
+Watch it built
+
+The [Safe Receptionist](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#safe-receptionist) (9 min) video builds this guard-and-refuse graph in the Unity editor, then checks both routes, false positives included, in the Dialog Lab.
+
 Prerequisites
 
 - A connected session with `CreateSession` already called — see [Connect and Manage a Session](https://docs.tryllengine.com/v0.10/how-to/connect-and-manage-session.html).

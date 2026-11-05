@@ -2,6 +2,10 @@
 
 Prepare a small knowledge base, index it into an [embedded string storage](https://docs.tryllengine.com/v0.10/reference/embedded-string-storage.html), build a graph with a `Retrieve` node in front of a `Generate` node, and get answers grounded in your data.
 
+Watch it built
+
+The [Aquarium Expert](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert) (9 min) video builds a Retrieve → Transform → Generate pipeline over a small knowledge base and shows where it fails.
+
 Prerequisites
 
 - A connected session — see [Connect and Manage a Session](https://docs.tryllengine.com/v0.10/how-to/connect-and-manage-session.html). The session does not choose an inference engine; each model runs on the engine its catalog entry names.

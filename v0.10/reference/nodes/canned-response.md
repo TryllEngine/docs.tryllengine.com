@@ -8,7 +8,11 @@ String storage kinds
 
 `CannedResponseNode` accepts any string storage kind (`List`, `Map`, `Multimap`) and uses the **list view** — values are iterated by position. Key-aware selection (picking a response by a runtime intent key) is planned as future work.
 
-For intent-driven response routing today, use [`IntentToInstructionNode`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) to inject a tone directive and let the `Generate` node produce the response.
+For intent-driven response routing today, use [`IntentToInstruction`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) to inject a tone directive and let the `Generate` node produce the response.
+
+Watch it built
+
+The [Safe Receptionist](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#safe-receptionist) (9 min) video walks through Selection Strategy, Send and History Role on a refusal node.
 
 ## Parameters
 

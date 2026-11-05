@@ -4,7 +4,7 @@
 
 Attaches a named instruction string to the current interaction as a [slot](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html). A later Generate or Generate and Speak node can reference it inside a [Mustache template](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html) via the `{{#instructions}}` list or the `{{slot.<name>}}` direct lookup.
 
-The node itself does **not** call a model and does **not** modify the conversation history that the model sees. It only adds a `kind=Instruction` `SlotComponent` to the current turn's interaction data, which the projection stage picks up when rendering the Generate node's template.
+The node itself does **not** call a model and does **not** modify the conversation history that the model sees. It only adds an [instruction slot](https://docs.tryllengine.com/v0.10/reference/glossary.html#instruction-slot) (`kind=Instruction`) to the current turn, which the Generate node picks up when it renders its template.
 
 ______________________________________________________________________
 
@@ -131,4 +131,4 @@ ______________________________________________________________________
 - [How-to: Use Mustache Templates](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html)
 - [How-to: Change Agent Parameters at Runtime](https://docs.tryllengine.com/v0.10/how-to/change-agent-parameters.html)
 - [Reference: Generate node](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html)
-- [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)

@@ -87,7 +87,7 @@ The other two hosts have no authored checks, so the block is absent there rather
 
 The block most often worth opening. For each node that prompted a model, it shows the **rendered prompt in the form actually sent** — system, user and assistant messages as the model received them — followed by what that node generated.
 
-This is where projection becomes visible: history replay, `{{#instructions}}` blocks, knowledge components and Mustache slot substitution have all already happened in what you see here. If a prompt does not contain what you expected, this block is where that shows up.
+This is where you see how the prompt was built: history replay, `{{#instructions}}` blocks, knowledge components and Mustache slot substitution have all already happened in what you see here. If a prompt does not contain what you expected, this block is where that shows up.
 
 **Copy** on the header lifts the transcript to the clipboard without expanding the section. When a node scope is active it copies the scoped node only, matching what is on screen.
 
@@ -186,6 +186,6 @@ ______________________________________________________________________
 - [How-to: Use the Agent Log](https://docs.tryllengine.com/v0.10/how-to/use-agent-log.html) — per-agent send/receive narrative
 - [How-to: Compare Dialog Variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html) — Dialog Lab
 - [Turn Diagnostics JSON](https://docs.tryllengine.com/v0.10/reference/turn-diagnostics-json.html) — every field of the payload this panel renders
-- [Concepts: Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html) — why the rendered prompt looks the way it does
+- [Concepts: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html) — why the rendered prompt looks the way it does
 - [Concepts: Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html) — how nodes hand values to each other
 - [Reference: Agent Parameters](https://docs.tryllengine.com/v0.10/reference/agent-parameters.html) — `enable_diagnostics` and the rest of `CreateAgentRequest`

@@ -1,18 +1,18 @@
 # Classify Intent (LLM)
 
-The Classify Intent (LLM) node maps a user message to a discrete **intent label** using a small language model's **first-token logprob** over a closed set of letter candidates (`A`, `B`, `C`, …). Each letter maps positionally to an entry in `intents`. It writes the decision to the slot `output_name` (empty = the node's name), so a [Branch](https://docs.tryllengine.com/v0.10/reference/nodes/branch.html) can test it. On success it also attaches an `IntentionComponent` — the same routing-only component produced by [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) — so downstream [IntentToInstruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) wiring is unchanged.
+The Classify Intent (LLM) node maps a user message to a discrete **intent label** using a small language model's **first-token logprob** over a closed set of letter candidates (`A`, `B`, `C`, …). Each letter maps positionally to an entry in `intents`. It writes the decision to the slot `output_name` (empty = the node's name), so a [Branch](https://docs.tryllengine.com/v0.10/reference/nodes/branch.html) can test it. On success it also attaches the winning intent label to the turn — the same routing-only label produced by [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) — so downstream [IntentToInstruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) wiring is unchanged.
 
 `NodeType`: `ClassifyIntentLLM`.
 
 ## How it works
 
-1. Projects the dialog via `ClassifyIntentLLMProjectionStrategy`:
+1. Builds its own short prompt from the dialog:
 1. Stable **system** message — `system_prompt` rendered as a Mustache template against the pre-built label list; see [The system prompt](#the-system-prompt).
 1. Up to `history_turns` past **user** / **assistant** pairs for coreference (history turns always replay the `user_message` slot).
 1. Current turn's `input`-resolved slot as the **user** message (empty = `user_message`).
-1. Prefills the classifier model (`Sync()`); reuses KV-cache prefix across turns when the prompt tail is append-only.
+1. Prefills the classifier model; reuses the KV-cache prefix across turns when the prompt tail is append-only.
 1. Reads logits at the final position and softmaxes over the single-token ids for `A`, `B`, `C`, …
-1. If `top_prob ≥ threshold` and `(top − second) ≥ margin`, attaches `IntentionComponent` for the winning id and returns `found`.
+1. If `top_prob ≥ threshold` and `(top − second) ≥ margin`, attaches the winning intent label to the turn and returns `found`.
 1. Writes the output slot on every path — see [Output slot](#output-slot).
 
 No text is generated; no sampling.
@@ -39,7 +39,7 @@ The node writes one turn-local slot, `slot.<output_name>`, whichever exit it tak
 
 `system_prompt` is required. Empty, unparsable, or missing `{{intents_block}}` (padded and triple-brace forms count) fails `CreateAgent` and `ChangeAgentParam`. `{{letters}}` is still substituted if you write it; leave it out unless you have a reason. There is no built-in default template.
 
-This is **not** the [`Generate`](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) / [`Transform`](https://docs.tryllengine.com/v0.10/reference/nodes/transform.html) Mustache context: `user_message`, `slot.<name>`, `var.<name>`, `instructions` and `knowledge` do not resolve here. The classified text arrives as its own user turn, added by the projection.
+This is **not** the [`Generate`](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) / [`Transform`](https://docs.tryllengine.com/v0.10/reference/nodes/transform.html) Mustache context: `user_message`, `slot.<name>`, `var.<name>`, `instructions` and `knowledge` do not resolve here. The classified text arrives as its own user turn, which the node adds itself.
 
 A minimal working template:
 

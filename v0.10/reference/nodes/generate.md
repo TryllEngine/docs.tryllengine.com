@@ -1,6 +1,6 @@
 # Generate
 
-The Generate node runs [language-model](https://docs.tryllengine.com/v0.10/reference/glossary.html#language-model) inference. It is the workhorse of every Tryll [workflow](https://docs.tryllengine.com/v0.10/reference/glossary.html#workflow): it takes the current [dialog](https://docs.tryllengine.com/v0.10/reference/glossary.html#dialog), passes it through the agent's [projection](https://docs.tryllengine.com/v0.10/reference/glossary.html#projection) to build a [prompt](https://docs.tryllengine.com/v0.10/reference/glossary.html#prompt), and emits the model's response — either as a single chunk or streamed [token-by-token](https://docs.tryllengine.com/v0.10/reference/glossary.html#token).
+The Generate node runs [language-model](https://docs.tryllengine.com/v0.10/reference/glossary.html#language-model) inference. It is the workhorse of every Tryll [workflow](https://docs.tryllengine.com/v0.10/reference/glossary.html#workflow): it takes the current [dialog](https://docs.tryllengine.com/v0.10/reference/glossary.html#dialog), builds a [prompt](https://docs.tryllengine.com/v0.10/reference/glossary.html#prompt) from it that fits the node's context window, and emits the model's response — either as a single chunk or streamed [token-by-token](https://docs.tryllengine.com/v0.10/reference/glossary.html#token).
 
 `NodeType`: `Generate`.
 
@@ -113,7 +113,7 @@ When `enable_diagnostics = true`, this node contributes to `debug_info.nodes[].d
 | `parameters.template`                                                                                                                | The knowledge template, **truncated to 120 characters** with a trailing `...`.                                                                          | No template is set.                                |
 | `parameters.placement`                                                                                                               | Where the rendered template was placed.                                                                                                                 | No template is set.                                |
 | `parameters.grammar_constrained`                                                                                                     | `true` when a GBNF grammar constrained sampling.                                                                                                        | No grammar is set.                                 |
-| `input.prompt[]`                                                                                                                     | The rendered prompt as the model received it — projection already applied.                                                                              | —                                                  |
+| `input.prompt[]`                                                                                                                     | The prompt as the model received it — history replay, template and trimming already applied.                                                            | —                                                  |
 | `output.text`                                                                                                                        | The text this node produced.                                                                                                                            | The node produced no output slot.                  |
 | `engine.*`                                                                                                                           | Grammar state and scheduler counters.                                                                                                                   | Server config `include_engine_diagnostics` is off. |
 
@@ -201,7 +201,7 @@ Or author the same node inside a `UTryllWorkflowAsset` in the Content Browser an
 
 - [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.10/how-to/use-a-lora-adapter.html)
 - [Concept: Models and inference engines](https://docs.tryllengine.com/v0.10/concepts/models-and-inference-engines.html)
-- [Concept: Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 - [Concept: Constrained output (GBNF)](https://docs.tryllengine.com/v0.10/concepts/constrained-output.html)
 - [How to stream answers to a UI](https://docs.tryllengine.com/v0.10/how-to/stream-answers-to-ui.html)
 - [How to constrain output with a grammar](https://docs.tryllengine.com/v0.10/how-to/constrain-output-with-a-grammar.html)

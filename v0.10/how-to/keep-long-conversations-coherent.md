@@ -9,7 +9,7 @@ Prerequisites
 
 ## The problem
 
-Every model-backed node owns a fixed context window. When the projected prompt outgrows it, Tryll **trims**: the oldest turns are dropped from the prompt and never come back. Nothing fails, nothing is logged to the player, and the character simply stops knowing what it was told.
+Every model-backed node owns a fixed context window. When the prompt outgrows it, Tryll **trims**: the oldest turns are dropped from the prompt and never come back. Nothing fails, nothing is logged to the player, and the character simply stops knowing what it was told.
 
 You can see it happen in the server log:
 
@@ -152,7 +152,7 @@ The node ships a default `system_prompt` and `template` that ask for third perso
 - **Name the speakers.** Small models confuse who said what more than they invent facts.
 - **Cap the length in the prompt as well as in `max_summary_tokens`.** The parameter is a hard stop that cuts mid-word; the prompt is what makes the model land inside it.
 - **Forbid speculation.** "Record only what was said" measurably reduces invented detail on 3–4B models.
-- **Treat the transcript as data, not instructions.** The built-in prompt and downstream projection both say this explicitly so quoted player text cannot silently become higher-priority instructions after a fold.
+- **Treat the transcript as data, not instructions.** The built-in prompt and the label on the summary in every downstream prompt both say this explicitly so quoted player text cannot silently become higher-priority instructions after a fold.
 
 ### 5. Watch it work
 

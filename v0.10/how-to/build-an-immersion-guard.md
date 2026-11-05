@@ -345,7 +345,7 @@ This does **not** recreate the agent, so you pay no prefill to recover — the m
 
 Verify it, do not assume it
 
-Send a distinctive line, roll back, send a second line, and check the first does not appear in the second turn's prompt (`diagnostics.input.prompt` with `enable_diagnostics` on). Also check the *control*: without the rollback it **should** appear. If both look the same, your history was never being projected and the test proves nothing.
+Send a distinctive line, roll back, send a second line, and check the first does not appear in the second turn's prompt (`diagnostics.input.prompt` with `enable_diagnostics` on). Also check the *control*: without the rollback it **should** appear. If both look the same, your history never reached the prompt and the test proves nothing.
 
 ### Knowing it deflected
 

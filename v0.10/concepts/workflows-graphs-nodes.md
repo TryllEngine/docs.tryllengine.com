@@ -143,7 +143,7 @@ When a `SendMessage` arrives, the agent:
 1. Follows the route for that exit to the next node.
 1. Stops when the route target is `"END"`, when the step budget is exceeded, or when the turn is cancelled.
 
-What each node attaches along the way is what makes the dialog *itself* useful state. A `Retrieve` node attaches retrieved knowledge to the current turn, and a downstream `Generate` node's [projection](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html) picks that knowledge up and folds it into the prompt.
+What each node attaches along the way is what makes the dialog *itself* useful state. A `Retrieve` node attaches retrieved knowledge to the current turn, and a downstream `Generate` node [picks that knowledge up](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html#how-a-node-builds-its-prompt) and folds it into the prompt.
 
 ## Passing values between nodes: slots
 
@@ -169,7 +169,7 @@ The graph itself carries no per-turn state. All state lives on the agent's dialo
 
 - **Routing loops.** Nothing stops you from routing node A → node A; every agent stops after 64 node steps in one turn, which breaks infinite loops by aborting the turn with an error. The budget is fixed; it is not a `CreateAgent` setting.
 - **Exits you "know" will never fire still need a value.** Leave them at the default empty string (routes to END). The server validates that no exit field names a missing node, but it does not enforce that every exit field is reachable.
-- **Model sharing is *cross-graph*, not cross-node.** Two `Generate` nodes in one graph that use the same model share the underlying weights (good) but have independent KV caches (necessary — they see different prompts). Budget token-count accordingly; see [Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html).
+- **Model sharing is *cross-graph*, not cross-node.** Two `Generate` nodes in one graph that use the same model share the underlying weights (good) but have independent KV caches (necessary — they see different prompts). Budget token-count accordingly; see [Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html).
 - **The start node runs every turn.** If your start node is `Generate`, it will generate every turn, even if a later node would have short-circuited. Put guardrails and retrieval *before* the model, not after, if you want them to actually gate work.
 
 ## Related
@@ -177,7 +177,7 @@ The graph itself carries no per-turn state. All state lives on the agent's dialo
 - [Reference: Workflow Nodes](https://docs.tryllengine.com/v0.10/reference/nodes/index.html)
 - [Reference: Agent Parameters](https://docs.tryllengine.com/v0.10/reference/agent-parameters.html)
 - [Concept: Agents and Sessions](https://docs.tryllengine.com/v0.10/concepts/agents-and-sessions.html)
-- [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 - [Concept: Tool Calling](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html)
 - [Concept: Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html)
 - [How-to: Build a chat agent with a graph](https://docs.tryllengine.com/v0.10/how-to/build-chat-agent-with-graph.html)

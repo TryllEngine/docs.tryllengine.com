@@ -6,6 +6,10 @@ A model-free routing node. It runs no inference, writes no slot, and never emits
 
 Use it to route on a value produced **this turn** — generated text, a `Transform` result, or a canned seed — which no other node can inspect (see [Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html)). Agent variables are the *other* operand under `Expression`, not the subject: the model proposes a value, live game state judges it (for example, checking a generated action against a currently-allowed set). If the whole predicate is over variables the game already knows the answer before the turn starts — prefer a different graph, `ChangeAgentParam`, or `Pause` + `Resume(resume_node)` in that case. See `docs/research/workflow/conditional-routing-if-and-switch-nodes.md` for the design rationale.
 
+Watch it built
+
+The [Aquarium Expert](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert) (9 min) video routes on a boolean variable with the *is true* test.
+
 ______________________________________________________________________
 
 ## Parameters

@@ -2,6 +2,11 @@
 
 Small local models know general English. They do not know your game's lore, your product's changelog, or the contents of a customer's ticket history. RAG is the standard trick for fixing that: before the model answers, find the handful of most-relevant chunks of your data, and paste them into the prompt. This page explains how Tryll's RAG works end to end and when to use it.
 
+Watch it built
+
+- [Aquarium Expert](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert) (9 min): Shows dense retrieval, the threshold, and a hallucination you can prove.
+- [Aquarium Expert, advanced path](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert-advanced) (13 min): Adds HyDE rewriting and hybrid retrieval with Reciprocal Rank Fusion.
+
 ## The moving parts
 
 ```
@@ -12,7 +17,7 @@ flowchart LR
     subgraph Agent["Agent turn"]
         U["User message"] --> R["Retrieve node<br>embed + search"]
         R -- "chunks" --> KC["Knowledge on the turn"]
-        KC --> P["Projection<br>weaves chunks into prompt"]
+        KC --> P["Prompt building<br>weaves chunks into prompt"]
         P --> G["Generate node"]
     end
     R -. "reads" .-> ESS
@@ -21,7 +26,7 @@ flowchart LR
 Tryll splits RAG into two phases:
 
 1. **Index once.** Your data is embedded and stored in an [embedded string storage](https://docs.tryllengine.com/v0.10/reference/embedded-string-storage.html) — a named, per-session HNSW index over the embeddings.
-1. **Retrieve every turn.** The [`Retrieve` node](https://docs.tryllengine.com/v0.10/reference/nodes/retrieve.html) searches with the current user message (by embedding, keywords, or both), finds the top-K best-matching chunks, and attaches them to the current turn. The downstream `Generate` node's projection picks them up and rewrites the user turn to include them.
+1. **Retrieve every turn.** The [`Retrieve` node](https://docs.tryllengine.com/v0.10/reference/nodes/retrieve.html) searches with the current user message (by embedding, keywords, or both), finds the top-K best-matching chunks, and attaches them to the current turn. The downstream `Generate` node picks them up when it builds its prompt, and adds them around the user's line.
 
 Nothing else changes. There is no special "RAG model", no separate server. A RAG agent is an agent with a `Retrieve` node in front of a `Generate` node.
 
@@ -101,7 +106,7 @@ For the full grammar and all operator shapes, see [Retrieve filter grammar](http
 
 Tryll does *not* fuse retrieved text into the system prompt and hope. You write a [Mustache](https://mustache.github.io/) template on the downstream `Generate` node's `template` param and pick a `placement`.
 
-The projection stage builds a context from the current turn's data:
+When the node builds its prompt, the template sees the current turn's data:
 
 | Variable                                          | Contents                                                                                                                                                           |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -109,7 +114,7 @@ The projection stage builds a context from the current turn's data:
 | `{{#knowledge_<source>}}…{{/knowledge_<source>}}` | Direct per-retriever iteration — e.g. `{{#knowledge_rag}}`.                                                                                                        |
 | `{{user_message}}`                                | The raw user message.                                                                                                                                              |
 
-The `placement` param on `GenerateNode` controls where the rendered text appears relative to the resolved input — it is always inserted as a separate turn *around* the input, never in place of it:
+The `placement` param on the `Generate` node controls where the rendered text appears relative to the resolved input — it is always inserted as a separate turn *around* the input, never in place of it:
 
 | Value                                         | Effect                                                                                 |
 | --------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -152,7 +157,7 @@ A sensible default for a first RAG agent: `k=3`, `threshold` in the 0.3–0.6 ra
 - **Wire / config embedding-model mismatch** fails the index build with [error 8003 `EmbeddedStorageBuildFailed`](https://docs.tryllengine.com/v0.10/reference/error-codes.html#8xxx-embedded-string-storage). Match the two, or leave one of them unset. (`8002` is a different error — a storage of that name already exists.)
 - **Stale indexes** are rebuilt in the editor. If you change your records file, the next storage creation sees that its content no longer matches `<config name>.bake.json` and re-embeds. File times do not matter, so copying a KB never triggers a rebuild. A shipped game rebuilds nothing and fails storage creation instead.
 - **Per-session ownership.** Storages die with the session. For a stable corpus across reconnects, re-create from the same config on connect; the on-disk `.usearch` makes that cheap.
-- **Knowledge does not persist across turns.** Each turn, only the most recently retrieved chunks are projected. Anything retrieved on earlier turns is not re-surfaced to the model.
+- **Knowledge does not persist across turns.** Each turn, only the most recently retrieved chunks go into the prompt. Anything retrieved on earlier turns is not re-surfaced to the model.
 
 ## Related
 

@@ -7,6 +7,10 @@ Sometimes a node should produce text the *conversation* never remembers — an i
 
 Setting `history_role = None` is what makes a step "hidden" from the conversation: its output is still written to a slot and is fully usable *this turn* (via `input` or `{{slot.<name>}}`), but it never becomes part of the remembered transcript. `send` then independently decides whether the user sees it happening.
 
+Watch it built
+
+The [Aquarium Expert, advanced path](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert-advanced) (13 min) video uses a hidden Generate node (Send and History Role set to None) to write search text.
+
 Prerequisites
 
 - A working `Generate` agent — see [Build a chat agent with a graph](https://docs.tryllengine.com/v0.10/how-to/build-chat-agent-with-graph.html).
@@ -142,7 +146,7 @@ FTryllGraphDescription Graph = FTryllGraphBuilder()
     .Build();
 ```
 
-Because `think.send = None`, the client receives `AnswerText` frames only from `answer`. Because `think.history_role = None`, next turn's projected prompt contains the previous answer but no trace of the plan.
+Because `think.send = None`, the client receives `AnswerText` frames only from `answer`. Because `think.history_role = None`, next turn's prompt contains the previous answer but no trace of the plan.
 
 ## Variant B — visible thinking
 

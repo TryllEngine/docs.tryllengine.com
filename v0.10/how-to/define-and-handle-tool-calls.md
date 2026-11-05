@@ -294,7 +294,7 @@ agent.resume(tool_results=[ToolResult(call_id, '{"ok":true}')])
 # tuples also accepted: tool_results=[(call_id, '{"ok":true}')]
 ```
 
-For side-effect tools that need no payload, keep the default `disposition = Acknowledge` (optional `acknowledge_text`, empty ⇒ `"ok"`) or switch to `RouteOnly`. No `tool_results` required; the projection still closes the exchange so multi-turn templates stay well-formed.
+For side-effect tools that need no payload, keep the default `disposition = Acknowledge` (optional `acknowledge_text`, empty ⇒ `"ok"`) or switch to `RouteOnly`. No `tool_results` required; the prompt still closes the exchange so multi-turn templates stay well-formed.
 
 Alternative: ChangeParams for game-only context
 
@@ -328,7 +328,7 @@ arguments_json = {"name": "porch", "on": true}
 
 `arguments_json` is the model's own JSON object, passed through unchanged. Parse it as JSON rather than assuming every value is a string: a `boolean` or `number` parameter can arrive as a JSON boolean or number.
 
-After a successful `ResumeWithToolResult(s)` / `resume(tool_results=...)`, the downstream `Generate` projects the complete pair and streams the reply.
+After a successful `ResumeWithToolResult(s)` / `resume(tool_results=...)`, the downstream `Generate` replays the complete pair in its prompt and streams the reply.
 
 To exercise the same workflow in the editor Chat window or the Dialog Lab without Play/PIE, see [Test tool calls in Chat and the Dialog Lab](https://docs.tryllengine.com/v0.10/how-to/test-tool-calls-in-editor.html).
 

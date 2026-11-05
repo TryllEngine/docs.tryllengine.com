@@ -4,6 +4,11 @@ A single chat turn tells you what one sample looked like — not whether your wo
 
 The Lab makes **no quality claims** — no judge, no score. It shows raw output, deterministic pass/fail checks, and timings; you decide what "good" means.
 
+Watch it built
+
+- [Safe Receptionist](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#safe-receptionist) (9 min): Runs one variant five times to read the spread, then compares three models.
+- [Quest Giver](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#quest-giver) (7 min): Compares two variants that differ only by agent.
+
 Prerequisites
 
 - A `TryllRuntimeSettings` asset (Unity) or the Tryll Project Settings (Unreal).

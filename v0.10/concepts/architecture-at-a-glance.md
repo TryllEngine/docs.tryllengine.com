@@ -92,7 +92,7 @@ Three product constraints drove the split:
 ## Edges and pitfalls
 
 - A session is owned by its socket. If the TCP connection drops, the server destroys every agent and storage created through it. Client libraries surface this as a connection-changed event — reconnect and re-create what you need.
-- A [KV cache](https://docs.tryllengine.com/v0.10/reference/glossary.html#context-kv) is per node, per agent — never shared by every node on a model. Two nodes in the same graph that use the same model still have separate caches; that is intentional, because they see different prompt prefixes. See [Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html).
+- A [KV cache](https://docs.tryllengine.com/v0.10/reference/glossary.html#context-kv) is per node, per agent — never shared by every node on a model. Two nodes in the same graph that use the same model still have separate caches; that is intentional, because they see different prompt prefixes. See [Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html).
 - The server never runs user-supplied code. Tool calls are *detection-only* — see [Tool Calling](https://docs.tryllengine.com/v0.10/concepts/tool-calling.html).
 
 ## Related

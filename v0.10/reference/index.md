@@ -35,7 +35,7 @@ What you declare, and what the server does with it.
 
 | Node                                                                                                         | What it does                                                                             |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html)                                 | Run a language model on the projected dialogue and emit its answer.                      |
+| [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html)                                 | Build a prompt from the dialog history, run a language model on it, and emit its answer. |
 | [Generate and Speak](https://docs.tryllengine.com/v0.10/reference/nodes/generate-and-speak.html)             | Generate and synthesize speech in one fused streaming step.                              |
 | [Speak](https://docs.tryllengine.com/v0.10/reference/nodes/speak.html)                                       | TTS-only — voice text another node already produced.                                     |
 | [Instruction](https://docs.tryllengine.com/v0.10/reference/nodes/instruction.html)                           | Inject a static instruction via the `{{#instructions}}` block.                           |
@@ -77,3 +77,12 @@ What you declare, and what the server does with it.
 ## Glossary
 
 - [Glossary](https://docs.tryllengine.com/v0.10/reference/glossary.html) — canonical definitions for every term used across the documentation. Check here before guessing what a word means.
+
+## Legal
+
+- [License Agreement](https://docs.tryllengine.com/v0.10/reference/legal/licence.html) — the Tryll Engine License Agreement: what you may build and ship, release terms and royalties, attribution, and telemetry.
+- [Privacy Policy](https://docs.tryllengine.com/v0.10/reference/legal/privacy-policy.html) — what personal data Tryll Engine, Inc. collects from the website, the Software and release forms, and your rights over it.
+
+## Videos
+
+- [Video Walkthroughs](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html) — screen recordings that build and test the demo agents node by node: guardrails, voice, agent variables, and retrieval.

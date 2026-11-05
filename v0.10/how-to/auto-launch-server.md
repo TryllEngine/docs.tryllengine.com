@@ -22,11 +22,9 @@ The Unity plugin ships the server **inside the package** and auto-launches it �
 
 Settings live under **Edit → Project Settings → Tryll Client**. **Auto Launch Server** is `true` by default — uncheck it to manage the server yourself. **Llama.cpp backend** (`Vulkan` / `Auto`, default Vulkan) is passed as `--llama-backend` and also decides whether a player build copies the CUDA DLLs.
 
-Set `TRYLL_SERVER_MODE=tryll-dev` to launch Tryll Dev with `--telemetry-level off` (Tryll’s own CI / developers). That ignores the Project Settings telemetry level.
-
 `TryllClient` spawns the server before attempting to connect and terminates the process when the application quits.
 
-In the Editor, the server starts only after you accept the Tryll Runtime Licence in **Window → Tryll → Welcome**. Until then, a start fails with "Accept the Tryll Runtime Licence in the Tryll Welcome window first." and the Welcome window opens. Batch mode, `TRYLL_SERVER_MODE=tryll-dev` and player builds are not gated. A server you start yourself is not gated either.
+In the Editor, the server starts only after you accept the Tryll Runtime Licence in **Window → Tryll → Welcome**. Until then, a start fails with "Accept the Tryll Runtime Licence in the Tryll Welcome window first." and the Welcome window opens. Batch mode and player builds are not gated. A server you start yourself is not gated either.
 
 Bundling the server
 
@@ -53,9 +51,7 @@ Who owns the server and which port it uses depends on how the game runs:
 | Play → Standalone Game       | Its own server, separate from the editor's            | A free port                                                        |
 | Packaged game                | Its own server                                        | A free port                                                        |
 
-In the editor and in **Play → Standalone Game**, the server starts only after you accept the Tryll Runtime Licence in **Window → Tryll → Tryll Welcome**. Until then, a start fails with "Accept the Tryll Runtime Licence in the Tryll Welcome window first." In the editor, the Tryll Welcome tab then opens. Commandlets, `-unattended` runs, automation tests, `TRYLL_SERVER_MODE=tryll-dev` and packaged games are not gated. A server you start yourself is not gated either.
-
-Set `TRYLL_SERVER_MODE=tryll-dev` to launch Tryll Dev with `--telemetry-level off`. That ignores the Project Settings telemetry level.
+In the editor and in **Play → Standalone Game**, the server starts only after you accept the Tryll Runtime Licence in **Window → Tryll → Tryll Welcome**. Until then, a start fails with "Accept the Tryll Runtime Licence in the Tryll Welcome window first." In the editor, the Tryll Welcome tab then opens. Commandlets, `-unattended` runs, automation tests and packaged games are not gated. A server you start yourself is not gated either.
 
 Where the server comes from
 

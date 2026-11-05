@@ -138,7 +138,7 @@ The node reference pages list the keys each node contributes; the rest of this s
 
 ### `input.prompt[]` — the prompt as the model received it
 
-Every node that runs a language model emits this, and it is usually the first thing worth reading. Projection has already happened: history replay, `{{#instructions}}`, knowledge blocks and Mustache substitution are all baked in.
+Every node that runs a language model emits this, and it is usually the first thing worth reading. The prompt is shown as sent: history replay, `{{#instructions}}`, knowledge blocks and Mustache substitution are all baked in.
 
 | Key            | Meaning                                                                                                           |
 | -------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -156,7 +156,7 @@ Every node that runs a language model emits this, and it is usually the first th
 }
 ```
 
-If a prompt does not contain what you expected, this is where that shows up. See [Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html).
+If a prompt does not contain what you expected, this is where that shows up. See [Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html).
 
 ### Shared `parameters` keys
 
@@ -266,7 +266,7 @@ Retrieved chunks attached by a `Retrieve` node. The chunk list is **flattened in
 | -------- | --------------------------------------------- |
 | `intent` | The intent label a classification node wrote. |
 
-Written by a [`Summarize`](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) node on the interaction that triggered a fold. Older summaries stay on earlier interactions and are inert: projection reads only the newest non-empty one.
+Written by a [`Summarize`](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.html) node on the interaction that triggered a fold. Older summaries stay on earlier interactions and are inert: prompts use only the newest non-empty one.
 
 | Key               | Meaning                                                      |
 | ----------------- | ------------------------------------------------------------ |
@@ -449,13 +449,12 @@ ______________________________________________________________________
 
 ## Related versioned shapes
 
-Three schemas in Tryll carry their own version number. They move independently — do not read one as the other.
+Two schemas in Tryll carry their own version number. They move independently — do not read one as the other.
 
-| Version field              | Belongs to                                  |
-| -------------------------- | ------------------------------------------- |
-| `schema_version`           | This payload, `TurnComplete.debug_info`.    |
-| `format_version`           | QA and eval result files.                   |
-| Monitor SSE schema version | The dev-time server monitor's event stream. |
+| Version field    | Belongs to                               |
+| ---------------- | ---------------------------------------- |
+| `schema_version` | This payload, `TurnComplete.debug_info`. |
+| `format_version` | QA and eval result files.                |
 
 ______________________________________________________________________
 
@@ -466,4 +465,4 @@ ______________________________________________________________________
 - [Server Configuration](https://docs.tryllengine.com/v0.10/reference/server-configuration.html) — `include_engine_diagnostics`, `include_interaction_in_diagnostics`
 - [Node catalog](https://docs.tryllengine.com/v0.10/reference/nodes/index.html) — per-node diagnostics keys
 - [How-to: Test an agent in the editor](https://docs.tryllengine.com/v0.10/how-to/test-agent-in-editor.html), [Use the Agent Log](https://docs.tryllengine.com/v0.10/how-to/use-agent-log.html), [Compare dialog variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html)
-- [Concepts: Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concepts: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)

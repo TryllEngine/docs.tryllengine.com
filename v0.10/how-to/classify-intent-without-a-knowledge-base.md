@@ -43,7 +43,7 @@ flowchart LR
     respond -- "default" --> END
 ```
 
-`classify` scores the player's line against four described labels and attaches an `IntentionComponent` on `found`. `pick` maps that label to a tone directive from an inline map and writes it to a slot. `compose` folds the directive above the player's line via Mustache, and `respond` consumes that slot via `input`. The catch-all routes to `not_found`, where `compose` still runs with an empty `{{#instructions}}` block — so `respond` always reads from the same slot and the guard just answers normally.
+`classify` scores the player's line against four described labels and attaches the winning intent label to the turn on `found`. `pick` maps that label to a tone directive from an inline map and writes it to a slot. `compose` folds the directive above the player's line via Mustache, and `respond` consumes that slot via `input`. The catch-all routes to `not_found`, where `compose` still runs with an empty `{{#instructions}}` block — so `respond` always reads from the same slot and the guard just answers normally.
 
 Downstream of `classify`, this is byte-for-byte the wiring of the embedding-based recipe. Only the classifier node changed.
 
@@ -102,7 +102,7 @@ D. Anything else — directions, questions, small talk, or an ordinary request
 Respond with a single letter. No other text.
 ```
 
-The player's message is **not** part of this template — the projection adds it as its own user turn, after the system message and any history.
+The player's message is **not** part of this template — the node adds it as its own user turn, after the system message and any history.
 
 For what to put in the template and what to keep out of it, see [Design an Intent-Classifier Prompt](https://docs.tryllengine.com/v0.10/how-to/design-an-intent-classifier-prompt.html).
 

@@ -128,7 +128,7 @@ Estimates get you in the ballpark; the real number depends on your GPU, driver, 
 ## Related
 
 - [Concept: Models and Inference Engines](https://docs.tryllengine.com/v0.10/concepts/models-and-inference-engines.html)
-- [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 - [How-to: Inspect Server Memory](https://docs.tryllengine.com/v0.10/how-to/inspect-server-memory.html) — live RAM/VRAM after you load the line-up
 - [How-to: Pin and Unpin Models](https://docs.tryllengine.com/v0.10/how-to/pin-and-unpin-models.html)
 - [How-to: Use Your Own Local Model](https://docs.tryllengine.com/v0.10/how-to/use-your-own-local-model.html)

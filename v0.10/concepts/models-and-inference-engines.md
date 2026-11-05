@@ -74,7 +74,7 @@ The cache size dominates VRAM / RAM for long conversations. Moving from `f16` to
 
 ## Context size and why 4k is not 4k
 
-Every language model has a maximum **context size** — the total number of tokens the model can attend to at once (prompt + generation buffer). Tryll reserves a slice at the end for the generation itself (`generation_reserve`), and uses the rest as the **high water mark** for projection. Tokens beyond the high water mark get trimmed by [token-budget projection](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html) before the model ever sees them.
+Every language model has a maximum **context size** — the total number of tokens the model can attend to at once (prompt + generation buffer). Each node keeps **Max Tokens** free for the answer and uses the rest as its prompt budget. When the conversation outgrows that budget, the oldest turns are [trimmed from the prompt](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html#trimming-with-hysteresis) before the model ever sees them.
 
 So a model nominally advertised as "4k context" will, in practice, give you something like 3.5k of usable history — more than enough for most dialog, but worth knowing about when you design a RAG prompt.
 
@@ -113,7 +113,7 @@ Models you did not bundle with the server can be pulled from Hugging Face via `D
 - [Reference: Agent Parameters](https://docs.tryllengine.com/v0.10/reference/agent-parameters.html)
 - [Reference: Server Configuration](https://docs.tryllengine.com/v0.10/reference/server-configuration.html)
 - [Concept: Lifetime and Ownership](https://docs.tryllengine.com/v0.10/concepts/lifetime-and-ownership.html)
-- [Concept: Projection and Token Budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+- [Concept: Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 - [Concept: RAG](https://docs.tryllengine.com/v0.10/concepts/rag.html)
 - [How-to: Use your own local model](https://docs.tryllengine.com/v0.10/how-to/use-your-own-local-model.html)
 - [How-to: Use a LoRA adapter](https://docs.tryllengine.com/v0.10/how-to/use-a-lora-adapter.html)

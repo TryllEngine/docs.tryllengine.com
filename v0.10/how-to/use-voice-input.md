@@ -4,6 +4,10 @@ Voice Input is the Tryll subsystem that streams raw PCM audio to the server, run
 
 For the mental model behind this — the utterance lifecycle, push-to-talk vs. hands-free, offline vs. streaming recognisers, and the transcript-update kinds — see [Concept: STT and Voice Input](https://docs.tryllengine.com/v0.10/concepts/stt-and-voice-input.html).
 
+Watch it built
+
+The [Voice Character](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#voice-character) (5 min) video wires the Unity voice input component to an agent, with voice-activity detection, hotwords, and hands-free versus push-to-talk.
+
 ## Prerequisites
 
 - A connected session. No STT engine setting is needed: the STT model's catalog entry names its engine (Sherpa-ONNX).

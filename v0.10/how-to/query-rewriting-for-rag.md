@@ -6,6 +6,10 @@ This how-to adds a **rewriting** step: a dedicated [`Generate`](https://docs.try
 
 The graph is the same either way. What changes — and what this page is mostly about — is **what you ask the node to write**.
 
+Watch it built
+
+The [Aquarium Expert, advanced path](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert-advanced) (13 min) video builds a HyDE rewrite node and hybrid retrieval, then compares simple and advanced paths turn by turn.
+
 Prerequisites
 
 - A working `Retrieve → Generate` RAG graph — see [Create a simple RAG assistant](https://docs.tryllengine.com/v0.10/how-to/create-simple-rag-assistant.html) if you don't have one yet.
@@ -40,7 +44,7 @@ A rewrite step is just a `Generate` node whose only job is to produce search tex
 
 - **Never appear on the wire** — set `send = None`.
 - **Never be replayed as history** — set `history_role = None`. It's a scratch artifact for this turn only.
-- See the conversation so far — this is automatic: every `Generate` node projects the full turn history by default. (This is also what makes the node drift; see [the drift note](#the-node-reads-the-conversation-and-may-answer-it).)
+- See the conversation so far — this is automatic: every `Generate` node replays the full turn history in its prompt by default. (This is also what makes the node drift; see [the drift note](#the-node-reads-the-conversation-and-may-answer-it).)
 
 Pick **one** of the two prompts below, per the table above.
 
@@ -322,7 +326,7 @@ If your rewrite is a simple **deterministic** substitution (e.g. prefixing a fix
 
 This is the most common surprise, so expect it rather than debugging it.
 
-A `Generate` node projects the full turn history, and there is no parameter that turns that off — `history_role = None` controls whether *this node's output* is replayed on later turns, not whether the node *reads* the transcript. So your rewrite node is handed a chat transcript that ends in a user question, which is a very strong cue to **answer** rather than to rewrite. Small models follow the transcript's shape over the system prompt, and the effect grows as the conversation gets longer: the first couple of turns obey the prompt, and later turns start coming back as replies. They may even pick up the *formatting* of the assistant turns above them.
+A `Generate` node replays the full turn history in its prompt, and there is no parameter that turns that off — `history_role = None` controls whether *this node's output* is replayed on later turns, not whether the node *reads* the transcript. So your rewrite node is handed a chat transcript that ends in a user question, which is a very strong cue to **answer** rather than to rewrite. Small models follow the transcript's shape over the system prompt, and the effect grows as the conversation gets longer: the first couple of turns obey the prompt, and later turns start coming back as replies. They may even pick up the *formatting* of the assistant turns above them.
 
 Two consequences worth knowing:
 

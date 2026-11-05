@@ -8,10 +8,10 @@ The attached instruction is then rendered into the prompt by a later [Generate](
 
 ## How it works
 
-1. Reads `IntentionComponent` from the current interaction (written by an upstream [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) or [Classify Intent (LLM)](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent-llm.html) node).
-1. Calls `FindFirst(intentLabel)` on the configured `Map` string storage.
-1. If a match is found, attaches `SlotComponent{outputName, matchedText, SlotKind::Instruction, ...}` and returns `"default"`.
-1. If no `IntentionComponent` is present, or the key is not found in the map, logs a warning and returns `"default"` without attaching any component. A later Generate or Generate and Speak template renders the instructions loop as empty, producing a general answer.
+1. Reads the intent label attached to the current interaction (by an upstream [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) or [Classify Intent (LLM)](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent-llm.html) node).
+1. Looks the label up as a key in the configured `Map` string storage.
+1. If a match is found, attaches an instruction slot named `output_name` holding the matched text, and returns `"default"`.
+1. If no intent label is attached, or the key is not found in the map, logs a warning and returns `"default"` without attaching anything. A later Generate or Generate and Speak template renders the instructions loop as empty, producing a general answer.
 
 The node **always** takes the `"default"` exit — it never blocks or branches. Missing intents and missing keys are handled silently (with a log warning) so the graph keeps running without hard failures.
 
@@ -49,10 +49,10 @@ The `"default"` exit fires regardless of whether an instruction was found. When 
 
 ## Side effects
 
-- Attaches a `kind=Instruction` `SlotComponent{name=outputName, text}` to the current interaction when a matching key is found. The slot is rendered into the prompt by the downstream `GenerateNode` via:
+- Attaches an instruction slot (`kind=Instruction`, named `output_name`) to the current interaction when a matching key is found. The slot is rendered into the prompt by the downstream `Generate` node via:
   - `{{#instructions}}{{text}}{{/instructions}}` — iterates all attached instruction-kind slots.
   - `{{slot.<name>}}` — renders only the slot with the matching name.
-- When no instruction is attached (missing `IntentionComponent` or missing key), `{{#instructions}}` renders as empty and the model produces a general response.
+- When no instruction is attached (no intent label or missing key), `{{#instructions}}` renders as empty and the model produces a general response.
 
 ## Diagnostics
 
@@ -63,8 +63,8 @@ No model runs, so the node emits `parameters` and `output` only.
 | Key                         | Meaning                                                       | Absent when                       |
 | --------------------------- | ------------------------------------------------------------- | --------------------------------- |
 | `parameters.string_storage` | Name of the `Map`-kind storage that was looked up.            | —                                 |
-| `parameters.output_name`    | Name given to the emitted component.                          | —                                 |
-| `output.intent`             | The intent label read from the turn's `IntentionComponent`.   | No classification node wrote one. |
+| `parameters.output_name`    | Name given to the emitted instruction slot.                   | —                                 |
+| `output.intent`             | The intent label read from the turn.                          | No classification node wrote one. |
 | `output.found`              | `true` when the key matched and the instruction was attached. | —                                 |
 | `output.text`               | The instruction text that was attached.                       | `found` is `false`.               |
 
@@ -242,7 +242,7 @@ See the end-to-end walkthrough in [How to build an intent-driven NPC](https://do
 
 ## Related
 
-- [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) — the upstream node that writes the `IntentionComponent`.
+- [Classify Intent](https://docs.tryllengine.com/v0.10/reference/nodes/classify-intent.html) — the upstream node that attaches the intent label.
 - [String Storage](https://docs.tryllengine.com/v0.10/reference/string-storage.html) — Map kind required.
 - [Instruction](https://docs.tryllengine.com/v0.10/reference/nodes/instruction.html) — static (hardcoded) alternative when you do not need runtime key lookup.
 - [How to build an intent-driven NPC](https://docs.tryllengine.com/v0.10/how-to/build-intent-driven-npc.html)

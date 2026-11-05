@@ -64,7 +64,7 @@ Empty or unparsable `system_prompt`, or a template that omits `{{intents_block}}
 
 This is not the `Generate` Mustache context
 
-[`Generate`](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) and [`Transform`](https://docs.tryllengine.com/v0.10/reference/nodes/transform.html) templates get `user_message`, `slot.<name>`, `var.<name>`, `instructions`, and `knowledge` — see [Use Mustache Templates](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html). **None of those resolve here.** A classifier system prompt has `intents_block` and optional `letters` and nothing else; the user's message arrives as its own user turn, added by the projection.
+[`Generate`](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) and [`Transform`](https://docs.tryllengine.com/v0.10/reference/nodes/transform.html) templates get `user_message`, `slot.<name>`, `var.<name>`, `instructions`, and `knowledge` — see [Use Mustache Templates](https://docs.tryllengine.com/v0.10/how-to/use-mustache-templates.html). **None of those resolve here.** A classifier system prompt has `intents_block` and optional `letters` and nothing else; the user's message arrives as its own user turn, which the node adds itself.
 
 ______________________________________________________________________
 
@@ -94,7 +94,7 @@ intents = [
 | 2     | `C`                       | Inspector asks when or at what time…          | `when_saw_body`          |
 | 3     | `D`                       | Anything that does not match…                 | `other`                  |
 
-The key consequence: **the id is never shown to the model.** It is downstream wiring only — the string that lands in the `IntentionComponent` for [`IntentToInstruction`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) or a [`Branch`](https://docs.tryllengine.com/v0.10/reference/nodes/branch.html) to route on. So ids can stay machine-shaped and stable, while *all* of the semantic work happens in `prompt`. Renaming an id breaks your graph; rewriting a description breaks nothing.
+The key consequence: **the id is never shown to the model.** It is downstream wiring only — the intent label attached to the turn, for [`IntentToInstruction`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) or a [`Branch`](https://docs.tryllengine.com/v0.10/reference/nodes/branch.html) to route on. So ids can stay machine-shaped and stable, while *all* of the semantic work happens in `prompt`. Renaming an id breaks your graph; rewriting a description breaks nothing.
 
 Why letters rather than the ids themselves? Because `when_saw_body` tokenizes into three to five pieces, and you cannot read a multi-token label off a single logit. Letters are single tokens in essentially every modern tokenizer, and instruction-tuned models have seen enormous amounts of `A`/`B`/`C`/`D` multiple-choice data.
 
@@ -147,7 +147,7 @@ ______________________________________________________________________
 
 ## Conversation history
 
-`history_turns` (default `2`, range `0`–`64`) controls how many past user/assistant pairs are projected before the current message. The in-progress turn's own assistant reply is deliberately excluded — that is the position whose logits we score.
+`history_turns` (default `2`, range `0`–`64`) controls how many past user/assistant pairs are replayed before the current message. The in-progress turn's own assistant reply is deliberately excluded — that is the position whose logits we score.
 
 | Situation                                                      | Setting                                       |
 | -------------------------------------------------------------- | --------------------------------------------- |
@@ -233,7 +233,7 @@ ______________________________________________________________________
 - [ ] **Asking for JSON.** Shifts first-token mass toward `{` and defeats the mechanism.
 - [ ] **`Answer:` or `The intent is:` as the closing line.** You may be reading the logit for that word instead of a letter.
 - [ ] **`{{user_message}}`, `{{slot.x}}` or `{{var.x}}` in the template.** Not in this context; they render empty. The user's message is added as its own turn.
-- [ ] **Embedding the user's message in the system prompt.** The projection already adds it.
+- [ ] **Embedding the user's message in the system prompt.** The node already adds it.
 - [ ] **Commas inside a legacy CSV description.** Silently becomes an extra label. Prefer the `intents` array.
 - [ ] **Overlapping or copy-pasted descriptions.** The #1 cause of low margin.
 - [ ] **The most common intent at `A`** without checking position bias.

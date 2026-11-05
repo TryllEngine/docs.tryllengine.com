@@ -1,6 +1,6 @@
 # First Inference in Unreal
 
-Unpack a Tryll release, drop the plugin into your Unreal project (the server is bundled inside it), set a few project settings, download a model through the Model Manager, and watch a single `Generate` node print its answer to the screen during PIE — no chat UI required.
+Download the Tryll plugin zip for your engine version, unzip it into your project (the server is bundled inside it), set a few project settings, download a model through the Model Manager, and watch a single `Generate` node print its answer to the screen during PIE — no chat UI required.
 
 Working with an AI coding agent?
 
@@ -12,7 +12,7 @@ A blank actor with a one-node workflow. You download a model up front in the Mod
 
 ## Before you start
 
-- **Unreal Engine 5.7** and a blank **C++** project (Blueprint-only projects can't compile the plugin source).
+- **Unreal Engine 5.7 or 5.8** on Windows x64, and a blank project. A Blueprint-only project is fine: the release zips carry prebuilt plugin binaries. (Packaging a game later needs Visual Studio 2022 with the "Game development with C++" workload, because packaging compiles the plugins for your game.)
 - **~5 GB free disk space** for the downloaded model and a working internet connection on first run.
 - Familiarity with creating a Blueprint actor and binding events.
 
@@ -20,38 +20,18 @@ The Unreal plugin bundles the server and spawns it for you, so installing the pl
 
 ______________________________________________________________________
 
-## Step 1 — Get the distribution
+## Step 1 — Download the plugin
 
-1. Download `tryll-unreal-<version>.7z` from the releases page and extract it somewhere temporary (e.g. `C:\Downloads\tryll\`).
+1. Open the [Tryll Unreal releases](https://github.com/TryllEngine/tryll-unreal-plugin/releases) and pick the newest version.
+1. Download `TryllClient-<version>-UE<engine>-Win64.zip` for your engine, for example `TryllClient-1.2.3-UE5.7-Win64.zip`. The other zips on the page are optional plugins (`TryllMetaHumanLipSync`, `TryllMCP`) and the standalone server, which you do not need here: **the server is bundled inside the `TryllClient` zip**.
 
-1. Inside is the `UnrealPlugin/` folder — **the server is bundled inside it**, so this one folder is everything you install:
-
-   ```
-   UnrealPlugin/                     <-- everything you need for Unreal
-   ├── TryllClient.uplugin
-   ├── Generated/messages_generated.h
-   ├── Source/
-   └── Binaries/ThirdParty/TryllServer/Default/  <-- bundled server
-       ├── tryll_server.exe
-       ├── llama.dll, ggml*.dll, ggml-vulkan.dll
-       └── data/
-           ├── server-config.json
-           ├── models.json
-           ├── default-canned-responses.txt
-           └── default-guardrail-patterns.txt
-   ```
-
-The archive ships **no model weights** — you download the models your graph references up front through the Model Manager (Step 4). `CreateAgent` fails fast if a referenced model is not already on disk; the server does **not** download it for you at agent-creation time. In Client Dev, downloaded weights land under `<Project>/TryllStorage/models/`.
-
-How the archive is built
-
-`ci/scripts/release.py` builds the production server, then stages the Unreal plugin (FlatBuffers codegen + the server bundled into its `Binaries/ThirdParty/TryllServer/Default/` folder) and zips it into a per-engine archive. The server's `data/server-config.json` is patched with production overrides and `models.json` is filtered to the shipping audience. The Unity package ships separately as `tryll-unity-<version>.7z`.
+The zip ships **no model weights** — you download the models your graph references up front through the Model Manager (Step 4). `CreateAgent` fails fast if a referenced model is not already on disk; the server does **not** download it for you at agent-creation time. In Client Dev, downloaded weights land under `<Project>/TryllStorage/models/`.
 
 ______________________________________________________________________
 
 ## Step 2 — Install the Unreal plugin
 
-Copy the `UnrealPlugin/` folder into your project as `<YourProject>/Plugins/TryllClient/`:
+Unzip the zip into your project's `Plugins/` folder, so you get `<YourProject>/Plugins/TryllClient/`:
 
 ```
 <YourProject>/
@@ -59,19 +39,19 @@ Copy the `UnrealPlugin/` folder into your project as `<YourProject>/Plugins/Tryl
 ├── Plugins/
 │   └── TryllClient/
 │       ├── TryllClient.uplugin
-│       ├── Generated/messages_generated.h
-│       ├── Source/TryllClient/{Public,Private}/
+│       ├── Source/                  <-- plugin source (built for you already)
+│       ├── Binaries/Win64/          <-- prebuilt editor binaries for this engine
 │       └── Binaries/ThirdParty/TryllServer/Default/  <-- server rides along
 └── <YourProject>.uproject
 ```
 
 The bundled server ships inside the plugin, so installing the plugin places the server alongside it. The plugin resolves it at `<Plugin>/Binaries/ThirdParty/TryllServer/<variant>/tryll_server.exe` via the plugin directory, so the path is identical in the editor and in packaged builds (a shipped plugin has just the `Default` variant). Auto-launch passes `--mode client-dev`, `--storage-root` (default `<Project>/TryllStorage/`), and related project flags. Models download into `TryllStorage/models/`.
 
-Then:
+Then open the project. It opens without compiling: the zip carries prebuilt binaries for this engine version. **Edit → Plugins → Project** lists **Tryll Client** as enabled.
 
-1. Right-click `<YourProject>.uproject` → **Generate Visual Studio project files**.
-1. Open the solution and build in **Development Editor**.
-1. Launch the editor. **Edit → Plugins → Project** lists **Tryll Client** as enabled.
+Building from source, or a partner `.7z` package
+
+The [plugin repository](https://github.com/TryllEngine/tryll-unreal-plugin) holds the plugin source without binaries or server. Copy `TryllClient/` into a **C++** project's `Plugins/` folder, unzip `tryll-server-<version>-win64-lite.zip` (or `-full` for CUDA) from the same release into `Plugins/TryllClient/Binaries/ThirdParty/TryllServer/Default/`, then build the project in **Development Editor**. A partner `.7z` package's `UnrealPlugin/` folder goes to `Plugins/TryllClient/` the same way.
 
 ### Accept the licence
 
@@ -117,8 +97,8 @@ Before your agent can run, it needs a model on disk. Download one with the Model
 
 1. Open **Window → Tryll → Tryll Model Manager**. The window launches the bundled server, connects, and lists every model the server knows about. Wait for the toolbar status to read **Ready · *N* models** (green).
 1. In the list, pick a language model to start with:
-   - **Recommended:** `Gemma 3 4B Instruct (Q4_K_M)` (~3 GB download).
-   - **Smaller / quicker:** `Llama 3.2 3B Instruct (Q4_K_M)` (~2 GB download).
+   - **Recommended:** `Gemma 4 E4B Instruct (Q4_K_M)` (~5.4 GB download, about 6 GB of VRAM). The demo workflows use it.
+   - **Smaller / quicker:** `Llama 3.2 3B Instruct (Q4_K_M)` (~2 GB download, about 2.6 GB of VRAM). Pick this one on a 6 GB card.
 1. Select the row. In the **Model Properties** panel on the right, the **Status** section shows **State: Not downloaded**. Click **Download** — a progress bar tracks the bytes and the toolbar shows the active download count.
 1. When the state turns to **Downloaded**, set **Build registration (this project)** to **Experimental** — that makes it available in the editor, which is all this tutorial needs. (**Production** additionally ships the files inside packaged builds; choose that when you're ready to ship.)
 1. Close the Model Manager.
@@ -251,7 +231,7 @@ Everything the plugin exposes in Blueprint — connection, session, agents, mode
 ## Troubleshooting
 
 - **"Accept the Tryll Runtime Licence in the Tryll Welcome window first."** — the editor did not start the server because the licence is not accepted. The Tryll Welcome tab opens. Click **Accept licence**.
-- **`Tryll server exe not found at '...'` in `LogTryll/Error`** — no variant folder under `<Plugin>/Binaries/ThirdParty/TryllServer/` resolves. From a release archive the `Default` variant ships populated; from a source build, run `cmake --build` of the server so the committed `Default` symlink resolves to your build.
+- **`Tryll server exe not found at '...'` in `LogTryll/Error`** — no variant folder under `<Plugin>/Binaries/ThirdParty/TryllServer/` resolves. The `TryllClient` release zip ships the `Default` folder populated; from the plugin repository's source, unzip the server zip of the same release into it (Step 2).
 - **`OnConnectionChanged(false)` fires repeatedly** — the server crashed or didn't start. Check `LogTryllServer` for the failure reason and `%LOCALAPPDATA%\Tryll\projects\<project-key>\logs\` as a fallback.
 - **`OnCreateSessionComplete(false)`** — usually a server-side error reading `models.json` or initialising the inference engine. Check `LogTryllServer`.
 - **`Default Model Name` dropdown is empty** — register a model first. Open **Window → Tryll → Tryll Model Manager**, download one, and set its **Build registration** to **Experimental** or **Production**; it then appears in the dropdown.

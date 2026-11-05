@@ -45,6 +45,8 @@ Exit names read as friendly labels (`Tool Called`, `No Tool Called`) but map to 
 
 Select a node to edit its parameters in the **Details** panel — **Node Name** first, then system prompt, model, sampling, storage paths, and so on, with the same dropdowns and pickers as the regular Details view. Exit fields are intentionally **hidden here**: you set routing by dragging wires, not by typing node names.
 
+For a long system prompt or template, click the pencil button at the right end of the field's row to open the text in a larger window. The text is written to the field when you click out of the box or close the window, as one undo step.
+
 The `rewrite` node selected. Details lists its **Tryll Generate Params**; there is no exit field, because the wire to `retrieve_hybrid` is the routing.
 
 Select the **Entry** node to set the workflow's **Default Model Name** — the fallback model for any `Generate`-family node that does not specify its own.

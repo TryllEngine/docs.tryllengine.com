@@ -1,8 +1,8 @@
 # Classify Intent
 
-The Classify Intent node maps a user message to a discrete **intent label** by performing top-1 vector similarity search over a small, labelled [embedded string storage](https://docs.tryllengine.com/v0.10/reference/embedded-string-storage.html). When a label is found it attaches an `IntentionComponent` to the current [interaction](https://docs.tryllengine.com/v0.10/reference/glossary.html#interaction) so a downstream [IntentToInstruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) node can branch the graph or look up a matching instruction. A `filter` that does not compile, changed via `ChangeAgentParam`, returns `3007 InvalidParamValue` and leaves the previous filter in force.
+The Classify Intent node maps a user message to a discrete **intent label** by performing top-1 vector similarity search over a small, labelled [embedded string storage](https://docs.tryllengine.com/v0.10/reference/embedded-string-storage.html). When a label is found it attaches the intent label to the current [interaction](https://docs.tryllengine.com/v0.10/reference/glossary.html#interaction) (in the turn's Raw JSON it appears as an `IntentionComponent`) so a downstream [IntentToInstruction](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) node can branch the graph or look up a matching instruction. A `filter` that does not compile, changed via `ChangeAgentParam`, returns `3007 InvalidParamValue` and leaves the previous filter in force.
 
-It does **not** generate text and does **not** render anything into the prompt — the `IntentionComponent` is routing-only; it is consumed by `IntentToInstructionNode` and not by `DefaultProjectionStrategy`.
+It does **not** generate text and does **not** render anything into the prompt — the intent label is routing-only; it is read by `IntentToInstruction` and never written into any prompt.
 
 `NodeType`: `ClassifyIntent`.
 
@@ -12,7 +12,7 @@ It does **not** generate text and does **not** render anything into the prompt �
 1. Embeds it with the embedding model recorded in the KB config file.
 1. Calls `Search(queryVector, topK=1, predicate)` on the storage — using the same compiled-filter pipeline as [Retrieve](https://docs.tryllengine.com/v0.10/reference/nodes/retrieve.html).
 1. If the top hit's cosine distance is ≤ `threshold`, reads the configured `metadata_field` from that record's typed metadata.
-1. Attaches `IntentionComponent{intentLabel}` to the interaction and returns `found`. Otherwise returns `not_found`.
+1. Attaches the intent label to the interaction and returns `found`. Otherwise returns `not_found`.
 
 The knowledge base records must carry a **string-typed** metadata field whose value is the intent label. See [KB schema requirements](#kb-schema-requirements).
 
@@ -63,7 +63,7 @@ Each exit is a structural string field on the node's params; its value names the
 
 | Route       | Fires when                                                                                                                                                               |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `found`     | Top-1 hit's cosine distance is less than or equal to `threshold` and its `metadata_field` contained a non-empty string. `IntentionComponent` is attached.                |
+| `found`     | Top-1 hit's cosine distance is less than or equal to `threshold` and its `metadata_field` contained a non-empty string. The intent label is attached.                    |
 | `not_found` | Resolved `input` slot missing/empty, empty storage, top-1 distance above `threshold`, or matched record's `metadata_field` is absent or empty. No component is attached. |
 
 An empty exit field routes to END and is valid. A non-empty exit that does not name a node in the graph fails agent creation with [`3003 GraphCompilationFailed`](https://docs.tryllengine.com/v0.10/reference/error-codes.html#3xxx-agent).
@@ -71,7 +71,7 @@ An empty exit field routes to END and is valid. A non-empty exit that does not n
 ## Side effects
 
 - Embeds the `input`-resolved text (empty = `user_message`) using the embedding model recorded in the KB config file referenced by `embedded_string_storage`.
-- Attaches an `IntentionComponent{intentLabel}` to the current interaction on `found`. The component is **not** rendered into the prompt by `DefaultProjectionStrategy` — it is consumed only by `IntentToInstructionNode`.
+- Attaches the intent label to the current interaction on `found`. The label is **not** rendered into any prompt — it is read only by `IntentToInstruction`.
 - On `not_found`, nothing is attached (a warning is logged if the top hit was rejected for a metadata reason rather than a distance reason).
 - When `notify_client` is `OnFound` or `Always`, fires one `NodeEvent` (`event_type="intent_classified"`) out-of-band before the turn completes. `OnFound` emits only on the `found` path; `Always` also emits on every `not_found` path (`empty_message`, `no_results`, `below_threshold`) with `not_found_reason` set and the rejected top-1 fields when a hit exists. Subscribe on the agent: `agent.set_on_intent_classified(cb)` (Python), `agent.SetOnIntentClassified(cb)` (C++), `TryllAgentComponent.IntentClassified` (Unity), or `UTryllAgentComponent::OnIntentClassified` (Unreal). The session events (`TryllClient.IntentClassified`, `UTryllSubsystem::OnIntentClassified`) are the all-agents form `(agentId, classification)`. The payload has no agent id. A typed subscriber swallows the generic `OnNodeEvent` fallback in the same scope only.
 

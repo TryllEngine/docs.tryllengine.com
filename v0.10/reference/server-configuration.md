@@ -26,7 +26,7 @@ tryll_server.exe --network-access local_network
 
 The flags can be combined. `--port` overrides the `port` field from the config file and is how `ManagedServer` (C++ and Python clients) ensures the port it connects to matches the port the server listens on. `--llama-backend` overrides `engines.llama_cpp.backend` — Unity and Unreal auto-launch pass this from Project Settings. `--network-access` overrides the `network_access` field. Root precedence is CLI → config → mode default.
 
-Missing fields keep their defaults. In Tryll Dev the server also runs with all defaults when the file is absent. Client Dev and Client Prod refuse to start without the file, because they will not guess their folders.
+Missing fields keep their defaults. The server refuses to start without the file, because it will not guess its folders.
 
 ## Minimal config
 
@@ -44,9 +44,9 @@ Missing fields keep their defaults. In Tryll Dev the server also runs with all d
 
 ### Deployment mode
 
-| Field  | Type   | Default         | Description                                                                                                                                                                                                                                                                                                       |
-| ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mode` | string | build-dependent | `tryll-dev`, `client-dev`, or `client-prod`. Debug/Release builds default to `tryll-dev` and accept all three. The ClientDev build (the editor server in the Unity and Unreal releases) accepts only `client-dev`. The ClientProd build (staged into packaged players) accepts only `client-prod`. CLI: `--mode`. |
+| Field  | Type   | Default         | Description                                                                                                                                                                                                                       |
+| ------ | ------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mode` | string | build-dependent | `client-dev` or `client-prod`. The editor server in the Unity and Unreal releases accepts only `client-dev`. The server staged into packaged players accepts only `client-prod`. Auto-launch passes the right one. CLI: `--mode`. |
 
 ### Networking
 
@@ -64,7 +64,7 @@ Missing fields keep their defaults. In Tryll Dev the server also runs with all d
 | `user_models_catalog_path` | string | sibling `user_models.json` of the base catalog | Optional user catalog. Nothing is shipped at the default path. Omitted field resolves next to the resolved base catalog (not `data/data/user_models.json`). Missing file is silent. CLI: `--user-models-path` (absolute, or relative to the process cwd). Unity/Unreal set this from an optional project-relative path in Project Settings or from code. |
 | `user_models_catalog_dir`  | string | sibling `models.d` of the base catalog         | Directory of optional extra user `*.json` catalogs. The install does not create it. Omitted field resolves next to the resolved base catalog (not `data/data/models.d`). Missing directory is silent. CLI: `--user-models-dir`.                                                                                                                          |
 | `user_catalog_on_error`    | string | `"skip"`                                       | `"skip"` logs and ignores broken user files; `"fail"` aborts after reporting all issues (CI). `--check-catalogs` always fails on any issue.                                                                                                                                                                                                              |
-| `models_root`              | string | mode default                                   | Directory for downloaded model files and `downloads.json`. Replaces removed `models_download_dir` (no alias). Tryll Dev default: `data/.models/`. Client modes: `<storage_root>/models/` (must stay inside the storage root). CLI: `--models-root`.                                                                                                      |
+| `models_root`              | string | mode default                                   | Directory for downloaded model files and `downloads.json`. Replaces removed `models_download_dir` (no alias). Default: `<storage_root>/models/` (must stay inside the storage root). CLI: `--models-root`.                                                                                                                                               |
 
 ### Logging
 
@@ -140,15 +140,15 @@ Both files are loaded lazily on first use; an absent file on startup is fine as 
 
 ### Telemetry
 
-What is sent depends on **deployment mode** and `telemetry.level`. The editor (Client Dev) sends `basic` and will not go lower. `turns` and `full` are debug levels you opt into. A packaged player (Client Prod) has telemetry compiled out. Tryll Dev sends nothing unless `enabled` is `true`. See [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html) for what each level contains and how to raise it while debugging.
+What is sent depends on **deployment mode** and `telemetry.level`. The editor (Client Dev) sends `basic` and will not go lower. `turns` and `full` are debug levels you opt into. A packaged player (Client Prod) has telemetry compiled out. See [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html) for what each level contains and how to raise it while debugging.
 
 The shipped `data/server-config.json` sets `enabled: true` and `level: "basic"`. The **Default** column is the value used when the field is absent. `activity_enabled` and `include_user_content` are no longer read.
 
-| Field               | Type   | Default | Description                                                                                                                                                                                                                                                       |
-| ------------------- | ------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `telemetry.enabled` | bool   | `false` | Tryll Dev master switch. `false` sends nothing, including when `--telemetry-level` asks for a higher level. In the editor, `false` is raised to `basic` and the server logs a warning. On a packaged player, `true` fails startup.                                |
-| `telemetry.level`   | string | `basic` | `off`, `basic`, `turns`, or `full`. **`basic` is the default.** `turns` adds content-free per-turn timings. `full` adds authored text. `--telemetry-level` overrides this for one process. The editor raises `off` to `basic`. In Tryll Dev, `off` sends nothing. |
-| `telemetry.sinks`   | array  | `[]`    | Batch and queue tuning for the built-in PostHog sink. Removing the entry leaves editor telemetry on.                                                                                                                                                              |
+| Field               | Type   | Default | Description                                                                                                                                                                                                                    |
+| ------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `telemetry.enabled` | bool   | `false` | In the editor, `false` is raised to `basic` and the server logs a warning. On a packaged player, `true` fails startup.                                                                                                         |
+| `telemetry.level`   | string | `basic` | `off`, `basic`, `turns`, or `full`. **`basic` is the default.** `turns` adds content-free per-turn timings. `full` adds authored text. `--telemetry-level` overrides this for one process. The editor raises `off` to `basic`. |
+| `telemetry.sinks`   | array  | `[]`    | Batch and queue tuning for the built-in PostHog sink. Removing the entry leaves editor telemetry on.                                                                                                                           |
 
 Each sink in `"sinks"` supports:
 
@@ -165,29 +165,15 @@ The PostHog address and project key are built into the editor server. They are n
 
 ### Speech (STT)
 
-| Field                | Type   | Default        | Description                                                                                                                                                        |
-| -------------------- | ------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `default_vad_model`  | string | `"Silero VAD"` | Catalog name of the voice-activity-detection model the STT engine loads for hands-free / endpointed capture.                                                       |
-| `stt_debug_dump_dir` | string | `""`           | When non-empty, the STT engine writes one WAV per VAD segment under this directory. Debug-only and Tryll Dev only: Client Dev and Client Prod clear it at startup. |
+| Field               | Type   | Default        | Description                                                                                                  |
+| ------------------- | ------ | -------------- | ------------------------------------------------------------------------------------------------------------ |
+| `default_vad_model` | string | `"Silero VAD"` | Catalog name of the voice-activity-detection model the STT engine loads for hands-free / endpointed capture. |
 
 ### Process lifetime
 
 | Field                   | Type          | Default | Description                                                                                                                                                                                                                                                                                                                                           |
 | ----------------------- | ------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `idle_shutdown_timeout` | int (seconds) | `0`     | Seconds of idle (zero sessions, no in-flight downloads) before a **managed** server self-exits. `0` = never exit (**unmanaged**). CLI override: `--idle-shutdown-timeout <sec>`. Auto-launching clients set this so the server shuts down with the game. Do not call this lifetime “standalone”; that word names only the Standalone deployment mode. |
-
-### Dev-time monitor (`monitor`)
-
-An optional HTTP/SSE sidecar for inspecting live turns during development. Only present in non-Production builds, and only in Tryll Dev: Client Dev and Client Prod turn it off at startup whatever the config says, so the server that Unity and Unreal auto-launch (`client-dev`) never runs it.
-
-| Field                             | Type   | Default       | Description                                                                                                                            |
-| --------------------------------- | ------ | ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `monitor.enabled`                 | bool   | `false`       | Turn the monitor sidecar on. Tryll Dev only.                                                                                           |
-| `monitor.bind`                    | string | `"127.0.0.1"` | Interface the monitor HTTP server binds.                                                                                               |
-| `monitor.port`                    | uint16 | `9101`        | Monitor HTTP port.                                                                                                                     |
-| `monitor.turn_ring_size`          | uint   | `200`         | How many recent turns to retain in the ring buffer.                                                                                    |
-| `monitor.memory_tick_interval_ms` | uint   | `0`           | Interval in milliseconds for the monitor's live memory sample. `0` disables periodic sampling; the Memory panel still loads on demand. |
-| `monitor.allow_remote`            | bool   | `false`       | Allow non-loopback clients to reach the monitor.                                                                                       |
 
 ### Crash dumps (`crash_dump`)
 
@@ -196,12 +182,6 @@ An optional HTTP/SSE sidecar for inspecting live turns during development. Only 
 | `crash_dump.enabled` | bool | `true`  | Write a minidump on a fatal crash. Ships in **all** configs, including Production. |
 
 Crash dumps always go to the logs folder (`logs_dir` / `--log-dir`). The old `crash_dump.dir` key and `--crash-dump-dir` flag are removed with no aliases.
-
-### Debug commands (`debug_commands`)
-
-| Field                    | Type | Default | Description                                                                                                                                                                                                                                       |
-| ------------------------ | ---- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `debug_commands.enabled` | bool | `false` | Enable the dev-only `DebugCommandRequest` channel. Compiled out of Production builds entirely. CLI override: `--enable-debug-commands`. The key and the flag apply in Tryll Dev only; Client Dev and Client Prod turn the channel off at startup. |
 
 ### Engine tuning (`engines`)
 
@@ -268,10 +248,10 @@ Raising `max_pause_ms` yields more GPU per throttle step but makes cancellation 
 
 The deployment mode decides the log file, whatever `log_mode` says.
 
-| Mode                  | File naming                         | Rotation                      |
-| --------------------- | ----------------------------------- | ----------------------------- |
-| Tryll Dev, Client Dev | `tryll_2026-04-06_14-30-00_123.log` | No rotation; new file per run |
-| Client Prod           | `tryll.log`                         | 10 MiB max, 5 files kept      |
+| Mode        | File naming                         | Rotation                      |
+| ----------- | ----------------------------------- | ----------------------------- |
+| Client Dev  | `tryll_2026-04-06_14-30-00_123.log` | No rotation; new file per run |
+| Client Prod | `tryll.log`                         | 10 MiB max, 5 files kept      |
 
 ## Related
 

@@ -10,7 +10,11 @@ Patterns are compiled once at agent creation and matched with `std::regex_search
 
 String storage kinds
 
-`RegexGuardrailNode` accepts any string storage kind (`List`, `Map`, `Multimap`) and uses the **list view** — each value is treated as a regex pattern regardless of any key. Topic-tagged deflection (writing the matched pattern's category key onto the interaction for use by a downstream `CannedResponseNode`) is planned as future work.
+`RegexGuardrail` accepts any string storage kind (`List`, `Map`, `Multimap`) and uses the **list view** — each value is treated as a regex pattern regardless of any key. Topic-tagged deflection (writing the matched pattern's category key onto the interaction for use by a downstream `CannedResponseNode`) is planned as future work.
+
+Watch it built
+
+The [Safe Receptionist](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#safe-receptionist) (9 min) video sets up this node with an inline pattern list and routes `triggered` to a Canned Response.
 
 ## Parameters
 

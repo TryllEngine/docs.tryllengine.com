@@ -162,16 +162,6 @@ def reconnect() -> TryllClient:
 
 See [Lifetime and Ownership](https://docs.tryllengine.com/v0.10/concepts/lifetime-and-ownership.html) for the full picture of what survives session close and what does not.
 
-## Suppress telemetry for a process run
-
-To keep a Tryll Dev server from sending telemetry for one run — a QA or CI pipeline, for example — pass `--telemetry-level off`:
-
-```
-tryll_server.exe --mode tryll-dev --telemetry-level off
-```
-
-This overrides `"enabled": true` in `server-config.json` for that process. An editor server raises `off` to `basic`. To send turn timings or conversation text from the editor while debugging, set **Telemetry Level** in Project Settings. See [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html#suppress-telemetry-for-a-process-run-cli-override).
-
 ## Verify it worked
 
 Connecting and creating the session produces these server-side log lines (at `info` level):

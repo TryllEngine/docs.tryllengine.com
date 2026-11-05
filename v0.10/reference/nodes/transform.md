@@ -8,6 +8,11 @@ Use it to compose or rewrite text before a downstream node consumes it via `inpu
 
 See [Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.html) for the full mental model, and [How-to: query rewriting for RAG](https://docs.tryllengine.com/v0.10/how-to/query-rewriting-for-rag.html) for the end-to-end recipe.
 
+Watch it built
+
+- [Quest Giver](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#quest-giver) (7 min): Renders game state and the player's message into a slot with this node.
+- [Aquarium Expert](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#aquarium-expert) (9 min): Uses it to put retrieved chunks ahead of the question.
+
 ______________________________________________________________________
 
 ## Parameters

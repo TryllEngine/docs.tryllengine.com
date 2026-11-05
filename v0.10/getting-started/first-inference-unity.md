@@ -1,6 +1,6 @@
 # First Inference in Unity
 
-Unpack a Tryll release, drop the package into your Unity project (the server is bundled inside it), configure one project setting, download a model through the Model Manager, and watch a single `Generate` node print its answer to the Console during Play Mode — no chat UI required.
+Install the Tryll package from its Git URL, let the Welcome window download the server, configure one project setting, download a model through the Model Manager, and watch a single `Generate` node print its answer to the Console during Play Mode — no chat UI required.
 
 Working with an AI coding agent?
 
@@ -12,79 +12,63 @@ A scene with a `TryllAgentComponent` on a GameObject that, on `Start`, connects 
 
 ## Before you start
 
-- **Unity 6** (6000.x) or later, with a blank 3D project.
-- **~5 GB free disk space** for the downloaded model and a working internet connection on first run.
+- **Unity 6.3** (6000.3) or later, with a blank 3D project, on Windows x64.
+- **[Git](https://git-scm.com/downloads)** installed and on your `PATH`: the Package Manager uses it to fetch the package.
+- **~5 GB free disk space** for the server and the downloaded model, and a working internet connection on first run.
 - Familiarity with creating GameObjects, adding components, and writing a short C# MonoBehaviour.
 
 You do **not** need to build anything from source — the distribution ships pre-generated FlatBuffers bindings.
 
 ______________________________________________________________________
 
-## Step 1 — Get the distribution
+## Step 1 — Find the version
 
-1. Download `tryll-unity-<version>.7z` from the releases page and extract it somewhere temporary (e.g. `C:\Downloads\tryll\`).
+Open the [Tryll Unity releases](https://github.com/TryllEngine/tryll-unity-plugin/releases) and note the newest version tag, such as `v1.2.3`. The plugin and the server must be the same version; the package pins its server for you.
 
-1. Inside is the Unity package — **the server is bundled inside it**, so there is nothing else to install:
-
-   ```
-   UnityPlugin/                       <-- the UPM package (everything you need)
-   ├── package.json
-   ├── Runtime/
-   ├── Editor/
-   └── .Server/Default/               <-- bundled server (rides inside the package)
-       ├── tryll_server.exe
-       ├── llama.dll, ggml*.dll, ggml-vulkan.dll
-       └── data/
-           ├── server-config.json
-           ├── models.json
-           ├── default-canned-responses.txt
-           └── default-guardrail-patterns.txt
-   ```
-
-The archive ships **no model weights** — you download the models your graph references up front through the Model Manager (Step 4). `CreateAgent` fails fast if a referenced model is not already on disk; the server does **not** download it for you at agent-creation time. In Client Dev, downloaded weights land under `<Project>/TryllStorage/models/`.
+The package ships **no model weights** — you download the models your graph references up front through the Model Manager (Step 4). `CreateAgent` fails fast if a referenced model is not already on disk; the server does **not** download it for you at agent-creation time. In Client Dev, downloaded weights land under `<Project>/TryllStorage/models/`.
 
 ______________________________________________________________________
 
 ## Step 2 — Install the Unity package
 
-Copy the `UnityPlugin/` folder into your project's `Packages/` directory and name it `com.tryll.client`. Unity auto-discovers embedded packages there, so there is **no `manifest.json` edit** to make:
+1. In Unity, open **Window → Package Manager**.
+
+1. Click **+ → Install package from git URL…**.
+
+1. Paste the URL with the version at the end, and click **Install**:
+
+   ```
+   https://github.com/TryllEngine/tryll-unity-plugin.git#v<version>
+   ```
+
+**Window → Package Manager → In Project** then lists **Tryll Client**, and you should see no compile errors. To update later, install the same URL with the newer version at the end.
 
 ```
 <YourProject>/
 ├── Assets/
 ├── TryllStorage/                    <-- default storage root (outside Assets/)
-├── Packages/
-│   ├── manifest.json
-│   └── com.tryll.client/        <-- copy UnityPlugin/* here
-│       ├── package.json
-│       ├── Runtime/
-│       ├── Editor/
-│       └── .Server/Default/     <-- server rides inside the package
-└── <YourProject>.sln
+└── Packages/
+    └── manifest.json                <-- "com.tryll.client": "https://github.com/...#v<version>"
 ```
 
-Unity imports the package on focus; **Window → Package Manager → In Project** lists **Tryll Client**, and you should see no compile errors.
-
-### Accept the licence
+### Accept the licence and get the server
 
 After the import, the **Welcome to Tryll** window opens. You can also open it from **Window → Tryll → Welcome**. It has two setup steps:
 
 1. **Licence.** Click **Accept licence**. The editor starts the server only after you accept the Tryll Runtime Licence. The licence includes telemetry, which is always on in the editor. The game you ship sends no telemetry. **Telemetry** opens the [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html) page. **Read the licence** shows the full text from the package's `LICENSE.md`.
-1. **Server.** This package bundles its server, so this step is done as soon as you accept.
+1. **Server.** Click **Download server**. The window downloads the server for this package version from the same GitHub release, checks its SHA-256, and installs it once per version for every project on the computer (`%LOCALAPPDATA%\Tryll\server\`). With an NVIDIA GPU you can click **Download CUDA build** instead. No internet? Download the server zip from the release page and use **Install from zip…**.
 
 The setup line reads **2 of 2 done**. **Withdraw** takes the acceptance back and stops the editor's server.
 
-Keep the package **embedded** here (a writable folder) rather than in a read-only cache. Model downloads and authored storage files live under `<Project>/TryllStorage/`, not inside the package.
-
-Add this to `.gitignore` if you do not want models in source control (committing them is optional):
+Model downloads and authored storage files live under `<Project>/TryllStorage/`, not inside the package. Add this to `.gitignore` if you do not want models in source control (committing them is optional):
 
 ```
 /TryllStorage/models/
 ```
 
-Nothing else to copy
+Got a `tryll-unity-<version>.7z` package instead?
 
-The server binary and its `data/` ride **inside** the package's `.Server/Default/` folder, so installing the package installs the server too — one folder to drop in, one to update on a new release.
+Partner packages carry the server inside the package. Copy its `UnityPlugin/` folder to `Packages/com.tryll.client/`; the Welcome window's server step is then done as soon as you accept the licence.
 
 ______________________________________________________________________
 
@@ -92,15 +76,15 @@ ______________________________________________________________________
 
 Open **Edit → Project Settings → Tryll Client** and set:
 
-| Setting                 | Value                    | Why                                                                                                                                                                                           |
-| ----------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Auto Launch Server**  | `true` (default)         | `TryllClient` spawns the bundled server automatically. Uncheck to run a server yourself.                                                                                                      |
-| **Llama.cpp backend**   | `Vulkan` (default)       | Portable GPU API. Set `Auto` to prefer CUDA on NVIDIA (also ships CUDA DLLs in a player build).                                                                                               |
-| **Game Name**           | e.g. `my-game`           | Human project label. Sent as the session name and as `--project-name`. Telemetry groups by a hidden project id; see [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html). |
-| **Telemetry Level**     | `Basic` (default)        | `Turns` or `Full` send more while debugging. Takes effect the next time the editor launches the server.                                                                                       |
-| **Storage Data Folder** | `TryllStorage` (default) | Project folder **outside** `Assets/`. The editor launches the server with `--storage-root` here.                                                                                              |
+| Setting                 | Value                    | Why                                                                                                                                                                                                                                                 |
+| ----------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Auto Launch Server**  | `true` (default)         | `TryllClient` spawns the server automatically. Uncheck to run a server yourself.                                                                                                                                                                    |
+| **Llama.cpp backend**   | `Vulkan` (default)       | Portable GPU API. `Auto` prefers CUDA on NVIDIA and ships the CUDA DLLs in a player build; it needs the CUDA server, so first click **Download CUDA build** in the Welcome window (the default download has no CUDA and a player build then fails). |
+| **Game Name**           | e.g. `my-game`           | Human project label. Sent as the session name and as `--project-name`. Telemetry groups by a hidden project id; see [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html).                                                       |
+| **Telemetry Level**     | `Basic` (default)        | `Turns` or `Full` send more while debugging. Takes effect the next time the editor launches the server.                                                                                                                                             |
+| **Storage Data Folder** | `TryllStorage` (default) | Project folder **outside** `Assets/`. The editor launches the server with `--storage-root` here.                                                                                                                                                    |
 
-There is **no server-path setting** — the location is resolved from the package automatically, identically in the Editor and in packaged builds. The editor sends content-free telemetry at the `basic` level. To send turn timings or conversation text while debugging, see [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html). Packaged players send nothing.
+There is **no server-path setting**. The editor finds the server for this package version itself (the one the Welcome window downloaded, or the one inside a partner package), and a player build copies it next to the game. The editor sends content-free telemetry at the `basic` level. To send turn timings or conversation text while debugging, see [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html). Packaged players send nothing.
 
 Settings are saved to `Assets/Resources/TryllRuntimeSettings.asset` (created on first access).
 
@@ -115,11 +99,11 @@ ______________________________________________________________________
 Model name fields in the Inspector are **dropdown lists** populated from the models you have registered in this project. On a fresh installation those dropdowns are empty — you must open the Model Manager, download a model, and register it before it appears.
 
 1. Open **Window → Tryll → Model Manager**.\
-   The window launches the bundled server, connects, and lists every model the server knows about. Wait for the status indicator in the toolbar to show **● Ready**.
+   The window launches the server, connects, and lists every model the server knows about. Wait for the status indicator in the toolbar to show **● Ready**.
 
 1. In the model list, find a language model to start with.\
-   **Recommended:** `Gemma 3 4B Instruct (Q4_K_M)` (~3 GB download).\
-   **Smaller / quicker:** `Llama 3.2 3B Instruct (Q4_K_M)` (~2 GB download).
+   **Recommended:** `Gemma 4 E4B Instruct (Q4_K_M)` (~5.4 GB download, about 6 GB of VRAM). The demo workflows use it.\
+   **Smaller / quicker:** `Llama 3.2 3B Instruct (Q4_K_M)` (~2 GB download, about 2.6 GB of VRAM). Pick this one on a 6 GB card.
 
 1. Click the model row to select it. In the **Model properties** panel on the right:
 
@@ -287,7 +271,7 @@ ______________________________________________________________________
 
 - **Compile errors on import** — check that the package's `Runtime/Generated/` folder contains `.cs` files. If it's empty, the distribution was packaged without the FlatBuffers step; contact support or re-download.
 - **"Accept the Tryll Runtime Licence in the Tryll Welcome window first."** — the editor did not start the server because the licence is not accepted. The Welcome window opens. Click **Accept licence**, then try again (for example, click **Start** again in the Chat window).
-- **`[TryllServer]` server not found** — the package's `.Server/Default/` folder is missing or empty. A release package ships it populated; if you cloned the repo instead, build the Tryll server so the committed `.Server/Default` symlink resolves to your build.
+- **`[TryllServer]` server not found** — the server for this package version is not installed. Open **Window → Tryll → Welcome** and click **Download server**, or **Install from zip…** with the server zip from the release page. (A partner `.7z` package carries it in `.Server/Default/`.)
 - **Model name dropdown is empty** — open the Model Manager (**Window → Tryll → Model Manager**), download a model, and set its build registration to **Experimental** or **Production**. Unregistered models do not appear in Inspector dropdowns.
 - **Stuck at connecting** — the server crashed or didn't start in time. Check the Console for `[TryllServer]` lines and the Client Dev log under `%LOCALAPPDATA%\Tryll\projects\<project-key>\logs\` as a fallback.
 - **`CreateSession` fails** — usually a server-side error reading `models.json` or initialising the inference engine. Check `[TryllServer]` Console output.

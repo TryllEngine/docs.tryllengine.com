@@ -156,7 +156,7 @@ ______________________________________________________________________
 
 [Cancel a turn](https://docs.tryllengine.com/v0.10/how-to/cancel-a-turn.html) with `StopAndDiscard` removes the **last in-flight** interaction mid-turn after a cooperative cancel. Dialog mutation operates on **idle** agents and edits completed or injected history explicitly. Use cancel discard for aborting generation; use tail remove for editing history before the next send.
 
-Either mutation invalidates the agent's reusable KV prefix; removal also resets the token-budget projection window. The next send pays re-sync cost.
+Either mutation invalidates the agent's reusable KV prefix; removal also resets each node's trim position, so the next prompt is rebuilt from the full history. The next send pays re-sync cost.
 
 ______________________________________________________________________
 

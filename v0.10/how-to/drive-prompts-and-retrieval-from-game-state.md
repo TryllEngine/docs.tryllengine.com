@@ -2,6 +2,10 @@
 
 Inject live game state — player level, mood, quest progress — into a prompt template and a `Retrieve` filter, and have both pick up changes on the very next turn with no `ChangeParams` round-trip and no filter recompile.
 
+Watch it built
+
+The [Quest Giver](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#quest-giver) (7 min) video builds a quest giver that reads player name, reputation and completed quests from variables.
+
 Prerequisites
 
 - A graph with at least one `Generate`, `GenerateAndSpeak`, or `Transform` node (for the template) and, optionally, a `Retrieve` or `ClassifyIntent` node (for the filter).

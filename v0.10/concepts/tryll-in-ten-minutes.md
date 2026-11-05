@@ -48,11 +48,13 @@ This is the key design choice: **the rules and the decisions stay in your game.*
 
 ## The building blocks
 
-Every Tryll feature is one of the following, placed as a node in the graph or as data the graph reads.
+Every Tryll feature is one of the following, placed as a node in the graph or as data the graph reads. To see how they combine into something a player experiences — a talking NPC, an ambient world, voice control, an in-game assistant — read the [Use Cases](https://docs.tryllengine.com/v0.10/use-cases/index.html). Each one lists the blocks it takes and links to the steps.
 
-**The character and the conversation.** The system prompt defines the character: who they are, what world they live in, how they talk, plus a few example lines. It is always kept. As a conversation grows, the oldest turns are trimmed so the prompt stays within budget — the character never forgets who it is, but it does eventually forget what you said an hour ago. → [Design an NPC prompt](https://docs.tryllengine.com/v0.10/how-to/design-an-npc-prompt.html) · [Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.html)
+**The character and the conversation.** The system prompt defines the character: who they are, what world they live in, how they talk, plus a few example lines. It is always kept. As a conversation grows, the oldest turns are trimmed so the prompt stays within budget — the character never forgets who it is, but it does eventually forget what you said an hour ago. → [Design an NPC prompt](https://docs.tryllengine.com/v0.10/how-to/design-an-npc-prompt.html) · [Dialog History and the Context Window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.html)
 
 **Knowledge.** Do not paste all your lore into the prompt. Keep it as a knowledge base of short facts, and let a Retrieve node pick the few that are relevant to each line of dialogue (this is *retrieval-augmented generation*, or RAG). It can search by meaning, by exact keywords — useful for the made-up words in your setting — or both. Facts can carry metadata, so you can gate them: the detective only learns what the player has already uncovered. → [Retrieval-augmented generation](https://docs.tryllengine.com/v0.10/concepts/rag.html) · [Create a simple RAG assistant](https://docs.tryllengine.com/v0.10/how-to/create-simple-rag-assistant.html)
+
+**Memory.** Knowledge is written by you, ahead of time. Memory is written by the agent while the game runs: a Write to Memory node stores what the player says in a named, writable store, and a Retrieve node finds it again on a later turn, by meaning, like any other knowledge. Your code saves the store with your save game and loads it back, so the character still remembers after a load, and you can inspect and edit it in the editor's **Knowledge** window. Writable memory is experimental for now. → [Give an NPC a memory it can search](https://docs.tryllengine.com/v0.10/how-to/give-an-npc-searchable-memory.html) · [Write to Memory node](https://docs.tryllengine.com/v0.10/reference/nodes/write-to-memory.html)
 
 **Game state in.** Agent variables let your game push live values — the player's level, the NPC's mood, the current quest stage — straight into prompts and knowledge filters, so the character reacts to what is actually happening. → [Agent variables](https://docs.tryllengine.com/v0.10/concepts/agent-variables.html) · [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.10/how-to/drive-prompts-and-retrieval-from-game-state.html)
 
@@ -73,7 +75,7 @@ Models are files. You pick them from Tryll's catalog — or bring your own GGUF 
 A model is loaded once and shared by every agent that uses it, so ten NPCs on the same model cost one model, plus a small working cache for each node that generates. A few numbers to calibrate against:
 
 - **8 GB of VRAM** is the comfortable target for a game with a language model in it; 6 GB works if you stay around 3B models.
-- A **3–4B model** takes roughly 2–3 GB. The tutorials use Gemma 3 4B, with Llama 3.2 3B as the smaller, quicker choice.
+- A **3–4B model** such as Llama 3.2 3B or Qwen 3.5 4B needs about 2.5–3 GB of VRAM with an 8K context. The demo workflows use **Gemma 4 E4B**, which is bigger than its name suggests: "E4B" means about 4B *effective* parameters, but the file is 5.4 GB and it needs about 5.8 GB of VRAM. On a 6 GB card, pick Llama 3.2 3B instead. The [model cards](https://docs.tryllengine.com/v0.10/model-benchmarks/models/index.html) list each model's measured size and speed.
 - **Speech recognition and the lighter voices run on the CPU** and cost no VRAM. The most expressive voices are themselves 3B models and are budgeted like one.
 
 Each model can be placed in VRAM or in system RAM, so you can keep the GPU for rendering when the game needs it.
@@ -85,13 +87,14 @@ Each model can be placed in VRAM or in system RAM, so you can keep the GPU for r
 On a team, the work splits naturally. **Programmers** wire agents into the game: which tools exist, which variables the game pushes, what happens when the model asks to act. **Designers** shape the character: the prompt, the lore, the graph — and they can do most of that without a programmer, because Tryll lives inside the editor:
 
 - a **graph editor** to build workflows visually,
-- a **Chat** window to talk to an agent without entering Play mode,
+- a **Chat** window to talk to an agent without entering Play mode, and even before you have built any game or user interface,
 - the **Dialog Lab** to run the same dialog across many prompt, model, and parameter variants and compare the spread — so you test changes, or a model swap, on hundreds of runs instead of a few typed lines,
+- the same **Dialog Lab, headless**, from the command line in Unity or Unreal — so your CI can run your dialog scripts on every change and fail the build when a check breaks,
 - the **Agent Log** to see what each agent received and produced, and the **Memory** window to see what it all costs.
 
 AI coding agents can help too: both plugins ship an `AGENTS.md` that briefs them on Tryll, and on Unreal they can author workflows directly through the editor's MCP server.
 
-→ [Test an agent in the editor](https://docs.tryllengine.com/v0.10/how-to/test-agent-in-editor.html) · [Compare dialog variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html) · [Agentic coding with Tryll](https://docs.tryllengine.com/v0.10/how-to/agentic-coding-with-tryll.html)
+→ [Test an agent in the editor](https://docs.tryllengine.com/v0.10/how-to/test-agent-in-editor.html) · [Compare dialog variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html) · [Run the Dialog Lab in CI](https://docs.tryllengine.com/v0.10/how-to/run-dialog-lab-in-ci.html) · [Agentic coding with Tryll](https://docs.tryllengine.com/v0.10/how-to/agentic-coding-with-tryll.html)
 
 ## What Tryll is not
 
@@ -103,16 +106,19 @@ AI coding agents can help too: both plugins ship an `AGENTS.md` that briefs them
 
 ## Where to go next
 
-| I want my character to…                | Start here                                                                                                                                                                   |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Talk in character                      | [Design an NPC prompt](https://docs.tryllengine.com/v0.10/how-to/design-an-npc-prompt.html)                                                                                  |
-| Know my world                          | [Create a simple RAG assistant](https://docs.tryllengine.com/v0.10/how-to/create-simple-rag-assistant.html)                                                                  |
-| React to what is happening in the game | [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.10/how-to/drive-prompts-and-retrieval-from-game-state.html)                                    |
-| Understand what the player wants       | [Build an intent-driven NPC](https://docs.tryllengine.com/v0.10/how-to/build-intent-driven-npc.html)                                                                         |
-| Do things in the world                 | [Define and handle tool calls](https://docs.tryllengine.com/v0.10/how-to/define-and-handle-tool-calls.html)                                                                  |
-| Stay in its world                      | [Build an immersion guard](https://docs.tryllengine.com/v0.10/how-to/build-an-immersion-guard.html)                                                                          |
-| Speak and listen                       | [Add voice output](https://docs.tryllengine.com/v0.10/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.10/how-to/use-voice-input.html) |
-| Hold up before I ship                  | [Compare dialog variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html)                                                                            |
+| I want my character to…                | Start here                                                                                                                                                                                          |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Talk in character                      | [Design an NPC prompt](https://docs.tryllengine.com/v0.10/how-to/design-an-npc-prompt.html)                                                                                                         |
+| Know my world                          | [Create a simple RAG assistant](https://docs.tryllengine.com/v0.10/how-to/create-simple-rag-assistant.html)                                                                                         |
+| React to what is happening in the game | [Drive prompts and retrieval from game state](https://docs.tryllengine.com/v0.10/how-to/drive-prompts-and-retrieval-from-game-state.html)                                                           |
+| Understand what the player wants       | [Build an intent-driven NPC](https://docs.tryllengine.com/v0.10/how-to/build-intent-driven-npc.html)                                                                                                |
+| Do things in the world                 | [Define and handle tool calls](https://docs.tryllengine.com/v0.10/how-to/define-and-handle-tool-calls.html)                                                                                         |
+| Stay in its world                      | [Build an immersion guard](https://docs.tryllengine.com/v0.10/how-to/build-an-immersion-guard.html)                                                                                                 |
+| Speak and listen                       | [Add voice output](https://docs.tryllengine.com/v0.10/how-to/add-voice-to-an-agent.html) · [Use voice input](https://docs.tryllengine.com/v0.10/how-to/use-voice-input.html)                        |
+| Remember what the player told it       | [Give an NPC a memory it can search](https://docs.tryllengine.com/v0.10/how-to/give-an-npc-searchable-memory.html)                                                                                  |
+| Hold up before I ship                  | [Compare dialog variants](https://docs.tryllengine.com/v0.10/how-to/compare-dialog-variants.html) · [Run the Dialog Lab in CI](https://docs.tryllengine.com/v0.10/how-to/run-dialog-lab-in-ci.html) |
+
+If you are starting from a game idea rather than a feature, the [Use Cases](https://docs.tryllengine.com/v0.10/use-cases/index.html) walk through whole designs — a talking NPC, an ambient world, voice control, an in-game assistant, an AI director — and which of these pieces each one takes.
 
 Ready to try it? [Getting Started](https://docs.tryllengine.com/v0.10/getting-started/index.html) gets a model answering in your engine in about fifteen minutes. Engineers who want the process-level picture — server, sessions, and what happens on the hot path of a turn — should read [Architecture at a Glance](https://docs.tryllengine.com/v0.10/concepts/architecture-at-a-glance.html) next.
 

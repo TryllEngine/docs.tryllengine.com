@@ -6,6 +6,10 @@ Tryll is in pre-release: expect breaking changes until the 1.0 API freeze. A rel
 
 ## Versions
 
+- **[v0.10.0](https://docs.tryllengine.com/v0.10/release-notes/v0.10.0.html)**
+
+  Shippable player builds with no telemetry and indexes baked at build time, plugins installed from GitHub, the Welcome window and licence, Dialog Lab checks, suites, statistics and headless CI runs, more localizable text, and one-click bug reports.
+
 - **[v0.9.0](https://docs.tryllengine.com/v0.10/release-notes/v0.9.0.html)**
 
   One voice per agent with delivery modes you switch mid-turn, LoRA adapters on LLM nodes, multi-attribute classification in one call, localized prompts from your own string tables, Qwen3-TTS voice cloning, Agent Log export, and new Use Cases and Model Benchmarks sections.

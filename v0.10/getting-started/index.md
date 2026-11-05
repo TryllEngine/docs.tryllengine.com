@@ -1,13 +1,11 @@
 # Getting Started
 
-In about fifteen minutes you will install Tryll, download a model, and stream a reply from a language model running on your own machine. Pick the client that matches your project:
+In about fifteen minutes you will install Tryll, download a model, and stream a reply from a language model running on your own machine. Pick the engine that matches your project:
 
-- **[First inference in Unity](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unity.html)** Install the UPM package, add `TryllAgentComponent` to a GameObject, see streaming text in the Console. The server is bundled and launches itself.
-- **[First inference in Unreal](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unreal.html)** ★ Hero tutorial. Install the plugin, add `UTryllAgentComponent` to a sample actor, see streaming text in the Output Log. The server is bundled and launches itself.
-- **[First inference in Python](https://docs.tryllengine.com/v0.10/getting-started/first-inference-python.html)** Install the `tryll-client` wheel from the release, a 20-line script, streamed tokens on stdout. The server comes from your Unity or Unreal release; you point the client at it.
-- **[First inference in C++](https://docs.tryllengine.com/v0.10/getting-started/first-inference-cpp.html)** Build the client library with CMake and run the `test-chat` console demo.
+- **[First inference in Unity](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unity.html)** Install the UPM package from its Git URL, let the Welcome window download the server, add `TryllAgentComponent` to a GameObject, and see streaming text in the Console.
+- **[First inference in Unreal](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unreal.html)** ★ Hero tutorial. Unzip the plugin into your project, add `UTryllAgentComponent` to a sample actor, see streaming text in the Output Log. The server is bundled and launches itself.
 
-Each tutorial starts by downloading the distribution and ends with a working agent — including acquiring the model, which Tryll never does behind your back.
+Each tutorial starts by getting Tryll and ends with a working agent — including acquiring the model, which Tryll never does behind your back.
 
 ## What your machine needs
 
@@ -15,7 +13,7 @@ Tryll runs the model on the player's hardware, so the hardware is part of the de
 
 **Operating system**
 
-- **Windows 10 or 11, 64-bit.** Tryll ships as Windows x64 binaries — the server, the Unity package, the Unreal plugin, and the C++ client library. There is no Linux or macOS distribution.
+- **Windows 10 or 11, 64-bit.** Tryll ships as Windows x64 binaries — the server, the Unity package, and the Unreal plugin. There is no Linux or macOS distribution.
 
 **GPU**
 
@@ -31,14 +29,12 @@ Tryll runs the model on the player's hardware, so the hardware is part of the de
 
 Work out the real numbers for a specific line-up with [Estimate the RAM and VRAM your setup needs](https://docs.tryllengine.com/v0.10/how-to/estimate-memory-footprint.html).
 
-**Engine and language versions**
+**Engine versions**
 
-| Path   | Needs                                                                                    |
-| ------ | ---------------------------------------------------------------------------------------- |
-| Unity  | Unity 6 (6000.x) or later                                                                |
-| Unreal | Unreal Engine 5.7, a **C++** project (Blueprint-only projects cannot compile the plugin) |
-| Python | Python 3.11 or newer                                                                     |
-| C++    | Visual Studio 2022, CMake                                                                |
+| Path   | Needs                                                                                                                     |
+| ------ | ------------------------------------------------------------------------------------------------------------------------- |
+| Unity  | Unity 6.3 (6000.3) or later, and Git                                                                                      |
+| Unreal | Unreal Engine 5.7 or 5.8; a Blueprint-only project works with the release zips. Packaging a game needs Visual Studio 2022 |
 
 ## What you will build
 

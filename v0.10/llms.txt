@@ -1,10 +1,10 @@
 # Tryll Engine
 
-> On-device SLM inference for games and tools — C++, Python, Unity, Unreal.
+> On-device SLM inference for games and tools — Unity and Unreal.
 
 Tryll runs small language models **on the player's own machine**. A C++ TCP server hosts
-the models; game code drives it through a client library (Unity C#, Unreal C++, C++, or
-Python) over a binary FlatBuffers protocol. There is no cloud API and no per-token cost.
+the models; game code drives it through the Unity (C#) or Unreal (C++) plugin over a
+binary FlatBuffers protocol. There is no cloud API and no per-token cost.
 
 A Tryll **agent** is not a prompt — it is a **workflow graph** of typed nodes that
 communicate through named **slots** on a per-turn blackboard. Read
@@ -30,11 +30,11 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 ## Getting Started
 
 - [Home](https://docs.tryllengine.com/v0.10/index.md): What Tryll is, who it is for, and where to start.
-- [Getting Started](https://docs.tryllengine.com/v0.10/getting-started/index.md): Pick a platform, check the hardware requirements, and run your first on-device inference in ~15 minutes.
+- [Getting Started](https://docs.tryllengine.com/v0.10/getting-started/index.md): Pick an engine, check the hardware requirements, and run your first on-device inference in ~15 minutes.
 - [First inference in Unity](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unity.md): End-to-end Unity setup — install the UPM package, bundled server, first streamed answer.
 - [First inference in Unreal](https://docs.tryllengine.com/v0.10/getting-started/first-inference-unreal.md): End-to-end Unreal setup — install the plugin, bundled server, first streamed answer.
-- [First inference in C++](https://docs.tryllengine.com/v0.10/getting-started/first-inference-cpp.md): Build the C++ client library from source and run the bundled console demo.
-- [First inference in Python](https://docs.tryllengine.com/v0.10/getting-started/first-inference-python.md): Install the `tryll-client` wheel from the release, start the server bundled with the Unity or Unreal release, and drive a turn from Python.
+- [First Inference in C++](https://docs.tryllengine.com/v0.10/getting-started/first-inference-cpp.md): Build the C++ client library from source and run the bundled console demo.
+- [First Inference in Python](https://docs.tryllengine.com/v0.10/getting-started/first-inference-python.md): Install the `tryll-client` wheel from the release, start the server bundled with the Unity or Unreal release, and drive a turn from Python.
 
 ## Use Cases
 
@@ -61,7 +61,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Agent Variables](https://docs.tryllengine.com/v0.10/concepts/agent-variables.md): The typed per-agent key→value store — `{{var.<name>}}`, filter operands, output substitution.
 - [Slots and inter-node value passing](https://docs.tryllengine.com/v0.10/concepts/slots-and-inter-node-value-passing.md): The per-turn slot blackboard — `input`/`output_name`, `send`, `history_role`, `{{slot.<name>}}`.
 - [Constrained output (GBNF)](https://docs.tryllengine.com/v0.10/concepts/constrained-output.md): GBNF grammars — forcing structured output (JSON, enums) instead of prose.
-- [Projection and token budgets](https://docs.tryllengine.com/v0.10/concepts/projection-and-token-budgets.md): How dialogue history is rendered into a prompt, trimmed to the context window, and kept coherent with a rolling summary.
+- [Dialog history and the context window](https://docs.tryllengine.com/v0.10/concepts/dialog-history-and-the-context-window.md): How each node builds its prompt from the dialog history, trims old turns with hysteresis to fit the context window, and keeps the thread with a rolling summary.
 
 ## How-to Guides
 
@@ -136,7 +136,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 ## Workflow Nodes
 
 - [Workflow Nodes](https://docs.tryllengine.com/v0.10/reference/nodes/index.md): Every node type, its exits, and which ones need a model. Start here when choosing a node.
-- [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.md): Run a language model on the projected dialogue and emit its answer.
+- [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.md): Build a prompt from the dialog history, run a language model on it, and emit its answer.
 - [Branch](https://docs.tryllengine.com/v0.10/reference/nodes/branch.md): Model-free conditional routing on a slot or agent variable (`then_exit`/`else_exit`).
 - [Canned Response](https://docs.tryllengine.com/v0.10/reference/nodes/canned-response.md): Emit a fixed reply chosen from a string storage — no model involved.
 - [Classify Attributes (LLM)](https://docs.tryllengine.com/v0.10/reference/nodes/classify-attributes-llm.md): Score several specialist attributes in one cached call; route on default or triggered.
@@ -151,7 +151,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [Retrieve](https://docs.tryllengine.com/v0.10/reference/nodes/retrieve.md): Embed the input, search an embedded string storage or named mutable KB, attach the hits as knowledge.
 - [Speak](https://docs.tryllengine.com/v0.10/reference/nodes/speak.md): TTS-only — voice text another node already produced.
 - [Summarize](https://docs.tryllengine.com/v0.10/reference/nodes/summarize.md): Fold ageing turns into a rolling summary so long conversations stay coherent at a fixed token cost.
-- [Tool Call](https://docs.tryllengine.com/v0.10/reference/nodes/tool-call.md): Advertise tools, let the model call them, and control notify/pause/result projection.
+- [Tool Call](https://docs.tryllengine.com/v0.10/reference/nodes/tool-call.md): Advertise tools, let the model call them, and control notify, pause, and how results replay in history.
 - [Transform](https://docs.tryllengine.com/v0.10/reference/nodes/transform.md): Model-free Mustache rendering into a slot; emits nothing on the wire.
 - [Write to Memory](https://docs.tryllengine.com/v0.10/reference/nodes/write-to-memory.md): Experimental upsert into a named mutable knowledge base.
 
@@ -159,6 +159,10 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 
 - [Reference](https://docs.tryllengine.com/v0.10/reference/index.md): Map of every declarative reference surface.
 - [Glossary](https://docs.tryllengine.com/v0.10/reference/glossary.md): Canonical definition of every Tryll term. Check here before guessing what a word means.
+- [Demos](https://docs.tryllengine.com/v0.10/reference/demos.md): Every demo agent in the Unity and Unreal demo projects, with its character, nodes, what it shows, its video, and which use case it illustrates. Link a demo row here when a page names a demo.
+- [Video Walkthroughs](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.md): Embedded YouTube walkthroughs of the Unity demo agents (guardrails, voice, agent variables, simple RAG, hybrid RAG with HyDE), each with a summary of what it covers. Link a section here when a page explains something a video shows.
+- [License Agreement](https://docs.tryllengine.com/v0.10/reference/legal/licence.md): The Tryll Engine License Agreement that covers the plugins, the server, the Tryll Models and the documentation. Release terms, royalties, attribution, telemetry, and restrictions on use.
+- [Privacy Policy](https://docs.tryllengine.com/v0.10/reference/legal/privacy-policy.md): How Tryll Engine, Inc. processes personal data from the website, the Software's telemetry, release forms and community channels.
 - [Agent Parameters](https://docs.tryllengine.com/v0.10/reference/agent-parameters.md): Every field on `CreateAgentRequest`, grouped by what it controls.
 - [Turn Inspector](https://docs.tryllengine.com/v0.10/reference/turn-inspector.md): The shared per-turn diagnostics panel — every block, when it appears, and why one is missing. Hosted by Chat, Agent Log, and Dialog Lab.
 - [Dialog Lab headless run](https://docs.tryllengine.com/v0.10/reference/dialog-lab-headless.md): The headless Dialog Lab run config, summary JSON, and exit codes (Unity and Unreal).
@@ -178,6 +182,7 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 ## Release Notes
 
 - [Release Notes](https://docs.tryllengine.com/v0.10/release-notes/index.md): Index of every released version, newest first. Start here to find the version you shipped.
+- [v0.10.0](https://docs.tryllengine.com/v0.10/release-notes/v0.10.0.md): Shippable Client Prod player builds without telemetry, knowledge-base indexes baked at build time, plugins installed from GitHub, Welcome window and licence gate, Dialog Lab typed checks, suites, statistics and headless CI, localizable canned lines, intent instructions and tool descriptions.
 - [v0.3.0](https://docs.tryllengine.com/v0.10/release-notes/v0.3.0.md): Voice output (TTS), Unity graph editor and Model Manager, bundled server, file-path storage.
 - [v0.4.0](https://docs.tryllengine.com/v0.10/release-notes/v0.4.0.md): Mandatory one-shot `CreateSession`, cancel/pause/resume, chat-template tool calling, voice cloning.
 - [v0.5.0](https://docs.tryllengine.com/v0.10/release-notes/v0.5.0.md): Slots, agent variables, model-visible tool results, GBNF grammars, dialog-history editing, KV-cache control.
@@ -185,10 +190,6 @@ Facts that are easy to get wrong, because they differ from cloud LLM SDKs:
 - [v0.7.0](https://docs.tryllengine.com/v0.10/release-notes/v0.7.0.md): Dialog export/import into your own save, one session language for TTS/STT/content/prompts, per-model RAM/VRAM placement and catalog-derived engines, pause timeouts, Orpheus and Maya1 voices with voice description and delivery, measured tool-call model comparison.
 - [v0.8.0](https://docs.tryllengine.com/v0.10/release-notes/v0.8.0.md): Rolling summaries via `Summarize`, experimental mutable knowledge bases and game-memory saves, viseme lip sync, client-sent voice turns and per-model hotword biasing, user model catalog, deployment modes and process-wide storage root, per-agent events.
 - [v0.9.0](https://docs.tryllengine.com/v0.10/release-notes/v0.9.0.md): One voice profile per agent with delivery modes, LoRA adapters on LLM nodes, `ClassifyAttributesLLM`, prompts localized through the game's string tables, Qwen3-TTS, Agent Log export, Use Cases and Model Benchmarks sections.
-
-## Licence
-
-- [Licence](https://docs.tryllengine.com/v0.10/legal/licence.md): The Tryll Licence that covers the plugins, the Python client and the server. A placeholder until the first public release.
 
 ## Model Benchmarks
 

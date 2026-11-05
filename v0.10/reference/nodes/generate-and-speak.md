@@ -1,6 +1,6 @@
 # Generate and Speak
 
-The Generate-and-Speak node fuses LLM token generation with streaming [TTS](https://docs.tryllengine.com/v0.10/reference/glossary.html#tts) synthesis: it runs the same projection and [language-model](https://docs.tryllengine.com/v0.10/reference/glossary.html#language-model) inference as a [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) node, but as tokens arrive it segments them into sentences, dispatches each sentence to a dedicated TTS strand, and emits PCM audio frames alongside the text deltas.
+The Generate-and-Speak node fuses LLM token generation with streaming [TTS](https://docs.tryllengine.com/v0.10/reference/glossary.html#tts) synthesis: it builds its prompt the same way and runs the same [language-model](https://docs.tryllengine.com/v0.10/reference/glossary.html#language-model) inference as a [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) node, but as tokens arrive it segments them into sentences, dispatches each sentence to a dedicated TTS strand, and emits PCM audio frames alongside the text deltas.
 
 Because synthesis overlaps generation, audio begins after roughly the first sentence (`min_sentence_chars`) rather than after the whole answer — the TTS of one sentence runs while the LLM is still generating the next. This is the lowest-latency way to speak a generated answer (measured by the `time_to_first_audio_ms` diagnostic). `sampling.max_tokens` is fixed at creation, the same as on [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html). Chaining a standalone [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html) → [Speak](https://docs.tryllengine.com/v0.10/reference/nodes/speak.html) instead (with Speak's `input` set to the Generate node's output) produces the same voice but cannot start until generation has fully finished, since `Speak` only sees the completed text. Prefer this fused node when you want a generated answer spoken with minimal delay, and the split form only when you need to branch on, inspect, or transform the text in between.
 
@@ -11,6 +11,10 @@ The audio format is announced once per turn, by the first speaking node that pro
 `NodeType`: `GenerateAndSpeak`.
 
 Leave `context_size` at `0` to inherit the model variant's window, then the server `default_n_ctx` (commonly 8192) — the same resolution as [Generate](https://docs.tryllengine.com/v0.10/reference/nodes/generate.html). The `context` table is an advanced structural override. Do not set `q4_0` KV expecting a VRAM win at a right-sized window.
+
+Watch it built
+
+The [Voice Character](https://docs.tryllengine.com/v0.10/reference/video-walkthroughs.html#voice-character) (5 min) video walks through this node's TTS fields and Min Sentence Chars.
 
 ## Parameters
 

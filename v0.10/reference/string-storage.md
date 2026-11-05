@@ -22,9 +22,9 @@ The server stores `Map` and `Multimap` entries **sorted by key** (lexicographic,
 
 Current node support
 
-`CannedResponseNode` and `RegexGuardrailNode` use only the **list view** — they iterate all values in order and are not key-aware. Both nodes accept any kind.
+`CannedResponse` and `RegexGuardrail` use only the **list view** — they iterate all values in order and are not key-aware. Both nodes accept any kind.
 
-[`IntentToInstructionNode`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) uses the **keyed view** (`FindFirst`) and **requires `Map` kind**. It is the primary consumer of Map-kind storages today.
+[`IntentToInstruction`](https://docs.tryllengine.com/v0.10/reference/nodes/intent-to-instruction.html) uses the **keyed view** (`FindFirst`) and **requires `Map` kind**. It is the primary consumer of Map-kind storages today.
 
 Key-aware `CannedResponse` selection (keyed by a runtime intent label) is planned as future work.
 

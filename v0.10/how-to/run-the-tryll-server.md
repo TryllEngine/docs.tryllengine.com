@@ -77,14 +77,14 @@ If you want to hack on the server or your platform does not have a release yet:
 
 The fields you most often want to touch:
 
-- **`mode`** — `tryll-dev`, `client-dev`, or `client-prod`. Prefer the CLI `--mode` flag. Debug/Release builds default to `tryll-dev` and accept all three. The ClientDev build accepts only `client-dev`; the ClientProd build accepts only `client-prod`. Packaged Unity and Unreal players launch `client-prod`.
+- **`mode`** — `client-dev` or `client-prod`. Prefer the CLI `--mode` flag. The editor server in the Unity and Unreal releases accepts only `client-dev`; the server staged into packaged players accepts only `client-prod`. Packaged Unity and Unreal players launch `client-prod`.
 - **`network_access`** — `"local"` (default) binds loopback (`127.0.0.1`) and never prompts Windows Firewall; `"local_network"` binds all interfaces (`0.0.0.0`) but serves only private/LAN peers, so other machines on your network can connect.
 - **`storage_root` / `models_root` / `logs_dir`** — process roots. Mode defaults supply them when omitted; the committed config leaves them unset on purpose. Prefer CLI `--storage-root`, `--models-root`, `--log-dir`.
-- **Log files** — the deployment mode picks the file, not `log_mode`. Tryll Dev and Client Dev open a new `tryll_<timestamp>.log` per run; Client Prod rotates a single `tryll.log`. `log_mode` is still validated (`"production"` or `"dev"`).
+- **Log files** — the deployment mode picks the file, not `log_mode`. Client Dev opens a new `tryll_<timestamp>.log` per run; Client Prod rotates a single `tryll.log`. `log_mode` is still validated (`"production"` or `"dev"`).
 - **`log_level`** — `"info"` is a fine default. `"trace"` turns on the per-turn workflow trace, which logs every node execution — noisy but great for debugging graphs.
 - **`log_flush_on` / `log_flush_every_ms`** — how soon the log file catches up with the running process. Defaults (`"warn"` + 5000 ms) keep warnings immediate and everything else at most five seconds behind. Set `"off"` and `0` to leave buffering to the C library.
 - **`default_canned_responses_path`** and **`default_guardrail_patterns_path`** — *server-admin fallback.* Point these at files to supply defaults for [CannedResponse](https://docs.tryllengine.com/v0.10/reference/nodes/canned-response.html) and [RegexGuardrail](https://docs.tryllengine.com/v0.10/reference/nodes/regex-guardrail.html) nodes **when the client has not created a string storage**. Most client workflows won't need these — use [`CreateStringStorageRequest`](https://docs.tryllengine.com/v0.10/reference/string-storage.html) (inline or `file_path`) instead.
-- **`telemetry`** — the editor sends the content-free `basic` level and will not go lower. Raise it from Project Settings (**Telemetry Level**: `turns` or `full`) while debugging, then set it back to `basic`. Packaged players send nothing. In Tryll Dev, `"enabled": false`, `"level": "off"`, or `--telemetry-level off` turns everything off. See [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html).
+- **`telemetry`** — the editor sends the content-free `basic` level and will not go lower. Raise it from Project Settings (**Telemetry Level**: `turns` or `full`) while debugging, then set it back to `basic`. Packaged players send nothing. See [Telemetry](https://docs.tryllengine.com/v0.10/reference/telemetry.html).
 
 Every field is documented in [Server Configuration](https://docs.tryllengine.com/v0.10/reference/server-configuration.html).
 
