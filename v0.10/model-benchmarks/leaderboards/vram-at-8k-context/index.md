@@ -6,6 +6,8 @@ one agent, 8K context, q8_0 KV cache
 
 Graphics memory one agent needs, as llama.cpp reports it: the model weights, the KV cache for an 8,192-token context stored as q8_0, and the compute buffers. Every extra agent on the same model adds its own KV cache and compute buffers; the weights are shared.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## VRAM at 8K context
 
 ## Measured models

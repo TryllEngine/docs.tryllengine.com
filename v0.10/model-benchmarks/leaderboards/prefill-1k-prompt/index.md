@@ -6,6 +6,8 @@ measured on one GPU
 
 How fast the model reads its prompt before it can answer: prompt tokens per second for a character sheet of about 1,000 tokens. The median of 10 runs, each with a fresh agent, timed by llama.cpp's own counters.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## Prefill, 1K prompt
 
 ## Measured models

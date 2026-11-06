@@ -31,13 +31,13 @@ Measured 2026-10-08 · Tryll 0.8.0-DEV · llama.cpp b10839 · NVIDIA GeForce RTX
 ### Not measured yet
 
 - **NPC roleplay**: clean speech, staying in lore and role, writing quality
-- **Tool calling**: call accuracy and restraint
+- **Tool calling**: the model's chat template has no tool support
 - **Summarization**: how long the summary keeps what the player said
 - **Intent classification**: the butler set is too small for a card number
 
 ## In the field
 
-*Where this model sits among the measured models. Right is better. The blue bar is the 95% interval. Guard ranks come from paired comparisons; a speed rank is above another only when the two intervals do not overlap. Close models share a range.*
+*Where this model sits among the measured models. Right is better. The blue bar is the 95% interval. Guard and tool-call ranks come from paired comparisons; a speed rank is above another only when the two intervals do not overlap. Close models share a range.*
 
 **General guard** · #7–12 of 13 · *setting-invariant classifier*
 

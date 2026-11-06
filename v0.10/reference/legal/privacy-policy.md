@@ -2,17 +2,15 @@
 
 **Tryll Engine, Inc.**
 
-Last updated: November 5, 2026
-
-Effective date: May 27, 2026
+Last updated: November 6, 2026
 
 ## 1. INTRODUCTION
 
-**1.1** This Privacy Policy describes how Tryll Engine, Inc. (“**Tryll Engine**,” “**we**,” “**us**,” or “**our**”), a Delaware corporation with registered offices at 1201 N. Orange Street, Suite 7587, Wilmington, DE 19801-1186, USA, processes personal data of visitors to https://tryllengine.com (the “**Website**”), users of the software development kit and AI runtime distributed under the title Tryll Engine, including its plugin, server, AI models, documentation, and any upgrades, patches, and updates (the “**Software**”), and members of our community channels. In this Policy, “**you**” means any individual whose personal data we process, including Website visitors, community members, and individuals who use the Software or act on behalf of a studio. A “**studio**” means a company or individual developer that has accepted the [Tryll Engine License Agreement](https://docs.tryllengine.com/latest/reference/legal/licence.html).
+**1.1** This Privacy Policy describes how Tryll Engine, Inc. (“**Tryll**,” “**we**,” “**us**,” or “**our**”), a Delaware corporation with registered offices at 1201 N. Orange Street, Suite 7587, Wilmington, DE 19801-1186, USA, processes personal data of visitors to https://tryllengine.com (the “**Website**”), users of the software development kit and AI runtime distributed under the title Tryll Engine, including its plugin, server, AI models, documentation, and any upgrades, patches, and updates (the “**Software**”), and members of our community channels. In this Policy, “**you**” means any individual whose personal data we process, including Website visitors, community members, and individuals who use the Software or act on behalf of a studio. A “**studio**” means a company or individual developer that has accepted the [Tryll Engine License Agreement](https://docs.tryllengine.com/latest/reference/legal/licence.html).
 
-**1.2** This Policy does not cover games and other products that studios build with the Software. The Software does not collect any data about players of those products. Each studio is responsible for its own privacy notices to its players.
+**1.2** This Policy does not cover games and other products that studios build with the Software. The Software does not collect any data about players or other end users of those products. Each studio is responsible for its own privacy notices to its players and other end users.
 
-**1.3** We act as a data controller (and, where applicable, a processor) within the meaning of the EU General Data Protection Regulation 2016/679 (“**GDPR**”), the UK General Data Protection Regulation (“UK GDPR”), and equivalent laws. If we process personal data on behalf of a customer under a separate agreement, that agreement and the customer’s privacy notice govern that processing.
+**1.3** We act as a data controller within the meaning of the EU General Data Protection Regulation 2016/679 (“**GDPR**”), the UK General Data Protection Regulation (“UK GDPR”), and equivalent laws. If we process personal data on behalf of a customer under a separate agreement, that agreement and the customer’s privacy notice govern that processing.
 
 **1.4** Our representative in the European Union under Article 27 GDPR is Tryll Engine Europe BV, [address], Belgium.
 
@@ -27,20 +25,21 @@ Effective date: May 27, 2026
 - **Subscription metadata**: the source page or form through which you subscribed, your communication preferences, and timestamps for subscribe, confirm, and unsubscribe actions.
 - **Inquiry content**: any information you choose to include when contacting us through a form, including the form in the Software, or by email.
 - **Server log and analytics data**: when you visit the Website, our hosting and analytics providers automatically receive standard technical information, including your IP address, online identifiers (such as cookie IDs), date and time of access, pages viewed, the referring URL, and your browser and operating system.
-- **Operational telemetry**: when you use the Software during development, it sends us server launches, number of turns, Software version, operating system, GPU and VRAM, platform, and a random project identifier. You cannot turn off operational telemetry.
-- **Content telemetry**: unless the studio or its developers turn it off in the Software settings, the Software also sends us prompts, user messages, and model responses processed during development. After a studio submits the release form for a game, the Software no longer sends content telemetry for that game. We ask studios not to submit personal data of players or testers through content telemetry.
+- **Operational telemetry**: the Software sends us operational telemetry only when you use it during development. This is technical data about how the Software runs and does not include your name, contact details, or project content. It includes operating system, CPU, RAM, GPU, and VRAM, server launches and installations, model identifiers, download results, a summary of agent configurations and parameter changes without their names or content, number of turns, Software version, platform, a random installation identifier, and a random project identifier. You cannot turn off operational telemetry.
+- **Content telemetry**: only if the studio or its developers choose to turn it on in the Software settings, the Software also sends us prompts, user messages, and model responses processed during development. Content telemetry is off by default. We ask studios not to submit personal data of players or testers through content telemetry.
 - **IP address**: we receive your IP address when the Software sends us data. We use it only to deliver the request, and we do not store it.
 - **Download information**: the company or studio name and the game name you enter when you download the Software.
 - **Release and royalty information**: information the studio provides in the release form and in royalty reports under the Tryll Engine License Agreement, such as product details and revenue figures, including the name, title, and contact details of the person who submits them.
+- **Partner information**: if you buy a license or service from one of our partners through the Software, the partner may tell us that you came to it through Tryll and how much you paid.
 - **Community data**: if you join our Discord server, your Discord username, the profile information you make public, and the messages you post.
 
 **2.2** Providing operational telemetry is a condition of the Tryll Engine License Agreement. If you do not want us to collect it, you cannot use the Software. Providing other information is voluntary, unless a form marks a field as required.
 
 **2.3** We do not deliberately collect special categories of personal data (such as health, biometric, or political data), and we ask that you do not submit them through our forms.
 
-**2.4** The Software does not collect any data about players of games built with it. Builds of the Software that studios distribute in their games do not send us any telemetry or other data.
+**2.4** The Software does not collect any data about players or other end users of products built with it. Builds of the Software that studios distribute in their games do not send us any telemetry or other data.
 
-**2.5** The Website and the Software areis not directed to children under the age of 16, and the Software is intended only for users aged 18 or older, and we do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us at [privacy@tryllengine.com](mailto:privacy@tryllengine.com) and we will take steps to delete it.
+**2.5** The Website and the Software are not directed to children under the age of 16, and the Software is intended only for users aged 18 or older, and we do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us at [privacy@tryllengine.com](mailto:privacy@tryllengine.com) and we will take steps to delete it.
 
 ## 3. HOW WE USE YOUR INFORMATION
 
@@ -51,6 +50,7 @@ Effective date: May 27, 2026
 - operate, secure, and improve the Website (legitimate interests);
 - provide, maintain, secure, and improve the Software, and measure its performance and compatibility (legitimate interests);
 - manage releases, royalty reports, and payments under the Tryll Engine License Agreement (contractual necessity);
+- receive and calculate referral fees from our partners (legitimate interests);
 - verify compliance with the Tryll Engine License Agreement, including identifying releases of products built with the Software (legitimate interests);
 - run our community channels (legitimate interests);
 - understand how visitors use the Website, in aggregate (consent);
@@ -80,7 +80,7 @@ Effective date: May 27, 2026
 **5.1** To the extent the GDPR or the UK GDPR applies, we rely on the following legal bases for processing personal data:
 
 - **Consent**, when you subscribe to our newsletter or otherwise opt in to a specific use of your data, including, where required, the use of non-essential cookies.
-- **Legitimate interests**, in operating, securing, and improving the Website and the Software, analyzing Software telemetry, verifying compliance with the Tryll Engine License Agreement, and running our community channels, and in communicating or following up with prospective customers, partners, and investors who have contacted us. You have the right to object to processing based on legitimate interests (see Section [9](#s9)).
+- **Legitimate interests**, in operating, securing, and improving the Website and the Software, analyzing Software telemetry, verifying compliance with the Tryll Engine License Agreement, receiving referral fees from our partners, and running our community channels, and in communicating or following up with prospective customers, partners, and investors who have contacted us. You have the right to object to processing based on legitimate interests (see Section [9](#s9)).
 - **Contractual necessity**, where we process data to perform an agreement with you, including the Tryll Engine License Agreement, release forms, and royalty reports, if you are a party to it. If you act on behalf of a studio, we process your data based on our legitimate interest in performing our agreement with that studio.
 - **Legal obligation**, where processing is necessary for compliance with applicable laws and regulatory requirements.
 
@@ -110,7 +110,6 @@ Effective date: May 27, 2026
 - HubSpot (contact forms and customer records) - HubSpot, Inc., USA; our account is hosted in the EUFormspree (contact form processing) - Formspree, Inc., USA.
 - Slack (team notifications about contact form messages) - Slack Technologies, LLC, USA.
 - Cloudflare (passes contact form messages on to our team chat) - Cloudflare, Inc., USA.
-- Formspree (contact form processing) - Formspree, Inc., USA.
 - MailerLite (newsletter and marketing automation) - UAB MailerLite, Lithuania (EU).
 - Google Analytics and Google Tag Manager (website analytics) - Google LLC, USA, and Google Ireland Limited.
 - PostHog (storage and analysis of Software telemetry) - PostHog, Inc., USA; our project is hosted in the EU.
@@ -118,11 +117,13 @@ Effective date: May 27, 2026
 
 **7.3** Discord Inc., USA, operates our Discord server as an independent controller, not as our processor.
 
-**7.4** If you download a third-party AI model through the Software, the Software connects directly to the model provider or its hosting service. That provider or service processes your data as an independent controller under its own privacy policy.
+**7.4** If you download a third-party AI model through the Software, the Software connects directly to the model provider or another repository that hosts the model. That provider or repository processes your data as an independent controller under its own privacy policy.
 
-**7.5** We do not sell, rent, or share personal data with third parties for advertising purposes.
+**7.5** Partners that provide third-party models or services through the Software process your data as independent controllers under their own privacy policies. To attribute your purchase to us, we may share with them a referral identifier.
 
-**7.6** We may also disclose personal data when required by law, court order, or to protect our legal rights, or in connection with a corporate transaction (such as a merger, acquisition, or financing) subject to appropriate confidentiality and data protection commitments.
+**7.6** We do not sell, rent, or share personal data with third parties for advertising purposes.
+
+**7.7** We may also disclose personal data when required by law, court order, or to protect our legal rights, or in connection with a corporate transaction (such as a merger, acquisition, or financing) subject to appropriate confidentiality and data protection commitments.
 
 ## 8. INTERNATIONAL DATA TRANSFERS
 
@@ -158,7 +159,7 @@ Effective date: May 27, 2026
 - **Server logs**: typically retained for up to 12 months.
 - **Analytics data**: retained according to the configured retention period in Google Analytics, typically up to 14 months.
 - **Software telemetry**: up to 12 months after collection, after which we delete or anonymize it. We do not store IP addresses received from the Software.
-- **Release forms, royalty reports, and payment records**: for the term of the Tryll Engine License Agreement and 7 years after it ends, or longer if required by law.
+- **Release forms, royalty reports, partner reports, and payment records**: for the term of the Tryll Engine License Agreement and 7 years after it ends, or longer if required by law.
 - **Community data**: for as long as you remain a member of our Discord server or until you delete your messages, subject to Discord’s own retention practices.
 
 ## 11. SECURITY
@@ -169,7 +170,7 @@ Effective date: May 27, 2026
 
 **12.1** This section applies to residents of US states with comprehensive privacy laws, such as California. It supplements the rest of this Policy.
 
-**12.2** **Personal information we collect**. We collect, and in the last 12 months may have collected, the following categories of personal information: identifiers (such as name, email address, IP address, and random project identifiers); professional information (such as company name and role); commercial information (such as release and royalty information); internet or other electronic network activity (such as Website usage data and operational telemetry); and the content of your communications with us, including content telemetry. We collect this information from you, from your use of the Website and the Software, and from our Discord server. We use it for the purposes described in Section [3](#s3) and disclose it to the service providers described in Section [7](#s7).
+**12.2** **Personal information we collect**. We collect, and in the last 12 months may have collected, the following categories of personal information: identifiers (such as name, email address, IP address, and random installation and project identifiers); professional information (such as company name and role); commercial information (such as release and royalty information); internet or other electronic network activity (such as Website usage data and operational telemetry); and the content of your communications with us, including content telemetry. We collect this information from you, from your use of the Website and the Software, from our partners, and from our Discord server. We use it for the purposes described in Section [3](#s3) and disclose it to the service providers described in Section [7](#s7).
 
 **12.3** **No sale or sharing**. We do not sell personal information or share it for cross-context behavioral advertising, and we have not done so in the last 12 months. We do not knowingly sell or share personal information of consumers under 16. We do not use or disclose sensitive personal information for purposes that would give you a right to limit its use.
 

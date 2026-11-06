@@ -6,6 +6,8 @@ measured on 1 setting
 
 The share of lines that do not belong in the game world that the guard blocks, at the same 5 in 100 budget. Measured on one setting, a medieval merchant, so treat it as a first signal rather than a promise for every world.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## World guard
 
 ## Measured models

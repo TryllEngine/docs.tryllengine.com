@@ -6,6 +6,8 @@ setting-invariant classifier
 
 The share of attempts to pull the NPC out of the game that the guard blocks: asking whether it is an AI, jailbreaks, prompt leaks, coding requests and format tricks. Each model's threshold is set so that at most 5 in 100 normal player lines are blocked on a tuning set; the numbers here are on separate, held-out lines.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## General guard
 
 ## Measured models

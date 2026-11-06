@@ -6,6 +6,8 @@ measured on one GPU
 
 Writing speed deeper into the context: tokens per second over 200 generated tokens after a prompt of about 4,000 tokens. Each new token attends to the whole prompt, so this is slower than after a short prompt.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## Generation, 4K prompt
 
 ## Measured models

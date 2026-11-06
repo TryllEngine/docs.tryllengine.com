@@ -6,6 +6,8 @@ measured on one GPU
 
 How fast the model reads a long prompt: prompt tokens per second for the character sheet with world notes, about 4,000 tokens. Longer prompts read a little slower per token.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## Prefill, 4K prompt
 
 ## Measured models

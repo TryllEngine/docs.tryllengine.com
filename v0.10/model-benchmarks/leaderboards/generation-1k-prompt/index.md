@@ -6,6 +6,8 @@ measured on one GPU
 
 How fast the model writes its answer: tokens per second over 200 generated tokens, after a prompt of about 1,000 tokens. Greedy sampling, median of 10 runs.
 
+*Every model on this page was measured on NVIDIA GeForce RTX 5070 Ti · Vulkan.*
+
 ## Generation, 1K prompt
 
 ## Measured models
